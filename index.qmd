@@ -1,0 +1,52 @@
+---
+title: "tidymodeling"
+---
+
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+[hotel classification model](../hote%20classification%20model/Level%200%20classification%20Tidy%20Modeling.html)
+:::
+
+::: {.column width="60%"}
+![](images/1.jpg){width="300"}
+:::
+
+::::
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+[titanic classification model](../titanic%20classification%20model/Level%200%20classification%20Tidy%20Modeling.html)
+:::
+
+::: {.column width="60%"}
+![](images/experience-at-titanic-pigeon-forge.jpg){width="300"}
+:::
+
+::::
+
+
+
+
+
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+[house price regression model](../house%20price%20regression%20model/Level%200%20Regression%20Tidy%20Modeling.html)
+:::
+
+::: {.column width="60%"}
+![](images/house-prices-scaled.jpg){width="300"}
+
+:::
+
+::::
+
+
+

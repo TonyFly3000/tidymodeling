@@ -1,0 +1,67 @@
+---
+title: "Level 0 classification Tidy Modeling"
+subtitle: "with titanic booking data"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+# titanic data
+
+![](images/experience-at-titanic-pigeon-forge.jpg){width="519"}
+
+data download form [kaggle](https://www.kaggle.com/competitions/titanic/data)
+```{r}
+library(tidyverse)
+train = read_csv("data/train.csv")
+
+test=read_csv("data/test.csv")
+
+```
+
+Data have `r nrow(train)` record and `r ncol(train)` variable
+
+```{r}
+
+glimpse(train)
+```
+
+```{r}
+train %>% group_by(Survived) %>% count()
+```
+
+
+## Measurement:
+
+* Accuracy=TP+TN+FP+FN
+
+* Precision --- Out of all the examples that predicted as positive, how many are really positive?
+
+Precision=TP/(TP+FP)
+
+* Recall/Sensitivity(True Positive rate) — Out of all the positive examples, how many are predicted as positive?
+
+Recall=TP/(TP+FN)
+
+
+* Specificity(True Negative rate)— Out of all the people that do not have the disease, how many got negative results?
+
+
+* False Negative Rate tells us what proportion of the positive class got incorrectly classified by the classifier
+
+
+Specificity=TN/(TN+FP)
+
+* False Positive rate=1-Specificity
+
+* False Negative Rat=FN/(TP+FN)
+

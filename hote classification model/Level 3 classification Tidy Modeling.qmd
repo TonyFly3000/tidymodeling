@@ -1,0 +1,399 @@
+---
+title: "Level 3 classification Tidy Modeling"
+subtitle: "with hotel booking data"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+Level 3 classification Tidy Modeling: 
+
+* using Recipe to down sample.
+* add resamples to estimate the performance of our two models
+
+
+# load package
+
+```{r}
+#| code-summary: "Load Pacakges & Set Options"
+library(themis)
+library(tidyverse)      
+library(tidymodels)     
+library(palmerpenguins) # penguin dataset
+library(gt)             # better tables
+library(bonsai)         # tree-based models
+library(conflicted)     # function conflicts
+library(vetiver)
+library(Microsoft365R)
+library(pins)
+tidymodels_prefer()     # handle conflicts
+conflict_prefer("penguins", "palmerpenguins")
+options(tidymodels.dark = TRUE) # dark mode
+theme_set(theme_bw()) # set default ggplot2 theme
+```
+
+# data preparation
+
+## read data
+
+```{r}
+library(tidyverse)
+
+hotels <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv")
+
+
+hotel_stays <- hotels %>%
+  filter(is_canceled == 0) %>%
+  mutate(
+    children = case_when(
+      children + babies > 0 ~ "children",
+      TRUE ~ "none"
+    ),
+    required_car_parking_spaces = case_when(
+      required_car_parking_spaces > 0 ~ "parking",
+      TRUE ~ "none"
+    )
+  ) %>%
+  select(-is_canceled, -reservation_status, -babies)
+
+
+```
+
+## plotting and EDA
+
+```{r}
+hotel_stays %>%
+  count(children)
+```
+
+```{r}
+library(skimr)
+
+skim(hotel_stays)
+```
+
+```{r}
+hotel_stays %>%
+  mutate(arrival_date_month = factor(arrival_date_month,
+    levels = month.name
+  )) %>%
+  count(hotel, arrival_date_month, children) %>%
+  group_by(hotel, children) %>%
+  mutate(proportion = n / sum(n)) %>%
+  ggplot(aes(arrival_date_month, proportion, fill = children)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  facet_wrap(~hotel, nrow = 2) +
+  labs(
+    x = NULL,
+    y = "Proportion of hotel stays",
+    fill = NULL
+  )
+```
+
+## data split
+
+```{r}
+#| code-summary: "Prepare & Split Data"
+hotels_df <- hotel_stays %>%
+  select(
+    children, hotel, arrival_date_month, meal, adr, adults,
+    required_car_parking_spaces, total_of_special_requests,
+    stays_in_week_nights, stays_in_weekend_nights
+  ) %>%
+  mutate_if(is.character, factor) %>% rename(target_variable=children) %>% sample_n(50000)
+```
+
+```{r}
+
+set.seed(1234)
+
+data_split <- initial_validation_split(data=hotels_df, prop = c(0.7,0.2))
+
+data_train=training(data_split)  
+
+data_test=testing(data_split)  
+
+data_valid=validation(data_split)
+
+```
+
+```{r}
+dim(data_train)
+```
+
+```{r}
+dim(data_test)
+```
+
+```{r}
+dim(data_valid)
+```
+
+# modeling
+
+## recipe
+
+becasue the target class is not balance so using downsample
+```{r}
+data_rec <- recipe(target_variable ~ ., data = data_train) %>%
+  step_downsample(target_variable) %>%
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  step_zv(all_numeric()) %>%
+  step_normalize(all_numeric())
+  
+```
+
+![](images/2-02.png)
+
+## prep the recipe
+
+```{r}
+data_rec=data_rec %>% prep()
+```
+
+```{r}
+data_rec
+```
+
+## bake the train data with preded recipe
+
+```{r}
+train_proc <- bake(data_rec, new_data = data_train)
+```
+
+```{r}
+train_proc2 <- bake(data_rec, new_data = NULL)
+```
+
+```{r}
+train_juice <-juice(data_rec)
+```
+
+the difference between train_proc and train_juice is that the train_juice is been down sample.
+
+```{r}
+dim(train_proc)
+```
+
+```{r}
+dim(train_proc2)
+```
+
+```{r}
+dim(train_juice)
+```
+
+```{r}
+train_proc %>%
+  count(target_variable)
+```
+the juice and train_proc2 target is down sample to 1:1
+
+```{r}
+train_proc2 %>%
+  count(target_variable)
+```
+
+```{r}
+train_juice %>%
+  count(target_variable)
+```
+
+## bake the test data with preded recipe
+
+```{r}
+test_proc <- bake(data_rec, new_data = data_test)
+```
+
+```{r}
+test_proc %>%count(target_variable)
+```
+
+
+```{r}
+data_valid %>%count(target_variable)
+```
+
+
+
+```{r}
+valid_proc <- bake(data_rec, new_data = data_valid)
+```
+
+juice(pre_recipe,data=NULL) is same as bake(pre_recipe,data=hotel_train) for training data (excepted down sample)
+
+## model
+
+tree model
+
+```{r}
+tree_spec <- decision_tree() %>%
+  set_engine("rpart") %>%
+  set_mode("classification")
+```
+
+KNN model
+
+```{r}
+knn_spec <- nearest_neighbor() %>%
+  set_engine("kknn") %>%
+  set_mode("classification")
+```
+
+## trainning
+
+```{r}
+knn_fit <- knn_spec %>%
+  fit(target_variable ~ ., data = train_juice)
+
+knn_fit
+```
+
+```{r}
+tree_fit <- tree_spec %>%
+  fit(target_variable ~ ., data = train_juice)
+
+tree_fit
+```
+
+# model result
+
+## Evaluate
+
+
+```{r}
+#mc_cv default is 25
+set.seed(1234)
+validation_splits <- mc_cv(train_juice, prop = 0.9, strata = target_variable
+                           #,times=3
+                           )
+validation_splits
+```
+
+KKN:
+```{r}
+knn_res <- knn_spec %>% fit_resamples(
+  target_variable ~ .,
+  validation_splits,
+  control = control_resamples(save_pred = TRUE)
+)
+
+knn_res %>%collect_metrics()
+```
+
+Tree model:
+
+```{r}
+tree_res <- tree_spec %>% fit_resamples(
+  target_variable ~ .,
+  validation_splits,
+  control = control_resamples(save_pred = TRUE)
+)
+
+tree_res %>%collect_metrics()
+```
+
+```{r}
+knn_res %>%
+  unnest(.predictions) %>%
+  mutate(model = "kknn") %>%
+  bind_rows(tree_res %>%
+    unnest(.predictions) %>%
+    mutate(model = "rpart")) %>%
+  group_by(model) %>%
+  roc_curve(target_variable, .pred_children) %>%
+  ggplot(aes(x = 1 - specificity, y = sensitivity, color = model)) +
+  geom_line(size = 1.5) +
+  geom_abline(
+    lty = 2, alpha = 0.5,
+    color = "gray50",
+    size = 1.2
+  )
+```
+
+
+
+## save model
+
+check model size
+
+```{r}
+library(lobstr)
+obj_size(tree_fit)
+
+obj_size(knn_fit)
+```
+
+bundle and save model
+
+```{r}
+library(bundle)
+model_bundle <- bundle(knn_fit)
+```
+
+```{r}
+saveRDS(model_bundle,'level 2 classification KNN hotel model.RDS')
+```
+
+## make predication
+
+load model and unbundle
+
+```{r}
+model=readRDS('level 2 classification KNN hotel model.RDS')
+
+model <- unbundle(model)
+```
+
+```{r}
+final_prediction=predict(model,valid_proc)
+
+head(final_prediction)
+```
+
+```{r}
+
+final_prediction_data=cbind(valid_proc,final_prediction)
+
+conf_mat(final_prediction_data, truth = target_variable,
+    estimate = .pred_class)
+
+```
+```{r}
+
+accuracy(final_prediction_data, truth = target_variable, estimate = .pred_class)
+```
+
+```{r}
+final_prediction_data %>% group_by(target_variable)%>% count()
+```
+
+
+```{r}
+final_prediction_data %>% group_by(.pred_class) %>% count()
+```
+
+
+```{r}
+conf_mat(final_prediction_data, truth = target_variable,
+    estimate = .pred_class)
+```
+
+# reference:
+
+https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-02-11/readme.md
+
+https://juliasilge.com/blog/hotels-recipes/
+
+https://www.tidymodels.org/start/case-study/

@@ -1,0 +1,441 @@
+---
+title: "Level 5 classification Tidy Modeling"
+subtitle: "with hotel booking data"
+author: "Tony Duan"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+Level 5 classification Tidy Modeling: 
+
+* using Recipe to down sample.
+* add resamples to estimate the performance of our two models
+* add workflow with tunning
+* add quick tunning
+
+# load package
+
+```{r}
+#| code-summary: "Load Pacakges & Set Options"
+library(themis)
+library(tidyverse)      
+library(tidymodels)     
+library(palmerpenguins) # penguin dataset
+library(gt)             # better tables
+library(bonsai)         # tree-based models
+library(conflicted)     # function conflicts
+library(vetiver)
+library(Microsoft365R)
+library(pins)
+tidymodels_prefer()     # handle conflicts
+conflict_prefer("penguins", "palmerpenguins")
+options(tidymodels.dark = TRUE) # dark mode
+theme_set(theme_bw()) # set default ggplot2 theme
+```
+
+# data preparation
+
+## read data
+
+```{r}
+library(tidyverse)
+
+hotels <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv")
+
+
+hotel_stays <- hotels %>%
+  filter(is_canceled == 0) %>%
+  mutate(
+    children = case_when(
+      children + babies > 0 ~ "children",
+      TRUE ~ "none"
+    ),
+    required_car_parking_spaces = case_when(
+      required_car_parking_spaces > 0 ~ "parking",
+      TRUE ~ "none"
+    )
+  ) %>%
+  select(-is_canceled, -reservation_status, -babies)
+
+
+```
+
+## plotting and EDA
+
+```{r}
+hotel_stays %>%
+  count(children)
+```
+
+```{r}
+library(skimr)
+
+skim(hotel_stays)
+```
+
+```{r}
+hotel_stays %>%
+  mutate(arrival_date_month = factor(arrival_date_month,
+    levels = month.name
+  )) %>%
+  count(hotel, arrival_date_month, children) %>%
+  group_by(hotel, children) %>%
+  mutate(proportion = n / sum(n)) %>%
+  ggplot(aes(arrival_date_month, proportion, fill = children)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  facet_wrap(~hotel, nrow = 2) +
+  labs(
+    x = NULL,
+    y = "Proportion of hotel stays",
+    fill = NULL
+  )
+```
+
+## data split
+
+```{r}
+#| code-summary: "Prepare & Split Data"
+all_hotels_df <- hotel_stays %>%
+  select(
+    children, hotel, arrival_date_month, meal, adr, adults,
+    required_car_parking_spaces, total_of_special_requests,
+    stays_in_week_nights, stays_in_weekend_nights
+  ) %>%
+  mutate_if(is.character, factor) %>% rename(target_variable=children) %>% mutate(rownum= row_number())
+
+hotels_df=all_hotels_df%>% sample_n(50000) 
+
+hold_hotels_df <- anti_join(all_hotels_df, hotels_df, by='rownum')
+
+
+#all_hotels_df=all_hotels_df %>% select(-rownum)
+#hotels_df=hotels_df %>% select(-rownum)
+#all_hotels_df=all_hotels_df %>% select(-rownum)
+
+```
+
+```{r}
+
+set.seed(1234)
+
+data_split <- initial_validation_split(data=hotels_df, prop = c(0.7,0.2))
+
+data_train=training(data_split)  
+
+data_test=testing(data_split)  
+
+data_valid=validation(data_split)
+
+```
+
+```{r}
+dim(data_train)
+```
+
+```{r}
+dim(data_test)
+```
+
+```{r}
+dim(data_valid)
+```
+
+10 fold for tunning
+```{r}
+set.seed(234)
+folds <- vfold_cv(data_train)
+```
+
+
+
+
+# modeling
+
+## recipe
+
+becasue the target class is not balance so using downsample
+```{r}
+data_rec <- recipe(target_variable ~ ., data = data_train) %>%
+  step_rm(rownum) %>% 
+  step_downsample(target_variable) %>%
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  step_zv(all_numeric()) %>%
+  step_normalize(all_numeric())
+  
+```
+
+
+## model
+
+tree model with cost_complexity and tree_depth to tune
+
+```{r}
+tune_spec <- 
+  decision_tree(
+    cost_complexity = tune(),
+    tree_depth = tune()
+  ) %>% 
+  set_engine("rpart") %>% 
+  set_mode("classification")
+```
+
+
+
+```{r}
+tune_spec
+```
+```{r}
+tune_spec |> 
+  extract_parameter_set_dials()
+```
+
+```{r}
+
+num_leaves()
+```
+
+tunning grid
+```{r}
+grid_tune <- 
+  tune_spec |> 
+  extract_parameter_set_dials() |> 
+  grid_latin_hypercube(size = 200)
+```
+
+
+```{r}
+grid_tune |> glimpse(width = 200)
+```
+
+```{r}
+grid_tune %>% count(tree_depth)
+```
+
+## workflow 
+
+
+```{r}
+library(finetune)
+cntl <- control_race(save_pred     = TRUE,
+                          save_workflow = TRUE)
+```
+
+
+
+```{r}
+model_workflow =
+  workflow() %>% 
+  add_model(tune_spec) %>% 
+  add_recipe(data_rec)
+```
+
+
+
+
+## training and tunning
+
+using tune_race_anova() instead of tune_grid()
+```{r}
+
+library(finetune)
+doParallel::registerDoParallel()
+
+tree_res = model_workflow %>% 
+  tune_race_anova(
+    resamples = folds,
+    grid = grid_tune,
+    control   = cntl
+    )
+```
+
+
+```{r}
+autoplot(tree_res)
+```
+
+```{r}
+plot_race(tree_res)
+```
+
+```{r}
+tree_res %>% 
+  collect_metrics()
+```
+
+
+```{r}
+tree_res %>%
+  collect_metrics() %>%
+  mutate(tree_depth = factor(tree_depth)) %>%
+  ggplot(aes(cost_complexity, mean, color = tree_depth)) +
+  geom_line(size = 1.5, alpha = 0.6) +
+  geom_point(size = 2) +
+  facet_wrap(~ .metric, scales = "free", nrow = 2) +
+  scale_x_log10(labels = scales::label_number()) +
+  scale_color_viridis_d(option = "plasma", begin = .9, end = 0)
+```
+
+
+```{r}
+tree_res %>%
+  show_best()
+```
+
+
+```{r}
+best_tree <- tree_res %>%
+  select_best()
+
+best_tree
+```
+```{r}
+final_wf <- 
+  model_workflow %>% 
+  finalize_workflow(best_tree)
+
+
+final_wf
+```
+
+## last fit
+
+```{r}
+final_fit <- 
+  final_wf %>%
+  last_fit(data_split) 
+```
+
+
+# model result
+
+## Evaluate
+
+```{r}
+final_fit %>%
+  collect_metrics()
+```
+Accuracy = (TN + TP)/(TN+TP+FN+FP) = (Number of correct assessments)/Number of all assessments)
+
+Sensitivity = TP/(TP + FN) = (Number of true positive assessment)/(Number of all positive assessment)
+
+Specificity = TN/(TN + FP) = (Number of true negative assessment)/(Number of all negative assessment)
+
+
+
+```{r}
+all_metrics <- metric_set(accuracy, sens, spec)
+
+a=final_fit %>% collect_predictions()
+
+all_metrics(a, truth = target_variable,estimate = .pred_class)
+```
+
+
+```{r}
+final_fit %>%
+  collect_predictions() %>% 
+  roc_curve(target_variable, .pred_children) %>% 
+  autoplot()
+```
+
+```{r}
+final_tree <- extract_workflow(final_fit)
+final_tree
+```
+
+```{r}
+library(vip)
+
+final_tree %>% 
+  extract_fit_parsnip() %>% 
+  vip()
+```
+
+
+
+## save model
+
+check model size
+
+```{r}
+library(lobstr)
+obj_size(final_tree)
+
+
+```
+
+bundle and save model
+
+```{r}
+library(bundle)
+model_bundle <- bundle(final_tree)
+```
+
+```{r}
+saveRDS(model_bundle,'level 5 classification decision tree hotel model.RDS')
+```
+
+## make predication
+
+load model and unbundle
+
+```{r}
+model=readRDS('level 5 classification decision tree hotel model.RDS')
+
+model <- unbundle(model)
+```
+
+```{r}
+final_prediction=predict(model,data_valid)
+
+head(final_prediction)
+```
+
+```{r}
+
+final_prediction_data=cbind(data_valid,final_prediction)
+
+conf_mat(final_prediction_data, truth = target_variable,
+    estimate = .pred_class)
+
+```
+```{r}
+accuracy(final_prediction_data, truth = target_variable, estimate = .pred_class)
+```
+
+```{r}
+final_prediction_data %>% group_by(target_variable)%>% count()
+```
+
+```{r}
+final_prediction_data %>% group_by(.pred_class) %>% count()
+```
+
+
+```{r}
+conf_mat(final_prediction_data, truth = target_variable,
+    estimate = .pred_class)
+```
+
+# reference:
+
+
+https://www.tmwr.org
+
+https://www.youtube.com/watch?v=IzjmuGJgwKQ
+
+https://www.youtube.com/watch?v=_e0NFIaHY2c
+
+

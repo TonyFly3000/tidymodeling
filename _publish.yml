@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: b48c64a5-23bf-4731-81bd-ece49570781a
+      url: 'https://tonyfly.quarto.pub/tidymodeling'
