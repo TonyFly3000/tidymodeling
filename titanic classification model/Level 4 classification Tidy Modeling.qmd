@@ -352,6 +352,4 @@ conf_mat(final_prediction_data, truth = target_variable,
 
 # reference:
 
-https://www.tidymodels.org/start/tuning/
-
-https://www.tmwr.org
+https://juliasilge.com/blog/lasso-the-office/

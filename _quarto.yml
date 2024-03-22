@@ -11,6 +11,11 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 300px
+      gutter-width: 1rem
 
 website:
   back-to-top-navigation: true
@@ -24,10 +29,13 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: recipe.qmd
+        text: Recipe
       - about.qmd
       - sidebar:Classification_hotel
       - sidebar:Classification_titanic
       - sidebar:house_price_regression_model
+ 
   page-footer:
     right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
       
@@ -54,4 +62,7 @@ website:
       contents: house price regression model 
 
 
+
+execute:
+  freeze: auto
 

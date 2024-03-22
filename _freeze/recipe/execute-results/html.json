@@ -1,0 +1,15 @@
+{
+  "hash": "743afa5d8c20186ca4e92556b322d676",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"recipe\"\n---\n\n::: {.cell}\n\n```{.r .cell-code}\ntree_rec <- recipe(legal_status ~ ., data = trees_train) %>%\n  \n # update the role for tree_id, since this is a variable we might like to keep around for convenience as an identifier for rows but is not a predictor or outcome. \n  update_role(tree_id, new_role = \"ID\") %>%\n  \n# step_other() to collapse categorical levels for species, caretaker, and the site info. Before this step, there were 300+ species!\n  step_other(species, caretaker, threshold = 0.01) %>%\n  \n# create dummy for nominal data\n  step_dummy(all_nominal(), -all_outcomes()) %>%\n  \n# The date column with when each tree was planted may be useful for fitting this model, but probably not the exact date, given how slowly trees grow. Let’s create a year feature from the date, and then remove the original date variable.  \n  step_date(date, features = c(\"year\")) %>%\n  step_rm(date) %>%\n  \n# There are many more DPW maintained trees than not, so let’s downsample the data for training.  \n  step_downsample(legal_status)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

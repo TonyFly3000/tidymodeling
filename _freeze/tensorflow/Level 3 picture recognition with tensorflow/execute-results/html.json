@@ -1,0 +1,12 @@
+{
+  "hash": "4c53f65bc5a3c2b405f12f58c7a1ad6d",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Level 2 picture recognition with tensorflow\"\nsubtitle: \"with dog vs cat data\"\nexecute:\n  warning: false\n  error: false\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n---\n\n::: {#6e60815a .cell execution_count=1}\n``` {.python .cell-code}\nimport os\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport os\nimport cv2\nimport random\nimport pickle\nimport time\n# TensorFlow and tf.keras\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom keras import Sequential\nfrom keras.layers import Dense,Conv2D,MaxPooling2D,Flatten,BatchNormalization,Dropout\n# Helper libraries\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nprint(tf.__version__)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n2.14.0\n```\n:::\n:::\n\n\n# data \n\n\n# resource:\n\nhttps://www.tensorflow.org/tutorials\n\n",
+    "supporting": [
+      "Level 3 picture recognition with tensorflow_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

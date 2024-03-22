@@ -128,6 +128,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../recipe.html"> 
+<span class="menu-text">Recipe</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
@@ -200,22 +204,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../titanic classification model/Level 6 classification Tidy Modeling.html">
  <span class="dropdown-text">Level 6 classification Tidy Modeling</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-house-price-regression-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">house price regression model</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-house-price-regression-model">    
-        <li class="dropdown-header">house price regression model</li>
-        <li>
-    <a class="dropdown-item" href="../house price regression model/Level 0 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 0 Regression Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../house price regression model/Level 2 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 0 Regression Tidy Modeling</span></a>
   </li>  
     </ul>
   </li>
@@ -1722,19 +1710,23 @@ Computational engine: lightgbm </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>all_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(accuracy, sens, spec)</span>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>all_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(accuracy, recall, precision, f_meas, kap, sens, spec)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span>final_fit <span class="sc">%&gt;%</span> <span class="fu">collect_predictions</span>()</span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all_metrics</span>(a, <span class="at">truth =</span> target_variable,<span class="at">estimate =</span> .pred_class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  .metric  .estimator .estimate
-  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
-1 accuracy binary         0.749
-2 sens     binary         0.912
-3 spec     binary         0.470</code></pre>
+<pre><code># A tibble: 7 × 3
+  .metric   .estimator .estimate
+  &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy  binary         0.749
+2 recall    binary         0.912
+3 precision binary         0.746
+4 f_meas    binary         0.821
+5 kap       binary         0.414
+6 sens      binary         0.912
+7 spec      binary         0.470</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2763,7 +2755,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb72-432"><a href="#cb72-432" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-433"><a href="#cb72-433" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-436"><a href="#cb72-436" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb72-437"><a href="#cb72-437" aria-hidden="true" tabindex="-1"></a>all_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(accuracy, sens, spec)</span>
+<span id="cb72-437"><a href="#cb72-437" aria-hidden="true" tabindex="-1"></a>all_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(accuracy, recall, precision, f_meas, kap, sens, spec)</span>
 <span id="cb72-438"><a href="#cb72-438" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-439"><a href="#cb72-439" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span>final_fit <span class="sc">%&gt;%</span> <span class="fu">collect_predictions</span>()</span>
 <span id="cb72-440"><a href="#cb72-440" aria-hidden="true" tabindex="-1"></a></span>

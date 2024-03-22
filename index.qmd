@@ -2,51 +2,61 @@
 title: "tidymodeling"
 ---
 
+This is [ tidymodel ]{style="color:red;font-size: 200%"} Project.
 
+<br>
 
-:::: {.columns}
-
-::: {.column width="40%"}
+::: columns
+::: {.column width="30%"}
 [hotel classification model](../hote%20classification%20model/Level%200%20classification%20Tidy%20Modeling.html)
 :::
 
-::: {.column width="60%"}
-![](images/1.jpg){width="300"}
+::: {.column width="10%"}
+<!-- empty column to create gap -->
 :::
 
-::::
+::: {.column width="60%"}
+![](images/1.jpg){width="300" fig-align="center"}
+:::
+:::
 
+<br>
 
-:::: {.columns}
-
-::: {.column width="40%"}
+::: columns
+::: {.column width="30%"}
 [titanic classification model](../titanic%20classification%20model/Level%200%20classification%20Tidy%20Modeling.html)
 :::
 
-::: {.column width="60%"}
-![](images/experience-at-titanic-pigeon-forge.jpg){width="300"}
+::: {.column width="10%"}
+<!-- empty column to create gap -->
 :::
 
-::::
+::: {.column width="60%"}
+![](images/experience-at-titanic-pigeon-forge.jpg){width="300" fig-align="center"}
+:::
+:::
 
+<br>
 
-
-
-
-
-
-:::: {.columns}
-
+::: columns
 ::: {.column width="40%"}
 [house price regression model](../house%20price%20regression%20model/Level%200%20Regression%20Tidy%20Modeling.html)
 :::
 
 ::: {.column width="60%"}
-![](images/house-prices-scaled.jpg){width="300"}
-
+![](images/house-prices-scaled.jpg){width="300" fig-align="center"}
+:::
 :::
 
-::::
+<br>
 
+::: columns
+::: {.column width="40%"}
+[tensorflow model](../tensorflow/Level%200%20picture%20recognition%20with%20tensorflow.html)
+:::
 
+::: {.column width="60%"}
+![](images/download.png){width="300" fig-align="center"}
+:::
+:::
 

@@ -15,16 +15,22 @@ format:
     code-block-border-left: "#31BAE9"
 ---
 
+# Introduction
+
+Look at the hotel booking data.The target variable is whether have children
+
+
 
 # Hotel booking data
 ![](images/1.jpg){width="481"}
 
-data download from github
+# data download from github
 ```{r}
 library(tidyverse)
 
 hotels <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv")
 ```
+
 Data have `r nrow(hotels)` record  and `r ncol(hotels)` variable   
 ```{r}
 
@@ -35,6 +41,56 @@ glimpse(hotels)
 ```{r}
 hotels %>% group_by(children) %>% count()
 ```
+# ploting and EDA
+
+```{r}
+hotel_stays <- hotels %>%
+  filter(is_canceled == 0) %>%
+  mutate(
+    children = case_when(
+      children + babies > 0 ~ "children",
+      TRUE ~ "none"
+    ),
+    required_car_parking_spaces = case_when(
+      required_car_parking_spaces > 0 ~ "parking",
+      TRUE ~ "none"
+    )
+  ) %>%
+  select(-is_canceled, -reservation_status, -babies)
+
+```
+
+```{r}
+hotel_stays %>%
+  mutate(arrival_date_month = factor(arrival_date_month,
+    levels = month.name
+  )) %>%
+  count(hotel, arrival_date_month, children) %>%
+  group_by(hotel, children) %>%
+  mutate(proportion = n / sum(n)) %>%
+  ggplot(aes(arrival_date_month, proportion, fill = children)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  facet_wrap(~hotel, nrow = 2) +
+  labs(
+    x = NULL,
+    y = "Proportion of hotel stays",
+    fill = NULL
+  )
+```
+
+
+```{r}
+hotel_stays %>%
+  count(children)
+```
+
+```{r}
+library(skimr)
+
+skim(hotel_stays)
+```
+
 
 ## Measurement:
 
@@ -52,11 +108,15 @@ Recall=TP/(TP+FN)
 * Specificity(True Negative rate)— Out of all the people that do not have the disease, how many got negative results?
 
 
-* False Negative Rate tells us what proportion of the positive class got incorrectly classified by the classifier
-
-
-Specificity=TN/(TN+FP)
+* Specificity=TN/(TN+FP)
 
 * False Positive rate=1-Specificity
 
 * False Negative Rat=FN/(TP+FN)
+
+False Negative Rate tells us what proportion of the positive class got incorrectly classified by the classifier
+
+
+* F1 score=2/(1/Precision+1/Recall)
+
+

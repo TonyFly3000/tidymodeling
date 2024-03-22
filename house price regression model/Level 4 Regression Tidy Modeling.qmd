@@ -1,0 +1,256 @@
+---
+title: "Level 4 Regression Tidy Modeling"
+subtitle: "with house price data"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+* using Recipe.
+* add resamples to estimate the performance of our two models
+* add workflow with tunning
+
+
+# load package
+
+```{r}
+#| code-summary: "Load Pacakges & Set Options"
+library(themis)
+library(tidyverse)      
+library(tidymodels)     
+library(palmerpenguins) # penguin dataset
+library(gt)             # better tables
+library(bonsai)         # tree-based models
+library(conflicted)     # function conflicts
+library(vetiver)
+library(Microsoft365R)
+library(pins)
+tidymodels_prefer()     # handle conflicts
+conflict_prefer("penguins", "palmerpenguins")
+options(tidymodels.dark = TRUE) # dark mode
+theme_set(theme_bw()) # set default ggplot2 theme
+```
+
+# data preparation
+
+## read data
+
+
+```{r}
+library(tidyverse)
+train = read_csv("data/train.csv")
+
+test=read_csv("data/test.csv")
+
+```
+
+
+## EDA
+
+```{r}
+glimpse(train)
+```
+
+
+```{r}
+glimpse(test)
+```
+
+
+
+
+## plotting
+
+```{r}
+options(scipen = 999)
+ggplot(train, aes(SalePrice)) + 
+  geom_histogram()
+```
+
+
+```{r}
+library(skimr)
+
+skim(train)
+```
+
+
+## data split
+
+```{r}
+#| code-summary: "Prepare & Split Data"
+train_df <- train  %>% select_if(is.numeric)%>% rename(target_variable=SalePrice)%>% replace(is.na(.), 0)
+
+glimpse(train_df)
+```
+
+```{r}
+
+set.seed(1234)
+
+data_split <- initial_validation_split(data=train_df, prop = c(0.7,0.1))
+
+data_train=training(data_split)  
+
+data_test=testing(data_split)  
+
+data_valid=validation(data_split)
+
+```
+
+```{r}
+dim(data_train)
+```
+
+```{r}
+dim(data_test)
+```
+
+```{r}
+dim(data_valid)
+```
+
+
+# modeling
+
+
+## recipe
+
+
+```{r}
+data_rec <- recipe(target_variable ~ ., data = data_train) %>%
+  #step_downsample(target_variable) %>%
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  step_zv(all_numeric()) %>%
+  step_normalize(all_numeric())
+  
+```
+
+
+
+## model
+
+
+
+### lasso regression 
+
+```{r}
+lasso_tune_spec <- linear_reg(penalty = tune(), mixture = 1) %>%
+  set_engine("glmnet")
+```
+
+
+```{r}
+lasso_grid <- grid_regular(penalty(), levels = 50)
+```
+
+```{r}
+lasso_tune_spec
+```
+
+
+## workflow 
+
+```{r}
+model_workflow =
+  workflow() %>% 
+  add_model(lasso_tune_spec) %>% 
+  add_recipe(data_rec)
+```
+
+
+```{r}
+cntl   <- control_grid(save_pred     = TRUE,
+                       save_workflow = TRUE)
+```
+
+10 fold for tunning
+```{r}
+set.seed(234)
+folds <- vfold_cv(data_train)
+```
+
+
+## trainning
+
+### train lasso model
+
+
+```{r}
+lasso_res = model_workflow %>% 
+  tune_grid(
+    resamples = folds,
+    grid = lasso_grid,
+    control   = cntl
+    )
+```
+```{r}
+lasso_res %>% collect_metrics()
+```
+
+
+# model result
+
+## Evaluate
+
+```{r}
+autoplot(lasso_res)
+```
+
+use best tune model for final fit
+```{r}
+lowest_rmse <- lasso_res %>%
+  select_best("rmse", maximize = FALSE)
+
+lowest_rmse
+```
+
+
+```{r}
+final_wf <- 
+  model_workflow %>% 
+  finalize_workflow(lowest_rmse)
+
+
+final_wf
+```
+
+
+
+## last fit
+
+```{r}
+final_res <- 
+  final_wf %>%
+  last_fit(data_split) 
+```
+
+
+
+```{r}
+final_res %>%
+  collect_metrics()
+```
+
+
+## resample with tuned model
+
+
+
+
+
+# resouece
+
+https://www.youtube.com/watch?v=1LEW8APSOJo
+
+https://juliasilge.com/blog/lasso-the-office/
+

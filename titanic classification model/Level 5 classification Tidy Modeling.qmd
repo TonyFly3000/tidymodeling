@@ -294,7 +294,7 @@ Specificity = TN/(TN + FP) = (Number of true negative assessment)/(Number of all
 
 
 ```{r}
-all_metrics <- metric_set(accuracy, sens, spec)
+all_metrics <- metric_set(accuracy, recall, precision, f_meas, kap, sens, spec)
 
 a=final_fit %>% collect_predictions()
 

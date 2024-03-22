@@ -36,7 +36,6 @@ Data have `r nrow(train)` record and `r ncol(train)` variable
 glimpse(train)
 ```
 
-
 ```{r}
 options(scipen = 999)
 ggplot(train, aes(SalePrice)) + 
@@ -45,13 +44,11 @@ ggplot(train, aes(SalePrice)) +
 
 ## Measurement:
 
-
-* Mean absolute error (MAE)
+-   Mean absolute error (MAE)
 
 The MAE measures the average magnitude of the errors in a set of forecasts, without considering their direction. It measures accuracy for continuous variables. The equation is given in the library references. Expressed in words, the MAE is the average over the verification sample of the absolute values of the differences between forecast and the corresponding observation. The MAE is a linear score which means that all the individual differences are weighted equally in the average.
 
-
-* Root Mean Squared Error (RMSE) 
+-   Root Mean Squared Error (RMSE)
 
 ![](images/eque1.jpg){width="300"}
 
@@ -59,5 +56,16 @@ The RMSE is a quadratic scoring rule which measures the average magnitude of the
 
 Both the MAE and RMSE can range from 0 to ∞. They are negatively-oriented scores: Lower values are better.
 
+-   R\^2 (Coefficient of determination): is between 0 to 1. bigger the better.
+
+![](images/13){width="300"}
+
+residual sum of squares(RSS):
+
+![](images/11){width="300"}
+
+total sum of squares(TOT):
+
+![](images/12){width="300"}
 
 
