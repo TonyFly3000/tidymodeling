@@ -15,10 +15,9 @@ format:
     code-block-border-left: "#31BAE9"
 ---
 
-* using Recipe.
-* add resamples to estimate the performance of our two models
-* add workflow with tunning
-
+-   using Recipe.
+-   add resamples to estimate the performance of our two models
+-   add workflow with tunning
 
 # load package
 
@@ -44,7 +43,6 @@ theme_set(theme_bw()) # set default ggplot2 theme
 
 ## read data
 
-
 ```{r}
 library(tidyverse)
 train = read_csv("data/train.csv")
@@ -53,20 +51,15 @@ test=read_csv("data/test.csv")
 
 ```
 
-
 ## EDA
 
 ```{r}
 glimpse(train)
 ```
 
-
 ```{r}
 glimpse(test)
 ```
-
-
-
 
 ## plotting
 
@@ -76,13 +69,11 @@ ggplot(train, aes(SalePrice)) +
   geom_histogram()
 ```
 
-
 ```{r}
 library(skimr)
 
 skim(train)
 ```
-
 
 ## data split
 
@@ -119,12 +110,9 @@ dim(data_test)
 dim(data_valid)
 ```
 
-
 # modeling
 
-
 ## recipe
-
 
 ```{r}
 data_rec <- recipe(target_variable ~ ., data = data_train) %>%
@@ -135,19 +123,16 @@ data_rec <- recipe(target_variable ~ ., data = data_train) %>%
   
 ```
 
-
-
 ## model
 
+![](images/1.png){width="214"}
 
-
-### lasso regression 
+### lasso regression
 
 ```{r}
 lasso_tune_spec <- linear_reg(penalty = tune(), mixture = 1) %>%
   set_engine("glmnet")
 ```
-
 
 ```{r}
 lasso_grid <- grid_regular(penalty(), levels = 50)
@@ -157,8 +142,7 @@ lasso_grid <- grid_regular(penalty(), levels = 50)
 lasso_tune_spec
 ```
 
-
-## workflow 
+## workflow
 
 ```{r}
 model_workflow =
@@ -167,23 +151,21 @@ model_workflow =
   add_recipe(data_rec)
 ```
 
-
 ```{r}
 cntl   <- control_grid(save_pred     = TRUE,
                        save_workflow = TRUE)
 ```
 
 10 fold for tunning
+
 ```{r}
 set.seed(234)
 folds <- vfold_cv(data_train)
 ```
 
-
-## trainning
+## training
 
 ### train lasso model
-
 
 ```{r}
 lasso_res = model_workflow %>% 
@@ -193,10 +175,10 @@ lasso_res = model_workflow %>%
     control   = cntl
     )
 ```
+
 ```{r}
 lasso_res %>% collect_metrics()
 ```
-
 
 # model result
 
@@ -207,13 +189,13 @@ autoplot(lasso_res)
 ```
 
 use best tune model for final fit
+
 ```{r}
 lowest_rmse <- lasso_res %>%
   select_best("rmse", maximize = FALSE)
 
 lowest_rmse
 ```
-
 
 ```{r}
 final_wf <- 
@@ -224,8 +206,6 @@ final_wf <-
 final_wf
 ```
 
-
-
 ## last fit
 
 ```{r}
@@ -234,23 +214,15 @@ final_res <-
   last_fit(data_split) 
 ```
 
-
-
 ```{r}
 final_res %>%
   collect_metrics()
 ```
 
-
 ## resample with tuned model
-
-
-
-
 
 # resouece
 
 https://www.youtube.com/watch?v=1LEW8APSOJo
 
 https://juliasilge.com/blog/lasso-the-office/
-

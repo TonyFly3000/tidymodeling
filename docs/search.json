@@ -1943,7 +1943,7 @@
     "href": "house price regression model/Level 4 Regression Tidy Modeling.html#model",
     "title": "Level 4 Regression Tidy Modeling",
     "section": "3.2 model",
-    "text": "3.2 model\n\n3.2.1 lasso regression\n\n\nCode\nlasso_tune_spec &lt;- linear_reg(penalty = tune(), mixture = 1) %&gt;%\n  set_engine(\"glmnet\")\n\n\n\n\nCode\nlasso_grid &lt;- grid_regular(penalty(), levels = 50)\n\n\n\n\nCode\nlasso_tune_spec\n\n\nLinear Regression Model Specification (regression)\n\nMain Arguments:\n  penalty = tune()\n  mixture = 1\n\nComputational engine: glmnet",
+    "text": "3.2 model\n\n\n3.2.1 lasso regression\n\n\nCode\nlasso_tune_spec &lt;- linear_reg(penalty = tune(), mixture = 1) %&gt;%\n  set_engine(\"glmnet\")\n\n\n\n\nCode\nlasso_grid &lt;- grid_regular(penalty(), levels = 50)\n\n\n\n\nCode\nlasso_tune_spec\n\n\nLinear Regression Model Specification (regression)\n\nMain Arguments:\n  penalty = tune()\n  mixture = 1\n\nComputational engine: glmnet",
     "crumbs": [
       "house price regression model",
       "Level 4 Regression Tidy Modeling"
@@ -2360,6 +2360,17 @@
     "crumbs": [
       "Tensorflow",
       "Level 2 picture recognition with tensorflow"
+    ]
+  },
+  {
+    "objectID": "house price regression model/Level 4 Regression Tidy Modeling.html#training",
+    "href": "house price regression model/Level 4 Regression Tidy Modeling.html#training",
+    "title": "Level 4 Regression Tidy Modeling",
+    "section": "3.4 training",
+    "text": "3.4 training\n\n3.4.1 train lasso model\n\n\nCode\nlasso_res = model_workflow %&gt;% \n  tune_grid(\n    resamples = folds,\n    grid = lasso_grid,\n    control   = cntl\n    )\n\n\n\n\nCode\nlasso_res %&gt;% collect_metrics()\n\n\n# A tibble: 100 × 7\n    penalty .metric .estimator  mean     n std_err .config              \n      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                \n 1 1   e-10 rmse    standard   0.340     1      NA Preprocessor1_Model01\n 2 1   e-10 rsq     standard   0.822     1      NA Preprocessor1_Model01\n 3 1.60e-10 rmse    standard   0.340     1      NA Preprocessor1_Model02\n 4 1.60e-10 rsq     standard   0.822     1      NA Preprocessor1_Model02\n 5 2.56e-10 rmse    standard   0.340     1      NA Preprocessor1_Model03\n 6 2.56e-10 rsq     standard   0.822     1      NA Preprocessor1_Model03\n 7 4.09e-10 rmse    standard   0.340     1      NA Preprocessor1_Model04\n 8 4.09e-10 rsq     standard   0.822     1      NA Preprocessor1_Model04\n 9 6.55e-10 rmse    standard   0.340     1      NA Preprocessor1_Model05\n10 6.55e-10 rsq     standard   0.822     1      NA Preprocessor1_Model05\n# ℹ 90 more rows",
+    "crumbs": [
+      "house price regression model",
+      "Level 4 Regression Tidy Modeling"
     ]
   }
 ]
