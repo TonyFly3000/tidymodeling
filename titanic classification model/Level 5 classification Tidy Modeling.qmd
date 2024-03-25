@@ -180,7 +180,7 @@ grid_tune %>% count(tree_depth)
 
 ## workflow 
 
-
+using control_race instead of control_grid
 ```{r}
 library(finetune)
 cntl <- control_race(save_pred     = TRUE,

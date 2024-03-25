@@ -22,7 +22,7 @@ Level 6 classification Tidy Modeling:
 * using Recipe.
 * add resamples to estimate the performance of our two models
 * add workflow with tuning
-* add  tuning
+* add quick tuning
 * add workflow set and setting different tuning grid for different model
 
 # load package
@@ -56,31 +56,7 @@ train = read_csv("data/train.csv")
 test=read_csv("data/test.csv")
 
 ```
-## EDA
 
-```{r}
-glimpse(train)
-```
-
-
-```{r}
-glimpse(test)
-```
-
-
-```{r}
-train %>%
-  count(Survived)
-```
-
-
-## plotting
-
-```{r}
-library(skimr)
-
-skim(train)
-```
 
 ## data split
 
@@ -242,10 +218,10 @@ head(lightgbm_grid)
 
 ## workflow set 
 
-
+using control_race instead of control_grid
 ```{r}
 library(finetune)
-cntl   <- control_grid(save_pred     = TRUE,
+cntl   <- control_race(save_pred     = TRUE,
                        save_workflow = TRUE)
 ```
 
@@ -277,6 +253,7 @@ workflow_set <-
 workflow_set %>%
   option_add_parameters()
 ```
+
 10 fold for tunning
 ```{r}
 set.seed(234)
@@ -314,6 +291,20 @@ model_set_res |> autoplot()
 ```{r}
 model_set_res |> autoplot( id= 'recipe_xgb')
 ```
+
+
+```{r}
+xgb_model_set_res=model_set_res %>% extract_workflow_set_result(id= 'recipe_xgb')
+```
+
+
+```{r}
+glimpse(xgb_model_set_res)
+```
+```{r}
+#xgb_model_set_res %>% plot_race()
+```
+
 
 select best model:logistic glm model 
 ```{r}

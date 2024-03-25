@@ -29,9 +29,12 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - about.qmd
       - href: recipe.qmd
         text: Recipe
-      - about.qmd
+      - href: resample.qmd
+        text: resample
+     
       - sidebar:Classification_hotel
       - sidebar:Classification_titanic
       - sidebar:house_price_regression_model

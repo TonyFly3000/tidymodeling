@@ -31,10 +31,7 @@ test=read_csv("data/test.csv")
 
 Data have `r nrow(train)` record and `r ncol(train)` variable
 
-```{r}
 
-glimpse(train)
-```
 
 ```{r}
 options(scipen = 999)
@@ -42,7 +39,7 @@ ggplot(train, aes(SalePrice)) +
   geom_histogram()
 ```
 
-## Measurement:
+# Measurement:
 
 -   Mean absolute error (MAE)
 
@@ -67,5 +64,41 @@ residual sum of squares(RSS):
 total sum of squares(TOT):
 
 ![](images/12){width="300"}
+
+
+
+
+# read data
+
+
+```{r}
+library(tidyverse)
+train = read_csv("data/train.csv")
+
+test=read_csv("data/test.csv")
+
+```
+
+
+
+# plotting
+
+```{r}
+options(scipen = 999)
+ggplot(train, aes(SalePrice)) + 
+  geom_histogram()
+```
+
+
+# EDA
+
+
+```{r}
+library(skimr)
+
+skim(train)
+```
+
+
 
 

@@ -128,47 +128,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../recipe.html"> 
 <span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../resample.html"> 
+<span class="menu-text">resample</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hotel-classification-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">hotel Classification model</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hotel-classification-model">    
-        <li class="dropdown-header">hote classification model</li>
-        <li>
-    <a class="dropdown-item" href="../hote classification model/Level 0 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 0 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hote classification model/Level 1 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 1 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hote classification model/Level 2 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 2 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hote classification model/Level 3 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 3 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hote classification model/Level 4 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 4 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hote classification model/Level 5 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 5 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hote classification model/Level 6 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 6 classification Tidy Modeling</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -204,6 +179,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../titanic classification model/Level 6 classification Tidy Modeling.html">
  <span class="dropdown-text">Level 6 classification Tidy Modeling</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-house-price-regression-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">house price regression model</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-house-price-regression-model">    
+        <li class="dropdown-header">house price regression model</li>
+        <li>
+    <a class="dropdown-item" href="../house price regression model/Level 0 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Level 0 Regression Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../house price regression model/Level 1 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Level 1 Regression Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../house price regression model/Level 2 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Level 2 Regression Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../house price regression model/Level 3 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Level 3 Regression Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../house price regression model/Level 4 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Level 4 Regression Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../house price regression model/Level 5 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Level 5 Regression Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../house price regression model/Level 6 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Level 6 Regression Tidy Modeling</span></a>
   </li>  
     </ul>
   </li>
@@ -883,6 +894,7 @@ $ tree_depth      &lt;int&gt; 8, 7, 6, 4, 12, 4, 11, 5, 3, 11, 15, 1, 5, 13, 8, 
 </section>
 <section id="workflow" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="workflow"><span class="header-section-number">3.3</span> workflow</h2>
+<p>using control_race instead of control_grid</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1986,7 +1998,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb72-216"><a href="#cb72-216" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-217"><a href="#cb72-217" aria-hidden="true" tabindex="-1"></a><span class="fu">## workflow </span></span>
 <span id="cb72-218"><a href="#cb72-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-219"><a href="#cb72-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-219"><a href="#cb72-219" aria-hidden="true" tabindex="-1"></a>using control_race instead of control_grid</span>
 <span id="cb72-222"><a href="#cb72-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb72-223"><a href="#cb72-223" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
 <span id="cb72-224"><a href="#cb72-224" aria-hidden="true" tabindex="-1"></a>cntl <span class="ot">&lt;-</span> <span class="fu">control_race</span>(<span class="at">save_pred     =</span> <span class="cn">TRUE</span>,</span>
