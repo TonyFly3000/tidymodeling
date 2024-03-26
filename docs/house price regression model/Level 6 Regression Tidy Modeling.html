@@ -218,6 +218,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-house-price-tensorflow-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">house price tensorflow model</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-house-price-tensorflow-model">    
+        <li class="dropdown-header">Tensorflow</li>
+        <li>
+    <a class="dropdown-item" href="../tensorflow/Level 1 Regression tensorflow.html">
+ <span class="dropdown-text">Level 1 Regression Tensorflow model</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -329,9 +341,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#model-result" id="toc-model-result" class="nav-link" data-scroll-target="#model-result"><span class="header-section-number">4</span> model result</a>
   <ul class="collapse">
   <li><a href="#last-fit" id="toc-last-fit" class="nav-link" data-scroll-target="#last-fit"><span class="header-section-number">4.1</span> last fit</a></li>
-  <li><a href="#resample-with-tuned-model" id="toc-resample-with-tuned-model" class="nav-link" data-scroll-target="#resample-with-tuned-model"><span class="header-section-number">4.2</span> resample with tuned model</a></li>
   </ul></li>
-  <li><a href="#resouece" id="toc-resouece" class="nav-link" data-scroll-target="#resouece"><span class="header-section-number">5</span> resouece</a></li>
+  <li><a href="#future-prediction" id="toc-future-prediction" class="nav-link" data-scroll-target="#future-prediction"><span class="header-section-number">5</span> future prediction</a></li>
+  <li><a href="#resouece" id="toc-resouece" class="nav-link" data-scroll-target="#resouece"><span class="header-section-number">6</span> resouece</a></li>
   </ul>
 </nav>
     </div>
@@ -469,7 +481,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#step_downsample(target_variable) %&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_numeric</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>trained_data_rec <span class="ot">&lt;-</span> <span class="fu">prep</span>(data_rec, <span class="at">training =</span> data_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>trained_data_rec <span class="sc">%&gt;%</span><span class="fu">check_missing</span>(<span class="st">"LotFrontage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -481,20 +505,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lasso_tune_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(<span class="at">penalty =</span> <span class="fu">tune</span>(), <span class="at">mixture =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lasso_tune_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(<span class="at">penalty =</span> <span class="fu">tune</span>(), <span class="at">mixture =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lasso_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">penalty</span>(), <span class="at">levels =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lasso_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">penalty</span>(), <span class="at">levels =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lasso_tune_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lasso_tune_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear Regression Model Specification (regression)
@@ -512,19 +536,19 @@ Computational engine: glmnet </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tune_spec <span class="ot">=</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">decision_tree</span>(</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cost_complexity =</span> <span class="fu">tune</span>(),</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">tree_depth =</span> <span class="fu">tune</span>()</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"rpart"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tune_spec <span class="ot">=</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">decision_tree</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cost_complexity =</span> <span class="fu">tune</span>(),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">tree_depth =</span> <span class="fu">tune</span>()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"rpart"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tune_spec <span class="sc">%&gt;%</span> <span class="fu">extract_parameter_set_dials</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tune_spec <span class="sc">%&gt;%</span> <span class="fu">extract_parameter_set_dials</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Collection of 2 parameters for tuning
@@ -537,10 +561,10 @@ Computational engine: glmnet </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>decision_tree_tune_grid <span class="ot">=</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  tune_spec <span class="sc">|&gt;</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_parameter_set_dials</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid_latin_hypercube</span>(<span class="at">size =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>decision_tree_tune_grid <span class="ot">=</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  tune_spec <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_parameter_set_dials</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid_latin_hypercube</span>(<span class="at">size =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -549,17 +573,17 @@ Computational engine: glmnet </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lightgbm_spec <span class="ot">=</span> <span class="fu">boost_tree</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">trees =</span> <span class="dv">100</span>,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">tree_depth =</span> <span class="fu">tune</span>(), <span class="at">min_n =</span> <span class="fu">tune</span>(),</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss_reduction =</span> <span class="fu">tune</span>(),                     <span class="do">## first three: model complexity</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_size =</span> <span class="fu">tune</span>(),   <span class="at">mtry=</span><span class="fu">tune</span>(),     <span class="do">## randomness</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">learn_rate =</span> <span class="fu">tune</span>()                          <span class="do">## step size</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lightgbm"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>lightgbm_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lightgbm_spec <span class="ot">=</span> <span class="fu">boost_tree</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">trees =</span> <span class="dv">100</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">tree_depth =</span> <span class="fu">tune</span>(), <span class="at">min_n =</span> <span class="fu">tune</span>(),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss_reduction =</span> <span class="fu">tune</span>(),                     <span class="do">## first three: model complexity</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_size =</span> <span class="fu">tune</span>(),   <span class="at">mtry=</span><span class="fu">tune</span>(),     <span class="do">## randomness</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">learn_rate =</span> <span class="fu">tune</span>()                          <span class="do">## step size</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lightgbm"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>lightgbm_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Boosted Tree Model Specification (regression)
@@ -579,23 +603,23 @@ Computational engine: lightgbm </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lightgbm_grid<span class="ot">=</span> <span class="fu">grid_latin_hypercube</span>(</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tree_depth</span>(),<span class="fu">learn_rate</span>(),<span class="fu">loss_reduction</span>(),<span class="fu">min_n</span>(),</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_size=</span><span class="fu">sample_prop</span>(),<span class="fu">finalize</span>(<span class="fu">mtry</span>(),data_train),</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">size=</span><span class="dv">50</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lightgbm_grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lightgbm_grid<span class="ot">=</span> <span class="fu">grid_latin_hypercube</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tree_depth</span>(),<span class="fu">learn_rate</span>(),<span class="fu">loss_reduction</span>(),<span class="fu">min_n</span>(),</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_size=</span><span class="fu">sample_prop</span>(),<span class="fu">finalize</span>(<span class="fu">mtry</span>(),data_train),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">size=</span><span class="dv">50</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lightgbm_grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
-  tree_depth learn_rate loss_reduction min_n sample_size  mtry
-       &lt;int&gt;      &lt;dbl&gt;          &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt; &lt;int&gt;
-1         14   1.61e- 9      0.0412       10       0.955    14
-2          3   2.46e- 2      0.000318     38       0.779     3
-3          5   1.09e- 3     26.7          17       0.111    25
-4         11   1.55e- 2      0.000920     28       0.282    36
-5          5   1.09e-10      3.91         33       0.817    17
-6          2   3.90e- 9      0.0000306    39       0.227    34</code></pre>
+  tree_depth    learn_rate loss_reduction min_n sample_size  mtry
+       &lt;int&gt;         &lt;dbl&gt;          &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt; &lt;int&gt;
+1          7 0.00953             2.79e- 1    40       0.256    13
+2          6 0.00130             1.47e- 3    16       0.732     4
+3          9 0.0000453           2.17e- 7    36       0.446    25
+4          3 0.0199              2.13e- 8    26       0.773    35
+5         13 0.0793              8.96e- 9    30       0.219    12
+6         10 0.00000000238       1.09e-10    21       0.699    21</code></pre>
 </div>
 </div>
 </section>
@@ -604,13 +628,13 @@ Computational engine: lightgbm </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(), <span class="at">trees =</span> <span class="fu">tune</span>(), <span class="at">min_n =</span> <span class="fu">tune</span>()</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>rf_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(), <span class="at">trees =</span> <span class="fu">tune</span>(), <span class="at">min_n =</span> <span class="fu">tune</span>()</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>rf_spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Random Forest Model Specification (regression)
@@ -626,25 +650,25 @@ Computational engine: ranger </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rf_grid <span class="ot">&lt;-</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid_latin_hypercube</span>(</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">min_n</span>(), </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mtry</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">9</span>)), </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trees</span>(), </span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">80</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rf_grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>rf_grid <span class="ot">&lt;-</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid_latin_hypercube</span>(</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">min_n</span>(), </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mtry</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">9</span>)), </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trees</span>(), </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">80</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rf_grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   min_n  mtry trees
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1    20     5   104
-2    26     8   746
-3    38     7  1379
-4     8     9  1630
-5    13     4  1046
-6    23     8  1372</code></pre>
+1    33     7  1713
+2    29     5  1343
+3    12     6   545
+4    21     6   843
+5    27     5  1485
+6    13     9    48</code></pre>
 </div>
 </div>
 </section>
@@ -654,26 +678,26 @@ Computational engine: ranger </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>workflow_set <span class="ot">=</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow_set</span>(</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">preproc =</span> <span class="fu">list</span>(data_rec),</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> <span class="fu">list</span>(</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lasso=</span>lasso_tune_spec,</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tree  =</span> tune_spec,</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lightgbm=</span>lightgbm_spec,</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">random_forest=</span>rf_spec</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>                  )</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">option_add</span>(<span class="at">grid =</span> decision_tree_tune_grid, <span class="at">id =</span> <span class="st">"recipe_tree"</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> lasso_grid, <span class="at">id =</span> <span class="st">"recipe_lasso"</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> lightgbm_grid, <span class="at">id =</span> <span class="st">"recipe_lightgbm"</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> rf_grid, <span class="at">id =</span> <span class="st">"recipe_rf"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>workflow_set <span class="ot">=</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow_set</span>(</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">preproc =</span> <span class="fu">list</span>(data_rec),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> <span class="fu">list</span>(</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lasso=</span>lasso_tune_spec,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tree  =</span> tune_spec,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lightgbm=</span>lightgbm_spec,</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">random_forest=</span>rf_spec</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">option_add</span>(<span class="at">grid =</span> decision_tree_tune_grid, <span class="at">id =</span> <span class="st">"recipe_tree"</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> lasso_grid, <span class="at">id =</span> <span class="st">"recipe_lasso"</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> lightgbm_grid, <span class="at">id =</span> <span class="st">"recipe_lightgbm"</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> rf_grid, <span class="at">id =</span> <span class="st">"recipe_rf"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>workflow_set <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add_parameters</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>workflow_set <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add_parameters</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A workflow set/tibble: 4 × 4
@@ -689,17 +713,17 @@ Computational engine: ranger </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>cntl   <span class="ot">&lt;-</span> <span class="fu">control_race</span>(<span class="at">save_pred     =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">save_workflow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>cntl   <span class="ot">&lt;-</span> <span class="fu">control_race</span>(<span class="at">save_pred     =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">save_workflow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>10 fold for tunning</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">234</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">234</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -711,24 +735,24 @@ Computational engine: ranger </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>doParallel<span class="sc">::</span><span class="fu">registerDoParallel</span>()</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="ot">=</span> workflow_set  <span class="sc">%&gt;%</span> </span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow_map</span>(</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">grid =</span> <span class="dv">50</span>,</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">resamples =</span> folds,</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">control =</span> cntl</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>doParallel<span class="sc">::</span><span class="fu">registerDoParallel</span>()</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="ot">=</span> workflow_set  <span class="sc">%&gt;%</span> </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow_map</span>(</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">grid =</span> <span class="dv">50</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">resamples =</span> folds,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">control =</span> cntl</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank_results</span>(model_set_res,</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">rank_metric =</span> <span class="st">"rmse"</span>,</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">select_best =</span> <span class="cn">TRUE</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank_results</span>(model_set_res,</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">rank_metric =</span> <span class="st">"rmse"</span>,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">select_best =</span> <span class="cn">TRUE</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1189,55 +1213,55 @@ Computational engine: ranger </code></pre>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="wflow_id">recipe_random_forest</td>
-<td class="gt_row gt_left" headers=".config">Preprocessor1_Model31</td>
+<td class="gt_row gt_left" headers="wflow_id">recipe_lightgbm</td>
+<td class="gt_row gt_left" headers=".config">Preprocessor1_Model46</td>
 <td class="gt_row gt_left" headers=".metric">rmse</td>
-<td class="gt_row gt_right" headers="mean">0.3650786</td>
-<td class="gt_row gt_right" headers="std_err">0.04075367</td>
+<td class="gt_row gt_right" headers="mean">2.898681e+04</td>
+<td class="gt_row gt_right" headers="std_err">3.152131e+03</td>
 <td class="gt_row gt_right" headers="n">10</td>
 <td class="gt_row gt_left" headers="preprocessor">recipe</td>
-<td class="gt_row gt_left" headers="model">rand_forest</td>
+<td class="gt_row gt_left" headers="model">boost_tree</td>
 <td class="gt_row gt_right" headers="rank">1</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="wflow_id">recipe_random_forest</td>
-<td class="gt_row gt_left" headers=".config">Preprocessor1_Model31</td>
+<td class="gt_row gt_left" headers="wflow_id">recipe_lightgbm</td>
+<td class="gt_row gt_left" headers=".config">Preprocessor1_Model46</td>
 <td class="gt_row gt_left" headers=".metric">rsq</td>
-<td class="gt_row gt_right" headers="mean">0.8693399</td>
-<td class="gt_row gt_right" headers="std_err">0.01983537</td>
+<td class="gt_row gt_right" headers="mean">8.704013e-01</td>
+<td class="gt_row gt_right" headers="std_err">1.884946e-02</td>
 <td class="gt_row gt_right" headers="n">10</td>
 <td class="gt_row gt_left" headers="preprocessor">recipe</td>
-<td class="gt_row gt_left" headers="model">rand_forest</td>
+<td class="gt_row gt_left" headers="model">boost_tree</td>
 <td class="gt_row gt_right" headers="rank">1</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="wflow_id">recipe_lightgbm</td>
-<td class="gt_row gt_left" headers=".config">Preprocessor1_Model46</td>
+<td class="gt_row gt_left" headers="wflow_id">recipe_random_forest</td>
+<td class="gt_row gt_left" headers=".config">Preprocessor1_Model31</td>
 <td class="gt_row gt_left" headers=".metric">rmse</td>
-<td class="gt_row gt_right" headers="mean">0.3941776</td>
-<td class="gt_row gt_right" headers="std_err">0.04202927</td>
+<td class="gt_row gt_right" headers="mean">2.918897e+04</td>
+<td class="gt_row gt_right" headers="std_err">3.074054e+03</td>
 <td class="gt_row gt_right" headers="n">10</td>
 <td class="gt_row gt_left" headers="preprocessor">recipe</td>
-<td class="gt_row gt_left" headers="model">boost_tree</td>
+<td class="gt_row gt_left" headers="model">rand_forest</td>
 <td class="gt_row gt_right" headers="rank">2</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="wflow_id">recipe_lightgbm</td>
-<td class="gt_row gt_left" headers=".config">Preprocessor1_Model46</td>
+<td class="gt_row gt_left" headers="wflow_id">recipe_random_forest</td>
+<td class="gt_row gt_left" headers=".config">Preprocessor1_Model31</td>
 <td class="gt_row gt_left" headers=".metric">rsq</td>
-<td class="gt_row gt_right" headers="mean">0.8486020</td>
-<td class="gt_row gt_right" headers="std_err">0.02251224</td>
+<td class="gt_row gt_right" headers="mean">8.693925e-01</td>
+<td class="gt_row gt_right" headers="std_err">1.953458e-02</td>
 <td class="gt_row gt_right" headers="n">10</td>
 <td class="gt_row gt_left" headers="preprocessor">recipe</td>
-<td class="gt_row gt_left" headers="model">boost_tree</td>
+<td class="gt_row gt_left" headers="model">rand_forest</td>
 <td class="gt_row gt_right" headers="rank">2</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="wflow_id">recipe_lasso</td>
-<td class="gt_row gt_left" headers=".config">Preprocessor1_Model41</td>
+<td class="gt_row gt_left" headers=".config">Preprocessor1_Model01</td>
 <td class="gt_row gt_left" headers=".metric">rmse</td>
-<td class="gt_row gt_right" headers="mean">0.4811414</td>
-<td class="gt_row gt_right" headers="std_err">0.06406275</td>
+<td class="gt_row gt_right" headers="mean">3.878538e+04</td>
+<td class="gt_row gt_right" headers="std_err">5.169415e+03</td>
 <td class="gt_row gt_right" headers="n">10</td>
 <td class="gt_row gt_left" headers="preprocessor">recipe</td>
 <td class="gt_row gt_left" headers="model">linear_reg</td>
@@ -1245,10 +1269,10 @@ Computational engine: ranger </code></pre>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="wflow_id">recipe_lasso</td>
-<td class="gt_row gt_left" headers=".config">Preprocessor1_Model41</td>
+<td class="gt_row gt_left" headers=".config">Preprocessor1_Model01</td>
 <td class="gt_row gt_left" headers=".metric">rsq</td>
-<td class="gt_row gt_right" headers="mean">0.7802861</td>
-<td class="gt_row gt_right" headers="std_err">0.04237315</td>
+<td class="gt_row gt_right" headers="mean">7.769664e-01</td>
+<td class="gt_row gt_right" headers="std_err">4.331088e-02</td>
 <td class="gt_row gt_right" headers="n">10</td>
 <td class="gt_row gt_left" headers="preprocessor">recipe</td>
 <td class="gt_row gt_left" headers="model">linear_reg</td>
@@ -1258,8 +1282,8 @@ Computational engine: ranger </code></pre>
 <td class="gt_row gt_left" headers="wflow_id">recipe_tree</td>
 <td class="gt_row gt_left" headers=".config">Preprocessor1_Model06</td>
 <td class="gt_row gt_left" headers=".metric">rmse</td>
-<td class="gt_row gt_right" headers="mean">0.4907756</td>
-<td class="gt_row gt_right" headers="std_err">0.02821699</td>
+<td class="gt_row gt_right" headers="mean">3.923049e+04</td>
+<td class="gt_row gt_right" headers="std_err">2.064970e+03</td>
 <td class="gt_row gt_right" headers="n">10</td>
 <td class="gt_row gt_left" headers="preprocessor">recipe</td>
 <td class="gt_row gt_left" headers="model">decision_tree</td>
@@ -1269,8 +1293,8 @@ Computational engine: ranger </code></pre>
 <td class="gt_row gt_left" headers="wflow_id">recipe_tree</td>
 <td class="gt_row gt_left" headers=".config">Preprocessor1_Model06</td>
 <td class="gt_row gt_left" headers=".metric">rsq</td>
-<td class="gt_row gt_right" headers="mean">0.7669542</td>
-<td class="gt_row gt_right" headers="std_err">0.01539110</td>
+<td class="gt_row gt_right" headers="mean">7.674437e-01</td>
+<td class="gt_row gt_right" headers="std_err">1.574068e-02</td>
 <td class="gt_row gt_right" headers="n">10</td>
 <td class="gt_row gt_left" headers="preprocessor">recipe</td>
 <td class="gt_row gt_left" headers="model">decision_tree</td>
@@ -1286,12 +1310,12 @@ Computational engine: ranger </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="sc">|&gt;</span> <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="sc">|&gt;</span> <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Level-6-Regression-Tidy-Modeling_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Level-6-Regression-Tidy-Modeling_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1299,12 +1323,12 @@ Computational engine: ranger </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="sc">|&gt;</span> <span class="fu">autoplot</span>( <span class="at">id=</span> <span class="st">'recipe_lightgbm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="sc">|&gt;</span> <span class="fu">autoplot</span>( <span class="at">id=</span> <span class="st">'recipe_lightgbm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Level-6-Regression-Tidy-Modeling_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Level-6-Regression-Tidy-Modeling_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1313,27 +1337,27 @@ Computational engine: ranger </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>best_model_id <span class="ot">&lt;-</span> <span class="st">"recipe_random_forest"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>best_model_id <span class="ot">&lt;-</span> <span class="st">"recipe_random_forest"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>select best parameters</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>best_fit <span class="ot">&lt;-</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  model_set_res <span class="sc">|&gt;</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow_set_result</span>(best_model_id) <span class="sc">|&gt;</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>best_fit <span class="ot">&lt;-</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  model_set_res <span class="sc">|&gt;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow_set_result</span>(best_model_id) <span class="sc">|&gt;</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create workflow for best model</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>final_workflow <span class="ot">&lt;-</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  model_set_res <span class="sc">|&gt;</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow</span>(best_model_id) <span class="sc">|&gt;</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create workflow for best model</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>final_workflow <span class="ot">&lt;-</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  model_set_res <span class="sc">|&gt;</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow</span>(best_model_id) <span class="sc">|&gt;</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1346,49 +1370,83 @@ Computational engine: ranger </code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>final_fit <span class="ot">&lt;-</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  final_workflow <span class="sc">|&gt;</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_fit</span>(data_split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>final_fit <span class="ot">&lt;-</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  final_workflow <span class="sc">|&gt;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_fit</span>(data_split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>final_fit <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">10000</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>final_fit <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   .metric .estimator .estimate .config             
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
-1 rmse    standard       0.350 Preprocessor1_Model1
+1 rmse    standard   28019.    Preprocessor1_Model1
 2 rsq     standard       0.876 Preprocessor1_Model1</code></pre>
 </div>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(final_fit<span class="sc">%&gt;%</span><span class="fu">collect_predictions</span>()) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(target_variable, .pred))<span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"gray80"</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">labs</span>(</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Truth"</span>,</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Predicted attendance"</span>,</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Type of model"</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(final_fit<span class="sc">%&gt;%</span><span class="fu">collect_predictions</span>()) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(target_variable, .pred))<span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"gray80"</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">labs</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Truth"</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Predicted attendance"</span>,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Type of model"</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span><span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Level-6-Regression-Tidy-Modeling_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Level-6-Regression-Tidy-Modeling_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>manual calculate RMSE on testing data</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>final_data<span class="ot">=</span>final_fit<span class="sc">%&gt;%</span><span class="fu">collect_predictions</span>()</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>final_data2<span class="ot">=</span>final_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">diff=</span>target_variable<span class="sc">-</span>.pred)<span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">diff2=</span>diff<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="fu">sum</span>(final_data2<span class="sc">$</span>diff2)<span class="sc">/</span><span class="fu">nrow</span>(final_data2)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 28018.9</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#glimpse(final_data2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
-<section id="resample-with-tuned-model" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="resample-with-tuned-model"><span class="header-section-number">4.2</span> resample with tuned model</h2>
 </section>
+<section id="future-prediction" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> future prediction</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>future_predict<span class="ot">=</span><span class="fu">predict</span>(final_fit <span class="sc">%&gt;%</span> <span class="fu">extract_workflow</span>(),data_valid)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(future_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 146
+Columns: 1
+$ .pred &lt;dbl&gt; 275453.9, 150846.5, 306571.1, 305832.6, 127243.9, 288534.0, 2525…</code></pre>
+</div>
+</div>
 </section>
-<section id="resouece" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> resouece</h1>
+<section id="resouece" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> resouece</h1>
 <p>https://www.youtube.com/watch?v=1LEW8APSOJo</p>
 <p>https://juliasilge.com/blog/lasso-the-office/</p>
 
@@ -1836,335 +1894,377 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb44" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Level 6 Regression Tidy Modeling"</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with house price data"</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>using Recipe.</span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>add resamples to estimate the performance of our two models</span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>add workflow with tunning</span>
-<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>add quick tuning</span>
-<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>add workflow set and setting different tuning grid for different model</span>
-<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># load package</span></span>
-<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Load Pacakges &amp; Set Options"</span></span>
-<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(themis)</span>
-<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      </span>
-<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)     </span>
-<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) <span class="co"># penguin dataset</span></span>
-<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)             <span class="co"># better tables</span></span>
-<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bonsai)         <span class="co"># tree-based models</span></span>
-<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted)     <span class="co"># function conflicts</span></span>
-<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vetiver)</span>
-<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Microsoft365R)</span>
-<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pins)</span>
-<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()     <span class="co"># handle conflicts</span></span>
-<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">"penguins"</span>, <span class="st">"palmerpenguins"</span>)</span>
-<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tidymodels.dark =</span> <span class="cn">TRUE</span>) <span class="co"># dark mode</span></span>
-<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>()) <span class="co"># set default ggplot2 theme</span></span>
-<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a><span class="fu"># data preparation</span></span>
-<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## read data</span></span>
-<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"data/train.csv"</span>)</span>
-<span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span><span class="fu">read_csv</span>(<span class="st">"data/test.csv"</span>)</span>
-<span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## data split</span></span>
-<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-65"><a href="#cb44-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Prepare &amp; Split Data"</span></span>
-<span id="cb44-67"><a href="#cb44-67" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> train  <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(is.numeric)<span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">target_variable=</span>SalePrice)<span class="sc">%&gt;%</span> <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>)</span>
-<span id="cb44-68"><a href="#cb44-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-69"><a href="#cb44-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-75"><a href="#cb44-75" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb44-76"><a href="#cb44-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-77"><a href="#cb44-77" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_validation_split</span>(<span class="at">data=</span>train_df, <span class="at">prop =</span> <span class="fu">c</span>(<span class="fl">0.7</span>,<span class="fl">0.1</span>))</span>
-<span id="cb44-78"><a href="#cb44-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-79"><a href="#cb44-79" aria-hidden="true" tabindex="-1"></a>data_train<span class="ot">=</span><span class="fu">training</span>(data_split)  </span>
-<span id="cb44-80"><a href="#cb44-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-81"><a href="#cb44-81" aria-hidden="true" tabindex="-1"></a>data_test<span class="ot">=</span><span class="fu">testing</span>(data_split)  </span>
-<span id="cb44-82"><a href="#cb44-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-83"><a href="#cb44-83" aria-hidden="true" tabindex="-1"></a>data_valid<span class="ot">=</span><span class="fu">validation</span>(data_split)</span>
-<span id="cb44-84"><a href="#cb44-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-85"><a href="#cb44-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-86"><a href="#cb44-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-89"><a href="#cb44-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-90"><a href="#cb44-90" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_train)</span>
-<span id="cb44-91"><a href="#cb44-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-92"><a href="#cb44-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-95"><a href="#cb44-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-96"><a href="#cb44-96" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_test)</span>
-<span id="cb44-97"><a href="#cb44-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-98"><a href="#cb44-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-101"><a href="#cb44-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-102"><a href="#cb44-102" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_valid)</span>
-<span id="cb44-103"><a href="#cb44-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-104"><a href="#cb44-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-105"><a href="#cb44-105" aria-hidden="true" tabindex="-1"></a><span class="fu"># modeling</span></span>
-<span id="cb44-106"><a href="#cb44-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-107"><a href="#cb44-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## recipe</span></span>
-<span id="cb44-108"><a href="#cb44-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-111"><a href="#cb44-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-112"><a href="#cb44-112" aria-hidden="true" tabindex="-1"></a>data_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> data_train) <span class="sc">%&gt;%</span></span>
-<span id="cb44-113"><a href="#cb44-113" aria-hidden="true" tabindex="-1"></a>  <span class="co">#step_downsample(target_variable) %&gt;%</span></span>
-<span id="cb44-114"><a href="#cb44-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb44-115"><a href="#cb44-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_numeric</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb44-116"><a href="#cb44-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>())</span>
-<span id="cb44-117"><a href="#cb44-117" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb44-118"><a href="#cb44-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-119"><a href="#cb44-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-120"><a href="#cb44-120" aria-hidden="true" tabindex="-1"></a><span class="fu">## model</span></span>
-<span id="cb44-121"><a href="#cb44-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-122"><a href="#cb44-122" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/1.png)</span>{width="214"}</span>
-<span id="cb44-123"><a href="#cb44-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-124"><a href="#cb44-124" aria-hidden="true" tabindex="-1"></a><span class="fu">### lasso regression</span></span>
-<span id="cb44-125"><a href="#cb44-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-128"><a href="#cb44-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-129"><a href="#cb44-129" aria-hidden="true" tabindex="-1"></a>lasso_tune_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(<span class="at">penalty =</span> <span class="fu">tune</span>(), <span class="at">mixture =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb44-130"><a href="#cb44-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
-<span id="cb44-131"><a href="#cb44-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-132"><a href="#cb44-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-135"><a href="#cb44-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-136"><a href="#cb44-136" aria-hidden="true" tabindex="-1"></a>lasso_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">penalty</span>(), <span class="at">levels =</span> <span class="dv">50</span>)</span>
-<span id="cb44-137"><a href="#cb44-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-138"><a href="#cb44-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-141"><a href="#cb44-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-142"><a href="#cb44-142" aria-hidden="true" tabindex="-1"></a>lasso_tune_spec</span>
-<span id="cb44-143"><a href="#cb44-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-144"><a href="#cb44-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-145"><a href="#cb44-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-146"><a href="#cb44-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-147"><a href="#cb44-147" aria-hidden="true" tabindex="-1"></a><span class="fu">### decision tree model with cost_complexity and tree_depth to tune</span></span>
-<span id="cb44-148"><a href="#cb44-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-151"><a href="#cb44-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-152"><a href="#cb44-152" aria-hidden="true" tabindex="-1"></a>tune_spec <span class="ot">=</span></span>
-<span id="cb44-153"><a href="#cb44-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">decision_tree</span>(</span>
-<span id="cb44-154"><a href="#cb44-154" aria-hidden="true" tabindex="-1"></a>    <span class="at">cost_complexity =</span> <span class="fu">tune</span>(),</span>
-<span id="cb44-155"><a href="#cb44-155" aria-hidden="true" tabindex="-1"></a>    <span class="at">tree_depth =</span> <span class="fu">tune</span>()</span>
-<span id="cb44-156"><a href="#cb44-156" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-157"><a href="#cb44-157" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"rpart"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-158"><a href="#cb44-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
-<span id="cb44-159"><a href="#cb44-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-160"><a href="#cb44-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-163"><a href="#cb44-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-164"><a href="#cb44-164" aria-hidden="true" tabindex="-1"></a>tune_spec <span class="sc">%&gt;%</span> <span class="fu">extract_parameter_set_dials</span>()</span>
-<span id="cb44-165"><a href="#cb44-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-166"><a href="#cb44-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-169"><a href="#cb44-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-170"><a href="#cb44-170" aria-hidden="true" tabindex="-1"></a>decision_tree_tune_grid <span class="ot">=</span> </span>
-<span id="cb44-171"><a href="#cb44-171" aria-hidden="true" tabindex="-1"></a>  tune_spec <span class="sc">|&gt;</span> </span>
-<span id="cb44-172"><a href="#cb44-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_parameter_set_dials</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb44-173"><a href="#cb44-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid_latin_hypercube</span>(<span class="at">size =</span> <span class="dv">100</span>)</span>
-<span id="cb44-174"><a href="#cb44-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-175"><a href="#cb44-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-176"><a href="#cb44-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-177"><a href="#cb44-177" aria-hidden="true" tabindex="-1"></a><span class="fu">### lightGBM Boost tree</span></span>
-<span id="cb44-178"><a href="#cb44-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-181"><a href="#cb44-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-182"><a href="#cb44-182" aria-hidden="true" tabindex="-1"></a>lightgbm_spec <span class="ot">=</span> <span class="fu">boost_tree</span>(</span>
-<span id="cb44-183"><a href="#cb44-183" aria-hidden="true" tabindex="-1"></a>  <span class="at">trees =</span> <span class="dv">100</span>,</span>
-<span id="cb44-184"><a href="#cb44-184" aria-hidden="true" tabindex="-1"></a>  <span class="at">tree_depth =</span> <span class="fu">tune</span>(), <span class="at">min_n =</span> <span class="fu">tune</span>(),</span>
-<span id="cb44-185"><a href="#cb44-185" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss_reduction =</span> <span class="fu">tune</span>(),                     <span class="do">## first three: model complexity</span></span>
-<span id="cb44-186"><a href="#cb44-186" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_size =</span> <span class="fu">tune</span>(),   <span class="at">mtry=</span><span class="fu">tune</span>(),     <span class="do">## randomness</span></span>
-<span id="cb44-187"><a href="#cb44-187" aria-hidden="true" tabindex="-1"></a>  <span class="at">learn_rate =</span> <span class="fu">tune</span>()                          <span class="do">## step size</span></span>
-<span id="cb44-188"><a href="#cb44-188" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb44-189"><a href="#cb44-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lightgbm"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb44-190"><a href="#cb44-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
-<span id="cb44-191"><a href="#cb44-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-192"><a href="#cb44-192" aria-hidden="true" tabindex="-1"></a>lightgbm_spec</span>
-<span id="cb44-193"><a href="#cb44-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-194"><a href="#cb44-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-197"><a href="#cb44-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-198"><a href="#cb44-198" aria-hidden="true" tabindex="-1"></a>lightgbm_grid<span class="ot">=</span> <span class="fu">grid_latin_hypercube</span>(</span>
-<span id="cb44-199"><a href="#cb44-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tree_depth</span>(),<span class="fu">learn_rate</span>(),<span class="fu">loss_reduction</span>(),<span class="fu">min_n</span>(),</span>
-<span id="cb44-200"><a href="#cb44-200" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_size=</span><span class="fu">sample_prop</span>(),<span class="fu">finalize</span>(<span class="fu">mtry</span>(),data_train),</span>
-<span id="cb44-201"><a href="#cb44-201" aria-hidden="true" tabindex="-1"></a>  <span class="at">size=</span><span class="dv">50</span>)</span>
-<span id="cb44-202"><a href="#cb44-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-203"><a href="#cb44-203" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lightgbm_grid)</span>
-<span id="cb44-204"><a href="#cb44-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-205"><a href="#cb44-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-206"><a href="#cb44-206" aria-hidden="true" tabindex="-1"></a><span class="fu">### Random Forest Model</span></span>
-<span id="cb44-209"><a href="#cb44-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-210"><a href="#cb44-210" aria-hidden="true" tabindex="-1"></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(</span>
-<span id="cb44-211"><a href="#cb44-211" aria-hidden="true" tabindex="-1"></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(), <span class="at">trees =</span> <span class="fu">tune</span>(), <span class="at">min_n =</span> <span class="fu">tune</span>()</span>
-<span id="cb44-212"><a href="#cb44-212" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
-<span id="cb44-213"><a href="#cb44-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb44-214"><a href="#cb44-214" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
-<span id="cb44-215"><a href="#cb44-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-216"><a href="#cb44-216" aria-hidden="true" tabindex="-1"></a>rf_spec</span>
-<span id="cb44-217"><a href="#cb44-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
-<span id="cb44-218"><a href="#cb44-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-221"><a href="#cb44-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-222"><a href="#cb44-222" aria-hidden="true" tabindex="-1"></a>rf_grid <span class="ot">&lt;-</span> </span>
-<span id="cb44-223"><a href="#cb44-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid_latin_hypercube</span>(</span>
-<span id="cb44-224"><a href="#cb44-224" aria-hidden="true" tabindex="-1"></a>    <span class="fu">min_n</span>(), </span>
-<span id="cb44-225"><a href="#cb44-225" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mtry</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">9</span>)), </span>
-<span id="cb44-226"><a href="#cb44-226" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trees</span>(), </span>
-<span id="cb44-227"><a href="#cb44-227" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">80</span>)</span>
-<span id="cb44-228"><a href="#cb44-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-229"><a href="#cb44-229" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rf_grid)</span>
-<span id="cb44-230"><a href="#cb44-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-231"><a href="#cb44-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-232"><a href="#cb44-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-233"><a href="#cb44-233" aria-hidden="true" tabindex="-1"></a><span class="fu">## workflow</span></span>
-<span id="cb44-234"><a href="#cb44-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-237"><a href="#cb44-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-238"><a href="#cb44-238" aria-hidden="true" tabindex="-1"></a>workflow_set <span class="ot">=</span></span>
-<span id="cb44-239"><a href="#cb44-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow_set</span>(</span>
-<span id="cb44-240"><a href="#cb44-240" aria-hidden="true" tabindex="-1"></a>    <span class="at">preproc =</span> <span class="fu">list</span>(data_rec),</span>
-<span id="cb44-241"><a href="#cb44-241" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> <span class="fu">list</span>(</span>
-<span id="cb44-242"><a href="#cb44-242" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lasso=</span>lasso_tune_spec,</span>
-<span id="cb44-243"><a href="#cb44-243" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tree  =</span> tune_spec,</span>
-<span id="cb44-244"><a href="#cb44-244" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lightgbm=</span>lightgbm_spec,</span>
-<span id="cb44-245"><a href="#cb44-245" aria-hidden="true" tabindex="-1"></a>                  <span class="at">random_forest=</span>rf_spec</span>
-<span id="cb44-246"><a href="#cb44-246" aria-hidden="true" tabindex="-1"></a>                  )</span>
-<span id="cb44-247"><a href="#cb44-247" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">option_add</span>(<span class="at">grid =</span> decision_tree_tune_grid, <span class="at">id =</span> <span class="st">"recipe_tree"</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb44-248"><a href="#cb44-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> lasso_grid, <span class="at">id =</span> <span class="st">"recipe_lasso"</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb44-249"><a href="#cb44-249" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> lightgbm_grid, <span class="at">id =</span> <span class="st">"recipe_lightgbm"</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb44-250"><a href="#cb44-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> rf_grid, <span class="at">id =</span> <span class="st">"recipe_rf"</span>) </span>
-<span id="cb44-251"><a href="#cb44-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-252"><a href="#cb44-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-253"><a href="#cb44-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-254"><a href="#cb44-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-257"><a href="#cb44-257" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-258"><a href="#cb44-258" aria-hidden="true" tabindex="-1"></a>workflow_set <span class="sc">%&gt;%</span></span>
-<span id="cb44-259"><a href="#cb44-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add_parameters</span>()</span>
-<span id="cb44-260"><a href="#cb44-260" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-261"><a href="#cb44-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-262"><a href="#cb44-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-263"><a href="#cb44-263" aria-hidden="true" tabindex="-1"></a>using control_race instead of control_grid</span>
-<span id="cb44-264"><a href="#cb44-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-267"><a href="#cb44-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-268"><a href="#cb44-268" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
-<span id="cb44-269"><a href="#cb44-269" aria-hidden="true" tabindex="-1"></a>cntl   <span class="ot">&lt;-</span> <span class="fu">control_race</span>(<span class="at">save_pred     =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb44-270"><a href="#cb44-270" aria-hidden="true" tabindex="-1"></a>                       <span class="at">save_workflow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb44-271"><a href="#cb44-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-272"><a href="#cb44-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-273"><a href="#cb44-273" aria-hidden="true" tabindex="-1"></a>10 fold for tunning</span>
-<span id="cb44-274"><a href="#cb44-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-277"><a href="#cb44-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-278"><a href="#cb44-278" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">234</span>)</span>
-<span id="cb44-279"><a href="#cb44-279" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train)</span>
-<span id="cb44-280"><a href="#cb44-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-281"><a href="#cb44-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-282"><a href="#cb44-282" aria-hidden="true" tabindex="-1"></a><span class="fu">## training</span></span>
-<span id="cb44-283"><a href="#cb44-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-284"><a href="#cb44-284" aria-hidden="true" tabindex="-1"></a><span class="fu">### train lasso model</span></span>
-<span id="cb44-285"><a href="#cb44-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-286"><a href="#cb44-286" aria-hidden="true" tabindex="-1"></a>using tune_race_anova() instead of tune_grid()</span>
-<span id="cb44-287"><a href="#cb44-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-290"><a href="#cb44-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-291"><a href="#cb44-291" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
-<span id="cb44-292"><a href="#cb44-292" aria-hidden="true" tabindex="-1"></a>doParallel<span class="sc">::</span><span class="fu">registerDoParallel</span>()</span>
-<span id="cb44-293"><a href="#cb44-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-294"><a href="#cb44-294" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="ot">=</span> workflow_set  <span class="sc">%&gt;%</span> </span>
-<span id="cb44-295"><a href="#cb44-295" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow_map</span>(</span>
-<span id="cb44-296"><a href="#cb44-296" aria-hidden="true" tabindex="-1"></a>              <span class="at">grid =</span> <span class="dv">50</span>,</span>
-<span id="cb44-297"><a href="#cb44-297" aria-hidden="true" tabindex="-1"></a>               <span class="at">resamples =</span> folds,</span>
-<span id="cb44-298"><a href="#cb44-298" aria-hidden="true" tabindex="-1"></a>               <span class="at">control =</span> cntl</span>
-<span id="cb44-299"><a href="#cb44-299" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb44-300"><a href="#cb44-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-301"><a href="#cb44-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-302"><a href="#cb44-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-303"><a href="#cb44-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-306"><a href="#cb44-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-307"><a href="#cb44-307" aria-hidden="true" tabindex="-1"></a><span class="fu">rank_results</span>(model_set_res,</span>
-<span id="cb44-308"><a href="#cb44-308" aria-hidden="true" tabindex="-1"></a>             <span class="at">rank_metric =</span> <span class="st">"rmse"</span>,</span>
-<span id="cb44-309"><a href="#cb44-309" aria-hidden="true" tabindex="-1"></a>             <span class="at">select_best =</span> <span class="cn">TRUE</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb44-310"><a href="#cb44-310" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span>
-<span id="cb44-311"><a href="#cb44-311" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-312"><a href="#cb44-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-315"><a href="#cb44-315" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-316"><a href="#cb44-316" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="sc">|&gt;</span> <span class="fu">autoplot</span>()</span>
-<span id="cb44-317"><a href="#cb44-317" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-318"><a href="#cb44-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-321"><a href="#cb44-321" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-322"><a href="#cb44-322" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="sc">|&gt;</span> <span class="fu">autoplot</span>( <span class="at">id=</span> <span class="st">'recipe_lightgbm'</span>)</span>
-<span id="cb44-323"><a href="#cb44-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-324"><a href="#cb44-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-325"><a href="#cb44-325" aria-hidden="true" tabindex="-1"></a>select best model:logistic glm model </span>
-<span id="cb44-328"><a href="#cb44-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-329"><a href="#cb44-329" aria-hidden="true" tabindex="-1"></a>best_model_id <span class="ot">&lt;-</span> <span class="st">"recipe_random_forest"</span></span>
-<span id="cb44-330"><a href="#cb44-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-331"><a href="#cb44-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-332"><a href="#cb44-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-333"><a href="#cb44-333" aria-hidden="true" tabindex="-1"></a>select best parameters</span>
-<span id="cb44-336"><a href="#cb44-336" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-337"><a href="#cb44-337" aria-hidden="true" tabindex="-1"></a>best_fit <span class="ot">&lt;-</span></span>
-<span id="cb44-338"><a href="#cb44-338" aria-hidden="true" tabindex="-1"></a>  model_set_res <span class="sc">|&gt;</span></span>
-<span id="cb44-339"><a href="#cb44-339" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow_set_result</span>(best_model_id) <span class="sc">|&gt;</span></span>
-<span id="cb44-340"><a href="#cb44-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
-<span id="cb44-341"><a href="#cb44-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-342"><a href="#cb44-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-345"><a href="#cb44-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-346"><a href="#cb44-346" aria-hidden="true" tabindex="-1"></a><span class="co"># create workflow for best model</span></span>
-<span id="cb44-347"><a href="#cb44-347" aria-hidden="true" tabindex="-1"></a>final_workflow <span class="ot">&lt;-</span></span>
-<span id="cb44-348"><a href="#cb44-348" aria-hidden="true" tabindex="-1"></a>  model_set_res <span class="sc">|&gt;</span></span>
-<span id="cb44-349"><a href="#cb44-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow</span>(best_model_id) <span class="sc">|&gt;</span></span>
-<span id="cb44-350"><a href="#cb44-350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_fit)</span>
-<span id="cb44-351"><a href="#cb44-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-352"><a href="#cb44-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-353"><a href="#cb44-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-354"><a href="#cb44-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-355"><a href="#cb44-355" aria-hidden="true" tabindex="-1"></a><span class="fu"># model result</span></span>
-<span id="cb44-356"><a href="#cb44-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-357"><a href="#cb44-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-358"><a href="#cb44-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-359"><a href="#cb44-359" aria-hidden="true" tabindex="-1"></a><span class="fu">## last fit</span></span>
-<span id="cb44-360"><a href="#cb44-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-363"><a href="#cb44-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-364"><a href="#cb44-364" aria-hidden="true" tabindex="-1"></a>final_fit <span class="ot">&lt;-</span></span>
-<span id="cb44-365"><a href="#cb44-365" aria-hidden="true" tabindex="-1"></a>  final_workflow <span class="sc">|&gt;</span></span>
-<span id="cb44-366"><a href="#cb44-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_fit</span>(data_split)</span>
-<span id="cb44-367"><a href="#cb44-367" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-368"><a href="#cb44-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-371"><a href="#cb44-371" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-372"><a href="#cb44-372" aria-hidden="true" tabindex="-1"></a>final_fit <span class="sc">%&gt;%</span></span>
-<span id="cb44-373"><a href="#cb44-373" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>()</span>
-<span id="cb44-374"><a href="#cb44-374" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-375"><a href="#cb44-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-376"><a href="#cb44-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-379"><a href="#cb44-379" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-380"><a href="#cb44-380" aria-hidden="true" tabindex="-1"></a>(final_fit<span class="sc">%&gt;%</span><span class="fu">collect_predictions</span>()) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(target_variable, .pred))<span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"gray80"</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">labs</span>(</span>
-<span id="cb44-381"><a href="#cb44-381" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Truth"</span>,</span>
-<span id="cb44-382"><a href="#cb44-382" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Predicted attendance"</span>,</span>
-<span id="cb44-383"><a href="#cb44-383" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Type of model"</span></span>
-<span id="cb44-384"><a href="#cb44-384" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb44-385"><a href="#cb44-385" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb44-386"><a href="#cb44-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-387"><a href="#cb44-387" aria-hidden="true" tabindex="-1"></a><span class="fu">## resample with tuned model</span></span>
-<span id="cb44-388"><a href="#cb44-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-389"><a href="#cb44-389" aria-hidden="true" tabindex="-1"></a><span class="fu"># resouece</span></span>
-<span id="cb44-390"><a href="#cb44-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-391"><a href="#cb44-391" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=1LEW8APSOJo</span>
-<span id="cb44-392"><a href="#cb44-392" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-393"><a href="#cb44-393" aria-hidden="true" tabindex="-1"></a>https://juliasilge.com/blog/lasso-the-office/</span>
+<div class="sourceCode" id="cb51" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Level 6 Regression Tidy Modeling"</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with house price data"</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>using Recipe.</span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>add resamples to estimate the performance of our two models</span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>add workflow with tunning</span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>add quick tuning</span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>add workflow set and setting different tuning grid for different model</span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># load package</span></span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Load Pacakges &amp; Set Options"</span></span>
+<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(themis)</span>
+<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      </span>
+<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)     </span>
+<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) <span class="co"># penguin dataset</span></span>
+<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)             <span class="co"># better tables</span></span>
+<span id="cb51-36"><a href="#cb51-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bonsai)         <span class="co"># tree-based models</span></span>
+<span id="cb51-37"><a href="#cb51-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted)     <span class="co"># function conflicts</span></span>
+<span id="cb51-38"><a href="#cb51-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vetiver)</span>
+<span id="cb51-39"><a href="#cb51-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Microsoft365R)</span>
+<span id="cb51-40"><a href="#cb51-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pins)</span>
+<span id="cb51-41"><a href="#cb51-41" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()     <span class="co"># handle conflicts</span></span>
+<span id="cb51-42"><a href="#cb51-42" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">"penguins"</span>, <span class="st">"palmerpenguins"</span>)</span>
+<span id="cb51-43"><a href="#cb51-43" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tidymodels.dark =</span> <span class="cn">TRUE</span>) <span class="co"># dark mode</span></span>
+<span id="cb51-44"><a href="#cb51-44" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>()) <span class="co"># set default ggplot2 theme</span></span>
+<span id="cb51-45"><a href="#cb51-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-46"><a href="#cb51-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-47"><a href="#cb51-47" aria-hidden="true" tabindex="-1"></a><span class="fu"># data preparation</span></span>
+<span id="cb51-48"><a href="#cb51-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-49"><a href="#cb51-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## read data</span></span>
+<span id="cb51-50"><a href="#cb51-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-53"><a href="#cb51-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-54"><a href="#cb51-54" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb51-55"><a href="#cb51-55" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"data/train.csv"</span>)</span>
+<span id="cb51-56"><a href="#cb51-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-57"><a href="#cb51-57" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span><span class="fu">read_csv</span>(<span class="st">"data/test.csv"</span>)</span>
+<span id="cb51-58"><a href="#cb51-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-59"><a href="#cb51-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-60"><a href="#cb51-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-61"><a href="#cb51-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## data split</span></span>
+<span id="cb51-62"><a href="#cb51-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-65"><a href="#cb51-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-66"><a href="#cb51-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Prepare &amp; Split Data"</span></span>
+<span id="cb51-67"><a href="#cb51-67" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> train  <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(is.numeric)<span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">target_variable=</span>SalePrice)<span class="sc">%&gt;%</span> <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>)</span>
+<span id="cb51-68"><a href="#cb51-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-69"><a href="#cb51-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-70"><a href="#cb51-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-71"><a href="#cb51-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-74"><a href="#cb51-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-75"><a href="#cb51-75" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb51-76"><a href="#cb51-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-77"><a href="#cb51-77" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_validation_split</span>(<span class="at">data=</span>train_df, <span class="at">prop =</span> <span class="fu">c</span>(<span class="fl">0.7</span>,<span class="fl">0.1</span>))</span>
+<span id="cb51-78"><a href="#cb51-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-79"><a href="#cb51-79" aria-hidden="true" tabindex="-1"></a>data_train<span class="ot">=</span><span class="fu">training</span>(data_split)  </span>
+<span id="cb51-80"><a href="#cb51-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-81"><a href="#cb51-81" aria-hidden="true" tabindex="-1"></a>data_test<span class="ot">=</span><span class="fu">testing</span>(data_split)  </span>
+<span id="cb51-82"><a href="#cb51-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-83"><a href="#cb51-83" aria-hidden="true" tabindex="-1"></a>data_valid<span class="ot">=</span><span class="fu">validation</span>(data_split)</span>
+<span id="cb51-84"><a href="#cb51-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-85"><a href="#cb51-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-86"><a href="#cb51-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-87"><a href="#cb51-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-88"><a href="#cb51-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-89"><a href="#cb51-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-92"><a href="#cb51-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-93"><a href="#cb51-93" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_train)</span>
+<span id="cb51-94"><a href="#cb51-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-95"><a href="#cb51-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-98"><a href="#cb51-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-99"><a href="#cb51-99" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_test)</span>
+<span id="cb51-100"><a href="#cb51-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-101"><a href="#cb51-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-104"><a href="#cb51-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-105"><a href="#cb51-105" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_valid)</span>
+<span id="cb51-106"><a href="#cb51-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-107"><a href="#cb51-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-108"><a href="#cb51-108" aria-hidden="true" tabindex="-1"></a><span class="fu"># modeling</span></span>
+<span id="cb51-109"><a href="#cb51-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-110"><a href="#cb51-110" aria-hidden="true" tabindex="-1"></a><span class="fu">## recipe</span></span>
+<span id="cb51-111"><a href="#cb51-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-114"><a href="#cb51-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-115"><a href="#cb51-115" aria-hidden="true" tabindex="-1"></a>data_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> data_train) <span class="sc">%&gt;%</span></span>
+<span id="cb51-116"><a href="#cb51-116" aria-hidden="true" tabindex="-1"></a>  <span class="co">#step_downsample(target_variable) %&gt;%</span></span>
+<span id="cb51-117"><a href="#cb51-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb51-118"><a href="#cb51-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_numeric</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb51-119"><a href="#cb51-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>())</span>
+<span id="cb51-120"><a href="#cb51-120" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-121"><a href="#cb51-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-122"><a href="#cb51-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-123"><a href="#cb51-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-126"><a href="#cb51-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-127"><a href="#cb51-127" aria-hidden="true" tabindex="-1"></a>trained_data_rec <span class="ot">&lt;-</span> <span class="fu">prep</span>(data_rec, <span class="at">training =</span> data_train)</span>
+<span id="cb51-128"><a href="#cb51-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-129"><a href="#cb51-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-130"><a href="#cb51-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-133"><a href="#cb51-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-134"><a href="#cb51-134" aria-hidden="true" tabindex="-1"></a>trained_data_rec <span class="sc">%&gt;%</span><span class="fu">check_missing</span>(<span class="st">"LotFrontage"</span>)</span>
+<span id="cb51-135"><a href="#cb51-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-136"><a href="#cb51-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-137"><a href="#cb51-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-138"><a href="#cb51-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## model</span></span>
+<span id="cb51-139"><a href="#cb51-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-140"><a href="#cb51-140" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/1.png)</span>{width="214"}</span>
+<span id="cb51-141"><a href="#cb51-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-142"><a href="#cb51-142" aria-hidden="true" tabindex="-1"></a><span class="fu">### lasso regression</span></span>
+<span id="cb51-143"><a href="#cb51-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-146"><a href="#cb51-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-147"><a href="#cb51-147" aria-hidden="true" tabindex="-1"></a>lasso_tune_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(<span class="at">penalty =</span> <span class="fu">tune</span>(), <span class="at">mixture =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-148"><a href="#cb51-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
+<span id="cb51-149"><a href="#cb51-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-150"><a href="#cb51-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-153"><a href="#cb51-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-154"><a href="#cb51-154" aria-hidden="true" tabindex="-1"></a>lasso_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">penalty</span>(), <span class="at">levels =</span> <span class="dv">50</span>)</span>
+<span id="cb51-155"><a href="#cb51-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-156"><a href="#cb51-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-159"><a href="#cb51-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-160"><a href="#cb51-160" aria-hidden="true" tabindex="-1"></a>lasso_tune_spec</span>
+<span id="cb51-161"><a href="#cb51-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-162"><a href="#cb51-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-163"><a href="#cb51-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-164"><a href="#cb51-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-165"><a href="#cb51-165" aria-hidden="true" tabindex="-1"></a><span class="fu">### decision tree model with cost_complexity and tree_depth to tune</span></span>
+<span id="cb51-166"><a href="#cb51-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-169"><a href="#cb51-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-170"><a href="#cb51-170" aria-hidden="true" tabindex="-1"></a>tune_spec <span class="ot">=</span></span>
+<span id="cb51-171"><a href="#cb51-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">decision_tree</span>(</span>
+<span id="cb51-172"><a href="#cb51-172" aria-hidden="true" tabindex="-1"></a>    <span class="at">cost_complexity =</span> <span class="fu">tune</span>(),</span>
+<span id="cb51-173"><a href="#cb51-173" aria-hidden="true" tabindex="-1"></a>    <span class="at">tree_depth =</span> <span class="fu">tune</span>()</span>
+<span id="cb51-174"><a href="#cb51-174" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-175"><a href="#cb51-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"rpart"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-176"><a href="#cb51-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
+<span id="cb51-177"><a href="#cb51-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-178"><a href="#cb51-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-181"><a href="#cb51-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-182"><a href="#cb51-182" aria-hidden="true" tabindex="-1"></a>tune_spec <span class="sc">%&gt;%</span> <span class="fu">extract_parameter_set_dials</span>()</span>
+<span id="cb51-183"><a href="#cb51-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-184"><a href="#cb51-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-187"><a href="#cb51-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-188"><a href="#cb51-188" aria-hidden="true" tabindex="-1"></a>decision_tree_tune_grid <span class="ot">=</span> </span>
+<span id="cb51-189"><a href="#cb51-189" aria-hidden="true" tabindex="-1"></a>  tune_spec <span class="sc">|&gt;</span> </span>
+<span id="cb51-190"><a href="#cb51-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_parameter_set_dials</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb51-191"><a href="#cb51-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid_latin_hypercube</span>(<span class="at">size =</span> <span class="dv">100</span>)</span>
+<span id="cb51-192"><a href="#cb51-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-193"><a href="#cb51-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-194"><a href="#cb51-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-195"><a href="#cb51-195" aria-hidden="true" tabindex="-1"></a><span class="fu">### lightGBM Boost tree</span></span>
+<span id="cb51-196"><a href="#cb51-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-199"><a href="#cb51-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-200"><a href="#cb51-200" aria-hidden="true" tabindex="-1"></a>lightgbm_spec <span class="ot">=</span> <span class="fu">boost_tree</span>(</span>
+<span id="cb51-201"><a href="#cb51-201" aria-hidden="true" tabindex="-1"></a>  <span class="at">trees =</span> <span class="dv">100</span>,</span>
+<span id="cb51-202"><a href="#cb51-202" aria-hidden="true" tabindex="-1"></a>  <span class="at">tree_depth =</span> <span class="fu">tune</span>(), <span class="at">min_n =</span> <span class="fu">tune</span>(),</span>
+<span id="cb51-203"><a href="#cb51-203" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss_reduction =</span> <span class="fu">tune</span>(),                     <span class="do">## first three: model complexity</span></span>
+<span id="cb51-204"><a href="#cb51-204" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_size =</span> <span class="fu">tune</span>(),   <span class="at">mtry=</span><span class="fu">tune</span>(),     <span class="do">## randomness</span></span>
+<span id="cb51-205"><a href="#cb51-205" aria-hidden="true" tabindex="-1"></a>  <span class="at">learn_rate =</span> <span class="fu">tune</span>()                          <span class="do">## step size</span></span>
+<span id="cb51-206"><a href="#cb51-206" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-207"><a href="#cb51-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lightgbm"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-208"><a href="#cb51-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
+<span id="cb51-209"><a href="#cb51-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-210"><a href="#cb51-210" aria-hidden="true" tabindex="-1"></a>lightgbm_spec</span>
+<span id="cb51-211"><a href="#cb51-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-212"><a href="#cb51-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-215"><a href="#cb51-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-216"><a href="#cb51-216" aria-hidden="true" tabindex="-1"></a>lightgbm_grid<span class="ot">=</span> <span class="fu">grid_latin_hypercube</span>(</span>
+<span id="cb51-217"><a href="#cb51-217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tree_depth</span>(),<span class="fu">learn_rate</span>(),<span class="fu">loss_reduction</span>(),<span class="fu">min_n</span>(),</span>
+<span id="cb51-218"><a href="#cb51-218" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_size=</span><span class="fu">sample_prop</span>(),<span class="fu">finalize</span>(<span class="fu">mtry</span>(),data_train),</span>
+<span id="cb51-219"><a href="#cb51-219" aria-hidden="true" tabindex="-1"></a>  <span class="at">size=</span><span class="dv">50</span>)</span>
+<span id="cb51-220"><a href="#cb51-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-221"><a href="#cb51-221" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lightgbm_grid)</span>
+<span id="cb51-222"><a href="#cb51-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-223"><a href="#cb51-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-224"><a href="#cb51-224" aria-hidden="true" tabindex="-1"></a><span class="fu">### Random Forest Model</span></span>
+<span id="cb51-227"><a href="#cb51-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-228"><a href="#cb51-228" aria-hidden="true" tabindex="-1"></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(</span>
+<span id="cb51-229"><a href="#cb51-229" aria-hidden="true" tabindex="-1"></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(), <span class="at">trees =</span> <span class="fu">tune</span>(), <span class="at">min_n =</span> <span class="fu">tune</span>()</span>
+<span id="cb51-230"><a href="#cb51-230" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
+<span id="cb51-231"><a href="#cb51-231" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-232"><a href="#cb51-232" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>)</span>
+<span id="cb51-233"><a href="#cb51-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-234"><a href="#cb51-234" aria-hidden="true" tabindex="-1"></a>rf_spec</span>
+<span id="cb51-235"><a href="#cb51-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
+<span id="cb51-236"><a href="#cb51-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-239"><a href="#cb51-239" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-240"><a href="#cb51-240" aria-hidden="true" tabindex="-1"></a>rf_grid <span class="ot">&lt;-</span> </span>
+<span id="cb51-241"><a href="#cb51-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid_latin_hypercube</span>(</span>
+<span id="cb51-242"><a href="#cb51-242" aria-hidden="true" tabindex="-1"></a>    <span class="fu">min_n</span>(), </span>
+<span id="cb51-243"><a href="#cb51-243" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mtry</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">9</span>)), </span>
+<span id="cb51-244"><a href="#cb51-244" aria-hidden="true" tabindex="-1"></a>    <span class="fu">trees</span>(), </span>
+<span id="cb51-245"><a href="#cb51-245" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">80</span>)</span>
+<span id="cb51-246"><a href="#cb51-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-247"><a href="#cb51-247" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rf_grid)</span>
+<span id="cb51-248"><a href="#cb51-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-249"><a href="#cb51-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-250"><a href="#cb51-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-251"><a href="#cb51-251" aria-hidden="true" tabindex="-1"></a><span class="fu">## workflow</span></span>
+<span id="cb51-252"><a href="#cb51-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-255"><a href="#cb51-255" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-256"><a href="#cb51-256" aria-hidden="true" tabindex="-1"></a>workflow_set <span class="ot">=</span></span>
+<span id="cb51-257"><a href="#cb51-257" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow_set</span>(</span>
+<span id="cb51-258"><a href="#cb51-258" aria-hidden="true" tabindex="-1"></a>    <span class="at">preproc =</span> <span class="fu">list</span>(data_rec),</span>
+<span id="cb51-259"><a href="#cb51-259" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> <span class="fu">list</span>(</span>
+<span id="cb51-260"><a href="#cb51-260" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lasso=</span>lasso_tune_spec,</span>
+<span id="cb51-261"><a href="#cb51-261" aria-hidden="true" tabindex="-1"></a>                  <span class="at">tree  =</span> tune_spec,</span>
+<span id="cb51-262"><a href="#cb51-262" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lightgbm=</span>lightgbm_spec,</span>
+<span id="cb51-263"><a href="#cb51-263" aria-hidden="true" tabindex="-1"></a>                  <span class="at">random_forest=</span>rf_spec</span>
+<span id="cb51-264"><a href="#cb51-264" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb51-265"><a href="#cb51-265" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">option_add</span>(<span class="at">grid =</span> decision_tree_tune_grid, <span class="at">id =</span> <span class="st">"recipe_tree"</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb51-266"><a href="#cb51-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> lasso_grid, <span class="at">id =</span> <span class="st">"recipe_lasso"</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb51-267"><a href="#cb51-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> lightgbm_grid, <span class="at">id =</span> <span class="st">"recipe_lightgbm"</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb51-268"><a href="#cb51-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add</span>(<span class="at">grid =</span> rf_grid, <span class="at">id =</span> <span class="st">"recipe_rf"</span>) </span>
+<span id="cb51-269"><a href="#cb51-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-270"><a href="#cb51-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-271"><a href="#cb51-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-272"><a href="#cb51-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-275"><a href="#cb51-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-276"><a href="#cb51-276" aria-hidden="true" tabindex="-1"></a>workflow_set <span class="sc">%&gt;%</span></span>
+<span id="cb51-277"><a href="#cb51-277" aria-hidden="true" tabindex="-1"></a>  <span class="fu">option_add_parameters</span>()</span>
+<span id="cb51-278"><a href="#cb51-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-279"><a href="#cb51-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-280"><a href="#cb51-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-281"><a href="#cb51-281" aria-hidden="true" tabindex="-1"></a>using control_race instead of control_grid</span>
+<span id="cb51-282"><a href="#cb51-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-285"><a href="#cb51-285" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-286"><a href="#cb51-286" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
+<span id="cb51-287"><a href="#cb51-287" aria-hidden="true" tabindex="-1"></a>cntl   <span class="ot">&lt;-</span> <span class="fu">control_race</span>(<span class="at">save_pred     =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-288"><a href="#cb51-288" aria-hidden="true" tabindex="-1"></a>                       <span class="at">save_workflow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb51-289"><a href="#cb51-289" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-290"><a href="#cb51-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-291"><a href="#cb51-291" aria-hidden="true" tabindex="-1"></a>10 fold for tunning</span>
+<span id="cb51-292"><a href="#cb51-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-295"><a href="#cb51-295" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-296"><a href="#cb51-296" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">234</span>)</span>
+<span id="cb51-297"><a href="#cb51-297" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train)</span>
+<span id="cb51-298"><a href="#cb51-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-299"><a href="#cb51-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-300"><a href="#cb51-300" aria-hidden="true" tabindex="-1"></a><span class="fu">## training</span></span>
+<span id="cb51-301"><a href="#cb51-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-302"><a href="#cb51-302" aria-hidden="true" tabindex="-1"></a><span class="fu">### train lasso model</span></span>
+<span id="cb51-303"><a href="#cb51-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-304"><a href="#cb51-304" aria-hidden="true" tabindex="-1"></a>using tune_race_anova() instead of tune_grid()</span>
+<span id="cb51-305"><a href="#cb51-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-308"><a href="#cb51-308" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-309"><a href="#cb51-309" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(finetune)</span>
+<span id="cb51-310"><a href="#cb51-310" aria-hidden="true" tabindex="-1"></a>doParallel<span class="sc">::</span><span class="fu">registerDoParallel</span>()</span>
+<span id="cb51-311"><a href="#cb51-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-312"><a href="#cb51-312" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="ot">=</span> workflow_set  <span class="sc">%&gt;%</span> </span>
+<span id="cb51-313"><a href="#cb51-313" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow_map</span>(</span>
+<span id="cb51-314"><a href="#cb51-314" aria-hidden="true" tabindex="-1"></a>              <span class="at">grid =</span> <span class="dv">50</span>,</span>
+<span id="cb51-315"><a href="#cb51-315" aria-hidden="true" tabindex="-1"></a>               <span class="at">resamples =</span> folds,</span>
+<span id="cb51-316"><a href="#cb51-316" aria-hidden="true" tabindex="-1"></a>               <span class="at">control =</span> cntl</span>
+<span id="cb51-317"><a href="#cb51-317" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb51-318"><a href="#cb51-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-319"><a href="#cb51-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-320"><a href="#cb51-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-321"><a href="#cb51-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-324"><a href="#cb51-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-325"><a href="#cb51-325" aria-hidden="true" tabindex="-1"></a><span class="fu">rank_results</span>(model_set_res,</span>
+<span id="cb51-326"><a href="#cb51-326" aria-hidden="true" tabindex="-1"></a>             <span class="at">rank_metric =</span> <span class="st">"rmse"</span>,</span>
+<span id="cb51-327"><a href="#cb51-327" aria-hidden="true" tabindex="-1"></a>             <span class="at">select_best =</span> <span class="cn">TRUE</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb51-328"><a href="#cb51-328" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span>
+<span id="cb51-329"><a href="#cb51-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-330"><a href="#cb51-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-333"><a href="#cb51-333" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-334"><a href="#cb51-334" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="sc">|&gt;</span> <span class="fu">autoplot</span>()</span>
+<span id="cb51-335"><a href="#cb51-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-336"><a href="#cb51-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-339"><a href="#cb51-339" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-340"><a href="#cb51-340" aria-hidden="true" tabindex="-1"></a>model_set_res <span class="sc">|&gt;</span> <span class="fu">autoplot</span>( <span class="at">id=</span> <span class="st">'recipe_lightgbm'</span>)</span>
+<span id="cb51-341"><a href="#cb51-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-342"><a href="#cb51-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-343"><a href="#cb51-343" aria-hidden="true" tabindex="-1"></a>select best model:logistic glm model </span>
+<span id="cb51-346"><a href="#cb51-346" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-347"><a href="#cb51-347" aria-hidden="true" tabindex="-1"></a>best_model_id <span class="ot">&lt;-</span> <span class="st">"recipe_random_forest"</span></span>
+<span id="cb51-348"><a href="#cb51-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-349"><a href="#cb51-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-350"><a href="#cb51-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-351"><a href="#cb51-351" aria-hidden="true" tabindex="-1"></a>select best parameters</span>
+<span id="cb51-354"><a href="#cb51-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-355"><a href="#cb51-355" aria-hidden="true" tabindex="-1"></a>best_fit <span class="ot">&lt;-</span></span>
+<span id="cb51-356"><a href="#cb51-356" aria-hidden="true" tabindex="-1"></a>  model_set_res <span class="sc">|&gt;</span></span>
+<span id="cb51-357"><a href="#cb51-357" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow_set_result</span>(best_model_id) <span class="sc">|&gt;</span></span>
+<span id="cb51-358"><a href="#cb51-358" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
+<span id="cb51-359"><a href="#cb51-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-360"><a href="#cb51-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-363"><a href="#cb51-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-364"><a href="#cb51-364" aria-hidden="true" tabindex="-1"></a><span class="co"># create workflow for best model</span></span>
+<span id="cb51-365"><a href="#cb51-365" aria-hidden="true" tabindex="-1"></a>final_workflow <span class="ot">&lt;-</span></span>
+<span id="cb51-366"><a href="#cb51-366" aria-hidden="true" tabindex="-1"></a>  model_set_res <span class="sc">|&gt;</span></span>
+<span id="cb51-367"><a href="#cb51-367" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow</span>(best_model_id) <span class="sc">|&gt;</span></span>
+<span id="cb51-368"><a href="#cb51-368" aria-hidden="true" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_fit)</span>
+<span id="cb51-369"><a href="#cb51-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-370"><a href="#cb51-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-371"><a href="#cb51-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-372"><a href="#cb51-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-373"><a href="#cb51-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-374"><a href="#cb51-374" aria-hidden="true" tabindex="-1"></a><span class="fu"># model result</span></span>
+<span id="cb51-375"><a href="#cb51-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-376"><a href="#cb51-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-377"><a href="#cb51-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-378"><a href="#cb51-378" aria-hidden="true" tabindex="-1"></a><span class="fu">## last fit</span></span>
+<span id="cb51-379"><a href="#cb51-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-382"><a href="#cb51-382" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-383"><a href="#cb51-383" aria-hidden="true" tabindex="-1"></a>final_fit <span class="ot">&lt;-</span></span>
+<span id="cb51-384"><a href="#cb51-384" aria-hidden="true" tabindex="-1"></a>  final_workflow <span class="sc">|&gt;</span></span>
+<span id="cb51-385"><a href="#cb51-385" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_fit</span>(data_split)</span>
+<span id="cb51-386"><a href="#cb51-386" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-387"><a href="#cb51-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-390"><a href="#cb51-390" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-391"><a href="#cb51-391" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">10000</span>)</span>
+<span id="cb51-392"><a href="#cb51-392" aria-hidden="true" tabindex="-1"></a>final_fit <span class="sc">%&gt;%</span></span>
+<span id="cb51-393"><a href="#cb51-393" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>()</span>
+<span id="cb51-394"><a href="#cb51-394" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-395"><a href="#cb51-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-396"><a href="#cb51-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-399"><a href="#cb51-399" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-400"><a href="#cb51-400" aria-hidden="true" tabindex="-1"></a>(final_fit<span class="sc">%&gt;%</span><span class="fu">collect_predictions</span>()) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(target_variable, .pred))<span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"gray80"</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">labs</span>(</span>
+<span id="cb51-401"><a href="#cb51-401" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Truth"</span>,</span>
+<span id="cb51-402"><a href="#cb51-402" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Predicted attendance"</span>,</span>
+<span id="cb51-403"><a href="#cb51-403" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Type of model"</span></span>
+<span id="cb51-404"><a href="#cb51-404" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span><span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) </span>
+<span id="cb51-405"><a href="#cb51-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-406"><a href="#cb51-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-407"><a href="#cb51-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-408"><a href="#cb51-408" aria-hidden="true" tabindex="-1"></a>manual calculate RMSE on testing data</span>
+<span id="cb51-409"><a href="#cb51-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-412"><a href="#cb51-412" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-413"><a href="#cb51-413" aria-hidden="true" tabindex="-1"></a>final_data<span class="ot">=</span>final_fit<span class="sc">%&gt;%</span><span class="fu">collect_predictions</span>()</span>
+<span id="cb51-414"><a href="#cb51-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-415"><a href="#cb51-415" aria-hidden="true" tabindex="-1"></a>final_data2<span class="ot">=</span>final_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">diff=</span>target_variable<span class="sc">-</span>.pred)<span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">diff2=</span>diff<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb51-416"><a href="#cb51-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-417"><a href="#cb51-417" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="fu">sum</span>(final_data2<span class="sc">$</span>diff2)<span class="sc">/</span><span class="fu">nrow</span>(final_data2)</span>
+<span id="cb51-418"><a href="#cb51-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-419"><a href="#cb51-419" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(a)</span>
+<span id="cb51-420"><a href="#cb51-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-421"><a href="#cb51-421" aria-hidden="true" tabindex="-1"></a><span class="co">#glimpse(final_data2)</span></span>
+<span id="cb51-422"><a href="#cb51-422" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-423"><a href="#cb51-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-424"><a href="#cb51-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-425"><a href="#cb51-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-426"><a href="#cb51-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-427"><a href="#cb51-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-428"><a href="#cb51-428" aria-hidden="true" tabindex="-1"></a><span class="fu"># future prediction</span></span>
+<span id="cb51-429"><a href="#cb51-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-432"><a href="#cb51-432" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-433"><a href="#cb51-433" aria-hidden="true" tabindex="-1"></a>future_predict<span class="ot">=</span><span class="fu">predict</span>(final_fit <span class="sc">%&gt;%</span> <span class="fu">extract_workflow</span>(),data_valid)</span>
+<span id="cb51-434"><a href="#cb51-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-435"><a href="#cb51-435" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(future_predict)</span>
+<span id="cb51-436"><a href="#cb51-436" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb51-437"><a href="#cb51-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-438"><a href="#cb51-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-439"><a href="#cb51-439" aria-hidden="true" tabindex="-1"></a><span class="fu"># resouece</span></span>
+<span id="cb51-440"><a href="#cb51-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-441"><a href="#cb51-441" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=1LEW8APSOJo</span>
+<span id="cb51-442"><a href="#cb51-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-443"><a href="#cb51-443" aria-hidden="true" tabindex="-1"></a>https://juliasilge.com/blog/lasso-the-office/</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

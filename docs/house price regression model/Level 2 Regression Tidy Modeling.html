@@ -333,7 +333,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#evaluate" id="toc-evaluate" class="nav-link" data-scroll-target="#evaluate"><span class="header-section-number">4.1</span> Evaluate</a></li>
   <li><a href="#resample-with-rf-model" id="toc-resample-with-rf-model" class="nav-link" data-scroll-target="#resample-with-rf-model"><span class="header-section-number">4.2</span> resample with rf model</a></li>
   </ul></li>
-  <li><a href="#resouece" id="toc-resouece" class="nav-link" data-scroll-target="#resouece"><span class="header-section-number">5</span> resouece</a></li>
+  <li><a href="#future-prediction" id="toc-future-prediction" class="nav-link" data-scroll-target="#future-prediction"><span class="header-section-number">5</span> future prediction</a></li>
+  <li><a href="#resouece" id="toc-resouece" class="nav-link" data-scroll-target="#resouece"><span class="header-section-number">6</span> resouece</a></li>
   </ul>
 </nav>
     </div>
@@ -900,16 +901,32 @@ R squared (OOB):                  0.8442281 </code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
-  .metric .estimator      mean     n   std_err .config             
-  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;               
-1 rmse    standard   39279.       10 4626.     Preprocessor1_Model1
-2 rsq     standard       0.768    10    0.0422 Preprocessor1_Model1</code></pre>
+  .metric .estimator      mean     n std_err .config             
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 rmse    standard   46227.        1      NA Preprocessor1_Model1
+2 rsq     standard       0.830     1      NA Preprocessor1_Model1</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="resouece" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> resouece</h1>
+<section id="future-prediction" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> future prediction</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>future_predict<span class="ot">=</span><span class="fu">predict</span>(rf_fit,data_valid)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(future_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 146
+Columns: 1
+$ .pred &lt;dbl&gt; 2.872990, 2.120893, 2.822608, 3.781136, 2.148202, 2.874628, 3.43…</code></pre>
+</div>
+</div>
+</section>
+<section id="resouece" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> resouece</h1>
 <p>https://www.youtube.com/watch?v=1LEW8APSOJo</p>
 
 
@@ -1356,328 +1373,335 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb43" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Level 2 Regression Tidy Modeling"</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with house price data"</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>using Recipe.</span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># load package</span></span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Load Pacakges &amp; Set Options"</span></span>
-<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(themis)</span>
-<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      </span>
-<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)     </span>
-<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) <span class="co"># penguin dataset</span></span>
-<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)             <span class="co"># better tables</span></span>
-<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bonsai)         <span class="co"># tree-based models</span></span>
-<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted)     <span class="co"># function conflicts</span></span>
-<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vetiver)</span>
-<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Microsoft365R)</span>
-<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pins)</span>
-<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()     <span class="co"># handle conflicts</span></span>
-<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">"penguins"</span>, <span class="st">"palmerpenguins"</span>)</span>
-<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tidymodels.dark =</span> <span class="cn">TRUE</span>) <span class="co"># dark mode</span></span>
-<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>()) <span class="co"># set default ggplot2 theme</span></span>
-<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a><span class="fu"># data preparation</span></span>
-<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## read data</span></span>
-<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"data/train.csv"</span>)</span>
-<span id="cb43-52"><a href="#cb43-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-53"><a href="#cb43-53" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span><span class="fu">read_csv</span>(<span class="st">"data/test.csv"</span>)</span>
-<span id="cb43-54"><a href="#cb43-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-55"><a href="#cb43-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-56"><a href="#cb43-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-57"><a href="#cb43-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-58"><a href="#cb43-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-59"><a href="#cb43-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-60"><a href="#cb43-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## data split</span></span>
-<span id="cb43-61"><a href="#cb43-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-64"><a href="#cb43-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-65"><a href="#cb43-65" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Prepare &amp; Split Data"</span></span>
-<span id="cb43-66"><a href="#cb43-66" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> train  <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(is.numeric)<span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">target_variable=</span>SalePrice)<span class="sc">%&gt;%</span> <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>)</span>
-<span id="cb43-67"><a href="#cb43-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-68"><a href="#cb43-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-69"><a href="#cb43-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-70"><a href="#cb43-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-73"><a href="#cb43-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-74"><a href="#cb43-74" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb43-75"><a href="#cb43-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-76"><a href="#cb43-76" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_validation_split</span>(<span class="at">data=</span>train_df, <span class="at">prop =</span> <span class="fu">c</span>(<span class="fl">0.7</span>,<span class="fl">0.1</span>))</span>
-<span id="cb43-77"><a href="#cb43-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-78"><a href="#cb43-78" aria-hidden="true" tabindex="-1"></a>data_train<span class="ot">=</span><span class="fu">training</span>(data_split)  </span>
-<span id="cb43-79"><a href="#cb43-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-80"><a href="#cb43-80" aria-hidden="true" tabindex="-1"></a>data_test<span class="ot">=</span><span class="fu">testing</span>(data_split)  </span>
-<span id="cb43-81"><a href="#cb43-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-82"><a href="#cb43-82" aria-hidden="true" tabindex="-1"></a>data_valid<span class="ot">=</span><span class="fu">validation</span>(data_split)</span>
-<span id="cb43-83"><a href="#cb43-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-84"><a href="#cb43-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-85"><a href="#cb43-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-88"><a href="#cb43-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-89"><a href="#cb43-89" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_train)</span>
-<span id="cb43-90"><a href="#cb43-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-91"><a href="#cb43-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-94"><a href="#cb43-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-95"><a href="#cb43-95" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_test)</span>
-<span id="cb43-96"><a href="#cb43-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-97"><a href="#cb43-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-100"><a href="#cb43-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-101"><a href="#cb43-101" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_valid)</span>
-<span id="cb43-102"><a href="#cb43-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-103"><a href="#cb43-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-104"><a href="#cb43-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-105"><a href="#cb43-105" aria-hidden="true" tabindex="-1"></a><span class="fu"># modeling</span></span>
-<span id="cb43-106"><a href="#cb43-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-107"><a href="#cb43-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-108"><a href="#cb43-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## recipe</span></span>
-<span id="cb43-109"><a href="#cb43-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-110"><a href="#cb43-110" aria-hidden="true" tabindex="-1"></a>becasue the target class is not balance so using downsample</span>
-<span id="cb43-113"><a href="#cb43-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-114"><a href="#cb43-114" aria-hidden="true" tabindex="-1"></a>data_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> data_train) <span class="sc">%&gt;%</span></span>
-<span id="cb43-115"><a href="#cb43-115" aria-hidden="true" tabindex="-1"></a>  <span class="co">#step_downsample(target_variable) %&gt;%</span></span>
-<span id="cb43-116"><a href="#cb43-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb43-117"><a href="#cb43-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_numeric</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb43-118"><a href="#cb43-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>())</span>
-<span id="cb43-119"><a href="#cb43-119" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb43-120"><a href="#cb43-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-121"><a href="#cb43-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-122"><a href="#cb43-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-123"><a href="#cb43-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## prep the recipe</span></span>
-<span id="cb43-124"><a href="#cb43-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-127"><a href="#cb43-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-128"><a href="#cb43-128" aria-hidden="true" tabindex="-1"></a>data_rec<span class="ot">=</span>data_rec <span class="sc">%&gt;%</span> <span class="fu">prep</span>()</span>
-<span id="cb43-129"><a href="#cb43-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-130"><a href="#cb43-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-133"><a href="#cb43-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-134"><a href="#cb43-134" aria-hidden="true" tabindex="-1"></a>data_rec</span>
-<span id="cb43-135"><a href="#cb43-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-136"><a href="#cb43-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-137"><a href="#cb43-137" aria-hidden="true" tabindex="-1"></a><span class="fu">## bake the train data with preded recipe</span></span>
-<span id="cb43-138"><a href="#cb43-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-141"><a href="#cb43-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-142"><a href="#cb43-142" aria-hidden="true" tabindex="-1"></a>train_proc <span class="ot">&lt;-</span> <span class="fu">bake</span>(data_rec, <span class="at">new_data =</span> data_train)</span>
-<span id="cb43-143"><a href="#cb43-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-144"><a href="#cb43-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-145"><a href="#cb43-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-148"><a href="#cb43-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-149"><a href="#cb43-149" aria-hidden="true" tabindex="-1"></a>train_juice <span class="ot">&lt;-</span><span class="fu">juice</span>(data_rec)</span>
-<span id="cb43-150"><a href="#cb43-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-151"><a href="#cb43-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-152"><a href="#cb43-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-153"><a href="#cb43-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-154"><a href="#cb43-154" aria-hidden="true" tabindex="-1"></a><span class="fu">## bake the test data with preded recipe</span></span>
-<span id="cb43-155"><a href="#cb43-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-158"><a href="#cb43-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-159"><a href="#cb43-159" aria-hidden="true" tabindex="-1"></a>test_proc <span class="ot">&lt;-</span> <span class="fu">bake</span>(data_rec, <span class="at">new_data =</span> data_test)</span>
-<span id="cb43-160"><a href="#cb43-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-161"><a href="#cb43-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-162"><a href="#cb43-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-165"><a href="#cb43-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-166"><a href="#cb43-166" aria-hidden="true" tabindex="-1"></a>valid_proc <span class="ot">&lt;-</span> <span class="fu">bake</span>(data_rec, <span class="at">new_data =</span> data_valid)</span>
-<span id="cb43-167"><a href="#cb43-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-168"><a href="#cb43-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-169"><a href="#cb43-169" aria-hidden="true" tabindex="-1"></a><span class="fu">## model</span></span>
-<span id="cb43-170"><a href="#cb43-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-171"><a href="#cb43-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### linear regression using OLS</span></span>
-<span id="cb43-172"><a href="#cb43-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-175"><a href="#cb43-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-176"><a href="#cb43-176" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb43-177"><a href="#cb43-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">"lm"</span>)</span>
-<span id="cb43-178"><a href="#cb43-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-179"><a href="#cb43-179" aria-hidden="true" tabindex="-1"></a>lm_spec</span>
-<span id="cb43-180"><a href="#cb43-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-181"><a href="#cb43-181" aria-hidden="true" tabindex="-1"></a><span class="fu">### lasso regression </span></span>
-<span id="cb43-182"><a href="#cb43-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-185"><a href="#cb43-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-186"><a href="#cb43-186" aria-hidden="true" tabindex="-1"></a>lasso_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(<span class="at">penalty =</span> <span class="fl">0.1</span>, <span class="at">mixture =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb43-187"><a href="#cb43-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
-<span id="cb43-188"><a href="#cb43-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-189"><a href="#cb43-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-190"><a href="#cb43-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-191"><a href="#cb43-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-192"><a href="#cb43-192" aria-hidden="true" tabindex="-1"></a><span class="fu">### Random Forest Model</span></span>
-<span id="cb43-195"><a href="#cb43-195" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-196"><a href="#cb43-196" aria-hidden="true" tabindex="-1"></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(<span class="at">mode =</span> <span class="st">"regression"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb43-197"><a href="#cb43-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>)</span>
-<span id="cb43-198"><a href="#cb43-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-199"><a href="#cb43-199" aria-hidden="true" tabindex="-1"></a>rf_spec</span>
-<span id="cb43-200"><a href="#cb43-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
-<span id="cb43-201"><a href="#cb43-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-202"><a href="#cb43-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-203"><a href="#cb43-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-204"><a href="#cb43-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## trainning</span></span>
-<span id="cb43-205"><a href="#cb43-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-206"><a href="#cb43-206" aria-hidden="true" tabindex="-1"></a><span class="fu">### train lm model</span></span>
-<span id="cb43-209"><a href="#cb43-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-210"><a href="#cb43-210" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> lm_spec <span class="sc">%&gt;%</span></span>
-<span id="cb43-211"><a href="#cb43-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> train_juice)</span>
-<span id="cb43-212"><a href="#cb43-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-213"><a href="#cb43-213" aria-hidden="true" tabindex="-1"></a>lm_fit</span>
-<span id="cb43-214"><a href="#cb43-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-215"><a href="#cb43-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-218"><a href="#cb43-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-219"><a href="#cb43-219" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span>
-<span id="cb43-220"><a href="#cb43-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-221"><a href="#cb43-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-222"><a href="#cb43-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-223"><a href="#cb43-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### train lasso  model</span></span>
-<span id="cb43-226"><a href="#cb43-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-227"><a href="#cb43-227" aria-hidden="true" tabindex="-1"></a>lasso_fit <span class="ot">&lt;-</span> lasso_spec <span class="sc">%&gt;%</span></span>
-<span id="cb43-228"><a href="#cb43-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> train_juice)</span>
-<span id="cb43-229"><a href="#cb43-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-230"><a href="#cb43-230" aria-hidden="true" tabindex="-1"></a>lasso_fit</span>
-<span id="cb43-231"><a href="#cb43-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-232"><a href="#cb43-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-233"><a href="#cb43-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-234"><a href="#cb43-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-237"><a href="#cb43-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-238"><a href="#cb43-238" aria-hidden="true" tabindex="-1"></a>lasso_fit <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span>
-<span id="cb43-239"><a href="#cb43-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-240"><a href="#cb43-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-241"><a href="#cb43-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-242"><a href="#cb43-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-243"><a href="#cb43-243" aria-hidden="true" tabindex="-1"></a><span class="fu">### train random forest model</span></span>
-<span id="cb43-246"><a href="#cb43-246" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-247"><a href="#cb43-247" aria-hidden="true" tabindex="-1"></a>rf_fit <span class="ot">&lt;-</span> rf_spec <span class="sc">%&gt;%</span></span>
-<span id="cb43-248"><a href="#cb43-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> train_juice)</span>
-<span id="cb43-249"><a href="#cb43-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-250"><a href="#cb43-250" aria-hidden="true" tabindex="-1"></a>rf_fit</span>
-<span id="cb43-251"><a href="#cb43-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-252"><a href="#cb43-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-253"><a href="#cb43-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-254"><a href="#cb43-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-255"><a href="#cb43-255" aria-hidden="true" tabindex="-1"></a><span class="fu"># model result</span></span>
-<span id="cb43-256"><a href="#cb43-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-257"><a href="#cb43-257" aria-hidden="true" tabindex="-1"></a><span class="fu">## Evaluate</span></span>
-<span id="cb43-258"><a href="#cb43-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-261"><a href="#cb43-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-262"><a href="#cb43-262" aria-hidden="true" tabindex="-1"></a>results_train <span class="ot">&lt;-</span> lm_fit <span class="sc">%&gt;%</span></span>
-<span id="cb43-263"><a href="#cb43-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(<span class="at">new_data =</span> train_juice) <span class="sc">%&gt;%</span></span>
-<span id="cb43-264"><a href="#cb43-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb43-265"><a href="#cb43-265" aria-hidden="true" tabindex="-1"></a>    <span class="at">truth =</span> train_juice<span class="sc">$</span>target_variable,</span>
-<span id="cb43-266"><a href="#cb43-266" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> <span class="st">"lm"</span></span>
-<span id="cb43-267"><a href="#cb43-267" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb43-268"><a href="#cb43-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(rf_fit <span class="sc">%&gt;%</span></span>
-<span id="cb43-269"><a href="#cb43-269" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> train_juice) <span class="sc">%&gt;%</span></span>
-<span id="cb43-270"><a href="#cb43-270" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb43-271"><a href="#cb43-271" aria-hidden="true" tabindex="-1"></a>      <span class="at">truth =</span> train_juice<span class="sc">$</span>target_variable,</span>
-<span id="cb43-272"><a href="#cb43-272" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"rf"</span></span>
-<span id="cb43-273"><a href="#cb43-273" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span></span>
-<span id="cb43-274"><a href="#cb43-274" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(lasso_fit <span class="sc">%&gt;%</span></span>
-<span id="cb43-275"><a href="#cb43-275" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> train_juice) <span class="sc">%&gt;%</span></span>
-<span id="cb43-276"><a href="#cb43-276" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb43-277"><a href="#cb43-277" aria-hidden="true" tabindex="-1"></a>      <span class="at">truth =</span> train_juice<span class="sc">$</span>target_variable,</span>
-<span id="cb43-278"><a href="#cb43-278" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"lasso"</span></span>
-<span id="cb43-279"><a href="#cb43-279" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb43-280"><a href="#cb43-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-281"><a href="#cb43-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-282"><a href="#cb43-282" aria-hidden="true" tabindex="-1"></a>results_test <span class="ot">&lt;-</span> lm_fit <span class="sc">%&gt;%</span></span>
-<span id="cb43-283"><a href="#cb43-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(<span class="at">new_data =</span> test_proc) <span class="sc">%&gt;%</span></span>
-<span id="cb43-284"><a href="#cb43-284" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb43-285"><a href="#cb43-285" aria-hidden="true" tabindex="-1"></a>    <span class="at">truth =</span> test_proc<span class="sc">$</span>target_variable,</span>
-<span id="cb43-286"><a href="#cb43-286" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> <span class="st">"lm"</span></span>
-<span id="cb43-287"><a href="#cb43-287" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb43-288"><a href="#cb43-288" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(rf_fit <span class="sc">%&gt;%</span></span>
-<span id="cb43-289"><a href="#cb43-289" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> test_proc) <span class="sc">%&gt;%</span></span>
-<span id="cb43-290"><a href="#cb43-290" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb43-291"><a href="#cb43-291" aria-hidden="true" tabindex="-1"></a>      <span class="at">truth =</span> test_proc<span class="sc">$</span>target_variable,</span>
-<span id="cb43-292"><a href="#cb43-292" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"rf"</span></span>
-<span id="cb43-293"><a href="#cb43-293" aria-hidden="true" tabindex="-1"></a>    ))<span class="sc">%&gt;%</span></span>
-<span id="cb43-294"><a href="#cb43-294" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(lasso_fit <span class="sc">%&gt;%</span></span>
-<span id="cb43-295"><a href="#cb43-295" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> test_proc) <span class="sc">%&gt;%</span></span>
-<span id="cb43-296"><a href="#cb43-296" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb43-297"><a href="#cb43-297" aria-hidden="true" tabindex="-1"></a>      <span class="at">truth =</span> test_proc<span class="sc">$</span>target_variable,</span>
-<span id="cb43-298"><a href="#cb43-298" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"lasso"</span></span>
-<span id="cb43-299"><a href="#cb43-299" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb43-300"><a href="#cb43-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-301"><a href="#cb43-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-302"><a href="#cb43-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-303"><a href="#cb43-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-306"><a href="#cb43-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-307"><a href="#cb43-307" aria-hidden="true" tabindex="-1"></a>results_train <span class="sc">%&gt;%</span></span>
-<span id="cb43-308"><a href="#cb43-308" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(model) <span class="sc">%&gt;%</span></span>
-<span id="cb43-309"><a href="#cb43-309" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(<span class="at">truth =</span> truth, <span class="at">estimate =</span> .pred)</span>
-<span id="cb43-310"><a href="#cb43-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-311"><a href="#cb43-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-312"><a href="#cb43-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-313"><a href="#cb43-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-316"><a href="#cb43-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-317"><a href="#cb43-317" aria-hidden="true" tabindex="-1"></a>results_test <span class="sc">%&gt;%</span></span>
-<span id="cb43-318"><a href="#cb43-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(model) <span class="sc">%&gt;%</span></span>
-<span id="cb43-319"><a href="#cb43-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(<span class="at">truth =</span> truth, <span class="at">estimate =</span> .pred)</span>
-<span id="cb43-320"><a href="#cb43-320" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-321"><a href="#cb43-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-322"><a href="#cb43-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-323"><a href="#cb43-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-324"><a href="#cb43-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-327"><a href="#cb43-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-328"><a href="#cb43-328" aria-hidden="true" tabindex="-1"></a>results_test <span class="sc">%&gt;%</span></span>
-<span id="cb43-329"><a href="#cb43-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">train =</span> <span class="st">"testing"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb43-330"><a href="#cb43-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(results_train <span class="sc">%&gt;%</span></span>
-<span id="cb43-331"><a href="#cb43-331" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">train =</span> <span class="st">"training"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb43-332"><a href="#cb43-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(truth, .pred, <span class="at">color =</span> model)) <span class="sc">+</span></span>
-<span id="cb43-333"><a href="#cb43-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"gray80"</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb43-334"><a href="#cb43-334" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb43-335"><a href="#cb43-335" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>train) <span class="sc">+</span></span>
-<span id="cb43-336"><a href="#cb43-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb43-337"><a href="#cb43-337" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Truth"</span>,</span>
-<span id="cb43-338"><a href="#cb43-338" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Predicted attendance"</span>,</span>
-<span id="cb43-339"><a href="#cb43-339" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Type of model"</span></span>
-<span id="cb43-340"><a href="#cb43-340" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb43-341"><a href="#cb43-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-342"><a href="#cb43-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-343"><a href="#cb43-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-344"><a href="#cb43-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-345"><a href="#cb43-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-346"><a href="#cb43-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-347"><a href="#cb43-347" aria-hidden="true" tabindex="-1"></a><span class="fu">## resample with rf model</span></span>
-<span id="cb43-350"><a href="#cb43-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-351"><a href="#cb43-351" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb43-352"><a href="#cb43-352" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train)</span>
-<span id="cb43-353"><a href="#cb43-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-354"><a href="#cb43-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-355"><a href="#cb43-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-356"><a href="#cb43-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-359"><a href="#cb43-359" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-360"><a href="#cb43-360" aria-hidden="true" tabindex="-1"></a>rf_res <span class="ot">&lt;-</span> lm_spec <span class="sc">%&gt;%</span> <span class="fu">fit_resamples</span>(</span>
-<span id="cb43-361"><a href="#cb43-361" aria-hidden="true" tabindex="-1"></a>  target_variable <span class="sc">~</span> .,</span>
-<span id="cb43-362"><a href="#cb43-362" aria-hidden="true" tabindex="-1"></a>  folds,</span>
-<span id="cb43-363"><a href="#cb43-363" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb43-364"><a href="#cb43-364" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb43-365"><a href="#cb43-365" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-366"><a href="#cb43-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-369"><a href="#cb43-369" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-370"><a href="#cb43-370" aria-hidden="true" tabindex="-1"></a>rf_res <span class="sc">%&gt;%</span></span>
-<span id="cb43-371"><a href="#cb43-371" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>()</span>
-<span id="cb43-372"><a href="#cb43-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-373"><a href="#cb43-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-374"><a href="#cb43-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-375"><a href="#cb43-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-376"><a href="#cb43-376" aria-hidden="true" tabindex="-1"></a><span class="fu"># resouece</span></span>
-<span id="cb43-377"><a href="#cb43-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-378"><a href="#cb43-378" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=1LEW8APSOJo</span>
-<span id="cb43-379"><a href="#cb43-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-380"><a href="#cb43-380" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb45" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Level 2 Regression Tidy Modeling"</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with house price data"</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>using Recipe.</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># load package</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Load Pacakges &amp; Set Options"</span></span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(themis)</span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      </span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)     </span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) <span class="co"># penguin dataset</span></span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)             <span class="co"># better tables</span></span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bonsai)         <span class="co"># tree-based models</span></span>
+<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted)     <span class="co"># function conflicts</span></span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vetiver)</span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Microsoft365R)</span>
+<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pins)</span>
+<span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()     <span class="co"># handle conflicts</span></span>
+<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="st">"penguins"</span>, <span class="st">"palmerpenguins"</span>)</span>
+<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tidymodels.dark =</span> <span class="cn">TRUE</span>) <span class="co"># dark mode</span></span>
+<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>()) <span class="co"># set default ggplot2 theme</span></span>
+<span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a><span class="fu"># data preparation</span></span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## read data</span></span>
+<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a>train <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"data/train.csv"</span>)</span>
+<span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span><span class="fu">read_csv</span>(<span class="st">"data/test.csv"</span>)</span>
+<span id="cb45-54"><a href="#cb45-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-56"><a href="#cb45-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-57"><a href="#cb45-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## data split</span></span>
+<span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-64"><a href="#cb45-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-65"><a href="#cb45-65" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Prepare &amp; Split Data"</span></span>
+<span id="cb45-66"><a href="#cb45-66" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> train  <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(is.numeric)<span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">target_variable=</span>SalePrice)<span class="sc">%&gt;%</span> <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>)</span>
+<span id="cb45-67"><a href="#cb45-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-68"><a href="#cb45-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-69"><a href="#cb45-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-70"><a href="#cb45-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-73"><a href="#cb45-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-74"><a href="#cb45-74" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb45-75"><a href="#cb45-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-76"><a href="#cb45-76" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_validation_split</span>(<span class="at">data=</span>train_df, <span class="at">prop =</span> <span class="fu">c</span>(<span class="fl">0.7</span>,<span class="fl">0.1</span>))</span>
+<span id="cb45-77"><a href="#cb45-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-78"><a href="#cb45-78" aria-hidden="true" tabindex="-1"></a>data_train<span class="ot">=</span><span class="fu">training</span>(data_split)  </span>
+<span id="cb45-79"><a href="#cb45-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-80"><a href="#cb45-80" aria-hidden="true" tabindex="-1"></a>data_test<span class="ot">=</span><span class="fu">testing</span>(data_split)  </span>
+<span id="cb45-81"><a href="#cb45-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-82"><a href="#cb45-82" aria-hidden="true" tabindex="-1"></a>data_valid<span class="ot">=</span><span class="fu">validation</span>(data_split)</span>
+<span id="cb45-83"><a href="#cb45-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-84"><a href="#cb45-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-85"><a href="#cb45-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-88"><a href="#cb45-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-89"><a href="#cb45-89" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_train)</span>
+<span id="cb45-90"><a href="#cb45-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-91"><a href="#cb45-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-94"><a href="#cb45-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-95"><a href="#cb45-95" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_test)</span>
+<span id="cb45-96"><a href="#cb45-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-97"><a href="#cb45-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-100"><a href="#cb45-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-101"><a href="#cb45-101" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_valid)</span>
+<span id="cb45-102"><a href="#cb45-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-103"><a href="#cb45-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-104"><a href="#cb45-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-105"><a href="#cb45-105" aria-hidden="true" tabindex="-1"></a><span class="fu"># modeling</span></span>
+<span id="cb45-106"><a href="#cb45-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-107"><a href="#cb45-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-108"><a href="#cb45-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## recipe</span></span>
+<span id="cb45-109"><a href="#cb45-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-110"><a href="#cb45-110" aria-hidden="true" tabindex="-1"></a>becasue the target class is not balance so using downsample</span>
+<span id="cb45-113"><a href="#cb45-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-114"><a href="#cb45-114" aria-hidden="true" tabindex="-1"></a>data_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> data_train) <span class="sc">%&gt;%</span></span>
+<span id="cb45-115"><a href="#cb45-115" aria-hidden="true" tabindex="-1"></a>  <span class="co">#step_downsample(target_variable) %&gt;%</span></span>
+<span id="cb45-116"><a href="#cb45-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb45-117"><a href="#cb45-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_numeric</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb45-118"><a href="#cb45-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>())</span>
+<span id="cb45-119"><a href="#cb45-119" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb45-120"><a href="#cb45-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-121"><a href="#cb45-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-122"><a href="#cb45-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-123"><a href="#cb45-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## prep the recipe</span></span>
+<span id="cb45-124"><a href="#cb45-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-127"><a href="#cb45-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-128"><a href="#cb45-128" aria-hidden="true" tabindex="-1"></a>data_rec<span class="ot">=</span>data_rec <span class="sc">%&gt;%</span> <span class="fu">prep</span>()</span>
+<span id="cb45-129"><a href="#cb45-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-130"><a href="#cb45-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-133"><a href="#cb45-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-134"><a href="#cb45-134" aria-hidden="true" tabindex="-1"></a>data_rec</span>
+<span id="cb45-135"><a href="#cb45-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-136"><a href="#cb45-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-137"><a href="#cb45-137" aria-hidden="true" tabindex="-1"></a><span class="fu">## bake the train data with preded recipe</span></span>
+<span id="cb45-138"><a href="#cb45-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-141"><a href="#cb45-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-142"><a href="#cb45-142" aria-hidden="true" tabindex="-1"></a>train_proc <span class="ot">&lt;-</span> <span class="fu">bake</span>(data_rec, <span class="at">new_data =</span> data_train)</span>
+<span id="cb45-143"><a href="#cb45-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-144"><a href="#cb45-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-145"><a href="#cb45-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-148"><a href="#cb45-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-149"><a href="#cb45-149" aria-hidden="true" tabindex="-1"></a>train_juice <span class="ot">&lt;-</span><span class="fu">juice</span>(data_rec)</span>
+<span id="cb45-150"><a href="#cb45-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-151"><a href="#cb45-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-152"><a href="#cb45-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-153"><a href="#cb45-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-154"><a href="#cb45-154" aria-hidden="true" tabindex="-1"></a><span class="fu">## bake the test data with preded recipe</span></span>
+<span id="cb45-155"><a href="#cb45-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-158"><a href="#cb45-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-159"><a href="#cb45-159" aria-hidden="true" tabindex="-1"></a>test_proc <span class="ot">&lt;-</span> <span class="fu">bake</span>(data_rec, <span class="at">new_data =</span> data_test)</span>
+<span id="cb45-160"><a href="#cb45-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-161"><a href="#cb45-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-162"><a href="#cb45-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-165"><a href="#cb45-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-166"><a href="#cb45-166" aria-hidden="true" tabindex="-1"></a>valid_proc <span class="ot">&lt;-</span> <span class="fu">bake</span>(data_rec, <span class="at">new_data =</span> data_valid)</span>
+<span id="cb45-167"><a href="#cb45-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-168"><a href="#cb45-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-169"><a href="#cb45-169" aria-hidden="true" tabindex="-1"></a><span class="fu">## model</span></span>
+<span id="cb45-170"><a href="#cb45-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-171"><a href="#cb45-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### linear regression using OLS</span></span>
+<span id="cb45-172"><a href="#cb45-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-175"><a href="#cb45-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-176"><a href="#cb45-176" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb45-177"><a href="#cb45-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="at">engine =</span> <span class="st">"lm"</span>)</span>
+<span id="cb45-178"><a href="#cb45-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-179"><a href="#cb45-179" aria-hidden="true" tabindex="-1"></a>lm_spec</span>
+<span id="cb45-180"><a href="#cb45-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-181"><a href="#cb45-181" aria-hidden="true" tabindex="-1"></a><span class="fu">### lasso regression </span></span>
+<span id="cb45-182"><a href="#cb45-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-185"><a href="#cb45-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-186"><a href="#cb45-186" aria-hidden="true" tabindex="-1"></a>lasso_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(<span class="at">penalty =</span> <span class="fl">0.1</span>, <span class="at">mixture =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-187"><a href="#cb45-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
+<span id="cb45-188"><a href="#cb45-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-189"><a href="#cb45-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-190"><a href="#cb45-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-191"><a href="#cb45-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-192"><a href="#cb45-192" aria-hidden="true" tabindex="-1"></a><span class="fu">### Random Forest Model</span></span>
+<span id="cb45-195"><a href="#cb45-195" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-196"><a href="#cb45-196" aria-hidden="true" tabindex="-1"></a>rf_spec <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(<span class="at">mode =</span> <span class="st">"regression"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-197"><a href="#cb45-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>)</span>
+<span id="cb45-198"><a href="#cb45-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-199"><a href="#cb45-199" aria-hidden="true" tabindex="-1"></a>rf_spec</span>
+<span id="cb45-200"><a href="#cb45-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
+<span id="cb45-201"><a href="#cb45-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-202"><a href="#cb45-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-203"><a href="#cb45-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-204"><a href="#cb45-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## trainning</span></span>
+<span id="cb45-205"><a href="#cb45-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-206"><a href="#cb45-206" aria-hidden="true" tabindex="-1"></a><span class="fu">### train lm model</span></span>
+<span id="cb45-209"><a href="#cb45-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-210"><a href="#cb45-210" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> lm_spec <span class="sc">%&gt;%</span></span>
+<span id="cb45-211"><a href="#cb45-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> train_juice)</span>
+<span id="cb45-212"><a href="#cb45-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-213"><a href="#cb45-213" aria-hidden="true" tabindex="-1"></a>lm_fit</span>
+<span id="cb45-214"><a href="#cb45-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-215"><a href="#cb45-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-218"><a href="#cb45-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-219"><a href="#cb45-219" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span>
+<span id="cb45-220"><a href="#cb45-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-221"><a href="#cb45-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-222"><a href="#cb45-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-223"><a href="#cb45-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### train lasso  model</span></span>
+<span id="cb45-226"><a href="#cb45-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-227"><a href="#cb45-227" aria-hidden="true" tabindex="-1"></a>lasso_fit <span class="ot">&lt;-</span> lasso_spec <span class="sc">%&gt;%</span></span>
+<span id="cb45-228"><a href="#cb45-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> train_juice)</span>
+<span id="cb45-229"><a href="#cb45-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-230"><a href="#cb45-230" aria-hidden="true" tabindex="-1"></a>lasso_fit</span>
+<span id="cb45-231"><a href="#cb45-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-232"><a href="#cb45-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-233"><a href="#cb45-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-234"><a href="#cb45-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-237"><a href="#cb45-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-238"><a href="#cb45-238" aria-hidden="true" tabindex="-1"></a>lasso_fit <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span>
+<span id="cb45-239"><a href="#cb45-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-240"><a href="#cb45-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-241"><a href="#cb45-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-242"><a href="#cb45-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-243"><a href="#cb45-243" aria-hidden="true" tabindex="-1"></a><span class="fu">### train random forest model</span></span>
+<span id="cb45-246"><a href="#cb45-246" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-247"><a href="#cb45-247" aria-hidden="true" tabindex="-1"></a>rf_fit <span class="ot">&lt;-</span> rf_spec <span class="sc">%&gt;%</span></span>
+<span id="cb45-248"><a href="#cb45-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(target_variable <span class="sc">~</span> ., <span class="at">data =</span> train_juice)</span>
+<span id="cb45-249"><a href="#cb45-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-250"><a href="#cb45-250" aria-hidden="true" tabindex="-1"></a>rf_fit</span>
+<span id="cb45-251"><a href="#cb45-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-252"><a href="#cb45-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-253"><a href="#cb45-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-254"><a href="#cb45-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-255"><a href="#cb45-255" aria-hidden="true" tabindex="-1"></a><span class="fu"># model result</span></span>
+<span id="cb45-256"><a href="#cb45-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-257"><a href="#cb45-257" aria-hidden="true" tabindex="-1"></a><span class="fu">## Evaluate</span></span>
+<span id="cb45-258"><a href="#cb45-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-261"><a href="#cb45-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-262"><a href="#cb45-262" aria-hidden="true" tabindex="-1"></a>results_train <span class="ot">&lt;-</span> lm_fit <span class="sc">%&gt;%</span></span>
+<span id="cb45-263"><a href="#cb45-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(<span class="at">new_data =</span> train_juice) <span class="sc">%&gt;%</span></span>
+<span id="cb45-264"><a href="#cb45-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb45-265"><a href="#cb45-265" aria-hidden="true" tabindex="-1"></a>    <span class="at">truth =</span> train_juice<span class="sc">$</span>target_variable,</span>
+<span id="cb45-266"><a href="#cb45-266" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> <span class="st">"lm"</span></span>
+<span id="cb45-267"><a href="#cb45-267" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb45-268"><a href="#cb45-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(rf_fit <span class="sc">%&gt;%</span></span>
+<span id="cb45-269"><a href="#cb45-269" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> train_juice) <span class="sc">%&gt;%</span></span>
+<span id="cb45-270"><a href="#cb45-270" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb45-271"><a href="#cb45-271" aria-hidden="true" tabindex="-1"></a>      <span class="at">truth =</span> train_juice<span class="sc">$</span>target_variable,</span>
+<span id="cb45-272"><a href="#cb45-272" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"rf"</span></span>
+<span id="cb45-273"><a href="#cb45-273" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span></span>
+<span id="cb45-274"><a href="#cb45-274" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(lasso_fit <span class="sc">%&gt;%</span></span>
+<span id="cb45-275"><a href="#cb45-275" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> train_juice) <span class="sc">%&gt;%</span></span>
+<span id="cb45-276"><a href="#cb45-276" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb45-277"><a href="#cb45-277" aria-hidden="true" tabindex="-1"></a>      <span class="at">truth =</span> train_juice<span class="sc">$</span>target_variable,</span>
+<span id="cb45-278"><a href="#cb45-278" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"lasso"</span></span>
+<span id="cb45-279"><a href="#cb45-279" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb45-280"><a href="#cb45-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-281"><a href="#cb45-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-282"><a href="#cb45-282" aria-hidden="true" tabindex="-1"></a>results_test <span class="ot">&lt;-</span> lm_fit <span class="sc">%&gt;%</span></span>
+<span id="cb45-283"><a href="#cb45-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(<span class="at">new_data =</span> test_proc) <span class="sc">%&gt;%</span></span>
+<span id="cb45-284"><a href="#cb45-284" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb45-285"><a href="#cb45-285" aria-hidden="true" tabindex="-1"></a>    <span class="at">truth =</span> test_proc<span class="sc">$</span>target_variable,</span>
+<span id="cb45-286"><a href="#cb45-286" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> <span class="st">"lm"</span></span>
+<span id="cb45-287"><a href="#cb45-287" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb45-288"><a href="#cb45-288" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(rf_fit <span class="sc">%&gt;%</span></span>
+<span id="cb45-289"><a href="#cb45-289" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> test_proc) <span class="sc">%&gt;%</span></span>
+<span id="cb45-290"><a href="#cb45-290" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb45-291"><a href="#cb45-291" aria-hidden="true" tabindex="-1"></a>      <span class="at">truth =</span> test_proc<span class="sc">$</span>target_variable,</span>
+<span id="cb45-292"><a href="#cb45-292" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"rf"</span></span>
+<span id="cb45-293"><a href="#cb45-293" aria-hidden="true" tabindex="-1"></a>    ))<span class="sc">%&gt;%</span></span>
+<span id="cb45-294"><a href="#cb45-294" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(lasso_fit <span class="sc">%&gt;%</span></span>
+<span id="cb45-295"><a href="#cb45-295" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> test_proc) <span class="sc">%&gt;%</span></span>
+<span id="cb45-296"><a href="#cb45-296" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb45-297"><a href="#cb45-297" aria-hidden="true" tabindex="-1"></a>      <span class="at">truth =</span> test_proc<span class="sc">$</span>target_variable,</span>
+<span id="cb45-298"><a href="#cb45-298" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"lasso"</span></span>
+<span id="cb45-299"><a href="#cb45-299" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb45-300"><a href="#cb45-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-301"><a href="#cb45-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-302"><a href="#cb45-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-303"><a href="#cb45-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-306"><a href="#cb45-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-307"><a href="#cb45-307" aria-hidden="true" tabindex="-1"></a>results_train <span class="sc">%&gt;%</span></span>
+<span id="cb45-308"><a href="#cb45-308" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(model) <span class="sc">%&gt;%</span></span>
+<span id="cb45-309"><a href="#cb45-309" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(<span class="at">truth =</span> truth, <span class="at">estimate =</span> .pred)</span>
+<span id="cb45-310"><a href="#cb45-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-311"><a href="#cb45-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-312"><a href="#cb45-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-313"><a href="#cb45-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-316"><a href="#cb45-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-317"><a href="#cb45-317" aria-hidden="true" tabindex="-1"></a>results_test <span class="sc">%&gt;%</span></span>
+<span id="cb45-318"><a href="#cb45-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(model) <span class="sc">%&gt;%</span></span>
+<span id="cb45-319"><a href="#cb45-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(<span class="at">truth =</span> truth, <span class="at">estimate =</span> .pred)</span>
+<span id="cb45-320"><a href="#cb45-320" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-321"><a href="#cb45-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-322"><a href="#cb45-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-323"><a href="#cb45-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-324"><a href="#cb45-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-327"><a href="#cb45-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-328"><a href="#cb45-328" aria-hidden="true" tabindex="-1"></a>results_test <span class="sc">%&gt;%</span></span>
+<span id="cb45-329"><a href="#cb45-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">train =</span> <span class="st">"testing"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-330"><a href="#cb45-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(results_train <span class="sc">%&gt;%</span></span>
+<span id="cb45-331"><a href="#cb45-331" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">train =</span> <span class="st">"training"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-332"><a href="#cb45-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(truth, .pred, <span class="at">color =</span> model)) <span class="sc">+</span></span>
+<span id="cb45-333"><a href="#cb45-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"gray80"</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb45-334"><a href="#cb45-334" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb45-335"><a href="#cb45-335" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>train) <span class="sc">+</span></span>
+<span id="cb45-336"><a href="#cb45-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-337"><a href="#cb45-337" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Truth"</span>,</span>
+<span id="cb45-338"><a href="#cb45-338" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Predicted attendance"</span>,</span>
+<span id="cb45-339"><a href="#cb45-339" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Type of model"</span></span>
+<span id="cb45-340"><a href="#cb45-340" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-341"><a href="#cb45-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-342"><a href="#cb45-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-343"><a href="#cb45-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-344"><a href="#cb45-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-345"><a href="#cb45-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-346"><a href="#cb45-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-347"><a href="#cb45-347" aria-hidden="true" tabindex="-1"></a><span class="fu">## resample with rf model</span></span>
+<span id="cb45-350"><a href="#cb45-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-351"><a href="#cb45-351" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb45-352"><a href="#cb45-352" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(data_train)</span>
+<span id="cb45-353"><a href="#cb45-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-354"><a href="#cb45-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-355"><a href="#cb45-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-356"><a href="#cb45-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-359"><a href="#cb45-359" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-360"><a href="#cb45-360" aria-hidden="true" tabindex="-1"></a>rf_res <span class="ot">&lt;-</span> lm_spec <span class="sc">%&gt;%</span> <span class="fu">fit_resamples</span>(</span>
+<span id="cb45-361"><a href="#cb45-361" aria-hidden="true" tabindex="-1"></a>  target_variable <span class="sc">~</span> .,</span>
+<span id="cb45-362"><a href="#cb45-362" aria-hidden="true" tabindex="-1"></a>  folds,</span>
+<span id="cb45-363"><a href="#cb45-363" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb45-364"><a href="#cb45-364" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-365"><a href="#cb45-365" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-366"><a href="#cb45-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-369"><a href="#cb45-369" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-370"><a href="#cb45-370" aria-hidden="true" tabindex="-1"></a>rf_res <span class="sc">%&gt;%</span></span>
+<span id="cb45-371"><a href="#cb45-371" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>()</span>
+<span id="cb45-372"><a href="#cb45-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-373"><a href="#cb45-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-374"><a href="#cb45-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-375"><a href="#cb45-375" aria-hidden="true" tabindex="-1"></a><span class="fu"># future prediction</span></span>
+<span id="cb45-376"><a href="#cb45-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-379"><a href="#cb45-379" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-380"><a href="#cb45-380" aria-hidden="true" tabindex="-1"></a>future_predict<span class="ot">=</span><span class="fu">predict</span>(rf_fit,data_valid)</span>
+<span id="cb45-381"><a href="#cb45-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-382"><a href="#cb45-382" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(future_predict)</span>
+<span id="cb45-383"><a href="#cb45-383" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-384"><a href="#cb45-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-385"><a href="#cb45-385" aria-hidden="true" tabindex="-1"></a><span class="fu"># resouece</span></span>
+<span id="cb45-386"><a href="#cb45-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-387"><a href="#cb45-387" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=1LEW8APSOJo</span>
+<span id="cb45-388"><a href="#cb45-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-389"><a href="#cb45-389" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

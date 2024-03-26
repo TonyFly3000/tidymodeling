@@ -97,7 +97,7 @@ data_rec <- recipe(target_variable ~ ., data = data_train) %>%
   #step_downsample(target_variable) %>%
   step_dummy(all_nominal(), -all_outcomes()) %>%
   step_zv(all_numeric()) %>%
-  step_normalize(all_numeric())
+  step_normalize(all_numeric(),-all_outcomes())
   
 ```
 
@@ -212,11 +212,41 @@ final_res <-
 ```
 
 ```{r}
+options(scipen=10000)
 final_res %>%
   collect_metrics()
 ```
 
-## resample with tuned model
+# resample with tuned model
+
+
+```{r}
+set.seed(1234)
+folds <- vfold_cv(data_train)
+```
+
+```{r}
+
+resample_res <- final_wf %>% extract_spec_parsnip() %>% fit_resamples(
+  target_variable ~ .,
+  folds,
+  control = control_resamples(save_pred = TRUE)
+)
+```
+
+```{r}
+
+resample_res %>%
+  collect_metrics()
+```
+
+# future prediction with last fit
+
+```{r}
+future_predict=predict(final_res%>% extract_workflow(),data_valid)
+
+glimpse(future_predict)
+```
 
 # resouece
 

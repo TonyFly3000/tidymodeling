@@ -77,6 +77,9 @@ data_valid=validation(data_split)
 
 ```
 
+
+
+
 ```{r}
 dim(data_train)
 ```
@@ -98,9 +101,21 @@ data_rec <- recipe(target_variable ~ ., data = data_train) %>%
   #step_downsample(target_variable) %>%
   step_dummy(all_nominal(), -all_outcomes()) %>%
   step_zv(all_numeric()) %>%
-  step_normalize(all_numeric())
+  step_normalize(all_numeric(), -all_outcomes())
   
 ```
+
+
+```{r}
+
+trained_data_rec <- prep(data_rec, training = data_train)
+```
+
+
+```{r}
+trained_data_rec %>%check_missing("LotFrontage")
+```
+
 
 ## model
 
@@ -297,6 +312,7 @@ final_workflow <-
 
 
 
+
 # model result
 
 
@@ -310,6 +326,7 @@ final_fit <-
 ```
 
 ```{r}
+options(scipen=10000)
 final_fit %>%
   collect_metrics()
 ```
@@ -320,10 +337,36 @@ final_fit %>%
     x = "Truth",
     y = "Predicted attendance",
     color = "Type of model"
-  )
+  )+scale_x_continuous(labels = scales::comma) +scale_y_continuous(labels = scales::comma) 
 ```
 
-## resample with tuned model
+
+manual calculate RMSE on testing data
+
+```{r}
+final_data=final_fit%>%collect_predictions()
+
+final_data2=final_data %>% mutate(diff=target_variable-.pred)%>% mutate(diff2=diff^2)
+
+a=sum(final_data2$diff2)/nrow(final_data2)
+
+sqrt(a)
+
+#glimpse(final_data2)
+```
+
+
+
+
+
+# future prediction
+
+```{r}
+future_predict=predict(final_fit %>% extract_workflow(),data_valid)
+
+glimpse(future_predict)
+```
+
 
 # resouece
 

@@ -38,6 +38,7 @@ website:
       - sidebar:Classification_hotel
       - sidebar:Classification_titanic
       - sidebar:house_price_regression_model
+      - sidebar:house_price_tensorflow
  
   page-footer:
     right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
@@ -63,6 +64,13 @@ website:
       background: light
       collapse-level: 2
       contents: house price regression model 
+
+    - id: house_price_tensorflow
+      title: "house price tensorflow model"
+      style: "floating"
+      background: light
+      collapse-level: 2
+      contents: tensorflow
 
 
 

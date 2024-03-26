@@ -100,7 +100,7 @@ data_rec <- recipe(target_variable ~ ., data = data_train) %>%
   #step_downsample(target_variable) %>%
   step_dummy(all_nominal(), -all_outcomes()) %>%
   step_zv(all_numeric()) %>%
-  step_normalize(all_numeric())
+  step_normalize(all_numeric(), -all_outcomes())
   
 ```
 
@@ -378,6 +378,13 @@ p
 ```
 
 
+# future prediction
+
+```{r}
+future_predict=predict(rf_fit,data_valid)
+
+glimpse(future_predict)
+```
 
 
 # resouece

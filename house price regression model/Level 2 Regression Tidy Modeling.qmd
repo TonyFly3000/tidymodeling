@@ -317,6 +317,13 @@ rf_res %>%
 ```
 
 
+# future prediction
+
+```{r}
+future_predict=predict(rf_fit,data_valid)
+
+glimpse(future_predict)
+```
 
 # resouece
 
