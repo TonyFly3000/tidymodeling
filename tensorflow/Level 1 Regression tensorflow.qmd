@@ -172,6 +172,11 @@ output.head()
 ```
 
 
+# save model
+
+```{python}
+rf.save("tf_random_forest_model")
+```
 
 # resouece
 
