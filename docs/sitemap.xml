@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://example.com/index/1 index.html</loc>
+    <lastmod>2024-03-20T03:18:13.735Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/index/2 about.html</loc>
+    <lastmod>2024-03-17T19:33:03.570Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/index/3 resample.html</loc>
+    <lastmod>2024-03-20T02:39:54.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/index/4 recipe.html</loc>
+    <lastmod>2024-03-26T06:52:50.953Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/hotel classification model/Level 0 classification Tidy Modeling.html</loc>
+    <lastmod>2024-03-20T02:15:07.966Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/titanic classification model/Level 1 classification Tidy Modeling.html</loc>
+    <lastmod>2024-03-14T10:32:48.451Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/house price regression model/Level 3 Regression Tidy Modeling.html</loc>
+    <lastmod>2024-03-26T06:32:26.753Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/tensorflow/Level 1 Regression tensorflow.html</loc>
+    <lastmod>2024-03-26T10:47:05.032Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/house price regression model/Level 1 Regression Tidy Modeling.html</loc>
+    <lastmod>2024-03-25T08:40:49.522Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/house price regression model/Level 6 Regression Tidy Modeling.html</loc>
+    <lastmod>2024-03-26T06:52:50.908Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/titanic classification model/Level 3 classification Tidy Modeling.html</loc>
+    <lastmod>2024-03-15T10:46:35.089Z</lastmod>
+  </url>
+</urlset>

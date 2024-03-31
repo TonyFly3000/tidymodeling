@@ -6,6 +6,8 @@ project:
 language: 
   search-box-placeholder: Search
 
+
+
 format:
   html:
     theme: cosmo
@@ -19,21 +21,20 @@ format:
 
 website:
   back-to-top-navigation: true
+  reader-mode: true
   search:
     location: navbar
     type: textbox
 
-  title: "tidymodeling"
+  title: "Tidymodel with R"
+  image: "logo.jpg"
   favicon: "logo.jpg"
+  twitter-card: true
+  site-url: https://example.com
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
-      - href: recipe.qmd
-        text: Recipe
-      - href: resample.qmd
-        text: resample
+      - sidebar:index
+
      
       - sidebar:Classification_hotel
       - sidebar:Classification_titanic
@@ -44,12 +45,23 @@ website:
     right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
       
   sidebar:
+    - id: index
+      title: "index"
+      style: "floating"
+      background: light
+      collapse-level: 2
+      contents: index
+
+
+
+
+
     - id: Classification_hotel
       title: "hotel Classification model"
       style: "floating"
       background: light
       collapse-level: 2
-      contents: hote classification model
+      contents: hotel classification model
       
     - id: Classification_titanic
       title: "titanic Classification model"

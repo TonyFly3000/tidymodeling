@@ -106,6 +106,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../styles.css">
+<meta name="twitter:title" content="tidymodeling - Level 1 Regression Tensorflow model">
+<meta name="twitter:description" content="with house price data">
+<meta name="twitter:image" content="https://quarto.org/docs/websites/images/tools.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -125,27 +129,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-index" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">index</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-index">    
+        <li class="dropdown-header">Index</li>
+        <li>
+    <a class="dropdown-item" href="../index/1 index.html">
+ <span class="dropdown-text">tidymodeling</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+        <li>
+    <a class="dropdown-item" href="../index/2 about.html">
+ <span class="dropdown-text">About</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../recipe.html"> 
-<span class="menu-text">Recipe</span></a>
+        <li>
+    <a class="dropdown-item" href="../index/3 resample.html">
+ <span class="dropdown-text">resample</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../resample.html"> 
-<span class="menu-text">resample</span></a>
+        <li>
+    <a class="dropdown-item" href="../index/4 recipe.html">
+ <span class="dropdown-text">recipe</span></a>
   </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hotel-classification-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">hotel Classification model</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hotel-classification-model">    
+        <li class="dropdown-header">hotel classification model</li>
+        <li>
+    <a class="dropdown-item" href="../hotel classification model/Level 0 classification Tidy Modeling.html">
+ <span class="dropdown-text">Level 0 classification Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../hotel classification model/Level 1 classification Tidy Modeling.html">
+ <span class="dropdown-text">Level 1 classification Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../hotel classification model/Level 2 classification Tidy Modeling.html">
+ <span class="dropdown-text">Level 2 classification Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../hotel classification model/Level 3 classification Tidy Modeling.html">
+ <span class="dropdown-text">Level 3 classification Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../hotel classification model/Level 4 classification Tidy Modeling.html">
+ <span class="dropdown-text">Level 4 classification Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../hotel classification model/Level 5 classification Tidy Modeling.html">
+ <span class="dropdown-text">Level 5 classification Tidy Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../hotel classification model/Level 6 classification Tidy Modeling.html">
+ <span class="dropdown-text">Level 6 classification Tidy Modeling</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -235,6 +276,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -295,7 +341,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#variable-importances" id="toc-variable-importances" class="nav-link" data-scroll-target="#variable-importances"><span class="header-section-number">3.3</span> Variable importances</a></li>
   </ul></li>
   <li><a href="#future-prediction" id="toc-future-prediction" class="nav-link" data-scroll-target="#future-prediction"><span class="header-section-number">4</span> future prediction</a></li>
-  <li><a href="#resouece" id="toc-resouece" class="nav-link" data-scroll-target="#resouece"><span class="header-section-number">5</span> resouece</a></li>
+  <li><a href="#save-model" id="toc-save-model" class="nav-link" data-scroll-target="#save-model"><span class="header-section-number">5</span> save model</a></li>
+  <li><a href="#resouece" id="toc-resouece" class="nav-link" data-scroll-target="#resouece"><span class="header-section-number">6</span> resouece</a></li>
   </ul>
 </nav>
     </div>
@@ -324,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="load-package" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> load package</h1>
-<div id="be4994fb" class="cell" data-execution_count="1">
+<div id="e74f5a21" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow_decision_forests <span class="im">as</span> tfdf</span>
@@ -337,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="4a910fa0" class="cell" data-execution_count="2">
+<div id="638927b2" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TensorFlow v"</span> <span class="op">+</span> tf.__version__)</span>
@@ -353,7 +400,7 @@ TensorFlow Decision Forests v1.9.0</code></pre>
 <h1 data-number="2"><span class="header-section-number">2</span> data preparation</h1>
 <section id="read-data" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="read-data"><span class="header-section-number">2.1</span> read data</h2>
-<div id="3f9ed5c2" class="cell" data-execution_count="3">
+<div id="34270e3e" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>train_file_path <span class="op">=</span> <span class="st">"data/train.csv"</span></span>
@@ -364,12 +411,12 @@ TensorFlow Decision Forests v1.9.0</code></pre>
 <pre><code>Full train dataset shape is (1460, 81)</code></pre>
 </div>
 </div>
-<div id="ab4de7c2" class="cell" data-execution_count="4">
+<div id="7621368b" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dataset_df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="60">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <div>
 
@@ -482,13 +529,13 @@ TensorFlow Decision Forests v1.9.0</code></pre>
 </div>
 </div>
 </div>
-<div id="5fb5c7de" class="cell" data-execution_count="5">
+<div id="e427647d" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dataset_df <span class="op">=</span> dataset_df.drop(<span class="st">'Id'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dataset_df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <div>
 
@@ -601,7 +648,7 @@ TensorFlow Decision Forests v1.9.0</code></pre>
 </div>
 </div>
 </div>
-<div id="46fab882" class="cell" data-execution_count="6">
+<div id="3e1e6dae" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataset_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -699,7 +746,7 @@ memory usage: 912.6+ KB</code></pre>
 </section>
 <section id="data-pre" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="data-pre"><span class="header-section-number">2.2</span> data pre</h2>
-<div id="9b9c52e4" class="cell" data-execution_count="7">
+<div id="115160a9" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -712,10 +759,10 @@ memory usage: 912.6+ KB</code></pre>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(train_ds_pd), <span class="bu">len</span>(valid_ds_pd)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>1028 examples in training, 432 examples in testing.</code></pre>
+<pre><code>1012 examples in training, 448 examples in testing.</code></pre>
 </div>
 </div>
-<div id="f1c5fbd4" class="cell" data-execution_count="8">
+<div id="c1eb3a51" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>label <span class="op">=</span> <span class="st">'SalePrice'</span></span>
@@ -729,57 +776,57 @@ memory usage: 912.6+ KB</code></pre>
 <h1 data-number="3"><span class="header-section-number">3</span> model</h1>
 <section id="define-model-keras-random-forest" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="define-model-keras-random-forest"><span class="header-section-number">3.1</span> define model Keras random forest</h2>
-<div id="762f9cb0" class="cell" data-execution_count="9">
+<div id="bf200d07" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tfdf.keras.get_all_models()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="65">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>[tensorflow_decision_forests.keras.RandomForestModel,
  tensorflow_decision_forests.keras.GradientBoostedTreesModel,
  tensorflow_decision_forests.keras.CartModel,
  tensorflow_decision_forests.keras.DistributedGradientBoostedTreesModel]</code></pre>
 </div>
 </div>
-<div id="29154f08" class="cell" data-execution_count="10">
+<div id="1bb82821" class="cell" data-execution_count="10">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> tfdf.keras.RandomForestModel(task <span class="op">=</span> tfdf.keras.Task.REGRESSION)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>rf.<span class="bu">compile</span>(metrics<span class="op">=</span>[<span class="st">"mse"</span>]) <span class="co"># Optional, you can use this to include a list of eval metrics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Use /var/folders/v3/pzt9c47n1nbcsmybsg_w0lhw0000gn/T/tmp8me3iklp as temporary training directory</code></pre>
+<pre><code>Use /var/folders/v3/pzt9c47n1nbcsmybsg_w0lhw0000gn/T/tmpfvd0haib as temporary training directory</code></pre>
 </div>
 </div>
 </section>
 <section id="train-model" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="train-model"><span class="header-section-number">3.2</span> train model</h2>
-<div id="913267c1" class="cell" data-execution_count="11">
+<div id="a815593a" class="cell" data-execution_count="11">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>rf.fit(x<span class="op">=</span>train_ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading training dataset...
-Training dataset read in 0:00:00.391189. Found 1028 examples.
+Training dataset read in 0:00:01.592298. Found 1012 examples.
 Training model...
-Model trained in 0:00:00.501435
+Model trained in 0:00:00.488444
 Compiling model...
 Model compiled.</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="67">
-<pre><code>&lt;tf_keras.src.callbacks.History at 0x29fd9e510&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>&lt;tf_keras.src.callbacks.History at 0x10572d850&gt;</code></pre>
 </div>
 </div>
-<div id="9884d5e2" class="cell" data-execution_count="12">
+<div id="7b5dd542" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tfdf.model_plotter.plot_model_in_colab(rf, tree_idx<span class="op">=</span><span class="dv">0</span>, max_depth<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="68">
+<div class="cell-output cell-output-display" data-execution_count="12">
 
 <script src="https://d3js.org/d3.v6.min.js"></script>
-<div id="tree_plot_8180615590b0455ab830d2a715b95632"></div>
+<div id="tree_plot_19224086337a41508a0e132d171ce08e"></div>
 <script>
 /*
  * Copyright 2021 Google LLC.
@@ -1209,11 +1256,11 @@ function display_edges(options, graph, tree_struct) {
           'stroke', d => (d.target === d.source.children[0]) ? '#0F0' : '#F00');
 }
 
-display_tree({"margin": 10, "node_x_size": 160, "node_y_size": 28, "node_x_offset": 180, "node_y_offset": 33, "font_size": 10, "edge_rounding": 20, "node_padding": 2, "show_plot_bounding_box": false}, {"value": {"type": "REGRESSION", "value": 179698.609375, "num_examples": 1028.0, "standard_deviation": 78574.49016958731}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "ExterQual", "mask": ["Gd", "Ex"]}, "children": [{"value": {"type": "REGRESSION", "value": 242526.40625, "num_examples": 405.0, "standard_deviation": 81888.59466097587}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "OverallQual", "threshold": 7.5}, "children": [{"value": {"type": "REGRESSION", "value": 299987.21875, "num_examples": 171.0, "standard_deviation": 87297.76510357232}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "1stFlrSF", "threshold": 1815.5}, "children": [{"value": {"type": "REGRESSION", "value": 405829.59375, "num_examples": 25.0, "standard_deviation": 133197.72250064934}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "1stFlrSF", "threshold": 2671.0}}, {"value": {"type": "REGRESSION", "value": 281863.5, "num_examples": 146.0, "standard_deviation": 60342.13882165374}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "BsmtQual", "mask": ["Ex"]}}]}, {"value": {"type": "REGRESSION", "value": 200535.8125, "num_examples": 234.0, "standard_deviation": 43138.731317211204}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "2ndFlrSF", "threshold": 881.0}, "children": [{"value": {"type": "REGRESSION", "value": 245240.640625, "num_examples": 47.0, "standard_deviation": 42848.96012463764}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "TotalBsmtSF", "threshold": 1196.5}}, {"value": {"type": "REGRESSION", "value": 189299.84375, "num_examples": 187.0, "standard_deviation": 35194.651437619345}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "BsmtExposure", "mask": ["Gd", "Mn"]}}]}]}, {"value": {"type": "REGRESSION", "value": 138855.484375, "num_examples": 623.0, "standard_deviation": 39924.93491496481}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "GrLivArea", "threshold": 1318.5}, "children": [{"value": {"type": "REGRESSION", "value": 161787.140625, "num_examples": 278.0, "standard_deviation": 39217.61110703047}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "Neighborhood", "mask": ["CollgCr", "Somerst", "Gilbert", "NridgHt", "NWAmes", "SawyerW", "Crawfor", "Timber", "ClearCr"]}, "children": [{"value": {"type": "REGRESSION", "value": 186855.640625, "num_examples": 101.0, "standard_deviation": 42206.064368637395}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "2ndFlrSF", "threshold": 984.0}}, {"value": {"type": "REGRESSION", "value": 147482.53125, "num_examples": 177.0, "standard_deviation": 28912.870582926862}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "BsmtFinType1", "mask": ["GLQ", "ALQ", "BLQ", "Rec", "LwQ"]}}]}, {"value": {"type": "REGRESSION", "value": 120377.2265625, "num_examples": 345.0, "standard_deviation": 29562.223084090325}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "TotalBsmtSF", "threshold": 920.5}, "children": [{"value": {"type": "REGRESSION", "value": 139591.671875, "num_examples": 153.0, "standard_deviation": 20401.450523690433}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "YearRemodAdd", "threshold": 1968.5}}, {"value": {"type": "REGRESSION", "value": 105065.71875, "num_examples": 192.0, "standard_deviation": 26646.1081250633}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "Neighborhood", "mask": ["<OOD>", "NAmes", "CollgCr", "Sawyer", "Mitchel"]}}]}]}]}, "#tree_plot_8180615590b0455ab830d2a715b95632")
+display_tree({"margin": 10, "node_x_size": 160, "node_y_size": 28, "node_x_offset": 180, "node_y_offset": 33, "font_size": 10, "edge_rounding": 20, "node_padding": 2, "show_plot_bounding_box": false}, {"value": {"type": "REGRESSION", "value": 183384.8125, "num_examples": 1012.0, "standard_deviation": 81823.21337079075}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "ExterQual", "mask": ["Gd", "Ex"]}, "children": [{"value": {"type": "REGRESSION", "value": 246352.109375, "num_examples": 382.0, "standard_deviation": 86449.45342544401}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "GarageCars", "threshold": 2.5}, "children": [{"value": {"type": "REGRESSION", "value": 331757.28125, "num_examples": 122.0, "standard_deviation": 89806.03329072129}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "Neighborhood", "mask": ["OldTown", "NridgHt", "NoRidge", "StoneBr"]}, "children": [{"value": {"type": "REGRESSION", "value": 377510.3125, "num_examples": 67.0, "standard_deviation": 83146.49177456836}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "KitchenQual", "mask": ["Ex"]}}, {"value": {"type": "REGRESSION", "value": 276021.78125, "num_examples": 55.0, "standard_deviation": 61738.915386029454}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "MoSold", "threshold": 4.5}}]}, {"value": {"type": "REGRESSION", "value": 206277.375, "num_examples": 260.0, "standard_deviation": 46554.59688548922}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "1stFlrSF", "threshold": 1443.0}, "children": [{"value": {"type": "REGRESSION", "value": 252448.609375, "num_examples": 63.0, "standard_deviation": 44828.17374472188}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "Neighborhood", "mask": ["Somerst", "Edwards", "NoRidge", "ClearCr", "Veenker"]}}, {"value": {"type": "REGRESSION", "value": 191511.96875, "num_examples": 197.0, "standard_deviation": 36304.6625736636}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "BedroomAbvGr", "threshold": 3.5}}]}]}, {"value": {"type": "REGRESSION", "value": 145204.640625, "num_examples": 630.0, "standard_deviation": 48592.03891162618}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "GrLivArea", "threshold": 1475.5}, "children": [{"value": {"type": "REGRESSION", "value": 186373.75, "num_examples": 208.0, "standard_deviation": 51470.71054901658}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "Neighborhood", "mask": ["CollgCr", "Somerst", "NridgHt", "Crawfor", "ClearCr"]}, "children": [{"value": {"type": "REGRESSION", "value": 238493.140625, "num_examples": 41.0, "standard_deviation": 66746.82312529972}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "OverallQual", "threshold": 7.5}}, {"value": {"type": "REGRESSION", "value": 173577.96875, "num_examples": 167.0, "standard_deviation": 37084.06865293657}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "KitchenQual", "mask": ["Gd"]}}]}, {"value": {"type": "REGRESSION", "value": 124912.765625, "num_examples": 422.0, "standard_deviation": 31177.72963632215}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "OverallQual", "threshold": 4.5}, "children": [{"value": {"type": "REGRESSION", "value": 133860.9375, "num_examples": 328.0, "standard_deviation": 26143.66795804255}, "condition": {"type": "NUMERICAL_IS_HIGHER_THAN", "attribute": "1stFlrSF", "threshold": 1090.0}}, {"value": {"type": "REGRESSION", "value": 93689.359375, "num_examples": 94.0, "standard_deviation": 26919.250209615697}, "condition": {"type": "CATEGORICAL_IS_IN", "attribute": "CentralAir", "mask": ["Y"]}}]}]}]}, "#tree_plot_19224086337a41508a0e132d171ce08e")
 </script>
 </div>
 </div>
-<div id="87d4ff43" class="cell" data-execution_count="13">
+<div id="7f49ffd8" class="cell" data-execution_count="13">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1231,17 +1278,17 @@ display_tree({"margin": 10, "node_x_size": 160, "node_y_size": 28, "node_x_offse
 </div>
 </div>
 </div>
-<div id="cb232c82" class="cell" data-execution_count="14">
+<div id="613ff893" class="cell" data-execution_count="14">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>inspector <span class="op">=</span> rf.make_inspector()</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>inspector.evaluation()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="70">
-<pre><code>Evaluation(num_examples=1028, accuracy=None, loss=None, rmse=29517.17971265618, ndcg=None, aucs=None, auuc=None, qini=None)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>Evaluation(num_examples=1012, accuracy=None, loss=None, rmse=29144.798502788246, ndcg=None, aucs=None, auuc=None, qini=None)</code></pre>
 </div>
 </div>
-<div id="d7e16f60" class="cell" data-execution_count="15">
+<div id="47e504c9" class="cell" data-execution_count="15">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>evaluation <span class="op">=</span> rf.evaluate(x<span class="op">=</span>valid_ds,return_dict<span class="op">=</span><span class="va">True</span>)</span>
@@ -1250,12 +1297,12 @@ display_tree({"margin": 10, "node_x_size": 160, "node_y_size": 28, "node_x_offse
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>1/1 [==============================] - ETA: 0s - loss: 0.0000e+00 - mse: 845772288.00001/1 [==============================] - 0s 232ms/step - loss: 0.0000e+00 - mse: 845772288.0000
+<pre><code>1/1 [==============================] - ETA: 0s - loss: 0.0000e+00 - mse: 912837952.00001/1 [==============================] - 2s 2s/step - loss: 0.0000e+00 - mse: 912837952.0000
 loss: 0.0000
-mse: 845772288.0000</code></pre>
+mse: 912837952.0000</code></pre>
 </div>
 </div>
-<div id="66ef1a91" class="cell" data-execution_count="16">
+<div id="6540dc29" class="cell" data-execution_count="16">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, value <span class="kw">in</span> evaluation.items():</span>
@@ -1263,20 +1310,20 @@ mse: 845772288.0000</code></pre>
 </details>
 </div>
 <p>RMSE</p>
-<div id="bfe21d2a" class="cell" data-execution_count="17">
+<div id="cf563b99" class="cell" data-execution_count="17">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>math.sqrt(mse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="73">
-<pre><code>29082.16443114233</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>30213.208237458002</code></pre>
 </div>
 </div>
 </section>
 <section id="variable-importances" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="variable-importances"><span class="header-section-number">3.3</span> Variable importances</h2>
-<div id="6b0d711c" class="cell" data-execution_count="18">
+<div id="a98224b7" class="cell" data-execution_count="18">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Available variable importances:"</span>)</span>
@@ -1285,17 +1332,17 @@ mse: 845772288.0000</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Available variable importances:
-     NUM_AS_ROOT
+     INV_MEAN_MIN_DEPTH
      NUM_NODES
-     SUM_SCORE
-     INV_MEAN_MIN_DEPTH</code></pre>
+     NUM_AS_ROOT
+     SUM_SCORE</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="future-prediction" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> future prediction</h1>
-<div id="2eb891ea" class="cell" data-execution_count="19">
+<div id="d1fa092a" class="cell" data-execution_count="19">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>test_file_path <span class="op">=</span> <span class="st">"data/test.csv"</span></span>
@@ -1315,7 +1362,7 @@ mse: 845772288.0000</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>1/2 [==============&gt;...............] - ETA: 0s2/2 [==============================] - 0s 11ms/step</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="75">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 <div>
 
@@ -1332,27 +1379,27 @@ mse: 845772288.0000</code></pre>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>1461</td>
-<td>126898.554688</td>
+<td>125914.187500</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>1462</td>
-<td>153224.859375</td>
+<td>152230.437500</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>1463</td>
-<td>180787.203125</td>
+<td>175308.421875</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>1464</td>
-<td>186609.140625</td>
+<td>183049.640625</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>1465</td>
-<td>191038.765625</td>
+<td>196592.921875</td>
 </tr>
 </tbody>
 </table>
@@ -1362,8 +1409,20 @@ mse: 845772288.0000</code></pre>
 </div>
 </div>
 </section>
-<section id="resouece" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> resouece</h1>
+<section id="save-model" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> save model</h1>
+<div id="9156aacb" class="cell" data-execution_count="20">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>rf.save(<span class="st">"tf_random_forest_model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>INFO:tensorflow:Assets written to: tf_random_forest_model/assets</code></pre>
+</div>
+</div>
+</section>
+<section id="resouece" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> resouece</h1>
 <p>https://www.kaggle.com/code/gusthema/house-prices-prediction-using-tfdf</p>
 
 
@@ -1810,184 +1869,189 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb33" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Level 1 Regression Tensorflow model"</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with house price data"</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># load package</span></span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow_decision_forests <span class="im">as</span> tfdf</span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow_decision_forests <span class="im">as</span> tfdf</span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TensorFlow v"</span> <span class="op">+</span> tf.__version__)</span>
-<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TensorFlow Decision Forests v"</span> <span class="op">+</span> tfdf.__version__)</span>
-<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a><span class="fu"># data preparation</span></span>
-<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## read data</span></span>
-<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>train_file_path <span class="op">=</span> <span class="st">"data/train.csv"</span></span>
-<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>dataset_df <span class="op">=</span> pd.read_csv(train_file_path)</span>
-<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Full train dataset shape is </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(dataset_df.shape))</span>
-<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a>dataset_df.head(<span class="dv">3</span>)</span>
-<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a>dataset_df <span class="op">=</span> dataset_df.drop(<span class="st">'Id'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a>dataset_df.head(<span class="dv">3</span>)</span>
-<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-70"><a href="#cb33-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-73"><a href="#cb33-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-74"><a href="#cb33-74" aria-hidden="true" tabindex="-1"></a>dataset_df.info()</span>
-<span id="cb33-75"><a href="#cb33-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-76"><a href="#cb33-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-77"><a href="#cb33-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-78"><a href="#cb33-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## data pre</span></span>
-<span id="cb33-79"><a href="#cb33-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-82"><a href="#cb33-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-83"><a href="#cb33-83" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb33-84"><a href="#cb33-84" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split_dataset(dataset, test_ratio<span class="op">=</span><span class="fl">0.30</span>):</span>
-<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a>  test_indices <span class="op">=</span> np.random.rand(<span class="bu">len</span>(dataset)) <span class="op">&lt;</span> test_ratio</span>
-<span id="cb33-86"><a href="#cb33-86" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> dataset[<span class="op">~</span>test_indices], dataset[test_indices]</span>
-<span id="cb33-87"><a href="#cb33-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-88"><a href="#cb33-88" aria-hidden="true" tabindex="-1"></a>train_ds_pd, valid_ds_pd <span class="op">=</span> split_dataset(dataset_df)</span>
-<span id="cb33-89"><a href="#cb33-89" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> examples in training, </span><span class="sc">{}</span><span class="st"> examples in testing."</span>.<span class="bu">format</span>(</span>
-<span id="cb33-90"><a href="#cb33-90" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(train_ds_pd), <span class="bu">len</span>(valid_ds_pd)))</span>
-<span id="cb33-91"><a href="#cb33-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-92"><a href="#cb33-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-95"><a href="#cb33-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-96"><a href="#cb33-96" aria-hidden="true" tabindex="-1"></a>label <span class="op">=</span> <span class="st">'SalePrice'</span></span>
-<span id="cb33-97"><a href="#cb33-97" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> tfdf.keras.pd_dataframe_to_tf_dataset(train_ds_pd, label<span class="op">=</span>label, task <span class="op">=</span> tfdf.keras.Task.REGRESSION)</span>
-<span id="cb33-98"><a href="#cb33-98" aria-hidden="true" tabindex="-1"></a>valid_ds <span class="op">=</span> tfdf.keras.pd_dataframe_to_tf_dataset(valid_ds_pd, label<span class="op">=</span>label, task <span class="op">=</span> tfdf.keras.Task.REGRESSION)</span>
-<span id="cb33-99"><a href="#cb33-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-100"><a href="#cb33-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-101"><a href="#cb33-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-102"><a href="#cb33-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-103"><a href="#cb33-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-104"><a href="#cb33-104" aria-hidden="true" tabindex="-1"></a><span class="fu"># model</span></span>
-<span id="cb33-105"><a href="#cb33-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-106"><a href="#cb33-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-107"><a href="#cb33-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## define model Keras random forest</span></span>
-<span id="cb33-110"><a href="#cb33-110" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-111"><a href="#cb33-111" aria-hidden="true" tabindex="-1"></a>tfdf.keras.get_all_models()</span>
-<span id="cb33-112"><a href="#cb33-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-113"><a href="#cb33-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-116"><a href="#cb33-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-117"><a href="#cb33-117" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> tfdf.keras.RandomForestModel(task <span class="op">=</span> tfdf.keras.Task.REGRESSION)</span>
-<span id="cb33-118"><a href="#cb33-118" aria-hidden="true" tabindex="-1"></a>rf.<span class="bu">compile</span>(metrics<span class="op">=</span>[<span class="st">"mse"</span>]) <span class="co"># Optional, you can use this to include a list of eval metrics</span></span>
-<span id="cb33-119"><a href="#cb33-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-120"><a href="#cb33-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-121"><a href="#cb33-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-122"><a href="#cb33-122" aria-hidden="true" tabindex="-1"></a><span class="fu">## train model</span></span>
-<span id="cb33-125"><a href="#cb33-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-126"><a href="#cb33-126" aria-hidden="true" tabindex="-1"></a>rf.fit(x<span class="op">=</span>train_ds)</span>
-<span id="cb33-127"><a href="#cb33-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-128"><a href="#cb33-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-129"><a href="#cb33-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-132"><a href="#cb33-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-133"><a href="#cb33-133" aria-hidden="true" tabindex="-1"></a>tfdf.model_plotter.plot_model_in_colab(rf, tree_idx<span class="op">=</span><span class="dv">0</span>, max_depth<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb33-134"><a href="#cb33-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-135"><a href="#cb33-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-138"><a href="#cb33-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-139"><a href="#cb33-139" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb33-140"><a href="#cb33-140" aria-hidden="true" tabindex="-1"></a>logs <span class="op">=</span> rf.make_inspector().training_logs()</span>
-<span id="cb33-141"><a href="#cb33-141" aria-hidden="true" tabindex="-1"></a>plt.plot([log.num_trees <span class="cf">for</span> log <span class="kw">in</span> logs], [log.evaluation.rmse <span class="cf">for</span> log <span class="kw">in</span> logs])</span>
-<span id="cb33-142"><a href="#cb33-142" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of trees"</span>)</span>
-<span id="cb33-143"><a href="#cb33-143" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"RMSE (out-of-bag)"</span>)</span>
-<span id="cb33-144"><a href="#cb33-144" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb33-145"><a href="#cb33-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-146"><a href="#cb33-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-149"><a href="#cb33-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-150"><a href="#cb33-150" aria-hidden="true" tabindex="-1"></a>inspector <span class="op">=</span> rf.make_inspector()</span>
-<span id="cb33-151"><a href="#cb33-151" aria-hidden="true" tabindex="-1"></a>inspector.evaluation()</span>
-<span id="cb33-152"><a href="#cb33-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-153"><a href="#cb33-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-154"><a href="#cb33-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-157"><a href="#cb33-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-158"><a href="#cb33-158" aria-hidden="true" tabindex="-1"></a>evaluation <span class="op">=</span> rf.evaluate(x<span class="op">=</span>valid_ds,return_dict<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb33-159"><a href="#cb33-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-160"><a href="#cb33-160" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, value <span class="kw">in</span> evaluation.items():</span>
-<span id="cb33-161"><a href="#cb33-161" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb33-162"><a href="#cb33-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-163"><a href="#cb33-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-164"><a href="#cb33-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-167"><a href="#cb33-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-168"><a href="#cb33-168" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, value <span class="kw">in</span> evaluation.items():</span>
-<span id="cb33-169"><a href="#cb33-169" aria-hidden="true" tabindex="-1"></a>  mse<span class="op">=</span>value</span>
-<span id="cb33-170"><a href="#cb33-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-171"><a href="#cb33-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-172"><a href="#cb33-172" aria-hidden="true" tabindex="-1"></a>RMSE</span>
-<span id="cb33-175"><a href="#cb33-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-176"><a href="#cb33-176" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb33-177"><a href="#cb33-177" aria-hidden="true" tabindex="-1"></a>math.sqrt(mse)</span>
-<span id="cb33-178"><a href="#cb33-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-179"><a href="#cb33-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-180"><a href="#cb33-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variable importances</span></span>
-<span id="cb33-181"><a href="#cb33-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-184"><a href="#cb33-184" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-185"><a href="#cb33-185" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Available variable importances:"</span>)</span>
-<span id="cb33-186"><a href="#cb33-186" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> importance <span class="kw">in</span> inspector.variable_importances().keys():</span>
-<span id="cb33-187"><a href="#cb33-187" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, importance)</span>
-<span id="cb33-188"><a href="#cb33-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-189"><a href="#cb33-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-190"><a href="#cb33-190" aria-hidden="true" tabindex="-1"></a><span class="fu"># future prediction</span></span>
-<span id="cb33-191"><a href="#cb33-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-194"><a href="#cb33-194" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb33-195"><a href="#cb33-195" aria-hidden="true" tabindex="-1"></a>test_file_path <span class="op">=</span> <span class="st">"data/test.csv"</span></span>
-<span id="cb33-196"><a href="#cb33-196" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> pd.read_csv(test_file_path)</span>
-<span id="cb33-197"><a href="#cb33-197" aria-hidden="true" tabindex="-1"></a>ids <span class="op">=</span> test_data.pop(<span class="st">'Id'</span>)</span>
-<span id="cb33-198"><a href="#cb33-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-199"><a href="#cb33-199" aria-hidden="true" tabindex="-1"></a>test_ds <span class="op">=</span> tfdf.keras.pd_dataframe_to_tf_dataset(</span>
-<span id="cb33-200"><a href="#cb33-200" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
-<span id="cb33-201"><a href="#cb33-201" aria-hidden="true" tabindex="-1"></a>    task <span class="op">=</span> tfdf.keras.Task.REGRESSION)</span>
-<span id="cb33-202"><a href="#cb33-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-203"><a href="#cb33-203" aria-hidden="true" tabindex="-1"></a>preds <span class="op">=</span> rf.predict(test_ds)</span>
-<span id="cb33-204"><a href="#cb33-204" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> pd.DataFrame({<span class="st">'Id'</span>: ids,</span>
-<span id="cb33-205"><a href="#cb33-205" aria-hidden="true" tabindex="-1"></a>                       <span class="st">'SalePrice'</span>: preds.squeeze()})</span>
-<span id="cb33-206"><a href="#cb33-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-207"><a href="#cb33-207" aria-hidden="true" tabindex="-1"></a>output.head()</span>
-<span id="cb33-208"><a href="#cb33-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb33-209"><a href="#cb33-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-210"><a href="#cb33-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-211"><a href="#cb33-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-212"><a href="#cb33-212" aria-hidden="true" tabindex="-1"></a><span class="fu"># resouece</span></span>
-<span id="cb33-213"><a href="#cb33-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-214"><a href="#cb33-214" aria-hidden="true" tabindex="-1"></a>https://www.kaggle.com/code/gusthema/house-prices-prediction-using-tfdf</span>
-<span id="cb33-215"><a href="#cb33-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-216"><a href="#cb33-216" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb35" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Level 1 Regression Tensorflow model"</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with house price data"</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># load package</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow_decision_forests <span class="im">as</span> tfdf</span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow_decision_forests <span class="im">as</span> tfdf</span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TensorFlow v"</span> <span class="op">+</span> tf.__version__)</span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TensorFlow Decision Forests v"</span> <span class="op">+</span> tfdf.__version__)</span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a><span class="fu"># data preparation</span></span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## read data</span></span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a>train_file_path <span class="op">=</span> <span class="st">"data/train.csv"</span></span>
+<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a>dataset_df <span class="op">=</span> pd.read_csv(train_file_path)</span>
+<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Full train dataset shape is </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(dataset_df.shape))</span>
+<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a>dataset_df.head(<span class="dv">3</span>)</span>
+<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a>dataset_df <span class="op">=</span> dataset_df.drop(<span class="st">'Id'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a>dataset_df.head(<span class="dv">3</span>)</span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a>dataset_df.info()</span>
+<span id="cb35-75"><a href="#cb35-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-76"><a href="#cb35-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-77"><a href="#cb35-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-78"><a href="#cb35-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## data pre</span></span>
+<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split_dataset(dataset, test_ratio<span class="op">=</span><span class="fl">0.30</span>):</span>
+<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a>  test_indices <span class="op">=</span> np.random.rand(<span class="bu">len</span>(dataset)) <span class="op">&lt;</span> test_ratio</span>
+<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> dataset[<span class="op">~</span>test_indices], dataset[test_indices]</span>
+<span id="cb35-87"><a href="#cb35-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-88"><a href="#cb35-88" aria-hidden="true" tabindex="-1"></a>train_ds_pd, valid_ds_pd <span class="op">=</span> split_dataset(dataset_df)</span>
+<span id="cb35-89"><a href="#cb35-89" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> examples in training, </span><span class="sc">{}</span><span class="st"> examples in testing."</span>.<span class="bu">format</span>(</span>
+<span id="cb35-90"><a href="#cb35-90" aria-hidden="true" tabindex="-1"></a>    <span class="bu">len</span>(train_ds_pd), <span class="bu">len</span>(valid_ds_pd)))</span>
+<span id="cb35-91"><a href="#cb35-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-92"><a href="#cb35-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-95"><a href="#cb35-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-96"><a href="#cb35-96" aria-hidden="true" tabindex="-1"></a>label <span class="op">=</span> <span class="st">'SalePrice'</span></span>
+<span id="cb35-97"><a href="#cb35-97" aria-hidden="true" tabindex="-1"></a>train_ds <span class="op">=</span> tfdf.keras.pd_dataframe_to_tf_dataset(train_ds_pd, label<span class="op">=</span>label, task <span class="op">=</span> tfdf.keras.Task.REGRESSION)</span>
+<span id="cb35-98"><a href="#cb35-98" aria-hidden="true" tabindex="-1"></a>valid_ds <span class="op">=</span> tfdf.keras.pd_dataframe_to_tf_dataset(valid_ds_pd, label<span class="op">=</span>label, task <span class="op">=</span> tfdf.keras.Task.REGRESSION)</span>
+<span id="cb35-99"><a href="#cb35-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-100"><a href="#cb35-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-101"><a href="#cb35-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-102"><a href="#cb35-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-103"><a href="#cb35-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-104"><a href="#cb35-104" aria-hidden="true" tabindex="-1"></a><span class="fu"># model</span></span>
+<span id="cb35-105"><a href="#cb35-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-106"><a href="#cb35-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-107"><a href="#cb35-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## define model Keras random forest</span></span>
+<span id="cb35-110"><a href="#cb35-110" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-111"><a href="#cb35-111" aria-hidden="true" tabindex="-1"></a>tfdf.keras.get_all_models()</span>
+<span id="cb35-112"><a href="#cb35-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-113"><a href="#cb35-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-116"><a href="#cb35-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-117"><a href="#cb35-117" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> tfdf.keras.RandomForestModel(task <span class="op">=</span> tfdf.keras.Task.REGRESSION)</span>
+<span id="cb35-118"><a href="#cb35-118" aria-hidden="true" tabindex="-1"></a>rf.<span class="bu">compile</span>(metrics<span class="op">=</span>[<span class="st">"mse"</span>]) <span class="co"># Optional, you can use this to include a list of eval metrics</span></span>
+<span id="cb35-119"><a href="#cb35-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-120"><a href="#cb35-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-121"><a href="#cb35-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-122"><a href="#cb35-122" aria-hidden="true" tabindex="-1"></a><span class="fu">## train model</span></span>
+<span id="cb35-125"><a href="#cb35-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-126"><a href="#cb35-126" aria-hidden="true" tabindex="-1"></a>rf.fit(x<span class="op">=</span>train_ds)</span>
+<span id="cb35-127"><a href="#cb35-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-128"><a href="#cb35-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-129"><a href="#cb35-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-132"><a href="#cb35-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-133"><a href="#cb35-133" aria-hidden="true" tabindex="-1"></a>tfdf.model_plotter.plot_model_in_colab(rf, tree_idx<span class="op">=</span><span class="dv">0</span>, max_depth<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb35-134"><a href="#cb35-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-135"><a href="#cb35-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-138"><a href="#cb35-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-139"><a href="#cb35-139" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb35-140"><a href="#cb35-140" aria-hidden="true" tabindex="-1"></a>logs <span class="op">=</span> rf.make_inspector().training_logs()</span>
+<span id="cb35-141"><a href="#cb35-141" aria-hidden="true" tabindex="-1"></a>plt.plot([log.num_trees <span class="cf">for</span> log <span class="kw">in</span> logs], [log.evaluation.rmse <span class="cf">for</span> log <span class="kw">in</span> logs])</span>
+<span id="cb35-142"><a href="#cb35-142" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of trees"</span>)</span>
+<span id="cb35-143"><a href="#cb35-143" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"RMSE (out-of-bag)"</span>)</span>
+<span id="cb35-144"><a href="#cb35-144" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb35-145"><a href="#cb35-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-146"><a href="#cb35-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-149"><a href="#cb35-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-150"><a href="#cb35-150" aria-hidden="true" tabindex="-1"></a>inspector <span class="op">=</span> rf.make_inspector()</span>
+<span id="cb35-151"><a href="#cb35-151" aria-hidden="true" tabindex="-1"></a>inspector.evaluation()</span>
+<span id="cb35-152"><a href="#cb35-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-153"><a href="#cb35-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-154"><a href="#cb35-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-157"><a href="#cb35-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-158"><a href="#cb35-158" aria-hidden="true" tabindex="-1"></a>evaluation <span class="op">=</span> rf.evaluate(x<span class="op">=</span>valid_ds,return_dict<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-159"><a href="#cb35-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-160"><a href="#cb35-160" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, value <span class="kw">in</span> evaluation.items():</span>
+<span id="cb35-161"><a href="#cb35-161" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb35-162"><a href="#cb35-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-163"><a href="#cb35-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-164"><a href="#cb35-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-167"><a href="#cb35-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-168"><a href="#cb35-168" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, value <span class="kw">in</span> evaluation.items():</span>
+<span id="cb35-169"><a href="#cb35-169" aria-hidden="true" tabindex="-1"></a>  mse<span class="op">=</span>value</span>
+<span id="cb35-170"><a href="#cb35-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-171"><a href="#cb35-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-172"><a href="#cb35-172" aria-hidden="true" tabindex="-1"></a>RMSE</span>
+<span id="cb35-175"><a href="#cb35-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-176"><a href="#cb35-176" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb35-177"><a href="#cb35-177" aria-hidden="true" tabindex="-1"></a>math.sqrt(mse)</span>
+<span id="cb35-178"><a href="#cb35-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-179"><a href="#cb35-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-180"><a href="#cb35-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variable importances</span></span>
+<span id="cb35-181"><a href="#cb35-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-184"><a href="#cb35-184" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-185"><a href="#cb35-185" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Available variable importances:"</span>)</span>
+<span id="cb35-186"><a href="#cb35-186" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> importance <span class="kw">in</span> inspector.variable_importances().keys():</span>
+<span id="cb35-187"><a href="#cb35-187" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>, importance)</span>
+<span id="cb35-188"><a href="#cb35-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-189"><a href="#cb35-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-190"><a href="#cb35-190" aria-hidden="true" tabindex="-1"></a><span class="fu"># future prediction</span></span>
+<span id="cb35-191"><a href="#cb35-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-194"><a href="#cb35-194" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-195"><a href="#cb35-195" aria-hidden="true" tabindex="-1"></a>test_file_path <span class="op">=</span> <span class="st">"data/test.csv"</span></span>
+<span id="cb35-196"><a href="#cb35-196" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> pd.read_csv(test_file_path)</span>
+<span id="cb35-197"><a href="#cb35-197" aria-hidden="true" tabindex="-1"></a>ids <span class="op">=</span> test_data.pop(<span class="st">'Id'</span>)</span>
+<span id="cb35-198"><a href="#cb35-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-199"><a href="#cb35-199" aria-hidden="true" tabindex="-1"></a>test_ds <span class="op">=</span> tfdf.keras.pd_dataframe_to_tf_dataset(</span>
+<span id="cb35-200"><a href="#cb35-200" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
+<span id="cb35-201"><a href="#cb35-201" aria-hidden="true" tabindex="-1"></a>    task <span class="op">=</span> tfdf.keras.Task.REGRESSION)</span>
+<span id="cb35-202"><a href="#cb35-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-203"><a href="#cb35-203" aria-hidden="true" tabindex="-1"></a>preds <span class="op">=</span> rf.predict(test_ds)</span>
+<span id="cb35-204"><a href="#cb35-204" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> pd.DataFrame({<span class="st">'Id'</span>: ids,</span>
+<span id="cb35-205"><a href="#cb35-205" aria-hidden="true" tabindex="-1"></a>                       <span class="st">'SalePrice'</span>: preds.squeeze()})</span>
+<span id="cb35-206"><a href="#cb35-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-207"><a href="#cb35-207" aria-hidden="true" tabindex="-1"></a>output.head()</span>
+<span id="cb35-208"><a href="#cb35-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-209"><a href="#cb35-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-210"><a href="#cb35-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-211"><a href="#cb35-211" aria-hidden="true" tabindex="-1"></a><span class="fu"># save model</span></span>
+<span id="cb35-212"><a href="#cb35-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-215"><a href="#cb35-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb35-216"><a href="#cb35-216" aria-hidden="true" tabindex="-1"></a>rf.save(<span class="st">"tf_random_forest_model"</span>)</span>
+<span id="cb35-217"><a href="#cb35-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-218"><a href="#cb35-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-219"><a href="#cb35-219" aria-hidden="true" tabindex="-1"></a><span class="fu"># resouece</span></span>
+<span id="cb35-220"><a href="#cb35-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-221"><a href="#cb35-221" aria-hidden="true" tabindex="-1"></a>https://www.kaggle.com/code/gusthema/house-prices-prediction-using-tfdf</span>
+<span id="cb35-222"><a href="#cb35-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-223"><a href="#cb35-223" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

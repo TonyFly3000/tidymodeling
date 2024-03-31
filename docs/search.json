@@ -2609,14 +2609,22 @@
     "href": "hotel classification model/Level 0 classification Tidy Modeling.html",
     "title": "Level 0 classification Tidy Modeling",
     "section": "",
-    "text": "Look at the hotel booking data.The target variable is whether have children"
+    "text": "Look at the hotel booking data.The target variable is whether have children",
+    "crumbs": [
+      "hotel classification model",
+      "Level 0 classification Tidy Modeling"
+    ]
   },
   {
     "objectID": "hotel classification model/Level 0 classification Tidy Modeling.html#measurement",
     "href": "hotel classification model/Level 0 classification Tidy Modeling.html#measurement",
     "title": "Level 0 classification Tidy Modeling",
     "section": "4.1 Measurement:",
-    "text": "4.1 Measurement:\n\nAccuracy=TP+TN+FP+FN\nPrecision — Out of all the examples that predicted as positive, how many are really positive?\n\nPrecision=TP/(TP+FP)\n\nRecall/Sensitivity(True Positive rate) — Out of all the positive examples, how many are predicted as positive?\n\nRecall=TP/(TP+FN)\n\nSpecificity(True Negative rate)— Out of all the people that do not have the disease, how many got negative results?\nSpecificity=TN/(TN+FP)\nFalse Positive rate=1-Specificity\nFalse Negative Rat=FN/(TP+FN)\n\nFalse Negative Rate tells us what proportion of the positive class got incorrectly classified by the classifier\n\nF1 score=2/(1/Precision+1/Recall)"
+    "text": "4.1 Measurement:\n\nAccuracy=TP+TN+FP+FN\nPrecision — Out of all the examples that predicted as positive, how many are really positive?\n\nPrecision=TP/(TP+FP)\n\nRecall/Sensitivity(True Positive rate) — Out of all the positive examples, how many are predicted as positive?\n\nRecall=TP/(TP+FN)\n\nSpecificity(True Negative rate)— Out of all the people that do not have the disease, how many got negative results?\nSpecificity=TN/(TN+FP)\nFalse Positive rate=1-Specificity\nFalse Negative Rat=FN/(TP+FN)\n\nFalse Negative Rate tells us what proportion of the positive class got incorrectly classified by the classifier\n\nF1 score=2/(1/Precision+1/Recall)",
+    "crumbs": [
+      "hotel classification model",
+      "Level 0 classification Tidy Modeling"
+    ]
   },
   {
     "objectID": "hotel classification model/Level 4 classification Tidy Modeling.html",
@@ -3085,7 +3093,7 @@
     "href": "tensorflow/Level 1 Regression tensorflow.html#data-pre",
     "title": "Level 1 Regression Tensorflow model",
     "section": "2.2 data pre",
-    "text": "2.2 data pre\n\n\nCode\nimport numpy as np\ndef split_dataset(dataset, test_ratio=0.30):\n  test_indices = np.random.rand(len(dataset)) &lt; test_ratio\n  return dataset[~test_indices], dataset[test_indices]\n\ntrain_ds_pd, valid_ds_pd = split_dataset(dataset_df)\nprint(\"{} examples in training, {} examples in testing.\".format(\n    len(train_ds_pd), len(valid_ds_pd)))\n\n\n1028 examples in training, 432 examples in testing.\n\n\n\n\nCode\nlabel = 'SalePrice'\ntrain_ds = tfdf.keras.pd_dataframe_to_tf_dataset(train_ds_pd, label=label, task = tfdf.keras.Task.REGRESSION)\nvalid_ds = tfdf.keras.pd_dataframe_to_tf_dataset(valid_ds_pd, label=label, task = tfdf.keras.Task.REGRESSION)",
+    "text": "2.2 data pre\n\n\nCode\nimport numpy as np\ndef split_dataset(dataset, test_ratio=0.30):\n  test_indices = np.random.rand(len(dataset)) &lt; test_ratio\n  return dataset[~test_indices], dataset[test_indices]\n\ntrain_ds_pd, valid_ds_pd = split_dataset(dataset_df)\nprint(\"{} examples in training, {} examples in testing.\".format(\n    len(train_ds_pd), len(valid_ds_pd)))\n\n\n1012 examples in training, 448 examples in testing.\n\n\n\n\nCode\nlabel = 'SalePrice'\ntrain_ds = tfdf.keras.pd_dataframe_to_tf_dataset(train_ds_pd, label=label, task = tfdf.keras.Task.REGRESSION)\nvalid_ds = tfdf.keras.pd_dataframe_to_tf_dataset(valid_ds_pd, label=label, task = tfdf.keras.Task.REGRESSION)",
     "crumbs": [
       "Tensorflow",
       "Level 1 Regression Tensorflow model"
@@ -3096,7 +3104,7 @@
     "href": "tensorflow/Level 1 Regression tensorflow.html#define-model-keras-random-forest",
     "title": "Level 1 Regression Tensorflow model",
     "section": "3.1 define model Keras random forest",
-    "text": "3.1 define model Keras random forest\n\n\nCode\ntfdf.keras.get_all_models()\n\n\n[tensorflow_decision_forests.keras.RandomForestModel,\n tensorflow_decision_forests.keras.GradientBoostedTreesModel,\n tensorflow_decision_forests.keras.CartModel,\n tensorflow_decision_forests.keras.DistributedGradientBoostedTreesModel]\n\n\n\n\nCode\nrf = tfdf.keras.RandomForestModel(task = tfdf.keras.Task.REGRESSION)\nrf.compile(metrics=[\"mse\"]) # Optional, you can use this to include a list of eval metrics\n\n\nUse /var/folders/v3/pzt9c47n1nbcsmybsg_w0lhw0000gn/T/tmp8me3iklp as temporary training directory",
+    "text": "3.1 define model Keras random forest\n\n\nCode\ntfdf.keras.get_all_models()\n\n\n[tensorflow_decision_forests.keras.RandomForestModel,\n tensorflow_decision_forests.keras.GradientBoostedTreesModel,\n tensorflow_decision_forests.keras.CartModel,\n tensorflow_decision_forests.keras.DistributedGradientBoostedTreesModel]\n\n\n\n\nCode\nrf = tfdf.keras.RandomForestModel(task = tfdf.keras.Task.REGRESSION)\nrf.compile(metrics=[\"mse\"]) # Optional, you can use this to include a list of eval metrics\n\n\nUse /var/folders/v3/pzt9c47n1nbcsmybsg_w0lhw0000gn/T/tmpfvd0haib as temporary training directory",
     "crumbs": [
       "Tensorflow",
       "Level 1 Regression Tensorflow model"
@@ -3107,7 +3115,7 @@
     "href": "tensorflow/Level 1 Regression tensorflow.html#train-model",
     "title": "Level 1 Regression Tensorflow model",
     "section": "3.2 train model",
-    "text": "3.2 train model\n\n\nCode\nrf.fit(x=train_ds)\n\n\nReading training dataset...\nTraining dataset read in 0:00:00.391189. Found 1028 examples.\nTraining model...\nModel trained in 0:00:00.501435\nCompiling model...\nModel compiled.\n\n\n&lt;tf_keras.src.callbacks.History at 0x29fd9e510&gt;\n\n\n\n\nCode\ntfdf.model_plotter.plot_model_in_colab(rf, tree_idx=0, max_depth=3)\n\n\n\n\n\n\n\n\n\n\nCode\nimport matplotlib.pyplot as plt\nlogs = rf.make_inspector().training_logs()\nplt.plot([log.num_trees for log in logs], [log.evaluation.rmse for log in logs])\nplt.xlabel(\"Number of trees\")\nplt.ylabel(\"RMSE (out-of-bag)\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\ninspector = rf.make_inspector()\ninspector.evaluation()\n\n\nEvaluation(num_examples=1028, accuracy=None, loss=None, rmse=29517.17971265618, ndcg=None, aucs=None, auuc=None, qini=None)\n\n\n\n\nCode\nevaluation = rf.evaluate(x=valid_ds,return_dict=True)\n\nfor name, value in evaluation.items():\n  print(f\"{name}: {value:.4f}\")\n\n\n1/1 [==============================] - ETA: 0s - loss: 0.0000e+00 - mse: 845772288.0000\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b1/1 [==============================] - 0s 232ms/step - loss: 0.0000e+00 - mse: 845772288.0000\nloss: 0.0000\nmse: 845772288.0000\n\n\n\n\nCode\nfor name, value in evaluation.items():\n  mse=value\n\n\nRMSE\n\n\nCode\nimport math\nmath.sqrt(mse)\n\n\n29082.16443114233",
+    "text": "3.2 train model\n\n\nCode\nrf.fit(x=train_ds)\n\n\nReading training dataset...\nTraining dataset read in 0:00:01.592298. Found 1012 examples.\nTraining model...\nModel trained in 0:00:00.488444\nCompiling model...\nModel compiled.\n\n\n&lt;tf_keras.src.callbacks.History at 0x10572d850&gt;\n\n\n\n\nCode\ntfdf.model_plotter.plot_model_in_colab(rf, tree_idx=0, max_depth=3)\n\n\n\n\n\n\n\n\n\n\nCode\nimport matplotlib.pyplot as plt\nlogs = rf.make_inspector().training_logs()\nplt.plot([log.num_trees for log in logs], [log.evaluation.rmse for log in logs])\nplt.xlabel(\"Number of trees\")\nplt.ylabel(\"RMSE (out-of-bag)\")\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\ninspector = rf.make_inspector()\ninspector.evaluation()\n\n\nEvaluation(num_examples=1012, accuracy=None, loss=None, rmse=29144.798502788246, ndcg=None, aucs=None, auuc=None, qini=None)\n\n\n\n\nCode\nevaluation = rf.evaluate(x=valid_ds,return_dict=True)\n\nfor name, value in evaluation.items():\n  print(f\"{name}: {value:.4f}\")\n\n\n1/1 [==============================] - ETA: 0s - loss: 0.0000e+00 - mse: 912837952.0000\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b1/1 [==============================] - 2s 2s/step - loss: 0.0000e+00 - mse: 912837952.0000\nloss: 0.0000\nmse: 912837952.0000\n\n\n\n\nCode\nfor name, value in evaluation.items():\n  mse=value\n\n\nRMSE\n\n\nCode\nimport math\nmath.sqrt(mse)\n\n\n30213.208237458002",
     "crumbs": [
       "Tensorflow",
       "Level 1 Regression Tensorflow model"
@@ -3118,10 +3126,54 @@
     "href": "tensorflow/Level 1 Regression tensorflow.html#variable-importances",
     "title": "Level 1 Regression Tensorflow model",
     "section": "3.3 Variable importances",
-    "text": "3.3 Variable importances\n\n\nCode\nprint(f\"Available variable importances:\")\nfor importance in inspector.variable_importances().keys():\n  print(\"\\t\", importance)\n\n\nAvailable variable importances:\n     NUM_AS_ROOT\n     NUM_NODES\n     SUM_SCORE\n     INV_MEAN_MIN_DEPTH",
+    "text": "3.3 Variable importances\n\n\nCode\nprint(f\"Available variable importances:\")\nfor importance in inspector.variable_importances().keys():\n  print(\"\\t\", importance)\n\n\nAvailable variable importances:\n     INV_MEAN_MIN_DEPTH\n     NUM_NODES\n     NUM_AS_ROOT\n     SUM_SCORE",
     "crumbs": [
       "Tensorflow",
       "Level 1 Regression Tensorflow model"
+    ]
+  },
+  {
+    "objectID": "index/1 index.html",
+    "href": "index/1 index.html",
+    "title": "tidymodeling",
+    "section": "",
+    "text": "This is tidymodel Project.\n\n\n\nhotel classification model\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitanic classification model\n\n\n\n\n\n\n\n\n\n\n\n\n\nhouse price regression model\n\n\n\n\n\n\n\n\n\n\n\ntensorflow model\n\n\n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Index",
+      "tidymodeling"
+    ]
+  },
+  {
+    "objectID": "index/3 resample.html",
+    "href": "index/3 resample.html",
+    "title": "resample",
+    "section": "",
+    "text": "k-Fold Cross-Validation\n\n\nk_flod_resample&lt;- vfold_cv(data, v = 10)\nk_flod_resample\n\n\n\nMONTE CARLO CROSS-VALIDATION\nfor MCCV, this proportion of the data is randomly selected each time. This results in assessment sets that are not mutually exclusive\n\nmc_resample&lt;- mc_cv(data, prop = 9/10, times = 20)\nmc_resample\n\n\n\nThe Bootstrap\nA bootstrap sample of the training set is a sample that is the same size as the training set but is drawn with replacement\n\n\nbootstraps_resample&lt;- bootstraps(data, times = 1000)\nbootstraps_resample\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Index",
+      "resample"
+    ]
+  },
+  {
+    "objectID": "index/4 recipe.html",
+    "href": "index/4 recipe.html",
+    "title": "recipe",
+    "section": "",
+    "text": "create recipe step_xxx\n\ntree_rec &lt;- recipe(legal_status ~ ., data = trees_train) %&gt;%\n  \n # update the role for tree_id, since this is a variable we might like to keep around for convenience as an identifier for rows but is not a predictor or outcome. \n  update_role(tree_id, new_role = \"ID\") %&gt;%\n  \n# step_other() to collapse categorical levels for species, caretaker, and the site info. Before this step, there were 300+ species!\n  step_other(species, caretaker, threshold = 0.01) %&gt;%\n  \n# create dummy for nominal data exclude outcome\n  step_dummy(all_nominal(), -all_outcomes()) %&gt;%\n  \n# The date column with when each tree was planted may be useful for fitting this model, but probably not the exact date, given how slowly trees grow. Let’s create a year feature from the date, and then remove the original date variable.  \n  step_date(date, features = c(\"year\")) %&gt;%step_rm(date) %&gt;%\n  \n# There are many more DPW maintained trees than not, so let’s downsample the data for training.  \n  step_downsample(legal_status)%&gt;%\n\n# will remove all. predictor variables that contain only a single value\n    step_zv(all_numeric(all_predictors())) %&gt;% \n  \n#  normalize all numeric data\n  step_normalize(all_numeric()) %&gt;% \n\n# use KNN to impute all predictors\nstep_impute_knn(all_predictors()) \n\n\n\ncheck recipe check_xxx\n\n#&gt; [1] \"check_class\"      \"check_cols\"       \"check_missing\"   \n#&gt; [4] \"check_name\"       \"check_new_data\"   \"check_new_values\"\n#&gt; [7] \"check_range\"      \"check_type\"\n\n\n\nroles to select variables\nIn most cases, the right approach for users will be use to use the predictor-specific selectors such as all_numeric_predictors() and all_nominal_predictors().\n\nhas_role(match = \"predictor\")\n\nhas_type(match = \"numeric\")\n\nall_outcomes()\n\nall_predictors()\n\nall_date()\n\nall_date_predictors()\n\nall_datetime()\n\nall_datetime_predictors()\n\nall_double()\n\nall_double_predictors()\n\nall_factor()\n\nall_factor_predictors()\n\nall_integer()\n\nall_integer_predictors()\n\nall_logical()\n\nall_logical_predictors()\n\nall_nominal()\n\nall_nominal_predictors()\n\nall_numeric()\n\nall_numeric_predictors()\n\nall_ordered()\n\nall_ordered_predictors()\n\nall_string()\n\nall_string_predictors()\n\nall_unordered()\n\nall_unordered_predictors()\n\ncurrent_info()\n\n\n\nreference:\nhttps://recipes.tidymodels.org/reference/has_role.html\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Index",
+      "recipe"
+    ]
+  },
+  {
+    "objectID": "index/2 about.html",
+    "href": "index/2 about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site:\nlink:https://tonyfly3000.github.io/tidymodeling/\n\nhttps://www.tidymodels.org/\n\nModeling process\n\n\n\nresource\ntidymodels website: https://www.tidymodels.org/\ntidymodels book: https://www.tmwr.org/\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Index",
+      "About"
     ]
   }
 ]
