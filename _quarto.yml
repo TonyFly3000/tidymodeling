@@ -27,11 +27,11 @@ website:
     type: textbox
 
   title: "Tidymodel with R"
-  image: "logo.jpg"
   favicon: "logo.jpg"
   twitter-card: true
   site-url: https://example.com
   navbar:
+    logo: "logo.jpg"
     left:
       - sidebar:index
 
