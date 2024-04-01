@@ -33,26 +33,24 @@ website:
   navbar:
     logo: "logo.jpg"
     left:
-      - sidebar:index
+      
+      - text: "Home"
+        file: index.qmd
+      - sidebar:intro
 
-     
       - sidebar:Classification_hotel
       - sidebar:Classification_titanic
       - sidebar:house_price_regression_model
       - sidebar:house_price_tensorflow
  
-  page-footer:
-    right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
-      
+  
   sidebar:
-    - id: index
-      title: "index"
+    - id: intro
+      title: "intro"
       style: "floating"
       background: light
       collapse-level: 2
-      contents: index
-
-
+      contents: intro
 
 
 
@@ -84,6 +82,8 @@ website:
       collapse-level: 2
       contents: tensorflow
 
+  page-footer:
+    right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
 
 
 execute:
