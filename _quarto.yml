@@ -2,11 +2,8 @@ project:
   type: website
   output-dir: docs
 
-
 language: 
   search-box-placeholder: Search
-
-
 
 format:
   html:
@@ -15,16 +12,14 @@ format:
     toc: true
     grid:
       sidebar-width: 300px
-      body-width: 900px
-      margin-width: 300px
+      body-width: 1000px
+      margin-width: 200px
       gutter-width: 1rem
 
 website:
   back-to-top-navigation: true
   reader-mode: true
-  search:
-    location: navbar
-    type: textbox
+
 
   title: "Tidymodel with R"
   favicon: "logo.jpg"
