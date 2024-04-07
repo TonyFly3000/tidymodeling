@@ -1,0 +1,66 @@
+---
+title: "Plotly in R"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](images/Plotly-logo.png){width="800"}
+
+```{r}
+library(plotly)
+packageVersion("plotly")
+```
+
+# Scatter Plot
+
+## color by group
+
+## size by group
+
+## line Plot
+
+## color by group
+
+# histogram
+
+## color by group
+
+# bar chart
+
+# box plot
+
+## color by group
+
+# strip plot
+
+## color by group
+
+# Facet plot
+
+# title,size,x y name
+
+## add title
+
+## adjust size
+
+## change x y name
+
+# applying themes
+
+# Save plot
+
+# Animation plot
+
+# reference:

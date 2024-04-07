@@ -178,7 +178,7 @@
   </url>
   <url>
     <loc>https://example.com/data manipulation/1 input ouput.html</loc>
-    <lastmod>2024-04-07T10:51:36.776Z</lastmod>
+    <lastmod>2024-04-07T14:47:52.000Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/data manipulation/2 data structure in R.html</loc>
@@ -187,5 +187,29 @@
   <url>
     <loc>https://example.com/data manipulation/3 data manipulation with tidyverse.html</loc>
     <lastmod>2024-04-07T10:52:30.884Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/intro/1 basic R.html</loc>
+    <lastmod>2024-04-07T19:06:15.462Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/data manipulation/5 SQL database.html</loc>
+    <lastmod>2024-04-07T18:55:27.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/Plot/1 basic R.html</loc>
+    <lastmod>2024-04-07T18:47:36.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/Plot/1 ggplot.html</loc>
+    <lastmod>2024-04-07T19:02:58.852Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/Plot/2 plotly.html</loc>
+    <lastmod>2024-04-07T19:31:02.465Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/Plot/1 ggplot2.html</loc>
+    <lastmod>2024-04-07T19:31:30.009Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,236 @@
+---
+title: "SQL database with R"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](images/1594917913096.png){width="600"}
+
+# Connection with database
+
+```{R}
+library(DBI)
+library(RSQLite)
+```
+
+
+## create database file pythonsqlite.db and copy mtcars data and iris data into database
+
+```{R}
+#| eval: false
+# Create an ephemeral in-memory RSQLite database
+con <- dbConnect(RSQLite::SQLite(), "my_sql_database")
+
+#dbListTables(con)
+dbWriteTable(con, "mtcars", mtcars,overwrite=TRUE)
+dbWriteTable(con, "iris", iris,overwrite=TRUE)
+```
+
+## check all table in database
+
+```{R}
+con <- dbConnect(RSQLite::SQLite(), "my_sql_database")
+dbListTables(con)
+```
+
+# SQL
+
+
+```{R}
+data=dbReadTable(con, "mtcars")
+head(data)
+```
+
+## select
+
+```{r}
+
+sql ="SELECT * FROM mtcars LIMIT 3"
+table=dbGetQuery(con,sql)
+table
+
+```
+
+## Renaming column
+
+```{r}
+sql="select mpg as new_mpg from mtcars"
+table=dbGetQuery(con,sql)
+head(table)
+
+```
+
+## create column
+
+
+```{r}
+sql="select mpg+1 as new_mpg,mpg from mtcars"
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+
+## Filter rows
+
+```{r}
+sql="select * from mtcars where hp>100"
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+### Filters with AND conditions
+
+```{r}
+sql="select * from mtcars where hp>100 and drat<3"
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+### Filters with or conditions
+
+```{r}
+sql="select * from mtcars where hp>100 or drat<3"
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+## Append
+
+### append by row
+
+```{r}
+sql="select * from mtcars union all select * from mtcars "
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+### append by column
+
+### Dropping NA values
+
+### keep NA values
+
+## group by
+
+### average,min,max,sum
+
+
+```{r}
+sql="select AVG(hp),min(hp),max(hp),sum(hp) from mtcars"
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+
+
+### count
+
+
+```{r}
+sql="select vs, count(*) from mtcars group by vs"
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+## order rows
+
+```{r}
+sql="select * from mtcars order by mpg"
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+### Sort in descending order
+
+
+```{r}
+sql="select * from mtcars order by mpg desc"
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+### Arrange by multiple variables
+
+```{r}
+sql="select * from mtcars order by mpg ,cyl"
+table=dbGetQuery(con,sql)
+head(table)
+```
+
+## join
+
+### inner_join
+
+### full join
+
+### left join
+
+### anti join
+
+## Reshape tables
+
+### Gather data long(wide to long)
+
+### Spread data wide (long to wide)
+
+## string
+
+### upper case
+
+### lower case
+
+### match
+
+### concatenation
+
+### replace
+
+### extract
+
+## date
+
+## create table into database
+
+```{r}
+sql="create table if not exists new_mtcars as select * from mtcars order by mpg ,cyl"
+dbSendQuery(con,sql)
+dbListTables(con)
+
+```
+
+## delete table in database
+
+```{R}
+sql="drop table if  exists  new_mtcars"
+dbSendQuery(con,sql)
+dbListTables(con)
+
+```
+## edit table in database
+
+
+# Using SQL with R dataframe
+
+```{R}
+library(sqldf)
+```
+
+```{R}
+data=sqldf("select * from mtcars LIMIT 3;")
+data
+```
+
+
+# reference:

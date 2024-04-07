@@ -1,0 +1,154 @@
+---
+title: "ggplot2 in R"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](images/Screenshot 2023-07-08 at 5.03.46 PM.png){width="800"}
+
+```{r}
+library(tidyverse)
+library(gapminder)
+library(ggpubr)
+library(ggthemr)
+
+library(ggplot2)
+packageVersion("ggplot2")
+```
+
+
+```{r}
+library(reshape2)
+tips=tips
+head(tips)
+```
+
+```{r}
+data001=gapminder
+head(data001)
+```
+
+
+# Scatter Plot
+
+```{r}
+p=ggplot(tips, aes(tip, total_bill)) + geom_point()
+p
+```
+
+
+## color by group
+
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()
+p
+```
+
+## size by group
+
+```{r}
+
+p=ggplot(tips, aes(tip, total_bill,colour = sex,size=size)) + geom_point()
+p
+
+```
+
+## line Plot
+```{r}
+data002= data001 %>% group_by(continent,year) %>% summarise(pop=sum(pop))
+```
+
+```{r}
+p=ggplot(data002 %>%filter(continent=='Asia'), aes(year, pop)) + geom_line()
+p
+```
+
+## color by group
+
+
+```{r}
+p=ggplot(data002, aes(year, pop,colour = continent)) + geom_line()
+p
+```
+
+# histogram
+
+```{r}
+data002= data001 %>% filter(year==1997,continent %in% c('Asia','Africa'))
+```
+
+
+```{r}
+ggplot(data002, aes(gdpPercap)) + 
+  geom_histogram()
+```
+
+## color by group
+
+```{r}
+ggplot(data002, aes(gdpPercap,,fill = continent)) +geom_histogram(position = 'dodge')
+```
+
+# bar chart
+
+```{r}
+data002= data001 %>% filter(year==1997) %>% group_by(continent) %>% summarise(pop=sum(pop))
+```
+
+```{r}
+ggplot(data002, aes(x=continent, y=pop)) +
+  geom_bar(stat="identity")+scale_y_continuous(labels = scales::comma)
+```
+
+
+# box plot
+
+```{r}
+p=ggplot(tips, aes(day,tip,fill=day)) + geom_boxplot()
+p
+```
+
+
+
+## color by group
+
+
+```{r}
+p=ggplot(tips, aes(day,tip,fill=sex)) + geom_boxplot()
+p
+```
+
+
+# strip plot
+
+## color by group
+
+# Facet plot
+
+# title,size,x y name
+
+## add title
+
+## adjust size
+
+## change x y name
+
+# applying themes
+
+# Save plot
+
+# Animation plot
+
+# reference:

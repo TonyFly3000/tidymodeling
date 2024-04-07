@@ -37,6 +37,7 @@ website:
       - sidebar:bar2
       - sidebar:bar3
       - sidebar:bar4
+      - sidebar:bar5
  
   
   sidebar:
@@ -54,29 +55,35 @@ website:
       collapse-level: 2
       contents: data manipulation   
 
-
     - id: bar1
-      title: "Classification"
+      title: "Data"
       style: "floating"
       background: light
       collapse-level: 2
-      contents: titanic classification model     
-      
+      contents: data manipulation  
+
     - id: bar2
+      title: "Ploting"
+      style: "floating"
+      background: light
+      collapse-level: 2
+      contents: Plot
+      
+    - id: bar3
       title: "Classification imbanlance"
       style: "floating"
       background: light
       collapse-level: 2
       contents: hotel classification model   
 
-    - id: bar3
+    - id: bar4
       title: "Regression"
       style: "floating"
       background: light
       collapse-level: 2
       contents: house price regression model 
 
-    - id: bar4
+    - id: bar5
       title: "house price tensorflow model"
       style: "floating"
       background: light

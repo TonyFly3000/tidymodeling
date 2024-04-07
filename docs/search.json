@@ -5346,12 +5346,12 @@
   {
     "objectID": "data manipulation/1 input ouput.html",
     "href": "data manipulation/1 input ouput.html",
-    "title": "input & ouput",
+    "title": "input & ouput in R",
     "section": "",
-    "text": "Back to top",
+    "text": "Data input and ouput in R\nCode\nlibrary(tidyverse)\nlibrary(openxlsx)\nlibrary(readxl)",
     "crumbs": [
       "data manipulation",
-      "input & ouput"
+      "input & ouput in R"
     ]
   },
   {
@@ -5374,6 +5374,1018 @@
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/1 input ouput.html#read-csv",
+    "href": "data manipulation/1 input ouput.html#read-csv",
+    "title": "input & ouput in R",
+    "section": "1.1 read CSV",
+    "text": "1.1 read CSV\n\n\nCode\ndata001=read_csv('data/Book3.csv')\nhead(data001)\n\n\n# A tibble: 2 × 2\n      a b    \n  &lt;dbl&gt; &lt;chr&gt;\n1  1241 rhth \n2 35235 rjyyj\n\n\nread CSV online\n\n\nCode\nurl='https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv'\ndata001=read_csv(url)\nhead(data001)\n\n\n# A tibble: 6 × 32\n  hotel        is_canceled lead_time arrival_date_year arrival_date_month\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;             \n1 Resort Hotel           0       342              2015 July              \n2 Resort Hotel           0       737              2015 July              \n3 Resort Hotel           0         7              2015 July              \n4 Resort Hotel           0        13              2015 July              \n5 Resort Hotel           0        14              2015 July              \n6 Resort Hotel           0        14              2015 July              \n# ℹ 27 more variables: arrival_date_week_number &lt;dbl&gt;,\n#   arrival_date_day_of_month &lt;dbl&gt;, stays_in_weekend_nights &lt;dbl&gt;,\n#   stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;, children &lt;dbl&gt;, babies &lt;dbl&gt;,\n#   meal &lt;chr&gt;, country &lt;chr&gt;, market_segment &lt;chr&gt;,\n#   distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;,\n#   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,\n#   reserved_room_type &lt;chr&gt;, assigned_room_type &lt;chr&gt;, …",
+    "crumbs": [
+      "data manipulation",
+      "input & ouput in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/1 input ouput.html#read-excel",
+    "href": "data manipulation/1 input ouput.html#read-excel",
+    "title": "input & ouput in R",
+    "section": "1.2 read excel",
+    "text": "1.2 read excel\n\n\nCode\nlibrary(openxlsx)\nlibrary(readxl)\n\ndata001=read_excel('data/Book1.xlsx')\nhead(data001)\n\n\n# A tibble: 2 × 2\n      a b    \n  &lt;dbl&gt; &lt;chr&gt;\n1  1241 rhth \n2 35235 rjyyj",
+    "crumbs": [
+      "data manipulation",
+      "input & ouput in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/1 input ouput.html#read-parquet",
+    "href": "data manipulation/1 input ouput.html#read-parquet",
+    "title": "input & ouput in R",
+    "section": "1.3 read parquet",
+    "text": "1.3 read parquet\nmust install in this way,otherwise will report error.\n\n\nCode\ninstall.packages(\"arrow\", repos = c(\"https://apache.r-universe.dev\"))\n\n\n\n\nCode\nlibrary(arrow)\narrow_info()\n\n\nArrow package version: 15.0.1\n\nCapabilities:\n               \nacero      TRUE\ndataset    TRUE\nsubstrait FALSE\nparquet    TRUE\njson       TRUE\ns3         TRUE\ngcs        TRUE\nutf8proc   TRUE\nre2        TRUE\nsnappy     TRUE\ngzip       TRUE\nbrotli     TRUE\nzstd       TRUE\nlz4        TRUE\nlz4_frame  TRUE\nlzo       FALSE\nbz2        TRUE\njemalloc   TRUE\nmimalloc   TRUE\n\nMemory:\n                  \nAllocator mimalloc\nCurrent    0 bytes\nMax        0 bytes\n\nRuntime:\n                        \nSIMD Level          none\nDetected SIMD Level none\n\nBuild:\n                                                             \nC++ Library Version                                    15.0.1\nC++ Compiler                                       AppleClang\nC++ Compiler Version                          15.0.0.15000100\nGit ID               5ce6ff434c1e7daaa2d7f134349f3ce4c22683da\n\n\n\n\nCode\ndata001=read_parquet('data/df.parquet')\nhead(data001)\n\n\n# A tibble: 6 × 62\n  FlightDate          Airline Origin Dest  Cancelled Diverted CRSDepTime DepTime\n  &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;lgl&gt;     &lt;lgl&gt;         &lt;int&gt;   &lt;dbl&gt;\n1 2022-04-04 00:00:00 Commut… GJT    DEN   FALSE     FALSE          1133    1123\n2 2022-04-04 00:00:00 Commut… HRL    IAH   FALSE     FALSE           732     728\n3 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1529    1514\n4 2022-04-04 00:00:00 Commut… IAH    GPT   FALSE     FALSE          1435    1430\n5 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1135    1135\n6 2022-04-04 00:00:00 Commut… DEN    TUL   FALSE     FALSE           955     952\n# ℹ 54 more variables: DepDelayMinutes &lt;dbl&gt;, DepDelay &lt;dbl&gt;, ArrTime &lt;dbl&gt;,\n#   ArrDelayMinutes &lt;dbl&gt;, AirTime &lt;dbl&gt;, CRSElapsedTime &lt;dbl&gt;,\n#   ActualElapsedTime &lt;dbl&gt;, Distance &lt;dbl&gt;, Year &lt;int&gt;, Quarter &lt;int&gt;,\n#   Month &lt;int&gt;, DayofMonth &lt;int&gt;, DayOfWeek &lt;int&gt;,\n#   Marketing_Airline_Network &lt;chr&gt;,\n#   Operated_or_Branded_Code_Share_Partners &lt;chr&gt;,\n#   DOT_ID_Marketing_Airline &lt;int&gt;, IATA_Code_Marketing_Airline &lt;chr&gt;, …\n\n\nread parquet zip\n\n\nCode\ndata001=read_parquet('data/df.parquet.gzip')\nhead(data001)\n\n\n# A tibble: 6 × 62\n  FlightDate          Airline Origin Dest  Cancelled Diverted CRSDepTime DepTime\n  &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;lgl&gt;     &lt;lgl&gt;         &lt;int&gt;   &lt;dbl&gt;\n1 2022-04-04 00:00:00 Commut… GJT    DEN   FALSE     FALSE          1133    1123\n2 2022-04-04 00:00:00 Commut… HRL    IAH   FALSE     FALSE           732     728\n3 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1529    1514\n4 2022-04-04 00:00:00 Commut… IAH    GPT   FALSE     FALSE          1435    1430\n5 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1135    1135\n6 2022-04-04 00:00:00 Commut… DEN    TUL   FALSE     FALSE           955     952\n# ℹ 54 more variables: DepDelayMinutes &lt;dbl&gt;, DepDelay &lt;dbl&gt;, ArrTime &lt;dbl&gt;,\n#   ArrDelayMinutes &lt;dbl&gt;, AirTime &lt;dbl&gt;, CRSElapsedTime &lt;dbl&gt;,\n#   ActualElapsedTime &lt;dbl&gt;, Distance &lt;dbl&gt;, Year &lt;int&gt;, Quarter &lt;int&gt;,\n#   Month &lt;int&gt;, DayofMonth &lt;int&gt;, DayOfWeek &lt;int&gt;,\n#   Marketing_Airline_Network &lt;chr&gt;,\n#   Operated_or_Branded_Code_Share_Partners &lt;chr&gt;,\n#   DOT_ID_Marketing_Airline &lt;int&gt;, IATA_Code_Marketing_Airline &lt;chr&gt;, …",
+    "crumbs": [
+      "data manipulation",
+      "input & ouput in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/1 input ouput.html#read-feather",
+    "href": "data manipulation/1 input ouput.html#read-feather",
+    "title": "input & ouput in R",
+    "section": "1.4 read feather",
+    "text": "1.4 read feather\n\n\nCode\nlibrary(feather)\n\ndata001=read_feather('data/feather_file.feather')\nhead(data001)\n\n\n# A tibble: 6 × 62\n  FlightDate          Airline Origin Dest  Cancelled Diverted CRSDepTime DepTime\n  &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;lgl&gt;     &lt;lgl&gt;         &lt;int&gt;   &lt;dbl&gt;\n1 2022-04-04 00:00:00 Commut… GJT    DEN   FALSE     FALSE          1133    1123\n2 2022-04-04 00:00:00 Commut… HRL    IAH   FALSE     FALSE           732     728\n3 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1529    1514\n4 2022-04-04 00:00:00 Commut… IAH    GPT   FALSE     FALSE          1435    1430\n5 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1135    1135\n6 2022-04-04 00:00:00 Commut… DEN    TUL   FALSE     FALSE           955     952\n# ℹ 54 more variables: DepDelayMinutes &lt;dbl&gt;, DepDelay &lt;dbl&gt;, ArrTime &lt;dbl&gt;,\n#   ArrDelayMinutes &lt;dbl&gt;, AirTime &lt;dbl&gt;, CRSElapsedTime &lt;dbl&gt;,\n#   ActualElapsedTime &lt;dbl&gt;, Distance &lt;dbl&gt;, Year &lt;int&gt;, Quarter &lt;int&gt;,\n#   Month &lt;int&gt;, DayofMonth &lt;int&gt;, DayOfWeek &lt;int&gt;,\n#   Marketing_Airline_Network &lt;chr&gt;,\n#   Operated_or_Branded_Code_Share_Partners &lt;chr&gt;,\n#   DOT_ID_Marketing_Airline &lt;int&gt;, IATA_Code_Marketing_Airline &lt;chr&gt;, …",
+    "crumbs": [
+      "data manipulation",
+      "input & ouput in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/1 input ouput.html#write-csv",
+    "href": "data manipulation/1 input ouput.html#write-csv",
+    "title": "input & ouput in R",
+    "section": "2.1 write csv",
+    "text": "2.1 write csv\n\n\nCode\nwrite.csv(data001,'data001 csv output data.csv')",
+    "crumbs": [
+      "data manipulation",
+      "input & ouput in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/1 input ouput.html#write-excel",
+    "href": "data manipulation/1 input ouput.html#write-excel",
+    "title": "input & ouput in R",
+    "section": "2.2 write excel",
+    "text": "2.2 write excel\n\n\nCode\nlibrary(openxlsx)\nlibrary(readxl)\nwrite.xlsx(data001,'data001 excel output data.xlsx')",
+    "crumbs": [
+      "data manipulation",
+      "input & ouput in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/1 input ouput.html#write-parquet",
+    "href": "data manipulation/1 input ouput.html#write-parquet",
+    "title": "input & ouput in R",
+    "section": "2.3 write parquet",
+    "text": "2.3 write parquet\n\n\nCode\nlibrary(arrow)\nwrite_parquet(data001,'data/df.parquet')\n\n\noutput to zip format\n\n\nCode\nwrite_parquet(data001,'data/df.parquet.gzip',compression='gzip')",
+    "crumbs": [
+      "data manipulation",
+      "input & ouput in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/1 input ouput.html#write-feather",
+    "href": "data manipulation/1 input ouput.html#write-feather",
+    "title": "input & ouput in R",
+    "section": "2.4 write feather",
+    "text": "2.4 write feather\n\n\nCode\nlibrary(feather)\nwrite_feather(data001,'data/feather_file.feather')",
+    "crumbs": [
+      "data manipulation",
+      "input & ouput in R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html",
+    "href": "intro/1 basic R.html",
+    "title": "Basic R",
+    "section": "",
+    "text": "Code\ngetwd()\n\n\n\n\n\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R.qmd\"                 \"1 basic R.rmarkdown\"          \n[3] \"1-basic-R.rmarkdown\"           \"5 R boook.qmd\"                \n[5] \"6 data analytic in R book.qmd\" \"hotels.csv\"                   \n[7] \"images\"                       \n\n\n\n\n\n\n\nCode\nfile.info(\"1 about.qmd\" )\n\n\n            size isdir mode mtime ctime atime uid gid uname grname\n1 about.qmd   NA    NA &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  NA  NA  &lt;NA&gt;   &lt;NA&gt;\n\n\n\n\n\n\n\nCode\ndir.create('testing_folder')\n\n\n\n\n\n\n\nCode\nfile.remove('testing_folder')\n\n\n\n\n\n\n\nCode\nlibrary(fs)\nfile_copy('test.csv', 'test2.csv')\n\n\n\n\n\n\n\nCode\nurl=\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv\"\n\ndownload.file(url = url, destfile = \"hotels.csv\")",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#get-current-directory",
+    "href": "intro/1 basic R.html#get-current-directory",
+    "title": "Basic R",
+    "section": "1.1 get current directory",
+    "text": "1.1 get current directory\n\n\nCode\ngetwd()",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#get-all-file-name-under-current-directory",
+    "href": "intro/1 basic R.html#get-all-file-name-under-current-directory",
+    "title": "Basic R",
+    "section": "1.2 get all file name under current directory",
+    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R_files\"               \"1 basic R.qmd\"                \n[3] \"1 basic R.rmarkdown\"           \"1-basic-R.rmarkdown\"          \n[5] \"5 R boook.qmd\"                 \"6 data analytic in R book.qmd\"\n[7] \"hotels.csv\"                    \"images\"",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#get-file-info",
+    "href": "intro/1 basic R.html#get-file-info",
+    "title": "Basic R",
+    "section": "1.3 get file info",
+    "text": "1.3 get file info\n\n\nCode\nfile.info(\"6 data analytic in R book.qmd\")",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#create-folder",
+    "href": "intro/1 basic R.html#create-folder",
+    "title": "Basic R",
+    "section": "1.4 create folder",
+    "text": "1.4 create folder\n\n\nCode\ndir.create('testing_folder')",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#delete-folderfile",
+    "href": "intro/1 basic R.html#delete-folderfile",
+    "title": "Basic R",
+    "section": "1.5 delete folder/file",
+    "text": "1.5 delete folder/file\n\n\nCode\nfile.remove('testing_folder')",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#copy-file",
+    "href": "intro/1 basic R.html#copy-file",
+    "title": "Basic R",
+    "section": "1.6 copy file",
+    "text": "1.6 copy file\n\n\nCode\nlibrary(fs)\nfile_copy('test.csv', 'test2.csv')",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#download-file-from-internet",
+    "href": "intro/1 basic R.html#download-file-from-internet",
+    "title": "Basic R",
+    "section": "1.7 download file from internet",
+    "text": "1.7 download file from internet\n\n\nCode\nurl=\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv\"\n\ndownload.file(url = url, destfile = \"hotels.csv\")",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#for-loop",
+    "href": "intro/1 basic R.html#for-loop",
+    "title": "Basic R",
+    "section": "3.1 for Loop",
+    "text": "3.1 for Loop\n\n\nCode\nfor (x in 1:4) {\n  print(x)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#while-loop",
+    "href": "intro/1 basic R.html#while-loop",
+    "title": "Basic R",
+    "section": "3.2 while Loop",
+    "text": "3.2 while Loop\n\n\nCode\ni &lt;- 1\nwhile (i &lt; 6) {\n  print(i)\n  i &lt;- i + 1\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\nwith break statement\n\n\nCode\ni &lt;- 1\nwhile (i &lt; 6) {\n  print(i)\n  i &lt;- i + 1\n  if (i == 4) {break}\n}\n\n\n[1] 1\n[1] 2\n[1] 3",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#without-arguments",
+    "href": "intro/1 basic R.html#without-arguments",
+    "title": "Basic R",
+    "section": "4.1 without Arguments",
+    "text": "4.1 without Arguments\n\n\nCode\nmy_function &lt;- function() { \n  print(\"Hello World!\")\n}\n\nmy_function()\n\n\n[1] \"Hello World!\"",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#return-result",
+    "href": "intro/1 basic R.html#return-result",
+    "title": "Basic R",
+    "section": "4.2 return result",
+    "text": "4.2 return result\n\n\nCode\nadding_ten &lt;- function(x) { \n  a=x+10\n  return(a)\n}\n\nadding_ten(5)\n\n\n[1] 15",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#check-r-version",
+    "href": "intro/1 basic R.html#check-r-version",
+    "title": "Basic R",
+    "section": "5.1 check R version",
+    "text": "5.1 check R version\n\n\nCode\nversion\n\n\n               _                           \nplatform       aarch64-apple-darwin20      \narch           aarch64                     \nos             darwin20                    \nsystem         aarch64, darwin20           \nstatus                                     \nmajor          4                           \nminor          3.1                         \nyear           2023                        \nmonth          06                          \nday            16                          \nsvn rev        84548                       \nlanguage       R                           \nversion.string R version 4.3.1 (2023-06-16)\nnickname       Beagle Scouts",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#install-r-package",
+    "href": "intro/1 basic R.html#install-r-package",
+    "title": "Basic R",
+    "section": "5.2 install R package",
+    "text": "5.2 install R package\nfrom The Comprehensive R Archive Network(cran).https://cran.r-project.org/\n\n\n\nCode\ninstall.packages('tidyverse')",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#check-one-package-version",
+    "href": "intro/1 basic R.html#check-one-package-version",
+    "title": "Basic R",
+    "section": "5.3 check one package version",
+    "text": "5.3 check one package version\n\n\nCode\npackageVersion(\"tidyverse\")\n\n\n[1] '2.0.0'",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#check-all-package-version",
+    "href": "intro/1 basic R.html#check-all-package-version",
+    "title": "Basic R",
+    "section": "5.5 check all package version",
+    "text": "5.5 check all package version\n\n\nCode\nip = as.data.frame(installed.packages()[,c(1,3:4)])\nip = ip[is.na(ip$Priority),1:2,drop=FALSE]\nhead(ip)\n\n\n              Package Version\nabind           abind   1.4-5\nanytime       anytime   0.3.9\narchive       archive   1.1.7\narrow           arrow  15.0.1\naskpass       askpass   1.2.0\nassertthat assertthat   0.2.1",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#check-package-install-loaciton",
+    "href": "intro/1 basic R.html#check-package-install-loaciton",
+    "title": "Basic R",
+    "section": "5.6 check package install loaciton",
+    "text": "5.6 check package install loaciton\n\n\nCode\n.libPaths()\n\n\n[1] \"/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library\"",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#create-database-file-pythonsqlite.db-and-copy-mtcars-data-and-iris-data-into-database",
+    "href": "data manipulation/5 SQL database.html#create-database-file-pythonsqlite.db-and-copy-mtcars-data-and-iris-data-into-database",
+    "title": "SQL database with R",
+    "section": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database",
+    "text": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database\n\n\nCode\n# Create an ephemeral in-memory RSQLite database\ncon &lt;- dbConnect(RSQLite::SQLite(), \"my_sql_database\")\n\n#dbListTables(con)\ndbWriteTable(con, \"mtcars\", mtcars,overwrite=TRUE)\ndbWriteTable(con, \"iris\", iris,overwrite=TRUE)",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#check-all-table-in-database",
+    "href": "data manipulation/5 SQL database.html#check-all-table-in-database",
+    "title": "SQL database with R",
+    "section": "1.2 check all table in database",
+    "text": "1.2 check all table in database\n\n\nCode\ncon &lt;- dbConnect(RSQLite::SQLite(), \"my_sql_database\")\ndbListTables(con)\n\n\n[1] \"iris\"   \"mtcars\"",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#select",
+    "href": "data manipulation/5 SQL database.html#select",
+    "title": "SQL database with R",
+    "section": "2.1 select",
+    "text": "2.1 select\n\n\nCode\nsql =\"SELECT * FROM mtcars LIMIT 3\"\ntable=dbGetQuery(con,sql)\ntable\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#renaming-column",
+    "href": "data manipulation/5 SQL database.html#renaming-column",
+    "title": "SQL database with R",
+    "section": "2.2 Renaming column",
+    "text": "2.2 Renaming column\n\n\nCode\nsql=\"select mpg as new_mpg from mtcars\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n  new_mpg\n1    21.0\n2    21.0\n3    22.8\n4    21.4\n5    18.7\n6    18.1",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#create-column",
+    "href": "data manipulation/5 SQL database.html#create-column",
+    "title": "SQL database with R",
+    "section": "2.3 create column",
+    "text": "2.3 create column\n\n\nCode\nsql=\"select mpg+1 as new_mpg,mpg from mtcars\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n  new_mpg  mpg\n1    22.0 21.0\n2    22.0 21.0\n3    23.8 22.8\n4    22.4 21.4\n5    19.7 18.7\n6    19.1 18.1",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#filter-rows",
+    "href": "data manipulation/5 SQL database.html#filter-rows",
+    "title": "SQL database with R",
+    "section": "2.4 Filter rows",
+    "text": "2.4 Filter rows\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n4 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n5 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n6 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n\n\n\n2.4.1 Filters with AND conditions\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100 and drat&lt;3\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat   wt  qsec vs am gear carb\n1 18.1   6  225 105 2.76 3.46 20.22  1  0    3    1\n2 10.4   8  472 205 2.93 5.25 17.98  0  0    3    4\n3 15.5   8  318 150 2.76 3.52 16.87  0  0    3    2\n\n\n\n\n2.4.2 Filters with or conditions\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100 or drat&lt;3\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n4 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n5 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n6 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#append",
+    "href": "data manipulation/5 SQL database.html#append",
+    "title": "SQL database with R",
+    "section": "2.5 Append",
+    "text": "2.5 Append\n\n2.5.1 append by row\n\n\nCode\nsql=\"select * from mtcars union all select * from mtcars \"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\n4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n6 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\n2.5.2 append by column\n\n\n2.5.3 Dropping NA values\n\n\n2.5.4 keep NA values",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#group-by",
+    "href": "data manipulation/5 SQL database.html#group-by",
+    "title": "SQL database with R",
+    "section": "2.6 group by",
+    "text": "2.6 group by\n\n2.6.1 average,min,max,sum\n\n\nCode\nsql=\"select AVG(hp),min(hp),max(hp),sum(hp) from mtcars\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   AVG(hp) min(hp) max(hp) sum(hp)\n1 146.6875      52     335    4694\n\n\n\n\n2.6.2 count\n\n\nCode\nsql=\"select vs, count(*) from mtcars group by vs\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n  vs count(*)\n1  0       18\n2  1       14",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#order-rows",
+    "href": "data manipulation/5 SQL database.html#order-rows",
+    "title": "SQL database with R",
+    "section": "2.7 order rows",
+    "text": "2.7 order rows\n\n\nCode\nsql=\"select * from mtcars order by mpg\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 10.4   8  472 205 2.93 5.250 17.98  0  0    3    4\n2 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4\n3 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4\n4 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n5 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4\n6 15.0   8  301 335 3.54 3.570 14.60  0  1    5    8\n\n\n\n2.7.1 Sort in descending order\n\n\nCode\nsql=\"select * from mtcars order by mpg desc\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl  disp  hp drat    wt  qsec vs am gear carb\n1 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1\n2 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1\n3 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2\n4 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2\n5 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1\n6 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2\n\n\n\n\n2.7.2 Arrange by multiple variables\n\n\nCode\nsql=\"select * from mtcars order by mpg ,cyl\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 10.4   8  472 205 2.93 5.250 17.98  0  0    3    4\n2 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4\n3 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4\n4 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n5 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4\n6 15.0   8  301 335 3.54 3.570 14.60  0  1    5    8",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#join",
+    "href": "data manipulation/5 SQL database.html#join",
+    "title": "SQL database with R",
+    "section": "2.8 join",
+    "text": "2.8 join\n\n2.8.1 inner_join\n\n\n2.8.2 full join\n\n\n2.8.3 left join\n\n\n2.8.4 anti join",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#reshape-tables",
+    "href": "data manipulation/5 SQL database.html#reshape-tables",
+    "title": "SQL database with R",
+    "section": "2.9 Reshape tables",
+    "text": "2.9 Reshape tables\n\n2.9.1 Gather data long(wide to long)\n\n\n2.9.2 Spread data wide (long to wide)",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#string",
+    "href": "data manipulation/5 SQL database.html#string",
+    "title": "SQL database with R",
+    "section": "2.10 string",
+    "text": "2.10 string\n\n2.10.1 upper case\n\n\n2.10.2 lower case\n\n\n2.10.3 match\n\n\n2.10.4 concatenation\n\n\n2.10.5 replace\n\n\n2.10.6 extract",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#date",
+    "href": "data manipulation/5 SQL database.html#date",
+    "title": "SQL database with R",
+    "section": "2.11 date",
+    "text": "2.11 date",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#create-table-into-database",
+    "href": "data manipulation/5 SQL database.html#create-table-into-database",
+    "title": "SQL database with R",
+    "section": "2.12 create table into database",
+    "text": "2.12 create table into database\n\n\nCode\nsql=\"create table if not exists new_mtcars as select * from mtcars order by mpg ,cyl\"\ndbSendQuery(con,sql)\n\n\n&lt;SQLiteResult&gt;\n  SQL  create table if not exists new_mtcars as select * from mtcars order by mpg ,cyl\n  ROWS Fetched: 0 [complete]\n       Changed: 0\n\n\nCode\ndbListTables(con)\n\n\n[1] \"iris\"       \"mtcars\"     \"new_mtcars\"",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#delete-table-in-database",
+    "href": "data manipulation/5 SQL database.html#delete-table-in-database",
+    "title": "SQL database with R",
+    "section": "2.13 delete table in database",
+    "text": "2.13 delete table in database\n\n\nCode\nsql=\"drop table if  exists  new_mtcars\"\ndbSendQuery(con,sql)\n\n\n&lt;SQLiteResult&gt;\n  SQL  drop table if  exists  new_mtcars\n  ROWS Fetched: 0 [complete]\n       Changed: 0\n\n\nCode\ndbListTables(con)\n\n\n[1] \"iris\"   \"mtcars\"",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 SQL database.html#edit-table-in-database",
+    "href": "data manipulation/5 SQL database.html#edit-table-in-database",
+    "title": "SQL database with R",
+    "section": "2.14 edit table in database",
+    "text": "2.14 edit table in database",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#check-current-loaded-package",
+    "href": "intro/1 basic R.html#check-current-loaded-package",
+    "title": "Basic R",
+    "section": "5.4 check current loaded package",
+    "text": "5.4 check current loaded package\n\n\nCode\nsessionInfo()\n\n\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] htmlwidgets_1.6.4 compiler_4.3.1    fastmap_1.1.1     cli_3.6.2        \n [5] tools_4.3.1       htmltools_0.5.7   rstudioapi_0.15.0 yaml_2.3.8       \n [9] rmarkdown_2.25    knitr_1.45        jsonlite_1.8.8    xfun_0.42        \n[13] digest_0.6.35     rlang_1.1.3       evaluate_0.23",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#get-current-directory",
+    "href": "Plot/1 basic R.html#get-current-directory",
+    "title": "Basic R",
+    "section": "1.1 get current directory",
+    "text": "1.1 get current directory\n\n\nCode\ngetwd()",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#get-all-file-name-under-current-directory",
+    "href": "Plot/1 basic R.html#get-all-file-name-under-current-directory",
+    "title": "Basic R",
+    "section": "1.2 get all file name under current directory",
+    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R.qmd\"       \"1 basic R.rmarkdown\" \"1-basic-R.rmarkdown\"",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#get-file-info",
+    "href": "Plot/1 basic R.html#get-file-info",
+    "title": "Basic R",
+    "section": "1.3 get file info",
+    "text": "1.3 get file info\n\n\nCode\nfile.info(\"1 about.qmd\" )\n\n\n            size isdir mode mtime ctime atime uid gid uname grname\n1 about.qmd   NA    NA &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  NA  NA  &lt;NA&gt;   &lt;NA&gt;",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#create-folder",
+    "href": "Plot/1 basic R.html#create-folder",
+    "title": "Basic R",
+    "section": "1.4 create folder",
+    "text": "1.4 create folder\n\n\nCode\ndir.create('testing_folder')",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#delete-folderfile",
+    "href": "Plot/1 basic R.html#delete-folderfile",
+    "title": "Basic R",
+    "section": "1.5 delete folder/file",
+    "text": "1.5 delete folder/file\n\n\nCode\nfile.remove('testing_folder')",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#copy-file",
+    "href": "Plot/1 basic R.html#copy-file",
+    "title": "Basic R",
+    "section": "1.6 copy file",
+    "text": "1.6 copy file\n\n\nCode\nlibrary(fs)\nfile_copy('test.csv', 'test2.csv')",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#download-file-from-internet",
+    "href": "Plot/1 basic R.html#download-file-from-internet",
+    "title": "Basic R",
+    "section": "1.7 download file from internet",
+    "text": "1.7 download file from internet\n\n\nCode\nurl=\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv\"\n\ndownload.file(url = url, destfile = \"hotels.csv\")",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#for-loop",
+    "href": "Plot/1 basic R.html#for-loop",
+    "title": "Basic R",
+    "section": "3.1 for Loop",
+    "text": "3.1 for Loop\n\n\nCode\nfor (x in 1:4) {\n  print(x)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#while-loop",
+    "href": "Plot/1 basic R.html#while-loop",
+    "title": "Basic R",
+    "section": "3.2 while Loop",
+    "text": "3.2 while Loop\n\n\nCode\ni &lt;- 1\nwhile (i &lt; 6) {\n  print(i)\n  i &lt;- i + 1\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\nwith break statement\n\n\nCode\ni &lt;- 1\nwhile (i &lt; 6) {\n  print(i)\n  i &lt;- i + 1\n  if (i == 4) {break}\n}\n\n\n[1] 1\n[1] 2\n[1] 3",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#without-arguments",
+    "href": "Plot/1 basic R.html#without-arguments",
+    "title": "Basic R",
+    "section": "4.1 without Arguments",
+    "text": "4.1 without Arguments\n\n\nCode\nmy_function &lt;- function() { \n  print(\"Hello World!\")\n}\n\nmy_function()\n\n\n[1] \"Hello World!\"",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#return-result",
+    "href": "Plot/1 basic R.html#return-result",
+    "title": "Basic R",
+    "section": "4.2 return result",
+    "text": "4.2 return result\n\n\nCode\nadding_ten &lt;- function(x) { \n  a=x+10\n  return(a)\n}\n\nadding_ten(5)\n\n\n[1] 15",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#check-r-version",
+    "href": "Plot/1 basic R.html#check-r-version",
+    "title": "Basic R",
+    "section": "5.1 check R version",
+    "text": "5.1 check R version\n\n\nCode\nversion\n\n\n               _                           \nplatform       aarch64-apple-darwin20      \narch           aarch64                     \nos             darwin20                    \nsystem         aarch64, darwin20           \nstatus                                     \nmajor          4                           \nminor          3.1                         \nyear           2023                        \nmonth          06                          \nday            16                          \nsvn rev        84548                       \nlanguage       R                           \nversion.string R version 4.3.1 (2023-06-16)\nnickname       Beagle Scouts",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#install-r-package",
+    "href": "Plot/1 basic R.html#install-r-package",
+    "title": "Basic R",
+    "section": "5.2 install R package",
+    "text": "5.2 install R package\nfrom The Comprehensive R Archive Network(cran).https://cran.r-project.org/\n\n\n\nCode\ninstall.packages('tidyverse')",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#check-one-package-version",
+    "href": "Plot/1 basic R.html#check-one-package-version",
+    "title": "Basic R",
+    "section": "5.3 check one package version",
+    "text": "5.3 check one package version\n\n\nCode\npackageVersion(\"tidyverse\")\n\n\n[1] '2.0.0'",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#check-current-loaded-package",
+    "href": "Plot/1 basic R.html#check-current-loaded-package",
+    "title": "Basic R",
+    "section": "5.4 check current loaded package",
+    "text": "5.4 check current loaded package\n\n\nCode\nsessionInfo()\n\n\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] htmlwidgets_1.6.4 compiler_4.3.1    fastmap_1.1.1     cli_3.6.2        \n [5] tools_4.3.1       htmltools_0.5.7   rstudioapi_0.15.0 yaml_2.3.8       \n [9] rmarkdown_2.25    knitr_1.45        jsonlite_1.8.8    xfun_0.42        \n[13] digest_0.6.35     rlang_1.1.3       evaluate_0.23",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#check-all-package-version",
+    "href": "Plot/1 basic R.html#check-all-package-version",
+    "title": "Basic R",
+    "section": "5.5 check all package version",
+    "text": "5.5 check all package version\n\n\nCode\nip = as.data.frame(installed.packages()[,c(1,3:4)])\nip = ip[is.na(ip$Priority),1:2,drop=FALSE]\nhead(ip)\n\n\n              Package Version\nabind           abind   1.4-5\nanytime       anytime   0.3.9\narchive       archive   1.1.7\narrow           arrow  15.0.1\naskpass       askpass   1.2.0\nassertthat assertthat   0.2.1",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 basic R.html#check-package-install-loaciton",
+    "href": "Plot/1 basic R.html#check-package-install-loaciton",
+    "title": "Basic R",
+    "section": "5.6 check package install loaciton",
+    "text": "5.6 check package install loaciton\n\n\nCode\n.libPaths()\n\n\n[1] \"/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library\"",
+    "crumbs": [
+      "Plot",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html",
+    "href": "Plot/1 ggplot.html",
+    "title": "GGplot in R",
+    "section": "",
+    "text": "Code\nlibrary(ggplot2)\npackageVersion(\"ggplot2\")\n\n\n[1] '3.5.0'",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#color-by-group",
+    "href": "Plot/1 ggplot.html#color-by-group",
+    "title": "GGplot in R",
+    "section": "1.1 color by group",
+    "text": "1.1 color by group",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#size-by-group",
+    "href": "Plot/1 ggplot.html#size-by-group",
+    "title": "GGplot in R",
+    "section": "1.2 size by group",
+    "text": "1.2 size by group",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#line-plot",
+    "href": "Plot/1 ggplot.html#line-plot",
+    "title": "GGplot in R",
+    "section": "1.3 line Plot",
+    "text": "1.3 line Plot",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#color-by-group-1",
+    "href": "Plot/1 ggplot.html#color-by-group-1",
+    "title": "GGplot in R",
+    "section": "1.4 color by group",
+    "text": "1.4 color by group",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#color-by-group-2",
+    "href": "Plot/1 ggplot.html#color-by-group-2",
+    "title": "GGplot in R",
+    "section": "2.1 color by group",
+    "text": "2.1 color by group",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#color-by-group-3",
+    "href": "Plot/1 ggplot.html#color-by-group-3",
+    "title": "GGplot in R",
+    "section": "4.1 color by group",
+    "text": "4.1 color by group",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#color-by-group-4",
+    "href": "Plot/1 ggplot.html#color-by-group-4",
+    "title": "GGplot in R",
+    "section": "5.1 color by group",
+    "text": "5.1 color by group",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#add-title",
+    "href": "Plot/1 ggplot.html#add-title",
+    "title": "GGplot in R",
+    "section": "7.1 add title",
+    "text": "7.1 add title",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#adjust-size",
+    "href": "Plot/1 ggplot.html#adjust-size",
+    "title": "GGplot in R",
+    "section": "7.2 adjust size",
+    "text": "7.2 adjust size",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot.html#change-x-y-name",
+    "href": "Plot/1 ggplot.html#change-x-y-name",
+    "title": "GGplot in R",
+    "section": "7.3 change x y name",
+    "text": "7.3 change x y name",
+    "crumbs": [
+      "Plot",
+      "GGplot in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html",
+    "href": "Plot/2 plotly.html",
+    "title": "Plotly in R",
+    "section": "",
+    "text": "Code\nlibrary(plotly)\npackageVersion(\"plotly\")\n\n\n[1] '4.10.4'",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#color-by-group",
+    "href": "Plot/2 plotly.html#color-by-group",
+    "title": "Plotly in R",
+    "section": "1.1 color by group",
+    "text": "1.1 color by group",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#size-by-group",
+    "href": "Plot/2 plotly.html#size-by-group",
+    "title": "Plotly in R",
+    "section": "1.2 size by group",
+    "text": "1.2 size by group",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#line-plot",
+    "href": "Plot/2 plotly.html#line-plot",
+    "title": "Plotly in R",
+    "section": "1.3 line Plot",
+    "text": "1.3 line Plot",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#color-by-group-1",
+    "href": "Plot/2 plotly.html#color-by-group-1",
+    "title": "Plotly in R",
+    "section": "1.4 color by group",
+    "text": "1.4 color by group",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#color-by-group-2",
+    "href": "Plot/2 plotly.html#color-by-group-2",
+    "title": "Plotly in R",
+    "section": "2.1 color by group",
+    "text": "2.1 color by group",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#color-by-group-3",
+    "href": "Plot/2 plotly.html#color-by-group-3",
+    "title": "Plotly in R",
+    "section": "4.1 color by group",
+    "text": "4.1 color by group",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#color-by-group-4",
+    "href": "Plot/2 plotly.html#color-by-group-4",
+    "title": "Plotly in R",
+    "section": "5.1 color by group",
+    "text": "5.1 color by group",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#add-title",
+    "href": "Plot/2 plotly.html#add-title",
+    "title": "Plotly in R",
+    "section": "7.1 add title",
+    "text": "7.1 add title",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#adjust-size",
+    "href": "Plot/2 plotly.html#adjust-size",
+    "title": "Plotly in R",
+    "section": "7.2 adjust size",
+    "text": "7.2 adjust size",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#change-x-y-name",
+    "href": "Plot/2 plotly.html#change-x-y-name",
+    "title": "Plotly in R",
+    "section": "7.3 change x y name",
+    "text": "7.3 change x y name",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html",
+    "href": "Plot/1 ggplot2.html",
+    "title": "ggplot2 in R",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(gapminder)\nlibrary(ggpubr)\nlibrary(ggthemr)\n\nlibrary(ggplot2)\npackageVersion(\"ggplot2\")\n\n\n[1] '3.5.0'\nCode\nlibrary(reshape2)\ntips=tips\nhead(tips)\n\n\n  total_bill  tip    sex smoker day   time size\n1      16.99 1.01 Female     No Sun Dinner    2\n2      10.34 1.66   Male     No Sun Dinner    3\n3      21.01 3.50   Male     No Sun Dinner    3\n4      23.68 3.31   Male     No Sun Dinner    2\n5      24.59 3.61 Female     No Sun Dinner    4\n6      25.29 4.71   Male     No Sun Dinner    4\nCode\ndata001=gapminder\nhead(data001)\n\n\n# A tibble: 6 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740.\n6 Afghanistan Asia       1977    38.4 14880372      786.",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#color-by-group",
+    "href": "Plot/1 ggplot2.html#color-by-group",
+    "title": "ggplot2 in R",
+    "section": "1.1 color by group",
+    "text": "1.1 color by group\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()\np",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#size-by-group",
+    "href": "Plot/1 ggplot2.html#size-by-group",
+    "title": "ggplot2 in R",
+    "section": "1.2 size by group",
+    "text": "1.2 size by group\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,colour = sex,size=size)) + geom_point()\np",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#line-plot",
+    "href": "Plot/1 ggplot2.html#line-plot",
+    "title": "ggplot2 in R",
+    "section": "1.3 line Plot",
+    "text": "1.3 line Plot\n\n\nCode\ndata002= data001 %&gt;% group_by(continent,year) %&gt;% summarise(pop=sum(pop))\n\n\n\n\nCode\np=ggplot(data002 %&gt;%filter(continent=='Asia'), aes(year, pop)) + geom_line()\np",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#color-by-group-1",
+    "href": "Plot/1 ggplot2.html#color-by-group-1",
+    "title": "ggplot2 in R",
+    "section": "1.4 color by group",
+    "text": "1.4 color by group\n\n\nCode\np=ggplot(data002, aes(year, pop,colour = continent)) + geom_line()\np",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#color-by-group-2",
+    "href": "Plot/1 ggplot2.html#color-by-group-2",
+    "title": "ggplot2 in R",
+    "section": "2.1 color by group",
+    "text": "2.1 color by group\n\n\nCode\nggplot(data002, aes(gdpPercap,,fill = continent)) +geom_histogram(position = 'dodge')",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#color-by-group-3",
+    "href": "Plot/1 ggplot2.html#color-by-group-3",
+    "title": "ggplot2 in R",
+    "section": "4.1 color by group",
+    "text": "4.1 color by group\n\n\nCode\np=ggplot(tips, aes(day,tip,fill=sex)) + geom_boxplot()\np",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#color-by-group-4",
+    "href": "Plot/1 ggplot2.html#color-by-group-4",
+    "title": "ggplot2 in R",
+    "section": "5.1 color by group",
+    "text": "5.1 color by group",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#add-title",
+    "href": "Plot/1 ggplot2.html#add-title",
+    "title": "ggplot2 in R",
+    "section": "7.1 add title",
+    "text": "7.1 add title",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#adjust-size",
+    "href": "Plot/1 ggplot2.html#adjust-size",
+    "title": "ggplot2 in R",
+    "section": "7.2 adjust size",
+    "text": "7.2 adjust size",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#change-x-y-name",
+    "href": "Plot/1 ggplot2.html#change-x-y-name",
+    "title": "ggplot2 in R",
+    "section": "7.3 change x y name",
+    "text": "7.3 change x y name",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
     ]
   }
 ]

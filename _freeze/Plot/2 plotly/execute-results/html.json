@@ -1,0 +1,15 @@
+{
+  "hash": "ff5dd2d5eaf4d730390b7f0b2787048a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Plotly in R\"\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n---\n\n\n![](images/Plotly-logo.png){width=\"800\"}\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(plotly)\npackageVersion(\"plotly\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] '4.10.4'\n```\n\n\n:::\n:::\n\n\n# Scatter Plot\n\n## color by group\n\n## size by group\n\n## line Plot\n\n## color by group\n\n# histogram\n\n## color by group\n\n# bar chart\n\n# box plot\n\n## color by group\n\n# strip plot\n\n## color by group\n\n# Facet plot\n\n# title,size,x y name\n\n## add title\n\n## adjust size\n\n## change x y name\n\n# applying themes\n\n# Save plot\n\n# Animation plot\n\n# reference:\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

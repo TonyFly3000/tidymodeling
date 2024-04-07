@@ -45,13 +45,14 @@ ul.task-list li input[type="checkbox"] {
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
-  "type": "textbox",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -108,20 +109,8 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-intro">    
         <li class="dropdown-header">Intro</li>
         <li>
-    <a class="dropdown-item" href="../intro/1 index.html">
- <span class="dropdown-text">tidymodeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../intro/2 about.html">
- <span class="dropdown-text">About</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../intro/3 resample.html">
- <span class="dropdown-text">resample</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../intro/4 recipe.html">
- <span class="dropdown-text">recipe</span></a>
+    <a class="dropdown-item" href="../intro/1 basic R.html">
+ <span class="dropdown-text">Basic R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../intro/5 R boook.html">
@@ -134,110 +123,146 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hotel-classification-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">hotel Classification model</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-hotel-classification-model">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data">    
+        <li class="dropdown-header">data manipulation</li>
+        <li>
+    <a class="dropdown-item" href="../data manipulation/1 input ouput.html">
+ <span class="dropdown-text">input &amp; ouput in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/2 data structure in R.html">
+ <span class="dropdown-text">Data structure in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/3 data manipulation with tidyverse.html">
+ <span class="dropdown-text">Data manipulation with tidyverse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/4 resample.html">
+ <span class="dropdown-text">resample</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/5 recipe.html">
+ <span class="dropdown-text">recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/5 SQL database.html">
+ <span class="dropdown-text">SQL database with R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-1">    
+        <li class="dropdown-header">data manipulation</li>
+        <li>
+    <a class="dropdown-item" href="../data manipulation/1 input ouput.html">
+ <span class="dropdown-text">input &amp; ouput in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/2 data structure in R.html">
+ <span class="dropdown-text">Data structure in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/3 data manipulation with tidyverse.html">
+ <span class="dropdown-text">Data manipulation with tidyverse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/4 resample.html">
+ <span class="dropdown-text">resample</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/5 recipe.html">
+ <span class="dropdown-text">recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/5 SQL database.html">
+ <span class="dropdown-text">SQL database with R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ploting</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ploting">    
+        <li class="dropdown-header">Plot</li>
+        <li>
+    <a class="dropdown-item" href="../Plot/1 ggplot.html">
+ <span class="dropdown-text">GGplot in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Plot/2 plotly.html">
+ <span class="dropdown-text">Plotly in R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification-imbanlance" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classification imbanlance</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification-imbanlance">    
         <li class="dropdown-header">hotel classification model</li>
         <li>
-    <a class="dropdown-item" href="../hotel classification model/Level 0 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 0 classification Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../hotel classification model/0 classification Tidy Modeling.html">
+ <span class="dropdown-text">Hotel booking data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../hotel classification model/Level 1 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 1 classification Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../hotel classification model/1 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../hotel classification model/Level 2 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 2 classification Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../hotel classification model/3 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification Model with recipe</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../hotel classification model/Level 3 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 3 classification Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../hotel classification model/4 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification Model with recipe,workflow,tuning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../hotel classification model/Level 4 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 4 classification Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../hotel classification model/5 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification Model with recipe,workflow,fast tuning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../hotel classification model/Level 5 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 5 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hotel classification model/Level 6 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 6 classification Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../hotel classification model/6 classification Tidy Modeling.html">
+ <span class="dropdown-text">Multiple Classification Model with recipe,workflow set,fast tuning</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-titanic-classification-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">titanic Classification model</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regression" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Regression</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-titanic-classification-model">    
-        <li class="dropdown-header">titanic classification model</li>
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 0 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 0 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 1 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 1 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 2 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 2 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 3 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 3 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 4 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 4 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 5 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 5 classification Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 6 classification Tidy Modeling.html">
- <span class="dropdown-text">Level 6 classification Tidy Modeling</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-house-price-regression-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">house price regression model</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-house-price-regression-model">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-regression">    
         <li class="dropdown-header">house price regression model</li>
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 0 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 0 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/0 Regression Tidy Modeling.html">
+ <span class="dropdown-text">House price data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 1 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 1 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/1 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 2 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 2 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/3 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model with Recipe</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 3 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 3 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/4 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model with Recipe,workflow,tuning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 4 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 4 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/5 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model with Recipe,workflow,fast tuning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 5 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 5 Regression Tidy Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../house price regression model/Level 6 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 6 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/6 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Multiple Regression model with Recipe,workflow set,fast tuning</span></a>
   </li>  
     </ul>
   </li>
@@ -269,7 +294,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../intro/1 index.html">Intro</a></li><li class="breadcrumb-item"><a href="../intro/6 data analytic in R book.html">Data analytic in R book</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../intro/1 basic R.html">Intro</a></li><li class="breadcrumb-item"><a href="../intro/6 data analytic in R book.html">Data analytic in R book</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -292,26 +317,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro/1 index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">tidymodeling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../intro/2 about.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../intro/3 resample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">resample</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../intro/4 recipe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">recipe</span></a>
+  <a href="../intro/1 basic R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -347,7 +354,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../intro/1 index.html">Intro</a></li><li class="breadcrumb-item"><a href="../intro/6 data analytic in R book.html">Data analytic in R book</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../intro/1 basic R.html">Intro</a></li><li class="breadcrumb-item"><a href="../intro/6 data analytic in R book.html">Data analytic in R book</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Data analytic in R book</h1>
 </div>

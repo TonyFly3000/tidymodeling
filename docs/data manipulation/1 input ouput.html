@@ -8,7 +8,7 @@
 
 <meta name="author" content="Tony Duan">
 
-<title>Tidymodel with R - input &amp; ouput</title>
+<title>Tidymodel with R - input &amp; ouput in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +105,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Tidymodel with R - input &amp; ouput">
+<meta name="twitter:title" content="Tidymodel with R - input &amp; ouput in R">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -165,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="dropdown-header">data manipulation</li>
         <li>
     <a class="dropdown-item" href="../data manipulation/1 input ouput.html">
- <span class="dropdown-text">input &amp; ouput</span></a>
+ <span class="dropdown-text">input &amp; ouput in R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../data manipulation/2 data structure in R.html">
@@ -309,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data manipulation/1 input ouput.html">data manipulation</a></li><li class="breadcrumb-item"><a href="../data manipulation/1 input ouput.html">input &amp; ouput</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data manipulation/1 input ouput.html">data manipulation</a></li><li class="breadcrumb-item"><a href="../data manipulation/1 input ouput.html">input &amp; ouput in R</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -333,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../data manipulation/1 input ouput.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">input &amp; ouput</span></a>
+ <span class="menu-text">input &amp; ouput in R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -368,14 +369,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#input" id="toc-input" class="nav-link active" data-scroll-target="#input"><span class="header-section-number">1</span> Input</a>
+  <ul class="collapse">
+  <li><a href="#read-csv" id="toc-read-csv" class="nav-link" data-scroll-target="#read-csv"><span class="header-section-number">1.1</span> read CSV</a></li>
+  <li><a href="#read-excel" id="toc-read-excel" class="nav-link" data-scroll-target="#read-excel"><span class="header-section-number">1.2</span> read excel</a></li>
+  <li><a href="#read-parquet" id="toc-read-parquet" class="nav-link" data-scroll-target="#read-parquet"><span class="header-section-number">1.3</span> read parquet</a></li>
+  <li><a href="#read-feather" id="toc-read-feather" class="nav-link" data-scroll-target="#read-feather"><span class="header-section-number">1.4</span> read feather</a></li>
+  </ul></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output"><span class="header-section-number">2</span> Output</a>
+  <ul class="collapse">
+  <li><a href="#write-csv" id="toc-write-csv" class="nav-link" data-scroll-target="#write-csv"><span class="header-section-number">2.1</span> write csv</a></li>
+  <li><a href="#write-excel" id="toc-write-excel" class="nav-link" data-scroll-target="#write-excel"><span class="header-section-number">2.2</span> write excel</a></li>
+  <li><a href="#write-parquet" id="toc-write-parquet" class="nav-link" data-scroll-target="#write-parquet"><span class="header-section-number">2.3</span> write parquet</a></li>
+  <li><a href="#write-feather" id="toc-write-feather" class="nav-link" data-scroll-target="#write-feather"><span class="header-section-number">2.4</span> write feather</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data manipulation/1 input ouput.html">data manipulation</a></li><li class="breadcrumb-item"><a href="../data manipulation/1 input ouput.html">input &amp; ouput</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data manipulation/1 input ouput.html">data manipulation</a></li><li class="breadcrumb-item"><a href="../data manipulation/1 input ouput.html">input &amp; ouput in R</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">input &amp; ouput</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">input &amp; ouput in R</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -398,10 +418,278 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Data input and ouput in R</p>
+<p><img src="images/1_-OQi5hp-uoL_KdIydr4hew.gif" class="img-fluid" width="500"></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="input" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Input</h1>
+<section id="read-csv" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="read-csv"><span class="header-section-number">1.1</span> read CSV</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_csv</span>(<span class="st">'data/Book3.csv'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+      a b    
+  &lt;dbl&gt; &lt;chr&gt;
+1  1241 rhth 
+2 35235 rjyyj</code></pre>
+</div>
+</div>
+<p>read CSV online</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>url<span class="ot">=</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_csv</span>(url)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 32
+  hotel        is_canceled lead_time arrival_date_year arrival_date_month
+  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;             
+1 Resort Hotel           0       342              2015 July              
+2 Resort Hotel           0       737              2015 July              
+3 Resort Hotel           0         7              2015 July              
+4 Resort Hotel           0        13              2015 July              
+5 Resort Hotel           0        14              2015 July              
+6 Resort Hotel           0        14              2015 July              
+# ℹ 27 more variables: arrival_date_week_number &lt;dbl&gt;,
+#   arrival_date_day_of_month &lt;dbl&gt;, stays_in_weekend_nights &lt;dbl&gt;,
+#   stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;, children &lt;dbl&gt;, babies &lt;dbl&gt;,
+#   meal &lt;chr&gt;, country &lt;chr&gt;, market_segment &lt;chr&gt;,
+#   distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;,
+#   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,
+#   reserved_room_type &lt;chr&gt;, assigned_room_type &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section id="read-excel" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="read-excel"><span class="header-section-number">1.2</span> read excel</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_excel</span>(<span class="st">'data/Book1.xlsx'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+      a b    
+  &lt;dbl&gt; &lt;chr&gt;
+1  1241 rhth 
+2 35235 rjyyj</code></pre>
+</div>
+</div>
+</section>
+<section id="read-parquet" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="read-parquet"><span class="header-section-number">1.3</span> read parquet</h2>
+<p>must install in this way,otherwise will report error.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"arrow"</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://apache.r-universe.dev"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrow_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Arrow package version: 15.0.1
+
+Capabilities:
+               
+acero      TRUE
+dataset    TRUE
+substrait FALSE
+parquet    TRUE
+json       TRUE
+s3         TRUE
+gcs        TRUE
+utf8proc   TRUE
+re2        TRUE
+snappy     TRUE
+gzip       TRUE
+brotli     TRUE
+zstd       TRUE
+lz4        TRUE
+lz4_frame  TRUE
+lzo       FALSE
+bz2        TRUE
+jemalloc   TRUE
+mimalloc   TRUE
+
+Memory:
+                  
+Allocator mimalloc
+Current    0 bytes
+Max        0 bytes
+
+Runtime:
+                        
+SIMD Level          none
+Detected SIMD Level none
+
+Build:
+                                                             
+C++ Library Version                                    15.0.1
+C++ Compiler                                       AppleClang
+C++ Compiler Version                          15.0.0.15000100
+Git ID               5ce6ff434c1e7daaa2d7f134349f3ce4c22683da</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_parquet</span>(<span class="st">'data/df.parquet'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 62
+  FlightDate          Airline Origin Dest  Cancelled Diverted CRSDepTime DepTime
+  &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;lgl&gt;     &lt;lgl&gt;         &lt;int&gt;   &lt;dbl&gt;
+1 2022-04-04 00:00:00 Commut… GJT    DEN   FALSE     FALSE          1133    1123
+2 2022-04-04 00:00:00 Commut… HRL    IAH   FALSE     FALSE           732     728
+3 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1529    1514
+4 2022-04-04 00:00:00 Commut… IAH    GPT   FALSE     FALSE          1435    1430
+5 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1135    1135
+6 2022-04-04 00:00:00 Commut… DEN    TUL   FALSE     FALSE           955     952
+# ℹ 54 more variables: DepDelayMinutes &lt;dbl&gt;, DepDelay &lt;dbl&gt;, ArrTime &lt;dbl&gt;,
+#   ArrDelayMinutes &lt;dbl&gt;, AirTime &lt;dbl&gt;, CRSElapsedTime &lt;dbl&gt;,
+#   ActualElapsedTime &lt;dbl&gt;, Distance &lt;dbl&gt;, Year &lt;int&gt;, Quarter &lt;int&gt;,
+#   Month &lt;int&gt;, DayofMonth &lt;int&gt;, DayOfWeek &lt;int&gt;,
+#   Marketing_Airline_Network &lt;chr&gt;,
+#   Operated_or_Branded_Code_Share_Partners &lt;chr&gt;,
+#   DOT_ID_Marketing_Airline &lt;int&gt;, IATA_Code_Marketing_Airline &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<p>read parquet zip</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_parquet</span>(<span class="st">'data/df.parquet.gzip'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 62
+  FlightDate          Airline Origin Dest  Cancelled Diverted CRSDepTime DepTime
+  &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;lgl&gt;     &lt;lgl&gt;         &lt;int&gt;   &lt;dbl&gt;
+1 2022-04-04 00:00:00 Commut… GJT    DEN   FALSE     FALSE          1133    1123
+2 2022-04-04 00:00:00 Commut… HRL    IAH   FALSE     FALSE           732     728
+3 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1529    1514
+4 2022-04-04 00:00:00 Commut… IAH    GPT   FALSE     FALSE          1435    1430
+5 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1135    1135
+6 2022-04-04 00:00:00 Commut… DEN    TUL   FALSE     FALSE           955     952
+# ℹ 54 more variables: DepDelayMinutes &lt;dbl&gt;, DepDelay &lt;dbl&gt;, ArrTime &lt;dbl&gt;,
+#   ArrDelayMinutes &lt;dbl&gt;, AirTime &lt;dbl&gt;, CRSElapsedTime &lt;dbl&gt;,
+#   ActualElapsedTime &lt;dbl&gt;, Distance &lt;dbl&gt;, Year &lt;int&gt;, Quarter &lt;int&gt;,
+#   Month &lt;int&gt;, DayofMonth &lt;int&gt;, DayOfWeek &lt;int&gt;,
+#   Marketing_Airline_Network &lt;chr&gt;,
+#   Operated_or_Branded_Code_Share_Partners &lt;chr&gt;,
+#   DOT_ID_Marketing_Airline &lt;int&gt;, IATA_Code_Marketing_Airline &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section id="read-feather" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="read-feather"><span class="header-section-number">1.4</span> read feather</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_feather</span>(<span class="st">'data/feather_file.feather'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 62
+  FlightDate          Airline Origin Dest  Cancelled Diverted CRSDepTime DepTime
+  &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;lgl&gt;     &lt;lgl&gt;         &lt;int&gt;   &lt;dbl&gt;
+1 2022-04-04 00:00:00 Commut… GJT    DEN   FALSE     FALSE          1133    1123
+2 2022-04-04 00:00:00 Commut… HRL    IAH   FALSE     FALSE           732     728
+3 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1529    1514
+4 2022-04-04 00:00:00 Commut… IAH    GPT   FALSE     FALSE          1435    1430
+5 2022-04-04 00:00:00 Commut… DRO    DEN   FALSE     FALSE          1135    1135
+6 2022-04-04 00:00:00 Commut… DEN    TUL   FALSE     FALSE           955     952
+# ℹ 54 more variables: DepDelayMinutes &lt;dbl&gt;, DepDelay &lt;dbl&gt;, ArrTime &lt;dbl&gt;,
+#   ArrDelayMinutes &lt;dbl&gt;, AirTime &lt;dbl&gt;, CRSElapsedTime &lt;dbl&gt;,
+#   ActualElapsedTime &lt;dbl&gt;, Distance &lt;dbl&gt;, Year &lt;int&gt;, Quarter &lt;int&gt;,
+#   Month &lt;int&gt;, DayofMonth &lt;int&gt;, DayOfWeek &lt;int&gt;,
+#   Marketing_Airline_Network &lt;chr&gt;,
+#   Operated_or_Branded_Code_Share_Partners &lt;chr&gt;,
+#   DOT_ID_Marketing_Airline &lt;int&gt;, IATA_Code_Marketing_Airline &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="output" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Output</h1>
+<section id="write-csv" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="write-csv"><span class="header-section-number">2.1</span> write csv</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data001,<span class="st">'data001 csv output data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="write-excel" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="write-excel"><span class="header-section-number">2.2</span> write excel</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(data001,<span class="st">'data001 excel output data.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="write-parquet" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="write-parquet"><span class="header-section-number">2.3</span> write parquet</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_parquet</span>(data001,<span class="st">'data/df.parquet'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>output to zip format</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_parquet</span>(data001,<span class="st">'data/df.parquet.gzip'</span>,<span class="at">compression=</span><span class="st">'gzip'</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="write-feather" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="write-feather"><span class="header-section-number">2.4</span> write feather</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_feather</span>(data001,<span class="st">'data/feather_file.feather'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 <!-- -->
 
+</section>
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -842,24 +1130,152 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "input &amp; ouput"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "input &amp; ouput in R"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>Data input and ouput in R</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/1_-OQi5hp-uoL_KdIydr4hew.gif)</span>{width="500"}</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="fu"># Input</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## read CSV</span></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_csv</span>(<span class="st">'data/Book3.csv'</span>)</span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>read CSV online</span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>url<span class="ot">=</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv'</span></span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_csv</span>(url)</span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## read excel</span></span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_excel</span>(<span class="st">'data/Book1.xlsx'</span>)</span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## read parquet</span></span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a>must install in this way,otherwise will report error.</span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"arrow"</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://apache.r-universe.dev"</span>))</span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-80"><a href="#cb22-80" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb22-81"><a href="#cb22-81" aria-hidden="true" tabindex="-1"></a><span class="fu">arrow_info</span>()</span>
+<span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_parquet</span>(<span class="st">'data/df.parquet'</span>)</span>
+<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span>
+<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a>read parquet zip</span>
+<span id="cb22-94"><a href="#cb22-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-95"><a href="#cb22-95" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_parquet</span>(<span class="st">'data/df.parquet.gzip'</span>)</span>
+<span id="cb22-96"><a href="#cb22-96" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span>
+<span id="cb22-97"><a href="#cb22-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-98"><a href="#cb22-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-99"><a href="#cb22-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-100"><a href="#cb22-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-101"><a href="#cb22-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## read feather</span></span>
+<span id="cb22-102"><a href="#cb22-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-105"><a href="#cb22-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-106"><a href="#cb22-106" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb22-107"><a href="#cb22-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-108"><a href="#cb22-108" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span><span class="fu">read_feather</span>(<span class="st">'data/feather_file.feather'</span>)</span>
+<span id="cb22-109"><a href="#cb22-109" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span>
+<span id="cb22-110"><a href="#cb22-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-111"><a href="#cb22-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-112"><a href="#cb22-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a><span class="fu"># Output</span></span>
+<span id="cb22-115"><a href="#cb22-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## write csv </span></span>
+<span id="cb22-118"><a href="#cb22-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data001,<span class="st">'data001 csv output data.csv'</span>)</span>
+<span id="cb22-123"><a href="#cb22-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-125"><a href="#cb22-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a><span class="fu">## write excel</span></span>
+<span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(data001,<span class="st">'data001 excel output data.xlsx'</span>)</span>
+<span id="cb22-135"><a href="#cb22-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-136"><a href="#cb22-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-137"><a href="#cb22-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-138"><a href="#cb22-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-139"><a href="#cb22-139" aria-hidden="true" tabindex="-1"></a><span class="fu">## write parquet</span></span>
+<span id="cb22-140"><a href="#cb22-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-143"><a href="#cb22-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-144"><a href="#cb22-144" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
+<span id="cb22-145"><a href="#cb22-145" aria-hidden="true" tabindex="-1"></a><span class="fu">write_parquet</span>(data001,<span class="st">'data/df.parquet'</span>)</span>
+<span id="cb22-146"><a href="#cb22-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-147"><a href="#cb22-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-148"><a href="#cb22-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-149"><a href="#cb22-149" aria-hidden="true" tabindex="-1"></a>output to zip format</span>
+<span id="cb22-150"><a href="#cb22-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-153"><a href="#cb22-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-154"><a href="#cb22-154" aria-hidden="true" tabindex="-1"></a><span class="fu">write_parquet</span>(data001,<span class="st">'data/df.parquet.gzip'</span>,<span class="at">compression=</span><span class="st">'gzip'</span>)  </span>
+<span id="cb22-155"><a href="#cb22-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-156"><a href="#cb22-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-157"><a href="#cb22-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-158"><a href="#cb22-158" aria-hidden="true" tabindex="-1"></a><span class="fu">## write feather</span></span>
+<span id="cb22-159"><a href="#cb22-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-160"><a href="#cb22-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-161"><a href="#cb22-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-164"><a href="#cb22-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-165"><a href="#cb22-165" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(feather)</span>
+<span id="cb22-166"><a href="#cb22-166" aria-hidden="true" tabindex="-1"></a><span class="fu">write_feather</span>(data001,<span class="st">'data/feather_file.feather'</span>)</span>
+<span id="cb22-167"><a href="#cb22-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-168"><a href="#cb22-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-169"><a href="#cb22-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-170"><a href="#cb22-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-171"><a href="#cb22-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-172"><a href="#cb22-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-173"><a href="#cb22-173" aria-hidden="true" tabindex="-1"></a></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
