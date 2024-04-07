@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>tidymodeling - Level 2 classification Tidy Modeling</title>
+<title>Tidymodel with R - Level 2 classification Tidy Modeling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,13 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
-  "type": "textbox",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -103,17 +104,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../styles.css">
+<meta name="twitter:title" content="Tidymodel with R - Level 2 classification Tidy Modeling">
+<meta name="twitter:description" content="with hotel booking data">
+<meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../logo.jpg" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">tidymodeling</span>
+    <span class="navbar-title">Tidymodel with R</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -126,95 +133,235 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../recipe.html"> 
-<span class="menu-text">Recipe</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hotel-classification-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">hotel Classification model</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-intro" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">intro</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-hotel-classification-model">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-intro">    
+        <li class="dropdown-header">Intro</li>
+        <li>
+    <a class="dropdown-item" href="../intro/1 about.html">
+ <span class="dropdown-text">About</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../intro/2 basic R.html">
+ <span class="dropdown-text">Basic R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../intro/3 resample.html">
+ <span class="dropdown-text">resample</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../intro/4 recipe.html">
+ <span class="dropdown-text">recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../intro/5 R boook.html">
+ <span class="dropdown-text">R book</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../intro/6 data analytic in R book.html">
+ <span class="dropdown-text">Data analytic in R book</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-titanic-classification-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">titanic Classification model</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classification</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-titanic-classification-model">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification">    
         <li class="dropdown-header">titanic classification model</li>
         <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 0 classification Tidy Modeling.html">
+    <a class="dropdown-item" href="../titanic classification model/0 classification Tidy Modeling.html">
+ <span class="dropdown-text">Titanic data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/1 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/2 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model with Recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/3 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model with Recipe,workflow,tunning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/4 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model with Recipe,workflow,fast tunning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/5 classification Tidy Modeling.html">
+ <span class="dropdown-text">Multiple classification model with Recipe,workflow set,fast tunning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification-imbanlance" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classification imbanlance</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification-imbanlance">    
+        <li class="dropdown-header">hotel classification model</li>
+        <li>
+    <a class="dropdown-item" href="../hotel classification model/Level 0 classification Tidy Modeling.html">
  <span class="dropdown-text">Level 0 classification Tidy Modeling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 1 classification Tidy Modeling.html">
+    <a class="dropdown-item" href="../hotel classification model/Level 1 classification Tidy Modeling.html">
  <span class="dropdown-text">Level 1 classification Tidy Modeling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 2 classification Tidy Modeling.html">
+    <a class="dropdown-item" href="../hotel classification model/Level 2 classification Tidy Modeling.html">
  <span class="dropdown-text">Level 2 classification Tidy Modeling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 3 classification Tidy Modeling.html">
+    <a class="dropdown-item" href="../hotel classification model/Level 3 classification Tidy Modeling.html">
  <span class="dropdown-text">Level 3 classification Tidy Modeling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 4 classification Tidy Modeling.html">
+    <a class="dropdown-item" href="../hotel classification model/Level 4 classification Tidy Modeling.html">
  <span class="dropdown-text">Level 4 classification Tidy Modeling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 5 classification Tidy Modeling.html">
+    <a class="dropdown-item" href="../hotel classification model/Level 5 classification Tidy Modeling.html">
  <span class="dropdown-text">Level 5 classification Tidy Modeling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../titanic classification model/Level 6 classification Tidy Modeling.html">
+    <a class="dropdown-item" href="../hotel classification model/Level 6 classification Tidy Modeling.html">
  <span class="dropdown-text">Level 6 classification Tidy Modeling</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-house-price-regression-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">house price regression model</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regression" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Regression</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-house-price-regression-model">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-regression">    
         <li class="dropdown-header">house price regression model</li>
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 0 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 0 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/0 Regression Tidy Modeling.html">
+ <span class="dropdown-text">House price data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 1 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 1 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/1 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 2 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 2 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/3 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model with Recipe</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 3 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 3 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/4 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model with Recipe,workflow,tuning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../house price regression model/Level 4 Regression Tidy Modeling.html">
- <span class="dropdown-text">Level 4 Regression Tidy Modeling</span></a>
+    <a class="dropdown-item" href="../house price regression model/5 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model with Recipe,workflow,fast tuning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../house price regression model/6 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Multiple Regression model with Recipe,workflow set,fast tuning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-house-price-tensorflow-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">house price tensorflow model</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-house-price-tensorflow-model">    
+        <li class="dropdown-header">Tensorflow</li>
+        <li>
+    <a class="dropdown-item" href="../tensorflow/Level 1 Regression tensorflow.html">
+ <span class="dropdown-text">Level 1 Regression Tensorflow model</span></a>
   </li>  
     </ul>
   </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../hotel classification model/Level 0 classification Tidy Modeling.html">hotel classification model</a></li><li class="breadcrumb-item"><a href="../hotel classification model/Level 2 classification Tidy Modeling.html">Level 2 classification Tidy Modeling</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">hotel classification model</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hotel classification model/Level 0 classification Tidy Modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Level 0 classification Tidy Modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hotel classification model/Level 1 classification Tidy Modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Level 1 classification Tidy Modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hotel classification model/Level 2 classification Tidy Modeling.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Level 2 classification Tidy Modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hotel classification model/Level 3 classification Tidy Modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Level 3 classification Tidy Modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hotel classification model/Level 4 classification Tidy Modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Level 4 classification Tidy Modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hotel classification model/Level 5 classification Tidy Modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Level 5 classification Tidy Modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hotel classification model/Level 6 classification Tidy Modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Level 6 classification Tidy Modeling</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -249,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../hotel classification model/Level 0 classification Tidy Modeling.html">hotel classification model</a></li><li class="breadcrumb-item"><a href="../hotel classification model/Level 2 classification Tidy Modeling.html">Level 2 classification Tidy Modeling</a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Level 2 classification Tidy Modeling</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 <p class="subtitle lead">with hotel booking data</p>

@@ -1,0 +1,50 @@
+---
+title: "resample"
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+# k-Fold Cross-Validation
+
+![](images/three-CV-iter.svg){width="400"}
+
+```{r}
+#| eval: false
+k_flod_resample<- vfold_cv(data, v = 10)
+k_flod_resample
+```
+
+# MONTE CARLO CROSS-VALIDATION
+
+for MCCV, this proportion of the data is randomly selected each time. This results in assessment sets that are not mutually exclusive
+
+```{r}
+#| eval: false
+mc_resample<- mc_cv(data, prop = 9/10, times = 20)
+mc_resample
+```
+
+# The Bootstrap
+
+A bootstrap sample of the training set is a sample that is the same size as the training set but is drawn with replacement
+
+![](images/bootstraps.svg){width="495"}
+
+```{r}
+#| eval: false
+bootstraps_resample<- bootstraps(data, times = 1000)
+bootstraps_resample
+```

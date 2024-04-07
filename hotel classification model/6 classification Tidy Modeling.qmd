@@ -1,0 +1,490 @@
+---
+title: "Multiple Classification Model with recipe,workflow set,fast tuning"
+subtitle: "with hotel booking data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+Level 6 classification Tidy Modeling: 
+
+* using Recipe to down sample.
+* add resamples to estimate the performance of our two models
+* add workflow with tuning
+* add  tuning
+* add workflow set and setting different tuning grid for different model
+
+
+
+
+logistic glm model 
+
+tuning decision tree model with rpart engine(tunning:cost_complexity,tree_depth)
+
+KNN model with knn engine(knn_spec)
+
+tuning XG boost model (tunning:tree_depth , min_n,loss_reduction ,sample_size ,   mtry,learn_rate)
+
+tuning light gbm boost model(tunning:tree_depth , min_n,loss_reduction ,sample_size ,   mtry,learn_rate)
+
+
+# load package
+
+```{r}
+#| code-summary: "Load Pacakges & Set Options"
+library(themis)
+library(tidyverse)      
+library(tidymodels)     
+library(palmerpenguins) # penguin dataset
+library(gt)             # better tables
+library(bonsai)         # tree-based models
+library(conflicted)     # function conflicts
+library(vetiver)
+library(Microsoft365R)
+library(pins)
+tidymodels_prefer()     # handle conflicts
+conflict_prefer("penguins", "palmerpenguins")
+options(tidymodels.dark = TRUE) # dark mode
+theme_set(theme_bw()) # set default ggplot2 theme
+```
+
+# data preparation
+
+## read data
+
+```{r}
+library(tidyverse)
+
+hotels <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv")
+
+
+hotel_stays <- hotels %>%
+  filter(is_canceled == 0) %>%
+  mutate(
+    children = case_when(
+      children + babies > 0 ~ "children",
+      TRUE ~ "none"
+    ),
+    required_car_parking_spaces = case_when(
+      required_car_parking_spaces > 0 ~ "parking",
+      TRUE ~ "none"
+    )
+  ) %>%
+  select(-is_canceled, -reservation_status, -babies)
+
+
+```
+
+
+## data split
+
+```{r}
+#| code-summary: "Prepare & Split Data"
+all_hotels_df <- hotel_stays %>%
+  select(
+    children, hotel, arrival_date_month, meal, adr, adults,
+    required_car_parking_spaces, total_of_special_requests,
+    stays_in_week_nights, stays_in_weekend_nights
+  ) %>%
+  mutate_if(is.character, factor) %>% rename(target_variable=children) %>% mutate(rownum= row_number())
+
+hotels_df=all_hotels_df%>% sample_n(50000) 
+
+hold_hotels_df <- anti_join(all_hotels_df, hotels_df, by='rownum')
+
+
+#all_hotels_df=all_hotels_df %>% select(-rownum)
+#hotels_df=hotels_df %>% select(-rownum)
+#all_hotels_df=all_hotels_df %>% select(-rownum)
+
+```
+
+```{r}
+
+set.seed(1234)
+
+data_split <- initial_validation_split(data=hotels_df, prop = c(0.7,0.2))
+
+data_train=training(data_split)  
+
+data_test=testing(data_split)  
+
+data_valid=validation(data_split)
+
+```
+
+```{r}
+dim(data_train)
+```
+
+```{r}
+dim(data_test)
+```
+
+```{r}
+dim(data_valid)
+```
+
+10 fold for tunning
+```{r}
+set.seed(234)
+folds <- vfold_cv(data_train)
+```
+
+
+
+
+# modeling
+
+## recipe
+
+becasue the target class is not balance so using downsample
+```{r}
+data_rec <- recipe(target_variable ~ ., data = data_train) %>%
+  step_rm(rownum) %>% 
+  step_downsample(target_variable) %>%
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  step_zv(all_numeric()) %>%
+  step_normalize(all_numeric())
+  
+```
+
+
+## model
+
+### decision tree model with cost_complexity and tree_depth to tune
+
+```{r}
+tune_spec <- 
+  decision_tree(
+    cost_complexity = tune(),
+    tree_depth = tune()
+  ) %>% 
+  set_engine("rpart") %>% 
+  set_mode("classification")
+```
+
+```{r}
+tune_spec |> 
+  extract_parameter_set_dials()
+```
+
+```{r}
+decision_tree_tune_grid <- 
+  tune_spec |> 
+  extract_parameter_set_dials() |> 
+  grid_latin_hypercube(size = 100)
+```
+
+
+### logistic glm model 
+```{r}
+glm_spec <-
+  logistic_reg(penalty = 1) |>
+  set_engine("glm")
+```
+
+
+### KNN model
+
+```{r}
+knn_spec <- nearest_neighbor() %>%
+  set_engine("kknn") %>%
+  set_mode("classification")
+
+knn_spec
+```
+
+
+
+
+### XG Boost tree
+
+```{r}
+xgb_spec <- boost_tree(
+  trees = 10,
+  tree_depth = tune(), min_n = tune(),
+  loss_reduction = tune(),                     ## first three: model complexity
+  sample_size = tune(),  mtry=tune(),       ## randomness
+  learn_rate = tune()                          ## step size
+) %>%
+  set_engine("xgboost") %>%
+  set_mode("classification")
+
+xgb_spec
+```
+
+xgb tunning grid
+
+```{r}
+xgb_tune_grid= grid_latin_hypercube(
+  tree_depth(),learn_rate(),loss_reduction(),min_n(),
+  sample_size=sample_prop(),finalize(mtry(),data_train),
+  size=50)
+
+head(xgb_tune_grid)
+```
+
+
+
+### lightGBM Boost tree
+
+```{r}
+lightgbm_spec <- boost_tree(
+  trees = 10,
+  tree_depth = tune(), min_n = tune(),
+  loss_reduction = tune(),                     ## first three: model complexity
+  sample_size = tune(),   mtry=tune(),     ## randomness
+  learn_rate = tune()                          ## step size
+) %>%
+  set_engine("lightgbm") %>%
+  set_mode("classification")
+
+lightgbm_spec
+```
+
+```{r}
+lightgbm_grid= grid_latin_hypercube(
+  tree_depth(),learn_rate(),loss_reduction(),min_n(),
+  sample_size=sample_prop(),finalize(mtry(),data_train),
+  size=50)
+
+head(lightgbm_grid)
+```
+
+
+
+
+
+## workflow set 
+
+
+```{r}
+library(finetune)
+cntl   <- control_grid(save_pred     = TRUE,
+                       save_workflow = TRUE)
+```
+
+
+
+using workflow set instead of workflow to combine many models.
+
+
+
+
+
+```{r}
+workflow_set <-
+  workflow_set(
+    preproc = list(data_rec),
+    models = list(glm   = glm_spec,
+                  tree  = tune_spec,
+                  knn=knn_spec,
+                  xgb=xgb_spec,
+                  lightgbm=lightgbm_spec
+                  )
+  ) %>% option_add(grid = decision_tree_tune_grid, id = "recipe_tree")  %>% 
+  option_add(grid = xgb_tune_grid, id = "recipe_xgb")  %>% 
+  option_add(grid = lightgbm_grid, id = "recipe_lightgbm") 
+```
+
+
+```{r}
+workflow_set %>%
+  option_add_parameters()
+```
+
+
+## training and tunning
+
+
+```{r}
+
+library(finetune)
+doParallel::registerDoParallel()
+
+model_set_res = workflow_set  %>% 
+  workflow_map(
+              grid = 20,
+               resamples = folds,
+               control = cntl
+  )
+```
+
+
+```{r}
+rank_results(model_set_res,
+             rank_metric = "roc_auc",
+             select_best = TRUE)  %>% 
+  gt()
+```
+
+```{r}
+model_set_res |> autoplot()
+```
+
+```{r}
+model_set_res |> autoplot( id= 'recipe_xgb')
+```
+
+select best model:logistic glm model 
+```{r}
+best_model_id <- "recipe_xgb"
+```
+
+select best parameters
+```{r}
+best_fit <-
+  model_set_res |>
+  extract_workflow_set_result(best_model_id) |>
+  select_best(metric = "accuracy")
+```
+
+```{r}
+# create workflow for best model
+final_workflow <-
+  model_set_res |>
+  extract_workflow(best_model_id) |>
+  finalize_workflow(best_fit)
+```
+
+
+
+
+
+## last fit
+
+```{r}
+final_fit <-
+  final_workflow |>
+  last_fit(data_split)
+```
+
+
+# model result
+
+## Evaluate
+
+```{r}
+final_fit %>%
+  collect_metrics()
+```
+
+
+```{r}
+all_metrics <- metric_set(accuracy, recall, precision, f_meas, kap, sens, spec)
+
+a=final_fit %>% collect_predictions()
+
+all_metrics(a, truth = target_variable,estimate = .pred_class)
+```
+
+
+```{r}
+final_fit %>%
+  collect_predictions() %>% 
+  roc_curve(target_variable, .pred_children) %>% 
+  autoplot()
+```
+
+```{r}
+final_tree <- extract_workflow(final_fit)
+final_tree
+```
+
+```{r}
+library(vip)
+
+final_tree %>% 
+  extract_fit_parsnip() %>% 
+  vip()
+```
+
+
+
+## save model
+
+check model size
+
+```{r}
+library(lobstr)
+obj_size(final_tree)
+
+
+```
+
+bundle and save model
+
+```{r}
+library(bundle)
+model_bundle <- bundle(final_tree)
+```
+
+```{r}
+saveRDS(model_bundle,'level 6 classification decision tree hotel model.RDS')
+```
+
+## make predication
+
+load model and unbundle
+
+```{r}
+model=readRDS('level 6 classification decision tree hotel model.RDS')
+
+model <- unbundle(model)
+```
+
+```{r}
+final_prediction=predict(model,data_valid)
+
+head(final_prediction)
+```
+
+```{r}
+
+final_prediction_data=cbind(data_valid,final_prediction)
+
+conf_mat(final_prediction_data, truth = target_variable,
+    estimate = .pred_class)
+
+```
+```{r}
+accuracy(final_prediction_data, truth = target_variable, estimate = .pred_class)
+```
+
+```{r}
+final_prediction_data %>% group_by(target_variable)%>% count()
+```
+
+```{r}
+final_prediction_data %>% group_by(.pred_class) %>% count()
+```
+
+
+```{r}
+conf_mat(final_prediction_data, truth = target_variable,
+    estimate = .pred_class)
+```
+
+# reference:
+
+
+https://www.tmwr.org
+
+https://www.youtube.com/watch?v=IzjmuGJgwKQ
+
+https://www.youtube.com/watch?v=_e0NFIaHY2c
+
+

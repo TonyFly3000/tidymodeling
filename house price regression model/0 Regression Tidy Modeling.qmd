@@ -1,0 +1,105 @@
+---
+title: "House price data"
+
+author: "Tony Duan"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+# house price data
+
+![](images/house-prices-scaled.jpg){width="457"}
+
+data download form [kaggle](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data)
+
+```{r}
+library(tidyverse)
+train = read_csv("data/train.csv")
+
+test=read_csv("data/test.csv")
+
+```
+
+Data have `r nrow(train)` record and `r ncol(train)` variable
+
+
+
+```{r}
+options(scipen = 999)
+ggplot(train, aes(SalePrice)) + 
+  geom_histogram()
+```
+
+# Measurement:
+
+-   Mean absolute error (MAE)
+
+The MAE measures the average magnitude of the errors in a set of forecasts, without considering their direction. It measures accuracy for continuous variables. The equation is given in the library references. Expressed in words, the MAE is the average over the verification sample of the absolute values of the differences between forecast and the corresponding observation. The MAE is a linear score which means that all the individual differences are weighted equally in the average.
+
+-   Root Mean Squared Error (RMSE)
+
+![](images/eque1.jpg){width="300"}
+
+The RMSE is a quadratic scoring rule which measures the average magnitude of the error. The equation for the RMSE is given in both of the references. Expressing the formula in words, the difference between forecast and corresponding observed values are each squared and then averaged over the sample. Finally, the square root of the average is taken. Since the errors are squared before they are averaged, the RMSE gives a relatively high weight to large errors. This means the RMSE is most useful when large errors are particularly undesirable.
+
+Both the MAE and RMSE can range from 0 to ∞. They are negatively-oriented scores: Lower values are better.
+
+-   R\^2 (Coefficient of determination): is between 0 to 1. bigger the better.
+
+![](images/13){width="300"}
+
+residual sum of squares(RSS):
+
+![](images/11){width="300"}
+
+total sum of squares(TOT):
+
+![](images/12){width="300"}
+
+
+
+
+# read data
+
+
+```{r}
+library(tidyverse)
+train = read_csv("data/train.csv")
+
+test=read_csv("data/test.csv")
+
+```
+
+
+
+# plotting
+
+```{r}
+options(scipen = 999)
+ggplot(train, aes(SalePrice)) + 
+  geom_histogram()
+```
+
+
+# EDA
+
+
+```{r}
+library(skimr)
+
+skim(train)
+```
+
+
+
+

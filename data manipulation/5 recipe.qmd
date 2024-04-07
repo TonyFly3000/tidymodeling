@@ -1,0 +1,132 @@
+---
+title: "recipe"
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+# create recipe step_xxx
+
+```{r}
+#| eval: false
+tree_rec <- recipe(legal_status ~ ., data = trees_train) %>%
+  
+ # update the role for tree_id, since this is a variable we might like to keep around for convenience as an identifier for rows but is not a predictor or outcome. 
+  update_role(tree_id, new_role = "ID") %>%
+  
+# step_other() to collapse categorical levels for species, caretaker, and the site info. Before this step, there were 300+ species!
+  step_other(species, caretaker, threshold = 0.01) %>%
+  
+# create dummy for nominal data exclude outcome
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  
+# The date column with when each tree was planted may be useful for fitting this model, but probably not the exact date, given how slowly trees grow. Let’s create a year feature from the date, and then remove the original date variable.  
+  step_date(date, features = c("year")) %>%step_rm(date) %>%
+  
+# There are many more DPW maintained trees than not, so let’s downsample the data for training.  
+  step_downsample(legal_status)%>%
+
+# will remove all. predictor variables that contain only a single value
+    step_zv(all_numeric(all_predictors())) %>% 
+  
+#  normalize all numeric data
+  step_normalize(all_numeric()) %>% 
+
+# use KNN to impute all predictors
+step_impute_knn(all_predictors()) 
+
+
+```
+
+
+# check recipe  check_xxx
+
+```{r}
+#> [1] "check_class"      "check_cols"       "check_missing"   
+#> [4] "check_name"       "check_new_data"   "check_new_values"
+#> [7] "check_range"      "check_type"
+```
+
+
+# roles to select variables
+
+In most cases, the right approach for users will be use to use the predictor-specific selectors such as all_numeric_predictors() and all_nominal_predictors(). 
+
+
+```{r}
+#| eval: false
+
+
+has_role(match = "predictor")
+
+has_type(match = "numeric")
+
+all_outcomes()
+
+all_predictors()
+
+all_date()
+
+all_date_predictors()
+
+all_datetime()
+
+all_datetime_predictors()
+
+all_double()
+
+all_double_predictors()
+
+all_factor()
+
+all_factor_predictors()
+
+all_integer()
+
+all_integer_predictors()
+
+all_logical()
+
+all_logical_predictors()
+
+all_nominal()
+
+all_nominal_predictors()
+
+all_numeric()
+
+all_numeric_predictors()
+
+all_ordered()
+
+all_ordered_predictors()
+
+all_string()
+
+all_string_predictors()
+
+all_unordered()
+
+all_unordered_predictors()
+
+current_info()
+```
+
+
+
+# reference:
+
+https://recipes.tidymodels.org/reference/has_role.html

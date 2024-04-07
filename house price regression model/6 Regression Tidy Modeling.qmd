@@ -1,0 +1,375 @@
+---
+title: "Multiple Regression model with Recipe,workflow set,fast tuning"
+subtitle: "with house price data"
+author: "Tony Duan"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+* using Recipe.
+* add resamples to estimate the performance of our two models
+* add workflow with tunning
+* add quick tuning
+* add workflow set and setting different tuning grid for different model
+
+# load package
+
+```{r}
+#| code-summary: "Load Pacakges & Set Options"
+library(themis)
+library(tidyverse)      
+library(tidymodels)     
+library(palmerpenguins) # penguin dataset
+library(gt)             # better tables
+library(bonsai)         # tree-based models
+library(conflicted)     # function conflicts
+library(vetiver)
+library(Microsoft365R)
+library(pins)
+tidymodels_prefer()     # handle conflicts
+conflict_prefer("penguins", "palmerpenguins")
+options(tidymodels.dark = TRUE) # dark mode
+theme_set(theme_bw()) # set default ggplot2 theme
+```
+
+# data preparation
+
+## read data
+
+```{r}
+library(tidyverse)
+train = read_csv("data/train.csv")
+
+test=read_csv("data/test.csv")
+
+```
+
+## data split
+
+```{r}
+#| code-summary: "Prepare & Split Data"
+train_df <- train  %>% select_if(is.numeric)%>% rename(target_variable=SalePrice)%>% replace(is.na(.), 0)
+
+
+```
+
+```{r}
+
+set.seed(1234)
+
+data_split <- initial_validation_split(data=train_df, prop = c(0.7,0.1))
+
+data_train=training(data_split)  
+
+data_test=testing(data_split)  
+
+data_valid=validation(data_split)
+
+```
+
+
+
+
+```{r}
+dim(data_train)
+```
+
+```{r}
+dim(data_test)
+```
+
+```{r}
+dim(data_valid)
+```
+
+# modeling
+
+## recipe
+
+```{r}
+data_rec <- recipe(target_variable ~ ., data = data_train) %>%
+  #step_downsample(target_variable) %>%
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  step_zv(all_numeric()) %>%
+  step_normalize(all_numeric(), -all_outcomes())
+  
+```
+
+
+```{r}
+
+trained_data_rec <- prep(data_rec, training = data_train)
+```
+
+
+```{r}
+trained_data_rec %>%check_missing("LotFrontage")
+```
+
+
+## model
+
+![](images/1.png){width="214"}
+
+### lasso regression
+
+```{r}
+lasso_tune_spec <- linear_reg(penalty = tune(), mixture = 1) %>%
+  set_engine("glmnet")
+```
+
+```{r}
+lasso_grid <- grid_regular(penalty(), levels = 50)
+```
+
+```{r}
+lasso_tune_spec
+```
+
+
+
+### decision tree model with cost_complexity and tree_depth to tune
+
+```{r}
+tune_spec =
+  decision_tree(
+    cost_complexity = tune(),
+    tree_depth = tune()
+  ) %>% 
+  set_engine("rpart") %>% 
+  set_mode("regression")
+```
+
+```{r}
+tune_spec %>% extract_parameter_set_dials()
+```
+
+```{r}
+decision_tree_tune_grid = 
+  tune_spec |> 
+  extract_parameter_set_dials() |> 
+  grid_latin_hypercube(size = 100)
+```
+
+
+### lightGBM Boost tree
+
+```{r}
+lightgbm_spec = boost_tree(
+  trees = 100,
+  tree_depth = tune(), min_n = tune(),
+  loss_reduction = tune(),                     ## first three: model complexity
+  sample_size = tune(),   mtry=tune(),     ## randomness
+  learn_rate = tune()                          ## step size
+) %>%
+  set_engine("lightgbm") %>%
+  set_mode("regression")
+
+lightgbm_spec
+```
+
+```{r}
+lightgbm_grid= grid_latin_hypercube(
+  tree_depth(),learn_rate(),loss_reduction(),min_n(),
+  sample_size=sample_prop(),finalize(mtry(),data_train),
+  size=50)
+
+head(lightgbm_grid)
+```
+
+### Random Forest Model
+```{r}
+rf_spec <- rand_forest(
+  mtry = tune(), trees = tune(), min_n = tune()
+  )%>%
+  set_engine("ranger") %>%
+  set_mode("regression")
+
+rf_spec
+``` 
+
+```{r}
+rf_grid <- 
+  grid_latin_hypercube(
+    min_n(), 
+    mtry(range = c(4, 9)), 
+    trees(), 
+    size = 80)
+
+head(rf_grid)
+```
+
+
+## workflow
+
+```{r}
+
+workflow_set =
+  workflow_set(
+    preproc = list(data_rec),
+    models = list(
+                  lasso=lasso_tune_spec,
+                  tree  = tune_spec,
+                  lightgbm=lightgbm_spec,
+                  random_forest=rf_spec
+                  )
+  ) %>% option_add(grid = decision_tree_tune_grid, id = "recipe_tree")  %>% 
+  option_add(grid = lasso_grid, id = "recipe_lasso")  %>% 
+  option_add(grid = lightgbm_grid, id = "recipe_lightgbm")  %>% 
+  option_add(grid = rf_grid, id = "recipe_rf") 
+
+```
+
+
+```{r}
+workflow_set %>%
+  option_add_parameters()
+```
+
+
+using control_race instead of control_grid
+
+```{r}
+library(finetune)
+cntl   <- control_race(save_pred     = TRUE,
+                       save_workflow = TRUE)
+```
+
+10 fold for tunning
+
+```{r}
+set.seed(234)
+folds <- vfold_cv(data_train)
+```
+
+## training
+
+### train lasso model
+
+using tune_race_anova() instead of tune_grid()
+
+```{r}
+
+library(finetune)
+doParallel::registerDoParallel()
+
+model_set_res = workflow_set  %>% 
+  workflow_map(
+              grid = 50,
+               resamples = folds,
+               control = cntl
+  )
+```
+
+
+
+```{r}
+rank_results(model_set_res,
+             rank_metric = "rmse",
+             select_best = TRUE)  %>% 
+  gt()
+```
+
+```{r}
+model_set_res |> autoplot()
+```
+
+```{r}
+model_set_res |> autoplot( id= 'recipe_lightgbm')
+```
+
+select best model:logistic glm model 
+```{r}
+best_model_id <- "recipe_random_forest"
+```
+
+
+select best parameters
+```{r}
+best_fit <-
+  model_set_res |>
+  extract_workflow_set_result(best_model_id) |>
+  select_best(metric = "rmse")
+```
+
+```{r}
+# create workflow for best model
+final_workflow <-
+  model_set_res |>
+  extract_workflow(best_model_id) |>
+  finalize_workflow(best_fit)
+```
+
+
+
+
+# model result
+
+
+
+## last fit
+
+```{r}
+final_fit <-
+  final_workflow |>
+  last_fit(data_split)
+```
+
+```{r}
+options(scipen=10000)
+final_fit %>%
+  collect_metrics()
+```
+
+
+```{r}
+(final_fit%>%collect_predictions()) %>% ggplot(aes(target_variable, .pred))+ geom_abline(lty = 2, color = "gray80", size = 1.5) +geom_point(alpha = 0.5)+labs(
+    x = "Truth",
+    y = "Predicted attendance",
+    color = "Type of model"
+  )+scale_x_continuous(labels = scales::comma) +scale_y_continuous(labels = scales::comma) 
+```
+
+
+manual calculate RMSE on testing data
+
+```{r}
+final_data=final_fit%>%collect_predictions()
+
+final_data2=final_data %>% mutate(diff=target_variable-.pred)%>% mutate(diff2=diff^2)
+
+a=sum(final_data2$diff2)/nrow(final_data2)
+
+sqrt(a)
+
+#glimpse(final_data2)
+```
+
+
+
+
+
+# future prediction
+
+```{r}
+future_predict=predict(final_fit %>% extract_workflow(),data_valid)
+
+glimpse(future_predict)
+```
+
+
+# resouece
+
+https://www.youtube.com/watch?v=1LEW8APSOJo
+
+https://juliasilge.com/blog/lasso-the-office/

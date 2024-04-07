@@ -1,0 +1,15 @@
+{
+  "hash": "aa3cca2007c36736035deb1dd2e3160a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Basic R\"\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n---\n\n\n# Condition with if/elif/else\n\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- -5\nif(x > 0){\nprint(\"Non-negative number\")\n} else {\nprint(\"Negative number\")\n}\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"Negative number\"\n```\n\n\n:::\n:::\n\n\n# Loop\n\n## for Loop\n\n## while Loop\n\nwith break statement\n\n\n# function\n\n## without Arguments\n\n## return result\n\n\n# Package\n\n\n## check python version \n\n## install package\n\n## check one package version\n\n## check all package version\n\n\n# download file\n\n\n::: {.cell}\n\n```{.r .cell-code}\nurl=\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv\"\n\ndownload.file(url = url, destfile = \"hotels.csv\")\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

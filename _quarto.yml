@@ -32,11 +32,11 @@ website:
       - text: "Home"
         file: index.qmd
       - sidebar:intro
-
-      - sidebar:Classification_hotel
-      - sidebar:Classification_titanic
-      - sidebar:house_price_regression_model
-      - sidebar:house_price_tensorflow
+      - sidebar:bar0
+      - sidebar:bar1
+      - sidebar:bar2
+      - sidebar:bar3
+      - sidebar:bar4
  
   
   sidebar:
@@ -47,30 +47,36 @@ website:
       collapse-level: 2
       contents: intro
 
-
-
-    - id: Classification_hotel
-      title: "hotel Classification model"
+    - id: bar0
+      title: "Data"
       style: "floating"
       background: light
       collapse-level: 2
-      contents: hotel classification model
+      contents: data manipulation   
+
+
+    - id: bar1
+      title: "Classification"
+      style: "floating"
+      background: light
+      collapse-level: 2
+      contents: titanic classification model     
       
-    - id: Classification_titanic
-      title: "titanic Classification model"
+    - id: bar2
+      title: "Classification imbanlance"
       style: "floating"
       background: light
       collapse-level: 2
-      contents: titanic classification model      
+      contents: hotel classification model   
 
-    - id: house_price_regression_model
-      title: "house price regression model"
+    - id: bar3
+      title: "Regression"
       style: "floating"
       background: light
       collapse-level: 2
       contents: house price regression model 
 
-    - id: house_price_tensorflow
+    - id: bar4
       title: "house price tensorflow model"
       style: "floating"
       background: light
