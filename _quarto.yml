@@ -56,18 +56,18 @@ website:
       contents: data manipulation   
 
     - id: bar1
-      title: "Data"
-      style: "floating"
-      background: light
-      collapse-level: 2
-      contents: data manipulation  
-
-    - id: bar2
       title: "Ploting"
       style: "floating"
       background: light
       collapse-level: 2
       contents: Plot
+
+    - id: bar2
+      title: "Classification"
+      style: "floating"
+      background: light
+      collapse-level: 2
+      contents: titanic classification model
       
     - id: bar3
       title: "Classification imbanlance"
