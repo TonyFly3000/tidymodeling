@@ -19,17 +19,47 @@ format:
 ![](images/Plotly-logo.png){width="800"}
 
 ```{r}
+library(gapminder)
 library(plotly)
 packageVersion("plotly")
 ```
 
 # Scatter Plot
 
+
+```{r}
+library(reshape2)
+tips=tips
+head(tips)
+```
+
+
+```{r}
+fig <- plot_ly(data = tips, x = ~total_bill, y = ~tip)
+fig
+```
+
+
 ## color by group
+
+
+```{r}
+fig <- plot_ly(data = tips, x = ~total_bill, y = ~tip,color=~sex)
+fig
+```
 
 ## size by group
 
+```{r}
+fig <- plot_ly(data = tips, x = ~total_bill, y = ~tip,color=~sex,size=~size)
+fig
+```
+
 ## line Plot
+
+
+
+
 
 ## color by group
 
@@ -64,3 +94,4 @@ packageVersion("plotly")
 # Animation plot
 
 # reference:
+https://plotly.com/r/

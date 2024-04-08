@@ -102,10 +102,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Tidymodel with R - Plotly in R">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -186,38 +195,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Data</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-1">    
-        <li class="dropdown-header">data manipulation</li>
-        <li>
-    <a class="dropdown-item" href="../data manipulation/1 input ouput.html">
- <span class="dropdown-text">input &amp; ouput in R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data manipulation/2 data structure in R.html">
- <span class="dropdown-text">Data structure in R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data manipulation/3 data manipulation with tidyverse.html">
- <span class="dropdown-text">Data manipulation with tidyverse</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data manipulation/4 resample.html">
- <span class="dropdown-text">resample</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data manipulation/5 recipe.html">
- <span class="dropdown-text">recipe</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data manipulation/5 SQL database.html">
- <span class="dropdown-text">SQL database with R</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Ploting</span>
     </a>
@@ -225,11 +202,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="dropdown-header">Plot</li>
         <li>
     <a class="dropdown-item" href="../Plot/1 ggplot2.html">
- <span class="dropdown-text">GGplot2 in R</span></a>
+ <span class="dropdown-text">ggplot2 in R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../Plot/2 plotly.html">
  <span class="dropdown-text">Plotly in R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classification</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification">    
+        <li class="dropdown-header">titanic classification model</li>
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/0 classification Tidy Modeling.html">
+ <span class="dropdown-text">Titanic data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/1 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/2 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model with Recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/3 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model with Recipe,workflow,tunning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/4 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model with Recipe,workflow,fast tunning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../titanic classification model/5 classification Tidy Modeling.html">
+ <span class="dropdown-text">Multiple classification model with Recipe,workflow set,fast tunning</span></a>
   </li>  
     </ul>
   </li>
@@ -349,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Plot/1 ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GGplot2 in R</span></a>
+ <span class="menu-text">ggplot2 in R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -436,8 +445,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"plotly"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"plotly"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '4.10.4'</code></pre>
@@ -445,11 +455,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="scatter-plot" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Scatter Plot</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tips<span class="ot">=</span>tips</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  total_bill  tip    sex smoker day   time size
+1      16.99 1.01 Female     No Sun Dinner    2
+2      10.34 1.66   Male     No Sun Dinner    3
+3      21.01 3.50   Male     No Sun Dinner    3
+4      23.68 3.31   Male     No Sun Dinner    2
+5      24.59 3.61 Female     No Sun Dinner    4
+6      25.29 4.71   Male     No Sun Dinner    4</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> tips, <span class="at">x =</span> <span class="sc">~</span>total_bill, <span class="at">y =</span> <span class="sc">~</span>tip)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-3ab8aa7406aab8fac641" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3ab8aa7406aab8fac641">{"x":{"visdat":{"ebb305f9f5b":["function () ","plotlyVisDat"]},"cur_data":"ebb305f9f5b","attrs":{"ebb305f9f5b":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"total_bill"},"yaxis":{"domain":[0,1],"automargin":true,"title":"tip"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[16.989999999999998,10.34,21.010000000000002,23.68,24.59,25.289999999999999,8.7699999999999996,26.879999999999999,15.039999999999999,14.779999999999999,10.27,35.259999999999998,15.42,18.43,14.83,21.579999999999998,10.33,16.289999999999999,16.969999999999999,20.649999999999999,17.920000000000002,20.289999999999999,15.77,39.420000000000002,19.82,17.809999999999999,13.369999999999999,12.69,21.699999999999999,19.649999999999999,9.5500000000000007,18.350000000000001,15.06,20.690000000000001,17.780000000000001,24.059999999999999,16.309999999999999,16.93,18.690000000000001,31.27,16.039999999999999,17.460000000000001,13.94,9.6799999999999997,30.399999999999999,18.289999999999999,22.23,32.399999999999999,28.550000000000001,18.039999999999999,12.539999999999999,10.289999999999999,34.810000000000002,9.9399999999999995,25.559999999999999,19.489999999999998,38.009999999999998,26.41,11.24,48.270000000000003,20.289999999999999,13.81,11.02,18.289999999999999,17.59,20.079999999999998,16.449999999999999,3.0699999999999998,20.23,15.01,12.02,17.07,26.859999999999999,25.280000000000001,14.73,10.51,17.920000000000002,27.199999999999999,22.760000000000002,17.289999999999999,19.440000000000001,16.66,10.07,32.68,15.98,34.829999999999998,13.029999999999999,18.280000000000001,24.710000000000001,21.16,28.969999999999999,22.489999999999998,5.75,16.32,22.75,40.170000000000002,27.280000000000001,12.029999999999999,21.010000000000002,12.460000000000001,11.35,15.380000000000001,44.299999999999997,22.420000000000002,20.920000000000002,15.359999999999999,20.489999999999998,25.210000000000001,18.239999999999998,14.31,14,7.25,38.07,23.949999999999999,25.710000000000001,17.309999999999999,29.93,10.65,12.43,24.079999999999998,11.69,13.42,14.26,15.949999999999999,12.48,29.800000000000001,8.5199999999999996,14.52,11.380000000000001,22.82,19.079999999999998,20.27,11.17,12.26,18.260000000000002,8.5099999999999998,10.33,14.15,16,13.16,17.469999999999999,34.299999999999997,41.189999999999998,27.050000000000001,16.43,8.3499999999999996,18.640000000000001,11.869999999999999,9.7799999999999994,7.5099999999999998,14.07,13.130000000000001,17.260000000000002,24.550000000000001,19.77,29.850000000000001,48.170000000000002,25,13.390000000000001,16.489999999999998,21.5,12.66,16.210000000000001,13.81,17.510000000000002,24.52,20.760000000000002,31.710000000000001,10.59,10.630000000000001,50.810000000000002,15.81,7.25,31.850000000000001,16.82,32.899999999999999,17.890000000000001,14.48,9.5999999999999996,34.630000000000003,34.649999999999999,23.329999999999998,45.350000000000001,23.170000000000002,40.549999999999997,20.690000000000001,20.899999999999999,30.460000000000001,18.149999999999999,23.100000000000001,15.69,19.809999999999999,28.440000000000001,15.48,16.579999999999998,7.5599999999999996,10.34,43.109999999999999,13,13.51,18.710000000000001,12.74,13,16.399999999999999,20.530000000000001,16.469999999999999,26.59,38.729999999999997,24.27,12.76,30.059999999999999,25.890000000000001,48.329999999999998,13.27,28.170000000000002,12.9,28.149999999999999,11.59,7.7400000000000002,30.140000000000001,12.16,13.42,8.5800000000000001,15.98,13.42,16.27,10.09,20.449999999999999,13.279999999999999,22.120000000000001,24.010000000000002,15.69,11.609999999999999,10.77,15.529999999999999,10.07,12.6,32.829999999999998,35.829999999999998,29.030000000000001,27.18,22.670000000000002,17.82,18.780000000000001],"y":[1.01,1.6599999999999999,3.5,3.3100000000000001,3.6099999999999999,4.71,2,3.1200000000000001,1.96,3.23,1.71,5,1.5700000000000001,3,3.02,3.9199999999999999,1.6699999999999999,3.71,3.5,3.3500000000000001,4.0800000000000001,2.75,2.23,7.5800000000000001,3.1800000000000002,2.3399999999999999,2,2,4.2999999999999998,3,1.45,2.5,3,2.4500000000000002,3.27,3.6000000000000001,2,3.0699999999999998,2.3100000000000001,5,2.2400000000000002,2.54,3.0600000000000001,1.3200000000000001,5.5999999999999996,3,5,6,2.0499999999999998,3,2.5,2.6000000000000001,5.2000000000000002,1.5600000000000001,4.3399999999999999,3.5099999999999998,3,1.5,1.76,6.7300000000000004,3.21,2,1.98,3.7599999999999998,2.6400000000000001,3.1499999999999999,2.4700000000000002,1,2.0099999999999998,2.0899999999999999,1.97,3,3.1400000000000001,5,2.2000000000000002,1.25,3.0800000000000001,4,3,2.71,3,3.3999999999999999,1.8300000000000001,5,2.0299999999999998,5.1699999999999999,2,4,5.8499999999999996,3,3,3.5,1,4.2999999999999998,3.25,4.7300000000000004,4,1.5,3,1.5,2.5,3,2.5,3.48,4.0800000000000001,1.6399999999999999,4.0599999999999996,4.29,3.7599999999999998,4,3,1,4,2.5499999999999998,4,3.5,5.0700000000000003,1.5,1.8,2.9199999999999999,2.3100000000000001,1.6799999999999999,2.5,2,2.52,4.2000000000000002,1.48,2,2,2.1800000000000002,1.5,2.8300000000000001,1.5,2,3.25,1.25,2,2,2,2.75,3.5,6.7000000000000002,5,5,2.2999999999999998,1.5,1.3600000000000001,1.6299999999999999,1.73,2,2.5,2,2.7400000000000002,2,2,5.1399999999999997,5,3.75,2.6099999999999999,2,3.5,2.5,2,2,3,3.48,2.2400000000000002,4.5,1.6100000000000001,2,10,3.1600000000000001,5.1500000000000004,3.1800000000000002,4,3.1099999999999999,2,2,4,3.5499999999999998,3.6800000000000002,5.6500000000000004,3.5,6.5,3,5,3.5,2,3.5,4,1.5,4.1900000000000004,2.5600000000000001,2.02,4,1.4399999999999999,2,5,2,2,4,2.0099999999999998,2,2.5,4,3.23,3.4100000000000001,3,2.0299999999999998,2.23,2,5.1600000000000001,9,2.5,6.5,1.1000000000000001,3,1.5,1.4399999999999999,3.0899999999999999,2.2000000000000002,3.48,1.9199999999999999,3,1.5800000000000001,2.5,2,3,2.7200000000000002,2.8799999999999999,2,3,3.3900000000000001,1.47,3,1.25,1,1.1699999999999999,4.6699999999999999,5.9199999999999999,2,2,1.75,3],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 <section id="color-by-group" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="color-by-group"><span class="header-section-number">1.1</span> color by group</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> tips, <span class="at">x =</span> <span class="sc">~</span>total_bill, <span class="at">y =</span> <span class="sc">~</span>tip,<span class="at">color=</span><span class="sc">~</span>sex)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-258c8b9a92882ee16b7f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-258c8b9a92882ee16b7f">{"x":{"visdat":{"ebb208e8cbb":["function () ","plotlyVisDat"]},"cur_data":"ebb208e8cbb","attrs":{"ebb208e8cbb":{"x":{},"y":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"total_bill"},"yaxis":{"domain":[0,1],"automargin":true,"title":"tip"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[16.989999999999998,24.59,35.259999999999998,14.83,10.33,16.969999999999999,20.289999999999999,15.77,19.649999999999999,15.06,20.690000000000001,16.93,10.289999999999999,34.810000000000002,26.41,16.449999999999999,3.0699999999999998,17.07,26.859999999999999,25.280000000000001,14.73,10.07,34.829999999999998,5.75,16.32,22.75,11.35,15.380000000000001,44.299999999999997,22.420000000000002,20.920000000000002,14.31,7.25,25.710000000000001,17.309999999999999,10.65,12.43,24.079999999999998,13.42,12.48,29.800000000000001,14.52,11.380000000000001,20.27,11.17,12.26,18.260000000000002,8.5099999999999998,10.33,14.15,13.16,17.469999999999999,27.050000000000001,16.43,8.3499999999999996,18.640000000000001,11.869999999999999,29.850000000000001,25,13.390000000000001,16.210000000000001,17.510000000000002,10.59,10.630000000000001,9.5999999999999996,20.899999999999999,18.149999999999999,19.809999999999999,43.109999999999999,13,12.74,13,16.399999999999999,16.469999999999999,12.76,13.27,28.170000000000002,12.9,30.140000000000001,13.42,15.98,16.27,10.09,22.120000000000001,35.829999999999998,27.18,18.780000000000001],"y":[1.01,3.6099999999999999,5,3.02,1.6699999999999999,3.5,2.75,2.23,3,3,2.4500000000000002,3.0699999999999998,2.6000000000000001,5.2000000000000002,1.5,2.4700000000000002,1,3,3.1400000000000001,5,2.2000000000000002,1.8300000000000001,5.1699999999999999,1,4.2999999999999998,3.25,2.5,3,2.5,3.48,4.0800000000000001,4,1,4,3.5,1.5,1.8,2.9199999999999999,1.6799999999999999,2.52,4.2000000000000002,2,2,2.8300000000000001,1.5,2,3.25,1.25,2,2,2.75,3.5,5,2.2999999999999998,1.5,1.3600000000000001,1.6299999999999999,5.1399999999999997,3.75,2.6099999999999999,2,3,1.6100000000000001,2,4,3.5,3.5,4.1900000000000004,5,2,2.0099999999999998,2,2.5,3.23,2.23,2.5,6.5,1.1000000000000001,3.0899999999999999,3.48,3,2.5,2,2.8799999999999999,4.6699999999999999,2,3],"type":"scatter","mode":"markers","name":"Female","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[10.34,21.010000000000002,23.68,25.289999999999999,8.7699999999999996,26.879999999999999,15.039999999999999,14.779999999999999,10.27,15.42,18.43,21.579999999999998,16.289999999999999,20.649999999999999,17.920000000000002,39.420000000000002,19.82,17.809999999999999,13.369999999999999,12.69,21.699999999999999,9.5500000000000007,18.350000000000001,17.780000000000001,24.059999999999999,16.309999999999999,18.690000000000001,31.27,16.039999999999999,17.460000000000001,13.94,9.6799999999999997,30.399999999999999,18.289999999999999,22.23,32.399999999999999,28.550000000000001,18.039999999999999,12.539999999999999,9.9399999999999995,25.559999999999999,19.489999999999998,38.009999999999998,11.24,48.270000000000003,20.289999999999999,13.81,11.02,18.289999999999999,17.59,20.079999999999998,20.23,15.01,12.02,10.51,17.920000000000002,27.199999999999999,22.760000000000002,17.289999999999999,19.440000000000001,16.66,32.68,15.98,13.029999999999999,18.280000000000001,24.710000000000001,21.16,28.969999999999999,22.489999999999998,40.170000000000002,27.280000000000001,12.029999999999999,21.010000000000002,12.460000000000001,15.359999999999999,20.489999999999998,25.210000000000001,18.239999999999998,14,38.07,23.949999999999999,29.93,11.69,14.26,15.949999999999999,8.5199999999999996,22.82,19.079999999999998,16,34.299999999999997,41.189999999999998,9.7799999999999994,7.5099999999999998,14.07,13.130000000000001,17.260000000000002,24.550000000000001,19.77,48.170000000000002,16.489999999999998,21.5,12.66,13.81,24.52,20.760000000000002,31.710000000000001,50.810000000000002,15.81,7.25,31.850000000000001,16.82,32.899999999999999,17.890000000000001,14.48,34.630000000000003,34.649999999999999,23.329999999999998,45.350000000000001,23.170000000000002,40.549999999999997,20.690000000000001,30.460000000000001,23.100000000000001,15.69,28.440000000000001,15.48,16.579999999999998,7.5599999999999996,10.34,13.51,18.710000000000001,20.530000000000001,26.59,38.729999999999997,24.27,30.059999999999999,25.890000000000001,48.329999999999998,28.149999999999999,11.59,7.7400000000000002,12.16,8.5800000000000001,13.42,20.449999999999999,13.279999999999999,24.010000000000002,15.69,11.609999999999999,10.77,15.529999999999999,10.07,12.6,32.829999999999998,29.030000000000001,22.670000000000002,17.82],"y":[1.6599999999999999,3.5,3.3100000000000001,4.71,2,3.1200000000000001,1.96,3.23,1.71,1.5700000000000001,3,3.9199999999999999,3.71,3.3500000000000001,4.0800000000000001,7.5800000000000001,3.1800000000000002,2.3399999999999999,2,2,4.2999999999999998,1.45,2.5,3.27,3.6000000000000001,2,2.3100000000000001,5,2.2400000000000002,2.54,3.0600000000000001,1.3200000000000001,5.5999999999999996,3,5,6,2.0499999999999998,3,2.5,1.5600000000000001,4.3399999999999999,3.5099999999999998,3,1.76,6.7300000000000004,3.21,2,1.98,3.7599999999999998,2.6400000000000001,3.1499999999999999,2.0099999999999998,2.0899999999999999,1.97,1.25,3.0800000000000001,4,3,2.71,3,3.3999999999999999,5,2.0299999999999998,2,4,5.8499999999999996,3,3,3.5,4.7300000000000004,4,1.5,3,1.5,1.6399999999999999,4.0599999999999996,4.29,3.7599999999999998,3,4,2.5499999999999998,5.0700000000000003,2.3100000000000001,2.5,2,1.48,2.1800000000000002,1.5,2,6.7000000000000002,5,1.73,2,2.5,2,2.7400000000000002,2,2,5,2,3.5,2.5,2,3.48,2.2400000000000002,4.5,10,3.1600000000000001,5.1500000000000004,3.1800000000000002,4,3.1099999999999999,2,2,3.5499999999999998,3.6800000000000002,5.6500000000000004,3.5,6.5,3,5,2,4,1.5,2.5600000000000001,2.02,4,1.4399999999999999,2,2,4,4,3.4100000000000001,3,2.0299999999999998,2,5.1600000000000001,9,3,1.5,1.4399999999999999,2.2000000000000002,1.9199999999999999,1.5800000000000001,3,2.7200000000000002,2,3,3.3900000000000001,1.47,3,1.25,1,1.1699999999999999,5.9199999999999999,2,1.75],"type":"scatter","mode":"markers","name":"Male","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 </section>
 <section id="size-by-group" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="size-by-group"><span class="header-section-number">1.2</span> size by group</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> tips, <span class="at">x =</span> <span class="sc">~</span>total_bill, <span class="at">y =</span> <span class="sc">~</span>tip,<span class="at">color=</span><span class="sc">~</span>sex,<span class="at">size=</span><span class="sc">~</span>size)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-a107f128f6c1246a2031" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a107f128f6c1246a2031">{"x":{"visdat":{"ebb4aaf28f3":["function () ","plotlyVisDat"]},"cur_data":"ebb4aaf28f3","attrs":{"ebb4aaf28f3":{"x":{},"y":{},"color":{},"size":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"total_bill"},"yaxis":{"domain":[0,1],"automargin":true,"title":"tip"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[16.989999999999998,24.59,35.259999999999998,14.83,10.33,16.969999999999999,20.289999999999999,15.77,19.649999999999999,15.06,20.690000000000001,16.93,10.289999999999999,34.810000000000002,26.41,16.449999999999999,3.0699999999999998,17.07,26.859999999999999,25.280000000000001,14.73,10.07,34.829999999999998,5.75,16.32,22.75,11.35,15.380000000000001,44.299999999999997,22.420000000000002,20.920000000000002,14.31,7.25,25.710000000000001,17.309999999999999,10.65,12.43,24.079999999999998,13.42,12.48,29.800000000000001,14.52,11.380000000000001,20.27,11.17,12.26,18.260000000000002,8.5099999999999998,10.33,14.15,13.16,17.469999999999999,27.050000000000001,16.43,8.3499999999999996,18.640000000000001,11.869999999999999,29.850000000000001,25,13.390000000000001,16.210000000000001,17.510000000000002,10.59,10.630000000000001,9.5999999999999996,20.899999999999999,18.149999999999999,19.809999999999999,43.109999999999999,13,12.74,13,16.399999999999999,16.469999999999999,12.76,13.27,28.170000000000002,12.9,30.140000000000001,13.42,15.98,16.27,10.09,22.120000000000001,35.829999999999998,27.18,18.780000000000001],"y":[1.01,3.6099999999999999,5,3.02,1.6699999999999999,3.5,2.75,2.23,3,3,2.4500000000000002,3.0699999999999998,2.6000000000000001,5.2000000000000002,1.5,2.4700000000000002,1,3,3.1400000000000001,5,2.2000000000000002,1.8300000000000001,5.1699999999999999,1,4.2999999999999998,3.25,2.5,3,2.5,3.48,4.0800000000000001,4,1,4,3.5,1.5,1.8,2.9199999999999999,1.6799999999999999,2.52,4.2000000000000002,2,2,2.8300000000000001,1.5,2,3.25,1.25,2,2,2.75,3.5,5,2.2999999999999998,1.5,1.3600000000000001,1.6299999999999999,5.1399999999999997,3.75,2.6099999999999999,2,3,1.6100000000000001,2,4,3.5,3.5,4.1900000000000004,5,2,2.0099999999999998,2,2.5,3.23,2.23,2.5,6.5,1.1000000000000001,3.0899999999999999,3.48,3,2.5,2,2.8799999999999999,4.6699999999999999,2,3],"type":"scatter","mode":"markers","name":"Female","marker":{"color":"rgba(102,194,165,1)","size":[28,64,64,28,46,46,28,28,28,28,64,46,28,64,28,28,10,46,28,28,28,10,64,28,28,28,28,28,46,28,28,28,10,46,28,28,28,64,28,28,100,28,28,28,28,28,28,28,28,28,28,28,100,28,28,46,28,82,64,28,46,28,28,28,28,46,46,28,64,28,28,28,28,46,28,28,46,28,64,28,46,28,28,28,46,28,28],"sizemode":"area","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)","size":[28,64,64,28,46,46,28,28,28,28,64,46,28,64,28,28,10,46,28,28,28,10,64,28,28,28,28,28,46,28,28,28,10,46,28,28,28,64,28,28,100,28,28,28,28,28,28,28,28,28,28,28,100,28,28,46,28,82,64,28,46,28,28,28,28,46,46,28,64,28,28,28,28,46,28,28,46,28,64,28,46,28,28,28,46,28,28]},"error_y":{"color":"rgba(102,194,165,1)","width":[]},"error_x":{"color":"rgba(102,194,165,1)","width":[]},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[10.34,21.010000000000002,23.68,25.289999999999999,8.7699999999999996,26.879999999999999,15.039999999999999,14.779999999999999,10.27,15.42,18.43,21.579999999999998,16.289999999999999,20.649999999999999,17.920000000000002,39.420000000000002,19.82,17.809999999999999,13.369999999999999,12.69,21.699999999999999,9.5500000000000007,18.350000000000001,17.780000000000001,24.059999999999999,16.309999999999999,18.690000000000001,31.27,16.039999999999999,17.460000000000001,13.94,9.6799999999999997,30.399999999999999,18.289999999999999,22.23,32.399999999999999,28.550000000000001,18.039999999999999,12.539999999999999,9.9399999999999995,25.559999999999999,19.489999999999998,38.009999999999998,11.24,48.270000000000003,20.289999999999999,13.81,11.02,18.289999999999999,17.59,20.079999999999998,20.23,15.01,12.02,10.51,17.920000000000002,27.199999999999999,22.760000000000002,17.289999999999999,19.440000000000001,16.66,32.68,15.98,13.029999999999999,18.280000000000001,24.710000000000001,21.16,28.969999999999999,22.489999999999998,40.170000000000002,27.280000000000001,12.029999999999999,21.010000000000002,12.460000000000001,15.359999999999999,20.489999999999998,25.210000000000001,18.239999999999998,14,38.07,23.949999999999999,29.93,11.69,14.26,15.949999999999999,8.5199999999999996,22.82,19.079999999999998,16,34.299999999999997,41.189999999999998,9.7799999999999994,7.5099999999999998,14.07,13.130000000000001,17.260000000000002,24.550000000000001,19.77,48.170000000000002,16.489999999999998,21.5,12.66,13.81,24.52,20.760000000000002,31.710000000000001,50.810000000000002,15.81,7.25,31.850000000000001,16.82,32.899999999999999,17.890000000000001,14.48,34.630000000000003,34.649999999999999,23.329999999999998,45.350000000000001,23.170000000000002,40.549999999999997,20.690000000000001,30.460000000000001,23.100000000000001,15.69,28.440000000000001,15.48,16.579999999999998,7.5599999999999996,10.34,13.51,18.710000000000001,20.530000000000001,26.59,38.729999999999997,24.27,30.059999999999999,25.890000000000001,48.329999999999998,28.149999999999999,11.59,7.7400000000000002,12.16,8.5800000000000001,13.42,20.449999999999999,13.279999999999999,24.010000000000002,15.69,11.609999999999999,10.77,15.529999999999999,10.07,12.6,32.829999999999998,29.030000000000001,22.670000000000002,17.82],"y":[1.6599999999999999,3.5,3.3100000000000001,4.71,2,3.1200000000000001,1.96,3.23,1.71,1.5700000000000001,3,3.9199999999999999,3.71,3.3500000000000001,4.0800000000000001,7.5800000000000001,3.1800000000000002,2.3399999999999999,2,2,4.2999999999999998,1.45,2.5,3.27,3.6000000000000001,2,2.3100000000000001,5,2.2400000000000002,2.54,3.0600000000000001,1.3200000000000001,5.5999999999999996,3,5,6,2.0499999999999998,3,2.5,1.5600000000000001,4.3399999999999999,3.5099999999999998,3,1.76,6.7300000000000004,3.21,2,1.98,3.7599999999999998,2.6400000000000001,3.1499999999999999,2.0099999999999998,2.0899999999999999,1.97,1.25,3.0800000000000001,4,3,2.71,3,3.3999999999999999,5,2.0299999999999998,2,4,5.8499999999999996,3,3,3.5,4.7300000000000004,4,1.5,3,1.5,1.6399999999999999,4.0599999999999996,4.29,3.7599999999999998,3,4,2.5499999999999998,5.0700000000000003,2.3100000000000001,2.5,2,1.48,2.1800000000000002,1.5,2,6.7000000000000002,5,1.73,2,2.5,2,2.7400000000000002,2,2,5,2,3.5,2.5,2,3.48,2.2400000000000002,4.5,10,3.1600000000000001,5.1500000000000004,3.1800000000000002,4,3.1099999999999999,2,2,3.5499999999999998,3.6800000000000002,5.6500000000000004,3.5,6.5,3,5,2,4,1.5,2.5600000000000001,2.02,4,1.4399999999999999,2,2,4,4,3.4100000000000001,3,2.0299999999999998,2,5.1600000000000001,9,3,1.5,1.4399999999999999,2.2000000000000002,1.9199999999999999,1.5800000000000001,3,2.7200000000000002,2,3,3.3900000000000001,1.47,3,1.25,1,1.1699999999999999,5.9199999999999999,2,1.75],"type":"scatter","mode":"markers","name":"Male","marker":{"color":"rgba(141,160,203,1)","size":[46,46,28,64,28,64,28,28,28,28,64,28,46,46,28,64,28,64,28,28,28,28,64,28,46,46,46,46,46,28,28,28,64,28,28,64,46,28,28,28,64,28,64,28,64,28,28,28,64,46,46,28,28,28,28,28,64,28,28,28,28,28,28,28,28,28,28,28,28,64,28,28,28,28,28,28,28,28,28,46,28,64,28,28,28,28,46,28,28,100,82,28,28,28,28,46,64,64,100,64,64,28,28,46,28,64,46,28,28,28,28,28,28,28,28,64,28,46,64,28,82,82,46,28,28,28,28,28,28,28,46,64,46,64,28,46,64,64,82,28,28,28,10,28,64,28,64,46,28,28,28,28,28,28,46,28,28],"sizemode":"area","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)","size":[46,46,28,64,28,64,28,28,28,28,64,28,46,46,28,64,28,64,28,28,28,28,64,28,46,46,46,46,46,28,28,28,64,28,28,64,46,28,28,28,64,28,64,28,64,28,28,28,64,46,46,28,28,28,28,28,64,28,28,28,28,28,28,28,28,28,28,28,28,64,28,28,28,28,28,28,28,28,28,46,28,64,28,28,28,28,46,28,28,100,82,28,28,28,28,46,64,64,100,64,64,28,28,46,28,64,46,28,28,28,28,28,28,28,28,64,28,46,64,28,82,82,46,28,28,28,28,28,28,28,46,64,46,64,28,46,64,64,82,28,28,28,10,28,64,28,64,46,28,28,28,28,28,28,46,28,28]},"error_y":{"color":"rgba(141,160,203,1)","width":[]},"error_x":{"color":"rgba(141,160,203,1)","width":[]},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 </section>
 <section id="line-plot" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="line-plot"><span class="header-section-number">1.3</span> line Plot</h2>
@@ -505,6 +565,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="reference" class="level1" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> reference:</h1>
+<p>https://plotly.com/r/</p>
 
 
 <!-- -->
@@ -950,72 +1011,103 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Plotly in R"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Plotly-logo.png)</span>{width="800"}</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"plotly"</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Scatter Plot</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## size by group</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## line Plot</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="fu"># histogram</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="fu"># bar chart</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="fu"># box plot</span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="fu"># strip plot</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="fu"># Facet plot</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="fu"># title,size,x y name</span></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## add title</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## adjust size</span></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## change x y name</span></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="fu"># applying themes</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="fu"># Save plot</span></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="fu"># Animation plot</span></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
+<div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Plotly in R"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Plotly-logo.png)</span>{width="800"}</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"plotly"</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="fu"># Scatter Plot</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>tips<span class="ot">=</span>tips</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tips)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> tips, <span class="at">x =</span> <span class="sc">~</span>total_bill, <span class="at">y =</span> <span class="sc">~</span>tip)</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>fig</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> tips, <span class="at">x =</span> <span class="sc">~</span>total_bill, <span class="at">y =</span> <span class="sc">~</span>tip,<span class="at">color=</span><span class="sc">~</span>sex)</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>fig</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## size by group</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> tips, <span class="at">x =</span> <span class="sc">~</span>total_bill, <span class="at">y =</span> <span class="sc">~</span>tip,<span class="at">color=</span><span class="sc">~</span>sex,<span class="at">size=</span><span class="sc">~</span>size)</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>fig</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## line Plot</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="fu"># histogram</span></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="fu"># bar chart</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="fu"># box plot</span></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="fu"># strip plot</span></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a><span class="fu"># Facet plot</span></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a><span class="fu"># title,size,x y name</span></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## add title</span></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a><span class="fu">## adjust size</span></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## change x y name</span></span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a><span class="fu"># applying themes</span></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a><span class="fu"># Save plot</span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a><span class="fu"># Animation plot</span></span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>https://plotly.com/r/</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

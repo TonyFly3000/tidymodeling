@@ -6151,7 +6151,7 @@
     "href": "Plot/2 plotly.html",
     "title": "Plotly in R",
     "section": "",
-    "text": "Code\nlibrary(plotly)\npackageVersion(\"plotly\")\n\n\n[1] '4.10.4'",
+    "text": "Code\nlibrary(gapminder)\nlibrary(plotly)\npackageVersion(\"plotly\")\n\n\n[1] '4.10.4'",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6162,7 +6162,7 @@
     "href": "Plot/2 plotly.html#color-by-group",
     "title": "Plotly in R",
     "section": "1.1 color by group",
-    "text": "1.1 color by group",
+    "text": "1.1 color by group\n\n\nCode\nfig &lt;- plot_ly(data = tips, x = ~total_bill, y = ~tip,color=~sex)\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6173,7 +6173,7 @@
     "href": "Plot/2 plotly.html#size-by-group",
     "title": "Plotly in R",
     "section": "1.2 size by group",
-    "text": "1.2 size by group",
+    "text": "1.2 size by group\n\n\nCode\nfig &lt;- plot_ly(data = tips, x = ~total_bill, y = ~tip,color=~sex,size=~size)\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
