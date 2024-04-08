@@ -28,6 +28,13 @@ library(RSQLite)
 
 ## create database file pythonsqlite.db and copy mtcars data and iris data into database
 
+
+```{R}
+mtcars=cbind(newColName = rownames(mtcars), mtcars)
+```
+
+
+
 ```{R}
 #| eval: false
 # Create an ephemeral in-memory RSQLite database
@@ -172,6 +179,15 @@ head(table)
 ## join
 
 ### inner_join
+
+```{r}
+
+sql="select a.newColName,a.mpg,b.mpg as new_mpg from mtcars a left join mtcars b on a.newColName=b.newColName"
+
+table=dbGetQuery(con,sql)
+head(table)
+```
+
 
 ### full join
 

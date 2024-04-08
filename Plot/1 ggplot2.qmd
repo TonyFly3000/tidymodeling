@@ -133,22 +133,145 @@ p
 
 # strip plot
 
+
+```{r}
+
+p=ggplot(tips, aes(day,tip)) + geom_jitter()
+p
+
+```
+
 ## color by group
+
+```{r}
+
+p=ggplot(tips, aes(day,tip,color=sex)) + geom_jitter(position=position_jitterdodge())
+p
+
+```
 
 # Facet plot
 
+```{r}
+p=ggplot(tips, aes(tip,total_bill,)) + geom_point(aes(color=sex)) + facet_wrap("day")
+p
+
+
+```
+make 3 plot per row
+
+```{r}
+p=ggplot(tips, aes(tip,total_bill,)) + geom_point(aes(color=sex)) + facet_wrap("day",ncol = 3)
+p
+
+
+```
+
+
+
 # title,size,x y name
+
+
+
 
 ## add title
 
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle("tip by sex")
+p
+```
+
+
+
+
+
 ## adjust size
+
+
+
+```{r}
+
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle("tip by sex")+theme(
+  plot.margin = margin(2, 2, 5, 5, "cm"))
+p
+```
+
+
 
 ## change x y name
 
+
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+p
+```
+
 # applying themes
+
+::: {.panel-tabset .nav-pills}
+
+
+## theme_bw()
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+p+ theme_bw()
+```
+
+## theme_light()
+
+```{r}
+p+ theme_light()
+```
+## theme_economist()
+
+```{r}
+library("ggthemes")
+p+ theme_economist()
+```
+
+:::
+
 
 # Save plot
 
+```{r}
+p+ theme_economist()
+ggsave("myplot.png")
+```
+
+
 # Animation plot
 
+```{r}
+#pak::pak('thomasp85/gganimate')
+library(gganimate)
+
+
+
+gapminder=gapminder %>% filter(continent=='Asia')
+
+p=ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+
+  # Here comes the gganimate specific bits
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+
+p
+```
+
+
+
+
 # reference:
+
+
+
+
+
+
+
+

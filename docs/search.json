@@ -5656,7 +5656,7 @@
     "href": "data manipulation/5 SQL database.html#create-database-file-pythonsqlite.db-and-copy-mtcars-data-and-iris-data-into-database",
     "title": "SQL database with R",
     "section": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database",
-    "text": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database\n\n\nCode\n# Create an ephemeral in-memory RSQLite database\ncon &lt;- dbConnect(RSQLite::SQLite(), \"my_sql_database\")\n\n#dbListTables(con)\ndbWriteTable(con, \"mtcars\", mtcars,overwrite=TRUE)\ndbWriteTable(con, \"iris\", iris,overwrite=TRUE)",
+    "text": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database\n\n\nCode\nmtcars=cbind(newColName = rownames(mtcars), mtcars)\n\n\n\n\nCode\n# Create an ephemeral in-memory RSQLite database\ncon &lt;- dbConnect(RSQLite::SQLite(), \"my_sql_database\")\n\n#dbListTables(con)\ndbWriteTable(con, \"mtcars\", mtcars,overwrite=TRUE)\ndbWriteTable(con, \"iris\", iris,overwrite=TRUE)",
     "crumbs": [
       "data manipulation",
       "SQL database with R"
@@ -5678,7 +5678,7 @@
     "href": "data manipulation/5 SQL database.html#select",
     "title": "SQL database with R",
     "section": "2.1 select",
-    "text": "2.1 select\n\n\nCode\nsql =\"SELECT * FROM mtcars LIMIT 3\"\ntable=dbGetQuery(con,sql)\ntable\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1",
+    "text": "2.1 select\n\n\nCode\nsql =\"SELECT * FROM mtcars LIMIT 3\"\ntable=dbGetQuery(con,sql)\ntable\n\n\n     newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1     Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3    Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1",
     "crumbs": [
       "data manipulation",
       "SQL database with R"
@@ -5711,7 +5711,7 @@
     "href": "data manipulation/5 SQL database.html#filter-rows",
     "title": "SQL database with R",
     "section": "2.4 Filter rows",
-    "text": "2.4 Filter rows\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n4 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n5 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n6 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n\n\n\n2.4.1 Filters with AND conditions\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100 and drat&lt;3\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat   wt  qsec vs am gear carb\n1 18.1   6  225 105 2.76 3.46 20.22  1  0    3    1\n2 10.4   8  472 205 2.93 5.25 17.98  0  0    3    4\n3 15.5   8  318 150 2.76 3.52 16.87  0  0    3    2\n\n\n\n\n2.4.2 Filters with or conditions\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100 or drat&lt;3\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n4 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n5 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n6 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4",
+    "text": "2.4 Filter rows\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n         newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n4 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n5           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n6        Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n\n\n\n2.4.1 Filters with AND conditions\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100 and drat&lt;3\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n          newColName  mpg cyl disp  hp drat   wt  qsec vs am gear carb\n1            Valiant 18.1   6  225 105 2.76 3.46 20.22  1  0    3    1\n2 Cadillac Fleetwood 10.4   8  472 205 2.93 5.25 17.98  0  0    3    4\n3   Dodge Challenger 15.5   8  318 150 2.76 3.52 16.87  0  0    3    2\n\n\n\n\n2.4.2 Filters with or conditions\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100 or drat&lt;3\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n         newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n4 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n5           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n6        Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4",
     "crumbs": [
       "data manipulation",
       "SQL database with R"
@@ -5722,7 +5722,7 @@
     "href": "data manipulation/5 SQL database.html#append",
     "title": "SQL database with R",
     "section": "2.5 Append",
-    "text": "2.5 Append\n\n2.5.1 append by row\n\n\nCode\nsql=\"select * from mtcars union all select * from mtcars \"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\n4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n6 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\n2.5.2 append by column\n\n\n2.5.3 Dropping NA values\n\n\n2.5.4 keep NA values",
+    "text": "2.5 Append\n\n2.5.1 append by row\n\n\nCode\nsql=\"select * from mtcars union all select * from mtcars \"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n         newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\n4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\n2.5.2 append by column\n\n\n2.5.3 Dropping NA values\n\n\n2.5.4 keep NA values",
     "crumbs": [
       "data manipulation",
       "SQL database with R"
@@ -5744,7 +5744,7 @@
     "href": "data manipulation/5 SQL database.html#order-rows",
     "title": "SQL database with R",
     "section": "2.7 order rows",
-    "text": "2.7 order rows\n\n\nCode\nsql=\"select * from mtcars order by mpg\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 10.4   8  472 205 2.93 5.250 17.98  0  0    3    4\n2 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4\n3 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4\n4 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n5 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4\n6 15.0   8  301 335 3.54 3.570 14.60  0  1    5    8\n\n\n\n2.7.1 Sort in descending order\n\n\nCode\nsql=\"select * from mtcars order by mpg desc\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl  disp  hp drat    wt  qsec vs am gear carb\n1 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1\n2 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1\n3 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2\n4 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2\n5 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1\n6 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2\n\n\n\n\n2.7.2 Arrange by multiple variables\n\n\nCode\nsql=\"select * from mtcars order by mpg ,cyl\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1 10.4   8  472 205 2.93 5.250 17.98  0  0    3    4\n2 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4\n3 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4\n4 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n5 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4\n6 15.0   8  301 335 3.54 3.570 14.60  0  1    5    8",
+    "text": "2.7 order rows\n\n\nCode\nsql=\"select * from mtcars order by mpg\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n           newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1  Cadillac Fleetwood 10.4   8  472 205 2.93 5.250 17.98  0  0    3    4\n2 Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4\n3          Camaro Z28 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4\n4          Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n5   Chrysler Imperial 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4\n6       Maserati Bora 15.0   8  301 335 3.54 3.570 14.60  0  1    5    8\n\n\n\n2.7.1 Sort in descending order\n\n\nCode\nsql=\"select * from mtcars order by mpg desc\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n      newColName  mpg cyl  disp  hp drat    wt  qsec vs am gear carb\n1 Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1\n2       Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1\n3    Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2\n4   Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2\n5      Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1\n6  Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2\n\n\n\n\n2.7.2 Arrange by multiple variables\n\n\nCode\nsql=\"select * from mtcars order by mpg ,cyl\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n           newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1  Cadillac Fleetwood 10.4   8  472 205 2.93 5.250 17.98  0  0    3    4\n2 Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4\n3          Camaro Z28 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4\n4          Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n5   Chrysler Imperial 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4\n6       Maserati Bora 15.0   8  301 335 3.54 3.570 14.60  0  1    5    8",
     "crumbs": [
       "data manipulation",
       "SQL database with R"
@@ -5755,7 +5755,7 @@
     "href": "data manipulation/5 SQL database.html#join",
     "title": "SQL database with R",
     "section": "2.8 join",
-    "text": "2.8 join\n\n2.8.1 inner_join\n\n\n2.8.2 full join\n\n\n2.8.3 left join\n\n\n2.8.4 anti join",
+    "text": "2.8 join\n\n2.8.1 inner_join\n\n\nCode\nsql=\"select a.newColName,a.mpg,b.mpg as new_mpg from mtcars a left join mtcars b on a.newColName=b.newColName\"\n\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n         newColName  mpg new_mpg\n1         Mazda RX4 21.0    21.0\n2     Mazda RX4 Wag 21.0    21.0\n3        Datsun 710 22.8    22.8\n4    Hornet 4 Drive 21.4    21.4\n5 Hornet Sportabout 18.7    18.7\n6           Valiant 18.1    18.1\n\n\n\n\n2.8.2 full join\n\n\n2.8.3 left join\n\n\n2.8.4 anti join",
     "crumbs": [
       "data manipulation",
       "SQL database with R"
@@ -6349,7 +6349,7 @@
     "href": "Plot/1 ggplot2.html#color-by-group-4",
     "title": "ggplot2 in R",
     "section": "5.1 color by group",
-    "text": "5.1 color by group",
+    "text": "5.1 color by group\n\n\nCode\np=ggplot(tips, aes(day,tip,color=sex)) + geom_jitter(position=position_jitterdodge())\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -6360,7 +6360,7 @@
     "href": "Plot/1 ggplot2.html#add-title",
     "title": "ggplot2 in R",
     "section": "7.1 add title",
-    "text": "7.1 add title",
+    "text": "7.1 add title\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -6371,7 +6371,7 @@
     "href": "Plot/1 ggplot2.html#adjust-size",
     "title": "ggplot2 in R",
     "section": "7.2 adjust size",
-    "text": "7.2 adjust size",
+    "text": "7.2 adjust size\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+theme(\n  plot.margin = margin(2, 2, 5, 5, \"cm\"))\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -6382,7 +6382,40 @@
     "href": "Plot/1 ggplot2.html#change-x-y-name",
     "title": "ggplot2 in R",
     "section": "7.3 change x y name",
-    "text": "7.3 change x y name",
+    "text": "7.3 change x y name\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#theme_bw",
+    "href": "Plot/1 ggplot2.html#theme_bw",
+    "title": "ggplot2 in R",
+    "section": "8.1 theme_bw()",
+    "text": "8.1 theme_bw()\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np+ theme_bw()",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#theme_light",
+    "href": "Plot/1 ggplot2.html#theme_light",
+    "title": "ggplot2 in R",
+    "section": "8.2 theme_light()",
+    "text": "8.2 theme_light()\n\n\nCode\np+ theme_light()",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#theme_economist",
+    "href": "Plot/1 ggplot2.html#theme_economist",
+    "title": "ggplot2 in R",
+    "section": "8.3 theme_economist()",
+    "text": "8.3 theme_economist()\n\n\nCode\nlibrary(\"ggthemes\")\np+ theme_economist()",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
