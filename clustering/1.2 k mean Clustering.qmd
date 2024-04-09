@@ -18,61 +18,53 @@ format:
 Using K mean Clustering to replace colow on below picture
 
 
-![](python logo.jpg){width="300"}
-
 # load package
 
 ```{r}
+set.seed(55)
 library(tidyverse)
 library(broom)
 library(janitor)
+library(magick)
 ```
 
-# data
-
-
-## input data
-
-Alpha channel image
-
+# input image
 ```{r}
-library(jpeg)
-
-img <- readJPEG('python logo.jpg')
-
+image <- image_read('images/python logo.jpg')
 ```
 
+
+# convert png to matrix
 ```{r}
-dim(img)
+image_tiff <- image_convert(image, "tiff")
+image_array <- as.integer(image_tiff[[1]])                
 ```
 
 
 ```{r}
-# Obtain the dimension
-imgDm <- dim(img)
+magick::image_read(image_array/ 255)
+```
 
-# Assign RGB channels to data frame
-imgRGB <- data.frame(
-  x = rep(1:imgDm[2], each = imgDm[1]),
-  y = rep(imgDm[1]:1, imgDm[2]),
-  R = as.vector(img[,,1]),
-  G = as.vector(img[,,2]),
-  B = as.vector(img[,,3])
-  )
+```{r}
+dim(image_array)
+```
+
+```{r}
+class(image_array)
 ```
 
 
 ```{r}
-imgRGB2=imgRGB %>% select(R,G,B)
+image_array_old=image_array
+```
+
+# reshape from 3 D to 2 D
+```{r}
+dim(image_array) <- c(dim(image_array)[1]*dim(image_array)[2],3)
 ```
 
 ```{r}
-# Plot the image
-ggplot(data = imgRGB, aes(x = x, y = y)) + 
-  geom_point(colour = rgb(imgRGB[c("R", "G", "B")])) +
-  labs(title = "Original Image: Colorful Bird") +
-  xlab("x") +
-  ylab("y") 
+dim(image_array)
 ```
 
 # Optimal number of k-clusters
@@ -82,10 +74,10 @@ ggplot(data = imgRGB, aes(x = x, y = y)) +
 kclusts <- 
   tibble(k = 1:9) %>%
   mutate(
-    kclust = map(k, ~kmeans(imgRGB2, .x)),
+    kclust = map(k, ~kmeans(image_array, .x)),
     tidied = map(kclust, tidy),
     glanced = map(kclust, glance),
-    augmented = map(kclust, augment, imgRGB2)
+    augmented = map(kclust, augment, image_array)
   )
 
 kclusts
@@ -120,40 +112,45 @@ ggplot(clusterings, aes(k, tot.withinss)) +
 # group to 3 
 
 ```{r}
-kclust <- kmeans(imgRGB2, centers = 3)
+kclust <- kmeans(image_array, centers = 3)
 ```
 
 ```{r}
-result=augment(kclust, imgRGB2) %>% clean_names()
-```
-
-```{r}
-imgRGB3=cbind(imgRGB,result$cluster)%>% clean_names()
-```
-
-```{r}
-imgRGB3 %>% count(result_cluster)
-```
-
-
-```{r}
-result2=imgRGB3 %>%mutate(r=if_else(result_cluster==1,1,r) 
-                          ,g=if_else(result_cluster==1,1,b) 
-                          ,b=if_else(result_cluster==1,1,g) 
-                          )%>%mutate(r=if_else(result_cluster==3,0,r) 
-                          ,g=if_else(result_cluster==3,0,b) 
-                          ,b=if_else(result_cluster==3,0,g)) %>% select(-result_cluster)
+result=augment(kclust, image_array) %>% clean_names()
 ```
 
 
 
 ```{r}
-# Plot the image
-ggplot(data = result2, aes(x = x, y = y)) + 
-  geom_point(colour = rgb(result2[c("r", "g", "b")])) +
-  labs(title = "change color") +
-  xlab("x") +
-  ylab("y") 
+result %>% count(cluster)
+```
+
+# change  2 color
+```{r}
+# black RGB code 0 0 0
+# red RGB code 255 0 0
+
+result2=result %>%mutate(x1=if_else(cluster==3,0,x1) 
+                          ,x2=if_else(cluster==3,0,x2) 
+                          ,x3=if_else(cluster==3,0,x3) 
+                          )%>%mutate(x1=if_else(cluster==1,255,x1) 
+                          ,x2=if_else(cluster==1,0,x2) 
+                          ,x3=if_else(cluster==1,0,x3)) %>% select(-cluster)
+```
+
+# convert 2 D back to 3 D
+```{r}
+result2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_old)[2],3))
+```
+
+
+```{r}
+dim(result2arrary)
+```
+
+
+```{r}
+magick::image_read(result2arrary/ 255)
 ```
 
 
