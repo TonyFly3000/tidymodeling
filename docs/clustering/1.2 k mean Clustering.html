@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Tony Duan">
 
 <title>Tidymodel with R - K mean Clustering with image</title>
 <style>
@@ -476,6 +477,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tony Duan </p>
+          </div>
+  </div>
     
   
     
@@ -1387,292 +1394,296 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <div class="sourceCode" id="cb50" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "K mean Clustering with image"</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with image data"</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>Using K mean Clustering to replace colow on below picture</span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a><span class="fu"># load package</span></span>
-<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">55</span>)</span>
-<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3 RBG no alpha channel picture:</span></span>
-<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## input image</span></span>
-<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">'images/python logo.jpg'</span>)</span>
-<span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-41"><a href="#cb50-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-42"><a href="#cb50-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-43"><a href="#cb50-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## convert png to matrix</span></span>
-<span id="cb50-46"><a href="#cb50-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-47"><a href="#cb50-47" aria-hidden="true" tabindex="-1"></a>image_tiff <span class="ot">&lt;-</span> <span class="fu">image_convert</span>(image, <span class="st">"tiff"</span>)</span>
-<span id="cb50-48"><a href="#cb50-48" aria-hidden="true" tabindex="-1"></a>image_array <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(image_tiff[[<span class="dv">1</span>]])                </span>
-<span id="cb50-49"><a href="#cb50-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-50"><a href="#cb50-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-51"><a href="#cb50-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-54"><a href="#cb50-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-55"><a href="#cb50-55" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(image_array<span class="sc">/</span> <span class="dv">255</span>)</span>
-<span id="cb50-56"><a href="#cb50-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-57"><a href="#cb50-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-60"><a href="#cb50-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-61"><a href="#cb50-61" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array)</span>
-<span id="cb50-62"><a href="#cb50-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-63"><a href="#cb50-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-66"><a href="#cb50-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-67"><a href="#cb50-67" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(image_array)</span>
-<span id="cb50-68"><a href="#cb50-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-69"><a href="#cb50-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-70"><a href="#cb50-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-73"><a href="#cb50-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-74"><a href="#cb50-74" aria-hidden="true" tabindex="-1"></a>image_array_old<span class="ot">=</span>image_array</span>
-<span id="cb50-75"><a href="#cb50-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-76"><a href="#cb50-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-77"><a href="#cb50-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## reshape from 3 D to 2 D</span></span>
-<span id="cb50-80"><a href="#cb50-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-81"><a href="#cb50-81" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">dim</span>(image_array)[<span class="dv">1</span>]<span class="sc">*</span><span class="fu">dim</span>(image_array)[<span class="dv">2</span>],<span class="dv">3</span>)</span>
-<span id="cb50-82"><a href="#cb50-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-83"><a href="#cb50-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-86"><a href="#cb50-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-87"><a href="#cb50-87" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array)</span>
-<span id="cb50-88"><a href="#cb50-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-89"><a href="#cb50-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-90"><a href="#cb50-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## Optimal number of k-clusters</span></span>
-<span id="cb50-91"><a href="#cb50-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-92"><a href="#cb50-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-95"><a href="#cb50-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-96"><a href="#cb50-96" aria-hidden="true" tabindex="-1"></a>kclusts <span class="ot">&lt;-</span> </span>
-<span id="cb50-97"><a href="#cb50-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb50-98"><a href="#cb50-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb50-99"><a href="#cb50-99" aria-hidden="true" tabindex="-1"></a>    <span class="at">kclust =</span> <span class="fu">map</span>(k, <span class="sc">~</span><span class="fu">kmeans</span>(image_array, .x)),</span>
-<span id="cb50-100"><a href="#cb50-100" aria-hidden="true" tabindex="-1"></a>    <span class="at">tidied =</span> <span class="fu">map</span>(kclust, tidy),</span>
-<span id="cb50-101"><a href="#cb50-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">glanced =</span> <span class="fu">map</span>(kclust, glance),</span>
-<span id="cb50-102"><a href="#cb50-102" aria-hidden="true" tabindex="-1"></a>    <span class="at">augmented =</span> <span class="fu">map</span>(kclust, augment, image_array)</span>
-<span id="cb50-103"><a href="#cb50-103" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb50-104"><a href="#cb50-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-105"><a href="#cb50-105" aria-hidden="true" tabindex="-1"></a>kclusts</span>
-<span id="cb50-106"><a href="#cb50-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-107"><a href="#cb50-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>Using K mean Clustering to replace colow on below picture</span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># load package</span></span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">55</span>)</span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3 RBG no alpha channel picture:</span></span>
+<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## input image</span></span>
+<span id="cb50-42"><a href="#cb50-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-43"><a href="#cb50-43" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">'images/python logo.jpg'</span>)</span>
+<span id="cb50-44"><a href="#cb50-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-45"><a href="#cb50-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-46"><a href="#cb50-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-47"><a href="#cb50-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## convert png to matrix</span></span>
+<span id="cb50-50"><a href="#cb50-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-51"><a href="#cb50-51" aria-hidden="true" tabindex="-1"></a>image_tiff <span class="ot">&lt;-</span> <span class="fu">image_convert</span>(image, <span class="st">"tiff"</span>)</span>
+<span id="cb50-52"><a href="#cb50-52" aria-hidden="true" tabindex="-1"></a>image_array <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(image_tiff[[<span class="dv">1</span>]])                </span>
+<span id="cb50-53"><a href="#cb50-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-54"><a href="#cb50-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-55"><a href="#cb50-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-58"><a href="#cb50-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-59"><a href="#cb50-59" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(image_array<span class="sc">/</span> <span class="dv">255</span>)</span>
+<span id="cb50-60"><a href="#cb50-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-61"><a href="#cb50-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-64"><a href="#cb50-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-65"><a href="#cb50-65" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array)</span>
+<span id="cb50-66"><a href="#cb50-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-67"><a href="#cb50-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-70"><a href="#cb50-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-71"><a href="#cb50-71" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(image_array)</span>
+<span id="cb50-72"><a href="#cb50-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-73"><a href="#cb50-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-74"><a href="#cb50-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-77"><a href="#cb50-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-78"><a href="#cb50-78" aria-hidden="true" tabindex="-1"></a>image_array_old<span class="ot">=</span>image_array</span>
+<span id="cb50-79"><a href="#cb50-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-80"><a href="#cb50-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-81"><a href="#cb50-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## reshape from 3 D to 2 D</span></span>
+<span id="cb50-84"><a href="#cb50-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-85"><a href="#cb50-85" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">dim</span>(image_array)[<span class="dv">1</span>]<span class="sc">*</span><span class="fu">dim</span>(image_array)[<span class="dv">2</span>],<span class="dv">3</span>)</span>
+<span id="cb50-86"><a href="#cb50-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-87"><a href="#cb50-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-90"><a href="#cb50-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-91"><a href="#cb50-91" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array)</span>
+<span id="cb50-92"><a href="#cb50-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-93"><a href="#cb50-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-94"><a href="#cb50-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## Optimal number of k-clusters</span></span>
+<span id="cb50-95"><a href="#cb50-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-96"><a href="#cb50-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-99"><a href="#cb50-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-100"><a href="#cb50-100" aria-hidden="true" tabindex="-1"></a>kclusts <span class="ot">&lt;-</span> </span>
+<span id="cb50-101"><a href="#cb50-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb50-102"><a href="#cb50-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb50-103"><a href="#cb50-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">kclust =</span> <span class="fu">map</span>(k, <span class="sc">~</span><span class="fu">kmeans</span>(image_array, .x)),</span>
+<span id="cb50-104"><a href="#cb50-104" aria-hidden="true" tabindex="-1"></a>    <span class="at">tidied =</span> <span class="fu">map</span>(kclust, tidy),</span>
+<span id="cb50-105"><a href="#cb50-105" aria-hidden="true" tabindex="-1"></a>    <span class="at">glanced =</span> <span class="fu">map</span>(kclust, glance),</span>
+<span id="cb50-106"><a href="#cb50-106" aria-hidden="true" tabindex="-1"></a>    <span class="at">augmented =</span> <span class="fu">map</span>(kclust, augment, image_array)</span>
+<span id="cb50-107"><a href="#cb50-107" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb50-108"><a href="#cb50-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-111"><a href="#cb50-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-112"><a href="#cb50-112" aria-hidden="true" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> </span>
-<span id="cb50-113"><a href="#cb50-113" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span></span>
-<span id="cb50-114"><a href="#cb50-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(tidied))</span>
-<span id="cb50-115"><a href="#cb50-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-116"><a href="#cb50-116" aria-hidden="true" tabindex="-1"></a>assignments <span class="ot">&lt;-</span> </span>
-<span id="cb50-117"><a href="#cb50-117" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span> </span>
-<span id="cb50-118"><a href="#cb50-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(augmented))</span>
+<span id="cb50-109"><a href="#cb50-109" aria-hidden="true" tabindex="-1"></a>kclusts</span>
+<span id="cb50-110"><a href="#cb50-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-111"><a href="#cb50-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-112"><a href="#cb50-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-115"><a href="#cb50-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-116"><a href="#cb50-116" aria-hidden="true" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> </span>
+<span id="cb50-117"><a href="#cb50-117" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span></span>
+<span id="cb50-118"><a href="#cb50-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(tidied))</span>
 <span id="cb50-119"><a href="#cb50-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-120"><a href="#cb50-120" aria-hidden="true" tabindex="-1"></a>clusterings <span class="ot">&lt;-</span> </span>
-<span id="cb50-121"><a href="#cb50-121" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span></span>
-<span id="cb50-122"><a href="#cb50-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(glanced))</span>
-<span id="cb50-123"><a href="#cb50-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-124"><a href="#cb50-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-125"><a href="#cb50-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-126"><a href="#cb50-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-129"><a href="#cb50-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-130"><a href="#cb50-130" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb50-131"><a href="#cb50-131" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clusterings, <span class="fu">aes</span>(k, tot.withinss)) <span class="sc">+</span></span>
-<span id="cb50-132"><a href="#cb50-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb50-133"><a href="#cb50-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span> <span class="fu">pretty_breaks</span>())<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span>
-<span id="cb50-134"><a href="#cb50-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-135"><a href="#cb50-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-136"><a href="#cb50-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-137"><a href="#cb50-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-138"><a href="#cb50-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## group to 3 </span></span>
+<span id="cb50-120"><a href="#cb50-120" aria-hidden="true" tabindex="-1"></a>assignments <span class="ot">&lt;-</span> </span>
+<span id="cb50-121"><a href="#cb50-121" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span> </span>
+<span id="cb50-122"><a href="#cb50-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(augmented))</span>
+<span id="cb50-123"><a href="#cb50-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-124"><a href="#cb50-124" aria-hidden="true" tabindex="-1"></a>clusterings <span class="ot">&lt;-</span> </span>
+<span id="cb50-125"><a href="#cb50-125" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span></span>
+<span id="cb50-126"><a href="#cb50-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(glanced))</span>
+<span id="cb50-127"><a href="#cb50-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-128"><a href="#cb50-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-129"><a href="#cb50-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-130"><a href="#cb50-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-133"><a href="#cb50-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-134"><a href="#cb50-134" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb50-135"><a href="#cb50-135" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clusterings, <span class="fu">aes</span>(k, tot.withinss)) <span class="sc">+</span></span>
+<span id="cb50-136"><a href="#cb50-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb50-137"><a href="#cb50-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span> <span class="fu">pretty_breaks</span>())<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span>
+<span id="cb50-138"><a href="#cb50-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb50-139"><a href="#cb50-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-142"><a href="#cb50-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-143"><a href="#cb50-143" aria-hidden="true" tabindex="-1"></a>kclust <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(image_array, <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb50-144"><a href="#cb50-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-145"><a href="#cb50-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-148"><a href="#cb50-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-149"><a href="#cb50-149" aria-hidden="true" tabindex="-1"></a>result<span class="ot">=</span><span class="fu">augment</span>(kclust, image_array) <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span>
-<span id="cb50-150"><a href="#cb50-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-151"><a href="#cb50-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-152"><a href="#cb50-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-153"><a href="#cb50-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-156"><a href="#cb50-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-157"><a href="#cb50-157" aria-hidden="true" tabindex="-1"></a>result <span class="sc">%&gt;%</span> <span class="fu">count</span>(cluster)</span>
-<span id="cb50-158"><a href="#cb50-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-159"><a href="#cb50-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-160"><a href="#cb50-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## change  2 color</span></span>
-<span id="cb50-163"><a href="#cb50-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-164"><a href="#cb50-164" aria-hidden="true" tabindex="-1"></a><span class="co"># black RGB code 0 0 0</span></span>
-<span id="cb50-165"><a href="#cb50-165" aria-hidden="true" tabindex="-1"></a><span class="co"># red RGB code 255 0 0</span></span>
-<span id="cb50-166"><a href="#cb50-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-167"><a href="#cb50-167" aria-hidden="true" tabindex="-1"></a>result2<span class="ot">=</span>result <span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">x1=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x1) </span>
-<span id="cb50-168"><a href="#cb50-168" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x2=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x2) </span>
-<span id="cb50-169"><a href="#cb50-169" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x3=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x3) </span>
-<span id="cb50-170"><a href="#cb50-170" aria-hidden="true" tabindex="-1"></a>                          )<span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">x1=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">255</span>,x1) </span>
-<span id="cb50-171"><a href="#cb50-171" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x2=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,x2) </span>
-<span id="cb50-172"><a href="#cb50-172" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x3=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,x3)) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>cluster)</span>
-<span id="cb50-173"><a href="#cb50-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-174"><a href="#cb50-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-175"><a href="#cb50-175" aria-hidden="true" tabindex="-1"></a><span class="fu">## convert 2 D back to 3 D</span></span>
-<span id="cb50-178"><a href="#cb50-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-179"><a href="#cb50-179" aria-hidden="true" tabindex="-1"></a>result2arrary<span class="ot">=</span><span class="fu">array</span>(<span class="fu">unlist</span>(result2),<span class="fu">c</span>(<span class="fu">dim</span>(image_array_old)[<span class="dv">1</span>],<span class="fu">dim</span>(image_array_old)[<span class="dv">2</span>],<span class="dv">3</span>))</span>
-<span id="cb50-180"><a href="#cb50-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-181"><a href="#cb50-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-182"><a href="#cb50-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-185"><a href="#cb50-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-186"><a href="#cb50-186" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(result2arrary)</span>
-<span id="cb50-187"><a href="#cb50-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-188"><a href="#cb50-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-189"><a href="#cb50-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-192"><a href="#cb50-192" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-193"><a href="#cb50-193" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(result2arrary<span class="sc">/</span> <span class="dv">255</span>)</span>
-<span id="cb50-194"><a href="#cb50-194" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-195"><a href="#cb50-195" aria-hidden="true" tabindex="-1"></a><span class="fu"># 4 RBG with alpha channel picture:</span></span>
-<span id="cb50-196"><a href="#cb50-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-197"><a href="#cb50-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-198"><a href="#cb50-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-199"><a href="#cb50-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-200"><a href="#cb50-200" aria-hidden="true" tabindex="-1"></a><span class="fu">## input image</span></span>
-<span id="cb50-203"><a href="#cb50-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-204"><a href="#cb50-204" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">'images/R_logo.png'</span>)</span>
-<span id="cb50-205"><a href="#cb50-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-206"><a href="#cb50-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-207"><a href="#cb50-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-208"><a href="#cb50-208" aria-hidden="true" tabindex="-1"></a><span class="fu">## convert png to matrix</span></span>
-<span id="cb50-211"><a href="#cb50-211" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-212"><a href="#cb50-212" aria-hidden="true" tabindex="-1"></a>image_tiff <span class="ot">&lt;-</span> <span class="fu">image_convert</span>(image, <span class="st">"tiff"</span>)</span>
-<span id="cb50-213"><a href="#cb50-213" aria-hidden="true" tabindex="-1"></a>image_array <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(image_tiff[[<span class="dv">1</span>]])                </span>
-<span id="cb50-214"><a href="#cb50-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-215"><a href="#cb50-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-216"><a href="#cb50-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-219"><a href="#cb50-219" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-220"><a href="#cb50-220" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(image_array<span class="sc">/</span> <span class="dv">255</span>)</span>
-<span id="cb50-221"><a href="#cb50-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-222"><a href="#cb50-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-225"><a href="#cb50-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-226"><a href="#cb50-226" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array)</span>
-<span id="cb50-227"><a href="#cb50-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-228"><a href="#cb50-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-231"><a href="#cb50-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-232"><a href="#cb50-232" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(image_array)</span>
-<span id="cb50-233"><a href="#cb50-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-234"><a href="#cb50-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-235"><a href="#cb50-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-238"><a href="#cb50-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-239"><a href="#cb50-239" aria-hidden="true" tabindex="-1"></a>image_array_old<span class="ot">=</span>image_array</span>
-<span id="cb50-240"><a href="#cb50-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-241"><a href="#cb50-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-242"><a href="#cb50-242" aria-hidden="true" tabindex="-1"></a><span class="fu">## reshape from 3 D to 2 D</span></span>
-<span id="cb50-245"><a href="#cb50-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-246"><a href="#cb50-246" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">dim</span>(image_array)[<span class="dv">1</span>]<span class="sc">*</span><span class="fu">dim</span>(image_array)[<span class="dv">2</span>],<span class="dv">4</span>)</span>
-<span id="cb50-247"><a href="#cb50-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-248"><a href="#cb50-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-251"><a href="#cb50-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-252"><a href="#cb50-252" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array)</span>
-<span id="cb50-253"><a href="#cb50-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-254"><a href="#cb50-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-255"><a href="#cb50-255" aria-hidden="true" tabindex="-1"></a><span class="fu">## Optimal number of k-clusters</span></span>
-<span id="cb50-256"><a href="#cb50-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-257"><a href="#cb50-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-260"><a href="#cb50-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-261"><a href="#cb50-261" aria-hidden="true" tabindex="-1"></a>kclusts <span class="ot">&lt;-</span> </span>
-<span id="cb50-262"><a href="#cb50-262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb50-263"><a href="#cb50-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb50-264"><a href="#cb50-264" aria-hidden="true" tabindex="-1"></a>    <span class="at">kclust =</span> <span class="fu">map</span>(k, <span class="sc">~</span><span class="fu">kmeans</span>(image_array, .x)),</span>
-<span id="cb50-265"><a href="#cb50-265" aria-hidden="true" tabindex="-1"></a>    <span class="at">tidied =</span> <span class="fu">map</span>(kclust, tidy),</span>
-<span id="cb50-266"><a href="#cb50-266" aria-hidden="true" tabindex="-1"></a>    <span class="at">glanced =</span> <span class="fu">map</span>(kclust, glance),</span>
-<span id="cb50-267"><a href="#cb50-267" aria-hidden="true" tabindex="-1"></a>    <span class="at">augmented =</span> <span class="fu">map</span>(kclust, augment, image_array)</span>
-<span id="cb50-268"><a href="#cb50-268" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb50-269"><a href="#cb50-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-270"><a href="#cb50-270" aria-hidden="true" tabindex="-1"></a>kclusts</span>
-<span id="cb50-271"><a href="#cb50-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-272"><a href="#cb50-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-140"><a href="#cb50-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-141"><a href="#cb50-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-142"><a href="#cb50-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## group to 3 </span></span>
+<span id="cb50-143"><a href="#cb50-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-146"><a href="#cb50-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-147"><a href="#cb50-147" aria-hidden="true" tabindex="-1"></a>kclust <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(image_array, <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb50-148"><a href="#cb50-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-149"><a href="#cb50-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-152"><a href="#cb50-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-153"><a href="#cb50-153" aria-hidden="true" tabindex="-1"></a>result<span class="ot">=</span><span class="fu">augment</span>(kclust, image_array) <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span>
+<span id="cb50-154"><a href="#cb50-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-155"><a href="#cb50-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-156"><a href="#cb50-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-157"><a href="#cb50-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-160"><a href="#cb50-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-161"><a href="#cb50-161" aria-hidden="true" tabindex="-1"></a>result <span class="sc">%&gt;%</span> <span class="fu">count</span>(cluster)</span>
+<span id="cb50-162"><a href="#cb50-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-163"><a href="#cb50-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-164"><a href="#cb50-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## change  2 color</span></span>
+<span id="cb50-167"><a href="#cb50-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-168"><a href="#cb50-168" aria-hidden="true" tabindex="-1"></a><span class="co"># black RGB code 0 0 0</span></span>
+<span id="cb50-169"><a href="#cb50-169" aria-hidden="true" tabindex="-1"></a><span class="co"># red RGB code 255 0 0</span></span>
+<span id="cb50-170"><a href="#cb50-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-171"><a href="#cb50-171" aria-hidden="true" tabindex="-1"></a>result2<span class="ot">=</span>result <span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">x1=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x1) </span>
+<span id="cb50-172"><a href="#cb50-172" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x2=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x2) </span>
+<span id="cb50-173"><a href="#cb50-173" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x3=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x3) </span>
+<span id="cb50-174"><a href="#cb50-174" aria-hidden="true" tabindex="-1"></a>                          )<span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">x1=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">255</span>,x1) </span>
+<span id="cb50-175"><a href="#cb50-175" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x2=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,x2) </span>
+<span id="cb50-176"><a href="#cb50-176" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x3=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,x3)) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>cluster)</span>
+<span id="cb50-177"><a href="#cb50-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-178"><a href="#cb50-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-179"><a href="#cb50-179" aria-hidden="true" tabindex="-1"></a><span class="fu">## convert 2 D back to 3 D</span></span>
+<span id="cb50-182"><a href="#cb50-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-183"><a href="#cb50-183" aria-hidden="true" tabindex="-1"></a>result2arrary<span class="ot">=</span><span class="fu">array</span>(<span class="fu">unlist</span>(result2),<span class="fu">c</span>(<span class="fu">dim</span>(image_array_old)[<span class="dv">1</span>],<span class="fu">dim</span>(image_array_old)[<span class="dv">2</span>],<span class="dv">3</span>))</span>
+<span id="cb50-184"><a href="#cb50-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-185"><a href="#cb50-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-186"><a href="#cb50-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-189"><a href="#cb50-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-190"><a href="#cb50-190" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(result2arrary)</span>
+<span id="cb50-191"><a href="#cb50-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-192"><a href="#cb50-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-193"><a href="#cb50-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-196"><a href="#cb50-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-197"><a href="#cb50-197" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(result2arrary<span class="sc">/</span> <span class="dv">255</span>)</span>
+<span id="cb50-198"><a href="#cb50-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-199"><a href="#cb50-199" aria-hidden="true" tabindex="-1"></a><span class="fu"># 4 RBG with alpha channel picture:</span></span>
+<span id="cb50-200"><a href="#cb50-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-201"><a href="#cb50-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-202"><a href="#cb50-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-203"><a href="#cb50-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-204"><a href="#cb50-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## input image</span></span>
+<span id="cb50-207"><a href="#cb50-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-208"><a href="#cb50-208" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">'images/R_logo.png'</span>)</span>
+<span id="cb50-209"><a href="#cb50-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-210"><a href="#cb50-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-211"><a href="#cb50-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-212"><a href="#cb50-212" aria-hidden="true" tabindex="-1"></a><span class="fu">## convert png to matrix</span></span>
+<span id="cb50-215"><a href="#cb50-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-216"><a href="#cb50-216" aria-hidden="true" tabindex="-1"></a>image_tiff <span class="ot">&lt;-</span> <span class="fu">image_convert</span>(image, <span class="st">"tiff"</span>)</span>
+<span id="cb50-217"><a href="#cb50-217" aria-hidden="true" tabindex="-1"></a>image_array <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(image_tiff[[<span class="dv">1</span>]])                </span>
+<span id="cb50-218"><a href="#cb50-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-219"><a href="#cb50-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-220"><a href="#cb50-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-223"><a href="#cb50-223" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-224"><a href="#cb50-224" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(image_array<span class="sc">/</span> <span class="dv">255</span>)</span>
+<span id="cb50-225"><a href="#cb50-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-226"><a href="#cb50-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-229"><a href="#cb50-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-230"><a href="#cb50-230" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array)</span>
+<span id="cb50-231"><a href="#cb50-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-232"><a href="#cb50-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-235"><a href="#cb50-235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-236"><a href="#cb50-236" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(image_array)</span>
+<span id="cb50-237"><a href="#cb50-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-238"><a href="#cb50-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-239"><a href="#cb50-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-242"><a href="#cb50-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-243"><a href="#cb50-243" aria-hidden="true" tabindex="-1"></a>image_array_old<span class="ot">=</span>image_array</span>
+<span id="cb50-244"><a href="#cb50-244" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-245"><a href="#cb50-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-246"><a href="#cb50-246" aria-hidden="true" tabindex="-1"></a><span class="fu">## reshape from 3 D to 2 D</span></span>
+<span id="cb50-249"><a href="#cb50-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-250"><a href="#cb50-250" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">dim</span>(image_array)[<span class="dv">1</span>]<span class="sc">*</span><span class="fu">dim</span>(image_array)[<span class="dv">2</span>],<span class="dv">4</span>)</span>
+<span id="cb50-251"><a href="#cb50-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-252"><a href="#cb50-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-255"><a href="#cb50-255" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-256"><a href="#cb50-256" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(image_array)</span>
+<span id="cb50-257"><a href="#cb50-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-258"><a href="#cb50-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-259"><a href="#cb50-259" aria-hidden="true" tabindex="-1"></a><span class="fu">## Optimal number of k-clusters</span></span>
+<span id="cb50-260"><a href="#cb50-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-261"><a href="#cb50-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-264"><a href="#cb50-264" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-265"><a href="#cb50-265" aria-hidden="true" tabindex="-1"></a>kclusts <span class="ot">&lt;-</span> </span>
+<span id="cb50-266"><a href="#cb50-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb50-267"><a href="#cb50-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb50-268"><a href="#cb50-268" aria-hidden="true" tabindex="-1"></a>    <span class="at">kclust =</span> <span class="fu">map</span>(k, <span class="sc">~</span><span class="fu">kmeans</span>(image_array, .x)),</span>
+<span id="cb50-269"><a href="#cb50-269" aria-hidden="true" tabindex="-1"></a>    <span class="at">tidied =</span> <span class="fu">map</span>(kclust, tidy),</span>
+<span id="cb50-270"><a href="#cb50-270" aria-hidden="true" tabindex="-1"></a>    <span class="at">glanced =</span> <span class="fu">map</span>(kclust, glance),</span>
+<span id="cb50-271"><a href="#cb50-271" aria-hidden="true" tabindex="-1"></a>    <span class="at">augmented =</span> <span class="fu">map</span>(kclust, augment, image_array)</span>
+<span id="cb50-272"><a href="#cb50-272" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb50-273"><a href="#cb50-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-276"><a href="#cb50-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-277"><a href="#cb50-277" aria-hidden="true" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> </span>
-<span id="cb50-278"><a href="#cb50-278" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span></span>
-<span id="cb50-279"><a href="#cb50-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(tidied))</span>
-<span id="cb50-280"><a href="#cb50-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-281"><a href="#cb50-281" aria-hidden="true" tabindex="-1"></a>assignments <span class="ot">&lt;-</span> </span>
-<span id="cb50-282"><a href="#cb50-282" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span> </span>
-<span id="cb50-283"><a href="#cb50-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(augmented))</span>
+<span id="cb50-274"><a href="#cb50-274" aria-hidden="true" tabindex="-1"></a>kclusts</span>
+<span id="cb50-275"><a href="#cb50-275" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-276"><a href="#cb50-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-277"><a href="#cb50-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-280"><a href="#cb50-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-281"><a href="#cb50-281" aria-hidden="true" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> </span>
+<span id="cb50-282"><a href="#cb50-282" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span></span>
+<span id="cb50-283"><a href="#cb50-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(tidied))</span>
 <span id="cb50-284"><a href="#cb50-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-285"><a href="#cb50-285" aria-hidden="true" tabindex="-1"></a>clusterings <span class="ot">&lt;-</span> </span>
-<span id="cb50-286"><a href="#cb50-286" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span></span>
-<span id="cb50-287"><a href="#cb50-287" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(glanced))</span>
-<span id="cb50-288"><a href="#cb50-288" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-289"><a href="#cb50-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-290"><a href="#cb50-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-291"><a href="#cb50-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-294"><a href="#cb50-294" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-295"><a href="#cb50-295" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb50-296"><a href="#cb50-296" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clusterings, <span class="fu">aes</span>(k, tot.withinss)) <span class="sc">+</span></span>
-<span id="cb50-297"><a href="#cb50-297" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb50-298"><a href="#cb50-298" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span> <span class="fu">pretty_breaks</span>())<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span>
-<span id="cb50-299"><a href="#cb50-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-300"><a href="#cb50-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-301"><a href="#cb50-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-302"><a href="#cb50-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-303"><a href="#cb50-303" aria-hidden="true" tabindex="-1"></a><span class="fu">## group to 3 </span></span>
+<span id="cb50-285"><a href="#cb50-285" aria-hidden="true" tabindex="-1"></a>assignments <span class="ot">&lt;-</span> </span>
+<span id="cb50-286"><a href="#cb50-286" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span> </span>
+<span id="cb50-287"><a href="#cb50-287" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(augmented))</span>
+<span id="cb50-288"><a href="#cb50-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-289"><a href="#cb50-289" aria-hidden="true" tabindex="-1"></a>clusterings <span class="ot">&lt;-</span> </span>
+<span id="cb50-290"><a href="#cb50-290" aria-hidden="true" tabindex="-1"></a>  kclusts <span class="sc">%&gt;%</span></span>
+<span id="cb50-291"><a href="#cb50-291" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(glanced))</span>
+<span id="cb50-292"><a href="#cb50-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-293"><a href="#cb50-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-294"><a href="#cb50-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-295"><a href="#cb50-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-298"><a href="#cb50-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-299"><a href="#cb50-299" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb50-300"><a href="#cb50-300" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clusterings, <span class="fu">aes</span>(k, tot.withinss)) <span class="sc">+</span></span>
+<span id="cb50-301"><a href="#cb50-301" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb50-302"><a href="#cb50-302" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span> <span class="fu">pretty_breaks</span>())<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span>
+<span id="cb50-303"><a href="#cb50-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb50-304"><a href="#cb50-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-307"><a href="#cb50-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-308"><a href="#cb50-308" aria-hidden="true" tabindex="-1"></a>kclust <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(image_array, <span class="at">centers =</span> <span class="dv">3</span>)</span>
-<span id="cb50-309"><a href="#cb50-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-310"><a href="#cb50-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-313"><a href="#cb50-313" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-314"><a href="#cb50-314" aria-hidden="true" tabindex="-1"></a>result<span class="ot">=</span><span class="fu">augment</span>(kclust, image_array) <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span>
-<span id="cb50-315"><a href="#cb50-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-316"><a href="#cb50-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-317"><a href="#cb50-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-318"><a href="#cb50-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-321"><a href="#cb50-321" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-322"><a href="#cb50-322" aria-hidden="true" tabindex="-1"></a>result <span class="sc">%&gt;%</span> <span class="fu">count</span>(cluster)</span>
-<span id="cb50-323"><a href="#cb50-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-324"><a href="#cb50-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-325"><a href="#cb50-325" aria-hidden="true" tabindex="-1"></a><span class="fu">## change  2 color</span></span>
-<span id="cb50-328"><a href="#cb50-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-329"><a href="#cb50-329" aria-hidden="true" tabindex="-1"></a><span class="co"># black RGB code 0 0 0</span></span>
-<span id="cb50-330"><a href="#cb50-330" aria-hidden="true" tabindex="-1"></a><span class="co"># red RGB code 255 0 0</span></span>
-<span id="cb50-331"><a href="#cb50-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-332"><a href="#cb50-332" aria-hidden="true" tabindex="-1"></a>result2<span class="ot">=</span>result <span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">x1=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x1) </span>
-<span id="cb50-333"><a href="#cb50-333" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x2=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x2) </span>
-<span id="cb50-334"><a href="#cb50-334" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x3=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x3) </span>
-<span id="cb50-335"><a href="#cb50-335" aria-hidden="true" tabindex="-1"></a>                          )<span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">x1=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">255</span>,x1) </span>
-<span id="cb50-336"><a href="#cb50-336" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x2=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,x2) </span>
-<span id="cb50-337"><a href="#cb50-337" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x3=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,x3)) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>cluster)</span>
-<span id="cb50-338"><a href="#cb50-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-339"><a href="#cb50-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-340"><a href="#cb50-340" aria-hidden="true" tabindex="-1"></a><span class="fu">## convert 2 D back to 4 D</span></span>
-<span id="cb50-343"><a href="#cb50-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-344"><a href="#cb50-344" aria-hidden="true" tabindex="-1"></a>result2arrary<span class="ot">=</span><span class="fu">array</span>(<span class="fu">unlist</span>(result2),<span class="fu">c</span>(<span class="fu">dim</span>(image_array_old)[<span class="dv">1</span>],<span class="fu">dim</span>(image_array_old)[<span class="dv">2</span>],<span class="dv">4</span>))</span>
-<span id="cb50-345"><a href="#cb50-345" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-346"><a href="#cb50-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-347"><a href="#cb50-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-350"><a href="#cb50-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-351"><a href="#cb50-351" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(result2arrary)</span>
-<span id="cb50-352"><a href="#cb50-352" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-353"><a href="#cb50-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-354"><a href="#cb50-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-357"><a href="#cb50-357" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-358"><a href="#cb50-358" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(result2arrary<span class="sc">/</span> <span class="dv">255</span>)</span>
-<span id="cb50-359"><a href="#cb50-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb50-360"><a href="#cb50-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-361"><a href="#cb50-361" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
-<span id="cb50-362"><a href="#cb50-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-363"><a href="#cb50-363" aria-hidden="true" tabindex="-1"></a>https://www.r-bloggers.com/2014/09/r-k-means-clustering-on-an-image/#google_vignette</span>
+<span id="cb50-305"><a href="#cb50-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-306"><a href="#cb50-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-307"><a href="#cb50-307" aria-hidden="true" tabindex="-1"></a><span class="fu">## group to 3 </span></span>
+<span id="cb50-308"><a href="#cb50-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-311"><a href="#cb50-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-312"><a href="#cb50-312" aria-hidden="true" tabindex="-1"></a>kclust <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(image_array, <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb50-313"><a href="#cb50-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-314"><a href="#cb50-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-317"><a href="#cb50-317" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-318"><a href="#cb50-318" aria-hidden="true" tabindex="-1"></a>result<span class="ot">=</span><span class="fu">augment</span>(kclust, image_array) <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span>
+<span id="cb50-319"><a href="#cb50-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-320"><a href="#cb50-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-321"><a href="#cb50-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-322"><a href="#cb50-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-325"><a href="#cb50-325" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-326"><a href="#cb50-326" aria-hidden="true" tabindex="-1"></a>result <span class="sc">%&gt;%</span> <span class="fu">count</span>(cluster)</span>
+<span id="cb50-327"><a href="#cb50-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-328"><a href="#cb50-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-329"><a href="#cb50-329" aria-hidden="true" tabindex="-1"></a><span class="fu">## change  2 color</span></span>
+<span id="cb50-332"><a href="#cb50-332" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-333"><a href="#cb50-333" aria-hidden="true" tabindex="-1"></a><span class="co"># black RGB code 0 0 0</span></span>
+<span id="cb50-334"><a href="#cb50-334" aria-hidden="true" tabindex="-1"></a><span class="co"># red RGB code 255 0 0</span></span>
+<span id="cb50-335"><a href="#cb50-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-336"><a href="#cb50-336" aria-hidden="true" tabindex="-1"></a>result2<span class="ot">=</span>result <span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">x1=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x1) </span>
+<span id="cb50-337"><a href="#cb50-337" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x2=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x2) </span>
+<span id="cb50-338"><a href="#cb50-338" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x3=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">3</span>,<span class="dv">0</span>,x3) </span>
+<span id="cb50-339"><a href="#cb50-339" aria-hidden="true" tabindex="-1"></a>                          )<span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">x1=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">255</span>,x1) </span>
+<span id="cb50-340"><a href="#cb50-340" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x2=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,x2) </span>
+<span id="cb50-341"><a href="#cb50-341" aria-hidden="true" tabindex="-1"></a>                          ,<span class="at">x3=</span><span class="fu">if_else</span>(cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,x3)) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>cluster)</span>
+<span id="cb50-342"><a href="#cb50-342" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-343"><a href="#cb50-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-344"><a href="#cb50-344" aria-hidden="true" tabindex="-1"></a><span class="fu">## convert 2 D back to 4 D</span></span>
+<span id="cb50-347"><a href="#cb50-347" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-348"><a href="#cb50-348" aria-hidden="true" tabindex="-1"></a>result2arrary<span class="ot">=</span><span class="fu">array</span>(<span class="fu">unlist</span>(result2),<span class="fu">c</span>(<span class="fu">dim</span>(image_array_old)[<span class="dv">1</span>],<span class="fu">dim</span>(image_array_old)[<span class="dv">2</span>],<span class="dv">4</span>))</span>
+<span id="cb50-349"><a href="#cb50-349" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-350"><a href="#cb50-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-351"><a href="#cb50-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-354"><a href="#cb50-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-355"><a href="#cb50-355" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(result2arrary)</span>
+<span id="cb50-356"><a href="#cb50-356" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-357"><a href="#cb50-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-358"><a href="#cb50-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-361"><a href="#cb50-361" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-362"><a href="#cb50-362" aria-hidden="true" tabindex="-1"></a>magick<span class="sc">::</span><span class="fu">image_read</span>(result2arrary<span class="sc">/</span> <span class="dv">255</span>)</span>
+<span id="cb50-363"><a href="#cb50-363" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb50-364"><a href="#cb50-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-365"><a href="#cb50-365" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
+<span id="cb50-366"><a href="#cb50-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-367"><a href="#cb50-367" aria-hidden="true" tabindex="-1"></a>https://www.r-bloggers.com/2014/09/r-k-means-clustering-on-an-image/#google_vignette</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

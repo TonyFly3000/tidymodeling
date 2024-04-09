@@ -1,6 +1,10 @@
 ---
 title: "Hierarchical Clustering"
 subtitle: "with Mall Customers Datase"
+
+author: "Tony Duan"
+
+
 execute:
   warning: false
   error: false

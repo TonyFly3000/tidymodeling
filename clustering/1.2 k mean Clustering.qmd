@@ -1,6 +1,10 @@
 ---
 title: "K mean Clustering with image"
 subtitle: "with image data"
+
+author: "Tony Duan"
+
+
 execute:
   warning: false
   error: false
