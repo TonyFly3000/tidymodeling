@@ -206,10 +206,14 @@
   </url>
   <url>
     <loc>https://example.com/Plot/2 plotly.html</loc>
-    <lastmod>2024-04-08T12:03:12.670Z</lastmod>
+    <lastmod>2024-04-09T01:14:40.358Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/Plot/1 ggplot2.html</loc>
     <lastmod>2024-04-08T11:57:56.344Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/Plot/3 shiny.html</loc>
+    <lastmod>2024-04-09T00:50:52.278Z</lastmod>
   </url>
 </urlset>

@@ -6184,7 +6184,7 @@
     "href": "Plot/2 plotly.html#line-plot",
     "title": "Plotly in R",
     "section": "1.3 line Plot",
-    "text": "1.3 line Plot",
+    "text": "1.3 line Plot\n\n\nCode\ndata001=gapminder\ndata002= data001 %&gt;% group_by(continent,year) %&gt;% summarise(pop=sum(pop))\n\n\n\n\nCode\nfig &lt;- plot_ly(data = data002 %&gt;%filter(continent=='Asia'), x = ~year, y = ~pop,mode = 'lines')\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6195,7 +6195,7 @@
     "href": "Plot/2 plotly.html#color-by-group-1",
     "title": "Plotly in R",
     "section": "1.4 color by group",
-    "text": "1.4 color by group",
+    "text": "1.4 color by group\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines')\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6205,8 +6205,8 @@
     "objectID": "Plot/2 plotly.html#color-by-group-2",
     "href": "Plot/2 plotly.html#color-by-group-2",
     "title": "Plotly in R",
-    "section": "2.1 color by group",
-    "text": "2.1 color by group",
+    "section": "2.2 color by group",
+    "text": "2.2 color by group\n\n\nCode\nfig &lt;- plot_ly(data=tips,x = ~total_bill,color=~sex, type = \"histogram\")\n\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6217,7 +6217,7 @@
     "href": "Plot/2 plotly.html#color-by-group-3",
     "title": "Plotly in R",
     "section": "4.1 color by group",
-    "text": "4.1 color by group",
+    "text": "4.1 color by group\n\n\nCode\nfig &lt;- plot_ly(data=tips,x = ~sex,y=~total_bill,color=~sex, type = \"box\")\n\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6228,7 +6228,7 @@
     "href": "Plot/2 plotly.html#color-by-group-4",
     "title": "Plotly in R",
     "section": "5.1 color by group",
-    "text": "5.1 color by group",
+    "text": "5.1 color by group\n\n\nCode\np=ggplot(tips, aes(day,tip,color=sex)) + geom_jitter(position=position_jitterdodge())\nggplotly(p)",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6239,7 +6239,7 @@
     "href": "Plot/2 plotly.html#add-title",
     "title": "Plotly in R",
     "section": "7.1 add title",
-    "text": "7.1 add title",
+    "text": "7.1 add title\n\n\nCode\nfig &lt;- plot_ly(data=tips,x = ~total_bill,color=~sex, type = \"histogram\") %&gt;% layout(title = 'new title')\n\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6250,7 +6250,7 @@
     "href": "Plot/2 plotly.html#adjust-size",
     "title": "Plotly in R",
     "section": "7.2 adjust size",
-    "text": "7.2 adjust size",
+    "text": "7.2 adjust size\n\n\nCode\nfig &lt;- plot_ly(data=tips,x = ~total_bill,color=~sex, type = \"histogram\"\n               ,width = 500, height = 200)\n\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6261,7 +6261,7 @@
     "href": "Plot/2 plotly.html#change-x-y-name",
     "title": "Plotly in R",
     "section": "7.3 change x y name",
-    "text": "7.3 change x y name",
+    "text": "7.3 change x y name\n\n\nCode\nfig &lt;- plot_ly(data=tips,x = ~total_bill,color=~sex, type = \"histogram\") %&gt;% layout(title = 'new title'\n                                                                                   ,xaxis = list(title = 'new x')\n                                                                                  ,yaxis = list(title = 'new y') \n                                                                                    )\n\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -6419,6 +6419,39 @@
     "crumbs": [
       "Plot",
       "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#set-bin-number",
+    "href": "Plot/2 plotly.html#set-bin-number",
+    "title": "Plotly in R",
+    "section": "2.1 set bin number",
+    "text": "2.1 set bin number\n\n\nCode\nfig &lt;- plot_ly(data=tips,x = ~total_bill, type = \"histogram\",nbinsx = 5 )\nfig",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/3 shiny.html",
+    "href": "Plot/3 shiny.html",
+    "title": "Shiny in R",
+    "section": "",
+    "text": "1 Shiny app:https://tduan.shinyapps.io/weightshiny/\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "Shiny in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#legend",
+    "href": "Plot/2 plotly.html#legend",
+    "title": "Plotly in R",
+    "section": "7.4 legend",
+    "text": "7.4 legend\n\n7.4.1 hide legend\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(showlegend = FALSE)\nfig\n\n\n\n\n\n\n\n\n7.4.2 show legend and change legend name\n\n\nCode\nfig &lt;- plot_ly(data = data002 %&gt;% filter(continent=='Asia'), x = ~year, y = ~pop,color = ~continent,mode = 'lines',name='Asia pop') %&gt;% layout(showlegend = TRUE)\nfig\n\n\n\n\n\n\n\n\n7.4.3 change legend and change legend Position\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(legend = list(orientation = 'h'))\n\nfig\n\n\n\n\n\n\n=",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
     ]
   }
 ]
