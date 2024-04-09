@@ -6656,7 +6656,7 @@
     "href": "clustering/1.2 k mean Clustering.html",
     "title": "K mean Clustering with image",
     "section": "",
-    "text": "Using K mean Clustering to replace colow on below picture\n\n1 load package\n\n\nCode\nset.seed(55)\nlibrary(tidyverse)\nlibrary(broom)\nlibrary(janitor)\nlibrary(magick)\n\n\n\n\n2 input image\n\n\nCode\nimage &lt;- image_read('images/python logo.jpg')\n\n\n\n\n3 convert png to matrix\n\n\nCode\nimage_tiff &lt;- image_convert(image, \"tiff\")\nimage_array &lt;- as.integer(image_tiff[[1]])                \n\n\n\n\nCode\nmagick::image_read(image_array/ 255)\n\n\n\n\n\n\n\n\n\n\n\nCode\ndim(image_array)\n\n\n[1] 235 214   3\n\n\n\n\nCode\nclass(image_array)\n\n\n[1] \"array\"\n\n\n\n\nCode\nimage_array_old=image_array\n\n\n\n\n4 reshape from 3 D to 2 D\n\n\nCode\ndim(image_array) &lt;- c(dim(image_array)[1]*dim(image_array)[2],3)\n\n\n\n\nCode\ndim(image_array)\n\n\n[1] 50290     3\n\n\n\n\n5 Optimal number of k-clusters\n\n\nCode\nkclusts &lt;- \n  tibble(k = 1:9) %&gt;%\n  mutate(\n    kclust = map(k, ~kmeans(image_array, .x)),\n    tidied = map(kclust, tidy),\n    glanced = map(kclust, glance),\n    augmented = map(kclust, augment, image_array)\n  )\n\nkclusts\n\n\n# A tibble: 9 × 5\n      k kclust   tidied           glanced          augmented            \n  &lt;int&gt; &lt;list&gt;   &lt;list&gt;           &lt;list&gt;           &lt;list&gt;               \n1     1 &lt;kmeans&gt; &lt;tibble [1 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n2     2 &lt;kmeans&gt; &lt;tibble [2 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n3     3 &lt;kmeans&gt; &lt;tibble [3 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n4     4 &lt;kmeans&gt; &lt;tibble [4 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n5     5 &lt;kmeans&gt; &lt;tibble [5 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n6     6 &lt;kmeans&gt; &lt;tibble [6 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n7     7 &lt;kmeans&gt; &lt;tibble [7 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n8     8 &lt;kmeans&gt; &lt;tibble [8 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n9     9 &lt;kmeans&gt; &lt;tibble [9 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n\n\n\n\nCode\nclusters &lt;- \n  kclusts %&gt;%\n  unnest(cols = c(tidied))\n\nassignments &lt;- \n  kclusts %&gt;% \n  unnest(cols = c(augmented))\n\nclusterings &lt;- \n  kclusts %&gt;%\n  unnest(cols = c(glanced))\n\n\n\n\nCode\nlibrary(scales)\nggplot(clusterings, aes(k, tot.withinss)) +\n  geom_line() +\n  geom_point()+scale_x_continuous(breaks= pretty_breaks())\n\n\n\n\n\n\n\n\n\n\n\n6 group to 3\n\n\nCode\nkclust &lt;- kmeans(image_array, centers = 3)\n\n\n\n\nCode\nresult=augment(kclust, image_array) %&gt;% clean_names()\n\n\n\n\nCode\nresult %&gt;% count(cluster)\n\n\n# A tibble: 3 × 2\n  cluster     n\n  &lt;fct&gt;   &lt;int&gt;\n1 1       13560\n2 2       13631\n3 3       23099\n\n\n\n\n7 change 2 color\n\n\nCode\n# black RGB code 0 0 0\n# red RGB code 255 0 0\n\nresult2=result %&gt;%mutate(x1=if_else(cluster==3,0,x1) \n                          ,x2=if_else(cluster==3,0,x2) \n                          ,x3=if_else(cluster==3,0,x3) \n                          )%&gt;%mutate(x1=if_else(cluster==1,255,x1) \n                          ,x2=if_else(cluster==1,0,x2) \n                          ,x3=if_else(cluster==1,0,x3)) %&gt;% select(-cluster)\n\n\n\n\n8 convert 2 D back to 3 D\n\n\nCode\nresult2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_old)[2],3))\n\n\n\n\nCode\ndim(result2arrary)\n\n\n[1] 235 214   3\n\n\n\n\nCode\nmagick::image_read(result2arrary/ 255)\n\n\n\n\n\n\n\n\n\n\n\n9 reference:\nhttps://www.r-bloggers.com/2014/09/r-k-means-clustering-on-an-image/#google_vignette\n\n\n\n\n\n\n Back to top",
+    "text": "Using K mean Clustering to replace colow on below picture",
     "crumbs": [
       "Clustering",
       "K mean Clustering with image"
@@ -6924,6 +6924,160 @@
     "crumbs": [
       "model type",
       "Decision tree"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#input-image",
+    "href": "clustering/1.2 k mean Clustering.html#input-image",
+    "title": "K mean Clustering with image",
+    "section": "2.1 input image",
+    "text": "2.1 input image\n\n\nCode\nimage &lt;- image_read('images/python logo.jpg')",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#convert-png-to-matrix",
+    "href": "clustering/1.2 k mean Clustering.html#convert-png-to-matrix",
+    "title": "K mean Clustering with image",
+    "section": "2.2 convert png to matrix",
+    "text": "2.2 convert png to matrix\n\n\nCode\nimage_tiff &lt;- image_convert(image, \"tiff\")\nimage_array &lt;- as.integer(image_tiff[[1]])                \n\n\n\n\nCode\nmagick::image_read(image_array/ 255)\n\n\n\n\n\n\n\n\n\n\n\nCode\ndim(image_array)\n\n\n[1] 235 214   3\n\n\n\n\nCode\nclass(image_array)\n\n\n[1] \"array\"\n\n\n\n\nCode\nimage_array_old=image_array",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#reshape-from-3-d-to-2-d",
+    "href": "clustering/1.2 k mean Clustering.html#reshape-from-3-d-to-2-d",
+    "title": "K mean Clustering with image",
+    "section": "2.3 reshape from 3 D to 2 D",
+    "text": "2.3 reshape from 3 D to 2 D\n\n\nCode\ndim(image_array) &lt;- c(dim(image_array)[1]*dim(image_array)[2],3)\n\n\n\n\nCode\ndim(image_array)\n\n\n[1] 50290     3",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#optimal-number-of-k-clusters",
+    "href": "clustering/1.2 k mean Clustering.html#optimal-number-of-k-clusters",
+    "title": "K mean Clustering with image",
+    "section": "2.4 Optimal number of k-clusters",
+    "text": "2.4 Optimal number of k-clusters\n\n\nCode\nkclusts &lt;- \n  tibble(k = 1:9) %&gt;%\n  mutate(\n    kclust = map(k, ~kmeans(image_array, .x)),\n    tidied = map(kclust, tidy),\n    glanced = map(kclust, glance),\n    augmented = map(kclust, augment, image_array)\n  )\n\nkclusts\n\n\n# A tibble: 9 × 5\n      k kclust   tidied           glanced          augmented            \n  &lt;int&gt; &lt;list&gt;   &lt;list&gt;           &lt;list&gt;           &lt;list&gt;               \n1     1 &lt;kmeans&gt; &lt;tibble [1 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n2     2 &lt;kmeans&gt; &lt;tibble [2 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n3     3 &lt;kmeans&gt; &lt;tibble [3 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n4     4 &lt;kmeans&gt; &lt;tibble [4 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n5     5 &lt;kmeans&gt; &lt;tibble [5 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n6     6 &lt;kmeans&gt; &lt;tibble [6 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n7     7 &lt;kmeans&gt; &lt;tibble [7 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n8     8 &lt;kmeans&gt; &lt;tibble [8 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n9     9 &lt;kmeans&gt; &lt;tibble [9 × 6]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [50,290 × 4]&gt;\n\n\n\n\nCode\nclusters &lt;- \n  kclusts %&gt;%\n  unnest(cols = c(tidied))\n\nassignments &lt;- \n  kclusts %&gt;% \n  unnest(cols = c(augmented))\n\nclusterings &lt;- \n  kclusts %&gt;%\n  unnest(cols = c(glanced))\n\n\n\n\nCode\nlibrary(scales)\nggplot(clusterings, aes(k, tot.withinss)) +\n  geom_line() +\n  geom_point()+scale_x_continuous(breaks= pretty_breaks())+scale_y_continuous(labels = scales::comma)",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#group-to-3",
+    "href": "clustering/1.2 k mean Clustering.html#group-to-3",
+    "title": "K mean Clustering with image",
+    "section": "2.5 group to 3",
+    "text": "2.5 group to 3\n\n\nCode\nkclust &lt;- kmeans(image_array, centers = 3)\n\n\n\n\nCode\nresult=augment(kclust, image_array) %&gt;% clean_names()\n\n\n\n\nCode\nresult %&gt;% count(cluster)\n\n\n# A tibble: 3 × 2\n  cluster     n\n  &lt;fct&gt;   &lt;int&gt;\n1 1       13560\n2 2       13631\n3 3       23099",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#change-2-color",
+    "href": "clustering/1.2 k mean Clustering.html#change-2-color",
+    "title": "K mean Clustering with image",
+    "section": "2.6 change 2 color",
+    "text": "2.6 change 2 color\n\n\nCode\n# black RGB code 0 0 0\n# red RGB code 255 0 0\n\nresult2=result %&gt;%mutate(x1=if_else(cluster==3,0,x1) \n                          ,x2=if_else(cluster==3,0,x2) \n                          ,x3=if_else(cluster==3,0,x3) \n                          )%&gt;%mutate(x1=if_else(cluster==1,255,x1) \n                          ,x2=if_else(cluster==1,0,x2) \n                          ,x3=if_else(cluster==1,0,x3)) %&gt;% select(-cluster)",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#convert-2-d-back-to-3-d",
+    "href": "clustering/1.2 k mean Clustering.html#convert-2-d-back-to-3-d",
+    "title": "K mean Clustering with image",
+    "section": "2.7 convert 2 D back to 3 D",
+    "text": "2.7 convert 2 D back to 3 D\n\n\nCode\nresult2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_old)[2],3))\n\n\n\n\nCode\ndim(result2arrary)\n\n\n[1] 235 214   3\n\n\n\n\nCode\nmagick::image_read(result2arrary/ 255)",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#input-image-1",
+    "href": "clustering/1.2 k mean Clustering.html#input-image-1",
+    "title": "K mean Clustering with image",
+    "section": "3.1 input image",
+    "text": "3.1 input image\n\n\nCode\nimage &lt;- image_read('images/R_logo.png')",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#convert-png-to-matrix-1",
+    "href": "clustering/1.2 k mean Clustering.html#convert-png-to-matrix-1",
+    "title": "K mean Clustering with image",
+    "section": "3.2 convert png to matrix",
+    "text": "3.2 convert png to matrix\n\n\nCode\nimage_tiff &lt;- image_convert(image, \"tiff\")\nimage_array &lt;- as.integer(image_tiff[[1]])                \n\n\n\n\nCode\nmagick::image_read(image_array/ 255)\n\n\n\n\n\n\n\n\n\n\n\nCode\ndim(image_array)\n\n\n[1] 561 724   4\n\n\n\n\nCode\nclass(image_array)\n\n\n[1] \"array\"\n\n\n\n\nCode\nimage_array_old=image_array",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#reshape-from-3-d-to-2-d-1",
+    "href": "clustering/1.2 k mean Clustering.html#reshape-from-3-d-to-2-d-1",
+    "title": "K mean Clustering with image",
+    "section": "3.3 reshape from 3 D to 2 D",
+    "text": "3.3 reshape from 3 D to 2 D\n\n\nCode\ndim(image_array) &lt;- c(dim(image_array)[1]*dim(image_array)[2],4)\n\n\n\n\nCode\ndim(image_array)\n\n\n[1] 406164      4",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#optimal-number-of-k-clusters-1",
+    "href": "clustering/1.2 k mean Clustering.html#optimal-number-of-k-clusters-1",
+    "title": "K mean Clustering with image",
+    "section": "3.4 Optimal number of k-clusters",
+    "text": "3.4 Optimal number of k-clusters\n\n\nCode\nkclusts &lt;- \n  tibble(k = 1:9) %&gt;%\n  mutate(\n    kclust = map(k, ~kmeans(image_array, .x)),\n    tidied = map(kclust, tidy),\n    glanced = map(kclust, glance),\n    augmented = map(kclust, augment, image_array)\n  )\n\nkclusts\n\n\n# A tibble: 9 × 5\n      k kclust   tidied           glanced          augmented             \n  &lt;int&gt; &lt;list&gt;   &lt;list&gt;           &lt;list&gt;           &lt;list&gt;                \n1     1 &lt;kmeans&gt; &lt;tibble [1 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n2     2 &lt;kmeans&gt; &lt;tibble [2 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n3     3 &lt;kmeans&gt; &lt;tibble [3 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n4     4 &lt;kmeans&gt; &lt;tibble [4 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n5     5 &lt;kmeans&gt; &lt;tibble [5 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n6     6 &lt;kmeans&gt; &lt;tibble [6 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n7     7 &lt;kmeans&gt; &lt;tibble [7 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n8     8 &lt;kmeans&gt; &lt;tibble [8 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n9     9 &lt;kmeans&gt; &lt;tibble [9 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n\n\n\n\nCode\nclusters &lt;- \n  kclusts %&gt;%\n  unnest(cols = c(tidied))\n\nassignments &lt;- \n  kclusts %&gt;% \n  unnest(cols = c(augmented))\n\nclusterings &lt;- \n  kclusts %&gt;%\n  unnest(cols = c(glanced))\n\n\n\n\nCode\nlibrary(scales)\nggplot(clusterings, aes(k, tot.withinss)) +\n  geom_line() +\n  geom_point()+scale_x_continuous(breaks= pretty_breaks())+scale_y_continuous(labels = scales::comma)",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#group-to-3-1",
+    "href": "clustering/1.2 k mean Clustering.html#group-to-3-1",
+    "title": "K mean Clustering with image",
+    "section": "3.5 group to 3",
+    "text": "3.5 group to 3\n\n\nCode\nkclust &lt;- kmeans(image_array, centers = 3)\n\n\n\n\nCode\nresult=augment(kclust, image_array) %&gt;% clean_names()\n\n\n\n\nCode\nresult %&gt;% count(cluster)\n\n\n# A tibble: 3 × 2\n  cluster      n\n  &lt;fct&gt;    &lt;int&gt;\n1 1       120865\n2 2       169342\n3 3       115957",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#change-2-color-1",
+    "href": "clustering/1.2 k mean Clustering.html#change-2-color-1",
+    "title": "K mean Clustering with image",
+    "section": "3.6 change 2 color",
+    "text": "3.6 change 2 color\n\n\nCode\n# black RGB code 0 0 0\n# red RGB code 255 0 0\n\nresult2=result %&gt;%mutate(x1=if_else(cluster==3,0,x1) \n                          ,x2=if_else(cluster==3,0,x2) \n                          ,x3=if_else(cluster==3,0,x3) \n                          )%&gt;%mutate(x1=if_else(cluster==1,255,x1) \n                          ,x2=if_else(cluster==1,0,x2) \n                          ,x3=if_else(cluster==1,0,x3)) %&gt;% select(-cluster)",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#convert-2-d-back-to-4-d",
+    "href": "clustering/1.2 k mean Clustering.html#convert-2-d-back-to-4-d",
+    "title": "K mean Clustering with image",
+    "section": "3.7 convert 2 D back to 4 D",
+    "text": "3.7 convert 2 D back to 4 D\n\n\nCode\nresult2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_old)[2],4))\n\n\n\n\nCode\ndim(result2arrary)\n\n\n[1] 561 724   4\n\n\n\n\nCode\nmagick::image_read(result2arrary/ 255)",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
     ]
   }
 ]

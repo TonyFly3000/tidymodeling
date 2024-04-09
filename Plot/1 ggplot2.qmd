@@ -205,6 +205,10 @@ p
 p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
 p
 ```
+## x y break and scales
+
+
+
 
 # applying themes
 
