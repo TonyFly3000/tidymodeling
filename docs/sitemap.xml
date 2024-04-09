@@ -240,4 +240,16 @@
     <loc>https://example.com/clustering/1.2 k mean Clustering.html</loc>
     <lastmod>2024-04-09T06:24:28.444Z</lastmod>
   </url>
+  <url>
+    <loc>https://example.com/model type/2 random forest.html</loc>
+    <lastmod>2024-03-27T08:09:20.193Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/model type/3 gradient boosted trees.html</loc>
+    <lastmod>2024-03-27T09:17:03.562Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/model type/1 decision tree.html</loc>
+    <lastmod>2024-03-27T08:08:22.812Z</lastmod>
+  </url>
 </urlset>

@@ -6892,5 +6892,38 @@
       "Clustering",
       "K mean Clustering"
     ]
+  },
+  {
+    "objectID": "model type/2 random forest.html",
+    "href": "model type/2 random forest.html",
+    "title": "Random forest",
+    "section": "",
+    "text": "1 Pros\n\nEasier to interpret than Neural Network\nFast training and making inference\n\n\n\n2 Cons\n\nThe size & inference speed of the random forest can sometimes be an issue\nRandom forests cannot learn and reuse internal representations\n\n\n\n3 reference:\nhttps://www.youtube.com/watch?v=w5gB8zyLx-8\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "model type",
+      "Random forest"
+    ]
+  },
+  {
+    "objectID": "model type/3 gradient boosted trees.html",
+    "href": "model type/3 gradient boosted trees.html",
+    "title": "Gradient boosted trees",
+    "section": "",
+    "text": "1 Pros\n\nNative support for numerical and categorical features, and no necessary need for feature pre-processing.\nGBT are fast and light-weight and with great performance.\n\n\n\n2 Cons\n\nGBT can overfit.\nDecision tree trained sequentially -&gt; slower training.\nGBT cannot learn & reuse internal representations.Poor performance on image and long text.\n\n\n\n3 reference:\nhttps://www.youtube.com/watch?v=w5gB8zyLx-8\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "model type",
+      "Gradient boosted trees"
+    ]
+  },
+  {
+    "objectID": "model type/1 decision tree.html",
+    "href": "model type/1 decision tree.html",
+    "title": "Decision tree",
+    "section": "",
+    "text": "1 Pros\n\nEasier to interpret than Neural Network\nFast training and making inference\n\n\n\n2 Cons\n\nProne to overfitting\n\n\n\n3 reference:\nhttps://www.youtube.com/watch?v=6DlWndLbk90\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "model type",
+      "Decision tree"
+    ]
   }
 ]

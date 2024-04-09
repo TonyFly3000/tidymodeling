@@ -1,0 +1,35 @@
+---
+title: "Gradient boosted trees"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+# Pros
+
+- Native support for numerical and categorical features, and no necessary need for feature pre-processing.
+
+- GBT are fast and light-weight and with great performance.
+
+
+# Cons
+
+- GBT can overfit.
+
+- Decision tree trained sequentially -> slower training.
+
+- GBT cannot learn & reuse internal representations.Poor performance on image and long text.
+
+# reference:
+
+https://www.youtube.com/watch?v=w5gB8zyLx-8

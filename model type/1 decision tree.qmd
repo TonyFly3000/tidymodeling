@@ -1,0 +1,33 @@
+---
+title: "Decision tree"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](images/1.png){width="600"}
+
+
+# Pros
+
+- Easier to interpret than Neural Network
+- Fast training and making inference
+
+
+# Cons
+
+- Prone to overfitting
+
+
+# reference:
+
+https://www.youtube.com/watch?v=6DlWndLbk90

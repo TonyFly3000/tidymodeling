@@ -1,0 +1,35 @@
+---
+title: "Random forest"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](images/2.png){width="600"}
+
+
+# Pros
+
+- Easier to interpret than Neural Network
+
+- Fast training and making inference
+
+
+# Cons
+
+- The size & inference speed of the random forest can sometimes be an issue
+
+- Random forests cannot learn and reuse internal representations
+
+# reference:
+
+https://www.youtube.com/watch?v=w5gB8zyLx-8

@@ -38,7 +38,7 @@ website:
       - sidebar:bar3
       - sidebar:bar4
       - sidebar:bar5
- 
+      - sidebar:bar6 
   
   sidebar:
     - id: intro
@@ -63,27 +63,35 @@ website:
       contents: Plot
 
     - id: bar2
+      title: "Model type"
+      style: "floating"
+      background: light
+      collapse-level: 2
+      contents: model type
+
+
+    - id: bar3
       title: "Classification"
       style: "floating"
       background: light
       collapse-level: 2
       contents: titanic classification model
       
-    - id: bar3
+    - id: bar4
       title: "Classification imbanlance"
       style: "floating"
       background: light
       collapse-level: 2
       contents: hotel classification model   
 
-    - id: bar4
+    - id: bar5
       title: "Regression"
       style: "floating"
       background: light
       collapse-level: 2
       contents: house price regression model 
 
-    - id: bar5
+    - id: bar6
       title: "Clustering"
       style: "floating"
       background: light
