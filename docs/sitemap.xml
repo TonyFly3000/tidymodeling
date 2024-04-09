@@ -182,11 +182,11 @@
   </url>
   <url>
     <loc>https://example.com/data manipulation/2 data structure in R.html</loc>
-    <lastmod>2024-04-07T10:51:58.264Z</lastmod>
+    <lastmod>2024-04-09T03:49:23.214Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/data manipulation/3 data manipulation with tidyverse.html</loc>
-    <lastmod>2024-04-07T10:52:30.884Z</lastmod>
+    <lastmod>2024-04-09T03:44:39.657Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/intro/1 basic R.html</loc>
@@ -194,7 +194,7 @@
   </url>
   <url>
     <loc>https://example.com/data manipulation/5 SQL database.html</loc>
-    <lastmod>2024-04-08T07:58:09.152Z</lastmod>
+    <lastmod>2024-04-09T03:24:31.652Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/Plot/1 basic R.html</loc>
@@ -215,5 +215,29 @@
   <url>
     <loc>https://example.com/Plot/3 shiny.html</loc>
     <lastmod>2024-04-09T00:50:52.278Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/clustering/4 Principal component analysis .html</loc>
+    <lastmod>2024-04-09T02:19:53.818Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/clustering/3 k mode Clustering.html</loc>
+    <lastmod>2024-04-06T14:32:59.471Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/clustering/0 Mall Customers.html</loc>
+    <lastmod>2024-04-09T03:55:59.692Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/clustering/1 k mean Clustering.html</loc>
+    <lastmod>2024-04-09T05:33:32.855Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/clustering/2 Hierarchical Clustering.html</loc>
+    <lastmod>2024-04-06T14:32:59.460Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/clustering/1.2 k mean Clustering.html</loc>
+    <lastmod>2024-04-09T06:24:28.444Z</lastmod>
   </url>
 </urlset>

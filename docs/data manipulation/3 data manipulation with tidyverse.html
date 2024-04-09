@@ -200,6 +200,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../Plot/2 plotly.html">
  <span class="dropdown-text">Plotly in R</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Plot/3 shiny.html">
+ <span class="dropdown-text">Shiny in R</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -299,14 +303,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-house-price-tensorflow-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">house price tensorflow model</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clustering" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Clustering</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-house-price-tensorflow-model">    
-        <li class="dropdown-header">Tensorflow</li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-clustering">    
+        <li class="dropdown-header">Clustering</li>
         <li>
-    <a class="dropdown-item" href="../tensorflow/Level 1 Regression tensorflow.html">
- <span class="dropdown-text">Level 1 Regression Tensorflow model</span></a>
+    <a class="dropdown-item" href="../clustering/0 Mall Customers.html">
+ <span class="dropdown-text">Mall Customers Dataset</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/1 k mean Clustering.html">
+ <span class="dropdown-text">K mean Clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/1.2 k mean Clustering.html">
+ <span class="dropdown-text">K mean Clustering with image</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/2 Hierarchical Clustering.html">
+ <span class="dropdown-text">Hierarchical Clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/3 k mode Clustering.html">
+ <span class="dropdown-text">k mode Clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/4 Principal component analysis .html">
+ <span class="dropdown-text">Principal component analysis</span></a>
   </li>  
     </ul>
   </li>
@@ -395,10 +419,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#create-recipe-step_xxx" id="toc-create-recipe-step_xxx" class="nav-link active" data-scroll-target="#create-recipe-step_xxx"><span class="header-section-number">1</span> create recipe step_xxx</a></li>
-  <li><a href="#check-recipe-check_xxx" id="toc-check-recipe-check_xxx" class="nav-link" data-scroll-target="#check-recipe-check_xxx"><span class="header-section-number">2</span> check recipe check_xxx</a></li>
-  <li><a href="#roles-to-select-variables" id="toc-roles-to-select-variables" class="nav-link" data-scroll-target="#roles-to-select-variables"><span class="header-section-number">3</span> roles to select variables</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">4</span> reference:</a></li>
+  <li><a href="#load-package" id="toc-load-package" class="nav-link active" data-scroll-target="#load-package"><span class="header-section-number">0.1</span> load package</a></li>
+  <li><a href="#select-column" id="toc-select-column" class="nav-link" data-scroll-target="#select-column"><span class="header-section-number">0.2</span> select column</a>
+  <ul class="collapse">
+  <li><a href="#get-column-names" id="toc-get-column-names" class="nav-link" data-scroll-target="#get-column-names"><span class="header-section-number">0.2.1</span> get column names</a></li>
+  <li><a href="#select-by-name" id="toc-select-by-name" class="nav-link" data-scroll-target="#select-by-name"><span class="header-section-number">0.2.2</span> select by name</a></li>
+  <li><a href="#select-columns-by-name-match-with-p" id="toc-select-columns-by-name-match-with-p" class="nav-link" data-scroll-target="#select-columns-by-name-match-with-p"><span class="header-section-number">0.2.3</span> select columns by name match with ‘p’</a></li>
+  <li><a href="#select-columns-by-index" id="toc-select-columns-by-index" class="nav-link" data-scroll-target="#select-columns-by-index"><span class="header-section-number">0.2.4</span> select columns by index</a></li>
+  </ul></li>
+  <li><a href="#drop-column" id="toc-drop-column" class="nav-link" data-scroll-target="#drop-column"><span class="header-section-number">0.3</span> drop column</a></li>
+  <li><a href="#renaming-column" id="toc-renaming-column" class="nav-link" data-scroll-target="#renaming-column"><span class="header-section-number">0.4</span> Renaming column</a></li>
+  <li><a href="#create-column" id="toc-create-column" class="nav-link" data-scroll-target="#create-column"><span class="header-section-number">0.5</span> Create column</a>
+  <ul class="collapse">
+  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"><span class="header-section-number">0.5.1</span> Mutate</a></li>
+  <li><a href="#transmutecreate-column-and-only-keep-this-column" id="toc-transmutecreate-column-and-only-keep-this-column" class="nav-link" data-scroll-target="#transmutecreate-column-and-only-keep-this-column"><span class="header-section-number">0.5.2</span> Transmute,create column and only keep this column</a></li>
+  </ul></li>
+  <li><a href="#filter-rows" id="toc-filter-rows" class="nav-link" data-scroll-target="#filter-rows"><span class="header-section-number">0.6</span> Filter rows</a>
+  <ul class="collapse">
+  <li><a href="#filters-with-and-conditions" id="toc-filters-with-and-conditions" class="nav-link" data-scroll-target="#filters-with-and-conditions"><span class="header-section-number">0.6.1</span> Filters with AND conditions</a></li>
+  <li><a href="#filters-with-or-conditions" id="toc-filters-with-or-conditions" class="nav-link" data-scroll-target="#filters-with-or-conditions"><span class="header-section-number">0.6.2</span> Filters with OR conditions</a></li>
+  <li><a href="#filter-row-with-index" id="toc-filter-row-with-index" class="nav-link" data-scroll-target="#filter-row-with-index"><span class="header-section-number">0.6.3</span> filter row with index</a></li>
+  </ul></li>
+  <li><a href="#append" id="toc-append" class="nav-link" data-scroll-target="#append"><span class="header-section-number">0.7</span> Append</a>
+  <ul class="collapse">
+  <li><a href="#append-by-row" id="toc-append-by-row" class="nav-link" data-scroll-target="#append-by-row"><span class="header-section-number">0.7.1</span> append by row</a></li>
+  <li><a href="#append-by-column" id="toc-append-by-column" class="nav-link" data-scroll-target="#append-by-column"><span class="header-section-number">0.7.2</span> append by column</a></li>
+  <li><a href="#dropping-na-values" id="toc-dropping-na-values" class="nav-link" data-scroll-target="#dropping-na-values"><span class="header-section-number">0.7.3</span> Dropping NA values</a></li>
+  <li><a href="#keep-na-values" id="toc-keep-na-values" class="nav-link" data-scroll-target="#keep-na-values"><span class="header-section-number">0.7.4</span> keep NA values</a></li>
+  </ul></li>
+  <li><a href="#group-by" id="toc-group-by" class="nav-link" data-scroll-target="#group-by"><span class="header-section-number">0.8</span> group by</a>
+  <ul class="collapse">
+  <li><a href="#averageminmaxsum" id="toc-averageminmaxsum" class="nav-link" data-scroll-target="#averageminmaxsum"><span class="header-section-number">0.8.1</span> average,min,max,sum</a></li>
+  <li><a href="#count-record-and-count-distinct-record" id="toc-count-record-and-count-distinct-record" class="nav-link" data-scroll-target="#count-record-and-count-distinct-record"><span class="header-section-number">0.8.2</span> count record and count distinct record</a></li>
+  </ul></li>
+  <li><a href="#order-rows" id="toc-order-rows" class="nav-link" data-scroll-target="#order-rows"><span class="header-section-number">0.9</span> order rows</a>
+  <ul class="collapse">
+  <li><a href="#sort-in-descending-order" id="toc-sort-in-descending-order" class="nav-link" data-scroll-target="#sort-in-descending-order"><span class="header-section-number">0.9.1</span> Sort in descending order</a></li>
+  <li><a href="#arrange-by-multiple-variables" id="toc-arrange-by-multiple-variables" class="nav-link" data-scroll-target="#arrange-by-multiple-variables"><span class="header-section-number">0.9.2</span> Arrange by multiple variables</a></li>
+  </ul></li>
+  <li><a href="#join" id="toc-join" class="nav-link" data-scroll-target="#join"><span class="header-section-number">0.10</span> join</a>
+  <ul class="collapse">
+  <li><a href="#inner_join" id="toc-inner_join" class="nav-link" data-scroll-target="#inner_join"><span class="header-section-number">0.10.1</span> inner_join</a></li>
+  <li><a href="#left-join" id="toc-left-join" class="nav-link" data-scroll-target="#left-join"><span class="header-section-number">0.10.2</span> left join</a></li>
+  <li><a href="#anti-join" id="toc-anti-join" class="nav-link" data-scroll-target="#anti-join"><span class="header-section-number">0.10.3</span> anti join</a></li>
+  </ul></li>
+  <li><a href="#reshape-tables" id="toc-reshape-tables" class="nav-link" data-scroll-target="#reshape-tables"><span class="header-section-number">0.11</span> Reshape tables</a>
+  <ul class="collapse">
+  <li><a href="#gather-data-longwide-to-long" id="toc-gather-data-longwide-to-long" class="nav-link" data-scroll-target="#gather-data-longwide-to-long"><span class="header-section-number">0.11.1</span> Gather data long(wide to long)</a></li>
+  <li><a href="#spread-data-wide-long-to-wide" id="toc-spread-data-wide-long-to-wide" class="nav-link" data-scroll-target="#spread-data-wide-long-to-wide"><span class="header-section-number">0.11.2</span> Spread data wide (long to wide)</a></li>
+  </ul></li>
+  <li><a href="#string" id="toc-string" class="nav-link" data-scroll-target="#string"><span class="header-section-number">0.12</span> string</a>
+  <ul class="collapse">
+  <li><a href="#upper-case" id="toc-upper-case" class="nav-link" data-scroll-target="#upper-case"><span class="header-section-number">0.12.1</span> upper case</a></li>
+  <li><a href="#lower-case" id="toc-lower-case" class="nav-link" data-scroll-target="#lower-case"><span class="header-section-number">0.12.2</span> lower case</a></li>
+  <li><a href="#match" id="toc-match" class="nav-link" data-scroll-target="#match"><span class="header-section-number">0.12.3</span> match</a></li>
+  <li><a href="#concatenation" id="toc-concatenation" class="nav-link" data-scroll-target="#concatenation"><span class="header-section-number">0.12.4</span> concatenation</a></li>
+  <li><a href="#replace" id="toc-replace" class="nav-link" data-scroll-target="#replace"><span class="header-section-number">0.12.5</span> replace</a></li>
+  <li><a href="#extract" id="toc-extract" class="nav-link" data-scroll-target="#extract"><span class="header-section-number">0.12.6</span> extract</a></li>
+  </ul></li>
+  <li><a href="#date" id="toc-date" class="nav-link" data-scroll-target="#date"><span class="header-section-number">0.13</span> date</a></li>
+  <li><a href="#dataframe-to-numpy-array" id="toc-dataframe-to-numpy-array" class="nav-link" data-scroll-target="#dataframe-to-numpy-array"><span class="header-section-number">0.14</span> dataframe to numpy array</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">1</span> reference:</a></li>
   </ul>
 </nav>
     </div>
@@ -430,115 +511,443 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="create-recipe-step_xxx" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> create recipe step_xxx</h1>
+<p>dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.</p>
+<p><img src="images/logo.png" class="img-fluid" width="231"></p>
+<section id="load-package" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="load-package"><span class="header-section-number">0.1</span> load package</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tree_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(legal_status <span class="sc">~</span> ., <span class="at">data =</span> trees_train) <span class="sc">%&gt;%</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># update the role for tree_id, since this is a variable we might like to keep around for convenience as an identifier for rows but is not a predictor or outcome. </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_role</span>(tree_id, <span class="at">new_role =</span> <span class="st">"ID"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># step_other() to collapse categorical levels for species, caretaker, and the site info. Before this step, there were 300+ species!</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_other</span>(species, caretaker, <span class="at">threshold =</span> <span class="fl">0.01</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create dummy for nominal data exclude outcome</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The date column with when each tree was planted may be useful for fitting this model, but probably not the exact date, given how slowly trees grow. Let’s create a year feature from the date, and then remove the original date variable.  </span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_date</span>(date, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"year"</span>)) <span class="sc">%&gt;%</span><span class="fu">step_rm</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># There are many more DPW maintained trees than not, so let’s downsample the data for training.  </span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_downsample</span>(legal_status)<span class="sc">%&gt;%</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># will remove all. predictor variables that contain only a single value</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_zv</span>(<span class="fu">all_numeric</span>(<span class="fu">all_predictors</span>())) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#  normalize all numeric data</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># use KNN to impute all predictors</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">step_impute_knn</span>(<span class="fu">all_predictors</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="check-recipe-check_xxx" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> check recipe check_xxx</h1>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "check_class"      "check_cols"       "check_missing"   </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] "check_name"       "check_new_data"   "check_new_values"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] "check_range"      "check_type"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] '1.1.4'</code></pre>
 </div>
-</section>
-<section id="roles-to-select-variables" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> roles to select variables</h1>
-<p>In most cases, the right approach for users will be use to use the predictor-specific selectors such as all_numeric_predictors() and all_nominal_predictors().</p>
+</div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">has_role</span>(<span class="at">match =</span> <span class="st">"predictor"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">has_type</span>(<span class="at">match =</span> <span class="st">"numeric"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all_outcomes</span>()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">all_predictors</span>()</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">all_date</span>()</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">all_date_predictors</span>()</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">all_datetime</span>()</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">all_datetime_predictors</span>()</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all_double</span>()</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">all_double_predictors</span>()</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">all_factor</span>()</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">all_factor_predictors</span>()</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">all_integer</span>()</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">all_integer_predictors</span>()</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">all_logical</span>()</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">all_logical_predictors</span>()</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">all_nominal</span>()</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="fu">all_nominal_predictors</span>()</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">all_numeric</span>()</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="fu">all_numeric_predictors</span>()</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="fu">all_ordered</span>()</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">all_ordered_predictors</span>()</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="fu">all_string</span>()</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="fu">all_string_predictors</span>()</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="fu">all_unordered</span>()</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="fu">all_unordered_predictors</span>()</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="fu">current_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(cyl, mpg,hp) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="reference" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> reference:</h1>
-<p>https://recipes.tidymodels.org/reference/has_role.html</p>
+<section id="select-column" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="select-column"><span class="header-section-number">0.2</span> select column</h2>
+<section id="get-column-names" class="level3" data-number="0.2.1">
+<h3 data-number="0.2.1" class="anchored" data-anchor-id="get-column-names"><span class="header-section-number">0.2.1</span> get column names</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(small_mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "cyl" "mpg" "hp" </code></pre>
+</div>
+</div>
+</section>
+<section id="select-by-name" class="level3" data-number="0.2.2">
+<h3 data-number="0.2.2" class="anchored" data-anchor-id="select-by-name"><span class="header-section-number">0.2.2</span> select by name</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(cyl, mpg,hp) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    cyl  mpg  hp
+Mazda RX4             6 21.0 110
+Mazda RX4 Wag         6 21.0 110
+Datsun 710            4 22.8  93
+Hornet 4 Drive        6 21.4 110
+Hornet Sportabout     8 18.7 175
+Valiant               6 18.1 105
+Duster 360            8 14.3 245
+Merc 240D             4 24.4  62
+Merc 230              4 22.8  95
+Merc 280              6 19.2 123
+Merc 280C             6 17.8 123
+Merc 450SE            8 16.4 180
+Merc 450SL            8 17.3 180
+Merc 450SLC           8 15.2 180
+Cadillac Fleetwood    8 10.4 205
+Lincoln Continental   8 10.4 215
+Chrysler Imperial     8 14.7 230
+Fiat 128              4 32.4  66
+Honda Civic           4 30.4  52
+Toyota Corolla        4 33.9  65
+Toyota Corona         4 21.5  97
+Dodge Challenger      8 15.5 150
+AMC Javelin           8 15.2 150
+Camaro Z28            8 13.3 245
+Pontiac Firebird      8 19.2 175
+Fiat X1-9             4 27.3  66
+Porsche 914-2         4 26.0  91
+Lotus Europa          4 30.4 113
+Ford Pantera L        8 15.8 264
+Ferrari Dino          6 19.7 175
+Maserati Bora         8 15.0 335
+Volvo 142E            4 21.4 109</code></pre>
+</div>
+</div>
+</section>
+<section id="select-columns-by-name-match-with-p" class="level3" data-number="0.2.3">
+<h3 data-number="0.2.3" class="anchored" data-anchor-id="select-columns-by-name-match-with-p"><span class="header-section-number">0.2.3</span> select columns by name match with ‘p’</h3>
+</section>
+<section id="select-columns-by-index" class="level3" data-number="0.2.4">
+<h3 data-number="0.2.4" class="anchored" data-anchor-id="select-columns-by-index"><span class="header-section-number">0.2.4</span> select columns by index</h3>
+<section id="select-first-and-3rd-columns" class="level4" data-number="0.2.4.1">
+<h4 data-number="0.2.4.1" class="anchored" data-anchor-id="select-first-and-3rd-columns"><span class="header-section-number">0.2.4.1</span> select first and 3rd columns</h4>
+</section>
+<section id="select-first-to-3rd-columns" class="level4" data-number="0.2.4.2">
+<h4 data-number="0.2.4.2" class="anchored" data-anchor-id="select-first-to-3rd-columns"><span class="header-section-number">0.2.4.2</span> select first to 3rd columns</h4>
+</section>
+</section>
+</section>
+<section id="drop-column" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="drop-column"><span class="header-section-number">0.3</span> drop column</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mpg  hp
+Mazda RX4         21.0 110
+Mazda RX4 Wag     21.0 110
+Datsun 710        22.8  93
+Hornet 4 Drive    21.4 110
+Hornet Sportabout 18.7 175
+Valiant           18.1 105</code></pre>
+</div>
+</div>
+</section>
+<section id="renaming-column" class="level2" data-number="0.4">
+<h2 data-number="0.4" class="anchored" data-anchor-id="renaming-column"><span class="header-section-number">0.4</span> Renaming column</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">rename</span>(<span class="at">new_cyl=</span>cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  new_cyl  mpg  hp
+Mazda RX4               6 21.0 110
+Mazda RX4 Wag           6 21.0 110
+Datsun 710              4 22.8  93
+Hornet 4 Drive          6 21.4 110
+Hornet Sportabout       8 18.7 175
+Valiant                 6 18.1 105</code></pre>
+</div>
+</div>
+</section>
+<section id="create-column" class="level2" data-number="0.5">
+<h2 data-number="0.5" class="anchored" data-anchor-id="create-column"><span class="header-section-number">0.5</span> Create column</h2>
+<section id="mutate" class="level3" data-number="0.5.1">
+<h3 data-number="0.5.1" class="anchored" data-anchor-id="mutate"><span class="header-section-number">0.5.1</span> Mutate</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">new_cyl=</span>cyl<span class="sc">+</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  cyl  mpg  hp new_cyl
+Mazda RX4           6 21.0 110       7
+Mazda RX4 Wag       6 21.0 110       7
+Datsun 710          4 22.8  93       5
+Hornet 4 Drive      6 21.4 110       7
+Hornet Sportabout   8 18.7 175       9
+Valiant             6 18.1 105       7</code></pre>
+</div>
+</div>
+</section>
+<section id="transmutecreate-column-and-only-keep-this-column" class="level3" data-number="0.5.2">
+<h3 data-number="0.5.2" class="anchored" data-anchor-id="transmutecreate-column-and-only-keep-this-column"><span class="header-section-number">0.5.2</span> Transmute,create column and only keep this column</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">transmute</span>(<span class="at">new_cyl=</span>cyl<span class="sc">+</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  new_cyl
+Mazda RX4               7
+Mazda RX4 Wag           7
+Datsun 710              5
+Hornet 4 Drive          7
+Hornet Sportabout       9
+Valiant                 7</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="filter-rows" class="level2" data-number="0.6">
+<h2 data-number="0.6" class="anchored" data-anchor-id="filter-rows"><span class="header-section-number">0.6</span> Filter rows</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  cyl  mpg  hp
+Mazda RX4           6 21.0 110
+Mazda RX4 Wag       6 21.0 110
+Hornet 4 Drive      6 21.4 110
+Hornet Sportabout   8 18.7 175
+Valiant             6 18.1 105</code></pre>
+</div>
+</div>
+<section id="filters-with-and-conditions" class="level3" data-number="0.6.1">
+<h3 data-number="0.6.1" class="anchored" data-anchor-id="filters-with-and-conditions"><span class="header-section-number">0.6.1</span> Filters with AND conditions</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span>,mpg<span class="sc">&gt;</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>               cyl  mpg  hp
+Mazda RX4        6 21.0 110
+Mazda RX4 Wag    6 21.0 110
+Hornet 4 Drive   6 21.4 110</code></pre>
+</div>
+</div>
+</section>
+<section id="filters-with-or-conditions" class="level3" data-number="0.6.2">
+<h3 data-number="0.6.2" class="anchored" data-anchor-id="filters-with-or-conditions"><span class="header-section-number">0.6.2</span> Filters with OR conditions</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span><span class="sc">|</span>mpg<span class="sc">&gt;</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  cyl  mpg  hp
+Mazda RX4           6 21.0 110
+Mazda RX4 Wag       6 21.0 110
+Datsun 710          4 22.8  93
+Hornet 4 Drive      6 21.4 110
+Hornet Sportabout   8 18.7 175
+Valiant             6 18.1 105</code></pre>
+</div>
+</div>
+</section>
+<section id="filter-row-with-index" class="level3" data-number="0.6.3">
+<h3 data-number="0.6.3" class="anchored" data-anchor-id="filter-row-with-index"><span class="header-section-number">0.6.3</span> filter row with index</h3>
+<section id="th-rows" class="level4" data-number="0.6.3.1">
+<h4 data-number="0.6.3.1" class="anchored" data-anchor-id="th-rows"><span class="header-section-number">0.6.3.1</span> 5th rows</h4>
+</section>
+<section id="and-5tj-rows" class="level4" data-number="0.6.3.2">
+<h4 data-number="0.6.3.2" class="anchored" data-anchor-id="and-5tj-rows"><span class="header-section-number">0.6.3.2</span> 1 and 5tj rows</h4>
+</section>
+<section id="to-5th-rows" class="level4" data-number="0.6.3.3">
+<h4 data-number="0.6.3.3" class="anchored" data-anchor-id="to-5th-rows"><span class="header-section-number">0.6.3.3</span> 1 to 5th rows</h4>
+</section>
+<section id="get-ramdon-5-rows" class="level4" data-number="0.6.3.4">
+<h4 data-number="0.6.3.4" class="anchored" data-anchor-id="get-ramdon-5-rows"><span class="header-section-number">0.6.3.4</span> get ramdon 5 rows</h4>
+</section>
+</section>
+</section>
+<section id="append" class="level2" data-number="0.7">
+<h2 data-number="0.7" class="anchored" data-anchor-id="append"><span class="header-section-number">0.7</span> Append</h2>
+<section id="append-by-row" class="level3" data-number="0.7.1">
+<h3 data-number="0.7.1" class="anchored" data-anchor-id="append-by-row"><span class="header-section-number">0.7.1</span> append by row</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">rbind</span>(small_mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   cyl  mpg  hp
+Mazda RX4            6 21.0 110
+Mazda RX4 Wag        6 21.0 110
+Datsun 710           4 22.8  93
+Hornet 4 Drive       6 21.4 110
+Hornet Sportabout    8 18.7 175
+Valiant              6 18.1 105
+Mazda RX41           6 21.0 110
+Mazda RX4 Wag1       6 21.0 110
+Datsun 7101          4 22.8  93
+Hornet 4 Drive1      6 21.4 110
+Hornet Sportabout1   8 18.7 175
+Valiant1             6 18.1 105</code></pre>
+</div>
+</div>
+</section>
+<section id="append-by-column" class="level3" data-number="0.7.2">
+<h3 data-number="0.7.2" class="anchored" data-anchor-id="append-by-column"><span class="header-section-number">0.7.2</span> append by column</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">cbind</span>(small_mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  cyl  mpg  hp cyl  mpg  hp
+Mazda RX4           6 21.0 110   6 21.0 110
+Mazda RX4 Wag       6 21.0 110   6 21.0 110
+Datsun 710          4 22.8  93   4 22.8  93
+Hornet 4 Drive      6 21.4 110   6 21.4 110
+Hornet Sportabout   8 18.7 175   8 18.7 175
+Valiant             6 18.1 105   6 18.1 105</code></pre>
+</div>
+</div>
+</section>
+<section id="dropping-na-values" class="level3" data-number="0.7.3">
+<h3 data-number="0.7.3" class="anchored" data-anchor-id="dropping-na-values"><span class="header-section-number">0.7.3</span> Dropping NA values</h3>
+</section>
+<section id="keep-na-values" class="level3" data-number="0.7.4">
+<h3 data-number="0.7.4" class="anchored" data-anchor-id="keep-na-values"><span class="header-section-number">0.7.4</span> keep NA values</h3>
+</section>
+</section>
+<section id="group-by" class="level2" data-number="0.8">
+<h2 data-number="0.8" class="anchored" data-anchor-id="group-by"><span class="header-section-number">0.8</span> group by</h2>
+<section id="averageminmaxsum" class="level3" data-number="0.8.1">
+<h3 data-number="0.8.1" class="anchored" data-anchor-id="averageminmaxsum"><span class="header-section-number">0.8.1</span> average,min,max,sum</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">min_mpg=</span><span class="fu">min</span>(mpg)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">max_mpg=</span><span class="fu">max</span>(mpg)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">sum_mpg=</span><span class="fu">sum</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+    cyl avg_mpg min_mpg max_mpg sum_mpg
+  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1     4    22.8    22.8    22.8    22.8
+2     6    20.4    18.1    21.4    81.5
+3     8    18.7    18.7    18.7    18.7</code></pre>
+</div>
+</div>
+</section>
+<section id="count-record-and-count-distinct-record" class="level3" data-number="0.8.2">
+<h3 data-number="0.8.2" class="anchored" data-anchor-id="count-record-and-count-distinct-record"><span class="header-section-number">0.8.2</span> count record and count distinct record</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n_mpg=</span><span class="fu">n</span>()</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">distinct_n_mpg=</span><span class="fu">n_distinct</span>(mpg)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                                            </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                                            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+    cyl n_mpg distinct_n_mpg
+  &lt;dbl&gt; &lt;int&gt;          &lt;int&gt;
+1     4     1              1
+2     6     4              3
+3     8     1              1</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="order-rows" class="level2" data-number="0.9">
+<h2 data-number="0.9" class="anchored" data-anchor-id="order-rows"><span class="header-section-number">0.9</span> order rows</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  cyl  mpg  hp
+Datsun 710          4 22.8  93
+Mazda RX4           6 21.0 110
+Mazda RX4 Wag       6 21.0 110
+Hornet 4 Drive      6 21.4 110
+Valiant             6 18.1 105
+Hornet Sportabout   8 18.7 175</code></pre>
+</div>
+</div>
+<section id="sort-in-descending-order" class="level3" data-number="0.9.1">
+<h3 data-number="0.9.1" class="anchored" data-anchor-id="sort-in-descending-order"><span class="header-section-number">0.9.1</span> Sort in descending order</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(cyl) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  cyl  mpg  hp
+Hornet Sportabout   8 18.7 175
+Mazda RX4           6 21.0 110
+Mazda RX4 Wag       6 21.0 110
+Hornet 4 Drive      6 21.4 110
+Valiant             6 18.1 105
+Datsun 710          4 22.8  93</code></pre>
+</div>
+</div>
+</section>
+<section id="arrange-by-multiple-variables" class="level3" data-number="0.9.2">
+<h3 data-number="0.9.2" class="anchored" data-anchor-id="arrange-by-multiple-variables"><span class="header-section-number">0.9.2</span> Arrange by multiple variables</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl,mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  cyl  mpg  hp
+Datsun 710          4 22.8  93
+Valiant             6 18.1 105
+Mazda RX4           6 21.0 110
+Mazda RX4 Wag       6 21.0 110
+Hornet 4 Drive      6 21.4 110
+Hornet Sportabout   8 18.7 175</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="join" class="level2" data-number="0.10">
+<h2 data-number="0.10" class="anchored" data-anchor-id="join"><span class="header-section-number">0.10</span> join</h2>
+<section id="inner_join" class="level3" data-number="0.10.1">
+<h3 data-number="0.10.1" class="anchored" data-anchor-id="inner_join"><span class="header-section-number">0.10.1</span> inner_join</h3>
+</section>
+<section id="left-join" class="level3" data-number="0.10.2">
+<h3 data-number="0.10.2" class="anchored" data-anchor-id="left-join"><span class="header-section-number">0.10.2</span> left join</h3>
+</section>
+<section id="anti-join" class="level3" data-number="0.10.3">
+<h3 data-number="0.10.3" class="anchored" data-anchor-id="anti-join"><span class="header-section-number">0.10.3</span> anti join</h3>
+</section>
+</section>
+<section id="reshape-tables" class="level2" data-number="0.11">
+<h2 data-number="0.11" class="anchored" data-anchor-id="reshape-tables"><span class="header-section-number">0.11</span> Reshape tables</h2>
+<section id="gather-data-longwide-to-long" class="level3" data-number="0.11.1">
+<h3 data-number="0.11.1" class="anchored" data-anchor-id="gather-data-longwide-to-long"><span class="header-section-number">0.11.1</span> Gather data long(wide to long)</h3>
+</section>
+<section id="spread-data-wide-long-to-wide" class="level3" data-number="0.11.2">
+<h3 data-number="0.11.2" class="anchored" data-anchor-id="spread-data-wide-long-to-wide"><span class="header-section-number">0.11.2</span> Spread data wide (long to wide)</h3>
+</section>
+</section>
+<section id="string" class="level2" data-number="0.12">
+<h2 data-number="0.12" class="anchored" data-anchor-id="string"><span class="header-section-number">0.12</span> string</h2>
+<section id="upper-case" class="level3" data-number="0.12.1">
+<h3 data-number="0.12.1" class="anchored" data-anchor-id="upper-case"><span class="header-section-number">0.12.1</span> upper case</h3>
+</section>
+<section id="lower-case" class="level3" data-number="0.12.2">
+<h3 data-number="0.12.2" class="anchored" data-anchor-id="lower-case"><span class="header-section-number">0.12.2</span> lower case</h3>
+</section>
+<section id="match" class="level3" data-number="0.12.3">
+<h3 data-number="0.12.3" class="anchored" data-anchor-id="match"><span class="header-section-number">0.12.3</span> match</h3>
+</section>
+<section id="concatenation" class="level3" data-number="0.12.4">
+<h3 data-number="0.12.4" class="anchored" data-anchor-id="concatenation"><span class="header-section-number">0.12.4</span> concatenation</h3>
+</section>
+<section id="replace" class="level3" data-number="0.12.5">
+<h3 data-number="0.12.5" class="anchored" data-anchor-id="replace"><span class="header-section-number">0.12.5</span> replace</h3>
+</section>
+<section id="extract" class="level3" data-number="0.12.6">
+<h3 data-number="0.12.6" class="anchored" data-anchor-id="extract"><span class="header-section-number">0.12.6</span> extract</h3>
+</section>
+</section>
+<section id="date" class="level2" data-number="0.13">
+<h2 data-number="0.13" class="anchored" data-anchor-id="date"><span class="header-section-number">0.13</span> date</h2>
+</section>
+<section id="dataframe-to-numpy-array" class="level2" data-number="0.14">
+<h2 data-number="0.14" class="anchored" data-anchor-id="dataframe-to-numpy-array"><span class="header-section-number">0.14</span> dataframe to numpy array</h2>
+</section>
+<section id="reference" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> reference:</h1>
+<p>https://dplyr.tidyverse.org/</p>
 
 
 <!-- -->
@@ -984,138 +1393,251 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data manipulation with tidyverse"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu"># create recipe step_xxx</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>tree_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(legal_status <span class="sc">~</span> ., <span class="at">data =</span> trees_train) <span class="sc">%&gt;%</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a> <span class="co"># update the role for tree_id, since this is a variable we might like to keep around for convenience as an identifier for rows but is not a predictor or outcome. </span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_role</span>(tree_id, <span class="at">new_role =</span> <span class="st">"ID"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># step_other() to collapse categorical levels for species, caretaker, and the site info. Before this step, there were 300+ species!</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_other</span>(species, caretaker, <span class="at">threshold =</span> <span class="fl">0.01</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># create dummy for nominal data exclude outcome</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="co"># The date column with when each tree was planted may be useful for fitting this model, but probably not the exact date, given how slowly trees grow. Let’s create a year feature from the date, and then remove the original date variable.  </span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_date</span>(date, <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"year"</span>)) <span class="sc">%&gt;%</span><span class="fu">step_rm</span>(date) <span class="sc">%&gt;%</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="co"># There are many more DPW maintained trees than not, so let’s downsample the data for training.  </span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_downsample</span>(legal_status)<span class="sc">%&gt;%</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="co"># will remove all. predictor variables that contain only a single value</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_zv</span>(<span class="fu">all_numeric</span>(<span class="fu">all_predictors</span>())) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="co">#  normalize all numeric data</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="co"># use KNN to impute all predictors</span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="fu">step_impute_knn</span>(<span class="fu">all_predictors</span>()) </span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="fu"># check recipe  check_xxx</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "check_class"      "check_cols"       "check_missing"   </span></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] "check_name"       "check_new_data"   "check_new_values"</span></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] "check_range"      "check_type"</span></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="fu"># roles to select variables</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>In most cases, the right approach for users will be use to use the predictor-specific selectors such as all_numeric_predictors() and all_nominal_predictors(). </span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="fu">has_role</span>(<span class="at">match =</span> <span class="st">"predictor"</span>)</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="fu">has_type</span>(<span class="at">match =</span> <span class="st">"numeric"</span>)</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="fu">all_outcomes</span>()</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="fu">all_predictors</span>()</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="fu">all_date</span>()</span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="fu">all_date_predictors</span>()</span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="fu">all_datetime</span>()</span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="fu">all_datetime_predictors</span>()</span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="fu">all_double</span>()</span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="fu">all_double_predictors</span>()</span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="fu">all_factor</span>()</span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="fu">all_factor_predictors</span>()</span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="fu">all_integer</span>()</span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="fu">all_integer_predictors</span>()</span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="fu">all_logical</span>()</span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="fu">all_logical_predictors</span>()</span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="fu">all_nominal</span>()</span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="fu">all_nominal_predictors</span>()</span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="fu">all_numeric</span>()</span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="fu">all_numeric_predictors</span>()</span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="fu">all_ordered</span>()</span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="fu">all_ordered_predictors</span>()</span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="fu">all_string</span>()</span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="fu">all_string_predictors</span>()</span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="fu">all_unordered</span>()</span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="fu">all_unordered_predictors</span>()</span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="fu">current_info</span>()</span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>https://recipes.tidymodels.org/reference/has_role.html</span>
+<div class="sourceCode" id="cb37" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data manipulation with tidyverse"</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/logo.png)</span>{width="231"}</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## load package</span></span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(cyl, mpg,hp) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## select column</span></span>
+<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a><span class="fu">### get column names</span></span>
+<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-58"><a href="#cb37-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-59"><a href="#cb37-59" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(small_mtcars)</span>
+<span id="cb37-60"><a href="#cb37-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-61"><a href="#cb37-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-62"><a href="#cb37-62" aria-hidden="true" tabindex="-1"></a><span class="fu">### select by name</span></span>
+<span id="cb37-63"><a href="#cb37-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-64"><a href="#cb37-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-67"><a href="#cb37-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-68"><a href="#cb37-68" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(cyl, mpg,hp) </span>
+<span id="cb37-69"><a href="#cb37-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-70"><a href="#cb37-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-71"><a href="#cb37-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-72"><a href="#cb37-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-73"><a href="#cb37-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-74"><a href="#cb37-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### select columns by name match with 'p'</span></span>
+<span id="cb37-75"><a href="#cb37-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-76"><a href="#cb37-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-77"><a href="#cb37-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-78"><a href="#cb37-78" aria-hidden="true" tabindex="-1"></a><span class="fu">### select columns by index</span></span>
+<span id="cb37-79"><a href="#cb37-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-80"><a href="#cb37-80" aria-hidden="true" tabindex="-1"></a><span class="fu">#### select first and 3rd columns</span></span>
+<span id="cb37-81"><a href="#cb37-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-82"><a href="#cb37-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-83"><a href="#cb37-83" aria-hidden="true" tabindex="-1"></a><span class="fu">#### select first to 3rd columns</span></span>
+<span id="cb37-84"><a href="#cb37-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-85"><a href="#cb37-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-86"><a href="#cb37-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## drop column</span></span>
+<span id="cb37-87"><a href="#cb37-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-90"><a href="#cb37-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-91"><a href="#cb37-91" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>cyl)</span>
+<span id="cb37-92"><a href="#cb37-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-93"><a href="#cb37-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-94"><a href="#cb37-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## Renaming column</span></span>
+<span id="cb37-95"><a href="#cb37-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-98"><a href="#cb37-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-99"><a href="#cb37-99" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">rename</span>(<span class="at">new_cyl=</span>cyl)</span>
+<span id="cb37-100"><a href="#cb37-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-101"><a href="#cb37-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-102"><a href="#cb37-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## Create column</span></span>
+<span id="cb37-103"><a href="#cb37-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-104"><a href="#cb37-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mutate</span></span>
+<span id="cb37-105"><a href="#cb37-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-108"><a href="#cb37-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-109"><a href="#cb37-109" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">new_cyl=</span>cyl<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb37-110"><a href="#cb37-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-111"><a href="#cb37-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-112"><a href="#cb37-112" aria-hidden="true" tabindex="-1"></a><span class="fu">### Transmute,create column and only keep this column</span></span>
+<span id="cb37-113"><a href="#cb37-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-116"><a href="#cb37-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-117"><a href="#cb37-117" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">transmute</span>(<span class="at">new_cyl=</span>cyl<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb37-118"><a href="#cb37-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-119"><a href="#cb37-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-120"><a href="#cb37-120" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filter rows</span></span>
+<span id="cb37-121"><a href="#cb37-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-124"><a href="#cb37-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-125"><a href="#cb37-125" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span>)</span>
+<span id="cb37-126"><a href="#cb37-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-127"><a href="#cb37-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-128"><a href="#cb37-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### Filters with AND conditions</span></span>
+<span id="cb37-131"><a href="#cb37-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-132"><a href="#cb37-132" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span>,mpg<span class="sc">&gt;</span><span class="dv">20</span>)</span>
+<span id="cb37-133"><a href="#cb37-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-134"><a href="#cb37-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-135"><a href="#cb37-135" aria-hidden="true" tabindex="-1"></a><span class="fu">### Filters with OR conditions</span></span>
+<span id="cb37-136"><a href="#cb37-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-139"><a href="#cb37-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-140"><a href="#cb37-140" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span><span class="sc">|</span>mpg<span class="sc">&gt;</span><span class="dv">20</span>)</span>
+<span id="cb37-141"><a href="#cb37-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-142"><a href="#cb37-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-143"><a href="#cb37-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-144"><a href="#cb37-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-145"><a href="#cb37-145" aria-hidden="true" tabindex="-1"></a><span class="fu">### filter row with index</span></span>
+<span id="cb37-146"><a href="#cb37-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-147"><a href="#cb37-147" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 5th rows</span></span>
+<span id="cb37-148"><a href="#cb37-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-149"><a href="#cb37-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-150"><a href="#cb37-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-151"><a href="#cb37-151" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1 and 5tj rows</span></span>
+<span id="cb37-152"><a href="#cb37-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-153"><a href="#cb37-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-154"><a href="#cb37-154" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1 to 5th rows</span></span>
+<span id="cb37-155"><a href="#cb37-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-156"><a href="#cb37-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-157"><a href="#cb37-157" aria-hidden="true" tabindex="-1"></a><span class="fu">#### get ramdon 5 rows</span></span>
+<span id="cb37-158"><a href="#cb37-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-159"><a href="#cb37-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-160"><a href="#cb37-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## Append</span></span>
+<span id="cb37-161"><a href="#cb37-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-162"><a href="#cb37-162" aria-hidden="true" tabindex="-1"></a><span class="fu">### append by row</span></span>
+<span id="cb37-163"><a href="#cb37-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-164"><a href="#cb37-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-167"><a href="#cb37-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-168"><a href="#cb37-168" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">rbind</span>(small_mtcars)</span>
+<span id="cb37-169"><a href="#cb37-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-170"><a href="#cb37-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-171"><a href="#cb37-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-172"><a href="#cb37-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-173"><a href="#cb37-173" aria-hidden="true" tabindex="-1"></a><span class="fu">### append by column</span></span>
+<span id="cb37-176"><a href="#cb37-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-177"><a href="#cb37-177" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">cbind</span>(small_mtcars)</span>
+<span id="cb37-178"><a href="#cb37-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-179"><a href="#cb37-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-180"><a href="#cb37-180" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dropping NA values</span></span>
+<span id="cb37-181"><a href="#cb37-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-182"><a href="#cb37-182" aria-hidden="true" tabindex="-1"></a><span class="fu">### keep NA values</span></span>
+<span id="cb37-183"><a href="#cb37-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-184"><a href="#cb37-184" aria-hidden="true" tabindex="-1"></a><span class="fu">## group by</span></span>
+<span id="cb37-185"><a href="#cb37-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-186"><a href="#cb37-186" aria-hidden="true" tabindex="-1"></a><span class="fu">### average,min,max,sum</span></span>
+<span id="cb37-187"><a href="#cb37-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-190"><a href="#cb37-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-191"><a href="#cb37-191" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg)</span>
+<span id="cb37-192"><a href="#cb37-192" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">min_mpg=</span><span class="fu">min</span>(mpg)</span>
+<span id="cb37-193"><a href="#cb37-193" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">max_mpg=</span><span class="fu">max</span>(mpg)</span>
+<span id="cb37-194"><a href="#cb37-194" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">sum_mpg=</span><span class="fu">sum</span>(mpg))</span>
+<span id="cb37-195"><a href="#cb37-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-196"><a href="#cb37-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-197"><a href="#cb37-197" aria-hidden="true" tabindex="-1"></a><span class="fu">### count record and count distinct record</span></span>
+<span id="cb37-198"><a href="#cb37-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-201"><a href="#cb37-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-202"><a href="#cb37-202" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n_mpg=</span><span class="fu">n</span>()</span>
+<span id="cb37-203"><a href="#cb37-203" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">distinct_n_mpg=</span><span class="fu">n_distinct</span>(mpg)</span>
+<span id="cb37-204"><a href="#cb37-204" aria-hidden="true" tabindex="-1"></a>                                            </span>
+<span id="cb37-205"><a href="#cb37-205" aria-hidden="true" tabindex="-1"></a>                                            )</span>
+<span id="cb37-206"><a href="#cb37-206" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-207"><a href="#cb37-207" aria-hidden="true" tabindex="-1"></a><span class="fu">## order rows</span></span>
+<span id="cb37-208"><a href="#cb37-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-211"><a href="#cb37-211" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-212"><a href="#cb37-212" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl) </span>
+<span id="cb37-213"><a href="#cb37-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-214"><a href="#cb37-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-215"><a href="#cb37-215" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sort in descending order</span></span>
+<span id="cb37-216"><a href="#cb37-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-219"><a href="#cb37-219" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-220"><a href="#cb37-220" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(cyl) )</span>
+<span id="cb37-221"><a href="#cb37-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-222"><a href="#cb37-222" aria-hidden="true" tabindex="-1"></a><span class="fu">### Arrange by multiple variables</span></span>
+<span id="cb37-223"><a href="#cb37-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-226"><a href="#cb37-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-227"><a href="#cb37-227" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl,mpg)</span>
+<span id="cb37-228"><a href="#cb37-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-229"><a href="#cb37-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-230"><a href="#cb37-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-231"><a href="#cb37-231" aria-hidden="true" tabindex="-1"></a><span class="fu">## join</span></span>
+<span id="cb37-232"><a href="#cb37-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-233"><a href="#cb37-233" aria-hidden="true" tabindex="-1"></a><span class="fu">### inner_join</span></span>
+<span id="cb37-234"><a href="#cb37-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-235"><a href="#cb37-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-236"><a href="#cb37-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-237"><a href="#cb37-237" aria-hidden="true" tabindex="-1"></a><span class="fu">### left join</span></span>
+<span id="cb37-238"><a href="#cb37-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-239"><a href="#cb37-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-240"><a href="#cb37-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-241"><a href="#cb37-241" aria-hidden="true" tabindex="-1"></a><span class="fu">### anti join</span></span>
+<span id="cb37-242"><a href="#cb37-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-243"><a href="#cb37-243" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reshape tables</span></span>
+<span id="cb37-244"><a href="#cb37-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-245"><a href="#cb37-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-246"><a href="#cb37-246" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gather data long(wide to long)</span></span>
+<span id="cb37-247"><a href="#cb37-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-248"><a href="#cb37-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-249"><a href="#cb37-249" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spread data wide (long to wide)</span></span>
+<span id="cb37-250"><a href="#cb37-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-251"><a href="#cb37-251" aria-hidden="true" tabindex="-1"></a><span class="fu">## string</span></span>
+<span id="cb37-252"><a href="#cb37-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-253"><a href="#cb37-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-254"><a href="#cb37-254" aria-hidden="true" tabindex="-1"></a><span class="fu">### upper case</span></span>
+<span id="cb37-255"><a href="#cb37-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-256"><a href="#cb37-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-257"><a href="#cb37-257" aria-hidden="true" tabindex="-1"></a><span class="fu">### lower case</span></span>
+<span id="cb37-258"><a href="#cb37-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-259"><a href="#cb37-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-260"><a href="#cb37-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-261"><a href="#cb37-261" aria-hidden="true" tabindex="-1"></a><span class="fu">### match</span></span>
+<span id="cb37-262"><a href="#cb37-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-263"><a href="#cb37-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-264"><a href="#cb37-264" aria-hidden="true" tabindex="-1"></a><span class="fu">### concatenation</span></span>
+<span id="cb37-265"><a href="#cb37-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-266"><a href="#cb37-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-267"><a href="#cb37-267" aria-hidden="true" tabindex="-1"></a><span class="fu">### replace</span></span>
+<span id="cb37-268"><a href="#cb37-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-269"><a href="#cb37-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-270"><a href="#cb37-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-271"><a href="#cb37-271" aria-hidden="true" tabindex="-1"></a><span class="fu">### extract</span></span>
+<span id="cb37-272"><a href="#cb37-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-273"><a href="#cb37-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-274"><a href="#cb37-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-275"><a href="#cb37-275" aria-hidden="true" tabindex="-1"></a><span class="fu">## date</span></span>
+<span id="cb37-276"><a href="#cb37-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-277"><a href="#cb37-277" aria-hidden="true" tabindex="-1"></a><span class="fu">## dataframe to numpy array</span></span>
+<span id="cb37-278"><a href="#cb37-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-279"><a href="#cb37-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-280"><a href="#cb37-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-281"><a href="#cb37-281" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
+<span id="cb37-282"><a href="#cb37-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-283"><a href="#cb37-283" aria-hidden="true" tabindex="-1"></a>https://dplyr.tidyverse.org/</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

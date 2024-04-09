@@ -17,3 +17,185 @@ format:
     code-block-border-left: "#31BAE9"
 ---
 
+![](images/download.jpg){width="600"}
+
+
+
+# vector
+
+A vector is an ordered collection of basic data types of a given length. The only key thing here is all the elements of a vector must be same data type e.g homogeneous data structures. Vectors are one-dimensional data structures.
+
+```{r}
+a = c(1, 2, 3, 4)
+a
+```
+
+```{r}
+class(a)
+```
+
+```{r}
+b =  c("Debi", "Sandeep", "Subham", "Shiba")
+b
+```
+
+```{r}
+class(b)
+```
+## create vector
+
+```{r}
+seq(from = 2, to = 14, by = 2) 
+```
+
+other way:
+```{r}
+rep(x = 1.5, times = 4)  
+```
+
+
+## append vector
+
+```{r}
+x=c(1,2,3)
+y=c(4,5,6)
+z=c(x,y)
+z
+```
+
+## calculate vector
+
+```{r}
+x=c(1,2,3,4,5)
+
+sum(x)
+```
+
+
+## select vector element
+```{r}
+x=c(1,2,3)
+
+x[1]
+```
+
+
+
+# Dataframe
+
+Dataframes are generic data objects of R which are used to store the tabular data. Dataframes are the foremost popular data objects in R programming because we are comfortable in seeing the data within the tabular form. They are two-dimensional, heterogeneous data structures
+
+```{r}
+# A vector which is a character vector
+Name = c("Amiya", "Raj", "Asish")
+
+# A vector which is a character vector
+Language = c("R", "Python", "Java")
+
+# A vector which is a numeric vector
+Age = c(22, 25, 45)
+
+# To create dataframe use data.frame command
+# and then pass each of the vectors 
+# we have created as arguments
+# to the function data.frame()
+df = data.frame(Name, Language, Age)
+
+df
+```
+```{r}
+class(df)
+```
+
+# Matrices
+
+A matrix is a rectangular arrangement of numbers in rows and columns. In a matrix, as we know rows are the ones that run horizontally and columns are the ones that run vertically. Matrices are two-dimensional, homogeneous data structures.
+
+```{r}
+A = matrix(
+    # Taking sequence of elements
+    c(1, 2, 3, 4, 5, 6, 7, 8, 9), 
+    
+    # No of rows and columns
+    nrow = 3, ncol = 3,  
+
+    # By default matrices are 
+    # in column-wise order 
+    # So this parameter decides
+    # how to arrange the matrix          
+    byrow = TRUE                             
+)
+
+A
+```
+
+```{r}
+class(A)
+```
+
+```{r}
+matrix002=A+A
+
+matrix002
+```
+
+```{r}
+matrix003=A*A
+
+matrix003
+```
+
+# Lists
+
+A list is a generic object consisting of an ordered collection of objects. Lists are heterogeneous data structures. These are also one-dimensional data structures. A list can be a list of vectors, list of matrices, a list of characters and a list of functions and so on.
+
+```{r}
+empId = c(1, 2, 3, 4)
+
+# The second attribute is the employee name 
+# which is created using this line of code here
+# which is the character vector 
+empName = c("Debi", "Sandeep", "Subham", "Shiba")
+
+# The third attribute is the number of employees
+# which is a single numeric variable.
+numberOfEmp = 4
+
+# We can combine all these three different
+# data types into a list
+# containing the details of employees
+# which can be done using a list command
+empList = list(empId, empName, numberOfEmp)
+
+empList
+```
+
+```{r}
+class(empList)
+```
+
+# Arrays
+
+3D arrays
+
+```{r}
+A = array(
+    # Taking sequence of elements
+    c(1, 2, 3, 4, 5, 6, 7, 8),
+
+    # Creating two rectangular matrices 
+    # each with two rows and two columns
+    dim = c(2, 2, 2)                        
+)
+
+A
+```
+
+```{r}
+class(A)
+```
+
+
+# Reference:
+
+https://www.geeksforgeeks.org/data-structures-in-r-programming/

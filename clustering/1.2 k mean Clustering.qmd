@@ -1,0 +1,162 @@
+---
+title: "K mean Clustering with image"
+subtitle: "with image data"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+Using K mean Clustering to replace colow on below picture
+
+
+![](python logo.jpg){width="300"}
+
+# load package
+
+```{r}
+library(tidyverse)
+library(broom)
+library(janitor)
+```
+
+# data
+
+
+## input data
+
+Alpha channel image
+
+```{r}
+library(jpeg)
+
+img <- readJPEG('python logo.jpg')
+
+```
+
+```{r}
+dim(img)
+```
+
+
+```{r}
+# Obtain the dimension
+imgDm <- dim(img)
+
+# Assign RGB channels to data frame
+imgRGB <- data.frame(
+  x = rep(1:imgDm[2], each = imgDm[1]),
+  y = rep(imgDm[1]:1, imgDm[2]),
+  R = as.vector(img[,,1]),
+  G = as.vector(img[,,2]),
+  B = as.vector(img[,,3])
+  )
+```
+
+
+```{r}
+imgRGB2=imgRGB %>% select(R,G,B)
+```
+
+```{r}
+# Plot the image
+ggplot(data = imgRGB, aes(x = x, y = y)) + 
+  geom_point(colour = rgb(imgRGB[c("R", "G", "B")])) +
+  labs(title = "Original Image: Colorful Bird") +
+  xlab("x") +
+  ylab("y") 
+```
+
+# Optimal number of k-clusters
+
+
+```{r}
+kclusts <- 
+  tibble(k = 1:9) %>%
+  mutate(
+    kclust = map(k, ~kmeans(imgRGB2, .x)),
+    tidied = map(kclust, tidy),
+    glanced = map(kclust, glance),
+    augmented = map(kclust, augment, imgRGB2)
+  )
+
+kclusts
+```
+
+
+```{r}
+clusters <- 
+  kclusts %>%
+  unnest(cols = c(tidied))
+
+assignments <- 
+  kclusts %>% 
+  unnest(cols = c(augmented))
+
+clusterings <- 
+  kclusts %>%
+  unnest(cols = c(glanced))
+```
+
+
+
+```{r}
+library(scales)
+ggplot(clusterings, aes(k, tot.withinss)) +
+  geom_line() +
+  geom_point()+scale_x_continuous(breaks= pretty_breaks())
+```
+
+
+
+# group to 3 
+
+```{r}
+kclust <- kmeans(imgRGB2, centers = 3)
+```
+
+```{r}
+result=augment(kclust, imgRGB2) %>% clean_names()
+```
+
+```{r}
+imgRGB3=cbind(imgRGB,result$cluster)%>% clean_names()
+```
+
+```{r}
+imgRGB3 %>% count(result_cluster)
+```
+
+
+```{r}
+result2=imgRGB3 %>%mutate(r=if_else(result_cluster==1,1,r) 
+                          ,g=if_else(result_cluster==1,1,b) 
+                          ,b=if_else(result_cluster==1,1,g) 
+                          )%>%mutate(r=if_else(result_cluster==3,0,r) 
+                          ,g=if_else(result_cluster==3,0,b) 
+                          ,b=if_else(result_cluster==3,0,g)) %>% select(-result_cluster)
+```
+
+
+
+```{r}
+# Plot the image
+ggplot(data = result2, aes(x = x, y = y)) + 
+  geom_point(colour = rgb(result2[c("r", "g", "b")])) +
+  labs(title = "change color") +
+  xlab("x") +
+  ylab("y") 
+```
+
+
+# reference:
+
+https://www.r-bloggers.com/2014/09/r-k-means-clustering-on-an-image/#google_vignette

@@ -199,6 +199,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../Plot/2 plotly.html">
  <span class="dropdown-text">Plotly in R</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Plot/3 shiny.html">
+ <span class="dropdown-text">Shiny in R</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -298,14 +302,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-house-price-tensorflow-model" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">house price tensorflow model</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clustering" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Clustering</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-house-price-tensorflow-model">    
-        <li class="dropdown-header">Tensorflow</li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-clustering">    
+        <li class="dropdown-header">Clustering</li>
         <li>
-    <a class="dropdown-item" href="../tensorflow/Level 1 Regression tensorflow.html">
- <span class="dropdown-text">Level 1 Regression Tensorflow model</span></a>
+    <a class="dropdown-item" href="../clustering/0 Mall Customers.html">
+ <span class="dropdown-text">Mall Customers Dataset</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/1 k mean Clustering.html">
+ <span class="dropdown-text">K mean Clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/1.2 k mean Clustering.html">
+ <span class="dropdown-text">K mean Clustering with image</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/2 Hierarchical Clustering.html">
+ <span class="dropdown-text">Hierarchical Clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/3 k mode Clustering.html">
+ <span class="dropdown-text">k mode Clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../clustering/4 Principal component analysis .html">
+ <span class="dropdown-text">Principal component analysis</span></a>
   </li>  
     </ul>
   </li>
@@ -419,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#group-by" id="toc-group-by" class="nav-link" data-scroll-target="#group-by"><span class="header-section-number">2.6</span> group by</a>
   <ul class="collapse">
   <li><a href="#averageminmaxsum" id="toc-averageminmaxsum" class="nav-link" data-scroll-target="#averageminmaxsum"><span class="header-section-number">2.6.1</span> average,min,max,sum</a></li>
-  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count"><span class="header-section-number">2.6.2</span> count</a></li>
+  <li><a href="#count-record-and-count-distinct-record" id="toc-count-record-and-count-distinct-record" class="nav-link" data-scroll-target="#count-record-and-count-distinct-record"><span class="header-section-number">2.6.2</span> count record and count distinct record</a></li>
   </ul></li>
   <li><a href="#order-rows" id="toc-order-rows" class="nav-link" data-scroll-target="#order-rows"><span class="header-section-number">2.7</span> order rows</a>
   <ul class="collapse">
@@ -710,19 +734,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="count" class="level3" data-number="2.6.2">
-<h3 data-number="2.6.2" class="anchored" data-anchor-id="count"><span class="header-section-number">2.6.2</span> count</h3>
+<section id="count-record-and-count-distinct-record" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="count-record-and-count-distinct-record"><span class="header-section-number">2.6.2</span> count record and count distinct record</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sql<span class="ot">=</span><span class="st">"select vs, count(*) from mtcars group by vs"</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sql<span class="ot">=</span><span class="st">"select vs, count(*),count(distinct cyl) from mtcars group by vs"</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>table<span class="ot">=</span><span class="fu">dbGetQuery</span>(con,sql)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  vs count(*)
-1  0       18
-2  1       14</code></pre>
+<pre><code>  vs count(*) count(distinct cyl)
+1  0       18                   3
+2  1       14                   2</code></pre>
 </div>
 </div>
 </section>
@@ -1515,11 +1539,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb45-167"><a href="#cb45-167" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-168"><a href="#cb45-168" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-169"><a href="#cb45-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-170"><a href="#cb45-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### count</span></span>
+<span id="cb45-170"><a href="#cb45-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### count record and count distinct record</span></span>
 <span id="cb45-171"><a href="#cb45-171" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-172"><a href="#cb45-172" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-175"><a href="#cb45-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-176"><a href="#cb45-176" aria-hidden="true" tabindex="-1"></a>sql<span class="ot">=</span><span class="st">"select vs, count(*) from mtcars group by vs"</span></span>
+<span id="cb45-176"><a href="#cb45-176" aria-hidden="true" tabindex="-1"></a>sql<span class="ot">=</span><span class="st">"select vs, count(*),count(distinct cyl) from mtcars group by vs"</span></span>
 <span id="cb45-177"><a href="#cb45-177" aria-hidden="true" tabindex="-1"></a>table<span class="ot">=</span><span class="fu">dbGetQuery</span>(con,sql)</span>
 <span id="cb45-178"><a href="#cb45-178" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(table)</span>
 <span id="cb45-179"><a href="#cb45-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>

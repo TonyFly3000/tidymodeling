@@ -84,11 +84,11 @@ website:
       contents: house price regression model 
 
     - id: bar5
-      title: "house price tensorflow model"
+      title: "Clustering"
       style: "floating"
       background: light
       collapse-level: 2
-      contents: tensorflow
+      contents: clustering
 
   page-footer:
     right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."

@@ -142,11 +142,11 @@ head(table)
 
 
 
-### count
+### count record and count distinct record
 
 
 ```{r}
-sql="select vs, count(*) from mtcars group by vs"
+sql="select vs, count(*),count(distinct cyl) from mtcars group by vs"
 table=dbGetQuery(con,sql)
 head(table)
 ```

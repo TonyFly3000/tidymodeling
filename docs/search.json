@@ -5359,7 +5359,7 @@
     "href": "data manipulation/2 data structure in R.html",
     "title": "Data structure in R",
     "section": "",
-    "text": "Back to top",
+    "text": "1 vector\nA vector is an ordered collection of basic data types of a given length. The only key thing here is all the elements of a vector must be same data type e.g homogeneous data structures. Vectors are one-dimensional data structures.\n\n\nCode\na = c(1, 2, 3, 4)\na\n\n\n[1] 1 2 3 4\n\n\n\n\nCode\nclass(a)\n\n\n[1] \"numeric\"\n\n\n\n\nCode\nb =  c(\"Debi\", \"Sandeep\", \"Subham\", \"Shiba\")\nb\n\n\n[1] \"Debi\"    \"Sandeep\" \"Subham\"  \"Shiba\"  \n\n\n\n\nCode\nclass(b)\n\n\n[1] \"character\"\n\n\n\n\n2 Dataframe\nDataframes are generic data objects of R which are used to store the tabular data. Dataframes are the foremost popular data objects in R programming because we are comfortable in seeing the data within the tabular form. They are two-dimensional, heterogeneous data structures\n\n\nCode\n# A vector which is a character vector\nName = c(\"Amiya\", \"Raj\", \"Asish\")\n\n# A vector which is a character vector\nLanguage = c(\"R\", \"Python\", \"Java\")\n\n# A vector which is a numeric vector\nAge = c(22, 25, 45)\n\n# To create dataframe use data.frame command\n# and then pass each of the vectors \n# we have created as arguments\n# to the function data.frame()\ndf = data.frame(Name, Language, Age)\n\ndf\n\n\n   Name Language Age\n1 Amiya        R  22\n2   Raj   Python  25\n3 Asish     Java  45\n\n\n\n\nCode\nclass(df)\n\n\n[1] \"data.frame\"\n\n\n\n\n3 Matrices\nA matrix is a rectangular arrangement of numbers in rows and columns. In a matrix, as we know rows are the ones that run horizontally and columns are the ones that run vertically. Matrices are two-dimensional, homogeneous data structures.\n\n\nCode\nA = matrix(\n    # Taking sequence of elements\n    c(1, 2, 3, 4, 5, 6, 7, 8, 9), \n    \n    # No of rows and columns\n    nrow = 3, ncol = 3,  \n\n    # By default matrices are \n    # in column-wise order \n    # So this parameter decides\n    # how to arrange the matrix          \n    byrow = TRUE                             \n)\n\nA\n\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n\n\n\nCode\nclass(A)\n\n\n[1] \"matrix\" \"array\" \n\n\n\n\nCode\nmatrix002=A+A\n\nmatrix002\n\n\n     [,1] [,2] [,3]\n[1,]    2    4    6\n[2,]    8   10   12\n[3,]   14   16   18\n\n\n\n\nCode\nmatrix003=A*A\n\nmatrix003\n\n\n     [,1] [,2] [,3]\n[1,]    1    4    9\n[2,]   16   25   36\n[3,]   49   64   81\n\n\n\n\n4 Lists\nA list is a generic object consisting of an ordered collection of objects. Lists are heterogeneous data structures. These are also one-dimensional data structures. A list can be a list of vectors, list of matrices, a list of characters and a list of functions and so on.\n\n\nCode\nempId = c(1, 2, 3, 4)\n\n# The second attribute is the employee name \n# which is created using this line of code here\n# which is the character vector \nempName = c(\"Debi\", \"Sandeep\", \"Subham\", \"Shiba\")\n\n# The third attribute is the number of employees\n# which is a single numeric variable.\nnumberOfEmp = 4\n\n# We can combine all these three different\n# data types into a list\n# containing the details of employees\n# which can be done using a list command\nempList = list(empId, empName, numberOfEmp)\n\nempList\n\n\n[[1]]\n[1] 1 2 3 4\n\n[[2]]\n[1] \"Debi\"    \"Sandeep\" \"Subham\"  \"Shiba\"  \n\n[[3]]\n[1] 4\n\n\n\n\nCode\nclass(empList)\n\n\n[1] \"list\"\n\n\n\n\n5 Arrays\n3D arrays\n\n\nCode\nA = array(\n    # Taking sequence of elements\n    c(1, 2, 3, 4, 5, 6, 7, 8),\n\n    # Creating two rectangular matrices \n    # each with two rows and two columns\n    dim = c(2, 2, 2)                        \n)\n\nA\n\n\n, , 1\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n, , 2\n\n     [,1] [,2]\n[1,]    5    7\n[2,]    6    8\n\n\n\n\nCode\nclass(A)\n\n\n[1] \"array\"\n\n\n\n\n6 Reference:\nhttps://www.geeksforgeeks.org/data-structures-in-r-programming/\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "data manipulation",
       "Data structure in R"
@@ -5370,7 +5370,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html",
     "title": "Data manipulation with tidyverse",
     "section": "",
-    "text": "1 create recipe step_xxx\n\n\nCode\ntree_rec &lt;- recipe(legal_status ~ ., data = trees_train) %&gt;%\n  \n # update the role for tree_id, since this is a variable we might like to keep around for convenience as an identifier for rows but is not a predictor or outcome. \n  update_role(tree_id, new_role = \"ID\") %&gt;%\n  \n# step_other() to collapse categorical levels for species, caretaker, and the site info. Before this step, there were 300+ species!\n  step_other(species, caretaker, threshold = 0.01) %&gt;%\n  \n# create dummy for nominal data exclude outcome\n  step_dummy(all_nominal(), -all_outcomes()) %&gt;%\n  \n# The date column with when each tree was planted may be useful for fitting this model, but probably not the exact date, given how slowly trees grow. Let’s create a year feature from the date, and then remove the original date variable.  \n  step_date(date, features = c(\"year\")) %&gt;%step_rm(date) %&gt;%\n  \n# There are many more DPW maintained trees than not, so let’s downsample the data for training.  \n  step_downsample(legal_status)%&gt;%\n\n# will remove all. predictor variables that contain only a single value\n    step_zv(all_numeric(all_predictors())) %&gt;% \n  \n#  normalize all numeric data\n  step_normalize(all_numeric()) %&gt;% \n\n# use KNN to impute all predictors\nstep_impute_knn(all_predictors()) \n\n\n\n\n2 check recipe check_xxx\n\n\nCode\n#&gt; [1] \"check_class\"      \"check_cols\"       \"check_missing\"   \n#&gt; [4] \"check_name\"       \"check_new_data\"   \"check_new_values\"\n#&gt; [7] \"check_range\"      \"check_type\"\n\n\n\n\n3 roles to select variables\nIn most cases, the right approach for users will be use to use the predictor-specific selectors such as all_numeric_predictors() and all_nominal_predictors().\n\n\nCode\nhas_role(match = \"predictor\")\n\nhas_type(match = \"numeric\")\n\nall_outcomes()\n\nall_predictors()\n\nall_date()\n\nall_date_predictors()\n\nall_datetime()\n\nall_datetime_predictors()\n\nall_double()\n\nall_double_predictors()\n\nall_factor()\n\nall_factor_predictors()\n\nall_integer()\n\nall_integer_predictors()\n\nall_logical()\n\nall_logical_predictors()\n\nall_nominal()\n\nall_nominal_predictors()\n\nall_numeric()\n\nall_numeric_predictors()\n\nall_ordered()\n\nall_ordered_predictors()\n\nall_string()\n\nall_string_predictors()\n\nall_unordered()\n\nall_unordered_predictors()\n\ncurrent_info()\n\n\n\n\n4 reference:\nhttps://recipes.tidymodels.org/reference/has_role.html\n\n\n\n\n\n\n Back to top",
+    "text": "dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -5733,7 +5733,7 @@
     "href": "data manipulation/5 SQL database.html#group-by",
     "title": "SQL database with R",
     "section": "2.6 group by",
-    "text": "2.6 group by\n\n2.6.1 average,min,max,sum\n\n\nCode\nsql=\"select AVG(hp),min(hp),max(hp),sum(hp) from mtcars\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   AVG(hp) min(hp) max(hp) sum(hp)\n1 146.6875      52     335    4694\n\n\n\n\n2.6.2 count\n\n\nCode\nsql=\"select vs, count(*) from mtcars group by vs\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n  vs count(*)\n1  0       18\n2  1       14",
+    "text": "2.6 group by\n\n2.6.1 average,min,max,sum\n\n\nCode\nsql=\"select AVG(hp),min(hp),max(hp),sum(hp) from mtcars\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   AVG(hp) min(hp) max(hp) sum(hp)\n1 146.6875      52     335    4694\n\n\n\n\n2.6.2 count record and count distinct record\n\n\nCode\nsql=\"select vs, count(*),count(distinct cyl) from mtcars group by vs\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n  vs count(*) count(distinct cyl)\n1  0       18                   3\n2  1       14                   2",
     "crumbs": [
       "data manipulation",
       "SQL database with R"
@@ -6452,6 +6452,441 @@
     "crumbs": [
       "Plot",
       "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "clustering/4 Principal component analysis .html",
+    "href": "clustering/4 Principal component analysis .html",
+    "title": "Principal component analysis",
+    "section": "",
+    "text": "Principal component analysis (PCA) is a method of reducing the dimensionality of data and is used to improve data visualization and speed up machine learning model training.",
+    "crumbs": [
+      "Clustering",
+      "Principal component analysis"
+    ]
+  },
+  {
+    "objectID": "clustering/4 Principal component analysis .html#download-data",
+    "href": "clustering/4 Principal component analysis .html#download-data",
+    "title": "Principal component analysis",
+    "section": "2.1 download data",
+    "text": "2.1 download data\nhttps://www.kaggle.com/datasets/shwetabh123/mall-customer",
+    "crumbs": [
+      "Clustering",
+      "Principal component analysis"
+    ]
+  },
+  {
+    "objectID": "clustering/4 Principal component analysis .html#input-data",
+    "href": "clustering/4 Principal component analysis .html#input-data",
+    "title": "Principal component analysis",
+    "section": "2.2 input data",
+    "text": "2.2 input data",
+    "crumbs": [
+      "Clustering",
+      "Principal component analysis"
+    ]
+  },
+  {
+    "objectID": "clustering/4 Principal component analysis .html#standardize-the-data",
+    "href": "clustering/4 Principal component analysis .html#standardize-the-data",
+    "title": "Principal component analysis",
+    "section": "2.3 STANDARDIZE THE DATA",
+    "text": "2.3 STANDARDIZE THE DATA\nPCA is affected by scale, so you need to scale the features in your data before applying PCA. Use StandardScaler to help you standardize the data set’s features onto unit scale (mean = 0 and variance = 1), which is a requirement for the optimal performance of many machine learning algorithms. If you don’t scale your data, it can have a negative effect on your algorithm.",
+    "crumbs": [
+      "Clustering",
+      "Principal component analysis"
+    ]
+  },
+  {
+    "objectID": "clustering/4 Principal component analysis .html#before-standardize",
+    "href": "clustering/4 Principal component analysis .html#before-standardize",
+    "title": "Principal component analysis",
+    "section": "2.4 Before STANDARDIZE",
+    "text": "2.4 Before STANDARDIZE",
+    "crumbs": [
+      "Clustering",
+      "Principal component analysis"
+    ]
+  },
+  {
+    "objectID": "clustering/4 Principal component analysis .html#after-standardize",
+    "href": "clustering/4 Principal component analysis .html#after-standardize",
+    "title": "Principal component analysis",
+    "section": "2.5 After STANDARDIZE",
+    "text": "2.5 After STANDARDIZE",
+    "crumbs": [
+      "Clustering",
+      "Principal component analysis"
+    ]
+  },
+  {
+    "objectID": "clustering/4 Principal component analysis .html#inverse-standardize.for-testing-purpose-only-have-no-impact-on-pca.",
+    "href": "clustering/4 Principal component analysis .html#inverse-standardize.for-testing-purpose-only-have-no-impact-on-pca.",
+    "title": "Principal component analysis",
+    "section": "2.6 inverse STANDARDIZE.for testing purpose only, have no impact on PCA.",
+    "text": "2.6 inverse STANDARDIZE.for testing purpose only, have no impact on PCA.\nfor testing purpose only.",
+    "crumbs": [
+      "Clustering",
+      "Principal component analysis"
+    ]
+  },
+  {
+    "objectID": "clustering/3 k mode Clustering.html",
+    "href": "clustering/3 k mode Clustering.html",
+    "title": "k mode Clustering",
+    "section": "",
+    "text": "Coming soon\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Clustering",
+      "k mode Clustering"
+    ]
+  },
+  {
+    "objectID": "clustering/0 Mall Customers.html#download-data",
+    "href": "clustering/0 Mall Customers.html#download-data",
+    "title": "Mall Customers Dataset",
+    "section": "2.1 download data",
+    "text": "2.1 download data\nhttps://www.kaggle.com/datasets/shwetabh123/mall-customer",
+    "crumbs": [
+      "Clustering",
+      "Mall Customers Dataset"
+    ]
+  },
+  {
+    "objectID": "clustering/0 Mall Customers.html#input-data",
+    "href": "clustering/0 Mall Customers.html#input-data",
+    "title": "Mall Customers Dataset",
+    "section": "2.2 input data",
+    "text": "2.2 input data\n\n\nCode\ndf_train=read.csv('./data/Mall_Customers.csv')\n\n\n\n\nCode\nhead(df_train)\n\n\n  CustomerID  Genre Age Annual.Income..k.. Spending.Score..1.100.\n1          1   Male  19                 15                     39\n2          2   Male  21                 15                     81\n3          3 Female  20                 16                      6\n4          4 Female  23                 16                     77\n5          5 Female  31                 17                     40\n6          6 Female  22                 17                     76",
+    "crumbs": [
+      "Clustering",
+      "Mall Customers Dataset"
+    ]
+  },
+  {
+    "objectID": "clustering/0 Mall Customers.html#data-eda",
+    "href": "clustering/0 Mall Customers.html#data-eda",
+    "title": "Mall Customers Dataset",
+    "section": "2.3 data EDA",
+    "text": "2.3 data EDA\n\n\nCode\nglimpse(df_train)\n\n\nRows: 200\nColumns: 5\n$ CustomerID             &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, …\n$ Genre                  &lt;chr&gt; \"Male\", \"Male\", \"Female\", \"Female\", \"Female\", \"…\n$ Age                    &lt;int&gt; 19, 21, 20, 23, 31, 22, 35, 23, 64, 30, 67, 35,…\n$ Annual.Income..k..     &lt;int&gt; 15, 15, 16, 16, 17, 17, 18, 18, 19, 19, 19, 19,…\n$ Spending.Score..1.100. &lt;int&gt; 39, 81, 6, 77, 40, 76, 6, 94, 3, 72, 14, 99, 15…\n\n\n\n\nCode\nlibrary(skimr)\n\nskim(df_train)\n\n\n\nData summary\n\n\nName\ndf_train\n\n\nNumber of rows\n200\n\n\nNumber of columns\n5\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n1\n\n\nnumeric\n4\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nGenre\n0\n1\n4\n6\n0\n2\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nCustomerID\n0\n1\n100.50\n57.88\n1\n50.75\n100.5\n150.25\n200\n▇▇▇▇▇\n\n\nAge\n0\n1\n38.85\n13.97\n18\n28.75\n36.0\n49.00\n70\n▆▇▅▃▂\n\n\nAnnual.Income..k..\n0\n1\n60.56\n26.26\n15\n41.50\n61.5\n78.00\n137\n▆▇▇▂▁\n\n\nSpending.Score..1.100.\n0\n1\n50.20\n25.82\n1\n34.75\n50.0\n73.00\n99\n▃▃▇▃▃",
+    "crumbs": [
+      "Clustering",
+      "Mall Customers Dataset"
+    ]
+  },
+  {
+    "objectID": "clustering/0 Mall Customers.html#feature",
+    "href": "clustering/0 Mall Customers.html#feature",
+    "title": "Mall Customers Dataset",
+    "section": "2.4 feature",
+    "text": "2.4 feature"
+  },
+  {
+    "objectID": "clustering/1 k mean Clustering.html#download-data",
+    "href": "clustering/1 k mean Clustering.html#download-data",
+    "title": "K mean Clustering",
+    "section": "2.1 download data",
+    "text": "2.1 download data\nhttps://www.kaggle.com/datasets/shwetabh123/mall-customer",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering"
+    ]
+  },
+  {
+    "objectID": "clustering/1 k mean Clustering.html#input-data",
+    "href": "clustering/1 k mean Clustering.html#input-data",
+    "title": "K mean Clustering",
+    "section": "2.2 input data",
+    "text": "2.2 input data\n\n\nCode\ndf_train=read.csv('./data/Mall_Customers.csv')\n\n\n\n\nCode\nnames(df_train)\n\n\n[1] \"CustomerID\"             \"Genre\"                  \"Age\"                   \n[4] \"Annual.Income..k..\"     \"Spending.Score..1.100.\"\n\n\n\n\nCode\ndf_train=df_train %&gt;% clean_names()\n\n\n\n\nCode\nnames(df_train)\n\n\n[1] \"customer_id\"          \"genre\"                \"age\"                 \n[4] \"annual_income_k\"      \"spending_score_1_100\"",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering"
+    ]
+  },
+  {
+    "objectID": "clustering/1 k mean Clustering.html#data-eda",
+    "href": "clustering/1 k mean Clustering.html#data-eda",
+    "title": "K mean Clustering",
+    "section": "2.3 data EDA",
+    "text": "2.3 data EDA",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering"
+    ]
+  },
+  {
+    "objectID": "clustering/1 k mean Clustering.html#annual-income-k",
+    "href": "clustering/1 k mean Clustering.html#annual-income-k",
+    "title": "K mean Clustering",
+    "section": "5.1 ‘Annual Income (k$)’",
+    "text": "5.1 ‘Annual Income (k$)’\n\n\nCode\nfrom plotnine import *\n\np=(\n)\n\np\n\n\n()"
+  },
+  {
+    "objectID": "clustering/1 k mean Clustering.html#spending-score-1-100",
+    "href": "clustering/1 k mean Clustering.html#spending-score-1-100",
+    "title": "K mean Clustering",
+    "section": "5.2 ‘Spending Score (1-100)’",
+    "text": "5.2 ‘Spending Score (1-100)’"
+  },
+  {
+    "objectID": "clustering/1 k mean Clustering.html#age",
+    "href": "clustering/1 k mean Clustering.html#age",
+    "title": "K mean Clustering",
+    "section": "6.3 Age",
+    "text": "6.3 Age",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering"
+    ]
+  },
+  {
+    "objectID": "clustering/2 Hierarchical Clustering.html",
+    "href": "clustering/2 Hierarchical Clustering.html",
+    "title": "Hierarchical Clustering",
+    "section": "",
+    "text": "Coming soon\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html",
+    "href": "clustering/1.2 k mean Clustering.html",
+    "title": "K mean Clustering with image",
+    "section": "",
+    "text": "Using K mean Clustering to replace colow on below picture",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#input-data",
+    "href": "clustering/1.2 k mean Clustering.html#input-data",
+    "title": "K mean Clustering with image",
+    "section": "2.1 input data",
+    "text": "2.1 input data\nAlpha channel image\n\n\nCode\nlibrary(jpeg)\n\nimg &lt;- readJPEG('python logo.jpg')\n\n\n\n\nCode\ndim(img)\n\n\n[1] 235 214   3\n\n\n\n\nCode\n# Obtain the dimension\nimgDm &lt;- dim(img)\n\n# Assign RGB channels to data frame\nimgRGB &lt;- data.frame(\n  x = rep(1:imgDm[2], each = imgDm[1]),\n  y = rep(imgDm[1]:1, imgDm[2]),\n  R = as.vector(img[,,1]),\n  G = as.vector(img[,,2]),\n  B = as.vector(img[,,3])\n  )\n\n\n\n\nCode\nimgRGB2=imgRGB %&gt;% select(R,G,B)\n\n\n\n\nCode\n# Plot the image\nggplot(data = imgRGB, aes(x = x, y = y)) + \n  geom_point(colour = rgb(imgRGB[c(\"R\", \"G\", \"B\")])) +\n  labs(title = \"Original Image: Colorful Bird\") +\n  xlab(\"x\") +\n  ylab(\"y\")",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#load-package",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#load-package",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.1 load package",
+    "text": "0.1 load package\n\n\nCode\nlibrary(dplyr)\n\n\n\n\nCode\npackageVersion(\"dplyr\")\n\n\n[1] '1.1.4'\n\n\n\n\nCode\ndata(mtcars)\nsmall_mtcars = mtcars %&gt;% select(cyl, mpg,hp) %&gt;% head()",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#select-column",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#select-column",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.2 select column",
+    "text": "0.2 select column\n\n0.2.1 get column names\n\n\nCode\nnames(small_mtcars)\n\n\n[1] \"cyl\" \"mpg\" \"hp\" \n\n\n\n\n0.2.2 select by name\n\n\nCode\nmtcars %&gt;% select(cyl, mpg,hp) \n\n\n                    cyl  mpg  hp\nMazda RX4             6 21.0 110\nMazda RX4 Wag         6 21.0 110\nDatsun 710            4 22.8  93\nHornet 4 Drive        6 21.4 110\nHornet Sportabout     8 18.7 175\nValiant               6 18.1 105\nDuster 360            8 14.3 245\nMerc 240D             4 24.4  62\nMerc 230              4 22.8  95\nMerc 280              6 19.2 123\nMerc 280C             6 17.8 123\nMerc 450SE            8 16.4 180\nMerc 450SL            8 17.3 180\nMerc 450SLC           8 15.2 180\nCadillac Fleetwood    8 10.4 205\nLincoln Continental   8 10.4 215\nChrysler Imperial     8 14.7 230\nFiat 128              4 32.4  66\nHonda Civic           4 30.4  52\nToyota Corolla        4 33.9  65\nToyota Corona         4 21.5  97\nDodge Challenger      8 15.5 150\nAMC Javelin           8 15.2 150\nCamaro Z28            8 13.3 245\nPontiac Firebird      8 19.2 175\nFiat X1-9             4 27.3  66\nPorsche 914-2         4 26.0  91\nLotus Europa          4 30.4 113\nFord Pantera L        8 15.8 264\nFerrari Dino          6 19.7 175\nMaserati Bora         8 15.0 335\nVolvo 142E            4 21.4 109\n\n\n\n\n0.2.3 select columns by name match with ‘p’\n\n\n0.2.4 select columns by index\n\n0.2.4.1 select first and 3rd columns\n\n\n0.2.4.2 select first to 3rd columns",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#drop-column",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#drop-column",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.3 drop column",
+    "text": "0.3 drop column\n\n\nCode\nsmall_mtcars %&gt;% select(-cyl)\n\n\n                   mpg  hp\nMazda RX4         21.0 110\nMazda RX4 Wag     21.0 110\nDatsun 710        22.8  93\nHornet 4 Drive    21.4 110\nHornet Sportabout 18.7 175\nValiant           18.1 105",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#renaming-column",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#renaming-column",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.4 Renaming column",
+    "text": "0.4 Renaming column\n\n\nCode\nsmall_mtcars %&gt;%rename(new_cyl=cyl)\n\n\n                  new_cyl  mpg  hp\nMazda RX4               6 21.0 110\nMazda RX4 Wag           6 21.0 110\nDatsun 710              4 22.8  93\nHornet 4 Drive          6 21.4 110\nHornet Sportabout       8 18.7 175\nValiant                 6 18.1 105",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#create-column",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#create-column",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.5 Create column",
+    "text": "0.5 Create column\n\n0.5.1 Mutate\n\n\nCode\nsmall_mtcars %&gt;%mutate(new_cyl=cyl+1)\n\n\n                  cyl  mpg  hp new_cyl\nMazda RX4           6 21.0 110       7\nMazda RX4 Wag       6 21.0 110       7\nDatsun 710          4 22.8  93       5\nHornet 4 Drive      6 21.4 110       7\nHornet Sportabout   8 18.7 175       9\nValiant             6 18.1 105       7\n\n\n\n\n0.5.2 Transmute,create column and only keep this column\n\n\nCode\nsmall_mtcars %&gt;%transmute(new_cyl=cyl+1)\n\n\n                  new_cyl\nMazda RX4               7\nMazda RX4 Wag           7\nDatsun 710              5\nHornet 4 Drive          7\nHornet Sportabout       9\nValiant                 7",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#filter-rows",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#filter-rows",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.6 Filter rows",
+    "text": "0.6 Filter rows\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5)\n\n\n                  cyl  mpg  hp\nMazda RX4           6 21.0 110\nMazda RX4 Wag       6 21.0 110\nHornet 4 Drive      6 21.4 110\nHornet Sportabout   8 18.7 175\nValiant             6 18.1 105\n\n\n\n0.6.1 Filters with AND conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5,mpg&gt;20)\n\n\n               cyl  mpg  hp\nMazda RX4        6 21.0 110\nMazda RX4 Wag    6 21.0 110\nHornet 4 Drive   6 21.4 110\n\n\n\n\n0.6.2 Filters with OR conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5|mpg&gt;20)\n\n\n                  cyl  mpg  hp\nMazda RX4           6 21.0 110\nMazda RX4 Wag       6 21.0 110\nDatsun 710          4 22.8  93\nHornet 4 Drive      6 21.4 110\nHornet Sportabout   8 18.7 175\nValiant             6 18.1 105\n\n\n\n\n0.6.3 filter row with index\n\n0.6.3.1 5th rows\n\n\n0.6.3.2 1 and 5tj rows\n\n\n0.6.3.3 1 to 5th rows\n\n\n0.6.3.4 get ramdon 5 rows",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#append",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#append",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.7 Append",
+    "text": "0.7 Append\n\n0.7.1 append by row\n\n\nCode\nsmall_mtcars %&gt;% rbind(small_mtcars)\n\n\n                   cyl  mpg  hp\nMazda RX4            6 21.0 110\nMazda RX4 Wag        6 21.0 110\nDatsun 710           4 22.8  93\nHornet 4 Drive       6 21.4 110\nHornet Sportabout    8 18.7 175\nValiant              6 18.1 105\nMazda RX41           6 21.0 110\nMazda RX4 Wag1       6 21.0 110\nDatsun 7101          4 22.8  93\nHornet 4 Drive1      6 21.4 110\nHornet Sportabout1   8 18.7 175\nValiant1             6 18.1 105\n\n\n\n\n0.7.2 append by column\n\n\nCode\nsmall_mtcars %&gt;% cbind(small_mtcars)\n\n\n                  cyl  mpg  hp cyl  mpg  hp\nMazda RX4           6 21.0 110   6 21.0 110\nMazda RX4 Wag       6 21.0 110   6 21.0 110\nDatsun 710          4 22.8  93   4 22.8  93\nHornet 4 Drive      6 21.4 110   6 21.4 110\nHornet Sportabout   8 18.7 175   8 18.7 175\nValiant             6 18.1 105   6 18.1 105\n\n\n\n\n0.7.3 Dropping NA values\n\n\n0.7.4 keep NA values",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#group-by",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#group-by",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.8 group by",
+    "text": "0.8 group by\n\n0.8.1 average,min,max,sum\n\n\nCode\nsmall_mtcars %&gt;%group_by(cyl) %&gt;% summarise(avg_mpg=mean(mpg)\n                                            ,min_mpg=min(mpg)\n                                            ,max_mpg=max(mpg)\n                                            ,sum_mpg=sum(mpg))\n\n\n# A tibble: 3 × 5\n    cyl avg_mpg min_mpg max_mpg sum_mpg\n  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1     4    22.8    22.8    22.8    22.8\n2     6    20.4    18.1    21.4    81.5\n3     8    18.7    18.7    18.7    18.7\n\n\n\n\n0.8.2 count record and count distinct record\n\n\nCode\nsmall_mtcars %&gt;%group_by(cyl) %&gt;% summarise(n_mpg=n()\n                                            ,distinct_n_mpg=n_distinct(mpg)\n                                            \n                                            )\n\n\n# A tibble: 3 × 3\n    cyl n_mpg distinct_n_mpg\n  &lt;dbl&gt; &lt;int&gt;          &lt;int&gt;\n1     4     1              1\n2     6     4              3\n3     8     1              1",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#order-rows",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#order-rows",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.9 order rows",
+    "text": "0.9 order rows\n\n\nCode\nsmall_mtcars %&gt;%arrange(cyl) \n\n\n                  cyl  mpg  hp\nDatsun 710          4 22.8  93\nMazda RX4           6 21.0 110\nMazda RX4 Wag       6 21.0 110\nHornet 4 Drive      6 21.4 110\nValiant             6 18.1 105\nHornet Sportabout   8 18.7 175\n\n\n\n0.9.1 Sort in descending order\n\n\nCode\nsmall_mtcars %&gt;%arrange(desc(cyl) )\n\n\n                  cyl  mpg  hp\nHornet Sportabout   8 18.7 175\nMazda RX4           6 21.0 110\nMazda RX4 Wag       6 21.0 110\nHornet 4 Drive      6 21.4 110\nValiant             6 18.1 105\nDatsun 710          4 22.8  93\n\n\n\n\n0.9.2 Arrange by multiple variables\n\n\nCode\nsmall_mtcars %&gt;%arrange(cyl,mpg)\n\n\n                  cyl  mpg  hp\nDatsun 710          4 22.8  93\nValiant             6 18.1 105\nMazda RX4           6 21.0 110\nMazda RX4 Wag       6 21.0 110\nHornet 4 Drive      6 21.4 110\nHornet Sportabout   8 18.7 175",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#join",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#join",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.10 join",
+    "text": "0.10 join\n\n0.10.1 inner_join\n\n\n0.10.2 left join\n\n\n0.10.3 anti join",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#reshape-tables",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#reshape-tables",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.11 Reshape tables",
+    "text": "0.11 Reshape tables\n\n0.11.1 Gather data long(wide to long)\n\n\n0.11.2 Spread data wide (long to wide)",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#string",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#string",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.12 string",
+    "text": "0.12 string\n\n0.12.1 upper case\n\n\n0.12.2 lower case\n\n\n0.12.3 match\n\n\n0.12.4 concatenation\n\n\n0.12.5 replace\n\n\n0.12.6 extract",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#date",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#date",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.13 date",
+    "text": "0.13 date",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#dataframe-to-numpy-array",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#dataframe-to-numpy-array",
+    "title": "Data manipulation with tidyverse",
+    "section": "0.14 dataframe to numpy array",
+    "text": "0.14 dataframe to numpy array",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/2 data structure in R.html#create-vector",
+    "href": "data manipulation/2 data structure in R.html#create-vector",
+    "title": "Data structure in R",
+    "section": "1.1 create vector",
+    "text": "1.1 create vector\n\n\nCode\nseq(from = 2, to = 14, by = 2) \n\n\n[1]  2  4  6  8 10 12 14\n\n\nother way:\n\n\nCode\nrep(x = 1.5, times = 4)  \n\n\n[1] 1.5 1.5 1.5 1.5",
+    "crumbs": [
+      "data manipulation",
+      "Data structure in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/2 data structure in R.html#append-vector",
+    "href": "data manipulation/2 data structure in R.html#append-vector",
+    "title": "Data structure in R",
+    "section": "1.2 append vector",
+    "text": "1.2 append vector\n\n\nCode\nx=c(1,2,3)\ny=c(4,5,6)\nz=c(x,y)\nz\n\n\n[1] 1 2 3 4 5 6",
+    "crumbs": [
+      "data manipulation",
+      "Data structure in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/2 data structure in R.html#calculate-vector",
+    "href": "data manipulation/2 data structure in R.html#calculate-vector",
+    "title": "Data structure in R",
+    "section": "1.3 calculate vector",
+    "text": "1.3 calculate vector\n\n\nCode\nx=c(1,2,3,4,5)\n\nsum(x)\n\n\n[1] 15",
+    "crumbs": [
+      "data manipulation",
+      "Data structure in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/2 data structure in R.html#select-vector-element",
+    "href": "data manipulation/2 data structure in R.html#select-vector-element",
+    "title": "Data structure in R",
+    "section": "1.4 select vector element",
+    "text": "1.4 select vector element\n\n\nCode\nx=c(1,2,3)\n\nx[1]\n\n\n[1] 1",
+    "crumbs": [
+      "data manipulation",
+      "Data structure in R"
+    ]
+  },
+  {
+    "objectID": "clustering/1 k mean Clustering.html#annual_income_k",
+    "href": "clustering/1 k mean Clustering.html#annual_income_k",
+    "title": "K mean Clustering",
+    "section": "6.1 ‘annual_income_k’",
+    "text": "6.1 ‘annual_income_k’\n\n\nCode\np=ggplot(df_train3, aes(cluster,annual_income_k,fill=cluster)) + geom_boxplot()\np",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering"
+    ]
+  },
+  {
+    "objectID": "clustering/1 k mean Clustering.html#spending_score_1_100",
+    "href": "clustering/1 k mean Clustering.html#spending_score_1_100",
+    "title": "K mean Clustering",
+    "section": "6.2 ‘spending_score_1_100’",
+    "text": "6.2 ‘spending_score_1_100’\n\n\nCode\np=ggplot(df_train3, aes(cluster,spending_score_1_100,fill=cluster)) + geom_boxplot()\np",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering"
     ]
   }
 ]

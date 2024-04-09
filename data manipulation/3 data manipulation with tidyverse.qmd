@@ -17,116 +17,229 @@ format:
     code-block-border-left: "#31BAE9"
 ---
 
+dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.
 
-# create recipe step_xxx
+
+![](images/logo.png){width="231"}
+
+
+## load package
 
 ```{r}
-#| eval: false
-tree_rec <- recipe(legal_status ~ ., data = trees_train) %>%
-  
- # update the role for tree_id, since this is a variable we might like to keep around for convenience as an identifier for rows but is not a predictor or outcome. 
-  update_role(tree_id, new_role = "ID") %>%
-  
-# step_other() to collapse categorical levels for species, caretaker, and the site info. Before this step, there were 300+ species!
-  step_other(species, caretaker, threshold = 0.01) %>%
-  
-# create dummy for nominal data exclude outcome
-  step_dummy(all_nominal(), -all_outcomes()) %>%
-  
-# The date column with when each tree was planted may be useful for fitting this model, but probably not the exact date, given how slowly trees grow. Let’s create a year feature from the date, and then remove the original date variable.  
-  step_date(date, features = c("year")) %>%step_rm(date) %>%
-  
-# There are many more DPW maintained trees than not, so let’s downsample the data for training.  
-  step_downsample(legal_status)%>%
-
-# will remove all. predictor variables that contain only a single value
-    step_zv(all_numeric(all_predictors())) %>% 
-  
-#  normalize all numeric data
-  step_normalize(all_numeric()) %>% 
-
-# use KNN to impute all predictors
-step_impute_knn(all_predictors()) 
-
-
+library(dplyr)
 ```
 
 
-# check recipe  check_xxx
-
 ```{r}
-#> [1] "check_class"      "check_cols"       "check_missing"   
-#> [4] "check_name"       "check_new_data"   "check_new_values"
-#> [7] "check_range"      "check_type"
+packageVersion("dplyr")
 ```
 
 
-# roles to select variables
-
-In most cases, the right approach for users will be use to use the predictor-specific selectors such as all_numeric_predictors() and all_nominal_predictors(). 
 
 
 ```{r}
-#| eval: false
+data(mtcars)
+small_mtcars = mtcars %>% select(cyl, mpg,hp) %>% head()
 
-
-has_role(match = "predictor")
-
-has_type(match = "numeric")
-
-all_outcomes()
-
-all_predictors()
-
-all_date()
-
-all_date_predictors()
-
-all_datetime()
-
-all_datetime_predictors()
-
-all_double()
-
-all_double_predictors()
-
-all_factor()
-
-all_factor_predictors()
-
-all_integer()
-
-all_integer_predictors()
-
-all_logical()
-
-all_logical_predictors()
-
-all_nominal()
-
-all_nominal_predictors()
-
-all_numeric()
-
-all_numeric_predictors()
-
-all_ordered()
-
-all_ordered_predictors()
-
-all_string()
-
-all_string_predictors()
-
-all_unordered()
-
-all_unordered_predictors()
-
-current_info()
 ```
+
+## select column
+
+### get column names
+
+```{r}
+names(small_mtcars)
+```
+
+### select by name
+
+
+```{r}
+mtcars %>% select(cyl, mpg,hp) 
+```
+
+
+
+
+### select columns by name match with 'p'
+
+
+
+### select columns by index
+
+#### select first and 3rd columns
+
+
+#### select first to 3rd columns
+
+
+## drop column
+
+```{r}
+small_mtcars %>% select(-cyl)
+```
+
+## Renaming column
+
+```{r}
+small_mtcars %>%rename(new_cyl=cyl)
+```
+
+## Create column
+
+### Mutate
+
+```{r}
+small_mtcars %>%mutate(new_cyl=cyl+1)
+```
+
+### Transmute,create column and only keep this column
+
+```{r}
+small_mtcars %>%transmute(new_cyl=cyl+1)
+```
+
+## Filter rows
+
+```{r}
+small_mtcars %>%filter(cyl>5)
+```
+
+### Filters with AND conditions
+```{r}
+small_mtcars %>%filter(cyl>5,mpg>20)
+```
+
+### Filters with OR conditions
+
+```{r}
+small_mtcars %>%filter(cyl>5|mpg>20)
+```
+
+
+
+### filter row with index
+
+#### 5th rows
+
+
+
+#### 1 and 5tj rows
+
+
+#### 1 to 5th rows
+
+
+#### get ramdon 5 rows
+
+
+## Append
+
+### append by row
+
+
+```{r}
+small_mtcars %>% rbind(small_mtcars)
+```
+
+
+
+### append by column
+```{r}
+small_mtcars %>% cbind(small_mtcars)
+```
+
+### Dropping NA values
+
+### keep NA values
+
+## group by
+
+### average,min,max,sum
+
+```{r}
+small_mtcars %>%group_by(cyl) %>% summarise(avg_mpg=mean(mpg)
+                                            ,min_mpg=min(mpg)
+                                            ,max_mpg=max(mpg)
+                                            ,sum_mpg=sum(mpg))
+```
+
+### count record and count distinct record
+
+```{r}
+small_mtcars %>%group_by(cyl) %>% summarise(n_mpg=n()
+                                            ,distinct_n_mpg=n_distinct(mpg)
+                                            
+                                            )
+```
+## order rows
+
+```{r}
+small_mtcars %>%arrange(cyl) 
+```
+
+### Sort in descending order
+
+```{r}
+small_mtcars %>%arrange(desc(cyl) )
+```
+### Arrange by multiple variables
+
+```{r}
+small_mtcars %>%arrange(cyl,mpg)
+```
+
+
+## join
+
+### inner_join
+
+
+
+### left join
+
+
+
+### anti join
+
+## Reshape tables
+
+
+### Gather data long(wide to long)
+
+
+### Spread data wide (long to wide)
+
+## string
+
+
+### upper case
+
+
+### lower case
+
+
+
+### match
+
+
+### concatenation
+
+
+### replace
+
+
+
+### extract
+
+
+
+## date
+
+## dataframe to numpy array
 
 
 
 # reference:
 
-https://recipes.tidymodels.org/reference/has_role.html
+https://dplyr.tidyverse.org/
