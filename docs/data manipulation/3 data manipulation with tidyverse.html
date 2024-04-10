@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Tony Duan">
 
 <title>Tidymodel with R - Data manipulation with tidyverse</title>
 <style>
@@ -522,12 +521,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Tony Duan </p>
-          </div>
-  </div>
     
   
     
@@ -822,10 +815,10 @@ Volvo 142E            4 21.4 109</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>           car_name cyl  mpg  hp
-1 Hornet Sportabout   8 18.7 175
-2        Datsun 710   4 22.8  93
-3     Mazda RX4 Wag   6 21.0 110
-4    Hornet 4 Drive   6 21.4 110
+1     Mazda RX4 Wag   6 21.0 110
+2         Mazda RX4   6 21.0 110
+3        Datsun 710   4 22.8  93
+4 Hornet Sportabout   8 18.7 175
 5           Valiant   6 18.1 105</code></pre>
 </div>
 </div>
@@ -1713,374 +1706,373 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <div class="sourceCode" id="cb77" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data manipulation with tidyverse"</span></span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb77-15"><a href="#cb77-15" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb77-16"><a href="#cb77-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb77-17"><a href="#cb77-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb77-18"><a href="#cb77-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb77-19"><a href="#cb77-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-20"><a href="#cb77-20" aria-hidden="true" tabindex="-1"></a>dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.</span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb77-15"><a href="#cb77-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb77-16"><a href="#cb77-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb77-17"><a href="#cb77-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb77-18"><a href="#cb77-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-19"><a href="#cb77-19" aria-hidden="true" tabindex="-1"></a>dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.</span>
+<span id="cb77-20"><a href="#cb77-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-21"><a href="#cb77-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-22"><a href="#cb77-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-23"><a href="#cb77-23" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/logo.png)</span>{width="231"}</span>
+<span id="cb77-22"><a href="#cb77-22" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/logo.png)</span>{width="231"}</span>
+<span id="cb77-23"><a href="#cb77-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-24"><a href="#cb77-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-25"><a href="#cb77-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-26"><a href="#cb77-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## load package</span></span>
-<span id="cb77-27"><a href="#cb77-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-30"><a href="#cb77-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-31"><a href="#cb77-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb77-32"><a href="#cb77-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-25"><a href="#cb77-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## load package</span></span>
+<span id="cb77-26"><a href="#cb77-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-29"><a href="#cb77-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-30"><a href="#cb77-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb77-31"><a href="#cb77-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-32"><a href="#cb77-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-33"><a href="#cb77-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-34"><a href="#cb77-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-37"><a href="#cb77-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-38"><a href="#cb77-38" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"dplyr"</span>)</span>
-<span id="cb77-39"><a href="#cb77-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-36"><a href="#cb77-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-37"><a href="#cb77-37" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb77-38"><a href="#cb77-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-39"><a href="#cb77-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-40"><a href="#cb77-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-41"><a href="#cb77-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-42"><a href="#cb77-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-43"><a href="#cb77-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-46"><a href="#cb77-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-47"><a href="#cb77-47" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb77-48"><a href="#cb77-48" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(cyl, mpg,hp) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
-<span id="cb77-49"><a href="#cb77-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-50"><a href="#cb77-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-45"><a href="#cb77-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-46"><a href="#cb77-46" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb77-47"><a href="#cb77-47" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="ot">=</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(cyl, mpg,hp) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb77-48"><a href="#cb77-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-49"><a href="#cb77-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-50"><a href="#cb77-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-51"><a href="#cb77-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-52"><a href="#cb77-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-53"><a href="#cb77-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## make rowname into one column</span></span>
-<span id="cb77-54"><a href="#cb77-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-57"><a href="#cb77-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-58"><a href="#cb77-58" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb77-59"><a href="#cb77-59" aria-hidden="true" tabindex="-1"></a>small_mtcars<span class="ot">=</span><span class="fu">rownames_to_column</span>(small_mtcars, <span class="at">var=</span><span class="st">"car_name"</span>)</span>
-<span id="cb77-60"><a href="#cb77-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-61"><a href="#cb77-61" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> head</span>
-<span id="cb77-62"><a href="#cb77-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-52"><a href="#cb77-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## make rowname into one column</span></span>
+<span id="cb77-53"><a href="#cb77-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-56"><a href="#cb77-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-57"><a href="#cb77-57" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb77-58"><a href="#cb77-58" aria-hidden="true" tabindex="-1"></a>small_mtcars<span class="ot">=</span><span class="fu">rownames_to_column</span>(small_mtcars, <span class="at">var=</span><span class="st">"car_name"</span>)</span>
+<span id="cb77-59"><a href="#cb77-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-60"><a href="#cb77-60" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> head</span>
+<span id="cb77-61"><a href="#cb77-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-62"><a href="#cb77-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-63"><a href="#cb77-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-64"><a href="#cb77-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-65"><a href="#cb77-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## select column</span></span>
-<span id="cb77-66"><a href="#cb77-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-67"><a href="#cb77-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### get column names</span></span>
-<span id="cb77-68"><a href="#cb77-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-71"><a href="#cb77-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-72"><a href="#cb77-72" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(small_mtcars)</span>
-<span id="cb77-73"><a href="#cb77-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-74"><a href="#cb77-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-75"><a href="#cb77-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### select by name</span></span>
+<span id="cb77-64"><a href="#cb77-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## select column</span></span>
+<span id="cb77-65"><a href="#cb77-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-66"><a href="#cb77-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### get column names</span></span>
+<span id="cb77-67"><a href="#cb77-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-70"><a href="#cb77-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-71"><a href="#cb77-71" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(small_mtcars)</span>
+<span id="cb77-72"><a href="#cb77-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-73"><a href="#cb77-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-74"><a href="#cb77-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### select by name</span></span>
+<span id="cb77-75"><a href="#cb77-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-76"><a href="#cb77-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-77"><a href="#cb77-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-80"><a href="#cb77-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-81"><a href="#cb77-81" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(cyl, mpg,hp) </span>
-<span id="cb77-82"><a href="#cb77-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-79"><a href="#cb77-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-80"><a href="#cb77-80" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(cyl, mpg,hp) </span>
+<span id="cb77-81"><a href="#cb77-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-82"><a href="#cb77-82" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-83"><a href="#cb77-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-84"><a href="#cb77-84" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-85"><a href="#cb77-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-86"><a href="#cb77-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-87"><a href="#cb77-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### select columns by name match with 'p'</span></span>
+<span id="cb77-86"><a href="#cb77-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### select columns by name match with 'p'</span></span>
+<span id="cb77-87"><a href="#cb77-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-88"><a href="#cb77-88" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-89"><a href="#cb77-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-90"><a href="#cb77-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-91"><a href="#cb77-91" aria-hidden="true" tabindex="-1"></a><span class="fu">### select columns by index</span></span>
-<span id="cb77-92"><a href="#cb77-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-93"><a href="#cb77-93" aria-hidden="true" tabindex="-1"></a><span class="fu">#### select first and 3rd columns</span></span>
+<span id="cb77-90"><a href="#cb77-90" aria-hidden="true" tabindex="-1"></a><span class="fu">### select columns by index</span></span>
+<span id="cb77-91"><a href="#cb77-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-92"><a href="#cb77-92" aria-hidden="true" tabindex="-1"></a><span class="fu">#### select first and 3rd columns</span></span>
+<span id="cb77-93"><a href="#cb77-93" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-94"><a href="#cb77-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-95"><a href="#cb77-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-96"><a href="#cb77-96" aria-hidden="true" tabindex="-1"></a><span class="fu">#### select first to 3rd columns</span></span>
+<span id="cb77-95"><a href="#cb77-95" aria-hidden="true" tabindex="-1"></a><span class="fu">#### select first to 3rd columns</span></span>
+<span id="cb77-96"><a href="#cb77-96" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-97"><a href="#cb77-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-98"><a href="#cb77-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-99"><a href="#cb77-99" aria-hidden="true" tabindex="-1"></a><span class="fu">## drop column</span></span>
-<span id="cb77-100"><a href="#cb77-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-103"><a href="#cb77-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-104"><a href="#cb77-104" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>cyl)</span>
-<span id="cb77-105"><a href="#cb77-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-106"><a href="#cb77-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-107"><a href="#cb77-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## Renaming column</span></span>
-<span id="cb77-108"><a href="#cb77-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-111"><a href="#cb77-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-112"><a href="#cb77-112" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">rename</span>(<span class="at">new_cyl=</span>cyl)</span>
-<span id="cb77-113"><a href="#cb77-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-114"><a href="#cb77-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-115"><a href="#cb77-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Create column</span></span>
-<span id="cb77-116"><a href="#cb77-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-117"><a href="#cb77-117" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mutate</span></span>
-<span id="cb77-118"><a href="#cb77-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-121"><a href="#cb77-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-122"><a href="#cb77-122" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">new_cyl=</span>cyl<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb77-123"><a href="#cb77-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-124"><a href="#cb77-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-125"><a href="#cb77-125" aria-hidden="true" tabindex="-1"></a><span class="fu">### Transmute,create column and only keep this column</span></span>
-<span id="cb77-126"><a href="#cb77-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-129"><a href="#cb77-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-130"><a href="#cb77-130" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">transmute</span>(<span class="at">new_cyl=</span>cyl<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb77-131"><a href="#cb77-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-132"><a href="#cb77-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-133"><a href="#cb77-133" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filter rows</span></span>
-<span id="cb77-134"><a href="#cb77-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-137"><a href="#cb77-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-138"><a href="#cb77-138" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span>)</span>
-<span id="cb77-139"><a href="#cb77-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-140"><a href="#cb77-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-141"><a href="#cb77-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### Filters with AND conditions</span></span>
-<span id="cb77-144"><a href="#cb77-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-145"><a href="#cb77-145" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span>,mpg<span class="sc">&gt;</span><span class="dv">20</span>)</span>
-<span id="cb77-146"><a href="#cb77-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-147"><a href="#cb77-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-148"><a href="#cb77-148" aria-hidden="true" tabindex="-1"></a><span class="fu">### Filters with OR conditions</span></span>
-<span id="cb77-149"><a href="#cb77-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-152"><a href="#cb77-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-153"><a href="#cb77-153" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span><span class="sc">|</span>mpg<span class="sc">&gt;</span><span class="dv">20</span>)</span>
-<span id="cb77-154"><a href="#cb77-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-98"><a href="#cb77-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## drop column</span></span>
+<span id="cb77-99"><a href="#cb77-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-102"><a href="#cb77-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-103"><a href="#cb77-103" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>cyl)</span>
+<span id="cb77-104"><a href="#cb77-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-105"><a href="#cb77-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-106"><a href="#cb77-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Renaming column</span></span>
+<span id="cb77-107"><a href="#cb77-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-110"><a href="#cb77-110" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-111"><a href="#cb77-111" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">rename</span>(<span class="at">new_cyl=</span>cyl)</span>
+<span id="cb77-112"><a href="#cb77-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-113"><a href="#cb77-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-114"><a href="#cb77-114" aria-hidden="true" tabindex="-1"></a><span class="fu">## Create column</span></span>
+<span id="cb77-115"><a href="#cb77-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-116"><a href="#cb77-116" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mutate</span></span>
+<span id="cb77-117"><a href="#cb77-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-120"><a href="#cb77-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-121"><a href="#cb77-121" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">mutate</span>(<span class="at">new_cyl=</span>cyl<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb77-122"><a href="#cb77-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-123"><a href="#cb77-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-124"><a href="#cb77-124" aria-hidden="true" tabindex="-1"></a><span class="fu">### Transmute,create column and only keep this column</span></span>
+<span id="cb77-125"><a href="#cb77-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-128"><a href="#cb77-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-129"><a href="#cb77-129" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">transmute</span>(<span class="at">new_cyl=</span>cyl<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb77-130"><a href="#cb77-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-131"><a href="#cb77-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-132"><a href="#cb77-132" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filter rows</span></span>
+<span id="cb77-133"><a href="#cb77-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-136"><a href="#cb77-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-137"><a href="#cb77-137" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span>)</span>
+<span id="cb77-138"><a href="#cb77-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-139"><a href="#cb77-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-140"><a href="#cb77-140" aria-hidden="true" tabindex="-1"></a><span class="fu">### Filters with AND conditions</span></span>
+<span id="cb77-143"><a href="#cb77-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-144"><a href="#cb77-144" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span>,mpg<span class="sc">&gt;</span><span class="dv">20</span>)</span>
+<span id="cb77-145"><a href="#cb77-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-146"><a href="#cb77-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-147"><a href="#cb77-147" aria-hidden="true" tabindex="-1"></a><span class="fu">### Filters with OR conditions</span></span>
+<span id="cb77-148"><a href="#cb77-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-151"><a href="#cb77-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-152"><a href="#cb77-152" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">filter</span>(cyl<span class="sc">&gt;</span><span class="dv">5</span><span class="sc">|</span>mpg<span class="sc">&gt;</span><span class="dv">20</span>)</span>
+<span id="cb77-153"><a href="#cb77-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-154"><a href="#cb77-154" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-155"><a href="#cb77-155" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-156"><a href="#cb77-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-157"><a href="#cb77-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-158"><a href="#cb77-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### filter row with index</span></span>
-<span id="cb77-159"><a href="#cb77-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-160"><a href="#cb77-160" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 5th rows</span></span>
-<span id="cb77-161"><a href="#cb77-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-164"><a href="#cb77-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-165"><a href="#cb77-165" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">5</span>)</span>
-<span id="cb77-166"><a href="#cb77-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-157"><a href="#cb77-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### filter row with index</span></span>
+<span id="cb77-158"><a href="#cb77-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-159"><a href="#cb77-159" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 5th rows</span></span>
+<span id="cb77-160"><a href="#cb77-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-163"><a href="#cb77-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-164"><a href="#cb77-164" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">5</span>)</span>
+<span id="cb77-165"><a href="#cb77-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-166"><a href="#cb77-166" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-167"><a href="#cb77-167" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-168"><a href="#cb77-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-169"><a href="#cb77-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-170"><a href="#cb77-170" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1 and 5h rows</span></span>
-<span id="cb77-171"><a href="#cb77-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-174"><a href="#cb77-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-175"><a href="#cb77-175" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb77-176"><a href="#cb77-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-177"><a href="#cb77-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-178"><a href="#cb77-178" aria-hidden="true" tabindex="-1"></a><span class="fu">#### get ramdon 5 rows</span></span>
-<span id="cb77-179"><a href="#cb77-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-182"><a href="#cb77-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-183"><a href="#cb77-183" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">5</span>)</span>
-<span id="cb77-184"><a href="#cb77-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-169"><a href="#cb77-169" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1 and 5h rows</span></span>
+<span id="cb77-170"><a href="#cb77-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-173"><a href="#cb77-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-174"><a href="#cb77-174" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb77-175"><a href="#cb77-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-176"><a href="#cb77-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-177"><a href="#cb77-177" aria-hidden="true" tabindex="-1"></a><span class="fu">#### get ramdon 5 rows</span></span>
+<span id="cb77-178"><a href="#cb77-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-181"><a href="#cb77-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-182"><a href="#cb77-182" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">5</span>)</span>
+<span id="cb77-183"><a href="#cb77-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-184"><a href="#cb77-184" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-185"><a href="#cb77-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-186"><a href="#cb77-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-187"><a href="#cb77-187" aria-hidden="true" tabindex="-1"></a><span class="fu">## Append</span></span>
-<span id="cb77-188"><a href="#cb77-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-189"><a href="#cb77-189" aria-hidden="true" tabindex="-1"></a><span class="fu">### append by row</span></span>
+<span id="cb77-186"><a href="#cb77-186" aria-hidden="true" tabindex="-1"></a><span class="fu">## Append</span></span>
+<span id="cb77-187"><a href="#cb77-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-188"><a href="#cb77-188" aria-hidden="true" tabindex="-1"></a><span class="fu">### append by row</span></span>
+<span id="cb77-189"><a href="#cb77-189" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-190"><a href="#cb77-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-191"><a href="#cb77-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-194"><a href="#cb77-194" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-195"><a href="#cb77-195" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">rbind</span>(small_mtcars)</span>
-<span id="cb77-196"><a href="#cb77-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-193"><a href="#cb77-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-194"><a href="#cb77-194" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">rbind</span>(small_mtcars)</span>
+<span id="cb77-195"><a href="#cb77-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-196"><a href="#cb77-196" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-197"><a href="#cb77-197" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-198"><a href="#cb77-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-199"><a href="#cb77-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-200"><a href="#cb77-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### append by column</span></span>
-<span id="cb77-203"><a href="#cb77-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-204"><a href="#cb77-204" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">cbind</span>(small_mtcars)</span>
-<span id="cb77-205"><a href="#cb77-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-206"><a href="#cb77-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-207"><a href="#cb77-207" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dropping NA values</span></span>
-<span id="cb77-208"><a href="#cb77-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-209"><a href="#cb77-209" aria-hidden="true" tabindex="-1"></a><span class="fu">### keep NA values</span></span>
-<span id="cb77-210"><a href="#cb77-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-211"><a href="#cb77-211" aria-hidden="true" tabindex="-1"></a><span class="fu">## group by</span></span>
-<span id="cb77-212"><a href="#cb77-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-213"><a href="#cb77-213" aria-hidden="true" tabindex="-1"></a><span class="fu">### average,min,max,sum</span></span>
-<span id="cb77-214"><a href="#cb77-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-217"><a href="#cb77-217" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-218"><a href="#cb77-218" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg)</span>
-<span id="cb77-219"><a href="#cb77-219" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">min_mpg=</span><span class="fu">min</span>(mpg)</span>
-<span id="cb77-220"><a href="#cb77-220" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">max_mpg=</span><span class="fu">max</span>(mpg)</span>
-<span id="cb77-221"><a href="#cb77-221" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">sum_mpg=</span><span class="fu">sum</span>(mpg))</span>
-<span id="cb77-222"><a href="#cb77-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-223"><a href="#cb77-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-224"><a href="#cb77-224" aria-hidden="true" tabindex="-1"></a><span class="fu">### count record and count distinct record</span></span>
-<span id="cb77-225"><a href="#cb77-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-228"><a href="#cb77-228" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-229"><a href="#cb77-229" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n_mpg=</span><span class="fu">n</span>()</span>
-<span id="cb77-230"><a href="#cb77-230" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">distinct_n_mpg=</span><span class="fu">n_distinct</span>(mpg)</span>
-<span id="cb77-231"><a href="#cb77-231" aria-hidden="true" tabindex="-1"></a>                                            </span>
-<span id="cb77-232"><a href="#cb77-232" aria-hidden="true" tabindex="-1"></a>                                            )</span>
-<span id="cb77-233"><a href="#cb77-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-234"><a href="#cb77-234" aria-hidden="true" tabindex="-1"></a><span class="fu">## order rows</span></span>
-<span id="cb77-235"><a href="#cb77-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-238"><a href="#cb77-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-239"><a href="#cb77-239" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl) </span>
-<span id="cb77-240"><a href="#cb77-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-241"><a href="#cb77-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-242"><a href="#cb77-242" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sort in descending order</span></span>
-<span id="cb77-243"><a href="#cb77-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-246"><a href="#cb77-246" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-247"><a href="#cb77-247" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(cyl) )</span>
-<span id="cb77-248"><a href="#cb77-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-249"><a href="#cb77-249" aria-hidden="true" tabindex="-1"></a><span class="fu">### Arrange by multiple variables</span></span>
-<span id="cb77-250"><a href="#cb77-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-253"><a href="#cb77-253" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-254"><a href="#cb77-254" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl,mpg)</span>
-<span id="cb77-255"><a href="#cb77-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-199"><a href="#cb77-199" aria-hidden="true" tabindex="-1"></a><span class="fu">### append by column</span></span>
+<span id="cb77-202"><a href="#cb77-202" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-203"><a href="#cb77-203" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">cbind</span>(small_mtcars)</span>
+<span id="cb77-204"><a href="#cb77-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-205"><a href="#cb77-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-206"><a href="#cb77-206" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dropping NA values</span></span>
+<span id="cb77-207"><a href="#cb77-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-208"><a href="#cb77-208" aria-hidden="true" tabindex="-1"></a><span class="fu">### keep NA values</span></span>
+<span id="cb77-209"><a href="#cb77-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-210"><a href="#cb77-210" aria-hidden="true" tabindex="-1"></a><span class="fu">## group by</span></span>
+<span id="cb77-211"><a href="#cb77-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-212"><a href="#cb77-212" aria-hidden="true" tabindex="-1"></a><span class="fu">### average,min,max,sum</span></span>
+<span id="cb77-213"><a href="#cb77-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-216"><a href="#cb77-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-217"><a href="#cb77-217" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg)</span>
+<span id="cb77-218"><a href="#cb77-218" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">min_mpg=</span><span class="fu">min</span>(mpg)</span>
+<span id="cb77-219"><a href="#cb77-219" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">max_mpg=</span><span class="fu">max</span>(mpg)</span>
+<span id="cb77-220"><a href="#cb77-220" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">sum_mpg=</span><span class="fu">sum</span>(mpg))</span>
+<span id="cb77-221"><a href="#cb77-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-222"><a href="#cb77-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-223"><a href="#cb77-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### count record and count distinct record</span></span>
+<span id="cb77-224"><a href="#cb77-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-227"><a href="#cb77-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-228"><a href="#cb77-228" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n_mpg=</span><span class="fu">n</span>()</span>
+<span id="cb77-229"><a href="#cb77-229" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">distinct_n_mpg=</span><span class="fu">n_distinct</span>(mpg)</span>
+<span id="cb77-230"><a href="#cb77-230" aria-hidden="true" tabindex="-1"></a>                                            </span>
+<span id="cb77-231"><a href="#cb77-231" aria-hidden="true" tabindex="-1"></a>                                            )</span>
+<span id="cb77-232"><a href="#cb77-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-233"><a href="#cb77-233" aria-hidden="true" tabindex="-1"></a><span class="fu">## order rows</span></span>
+<span id="cb77-234"><a href="#cb77-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-237"><a href="#cb77-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-238"><a href="#cb77-238" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl) </span>
+<span id="cb77-239"><a href="#cb77-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-240"><a href="#cb77-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-241"><a href="#cb77-241" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sort in descending order</span></span>
+<span id="cb77-242"><a href="#cb77-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-245"><a href="#cb77-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-246"><a href="#cb77-246" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(cyl) )</span>
+<span id="cb77-247"><a href="#cb77-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-248"><a href="#cb77-248" aria-hidden="true" tabindex="-1"></a><span class="fu">### Arrange by multiple variables</span></span>
+<span id="cb77-249"><a href="#cb77-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-252"><a href="#cb77-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-253"><a href="#cb77-253" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl,mpg)</span>
+<span id="cb77-254"><a href="#cb77-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-255"><a href="#cb77-255" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-256"><a href="#cb77-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-257"><a href="#cb77-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-258"><a href="#cb77-258" aria-hidden="true" tabindex="-1"></a><span class="fu">## join</span></span>
+<span id="cb77-257"><a href="#cb77-257" aria-hidden="true" tabindex="-1"></a><span class="fu">## join</span></span>
+<span id="cb77-258"><a href="#cb77-258" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-259"><a href="#cb77-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-260"><a href="#cb77-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-263"><a href="#cb77-263" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-264"><a href="#cb77-264" aria-hidden="true" tabindex="-1"></a>left_data<span class="ot">=</span>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
-<span id="cb77-265"><a href="#cb77-265" aria-hidden="true" tabindex="-1"></a>right_data<span class="ot">=</span>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb77-266"><a href="#cb77-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-267"><a href="#cb77-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-270"><a href="#cb77-270" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-271"><a href="#cb77-271" aria-hidden="true" tabindex="-1"></a>left_data</span>
-<span id="cb77-272"><a href="#cb77-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-273"><a href="#cb77-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-276"><a href="#cb77-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-277"><a href="#cb77-277" aria-hidden="true" tabindex="-1"></a>right_data</span>
-<span id="cb77-278"><a href="#cb77-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-262"><a href="#cb77-262" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-263"><a href="#cb77-263" aria-hidden="true" tabindex="-1"></a>left_data<span class="ot">=</span>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb77-264"><a href="#cb77-264" aria-hidden="true" tabindex="-1"></a>right_data<span class="ot">=</span>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb77-265"><a href="#cb77-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-266"><a href="#cb77-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-269"><a href="#cb77-269" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-270"><a href="#cb77-270" aria-hidden="true" tabindex="-1"></a>left_data</span>
+<span id="cb77-271"><a href="#cb77-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-272"><a href="#cb77-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-275"><a href="#cb77-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-276"><a href="#cb77-276" aria-hidden="true" tabindex="-1"></a>right_data</span>
+<span id="cb77-277"><a href="#cb77-277" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-278"><a href="#cb77-278" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-279"><a href="#cb77-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-280"><a href="#cb77-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-281"><a href="#cb77-281" aria-hidden="true" tabindex="-1"></a><span class="fu">### inner_join</span></span>
+<span id="cb77-280"><a href="#cb77-280" aria-hidden="true" tabindex="-1"></a><span class="fu">### inner_join</span></span>
+<span id="cb77-281"><a href="#cb77-281" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-282"><a href="#cb77-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-283"><a href="#cb77-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-286"><a href="#cb77-286" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-287"><a href="#cb77-287" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
-<span id="cb77-288"><a href="#cb77-288" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb77-289"><a href="#cb77-289" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-285"><a href="#cb77-285" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-286"><a href="#cb77-286" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
+<span id="cb77-287"><a href="#cb77-287" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb77-288"><a href="#cb77-288" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-289"><a href="#cb77-289" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-290"><a href="#cb77-290" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-291"><a href="#cb77-291" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-292"><a href="#cb77-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-293"><a href="#cb77-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-294"><a href="#cb77-294" aria-hidden="true" tabindex="-1"></a><span class="fu">### left join</span></span>
+<span id="cb77-293"><a href="#cb77-293" aria-hidden="true" tabindex="-1"></a><span class="fu">### left join</span></span>
+<span id="cb77-294"><a href="#cb77-294" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-295"><a href="#cb77-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-296"><a href="#cb77-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-299"><a href="#cb77-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-300"><a href="#cb77-300" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
-<span id="cb77-301"><a href="#cb77-301" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb77-302"><a href="#cb77-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-303"><a href="#cb77-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-304"><a href="#cb77-304" aria-hidden="true" tabindex="-1"></a><span class="fu">### full join</span></span>
+<span id="cb77-298"><a href="#cb77-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-299"><a href="#cb77-299" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
+<span id="cb77-300"><a href="#cb77-300" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb77-301"><a href="#cb77-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-302"><a href="#cb77-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-303"><a href="#cb77-303" aria-hidden="true" tabindex="-1"></a><span class="fu">### full join</span></span>
+<span id="cb77-304"><a href="#cb77-304" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-305"><a href="#cb77-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-306"><a href="#cb77-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-309"><a href="#cb77-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-310"><a href="#cb77-310" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
-<span id="cb77-311"><a href="#cb77-311" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb77-312"><a href="#cb77-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-308"><a href="#cb77-308" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-309"><a href="#cb77-309" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
+<span id="cb77-310"><a href="#cb77-310" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb77-311"><a href="#cb77-311" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-312"><a href="#cb77-312" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-313"><a href="#cb77-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-314"><a href="#cb77-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-315"><a href="#cb77-315" aria-hidden="true" tabindex="-1"></a><span class="fu">### anti join</span></span>
-<span id="cb77-316"><a href="#cb77-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-317"><a href="#cb77-317" aria-hidden="true" tabindex="-1"></a>anti_join() return all rows from x without a match in y</span>
-<span id="cb77-318"><a href="#cb77-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-321"><a href="#cb77-321" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-322"><a href="#cb77-322" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name))</span>
-<span id="cb77-323"><a href="#cb77-323" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb77-324"><a href="#cb77-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-314"><a href="#cb77-314" aria-hidden="true" tabindex="-1"></a><span class="fu">### anti join</span></span>
+<span id="cb77-315"><a href="#cb77-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-316"><a href="#cb77-316" aria-hidden="true" tabindex="-1"></a>anti_join() return all rows from x without a match in y</span>
+<span id="cb77-317"><a href="#cb77-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-320"><a href="#cb77-320" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-321"><a href="#cb77-321" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name))</span>
+<span id="cb77-322"><a href="#cb77-322" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb77-323"><a href="#cb77-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-324"><a href="#cb77-324" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-325"><a href="#cb77-325" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-326"><a href="#cb77-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-327"><a href="#cb77-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-328"><a href="#cb77-328" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reshape tables</span></span>
-<span id="cb77-329"><a href="#cb77-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-332"><a href="#cb77-332" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-333"><a href="#cb77-333" aria-hidden="true" tabindex="-1"></a>olddata_wide <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">text=</span><span class="st">'</span></span>
-<span id="cb77-334"><a href="#cb77-334" aria-hidden="true" tabindex="-1"></a><span class="st"> subject sex control cond1 cond2</span></span>
-<span id="cb77-335"><a href="#cb77-335" aria-hidden="true" tabindex="-1"></a><span class="st">       1   M     7.9  12.3  10.7</span></span>
-<span id="cb77-336"><a href="#cb77-336" aria-hidden="true" tabindex="-1"></a><span class="st">       2   F     6.3  10.6  11.1</span></span>
-<span id="cb77-337"><a href="#cb77-337" aria-hidden="true" tabindex="-1"></a><span class="st">       3   F     9.5  13.1  13.8</span></span>
-<span id="cb77-338"><a href="#cb77-338" aria-hidden="true" tabindex="-1"></a><span class="st">       4   M    11.5  13.4  12.9</span></span>
-<span id="cb77-339"><a href="#cb77-339" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>)</span>
-<span id="cb77-340"><a href="#cb77-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-341"><a href="#cb77-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-344"><a href="#cb77-344" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-345"><a href="#cb77-345" aria-hidden="true" tabindex="-1"></a>olddata_wide</span>
-<span id="cb77-346"><a href="#cb77-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-327"><a href="#cb77-327" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reshape tables</span></span>
+<span id="cb77-328"><a href="#cb77-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-331"><a href="#cb77-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-332"><a href="#cb77-332" aria-hidden="true" tabindex="-1"></a>olddata_wide <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">text=</span><span class="st">'</span></span>
+<span id="cb77-333"><a href="#cb77-333" aria-hidden="true" tabindex="-1"></a><span class="st"> subject sex control cond1 cond2</span></span>
+<span id="cb77-334"><a href="#cb77-334" aria-hidden="true" tabindex="-1"></a><span class="st">       1   M     7.9  12.3  10.7</span></span>
+<span id="cb77-335"><a href="#cb77-335" aria-hidden="true" tabindex="-1"></a><span class="st">       2   F     6.3  10.6  11.1</span></span>
+<span id="cb77-336"><a href="#cb77-336" aria-hidden="true" tabindex="-1"></a><span class="st">       3   F     9.5  13.1  13.8</span></span>
+<span id="cb77-337"><a href="#cb77-337" aria-hidden="true" tabindex="-1"></a><span class="st">       4   M    11.5  13.4  12.9</span></span>
+<span id="cb77-338"><a href="#cb77-338" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>)</span>
+<span id="cb77-339"><a href="#cb77-339" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-340"><a href="#cb77-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-343"><a href="#cb77-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-344"><a href="#cb77-344" aria-hidden="true" tabindex="-1"></a>olddata_wide</span>
+<span id="cb77-345"><a href="#cb77-345" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-346"><a href="#cb77-346" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-347"><a href="#cb77-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-348"><a href="#cb77-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-349"><a href="#cb77-349" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gather data long(wide to long)</span></span>
-<span id="cb77-350"><a href="#cb77-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-353"><a href="#cb77-353" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-354"><a href="#cb77-354" aria-hidden="true" tabindex="-1"></a>data_long<span class="ot">=</span>olddata_wide <span class="sc">%&gt;%</span></span>
-<span id="cb77-355"><a href="#cb77-355" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(subject,sex), <span class="at">names_to =</span> <span class="st">'income'</span>, <span class="at">values_to =</span> <span class="st">'DATA'</span>)</span>
-<span id="cb77-356"><a href="#cb77-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-357"><a href="#cb77-357" aria-hidden="true" tabindex="-1"></a>data_long</span>
-<span id="cb77-358"><a href="#cb77-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-348"><a href="#cb77-348" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gather data long(wide to long)</span></span>
+<span id="cb77-349"><a href="#cb77-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-352"><a href="#cb77-352" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-353"><a href="#cb77-353" aria-hidden="true" tabindex="-1"></a>data_long<span class="ot">=</span>olddata_wide <span class="sc">%&gt;%</span></span>
+<span id="cb77-354"><a href="#cb77-354" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(subject,sex), <span class="at">names_to =</span> <span class="st">'income'</span>, <span class="at">values_to =</span> <span class="st">'DATA'</span>)</span>
+<span id="cb77-355"><a href="#cb77-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-356"><a href="#cb77-356" aria-hidden="true" tabindex="-1"></a>data_long</span>
+<span id="cb77-357"><a href="#cb77-357" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-358"><a href="#cb77-358" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-359"><a href="#cb77-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-360"><a href="#cb77-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-361"><a href="#cb77-361" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spread data wide (long to wide)</span></span>
-<span id="cb77-364"><a href="#cb77-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-365"><a href="#cb77-365" aria-hidden="true" tabindex="-1"></a>data_wide<span class="ot">=</span>data_long <span class="sc">%&gt;%</span></span>
-<span id="cb77-366"><a href="#cb77-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> income, <span class="at">values_from =</span> DATA)</span>
-<span id="cb77-367"><a href="#cb77-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-368"><a href="#cb77-368" aria-hidden="true" tabindex="-1"></a>data_wide</span>
-<span id="cb77-369"><a href="#cb77-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-360"><a href="#cb77-360" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spread data wide (long to wide)</span></span>
+<span id="cb77-363"><a href="#cb77-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-364"><a href="#cb77-364" aria-hidden="true" tabindex="-1"></a>data_wide<span class="ot">=</span>data_long <span class="sc">%&gt;%</span></span>
+<span id="cb77-365"><a href="#cb77-365" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> income, <span class="at">values_from =</span> DATA)</span>
+<span id="cb77-366"><a href="#cb77-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-367"><a href="#cb77-367" aria-hidden="true" tabindex="-1"></a>data_wide</span>
+<span id="cb77-368"><a href="#cb77-368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-369"><a href="#cb77-369" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-370"><a href="#cb77-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-371"><a href="#cb77-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-372"><a href="#cb77-372" aria-hidden="true" tabindex="-1"></a><span class="fu">## string</span></span>
+<span id="cb77-371"><a href="#cb77-371" aria-hidden="true" tabindex="-1"></a><span class="fu">## string</span></span>
+<span id="cb77-372"><a href="#cb77-372" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-373"><a href="#cb77-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-374"><a href="#cb77-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-375"><a href="#cb77-375" aria-hidden="true" tabindex="-1"></a><span class="fu">### upper case</span></span>
+<span id="cb77-374"><a href="#cb77-374" aria-hidden="true" tabindex="-1"></a><span class="fu">### upper case</span></span>
+<span id="cb77-375"><a href="#cb77-375" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-376"><a href="#cb77-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-377"><a href="#cb77-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-378"><a href="#cb77-378" aria-hidden="true" tabindex="-1"></a><span class="fu">### lower case</span></span>
+<span id="cb77-377"><a href="#cb77-377" aria-hidden="true" tabindex="-1"></a><span class="fu">### lower case</span></span>
+<span id="cb77-378"><a href="#cb77-378" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-379"><a href="#cb77-379" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-380"><a href="#cb77-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-381"><a href="#cb77-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-382"><a href="#cb77-382" aria-hidden="true" tabindex="-1"></a><span class="fu">### match</span></span>
+<span id="cb77-381"><a href="#cb77-381" aria-hidden="true" tabindex="-1"></a><span class="fu">### match</span></span>
+<span id="cb77-382"><a href="#cb77-382" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-383"><a href="#cb77-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-384"><a href="#cb77-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-385"><a href="#cb77-385" aria-hidden="true" tabindex="-1"></a><span class="fu">### concatenation</span></span>
+<span id="cb77-384"><a href="#cb77-384" aria-hidden="true" tabindex="-1"></a><span class="fu">### concatenation</span></span>
+<span id="cb77-385"><a href="#cb77-385" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-386"><a href="#cb77-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-387"><a href="#cb77-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-388"><a href="#cb77-388" aria-hidden="true" tabindex="-1"></a><span class="fu">### replace</span></span>
+<span id="cb77-387"><a href="#cb77-387" aria-hidden="true" tabindex="-1"></a><span class="fu">### replace</span></span>
+<span id="cb77-388"><a href="#cb77-388" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-389"><a href="#cb77-389" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-390"><a href="#cb77-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-391"><a href="#cb77-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-392"><a href="#cb77-392" aria-hidden="true" tabindex="-1"></a><span class="fu">### extract</span></span>
+<span id="cb77-391"><a href="#cb77-391" aria-hidden="true" tabindex="-1"></a><span class="fu">### extract</span></span>
+<span id="cb77-392"><a href="#cb77-392" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-393"><a href="#cb77-393" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-394"><a href="#cb77-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-395"><a href="#cb77-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-396"><a href="#cb77-396" aria-hidden="true" tabindex="-1"></a><span class="fu">## date</span></span>
-<span id="cb77-397"><a href="#cb77-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-398"><a href="#cb77-398" aria-hidden="true" tabindex="-1"></a><span class="fu">## dataframe to other data format</span></span>
-<span id="cb77-399"><a href="#cb77-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-400"><a href="#cb77-400" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to vector</span></span>
-<span id="cb77-401"><a href="#cb77-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-404"><a href="#cb77-404" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-405"><a href="#cb77-405" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>small_mtcars<span class="sc">$</span>cyl</span>
-<span id="cb77-406"><a href="#cb77-406" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb77-407"><a href="#cb77-407" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-395"><a href="#cb77-395" aria-hidden="true" tabindex="-1"></a><span class="fu">## date</span></span>
+<span id="cb77-396"><a href="#cb77-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-397"><a href="#cb77-397" aria-hidden="true" tabindex="-1"></a><span class="fu">## dataframe to other data format</span></span>
+<span id="cb77-398"><a href="#cb77-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-399"><a href="#cb77-399" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to vector</span></span>
+<span id="cb77-400"><a href="#cb77-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-403"><a href="#cb77-403" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-404"><a href="#cb77-404" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>small_mtcars<span class="sc">$</span>cyl</span>
+<span id="cb77-405"><a href="#cb77-405" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb77-406"><a href="#cb77-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-407"><a href="#cb77-407" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-408"><a href="#cb77-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-409"><a href="#cb77-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-412"><a href="#cb77-412" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-413"><a href="#cb77-413" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
-<span id="cb77-414"><a href="#cb77-414" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-411"><a href="#cb77-411" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-412"><a href="#cb77-412" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb77-413"><a href="#cb77-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-414"><a href="#cb77-414" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-415"><a href="#cb77-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-416"><a href="#cb77-416" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-417"><a href="#cb77-417" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to matrix</span></span>
-<span id="cb77-418"><a href="#cb77-418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-421"><a href="#cb77-421" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-422"><a href="#cb77-422" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">data.matrix</span>(small_mtcars)</span>
-<span id="cb77-423"><a href="#cb77-423" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb77-424"><a href="#cb77-424" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-416"><a href="#cb77-416" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to matrix</span></span>
+<span id="cb77-417"><a href="#cb77-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-420"><a href="#cb77-420" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-421"><a href="#cb77-421" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">data.matrix</span>(small_mtcars)</span>
+<span id="cb77-422"><a href="#cb77-422" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb77-423"><a href="#cb77-423" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-424"><a href="#cb77-424" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-425"><a href="#cb77-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-426"><a href="#cb77-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-429"><a href="#cb77-429" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-430"><a href="#cb77-430" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
-<span id="cb77-431"><a href="#cb77-431" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-428"><a href="#cb77-428" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-429"><a href="#cb77-429" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb77-430"><a href="#cb77-430" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-431"><a href="#cb77-431" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-432"><a href="#cb77-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-433"><a href="#cb77-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-434"><a href="#cb77-434" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to list</span></span>
-<span id="cb77-435"><a href="#cb77-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-438"><a href="#cb77-438" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-439"><a href="#cb77-439" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">as.list</span>(small_mtcars)</span>
-<span id="cb77-440"><a href="#cb77-440" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb77-441"><a href="#cb77-441" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-442"><a href="#cb77-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-445"><a href="#cb77-445" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb77-446"><a href="#cb77-446" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
-<span id="cb77-447"><a href="#cb77-447" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-448"><a href="#cb77-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-449"><a href="#cb77-449" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
-<span id="cb77-450"><a href="#cb77-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-451"><a href="#cb77-451" aria-hidden="true" tabindex="-1"></a>https://dplyr.tidyverse.org/</span>
+<span id="cb77-433"><a href="#cb77-433" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to list</span></span>
+<span id="cb77-434"><a href="#cb77-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-437"><a href="#cb77-437" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-438"><a href="#cb77-438" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">as.list</span>(small_mtcars)</span>
+<span id="cb77-439"><a href="#cb77-439" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb77-440"><a href="#cb77-440" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-441"><a href="#cb77-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-444"><a href="#cb77-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb77-445"><a href="#cb77-445" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb77-446"><a href="#cb77-446" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-447"><a href="#cb77-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-448"><a href="#cb77-448" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
+<span id="cb77-449"><a href="#cb77-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-450"><a href="#cb77-450" aria-hidden="true" tabindex="-1"></a>https://dplyr.tidyverse.org/</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

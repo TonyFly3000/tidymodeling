@@ -5491,7 +5491,7 @@
     "href": "intro/1 basic R.html#get-all-file-name-under-current-directory",
     "title": "Basic R",
     "section": "1.2 get all file name under current directory",
-    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R_files\"               \"1 basic R.qmd\"                \n[3] \"1 basic R.rmarkdown\"           \"1-basic-R.rmarkdown\"          \n[5] \"5 R boook.qmd\"                 \"6 data analytic in R book.qmd\"\n[7] \"hotels.csv\"                    \"images\"",
+    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R.qmd\"                 \"1 basic R.rmarkdown\"          \n[3] \"1-basic-R.rmarkdown\"           \"5 R boook.qmd\"                \n[5] \"6 data analytic in R book.qmd\" \"hotels.csv\"                   \n[7] \"images\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5612,7 +5612,7 @@
     "href": "intro/1 basic R.html#install-r-package",
     "title": "Basic R",
     "section": "5.2 install R package",
-    "text": "5.2 install R package\nfrom The Comprehensive R Archive Network(cran).https://cran.r-project.org/\n\n\n\nCode\ninstall.packages('tidyverse')",
+    "text": "5.2 install R package\n\n5.2.1 install from Cran\n99% of the time will install pacakge from The Comprehensive R Archive Network(cran).https://cran.r-project.org/\n\n\n\nCode\ninstall.packages('tidyverse')\n\n\n\n\n5.2.2 install from Github\n\n\nCode\npak::pkg_install(\"tidymodels/learntidymodels\")\n\n\n\n\n5.2.3 install from Bioconductor\n\n\nCode\npak::pkg_install(\"mixOmics\")\n\n\n\n\n5.2.4 install from local\n\n\nCode\npak::local_install(\"cli\")\n\n\n\n\n5.2.5 install from Github\n\n\nCode\ndevtools::install_github(\"tidymodels/learntidymodels\")",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5633,8 +5633,8 @@
     "objectID": "intro/1 basic R.html#check-all-package-version",
     "href": "intro/1 basic R.html#check-all-package-version",
     "title": "Basic R",
-    "section": "5.5 check all package version",
-    "text": "5.5 check all package version\n\n\nCode\nip = as.data.frame(installed.packages()[,c(1,3:4)])\nip = ip[is.na(ip$Priority),1:2,drop=FALSE]\nhead(ip)\n\n\n              Package Version\nabind           abind   1.4-5\nanytime       anytime   0.3.9\narchive       archive   1.1.7\narrow           arrow  15.0.1\naskpass       askpass   1.2.0\nassertthat assertthat   0.2.1",
+    "section": "5.7 check all package version",
+    "text": "5.7 check all package version\n\n\nCode\nip = as.data.frame(installed.packages()[,c(1,3:4)])\nip = ip[is.na(ip$Priority),1:2,drop=FALSE]\nhead(ip)\n\n\n              Package Version\nabind           abind   1.4-5\nanytime       anytime   0.3.9\narchive       archive   1.1.7\narrow           arrow  15.0.1\naskpass       askpass   1.2.0\nassertthat assertthat   0.2.1",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5644,8 +5644,8 @@
     "objectID": "intro/1 basic R.html#check-package-install-loaciton",
     "href": "intro/1 basic R.html#check-package-install-loaciton",
     "title": "Basic R",
-    "section": "5.6 check package install loaciton",
-    "text": "5.6 check package install loaciton\n\n\nCode\n.libPaths()\n\n\n[1] \"/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library\"",
+    "section": "5.8 check package install loaciton",
+    "text": "5.8 check package install loaciton\n\n\nCode\n.libPaths()\n\n\n[1] \"/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5831,8 +5831,8 @@
     "objectID": "intro/1 basic R.html#check-current-loaded-package",
     "href": "intro/1 basic R.html#check-current-loaded-package",
     "title": "Basic R",
-    "section": "5.4 check current loaded package",
-    "text": "5.4 check current loaded package\n\n\nCode\nsessionInfo()\n\n\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] htmlwidgets_1.6.4 compiler_4.3.1    fastmap_1.1.1     cli_3.6.2        \n [5] tools_4.3.1       htmltools_0.5.7   rstudioapi_0.15.0 yaml_2.3.8       \n [9] rmarkdown_2.25    knitr_1.45        jsonlite_1.8.8    xfun_0.42        \n[13] digest_0.6.35     rlang_1.1.3       evaluate_0.23",
+    "section": "5.6 check current loaded package",
+    "text": "5.6 check current loaded package\n\n\nCode\nsessionInfo()\n\n\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.35     R6_2.5.1          fastmap_1.1.1     xfun_0.43        \n [5] knitr_1.45        htmltools_0.5.8.1 rmarkdown_2.26    ps_1.7.6         \n [9] cli_3.6.2         processx_3.8.4    callr_3.7.6       pak_0.7.2        \n[13] compiler_4.3.1    rstudioapi_0.16.0 tools_4.3.1       evaluate_0.23    \n[17] yaml_2.3.8        rlang_1.1.3       jsonlite_1.8.8    htmlwidgets_1.6.4",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -6733,7 +6733,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#filter-rows",
     "title": "Data manipulation with tidyverse",
     "section": "0.7 Filter rows",
-    "text": "0.7 Filter rows\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3    Hornet 4 Drive   6 21.4 110\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105\n\n\n\n0.7.1 Filters with AND conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5,mpg&gt;20)\n\n\n        car_name cyl  mpg  hp\n1      Mazda RX4   6 21.0 110\n2  Mazda RX4 Wag   6 21.0 110\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n\n0.7.2 Filters with OR conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5|mpg&gt;20)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105\n\n\n\n\n0.7.3 filter row with index\n\n0.7.3.1 5th rows\n\n\nCode\nsmall_mtcars %&gt;% slice(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n\n\n\n\n0.7.3.2 1 and 5h rows\n\n\nCode\nsmall_mtcars %&gt;% slice(1:5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n\n\n\n\n0.7.3.3 get ramdon 5 rows\n\n\nCode\nsmall_mtcars %&gt;% sample_n(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n2        Datsun 710   4 22.8  93\n3     Mazda RX4 Wag   6 21.0 110\n4    Hornet 4 Drive   6 21.4 110\n5           Valiant   6 18.1 105",
+    "text": "0.7 Filter rows\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3    Hornet 4 Drive   6 21.4 110\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105\n\n\n\n0.7.1 Filters with AND conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5,mpg&gt;20)\n\n\n        car_name cyl  mpg  hp\n1      Mazda RX4   6 21.0 110\n2  Mazda RX4 Wag   6 21.0 110\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n\n0.7.2 Filters with OR conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5|mpg&gt;20)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105\n\n\n\n\n0.7.3 filter row with index\n\n0.7.3.1 5th rows\n\n\nCode\nsmall_mtcars %&gt;% slice(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n\n\n\n\n0.7.3.2 1 and 5h rows\n\n\nCode\nsmall_mtcars %&gt;% slice(1:5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n\n\n\n\n0.7.3.3 get ramdon 5 rows\n\n\nCode\nsmall_mtcars %&gt;% sample_n(5)\n\n\n           car_name cyl  mpg  hp\n1     Mazda RX4 Wag   6 21.0 110\n2         Mazda RX4   6 21.0 110\n3        Datsun 710   4 22.8  93\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -7122,6 +7122,28 @@
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#check-pacakge-relationship",
+    "href": "intro/1 basic R.html#check-pacakge-relationship",
+    "title": "Basic R",
+    "section": "5.4 check pacakge relationship",
+    "text": "5.4 check pacakge relationship\n\n\nCode\npak::pkg_deps_explain(\"tibble\", \"rlang\")\n\n\ntibble -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; rlang\ntibble -&gt; rlang\ntibble -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; vctrs -&gt; rlang",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#check-pacakge-dependencies",
+    "href": "intro/1 basic R.html#check-pacakge-dependencies",
+    "title": "Basic R",
+    "section": "5.5 check pacakge dependencies",
+    "text": "5.5 check pacakge dependencies\n\n\nCode\npak::pkg_deps_tree(\"tibble\")\n\n\ntibble 3.2.1 ✨ ⬇ (684.10 kB)\n├─fansi 1.0.6 ✨ ⬇ (381.01 kB)\n├─lifecycle 1.0.4 ✨ ⬇ (124.48 kB)\n│ ├─cli 3.6.2 ✨ ⬇ (1.39 MB)\n│ ├─glue 1.7.0 ✨ ⬇ (159.26 kB)\n│ └─rlang 1.1.3 ✨ ⬇ (1.89 MB)\n├─magrittr 2.0.3 ✨ ⬇ (232.43 kB)\n├─pillar 1.9.0 ✨ ⬇ (648.86 kB)\n│ ├─cli\n│ ├─fansi\n│ ├─glue\n│ ├─lifecycle\n│ ├─rlang\n│ ├─utf8 1.2.4 ✨ ⬇ (206.92 kB)\n│ └─vctrs 0.6.5 ✨ ⬇ (1.88 MB)\n│   ├─cli\n│   ├─glue\n│   ├─lifecycle\n│   └─rlang\n├─pkgconfig 2.0.3 ✨ ⬇ (18.21 kB)\n├─rlang\n└─vctrs\n\nKey:  ✨ new |  ⬇ download",
+    "crumbs": [
+      "Intro",
+      "Basic R"
     ]
   }
 ]

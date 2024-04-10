@@ -1,7 +1,6 @@
 ---
 title: "Data manipulation with tidyverse"
 
-author: "Tony Duan"
 
 execute:
   warning: false
