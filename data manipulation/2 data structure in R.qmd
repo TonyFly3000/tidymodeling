@@ -54,6 +54,8 @@ rep(x = 1.5, times = 4)
 ```
 
 
+
+
 ## append vector
 
 ```{r}
@@ -79,7 +81,70 @@ x=c(1,2,3)
 x[1]
 ```
 
+## vector to other data format
 
+
+### vector to dataframe
+
+```{r}
+Name <- c("Jhon", "Lee", "Suzan", "Abhinav", 
+          "Brain", "Emma", "David", "Alice") 
+
+   
+Marks <- c(56, 76, 86, 96, 73, 87, 47, 98) 
+    
+
+data<- data.frame(Name,Marks) 
+data
+```
+
+```{r}
+class(data)
+```
+
+
+### verctor to matrix
+
+```{r}
+v1 <- c(56, 76, 86, 96, 73, 87, 47, 98) 
+   
+```
+
+```{r}
+data<-matrix(v1,nrow=4)
+data
+```
+
+```{r}
+class(data)
+```
+
+other way:
+```{r}
+data<-matrix(c(v1,v1),ncol = 2)
+data
+```
+
+
+### verctor to list
+
+```{r}
+data=list(v1)
+data
+```
+
+```{r}
+class(data)
+```
+
+
+each element in vetor as a element in list
+
+
+```{r}
+data=as.list(v1)
+data
+```
 
 # Dataframe
 

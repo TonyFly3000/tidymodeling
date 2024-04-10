@@ -25,6 +25,10 @@ Principal component analysis (PCA) is a method of reducing the dimensionality of
 
 # load package
 
+```{r}
+library(tidymodels)
+library(tidyverse)
+```
 
 
 
@@ -39,7 +43,16 @@ https://www.kaggle.com/datasets/shwetabh123/mall-customer
 
 ## input data
 
+```{r}
 
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+
+# load dataset into Pandas DataFrame
+df = read_csv(url,col_names = c('sepal_length','sepal_width','petal_length','petal_width','target'))
+
+# Showing overview of the train dataset
+head(df)
+```
 
 
 ## STANDARDIZE THE DATA
@@ -47,6 +60,15 @@ https://www.kaggle.com/datasets/shwetabh123/mall-customer
 
 PCA is affected by scale, so you need to scale the features in your data before applying PCA. Use StandardScaler to help you standardize the data set’s features onto unit scale (mean = 0 and variance = 1), which is a requirement for the optimal performance of many machine learning algorithms. If you don’t scale your data, it can have a negative effect on your algorithm. 
 
+
+```{r}
+numerical_data=data.matrix(df[c('sepal_length','sepal_width','petal_length','petal_width')])
+```
+
+```{r}
+data_normalized <- scale(numerical_data)
+head(data_normalized)
+```
 
 
 ## Before STANDARDIZE
@@ -64,13 +86,47 @@ for testing purpose only.
 
 # PCA PROJECTION TO 2D
 
+```{r}
+library("FactoMineR")
+res.pca <- PCA(data_normalized,scale.unit = TRUE, ncp = 2, graph = TRUE)
+```
+
+```{r}
+res.pca
+```
+```{r}
+result=res.pca$ind$coord
+```
+
+```{r}
+dim(result)
+```
+
+```{r}
+dim(df)
+```
+
+```{r}
+library("factoextra")
+eig.val <- get_eigenvalue(res.pca)
+eig.val
+```
+
+```{r}
+fviz_eig(res.pca, addlabels = TRUE, ylim = c(0, 50))
+```
+
+
+```{r}
+var <- get_pca_var(res.pca)
+var
+```
+
 
 
 
 
 # reference:
 
-https://www.youtube.com/watch?v=kApPBm1YsqU
-
-https://builtin.com/machine-learning/pca-in-python
+https://www.datacamp.com/tutorial/pca-analysis-r
 

@@ -26,7 +26,7 @@ dplyr is a grammar of data manipulation, providing a consistent set of verbs tha
 ## load package
 
 ```{r}
-library(dplyr)
+library(tidyverse)
 ```
 
 
@@ -42,6 +42,17 @@ data(mtcars)
 small_mtcars = mtcars %>% select(cyl, mpg,hp) %>% head()
 
 ```
+
+
+## make rowname into one column
+
+```{r}
+library(tibble)
+small_mtcars=rownames_to_column(small_mtcars, var="car_name")
+
+small_mtcars %>% head
+```
+
 
 ## select column
 
@@ -122,15 +133,23 @@ small_mtcars %>%filter(cyl>5|mpg>20)
 
 #### 5th rows
 
+```{r}
+small_mtcars %>% slice(5)
+```
 
 
-#### 1 and 5tj rows
 
+#### 1 and 5h rows
 
-#### 1 to 5th rows
-
+```{r}
+small_mtcars %>% slice(1:5)
+```
 
 #### get ramdon 5 rows
+
+```{r}
+small_mtcars %>% sample_n(5)
+```
 
 
 ## Append
@@ -192,23 +211,96 @@ small_mtcars %>%arrange(cyl,mpg)
 
 ## join
 
+
+```{r}
+left_data=small_mtcars %>% slice(1:2)
+right_data=small_mtcars %>% slice(2:4)
+```
+
+```{r}
+left_data
+```
+
+```{r}
+right_data
+```
+
+
 ### inner_join
+
+
+```{r}
+data=left_data %>% inner_join(right_data,join_by(car_name== car_name), suffix = c("_l", "._r"))
+data
+```
+
 
 
 
 ### left join
 
 
+```{r}
+data=left_data %>% left_join(right_data,join_by(car_name== car_name), suffix = c("_l", "._r"))
+data
+```
+
+### full join
+
+
+```{r}
+data=left_data %>% full_join(right_data,join_by(car_name== car_name), suffix = c("_l", "._r"))
+data
+```
+
 
 ### anti join
 
+anti_join() return all rows from x without a match in y
+
+```{r}
+
+data=left_data %>% anti_join(right_data,join_by(car_name== car_name))
+data
+```
+
+
+
 ## Reshape tables
+
+```{r}
+olddata_wide <- read.table(header=TRUE, text='
+ subject sex control cond1 cond2
+       1   M     7.9  12.3  10.7
+       2   F     6.3  10.6  11.1
+       3   F     9.5  13.1  13.8
+       4   M    11.5  13.4  12.9
+')
+```
+
+```{r}
+olddata_wide
+```
 
 
 ### Gather data long(wide to long)
 
+```{r}
+data_long=olddata_wide %>%
+  pivot_longer(!c(subject,sex), names_to = 'income', values_to = 'DATA')
+
+data_long
+```
+
 
 ### Spread data wide (long to wide)
+```{r}
+data_wide=data_long %>%
+  pivot_wider(names_from = income, values_from = DATA)
+
+data_wide
+```
+
 
 ## string
 
@@ -236,9 +328,44 @@ small_mtcars %>%arrange(cyl,mpg)
 
 ## date
 
-## dataframe to numpy array
+## dataframe to other data format
+
+### dataframe to vector
+
+```{r}
+data=small_mtcars$cyl
+data
+```
 
 
+```{r}
+class(data)
+```
+
+
+### dataframe to matrix
+
+```{r}
+data=data.matrix(small_mtcars)
+data
+```
+
+
+```{r}
+class(data)
+```
+
+
+### dataframe to list
+
+```{r}
+data=as.list(small_mtcars)
+data
+```
+
+```{r}
+class(data)
+```
 
 # reference:
 
