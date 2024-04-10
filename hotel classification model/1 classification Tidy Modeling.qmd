@@ -56,8 +56,10 @@ theme_set(theme_bw()) # set default ggplot2 theme
 ```{r}
 library(tidyverse)
 
-hotels <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv")
+#hotels <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv")
 
+
+hotels <- readr::read_csv("./data/hotels.csv")
 
 hotel_stays <- hotels %>%
   filter(is_canceled == 0) %>%
@@ -258,6 +260,14 @@ model <- unbundle(model)
 final_prediction=predict(model,data_valid)
 
 head(final_prediction)
+```
+
+
+```{r}
+final_prediction %>% count(.pred_class)
+```
+```{r}
+data_valid %>% count(target_variable)
 ```
 
 # reference:

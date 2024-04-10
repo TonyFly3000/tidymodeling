@@ -32,7 +32,7 @@ library(janitor)
 library(magick)
 ```
 
-# 3 RBG no alpha channel picture:
+# RBG no alpha channel picture:
 
 ## input image
 ```{r}
@@ -50,7 +50,7 @@ image_array <- as.integer(image_tiff[[1]])
 ```{r}
 magick::image_read(image_array/ 255)
 ```
-
+235 * 214 pixcel and 3 channels
 ```{r}
 dim(image_array)
 ```
@@ -158,7 +158,7 @@ dim(result2arrary)
 ```{r}
 magick::image_read(result2arrary/ 255)
 ```
-# 4 RBG with alpha channel picture:
+# RBG with alpha channel picture:
 
 
 
@@ -179,7 +179,7 @@ image_array <- as.integer(image_tiff[[1]])
 ```{r}
 magick::image_read(image_array/ 255)
 ```
-
+561 * 724 pixcel and 4 channels
 ```{r}
 dim(image_array)
 ```

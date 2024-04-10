@@ -170,7 +170,7 @@ pak::pkg_install("tidymodels/learntidymodels")
 
 ```{r}
 #| eval: false
-pak::pkg_install("mixOmics")
+pak::pkg_install("text2vec")
 ```
 
 
@@ -181,12 +181,6 @@ pak::pkg_install("mixOmics")
 pak::local_install("cli")
 ```
 
-### install from Github
-
-```{r}
-#| eval: false
-devtools::install_github("tidymodels/learntidymodels")
-```
 
 ## check one package version
 

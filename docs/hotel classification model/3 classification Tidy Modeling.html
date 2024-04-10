@@ -207,6 +207,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-model-type" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Model type</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-model-type">    
+        <li class="dropdown-header">model type</li>
+        <li>
+    <a class="dropdown-item" href="../model type/1 decision tree.html">
+ <span class="dropdown-text">Decision tree</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../model type/2 random forest.html">
+ <span class="dropdown-text">Random forest</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../model type/3 gradient boosted trees.html">
+ <span class="dropdown-text">Gradient boosted trees</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Classification</span>
     </a>
@@ -655,7 +675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(train_proc2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5594   23</code></pre>
+<pre><code>[1] 5728   23</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -664,7 +684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(train_juice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5594   23</code></pre>
+<pre><code>[1] 5728   23</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -677,8 +697,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 2 × 2
   target_variable     n
   &lt;fct&gt;           &lt;int&gt;
-1 children         2797
-2 none            32203</code></pre>
+1 children         2864
+2 none            32136</code></pre>
 </div>
 </div>
 <p>the juice and train_proc2 target is down sample to 1:1</p>
@@ -692,8 +712,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 2 × 2
   target_variable     n
   &lt;fct&gt;           &lt;int&gt;
-1 children         2797
-2 none             2797</code></pre>
+1 children         2864
+2 none             2864</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -706,8 +726,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 2 × 2
   target_variable     n
   &lt;fct&gt;           &lt;int&gt;
-1 children         2797
-2 none             2797</code></pre>
+1 children         2864
+2 none             2864</code></pre>
 </div>
 </div>
 </section>
@@ -728,8 +748,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 2 × 2
   target_variable     n
   &lt;fct&gt;           &lt;int&gt;
-1 children          406
-2 none             4594</code></pre>
+1 children          393
+2 none             4607</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -741,8 +761,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 2 × 2
   target_variable     n
   &lt;fct&gt;           &lt;int&gt;
-1 children          821
-2 none             9179</code></pre>
+1 children          820
+2 none             9180</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -792,7 +812,7 @@ Call:
 kknn::train.kknn(formula = target_variable ~ ., data = data,     ks = min_rows(5, data, 5))
 
 Type of response variable: nominal
-Minimal misclassification: 0.2697533
+Minimal misclassification: 0.2616969
 Best kernel: optimal
 Best k: 5</code></pre>
 </div>
@@ -808,16 +828,18 @@ Best k: 5</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>parsnip model object
 
-n= 5594 
+n= 5728 
 
 node), split, n, loss, yval, (yprob)
       * denotes terminal node
 
-1) root 5594 2797 children (0.5000000 0.5000000)  
-  2) adr&gt;=0.1701222 2087  506 children (0.7575467 0.2424533) *
-  3) adr&lt; 0.1701222 3507 1216 none (0.3467351 0.6532649)  
-    6) total_of_special_requests&gt;=0.6201001 735  316 children (0.5700680 0.4299320) *
-    7) total_of_special_requests&lt; 0.6201001 2772  797 none (0.2875180 0.7124820) *</code></pre>
+ 1) root 5728 2864 children (0.5000000 0.5000000)  
+   2) adr&gt;=0.3221018 1817  355 children (0.8046230 0.1953770) *
+   3) adr&lt; 0.3221018 3911 1402 none (0.3584761 0.6415239)  
+     6) total_of_special_requests&gt;=0.6520526 839  353 children (0.5792610 0.4207390)  
+      12) meal_SC&lt; 1.940923 781  307 children (0.6069142 0.3930858) *
+      13) meal_SC&gt;=1.940923 58   12 none (0.2068966 0.7931034) *
+     7) total_of_special_requests&lt; 0.6520526 3072  916 none (0.2981771 0.7018229) *</code></pre>
 </div>
 </div>
 </section>
@@ -841,16 +863,16 @@ node), split, n, loss, yval, (yprob)
 # A tibble: 25 × 2
    splits             id        
    &lt;list&gt;             &lt;chr&gt;     
- 1 &lt;split [5034/560]&gt; Resample01
- 2 &lt;split [5034/560]&gt; Resample02
- 3 &lt;split [5034/560]&gt; Resample03
- 4 &lt;split [5034/560]&gt; Resample04
- 5 &lt;split [5034/560]&gt; Resample05
- 6 &lt;split [5034/560]&gt; Resample06
- 7 &lt;split [5034/560]&gt; Resample07
- 8 &lt;split [5034/560]&gt; Resample08
- 9 &lt;split [5034/560]&gt; Resample09
-10 &lt;split [5034/560]&gt; Resample10
+ 1 &lt;split [5154/574]&gt; Resample01
+ 2 &lt;split [5154/574]&gt; Resample02
+ 3 &lt;split [5154/574]&gt; Resample03
+ 4 &lt;split [5154/574]&gt; Resample04
+ 5 &lt;split [5154/574]&gt; Resample05
+ 6 &lt;split [5154/574]&gt; Resample06
+ 7 &lt;split [5154/574]&gt; Resample07
+ 8 &lt;split [5154/574]&gt; Resample08
+ 9 &lt;split [5154/574]&gt; Resample09
+10 &lt;split [5154/574]&gt; Resample10
 # ℹ 15 more rows</code></pre>
 </div>
 </div>
@@ -867,11 +889,12 @@ node), split, n, loss, yval, (yprob)
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>knn_res <span class="sc">%&gt;%</span><span class="fu">collect_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 6
-  .metric  .estimator  mean     n std_err .config             
-  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 accuracy binary     0.721    25 0.00253 Preprocessor1_Model1
-2 roc_auc  binary     0.779    25 0.00289 Preprocessor1_Model1</code></pre>
+<pre><code># A tibble: 3 × 6
+  .metric     .estimator  mean     n std_err .config             
+  &lt;chr&gt;       &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 accuracy    binary     0.739    25 0.00385 Preprocessor1_Model1
+2 brier_class binary     0.197    25 0.00244 Preprocessor1_Model1
+3 roc_auc     binary     0.801    25 0.00342 Preprocessor1_Model1</code></pre>
 </div>
 </div>
 <p>Tree model:</p>
@@ -887,11 +910,12 @@ node), split, n, loss, yval, (yprob)
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>tree_res <span class="sc">%&gt;%</span><span class="fu">collect_metrics</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 6
-  .metric  .estimator  mean     n std_err .config             
-  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 accuracy binary     0.710    25 0.00285 Preprocessor1_Model1
-2 roc_auc  binary     0.727    25 0.00252 Preprocessor1_Model1</code></pre>
+<pre><code># A tibble: 3 × 6
+  .metric     .estimator  mean     n std_err .config             
+  &lt;chr&gt;       &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 accuracy    binary     0.726    25 0.00365 Preprocessor1_Model1
+2 brier_class binary     0.194    25 0.00187 Preprocessor1_Model1
+3 roc_auc     binary     0.748    25 0.00492 Preprocessor1_Model1</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -932,14 +956,14 @@ node), split, n, loss, yval, (yprob)
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">obj_size</span>(tree_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.13 MB</code></pre>
+<pre><code>1.15 MB</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">obj_size</span>(knn_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.08 MB</code></pre>
+<pre><code>1.10 MB</code></pre>
 </div>
 </div>
 <p>bundle and save model</p>
@@ -980,9 +1004,9 @@ node), split, n, loss, yval, (yprob)
   .pred_class
   &lt;fct&gt;      
 1 none       
-2 none       
-3 children   
-4 children   
+2 children   
+3 none       
+4 none       
 5 none       
 6 none       </code></pre>
 </div>
@@ -998,8 +1022,8 @@ node), split, n, loss, yval, (yprob)
 <div class="cell-output cell-output-stdout">
 <pre><code>          Truth
 Prediction children none
-  children      561 2401
-  none          260 6778</code></pre>
+  children      578 2399
+  none          242 6781</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1011,7 +1035,7 @@ Prediction children none
 <pre><code># A tibble: 1 × 3
   .metric  .estimator .estimate
   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
-1 accuracy binary         0.734</code></pre>
+1 accuracy binary         0.736</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1024,8 +1048,8 @@ Prediction children none
 # Groups:   target_variable [2]
   target_variable     n
   &lt;fct&gt;           &lt;int&gt;
-1 children          821
-2 none             9179</code></pre>
+1 children          820
+2 none             9180</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1038,8 +1062,8 @@ Prediction children none
 # Groups:   .pred_class [2]
   .pred_class     n
   &lt;fct&gt;       &lt;int&gt;
-1 children     2962
-2 none         7038</code></pre>
+1 children     2977
+2 none         7023</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1051,8 +1075,8 @@ Prediction children none
 <div class="cell-output cell-output-stdout">
 <pre><code>          Truth
 Prediction children none
-  children      561 2401
-  none          260 6778</code></pre>
+  children      578 2399
+  none          242 6781</code></pre>
 </div>
 </div>
 </section>

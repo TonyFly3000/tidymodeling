@@ -18,8 +18,19 @@ format:
 
 # Introduction
 
-Look at the hotel booking data.The target variable is whether have children
+Look at the hotel booking data.The target variable is whether have children.
 
+8590 booking with children.110800 bookings with no children.
+
+Only 7% booking with children.Its imbalanced data.Why it causes problems?
+
+The model cannot learn to predict the minority class well because of class imbalance.
+
+Model is only able to learn a simple heuristic (e.g. always predict the dominate class) and it gets stuck in a sub optimal solution.
+
+An accuracy of over 90% can be misleading because the model may not have predictive power on the rare class. 
+
+So in the latter this chapter will introduce downsample method to overcome the this problem.
 
 
 # Hotel booking data
