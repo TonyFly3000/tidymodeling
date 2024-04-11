@@ -7145,5 +7145,401 @@
       "Intro",
       "Basic R"
     ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html",
+    "href": "Multiclass classification/3 multclass classification.html",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "",
+    "text": "classification Tidy Modeling with 2 model and 1 recipe:\ndecision tree model with rpart engine(tree_spec)\nKNN model with knn engine(knn_spec)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#read-data",
+    "href": "Multiclass classification/3 multclass classification.html#read-data",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "2.1 read data",
+    "text": "2.1 read data\n\n\nCode\nlibrary(tidyverse)\n\ndf_train_raw &lt;- readr::read_csv(\"data/Train.csv\")\n\ndf_test_raw&lt;- readr::read_csv(\"data/Test.csv\")\n\n\n\n\nCode\ndf_train=df_train_raw %&gt;% mutate(target_variable=as.factor(Segmentation)) %&gt;% select(-Segmentation)\ndf_test=df_test_raw\n\n\n\n\nCode\nglimpse(df_train)\n\n\nRows: 8,068\nColumns: 11\n$ ID              &lt;dbl&gt; 462809, 462643, 466315, 461735, 462669, 461319, 460156…\n$ Gender          &lt;chr&gt; \"Male\", \"Female\", \"Female\", \"Male\", \"Female\", \"Male\", …\n$ Ever_Married    &lt;chr&gt; \"No\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"No\", \"No\", \"…\n$ Age             &lt;dbl&gt; 22, 38, 67, 67, 40, 56, 32, 33, 61, 55, 26, 19, 19, 70…\n$ Graduated       &lt;chr&gt; \"No\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"No\", \"Yes\", \"Yes\", …\n$ Profession      &lt;chr&gt; \"Healthcare\", \"Engineer\", \"Engineer\", \"Lawyer\", \"Enter…\n$ Work_Experience &lt;dbl&gt; 1, NA, 1, 0, NA, 0, 1, 1, 0, 1, 1, 4, 0, NA, 0, 1, 9, …\n$ Spending_Score  &lt;chr&gt; \"Low\", \"Average\", \"Low\", \"High\", \"High\", \"Average\", \"L…\n$ Family_Size     &lt;dbl&gt; 4, 3, 1, 2, 6, 2, 3, 3, 3, 4, 3, 4, NA, 1, 1, 2, 5, 6,…\n$ Var_1           &lt;chr&gt; \"Cat_4\", \"Cat_4\", \"Cat_6\", \"Cat_6\", \"Cat_6\", \"Cat_6\", …\n$ target_variable &lt;fct&gt; D, A, B, B, A, C, C, D, D, C, A, D, D, A, B, C, D, B, …",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#data-split",
+    "href": "Multiclass classification/3 multclass classification.html#data-split",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "2.2 data split",
+    "text": "2.2 data split\n\n\nCode\nset.seed(1234)\n\ndata_split &lt;- initial_validation_split(data=df_train, prop = c(0.7,0.2))\n\ndata_train=training(data_split)  \n\ndata_test=testing(data_split)  \n\ndata_valid=validation(data_split)\n\n\n\n\nCode\ndim(data_train)\n\n\n[1] 5647   11\n\n\n\n\nCode\ndim(data_test)\n\n\n[1] 807  11\n\n\n\n\nCode\ndim(data_valid)\n\n\n[1] 1614   11\n\n\n10 fold for tunning\n\n\nCode\nset.seed(234)\nfolds &lt;- vfold_cv(data_train)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#recipe",
+    "href": "Multiclass classification/3 multclass classification.html#recipe",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "3.1 recipe",
+    "text": "3.1 recipe\nbecasue the target class is not balance so using downsample\n\n\nCode\ndata_rec &lt;- recipe(target_variable ~ ., data = data_train) %&gt;%\n  #update_role(ID, new_role = \"ID\") %&gt;% \n  step_rm(ID) %&gt;% \n  #step_downsample(target_variable) %&gt;%\n  \n  step_impute_median(all_numeric(), -all_outcomes())%&gt;% \n  step_impute_mode(all_nominal(), -all_outcomes())%&gt;% \n  \n  step_dummy(all_nominal(), -all_outcomes()) %&gt;%\n  step_zv(all_numeric()) %&gt;%\n  step_normalize(all_numeric())\n\ndata_rec",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#model",
+    "href": "Multiclass classification/3 multclass classification.html#model",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "3.2 model",
+    "text": "3.2 model\n\n3.2.1 tree model\n\n\nCode\ntree_spec &lt;- decision_tree() %&gt;%\n  set_engine(\"rpart\") %&gt;%\n  set_mode(\"classification\")\n\n\n\n\n3.2.2 KNN model\n\n\nCode\nknn_spec &lt;- nearest_neighbor() %&gt;%\n  set_engine(\"kknn\") %&gt;%\n  set_mode(\"classification\")\n\n\n\n\n3.2.3 xgb tuning model\n\n\nCode\nxgb_spec &lt;- boost_tree(\n  trees = 10,\n  tree_depth = tune(), min_n = tune(),\n  loss_reduction = tune(),                     ## first three: model complexity\n  sample_size = tune(),  mtry=tune(),       ## randomness\n  learn_rate = tune()                          ## step size\n) %&gt;%\n  set_engine(\"xgboost\") %&gt;%\n  set_mode(\"classification\")\n\nxgb_spec\n\n\nBoosted Tree Model Specification (classification)\n\nMain Arguments:\n  mtry = tune()\n  trees = 10\n  min_n = tune()\n  tree_depth = tune()\n  learn_rate = tune()\n  loss_reduction = tune()\n  sample_size = tune()\n\nComputational engine: xgboost \n\n\nxgb tunning grid\n\n\nCode\nxgb_tune_grid= grid_latin_hypercube(\n  tree_depth(),learn_rate(),loss_reduction(),min_n(),\n  sample_size=sample_prop(),finalize(mtry(),data_train),\n  size=50)\n\nhead(xgb_tune_grid)\n\n\n# A tibble: 6 × 6\n  tree_depth learn_rate loss_reduction min_n sample_size  mtry\n       &lt;int&gt;      &lt;dbl&gt;          &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt; &lt;int&gt;\n1          2   1.79e-10     0.00740       10       0.484     2\n2         15   2.53e- 3     0.0000313     14       0.365     7\n3          5   4.69e- 8     1.51          16       0.697     7\n4          2   3.65e- 6     0.0000550     34       0.834     8\n5         14   6.92e- 7    10.4           30       0.714     6\n6         11   1.47e- 2     0.00000199    36       0.398     8\n\n\nworkflow\n\n\nCode\nknn_wf &lt;- workflow() %&gt;%add_recipe(data_rec) %&gt;% add_model(knn_spec) \n\ntree_wf &lt;- workflow() %&gt;%add_recipe(data_rec)%&gt;% add_model(tree_spec)\n\nxgb_wf &lt;- workflow() %&gt;%add_recipe(data_rec)%&gt;% add_model(xgb_spec)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#training-and-tunning",
+    "href": "Multiclass classification/3 multclass classification.html#training-and-tunning",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "3.3 training and tunning",
+    "text": "3.3 training and tunning\n\n\nCode\nset.seed(234)\nfolds &lt;- vfold_cv(data_train)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#evaluate",
+    "href": "Multiclass classification/3 multclass classification.html#evaluate",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "4.1 Evaluate",
+    "text": "4.1 Evaluate",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#save-model",
+    "href": "Multiclass classification/3 multclass classification.html#save-model",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "4.2 save model",
+    "text": "4.2 save model",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#make-predication",
+    "href": "Multiclass classification/3 multclass classification.html#make-predication",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "4.3 make predication",
+    "text": "4.3 make predication",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/1 multclass classification.html",
+    "href": "Multiclass classification/1 multclass classification.html",
+    "title": "Classification Model",
+    "section": "",
+    "text": "Level 1 classification Tidy Modeling with 2 model and no recipe:\n*using basic Tidymodel package.\nNo recipe\ndecision tree model with rpart engine(tree_spec)\nKNN model with knn engine(knn_spec)",
+    "crumbs": [
+      "Multiclass classification",
+      "Classification Model"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/1 multclass classification.html#read-data",
+    "href": "Multiclass classification/1 multclass classification.html#read-data",
+    "title": "Classification Model",
+    "section": "3.1 read data",
+    "text": "3.1 read data\n\n\nCode\nlibrary(tidyverse)\n\ndf_train_raw &lt;- readr::read_csv(\"data/Train.csv\")\n\ndf_test_raw&lt;- readr::read_csv(\"data/Test.csv\")\n\n\n\n\nCode\ndf_train=df_train_raw %&gt;% mutate(target_variable=as.factor(Segmentation)) %&gt;% select(-Segmentation)\ndf_test=df_test_raw\n\n\n\n\nCode\nglimpse(df_train)\n\n\nRows: 8,068\nColumns: 11\n$ ID              &lt;dbl&gt; 462809, 462643, 466315, 461735, 462669, 461319, 460156…\n$ Gender          &lt;chr&gt; \"Male\", \"Female\", \"Female\", \"Male\", \"Female\", \"Male\", …\n$ Ever_Married    &lt;chr&gt; \"No\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"No\", \"No\", \"…\n$ Age             &lt;dbl&gt; 22, 38, 67, 67, 40, 56, 32, 33, 61, 55, 26, 19, 19, 70…\n$ Graduated       &lt;chr&gt; \"No\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"No\", \"Yes\", \"Yes\", …\n$ Profession      &lt;chr&gt; \"Healthcare\", \"Engineer\", \"Engineer\", \"Lawyer\", \"Enter…\n$ Work_Experience &lt;dbl&gt; 1, NA, 1, 0, NA, 0, 1, 1, 0, 1, 1, 4, 0, NA, 0, 1, 9, …\n$ Spending_Score  &lt;chr&gt; \"Low\", \"Average\", \"Low\", \"High\", \"High\", \"Average\", \"L…\n$ Family_Size     &lt;dbl&gt; 4, 3, 1, 2, 6, 2, 3, 3, 3, 4, 3, 4, NA, 1, 1, 2, 5, 6,…\n$ Var_1           &lt;chr&gt; \"Cat_4\", \"Cat_4\", \"Cat_6\", \"Cat_6\", \"Cat_6\", \"Cat_6\", …\n$ target_variable &lt;fct&gt; D, A, B, B, A, C, C, D, D, C, A, D, D, A, B, C, D, B, …",
+    "crumbs": [
+      "Multiclass classification",
+      "Classification Model"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/1 multclass classification.html#data-split",
+    "href": "Multiclass classification/1 multclass classification.html#data-split",
+    "title": "Classification Model",
+    "section": "3.2 data split",
+    "text": "3.2 data split\n\n\nCode\nset.seed(1234)\n\ndata_split &lt;- initial_validation_split(data=df_train, prop = c(0.7,0.2))\n\ndata_train=training(data_split)  \n\ndata_test=testing(data_split)  \n\ndata_valid=validation(data_split)\n\n\n\n\nCode\ndim(data_train)\n\n\n[1] 5647   11\n\n\n\n\nCode\ndim(data_test)\n\n\n[1] 807  11\n\n\n\n\nCode\ndim(data_valid)\n\n\n[1] 1614   11\n\n\n10 fold for tunning\n\n\nCode\nset.seed(234)\nfolds &lt;- vfold_cv(data_train)",
+    "crumbs": [
+      "Multiclass classification",
+      "Classification Model"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/1 multclass classification.html#recipe",
+    "href": "Multiclass classification/1 multclass classification.html#recipe",
+    "title": "Classification Model",
+    "section": "4.1 recipe",
+    "text": "4.1 recipe\ndid not use recipe at this case",
+    "crumbs": [
+      "Multiclass classification",
+      "Classification Model"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/1 multclass classification.html#model",
+    "href": "Multiclass classification/1 multclass classification.html#model",
+    "title": "Classification Model",
+    "section": "4.2 model",
+    "text": "4.2 model\ndecision tree model\n\n\nCode\ntree_spec &lt;- decision_tree() %&gt;%\n  set_engine(\"rpart\") %&gt;%\n  set_mode(\"classification\")\n\n\nKNN model\n\n\nCode\nknn_spec &lt;- nearest_neighbor() %&gt;%\n  set_engine(\"kknn\") %&gt;%\n  set_mode(\"classification\")",
+    "crumbs": [
+      "Multiclass classification",
+      "Classification Model"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/1 multclass classification.html#trainning",
+    "href": "Multiclass classification/1 multclass classification.html#trainning",
+    "title": "Classification Model",
+    "section": "4.3 trainning",
+    "text": "4.3 trainning\n\n\nCode\nknn_fit &lt;- knn_spec %&gt;%\n  fit(target_variable ~ ., data = data_train)\n\nknn_fit\n\n\nparsnip model object\n\n\nCall:\nkknn::train.kknn(formula = target_variable ~ ., data = data,     ks = min_rows(5, data, 5))\n\nType of response variable: nominal\nMinimal misclassification: 0.5423292\nBest kernel: optimal\nBest k: 5\n\n\n\n\nCode\ntree_fit &lt;- tree_spec %&gt;%\n  fit(target_variable ~ ., data = data_train)\n\ntree_fit\n\n\nparsnip model object\n\nn= 5647 \n\nnode), split, n, loss, yval, (yprob)\n      * denotes terminal node\n\n 1) root 5647 4065 D (0.24508589 0.23339826 0.24136710 0.28014875)  \n   2) Age&gt;=34 3810 2653 C (0.26771654 0.29790026 0.30367454 0.13070866)  \n     4) Spending_Score=Low 1773 1108 A (0.37507050 0.26452341 0.15454033 0.20586576)  \n       8) Profession=Artist,Doctor 878  559 B (0.33485194 0.36332574 0.22209567 0.07972665) *\n       9) Profession=Engineer,Entertainment,Executive,Healthcare,Homemaker,Lawyer,Marketing 895  524 A (0.41452514 0.16759777 0.08826816 0.32960894)  \n        18) Profession=Engineer,Entertainment 433  198 A (0.54272517 0.18937644 0.06004619 0.20785219) *\n        19) Profession=Executive,Healthcare,Homemaker,Lawyer,Marketing 462  257 D (0.29437229 0.14718615 0.11471861 0.44372294) *\n     5) Spending_Score=Average,High 2037 1154 C (0.17427590 0.32695140 0.43348061 0.06529210)  \n      10) Profession=Doctor,Engineer,Entertainment,Executive,Healthcare,Homemaker,Lawyer,Marketing 1196  749 B (0.23076923 0.37374582 0.29598662 0.09949833) *\n      11) Profession=Artist 841  312 C (0.09393579 0.26040428 0.62901308 0.01664685) *\n   3) Age&lt; 34 1837  753 D (0.19814916 0.09961894 0.11213936 0.59009254) *",
+    "crumbs": [
+      "Multiclass classification",
+      "Classification Model"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/1 multclass classification.html#evaluate",
+    "href": "Multiclass classification/1 multclass classification.html#evaluate",
+    "title": "Classification Model",
+    "section": "5.1 Evaluate",
+    "text": "5.1 Evaluate\nMake predictions on the testing data\n\n\nCode\npredictions &lt;- predict(tree_fit,data_test) \n\npredictions_probability &lt;- predict(tree_fit,data_test,type=\"prob\")\n\n\n\n\nCode\ndata_test_result=cbind(data_test,predictions,predictions_probability) \n\n\n\n\nCode\nconf_mat(data_test_result, truth = target_variable,\n    estimate = .pred_class)\n\n\n          Truth\nPrediction   A   B   C   D\n         A  36  13   1  15\n         B  72  97  86  17\n         C  10  31  86   1\n         D  78  37  34 193\n\n\n\n\nCode\nmetrics(data_test_result, target_variable, .pred_class)\n\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy multiclass     0.511\n2 kap      multiclass     0.345\n\n\n\n\nCode\naccuracy(data_test_result, truth = target_variable, estimate = .pred_class)\n\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy multiclass     0.511\n\n\n\n\nCode\nsens(data_test_result, truth = target_variable,\n    estimate = .pred_class)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 sens    macro          0.500\n\n\n\n\nCode\nspec(data_test_result, truth = target_variable,\n    estimate = .pred_class)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 spec    macro          0.837\n\n\n\n\nCode\nall_metrics &lt;- metric_set(accuracy, sens, spec)\n\nall_metrics(data_test_result, truth = target_variable,estimate = .pred_class)\n\n\n# A tibble: 3 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy multiclass     0.511\n2 sens     macro          0.500\n3 spec     macro          0.837\n\n\n\n\nCode\nconf_mat(data_test_result, truth = target_variable,estimate = .pred_class) %&gt;% \n  summary()\n\n\n# A tibble: 13 × 3\n   .metric              .estimator .estimate\n   &lt;chr&gt;                &lt;chr&gt;          &lt;dbl&gt;\n 1 accuracy             multiclass     0.511\n 2 kap                  multiclass     0.345\n 3 sens                 macro          0.500\n 4 spec                 macro          0.837\n 5 ppv                  macro          0.537\n 6 npv                  macro          0.846\n 7 mcc                  multiclass     0.362\n 8 j_index              macro          0.336\n 9 bal_accuracy         macro          0.668\n10 detection_prevalence macro          0.25 \n11 precision            macro          0.537\n12 recall               macro          0.500\n13 f_meas               macro          0.475\n\n\nROC:receiver operating characteristic curve\n\n\nCode\n#roc_auc(\n#    truth = target_variable,\n#    .pred_A,\n #   .pred_B,\n #   .pred_C,\n #   .pred_D,\n #   estimator = \"macro_weighted\"\n # )",
+    "crumbs": [
+      "Multiclass classification",
+      "Classification Model"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/1 multclass classification.html#save-model",
+    "href": "Multiclass classification/1 multclass classification.html#save-model",
+    "title": "Classification Model",
+    "section": "5.2 save model",
+    "text": "5.2 save model\ncheck model size\n\n\nCode\nlibrary(lobstr)\nobj_size(tree_fit)\n\n\n591 kB\n\n\nbundle and save model\n\n\nCode\nlibrary(bundle)\nmodel_bundle &lt;- bundle(tree_fit)\n\n\n\n\nCode\nsaveRDS(model_bundle,'level 1 multclass classification tree hotel model.RDS')",
+    "crumbs": [
+      "Multiclass classification",
+      "Classification Model"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/1 multclass classification.html#make-predication",
+    "href": "Multiclass classification/1 multclass classification.html#make-predication",
+    "title": "Classification Model",
+    "section": "5.3 make predication",
+    "text": "5.3 make predication\nload model and unbundle\n\n\nCode\nmodel=readRDS('level 1 multclass classification tree hotel model.RDS')\n\nmodel &lt;- unbundle(model)\n\n\n\n\nCode\nfinal_prediction=predict(model,data_valid)\n\nhead(final_prediction)\n\n\n# A tibble: 6 × 1\n  .pred_class\n  &lt;fct&gt;      \n1 B          \n2 C          \n3 D          \n4 D          \n5 D          \n6 C          \n\n\n\n\nCode\nfinal_prediction %&gt;% count(.pred_class)\n\n\n# A tibble: 4 × 2\n  .pred_class     n\n  &lt;fct&gt;       &lt;int&gt;\n1 A             119\n2 B             538\n3 C             253\n4 D             704\n\n\n\n\nCode\ndata_valid %&gt;% count(target_variable)\n\n\n# A tibble: 4 × 2\n  target_variable     n\n  &lt;fct&gt;           &lt;int&gt;\n1 A                 392\n2 B                 362\n3 C                 400\n4 D                 460",
+    "crumbs": [
+      "Multiclass classification",
+      "Classification Model"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html",
+    "href": "Multiclass classification/6 multclass classification.html",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "",
+    "text": "Level 6 classification Tidy Modeling:\nlogistic glm model\ntuning decision tree model with rpart engine(tunning:cost_complexity,tree_depth)\nKNN model with knn engine(knn_spec)\ntuning XG boost model (tunning:tree_depth , min_n,loss_reduction ,sample_size , mtry,learn_rate)\ntuning light gbm boost model(tunning:tree_depth , min_n,loss_reduction ,sample_size , mtry,learn_rate)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#read-data",
+    "href": "Multiclass classification/6 multclass classification.html#read-data",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "2.1 read data",
+    "text": "2.1 read data\n\n\nCode\nlibrary(tidyverse)\n\ndf_train_raw &lt;- readr::read_csv(\"data/Train.csv\")\n\ndf_test_raw&lt;- readr::read_csv(\"data/Test.csv\")\n\n\n\n\nCode\ndf_train=df_train_raw %&gt;% mutate(target_variable=as.factor(Segmentation)) %&gt;% select(-Segmentation)\n#%&gt;% filter(target_variable %in% c('A','B'))\ndf_test=df_test_raw\n\n\n\n\nCode\nglimpse(df_train)\n\n\nRows: 8,068\nColumns: 11\n$ ID              &lt;dbl&gt; 462809, 462643, 466315, 461735, 462669, 461319, 460156…\n$ Gender          &lt;chr&gt; \"Male\", \"Female\", \"Female\", \"Male\", \"Female\", \"Male\", …\n$ Ever_Married    &lt;chr&gt; \"No\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"No\", \"No\", \"…\n$ Age             &lt;dbl&gt; 22, 38, 67, 67, 40, 56, 32, 33, 61, 55, 26, 19, 19, 70…\n$ Graduated       &lt;chr&gt; \"No\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"No\", \"Yes\", \"Yes\", …\n$ Profession      &lt;chr&gt; \"Healthcare\", \"Engineer\", \"Engineer\", \"Lawyer\", \"Enter…\n$ Work_Experience &lt;dbl&gt; 1, NA, 1, 0, NA, 0, 1, 1, 0, 1, 1, 4, 0, NA, 0, 1, 9, …\n$ Spending_Score  &lt;chr&gt; \"Low\", \"Average\", \"Low\", \"High\", \"High\", \"Average\", \"L…\n$ Family_Size     &lt;dbl&gt; 4, 3, 1, 2, 6, 2, 3, 3, 3, 4, 3, 4, NA, 1, 1, 2, 5, 6,…\n$ Var_1           &lt;chr&gt; \"Cat_4\", \"Cat_4\", \"Cat_6\", \"Cat_6\", \"Cat_6\", \"Cat_6\", …\n$ target_variable &lt;fct&gt; D, A, B, B, A, C, C, D, D, C, A, D, D, A, B, C, D, B, …",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#data-split",
+    "href": "Multiclass classification/6 multclass classification.html#data-split",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "2.2 data split",
+    "text": "2.2 data split\n\n\nCode\nset.seed(1234)\n\ndata_split &lt;- initial_validation_split(data=df_train, prop = c(0.7,0.2))\n\ndata_train=training(data_split)  \n\ndata_test=testing(data_split)  \n\ndata_valid=validation(data_split)\n\n\n\n\nCode\ndim(data_train)\n\n\n[1] 5647   11\n\n\n\n\nCode\ndim(data_test)\n\n\n[1] 807  11\n\n\n\n\nCode\ndim(data_valid)\n\n\n[1] 1614   11\n\n\n10 fold for tunning\n\n\nCode\nset.seed(234)\nfolds &lt;- vfold_cv(data_train)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#recipe",
+    "href": "Multiclass classification/6 multclass classification.html#recipe",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "3.1 recipe",
+    "text": "3.1 recipe\nbecasue the target class is not balance so using downsample\n\n\nCode\ndata_rec &lt;- recipe(target_variable ~ ., data = data_train) %&gt;%\n  step_rm(ID) %&gt;% \n  #step_downsample(target_variable) %&gt;%\n  step_impute_median(all_numeric(), -all_outcomes())%&gt;% \n  step_impute_mode(all_nominal(), -all_outcomes())%&gt;% \n  step_dummy(all_nominal(), -all_outcomes()) %&gt;%\n  step_zv(all_numeric()) %&gt;%\n  step_normalize(all_numeric())",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#model",
+    "href": "Multiclass classification/6 multclass classification.html#model",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "3.2 model",
+    "text": "3.2 model\n\n3.2.1 decision tree model with cost_complexity and tree_depth to tune\n\n\nCode\ntune_spec &lt;- \n  decision_tree(\n    cost_complexity = tune(),\n    tree_depth = tune()\n  ) %&gt;% \n  set_engine(\"rpart\") %&gt;% \n  set_mode(\"classification\")\n\n\n\n\nCode\ntune_spec |&gt; \n  extract_parameter_set_dials()\n\n\nCollection of 2 parameters for tuning\n\n      identifier            type    object\n cost_complexity cost_complexity nparam[+]\n      tree_depth      tree_depth nparam[+]\n\n\n\n\nCode\ndecision_tree_tune_grid &lt;- \n  tune_spec |&gt; \n  extract_parameter_set_dials() |&gt; \n  grid_latin_hypercube(size = 100)\n\n\n\n\n3.2.2 logistic glm model\nusing multinom_reg() since its multiclass classification\n\n\nCode\nglm_spec &lt;-\n  multinom_reg() |&gt;\n  set_engine(\"nnet\")\n\n\n\n\n3.2.3 KNN model\n\n\nCode\nknn_spec &lt;- nearest_neighbor() %&gt;%\n  set_engine(\"kknn\") %&gt;%\n  set_mode(\"classification\")\n\nknn_spec\n\n\nK-Nearest Neighbor Model Specification (classification)\n\nComputational engine: kknn \n\n\n\n\n3.2.4 XG Boost tree\n\n\nCode\nxgb_spec &lt;- boost_tree(\n  trees = 10,\n  tree_depth = tune(), min_n = tune(),\n  loss_reduction = tune(),                     ## first three: model complexity\n  sample_size = tune(),  mtry=tune(),       ## randomness\n  learn_rate = tune()                          ## step size\n) %&gt;%\n  set_engine(\"xgboost\") %&gt;%\n  set_mode(\"classification\")\n\nxgb_spec\n\n\nBoosted Tree Model Specification (classification)\n\nMain Arguments:\n  mtry = tune()\n  trees = 10\n  min_n = tune()\n  tree_depth = tune()\n  learn_rate = tune()\n  loss_reduction = tune()\n  sample_size = tune()\n\nComputational engine: xgboost \n\n\nxgb tunning grid\n\n\nCode\nxgb_tune_grid= grid_latin_hypercube(\n  tree_depth(),learn_rate(),loss_reduction(),min_n(),\n  sample_size=sample_prop(),finalize(mtry(),data_train),\n  size=10)\n\nhead(xgb_tune_grid)\n\n\n# A tibble: 6 × 6\n  tree_depth learn_rate loss_reduction min_n sample_size  mtry\n       &lt;int&gt;      &lt;dbl&gt;          &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt; &lt;int&gt;\n1          1   2.47e- 6       4.50e- 4    20       0.398    11\n2         15   1.41e- 7       1.35e-10     5       0.219     9\n3          7   1.51e- 8       1.89e- 3    27       0.942     2\n4         13   1.59e- 4       2.10e- 8    36       0.319     4\n5          8   2.73e- 2       5.16e- 1    33       0.183     6\n6          9   1.93e-10       5.17e- 5    10       0.905     3\n\n\n\n\n3.2.5 lightGBM Boost tree\n\n\nCode\nlightgbm_spec &lt;- boost_tree(\n  trees = 10,\n  tree_depth = tune(), min_n = tune(),\n  loss_reduction = tune(),                     ## first three: model complexity\n  sample_size = tune(),   mtry=tune(),     ## randomness\n  learn_rate = tune()                          ## step size\n) %&gt;%\n  set_engine(\"lightgbm\") %&gt;%\n  set_mode(\"classification\")\n\nlightgbm_spec\n\n\nBoosted Tree Model Specification (classification)\n\nMain Arguments:\n  mtry = tune()\n  trees = 10\n  min_n = tune()\n  tree_depth = tune()\n  learn_rate = tune()\n  loss_reduction = tune()\n  sample_size = tune()\n\nComputational engine: lightgbm \n\n\n\n\nCode\nlightgbm_grid= grid_latin_hypercube(\n  tree_depth(),learn_rate(),loss_reduction(),min_n(),\n  sample_size=sample_prop(),finalize(mtry(),data_train),\n  size=10)\n\nhead(lightgbm_grid)\n\n\n# A tibble: 6 × 6\n  tree_depth    learn_rate loss_reduction min_n sample_size  mtry\n       &lt;int&gt;         &lt;dbl&gt;          &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt; &lt;int&gt;\n1         13 0.00297         0.0000286       32       0.737     6\n2         11 0.00000110      0.0119          24       0.982     9\n3          5 0.00000671      0.0000000109    11       0.709     2\n4          4 0.00000000266   0.00140         34       0.619     9\n5          5 0.0000000602   24.2              6       0.432     4\n6          7 0.000112        0.000470         3       0.257     6",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#workflow-set",
+    "href": "Multiclass classification/6 multclass classification.html#workflow-set",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "3.3 workflow set",
+    "text": "3.3 workflow set\n\n\nCode\nlibrary(finetune)\ncntl   &lt;- control_grid(save_pred     = TRUE,\n                       save_workflow = TRUE)\n\n\nusing workflow set instead of workflow to combine many models.\n\n\nCode\nworkflow_set &lt;-\n  workflow_set(\n    preproc = list(data_rec),\n    models = list(glm   = glm_spec,\n                  tree  = tune_spec,\n                  knn=knn_spec,\n                  xgb=xgb_spec,\n                  lightgbm=lightgbm_spec\n                  )\n  ) %&gt;%\n  #option_add(grid = decision_tree_tune_grid, id = \"recipe_tree\")  %&gt;% \n  option_add(grid = xgb_tune_grid, id = \"recipe_xgb\")  %&gt;% \n  option_add(grid = lightgbm_grid, id = \"recipe_lightgbm\") \n\n\n\n\nCode\nworkflow_set %&gt;%\n  option_add_parameters()\n\n\n# A workflow set/tibble: 5 × 4\n  wflow_id        info             option    result    \n  &lt;chr&gt;           &lt;list&gt;           &lt;list&gt;    &lt;list&gt;    \n1 recipe_glm      &lt;tibble [1 × 4]&gt; &lt;opts[0]&gt; &lt;list [0]&gt;\n2 recipe_tree     &lt;tibble [1 × 4]&gt; &lt;opts[1]&gt; &lt;list [0]&gt;\n3 recipe_knn      &lt;tibble [1 × 4]&gt; &lt;opts[0]&gt; &lt;list [0]&gt;\n4 recipe_xgb      &lt;tibble [1 × 4]&gt; &lt;opts[2]&gt; &lt;list [0]&gt;\n5 recipe_lightgbm &lt;tibble [1 × 4]&gt; &lt;opts[2]&gt; &lt;list [0]&gt;",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#training-and-tunning",
+    "href": "Multiclass classification/6 multclass classification.html#training-and-tunning",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "3.4 training and tunning",
+    "text": "3.4 training and tunning\n\n\nCode\nlibrary(finetune)\ndoParallel::registerDoParallel()\n\nmodel_set_res = workflow_set  %&gt;% \n  workflow_map(\n              grid = 10,\n               resamples = folds,\n               control = cntl\n  )\n\n\n\n\nCode\nrank_results(model_set_res,\n             rank_metric = \"accuracy\",\n             select_best = TRUE)  %&gt;% \n  gt()\n\n\n\n\n\n\n\n\n\nwflow_id\n.config\n.metric\nmean\nstd_err\nn\npreprocessor\nmodel\nrank\n\n\n\n\nrecipe_xgb\nPreprocessor1_Model06\naccuracy\n0.5082270\n8.273046e-03\n10\nrecipe\nboost_tree\n1\n\n\nrecipe_xgb\nPreprocessor1_Model06\nbrier_class\n0.3732666\n3.222901e-05\n10\nrecipe\nboost_tree\n1\n\n\nrecipe_xgb\nPreprocessor1_Model06\nroc_auc\n0.7630375\n3.825994e-03\n10\nrecipe\nboost_tree\n1\n\n\nrecipe_tree\nPreprocessor1_Model02\naccuracy\n0.5080500\n6.889790e-03\n10\nrecipe\ndecision_tree\n2\n\n\nrecipe_tree\nPreprocessor1_Model02\nbrier_class\n0.3078043\n2.744968e-03\n10\nrecipe\ndecision_tree\n2\n\n\nrecipe_tree\nPreprocessor1_Model02\nroc_auc\n0.7479156\n5.425592e-03\n10\nrecipe\ndecision_tree\n2\n\n\nrecipe_glm\nPreprocessor1_Model1\naccuracy\n0.5032753\n8.839371e-03\n10\nrecipe\nmultinom_reg\n3\n\n\nrecipe_glm\nPreprocessor1_Model1\nbrier_class\n0.3048293\n2.551260e-03\n10\nrecipe\nmultinom_reg\n3\n\n\nrecipe_glm\nPreprocessor1_Model1\nroc_auc\n0.7542779\n5.770592e-03\n10\nrecipe\nmultinom_reg\n3\n\n\nrecipe_lightgbm\nPreprocessor1_Model05\naccuracy\n0.4779517\n9.344905e-03\n10\nrecipe\nboost_tree\n4\n\n\nrecipe_lightgbm\nPreprocessor1_Model05\nbrier_class\n0.3417080\n1.534749e-03\n10\nrecipe\nboost_tree\n4\n\n\nrecipe_lightgbm\nPreprocessor1_Model05\nroc_auc\n0.7263411\n6.250417e-03\n10\nrecipe\nboost_tree\n4\n\n\nrecipe_knn\nPreprocessor1_Model1\naccuracy\n0.4521041\n5.486483e-03\n10\nrecipe\nnearest_neighbor\n5\n\n\nrecipe_knn\nPreprocessor1_Model1\nbrier_class\n0.3802044\n2.918211e-03\n10\nrecipe\nnearest_neighbor\n5\n\n\nrecipe_knn\nPreprocessor1_Model1\nroc_auc\n0.7039305\n3.245546e-03\n10\nrecipe\nnearest_neighbor\n5\n\n\n\n\n\n\n\n\n\n\nCode\nmodel_set_res |&gt; autoplot()\n\n\n\n\n\n\n\n\n\n\n\nCode\nmodel_set_res |&gt; autoplot( id= 'recipe_xgb')\n\n\n\n\n\n\n\n\n\nselect best model:logistic glm model\n\n\nCode\nbest_model_id &lt;- \"recipe_xgb\"\n\n\nselect best parameters\n\n\nCode\nbest_fit &lt;-\n  model_set_res |&gt;\n  extract_workflow_set_result(best_model_id) |&gt;\n  select_best(metric = \"accuracy\")\n\n\n\n\nCode\n# create workflow for best model\nfinal_workflow &lt;-\n  model_set_res |&gt;\n  extract_workflow(best_model_id) |&gt;\n  finalize_workflow(best_fit)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#last-fit",
+    "href": "Multiclass classification/6 multclass classification.html#last-fit",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "3.5 last fit",
+    "text": "3.5 last fit\n\n\nCode\nfinal_fit &lt;-\n  final_workflow |&gt;\n  last_fit(data_split)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#evaluate",
+    "href": "Multiclass classification/6 multclass classification.html#evaluate",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "4.1 Evaluate",
+    "text": "4.1 Evaluate\n\n\nCode\nfinal_fit %&gt;%\n  collect_metrics()\n\n\n# A tibble: 3 × 4\n  .metric     .estimator .estimate .config             \n  &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               \n1 accuracy    multiclass     0.550 Preprocessor1_Model1\n2 roc_auc     hand_till      0.787 Preprocessor1_Model1\n3 brier_class multiclass     0.373 Preprocessor1_Model1\n\n\n\n\nCode\nall_metrics &lt;- metric_set(accuracy, recall, precision, f_meas, kap, sens, spec)\n\na=final_fit %&gt;% collect_predictions()\n\nall_metrics(a, truth = target_variable,estimate = .pred_class)\n\n\n# A tibble: 7 × 3\n  .metric   .estimator .estimate\n  &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy  multiclass     0.550\n2 recall    macro          0.536\n3 precision macro          0.533\n4 f_meas    macro          0.530\n5 kap       multiclass     0.396\n6 sens      macro          0.536\n7 spec      macro          0.850\n\n\n\n\nCode\n#final_fit %&gt;%\n#  collect_predictions() %&gt;% \n # roc_curve(target_variable, .pred_children) %&gt;% \n # autoplot()\n\n\n\n\nCode\nfinal_tree &lt;- extract_workflow(final_fit)\nfinal_tree\n\n\n══ Workflow [trained] ══════════════════════════════════════════════════════════\nPreprocessor: Recipe\nModel: boost_tree()\n\n── Preprocessor ────────────────────────────────────────────────────────────────\n6 Recipe Steps\n\n• step_rm()\n• step_impute_median()\n• step_impute_mode()\n• step_dummy()\n• step_zv()\n• step_normalize()\n\n── Model ───────────────────────────────────────────────────────────────────────\n##### xgb.Booster\nraw: 187.5 Kb \ncall:\n  xgboost::xgb.train(params = list(eta = 0.00188744903053763, max_depth = 14L, \n    gamma = 1.47066004807873, colsample_bytree = 1, colsample_bynode = 0.545454545454545, \n    min_child_weight = 5L, subsample = 0.300618941169232), data = x$data, \n    nrounds = 10, watchlist = x$watchlist, verbose = 0, nthread = 1, \n    objective = \"multi:softprob\", num_class = 4L)\nparams (as set within xgb.train):\n  eta = \"0.00188744903053763\", max_depth = \"14\", gamma = \"1.47066004807873\", colsample_bytree = \"1\", colsample_bynode = \"0.545454545454545\", min_child_weight = \"5\", subsample = \"0.300618941169232\", nthread = \"1\", objective = \"multi:softprob\", num_class = \"4\", validate_parameters = \"TRUE\"\nxgb.attributes:\n  niter\ncallbacks:\n  cb.evaluation.log()\n# of features: 22 \nniter: 10\nnfeatures : 22 \nevaluation_log:\n     iter training_mlogloss\n    &lt;num&gt;             &lt;num&gt;\n        1          1.385471\n        2          1.384689\n---                        \n        9          1.379286\n       10          1.378525\n\n\n\n\nCode\nlibrary(vip)\n\nfinal_tree %&gt;% \n  extract_fit_parsnip() %&gt;% \n  vip()",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#save-model",
+    "href": "Multiclass classification/6 multclass classification.html#save-model",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "4.2 save model",
+    "text": "4.2 save model\ncheck model size\n\n\nCode\nlibrary(lobstr)\nobj_size(final_tree)\n\n\n1.84 MB\n\n\nbundle and save model\n\n\nCode\nlibrary(bundle)\nmodel_bundle &lt;- bundle(final_tree)\n\n\n\n\nCode\nsaveRDS(model_bundle,'level 6 multclass classification model.RDS')",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/6 multclass classification.html#make-predication",
+    "href": "Multiclass classification/6 multclass classification.html#make-predication",
+    "title": "Multiple Classification Model with recipe,workflow set,fast tuning",
+    "section": "4.3 make predication",
+    "text": "4.3 make predication\nload model and unbundle\n\n\nCode\nmodel=readRDS('level 6 multclass classification model.RDS')\n\nmodel &lt;- unbundle(model)\n\n\n\n\nCode\nfinal_prediction=predict(model,data_valid)\n\nhead(final_prediction)\n\n\n# A tibble: 6 × 1\n  .pred_class\n  &lt;fct&gt;      \n1 B          \n2 C          \n3 D          \n4 D          \n5 D          \n6 C          \n\n\n\n\nCode\nfinal_prediction %&gt;%group_by(.pred_class) %&gt;% count()\n\n\n# A tibble: 4 × 2\n# Groups:   .pred_class [4]\n  .pred_class     n\n  &lt;fct&gt;       &lt;int&gt;\n1 A             448\n2 B             229\n3 C             399\n4 D             538\n\n\n\n\nCode\nfinal_prediction_data=cbind(data_valid,final_prediction)\n\nconf_mat(final_prediction_data, truth = target_variable,\n    estimate = .pred_class)\n\n\n          Truth\nPrediction   A   B   C   D\n         A 185 100  58 105\n         B  54  91  60  24\n         C  57 115 217  10\n         D  96  56  65 321\n\n\n\n\nCode\naccuracy(final_prediction_data, truth = target_variable, estimate = .pred_class)\n\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy multiclass     0.504\n\n\n\n\nCode\nfinal_prediction_data %&gt;% group_by(target_variable)%&gt;% count()\n\n\n# A tibble: 4 × 2\n# Groups:   target_variable [4]\n  target_variable     n\n  &lt;fct&gt;           &lt;int&gt;\n1 A                 392\n2 B                 362\n3 C                 400\n4 D                 460\n\n\n\n\nCode\nfinal_prediction_data %&gt;% group_by(.pred_class) %&gt;% count()\n\n\n# A tibble: 4 × 2\n# Groups:   .pred_class [4]\n  .pred_class     n\n  &lt;fct&gt;       &lt;int&gt;\n1 A             448\n2 B             229\n3 C             399\n4 D             538\n\n\n\n\nCode\nconf_mat(final_prediction_data, truth = target_variable,\n    estimate = .pred_class)\n\n\n          Truth\nPrediction   A   B   C   D\n         A 185 100  58 105\n         B  54  91  60  24\n         C  57 115 217  10\n         D  96  56  65 321",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow set,fast tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/0 multclass classification.html#measurement",
+    "href": "Multiclass classification/0 multclass classification.html#measurement",
+    "title": "Customer Segmentation Dataset",
+    "section": "2.1 Measurement:",
+    "text": "2.1 Measurement:\n\nAccuracy=TP+TN+FP+FN\nPrecision — Out of all the examples that predicted as positive, how many are really positive?\n\nPrecision=TP/(TP+FP)\n\nRecall/Sensitivity(True Positive rate) — Out of all the positive examples, how many are predicted as positive?\n\nRecall=TP/(TP+FN)\n\nSpecificity(True Negative rate)— Out of all the people that do not have the disease, how many got negative results?\nSpecificity=TN/(TN+FP)\nFalse Positive rate=1-Specificity\nFalse Negative Rat=FN/(TP+FN)\n\nFalse Negative Rate tells us what proportion of the positive class got incorrectly classified by the classifier\n\nF1 score=2/(1/Precision+1/Recall)",
+    "crumbs": [
+      "Multiclass classification",
+      "Customer Segmentation Dataset"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#read-data-1",
+    "href": "Multiclass classification/3 multclass classification.html#read-data-1",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "4.1 read data",
+    "text": "4.1 read data\nquarto-executable-code-5450563D\nlibrary(tidyverse)\n\ndf_train_raw &lt;- readr::read_csv(\"data/Train.csv\")\n\ndf_test_raw&lt;- readr::read_csv(\"data/Test.csv\")\nquarto-executable-code-5450563D\ndf_train=df_train_raw %&gt;% mutate(target_variable=as.factor(Segmentation)) %&gt;% select(-Segmentation)\ndf_test=df_test_raw\nquarto-executable-code-5450563D\nglimpse(df_train)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#data-split-1",
+    "href": "Multiclass classification/3 multclass classification.html#data-split-1",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "4.2 data split",
+    "text": "4.2 data split\nquarto-executable-code-5450563D\nset.seed(1234)\n\ndata_split &lt;- initial_validation_split(data=df_train, prop = c(0.7,0.2))\n\ndata_train=training(data_split)  \n\ndata_test=testing(data_split)  \n\ndata_valid=validation(data_split)\nquarto-executable-code-5450563D\ndim(data_train)\nquarto-executable-code-5450563D\ndim(data_test)\nquarto-executable-code-5450563D\ndim(data_valid)\n10 fold for tunning quarto-executable-code-5450563D\nset.seed(234)\nfolds &lt;- vfold_cv(data_train)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#recipe-1",
+    "href": "Multiclass classification/3 multclass classification.html#recipe-1",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "5.1 recipe",
+    "text": "5.1 recipe\nbecasue the target class is not balance so using downsample quarto-executable-code-5450563D\ndata_rec &lt;- recipe(target_variable ~ ., data = data_train) %&gt;%\n  #update_role(ID, new_role = \"ID\") %&gt;% \n  step_rm(ID) %&gt;% \n  #step_downsample(target_variable) %&gt;%\n  \n  step_impute_median(all_numeric(), -all_outcomes())%&gt;% \n  step_impute_mode(all_nominal(), -all_outcomes())%&gt;% \n  \n  step_dummy(all_nominal(), -all_outcomes()) %&gt;%\n  step_zv(all_numeric()) %&gt;%\n  step_normalize(all_numeric())\n\ndata_rec",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#model-1",
+    "href": "Multiclass classification/3 multclass classification.html#model-1",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "5.2 model",
+    "text": "5.2 model\n\n5.2.1 tree model\nquarto-executable-code-5450563D\ntree_spec &lt;- decision_tree() %&gt;%\n  set_engine(\"rpart\") %&gt;%\n  set_mode(\"classification\")\n\n\n5.2.2 KNN model\nquarto-executable-code-5450563D\nknn_spec &lt;- nearest_neighbor() %&gt;%\n  set_engine(\"kknn\") %&gt;%\n  set_mode(\"classification\")\n\n\n5.2.3 xgb tuning model\nquarto-executable-code-5450563D\nxgb_spec &lt;- boost_tree(\n  trees = 10,\n  tree_depth = tune(), min_n = tune(),\n  loss_reduction = tune(),                     ## first three: model complexity\n  sample_size = tune(),  mtry=tune(),       ## randomness\n  learn_rate = tune()                          ## step size\n) %&gt;%\n  set_engine(\"xgboost\") %&gt;%\n  set_mode(\"classification\")\n\nxgb_spec\nxgb tunning grid\nquarto-executable-code-5450563D\nxgb_tune_grid= grid_latin_hypercube(\n  tree_depth(),learn_rate(),loss_reduction(),min_n(),\n  sample_size=sample_prop(),finalize(mtry(),data_train),\n  size=50)\n\nhead(xgb_tune_grid)\nworkflow\nquarto-executable-code-5450563D\nknn_wf &lt;- workflow() %&gt;%add_recipe(data_rec) %&gt;% add_model(knn_spec) \n\ntree_wf &lt;- workflow() %&gt;%add_recipe(data_rec)%&gt;% add_model(tree_spec)\n\nxgb_wf &lt;- workflow() %&gt;%add_recipe(data_rec)%&gt;% add_model(xgb_spec)",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#training-and-tunning-1",
+    "href": "Multiclass classification/3 multclass classification.html#training-and-tunning-1",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "5.3 training and tunning",
+    "text": "5.3 training and tunning\nquarto-executable-code-5450563D\nset.seed(234)\nfolds &lt;- vfold_cv(data_train)\n\n5.3.1 KNN\nquarto-executable-code-5450563D\nknn_wf_result= fit(knn_wf,data_train)\nquarto-executable-code-5450563D\nfuture_result_class=predict(knn_wf_result,data_test)\nquarto-executable-code-5450563D\nfuture_result_prob=predict(knn_wf_result,data_test,type=\"prob\")\nquarto-executable-code-5450563D\nall_future_result=cbind(data_test,future_result_class,future_result_prob)\nquarto-executable-code-5450563D\naccuracy(all_future_result, target_variable,  .pred_class)\nquarto-executable-code-5450563D\nroc_auc(all_future_result, target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D)\nquarto-executable-code-5450563D\nall_future_result %&gt;% roc_curve(target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D) %&gt;% \n  autoplot()\n\n\n5.3.2 tree\ntree_wf_result= fit(tree_wf,data_train)\n```\n\n\n:::",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "Multiclass classification/3 multclass classification.html#model-performance",
+    "href": "Multiclass classification/3 multclass classification.html#model-performance",
+    "title": "Multiple Classification Model with recipe,workflow, tuning",
+    "section": "3.4 model performance:",
+    "text": "3.4 model performance:\n\n3.4.1 KNN performance\n\n\nCode\nknn_wf_result= fit(knn_wf,data_train)\n\n\n\n\nCode\nfuture_result_class=predict(knn_wf_result,data_test)\n\n\n\n\nCode\nfuture_result_prob=predict(knn_wf_result,data_test,type=\"prob\")\n\n\n\n\nCode\nall_future_result=cbind(data_test,future_result_class,future_result_prob)\n\n\n\n\nCode\naccuracy(all_future_result, target_variable,  .pred_class)\n\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy multiclass     0.475\n\n\n\n\nCode\nroc_auc(all_future_result, target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 roc_auc hand_till      0.711\n\n\n\n\nCode\nall_future_result %&gt;% roc_curve(target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D) %&gt;% \n  autoplot()\n\n\n\n\n\n\n\n\n\n\n\n3.4.2 Tree performance\n\n\nCode\ntree_wf_result= fit(tree_wf,data_train)\n\n\n\n\nCode\ntree_future_result_class=predict(tree_wf_result,data_test)\n\n\n\n\nCode\ntree_future_result_prob=predict(tree_wf_result,data_test,type=\"prob\")\n\n\n\n\nCode\ntree_all_future_result=cbind(data_test,tree_future_result_class,tree_future_result_prob)\n\n\n\n\nCode\naccuracy(tree_all_future_result, target_variable,  .pred_class)\n\n\n# A tibble: 1 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy multiclass     0.525\n\n\n\n\nCode\nroc_auc(tree_all_future_result, target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D)\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 roc_auc hand_till      0.716\n\n\n\n\nCode\ntree_all_future_result %&gt;% roc_curve(target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D) %&gt;% \n  autoplot()",
+    "crumbs": [
+      "Multiclass classification",
+      "Multiple Classification Model with recipe,workflow, tuning"
+    ]
   }
 ]

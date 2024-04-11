@@ -37,6 +37,7 @@ website:
       - sidebar:bar2
       - sidebar:bar3
       - sidebar:bar4
+      - sidebar:bar4b
       - sidebar:bar5
       - sidebar:bar6 
   
@@ -83,6 +84,13 @@ website:
       background: light
       collapse-level: 2
       contents: hotel classification model   
+
+    - id: bar4b
+      title: "Multiclass classification"
+      style: "floating"
+      background: light
+      collapse-level: 2
+      contents: Multiclass classification 
 
     - id: bar5
       title: "Regression"

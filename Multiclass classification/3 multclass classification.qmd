@@ -1,0 +1,268 @@
+---
+title: "Multiple Classification Model with recipe,workflow, tuning"
+subtitle: "with Customer Segmentation Dataset"
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+classification Tidy Modeling with 2 model and 1 recipe: 
+
+* using Recipe to down sample and with prep(Recipe),jusic(train_data),bake(test_data) process.
+* add resamples(Monte Carlo Cross-Validation) to estimate the performance of our two models with `fit_resamples()`
+
+decision tree model with rpart engine(tree_spec)
+
+KNN model with knn engine(knn_spec)
+
+# load package
+
+```{r}
+#| code-summary: "Load Pacakges & Set Options"
+library(themis)
+library(tidyverse)      
+library(tidymodels)     
+library(palmerpenguins) # penguin dataset
+library(gt)             # better tables
+library(bonsai)         # tree-based models
+library(conflicted)     # function conflicts
+library(vetiver)
+library(Microsoft365R)
+library(pins)
+tidymodels_prefer()     # handle conflicts
+conflict_prefer("penguins", "palmerpenguins")
+options(tidymodels.dark = TRUE) # dark mode
+theme_set(theme_bw()) # set default ggplot2 theme
+```
+
+# data preparation
+
+## read data
+
+```{r}
+library(tidyverse)
+
+df_train_raw <- readr::read_csv("data/Train.csv")
+
+df_test_raw<- readr::read_csv("data/Test.csv")
+```
+
+
+```{r}
+df_train=df_train_raw %>% mutate(target_variable=as.factor(Segmentation)) %>% select(-Segmentation)
+df_test=df_test_raw
+```
+
+
+```{r}
+glimpse(df_train)
+```
+
+## data split
+
+
+```{r}
+
+set.seed(1234)
+
+data_split <- initial_validation_split(data=df_train, prop = c(0.7,0.2))
+
+data_train=training(data_split)  
+
+data_test=testing(data_split)  
+
+data_valid=validation(data_split)
+
+```
+
+```{r}
+dim(data_train)
+```
+
+```{r}
+dim(data_test)
+```
+
+```{r}
+dim(data_valid)
+```
+
+10 fold for tunning
+```{r}
+set.seed(234)
+folds <- vfold_cv(data_train)
+```
+
+
+
+# modeling
+
+## recipe
+
+becasue the target class is not balance so using downsample
+```{r}
+data_rec <- recipe(target_variable ~ ., data = data_train) %>%
+  #update_role(ID, new_role = "ID") %>% 
+  step_rm(ID) %>% 
+  #step_downsample(target_variable) %>%
+  
+  step_impute_median(all_numeric(), -all_outcomes())%>% 
+  step_impute_mode(all_nominal(), -all_outcomes())%>% 
+  
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  step_zv(all_numeric()) %>%
+  step_normalize(all_numeric())
+
+data_rec  
+```
+
+
+
+## model
+
+### tree model
+
+```{r}
+tree_spec <- decision_tree() %>%
+  set_engine("rpart") %>%
+  set_mode("classification")
+```
+
+### KNN model
+
+```{r}
+knn_spec <- nearest_neighbor() %>%
+  set_engine("kknn") %>%
+  set_mode("classification")
+```
+
+
+### xgb tuning model
+
+
+```{r}
+xgb_spec <- boost_tree(
+  trees = 10,
+  tree_depth = tune(), min_n = tune(),
+  loss_reduction = tune(),                     ## first three: model complexity
+  sample_size = tune(),  mtry=tune(),       ## randomness
+  learn_rate = tune()                          ## step size
+) %>%
+  set_engine("xgboost") %>%
+  set_mode("classification")
+
+xgb_spec
+```
+
+xgb tunning grid
+
+```{r}
+xgb_tune_grid= grid_latin_hypercube(
+  tree_depth(),learn_rate(),loss_reduction(),min_n(),
+  sample_size=sample_prop(),finalize(mtry(),data_train),
+  size=50)
+
+head(xgb_tune_grid)
+```
+
+
+workflow
+
+```{r}
+knn_wf <- workflow() %>%add_recipe(data_rec) %>% add_model(knn_spec) 
+
+tree_wf <- workflow() %>%add_recipe(data_rec)%>% add_model(tree_spec)
+
+xgb_wf <- workflow() %>%add_recipe(data_rec)%>% add_model(xgb_spec)
+```
+
+
+
+
+## training and tunning
+
+```{r}
+set.seed(234)
+folds <- vfold_cv(data_train)
+```
+
+
+## model performance:
+
+
+### KNN performance
+```{r}
+knn_wf_result= fit(knn_wf,data_train)
+```
+
+```{r}
+future_result_class=predict(knn_wf_result,data_test)
+```
+
+```{r}
+future_result_prob=predict(knn_wf_result,data_test,type="prob")
+```
+
+```{r}
+all_future_result=cbind(data_test,future_result_class,future_result_prob)
+```
+
+
+```{r}
+accuracy(all_future_result, target_variable,  .pred_class)
+```
+```{r}
+roc_auc(all_future_result, target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D)
+```
+```{r}
+all_future_result %>% roc_curve(target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D) %>% 
+  autoplot()
+```
+
+
+### Tree performance
+```{r}
+tree_wf_result= fit(tree_wf,data_train)
+```
+
+```{r}
+tree_future_result_class=predict(tree_wf_result,data_test)
+```
+
+```{r}
+tree_future_result_prob=predict(tree_wf_result,data_test,type="prob")
+```
+
+```{r}
+tree_all_future_result=cbind(data_test,tree_future_result_class,tree_future_result_prob)
+```
+
+
+```{r}
+accuracy(tree_all_future_result, target_variable,  .pred_class)
+```
+
+```{r}
+roc_auc(tree_all_future_result, target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D)
+```
+
+
+```{r}
+tree_all_future_result %>% roc_curve(target_variable,.pred_A ,.pred_B,.pred_C ,.pred_D) %>% 
+  autoplot()
+```
+
+
+
+
+
