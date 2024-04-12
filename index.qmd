@@ -2,13 +2,14 @@
 title: "About"
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+R is based heavily on the S language, first developed in the 1960s and 1970s by researchers at Bell Laboratories in New Jersey
 
 
-https://tonyfly3000.github.io/tidymodeling/
-
+R’s developers—Ross Ihaka and Robert Gentleman at the Univer-
+sity of Auckland in New Zealand—released it in the early 1990s under the
+ 
+GNU public license. (The software was named for Ross and Robert’s shared first initial.)
 
 ```{r}
 1 + 1

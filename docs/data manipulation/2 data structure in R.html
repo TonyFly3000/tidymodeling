@@ -290,6 +290,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-multiclass-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Multiclass classification</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-multiclass-classification">    
+        <li class="dropdown-header">Multiclass classification</li>
+        <li>
+    <a class="dropdown-item" href="../Multiclass classification/0 multclass classification.html">
+ <span class="dropdown-text">Customer Segmentation Dataset</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Multiclass classification/1 multclass classification.html">
+ <span class="dropdown-text">Classification Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Multiclass classification/3 multclass classification.html">
+ <span class="dropdown-text">Multiple Classification Model with recipe,workflow, tuning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Multiclass classification/6 multclass classification.html">
+ <span class="dropdown-text">Multiple Classification Model with recipe,workflow set,fast tuning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regression" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Regression</span>
     </a>
@@ -444,15 +468,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#append-vector" id="toc-append-vector" class="nav-link" data-scroll-target="#append-vector"><span class="header-section-number">1.2</span> append vector</a></li>
   <li><a href="#calculate-vector" id="toc-calculate-vector" class="nav-link" data-scroll-target="#calculate-vector"><span class="header-section-number">1.3</span> calculate vector</a></li>
   <li><a href="#select-vector-element" id="toc-select-vector-element" class="nav-link" data-scroll-target="#select-vector-element"><span class="header-section-number">1.4</span> select vector element</a></li>
-  <li><a href="#vector-to-other-data-format" id="toc-vector-to-other-data-format" class="nav-link" data-scroll-target="#vector-to-other-data-format"><span class="header-section-number">1.5</span> vector to other data format</a>
+  <li><a href="#vector-converting-between-types" id="toc-vector-converting-between-types" class="nav-link" data-scroll-target="#vector-converting-between-types"><span class="header-section-number">1.5</span> vector Converting between types</a>
   <ul class="collapse">
-  <li><a href="#vector-to-dataframe" id="toc-vector-to-dataframe" class="nav-link" data-scroll-target="#vector-to-dataframe"><span class="header-section-number">1.5.1</span> vector to dataframe</a></li>
-  <li><a href="#verctor-to-matrix" id="toc-verctor-to-matrix" class="nav-link" data-scroll-target="#verctor-to-matrix"><span class="header-section-number">1.5.2</span> verctor to matrix</a></li>
-  <li><a href="#verctor-to-list" id="toc-verctor-to-list" class="nav-link" data-scroll-target="#verctor-to-list"><span class="header-section-number">1.5.3</span> verctor to list</a></li>
+  <li><a href="#to-factor" id="toc-to-factor" class="nav-link" data-scroll-target="#to-factor"><span class="header-section-number">1.5.1</span> to factor</a></li>
+  <li><a href="#to-numeric" id="toc-to-numeric" class="nav-link" data-scroll-target="#to-numeric"><span class="header-section-number">1.5.2</span> to numeric</a></li>
+  <li><a href="#to-character" id="toc-to-character" class="nav-link" data-scroll-target="#to-character"><span class="header-section-number">1.5.3</span> to character</a></li>
+  <li><a href="#to-boolen" id="toc-to-boolen" class="nav-link" data-scroll-target="#to-boolen"><span class="header-section-number">1.5.4</span> to boolen</a></li>
+  </ul></li>
+  <li><a href="#vector-to-other-data-format" id="toc-vector-to-other-data-format" class="nav-link" data-scroll-target="#vector-to-other-data-format"><span class="header-section-number">1.6</span> vector to other data format</a>
+  <ul class="collapse">
+  <li><a href="#vector-to-dataframe" id="toc-vector-to-dataframe" class="nav-link" data-scroll-target="#vector-to-dataframe"><span class="header-section-number">1.6.1</span> vector to dataframe</a></li>
+  <li><a href="#verctor-to-matrix" id="toc-verctor-to-matrix" class="nav-link" data-scroll-target="#verctor-to-matrix"><span class="header-section-number">1.6.2</span> verctor to matrix</a></li>
+  <li><a href="#verctor-to-list" id="toc-verctor-to-list" class="nav-link" data-scroll-target="#verctor-to-list"><span class="header-section-number">1.6.3</span> verctor to list</a></li>
+  <li><a href="#verctor-to-array" id="toc-verctor-to-array" class="nav-link" data-scroll-target="#verctor-to-array"><span class="header-section-number">1.6.4</span> verctor to array</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#dataframe" id="toc-dataframe" class="nav-link" data-scroll-target="#dataframe"><span class="header-section-number">2</span> Dataframe</a></li>
-  <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices"><span class="header-section-number">3</span> Matrices</a></li>
+  <li><a href="#dataframe" id="toc-dataframe" class="nav-link" data-scroll-target="#dataframe"><span class="header-section-number">2</span> Dataframe</a>
+  <ul class="collapse">
+  <li><a href="#dataframe-to-other-data-format" id="toc-dataframe-to-other-data-format" class="nav-link" data-scroll-target="#dataframe-to-other-data-format"><span class="header-section-number">2.1</span> dataframe to other data format</a>
+  <ul class="collapse">
+  <li><a href="#dataframe-to-matrix" id="toc-dataframe-to-matrix" class="nav-link" data-scroll-target="#dataframe-to-matrix"><span class="header-section-number">2.1.1</span> dataframe to matrix</a></li>
+  <li><a href="#dataframe-to-vector" id="toc-dataframe-to-vector" class="nav-link" data-scroll-target="#dataframe-to-vector"><span class="header-section-number">2.1.2</span> dataframe to vector</a></li>
+  <li><a href="#dataframe-to-list" id="toc-dataframe-to-list" class="nav-link" data-scroll-target="#dataframe-to-list"><span class="header-section-number">2.1.3</span> dataframe to list</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices"><span class="header-section-number">3</span> Matrices</a>
+  <ul class="collapse">
+  <li><a href="#matrix-to-other-data-format" id="toc-matrix-to-other-data-format" class="nav-link" data-scroll-target="#matrix-to-other-data-format"><span class="header-section-number">3.1</span> matrix to other data format</a>
+  <ul class="collapse">
+  <li><a href="#matrix-to-dataframe" id="toc-matrix-to-dataframe" class="nav-link" data-scroll-target="#matrix-to-dataframe"><span class="header-section-number">3.1.1</span> matrix to dataframe</a></li>
+  <li><a href="#matrix-to-vector" id="toc-matrix-to-vector" class="nav-link" data-scroll-target="#matrix-to-vector"><span class="header-section-number">3.1.2</span> matrix to vector</a></li>
+  <li><a href="#matrix-to-list" id="toc-matrix-to-list" class="nav-link" data-scroll-target="#matrix-to-list"><span class="header-section-number">3.1.3</span> matrix to list</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">4</span> Lists</a></li>
   <li><a href="#arrays" id="toc-arrays" class="nav-link" data-scroll-target="#arrays"><span class="header-section-number">5</span> Arrays</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">6</span> Reference:</a></li>
@@ -588,22 +636,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="vector-to-other-data-format" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="vector-to-other-data-format"><span class="header-section-number">1.5</span> vector to other data format</h2>
-<section id="vector-to-dataframe" class="level3" data-number="1.5.1">
-<h3 data-number="1.5.1" class="anchored" data-anchor-id="vector-to-dataframe"><span class="header-section-number">1.5.1</span> vector to dataframe</h3>
+<section id="vector-converting-between-types" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="vector-converting-between-types"><span class="header-section-number">1.5</span> vector Converting between types</h2>
+<section id="to-factor" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="to-factor"><span class="header-section-number">1.5.1</span> to factor</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jhon"</span>, <span class="st">"Lee"</span>, <span class="st">"Suzan"</span>, <span class="st">"Abhinav"</span>, </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Brain"</span>, <span class="st">"Emma"</span>, <span class="st">"David"</span>, <span class="st">"Alice"</span>) </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>Marks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">76</span>, <span class="dv">86</span>, <span class="dv">96</span>, <span class="dv">73</span>, <span class="dv">87</span>, <span class="dv">47</span>, <span class="dv">98</span>) </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Name,Marks) </span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"g"</span>, <span class="st">"b"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.factor</span>(x)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] a g b
+Levels: a b g</code></pre>
+</div>
+</div>
+</section>
+<section id="to-numeric" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="to-numeric"><span class="header-section-number">1.5.2</span> to numeric</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'123'</span>,<span class="st">'44'</span>, <span class="st">'222'</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.numeric</span>(x)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 123  44 222</code></pre>
+</div>
+</div>
+</section>
+<section id="to-character" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="to-character"><span class="header-section-number">1.5.3</span> to character</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123123</span>,<span class="dv">111</span>,<span class="dv">5555</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.character</span>(x)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "123123" "111"    "5555"  </code></pre>
+</div>
+</div>
+</section>
+<section id="to-boolen" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="to-boolen"><span class="header-section-number">1.5.4</span> to boolen</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.logical</span>(x)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="vector-to-other-data-format" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="vector-to-other-data-format"><span class="header-section-number">1.6</span> vector to other data format</h2>
+<section id="vector-to-dataframe" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="vector-to-dataframe"><span class="header-section-number">1.6.1</span> vector to dataframe</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jhon"</span>, <span class="st">"Lee"</span>, <span class="st">"Suzan"</span>, <span class="st">"Abhinav"</span>, </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Brain"</span>, <span class="st">"Emma"</span>, <span class="st">"David"</span>, <span class="st">"Alice"</span>) </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>Marks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">76</span>, <span class="dv">86</span>, <span class="dv">96</span>, <span class="dv">73</span>, <span class="dv">87</span>, <span class="dv">47</span>, <span class="dv">98</span>) </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Name,Marks) </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Name Marks
@@ -620,26 +728,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
 </div>
 </section>
-<section id="verctor-to-matrix" class="level3" data-number="1.5.2">
-<h3 data-number="1.5.2" class="anchored" data-anchor-id="verctor-to-matrix"><span class="header-section-number">1.5.2</span> verctor to matrix</h3>
+<section id="verctor-to-matrix" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="verctor-to-matrix"><span class="header-section-number">1.6.2</span> verctor to matrix</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">76</span>, <span class="dv">86</span>, <span class="dv">96</span>, <span class="dv">73</span>, <span class="dv">87</span>, <span class="dv">47</span>, <span class="dv">98</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">76</span>, <span class="dv">86</span>, <span class="dv">96</span>, <span class="dv">73</span>, <span class="dv">87</span>, <span class="dv">47</span>, <span class="dv">98</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">matrix</span>(v1,<span class="at">nrow=</span><span class="dv">4</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">matrix</span>(v1,<span class="at">nrow=</span><span class="dv">4</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
@@ -652,7 +760,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "matrix" "array" </code></pre>
@@ -662,8 +770,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(v1,v1),<span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(v1,v1),<span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
@@ -678,13 +786,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="verctor-to-list" class="level3" data-number="1.5.3">
-<h3 data-number="1.5.3" class="anchored" data-anchor-id="verctor-to-list"><span class="header-section-number">1.5.3</span> verctor to list</h3>
+<section id="verctor-to-list" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="verctor-to-list"><span class="header-section-number">1.6.3</span> verctor to list</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(v1)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(v1)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
@@ -694,7 +802,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
@@ -704,8 +812,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">as.list</span>(v1)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">as.list</span>(v1)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
@@ -734,6 +842,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="verctor-to-array" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="verctor-to-array"><span class="header-section-number">1.6.4</span> verctor to array</h3>
+<p>3D array</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>vec1<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>vec2<span class="ot">=</span><span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>) </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>arr<span class="ot">=</span><span class="fu">array</span>(<span class="fu">c</span>(vec1,vec2),<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>)) </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># printing the array</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(arr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "array"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>, , 1
+
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    5    7    9
+[2,]    2    4    6    8   10
+
+, , 2
+
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    5    7    9
+[2,]    2    4    6    8   10
+
+, , 3
+
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    5    7    9
+[2,]    2    4    6    8   10</code></pre>
+</div>
+</div>
+</section>
 </section>
 </section>
 <section id="dataframe" class="level1" data-number="2">
@@ -742,22 +895,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a character vector</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>Name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Amiya"</span>, <span class="st">"Raj"</span>, <span class="st">"Asish"</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a character vector</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>Language <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"Python"</span>, <span class="st">"Java"</span>)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a numeric vector</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>Age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">45</span>)</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># To create dataframe use data.frame command</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co"># and then pass each of the vectors </span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co"># we have created as arguments</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co"># to the function data.frame()</span></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(Name, Language, Age)</span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a character vector</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>Name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Amiya"</span>, <span class="st">"Raj"</span>, <span class="st">"Asish"</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a character vector</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>Language <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"Python"</span>, <span class="st">"Java"</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a numeric vector</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>Age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">45</span>)</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="co"># To create dataframe use data.frame command</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="co"># and then pass each of the vectors </span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co"># we have created as arguments</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="co"># to the function data.frame()</span></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(Name, Language, Age)</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Name Language Age
@@ -769,12 +922,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
 </div>
+<section id="dataframe-to-other-data-format" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="dataframe-to-other-data-format"><span class="header-section-number">2.1</span> dataframe to other data format</h2>
+<section id="dataframe-to-matrix" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="dataframe-to-matrix"><span class="header-section-number">2.1.1</span> dataframe to matrix</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(df)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Name    Language Age 
+[1,] "Amiya" "R"      "22"
+[2,] "Raj"   "Python" "25"
+[3,] "Asish" "Java"   "45"</code></pre>
+</div>
+</div>
+</section>
+<section id="dataframe-to-vector" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="dataframe-to-vector"><span class="header-section-number">2.1.2</span> dataframe to vector</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>vec<span class="ot">=</span>df[[<span class="st">'Name'</span>]]</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Amiya" "Raj"   "Asish"</code></pre>
+</div>
+</div>
+</section>
+<section id="dataframe-to-list" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="dataframe-to-list"><span class="header-section-number">2.1.3</span> dataframe to list</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>list<span class="ot">=</span><span class="fu">as.list</span>(df[[<span class="st">'Name'</span>]])</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "Amiya"
+
+[[2]]
+[1] "Raj"
+
+[[3]]
+[1] "Asish"</code></pre>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="matrices" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Matrices</h1>
@@ -782,21 +1017,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">matrix</span>(</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Taking sequence of elements</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>), </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># No of rows and columns</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>,  </span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># By default matrices are </span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># in column-wise order </span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># So this parameter decides</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># how to arrange the matrix          </span></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">byrow =</span> <span class="cn">TRUE</span>                             </span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Taking sequence of elements</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>), </span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># No of rows and columns</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>,  </span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># By default matrices are </span></span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># in column-wise order </span></span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># So this parameter decides</span></span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># how to arrange the matrix          </span></span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">byrow =</span> <span class="cn">TRUE</span>                             </span>
+<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
@@ -808,7 +1043,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "matrix" "array" </code></pre>
@@ -817,9 +1052,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>matrix002<span class="ot">=</span>A<span class="sc">+</span>A</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>matrix002</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>matrix002<span class="ot">=</span>A<span class="sc">+</span>A</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>matrix002</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
@@ -831,9 +1066,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>matrix003<span class="ot">=</span>A<span class="sc">*</span>A</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>matrix003</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>matrix003<span class="ot">=</span>A<span class="sc">*</span>A</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>matrix003</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
@@ -842,6 +1077,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [3,]   49   64   81</code></pre>
 </div>
 </div>
+<section id="matrix-to-other-data-format" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="matrix-to-other-data-format"><span class="header-section-number">3.1</span> matrix to other data format</h2>
+<section id="matrix-to-dataframe" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="matrix-to-dataframe"><span class="header-section-number">3.1.1</span> matrix to dataframe</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(matrix003)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  V1 V2 V3
+1  1  4  9
+2 16 25 36
+3 49 64 81</code></pre>
+</div>
+</div>
+</section>
+<section id="matrix-to-vector" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="matrix-to-vector"><span class="header-section-number">3.1.2</span> matrix to vector</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>vec<span class="ot">=</span><span class="fu">as.vector</span>(matrix003)</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1 16 49  4 25 64  9 36 81</code></pre>
+</div>
+</div>
+</section>
+<section id="matrix-to-list" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="matrix-to-list"><span class="header-section-number">3.1.3</span> matrix to list</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>list<span class="ot">=</span><span class="fu">as.list</span>(matrix003)</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 1
+
+[[2]]
+[1] 16
+
+[[3]]
+[1] 49
+
+[[4]]
+[1] 4
+
+[[5]]
+[1] 25
+
+[[6]]
+[1] 64
+
+[[7]]
+[1] 9
+
+[[8]]
+[1] 36
+
+[[9]]
+[1] 81</code></pre>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="lists" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Lists</h1>
@@ -849,24 +1184,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>empId <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The second attribute is the employee name </span></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># which is created using this line of code here</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co"># which is the character vector </span></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>empName <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Debi"</span>, <span class="st">"Sandeep"</span>, <span class="st">"Subham"</span>, <span class="st">"Shiba"</span>)</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The third attribute is the number of employees</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co"># which is a single numeric variable.</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>numberOfEmp <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co"># We can combine all these three different</span></span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="co"># data types into a list</span></span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="co"># containing the details of employees</span></span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co"># which can be done using a list command</span></span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>empList <span class="ot">=</span> <span class="fu">list</span>(empId, empName, numberOfEmp)</span>
-<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>empList</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>empId <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The second attribute is the employee name </span></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="co"># which is created using this line of code here</span></span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="co"># which is the character vector </span></span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>empName <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Debi"</span>, <span class="st">"Sandeep"</span>, <span class="st">"Subham"</span>, <span class="st">"Shiba"</span>)</span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The third attribute is the number of employees</span></span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a><span class="co"># which is a single numeric variable.</span></span>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>numberOfEmp <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb84-11"><a href="#cb84-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-12"><a href="#cb84-12" aria-hidden="true" tabindex="-1"></a><span class="co"># We can combine all these three different</span></span>
+<span id="cb84-13"><a href="#cb84-13" aria-hidden="true" tabindex="-1"></a><span class="co"># data types into a list</span></span>
+<span id="cb84-14"><a href="#cb84-14" aria-hidden="true" tabindex="-1"></a><span class="co"># containing the details of employees</span></span>
+<span id="cb84-15"><a href="#cb84-15" aria-hidden="true" tabindex="-1"></a><span class="co"># which can be done using a list command</span></span>
+<span id="cb84-16"><a href="#cb84-16" aria-hidden="true" tabindex="-1"></a>empList <span class="ot">=</span> <span class="fu">list</span>(empId, empName, numberOfEmp)</span>
+<span id="cb84-17"><a href="#cb84-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-18"><a href="#cb84-18" aria-hidden="true" tabindex="-1"></a>empList</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
@@ -882,7 +1217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(empList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(empList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
@@ -895,16 +1230,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">array</span>(</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Taking sequence of elements</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>),</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creating two rectangular matrices </span></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># each with two rows and two columns</span></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)                        </span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">array</span>(</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Taking sequence of elements</span></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>),</span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creating two rectangular matrices </span></span>
+<span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># each with two rows and two columns</span></span>
+<span id="cb88-7"><a href="#cb88-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)                        </span>
+<span id="cb88-8"><a href="#cb88-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb88-9"><a href="#cb88-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-10"><a href="#cb88-10" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
@@ -923,7 +1258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "array"</code></pre>
@@ -1378,271 +1713,406 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb56" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data structure in R"</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/download.jpg)</span>{width="600"}</span>
-<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a><span class="fu"># vector</span></span>
-<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a>A vector is an ordered collection of basic data types of a given length. The only key thing here is all the elements of a vector must be same data type e.g homogeneous data structures. Vectors are one-dimensional data structures.</span>
-<span id="cb56-26"><a href="#cb56-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-29"><a href="#cb56-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-30"><a href="#cb56-30" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb56-31"><a href="#cb56-31" aria-hidden="true" tabindex="-1"></a>a</span>
-<span id="cb56-32"><a href="#cb56-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-33"><a href="#cb56-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-36"><a href="#cb56-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-37"><a href="#cb56-37" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span>
-<span id="cb56-38"><a href="#cb56-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-39"><a href="#cb56-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-42"><a href="#cb56-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-43"><a href="#cb56-43" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span>  <span class="fu">c</span>(<span class="st">"Debi"</span>, <span class="st">"Sandeep"</span>, <span class="st">"Subham"</span>, <span class="st">"Shiba"</span>)</span>
-<span id="cb56-44"><a href="#cb56-44" aria-hidden="true" tabindex="-1"></a>b</span>
-<span id="cb56-45"><a href="#cb56-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-46"><a href="#cb56-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-49"><a href="#cb56-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-50"><a href="#cb56-50" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(b)</span>
-<span id="cb56-51"><a href="#cb56-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-52"><a href="#cb56-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## create vector</span></span>
-<span id="cb56-53"><a href="#cb56-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-56"><a href="#cb56-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-57"><a href="#cb56-57" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">14</span>, <span class="at">by =</span> <span class="dv">2</span>) </span>
-<span id="cb56-58"><a href="#cb56-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-59"><a href="#cb56-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-60"><a href="#cb56-60" aria-hidden="true" tabindex="-1"></a>other way:</span>
-<span id="cb56-63"><a href="#cb56-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-64"><a href="#cb56-64" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="at">x =</span> <span class="fl">1.5</span>, <span class="at">times =</span> <span class="dv">4</span>)  </span>
-<span id="cb56-65"><a href="#cb56-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-66"><a href="#cb56-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-67"><a href="#cb56-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-68"><a href="#cb56-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-69"><a href="#cb56-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-70"><a href="#cb56-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## append vector</span></span>
-<span id="cb56-71"><a href="#cb56-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-74"><a href="#cb56-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-75"><a href="#cb56-75" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb56-76"><a href="#cb56-76" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb56-77"><a href="#cb56-77" aria-hidden="true" tabindex="-1"></a>z<span class="ot">=</span><span class="fu">c</span>(x,y)</span>
-<span id="cb56-78"><a href="#cb56-78" aria-hidden="true" tabindex="-1"></a>z</span>
-<span id="cb56-79"><a href="#cb56-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-80"><a href="#cb56-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-81"><a href="#cb56-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## calculate vector</span></span>
-<span id="cb56-82"><a href="#cb56-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-85"><a href="#cb56-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-86"><a href="#cb56-86" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb56-87"><a href="#cb56-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-88"><a href="#cb56-88" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span>
-<span id="cb56-89"><a href="#cb56-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-90"><a href="#cb56-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-91"><a href="#cb56-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-92"><a href="#cb56-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## select vector element</span></span>
-<span id="cb56-95"><a href="#cb56-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-96"><a href="#cb56-96" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb56-97"><a href="#cb56-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-98"><a href="#cb56-98" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span>
-<span id="cb56-99"><a href="#cb56-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-100"><a href="#cb56-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-101"><a href="#cb56-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## vector to other data format</span></span>
-<span id="cb56-102"><a href="#cb56-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-103"><a href="#cb56-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-104"><a href="#cb56-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### vector to dataframe</span></span>
-<span id="cb56-105"><a href="#cb56-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-108"><a href="#cb56-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-109"><a href="#cb56-109" aria-hidden="true" tabindex="-1"></a>Name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jhon"</span>, <span class="st">"Lee"</span>, <span class="st">"Suzan"</span>, <span class="st">"Abhinav"</span>, </span>
-<span id="cb56-110"><a href="#cb56-110" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Brain"</span>, <span class="st">"Emma"</span>, <span class="st">"David"</span>, <span class="st">"Alice"</span>) </span>
-<span id="cb56-111"><a href="#cb56-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-112"><a href="#cb56-112" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb56-113"><a href="#cb56-113" aria-hidden="true" tabindex="-1"></a>Marks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">76</span>, <span class="dv">86</span>, <span class="dv">96</span>, <span class="dv">73</span>, <span class="dv">87</span>, <span class="dv">47</span>, <span class="dv">98</span>) </span>
-<span id="cb56-114"><a href="#cb56-114" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb56-115"><a href="#cb56-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-116"><a href="#cb56-116" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Name,Marks) </span>
-<span id="cb56-117"><a href="#cb56-117" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb56-118"><a href="#cb56-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-119"><a href="#cb56-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-122"><a href="#cb56-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-123"><a href="#cb56-123" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
-<span id="cb56-124"><a href="#cb56-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-125"><a href="#cb56-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-126"><a href="#cb56-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-127"><a href="#cb56-127" aria-hidden="true" tabindex="-1"></a><span class="fu">### verctor to matrix</span></span>
-<span id="cb56-128"><a href="#cb56-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-131"><a href="#cb56-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-132"><a href="#cb56-132" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">76</span>, <span class="dv">86</span>, <span class="dv">96</span>, <span class="dv">73</span>, <span class="dv">87</span>, <span class="dv">47</span>, <span class="dv">98</span>) </span>
-<span id="cb56-133"><a href="#cb56-133" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb56-134"><a href="#cb56-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-135"><a href="#cb56-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-138"><a href="#cb56-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-139"><a href="#cb56-139" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">matrix</span>(v1,<span class="at">nrow=</span><span class="dv">4</span>)</span>
-<span id="cb56-140"><a href="#cb56-140" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb56-141"><a href="#cb56-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-142"><a href="#cb56-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-145"><a href="#cb56-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-146"><a href="#cb56-146" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
-<span id="cb56-147"><a href="#cb56-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-148"><a href="#cb56-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-149"><a href="#cb56-149" aria-hidden="true" tabindex="-1"></a>other way:</span>
-<span id="cb56-152"><a href="#cb56-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-153"><a href="#cb56-153" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(v1,v1),<span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb56-154"><a href="#cb56-154" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb56-155"><a href="#cb56-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-156"><a href="#cb56-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-157"><a href="#cb56-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-158"><a href="#cb56-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### verctor to list</span></span>
-<span id="cb56-159"><a href="#cb56-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-162"><a href="#cb56-162" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-163"><a href="#cb56-163" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(v1)</span>
-<span id="cb56-164"><a href="#cb56-164" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb56-165"><a href="#cb56-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-166"><a href="#cb56-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-169"><a href="#cb56-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-170"><a href="#cb56-170" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
-<span id="cb56-171"><a href="#cb56-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-172"><a href="#cb56-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-173"><a href="#cb56-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-174"><a href="#cb56-174" aria-hidden="true" tabindex="-1"></a>each element in vetor as a element in list</span>
-<span id="cb56-175"><a href="#cb56-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-176"><a href="#cb56-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-179"><a href="#cb56-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-180"><a href="#cb56-180" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">as.list</span>(v1)</span>
-<span id="cb56-181"><a href="#cb56-181" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb56-182"><a href="#cb56-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-183"><a href="#cb56-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-184"><a href="#cb56-184" aria-hidden="true" tabindex="-1"></a><span class="fu"># Dataframe</span></span>
-<span id="cb56-185"><a href="#cb56-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-186"><a href="#cb56-186" aria-hidden="true" tabindex="-1"></a>Dataframes are generic data objects of R which are used to store the tabular data. Dataframes are the foremost popular data objects in R programming because we are comfortable in seeing the data within the tabular form. They are two-dimensional, heterogeneous data structures</span>
-<span id="cb56-187"><a href="#cb56-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-190"><a href="#cb56-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-191"><a href="#cb56-191" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a character vector</span></span>
-<span id="cb56-192"><a href="#cb56-192" aria-hidden="true" tabindex="-1"></a>Name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Amiya"</span>, <span class="st">"Raj"</span>, <span class="st">"Asish"</span>)</span>
-<span id="cb56-193"><a href="#cb56-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-194"><a href="#cb56-194" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a character vector</span></span>
-<span id="cb56-195"><a href="#cb56-195" aria-hidden="true" tabindex="-1"></a>Language <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"Python"</span>, <span class="st">"Java"</span>)</span>
-<span id="cb56-196"><a href="#cb56-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-197"><a href="#cb56-197" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a numeric vector</span></span>
-<span id="cb56-198"><a href="#cb56-198" aria-hidden="true" tabindex="-1"></a>Age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">45</span>)</span>
-<span id="cb56-199"><a href="#cb56-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-200"><a href="#cb56-200" aria-hidden="true" tabindex="-1"></a><span class="co"># To create dataframe use data.frame command</span></span>
-<span id="cb56-201"><a href="#cb56-201" aria-hidden="true" tabindex="-1"></a><span class="co"># and then pass each of the vectors </span></span>
-<span id="cb56-202"><a href="#cb56-202" aria-hidden="true" tabindex="-1"></a><span class="co"># we have created as arguments</span></span>
-<span id="cb56-203"><a href="#cb56-203" aria-hidden="true" tabindex="-1"></a><span class="co"># to the function data.frame()</span></span>
-<span id="cb56-204"><a href="#cb56-204" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(Name, Language, Age)</span>
-<span id="cb56-205"><a href="#cb56-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-206"><a href="#cb56-206" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb56-207"><a href="#cb56-207" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-210"><a href="#cb56-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-211"><a href="#cb56-211" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span>
-<span id="cb56-212"><a href="#cb56-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-213"><a href="#cb56-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-214"><a href="#cb56-214" aria-hidden="true" tabindex="-1"></a><span class="fu"># Matrices</span></span>
-<span id="cb56-215"><a href="#cb56-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-216"><a href="#cb56-216" aria-hidden="true" tabindex="-1"></a>A matrix is a rectangular arrangement of numbers in rows and columns. In a matrix, as we know rows are the ones that run horizontally and columns are the ones that run vertically. Matrices are two-dimensional, homogeneous data structures.</span>
-<span id="cb56-217"><a href="#cb56-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-220"><a href="#cb56-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-221"><a href="#cb56-221" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">matrix</span>(</span>
-<span id="cb56-222"><a href="#cb56-222" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Taking sequence of elements</span></span>
-<span id="cb56-223"><a href="#cb56-223" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>), </span>
-<span id="cb56-224"><a href="#cb56-224" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb56-225"><a href="#cb56-225" aria-hidden="true" tabindex="-1"></a>    <span class="co"># No of rows and columns</span></span>
-<span id="cb56-226"><a href="#cb56-226" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>,  </span>
-<span id="cb56-227"><a href="#cb56-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-228"><a href="#cb56-228" aria-hidden="true" tabindex="-1"></a>    <span class="co"># By default matrices are </span></span>
-<span id="cb56-229"><a href="#cb56-229" aria-hidden="true" tabindex="-1"></a>    <span class="co"># in column-wise order </span></span>
-<span id="cb56-230"><a href="#cb56-230" aria-hidden="true" tabindex="-1"></a>    <span class="co"># So this parameter decides</span></span>
-<span id="cb56-231"><a href="#cb56-231" aria-hidden="true" tabindex="-1"></a>    <span class="co"># how to arrange the matrix          </span></span>
-<span id="cb56-232"><a href="#cb56-232" aria-hidden="true" tabindex="-1"></a>    <span class="at">byrow =</span> <span class="cn">TRUE</span>                             </span>
-<span id="cb56-233"><a href="#cb56-233" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb56-234"><a href="#cb56-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-235"><a href="#cb56-235" aria-hidden="true" tabindex="-1"></a>A</span>
-<span id="cb56-236"><a href="#cb56-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-237"><a href="#cb56-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-240"><a href="#cb56-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-241"><a href="#cb56-241" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(A)</span>
-<span id="cb56-242"><a href="#cb56-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-243"><a href="#cb56-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-246"><a href="#cb56-246" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-247"><a href="#cb56-247" aria-hidden="true" tabindex="-1"></a>matrix002<span class="ot">=</span>A<span class="sc">+</span>A</span>
-<span id="cb56-248"><a href="#cb56-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-249"><a href="#cb56-249" aria-hidden="true" tabindex="-1"></a>matrix002</span>
-<span id="cb56-250"><a href="#cb56-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-251"><a href="#cb56-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-254"><a href="#cb56-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-255"><a href="#cb56-255" aria-hidden="true" tabindex="-1"></a>matrix003<span class="ot">=</span>A<span class="sc">*</span>A</span>
-<span id="cb56-256"><a href="#cb56-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-257"><a href="#cb56-257" aria-hidden="true" tabindex="-1"></a>matrix003</span>
-<span id="cb56-258"><a href="#cb56-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-259"><a href="#cb56-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-260"><a href="#cb56-260" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lists</span></span>
-<span id="cb56-261"><a href="#cb56-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-262"><a href="#cb56-262" aria-hidden="true" tabindex="-1"></a>A list is a generic object consisting of an ordered collection of objects. Lists are heterogeneous data structures. These are also one-dimensional data structures. A list can be a list of vectors, list of matrices, a list of characters and a list of functions and so on.</span>
-<span id="cb56-263"><a href="#cb56-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-266"><a href="#cb56-266" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-267"><a href="#cb56-267" aria-hidden="true" tabindex="-1"></a>empId <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb56-268"><a href="#cb56-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-269"><a href="#cb56-269" aria-hidden="true" tabindex="-1"></a><span class="co"># The second attribute is the employee name </span></span>
-<span id="cb56-270"><a href="#cb56-270" aria-hidden="true" tabindex="-1"></a><span class="co"># which is created using this line of code here</span></span>
-<span id="cb56-271"><a href="#cb56-271" aria-hidden="true" tabindex="-1"></a><span class="co"># which is the character vector </span></span>
-<span id="cb56-272"><a href="#cb56-272" aria-hidden="true" tabindex="-1"></a>empName <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Debi"</span>, <span class="st">"Sandeep"</span>, <span class="st">"Subham"</span>, <span class="st">"Shiba"</span>)</span>
-<span id="cb56-273"><a href="#cb56-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-274"><a href="#cb56-274" aria-hidden="true" tabindex="-1"></a><span class="co"># The third attribute is the number of employees</span></span>
-<span id="cb56-275"><a href="#cb56-275" aria-hidden="true" tabindex="-1"></a><span class="co"># which is a single numeric variable.</span></span>
-<span id="cb56-276"><a href="#cb56-276" aria-hidden="true" tabindex="-1"></a>numberOfEmp <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb56-277"><a href="#cb56-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-278"><a href="#cb56-278" aria-hidden="true" tabindex="-1"></a><span class="co"># We can combine all these three different</span></span>
-<span id="cb56-279"><a href="#cb56-279" aria-hidden="true" tabindex="-1"></a><span class="co"># data types into a list</span></span>
-<span id="cb56-280"><a href="#cb56-280" aria-hidden="true" tabindex="-1"></a><span class="co"># containing the details of employees</span></span>
-<span id="cb56-281"><a href="#cb56-281" aria-hidden="true" tabindex="-1"></a><span class="co"># which can be done using a list command</span></span>
-<span id="cb56-282"><a href="#cb56-282" aria-hidden="true" tabindex="-1"></a>empList <span class="ot">=</span> <span class="fu">list</span>(empId, empName, numberOfEmp)</span>
-<span id="cb56-283"><a href="#cb56-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-284"><a href="#cb56-284" aria-hidden="true" tabindex="-1"></a>empList</span>
-<span id="cb56-285"><a href="#cb56-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-286"><a href="#cb56-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-289"><a href="#cb56-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-290"><a href="#cb56-290" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(empList)</span>
-<span id="cb56-291"><a href="#cb56-291" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-292"><a href="#cb56-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-293"><a href="#cb56-293" aria-hidden="true" tabindex="-1"></a><span class="fu"># Arrays</span></span>
-<span id="cb56-294"><a href="#cb56-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-295"><a href="#cb56-295" aria-hidden="true" tabindex="-1"></a>3D arrays</span>
-<span id="cb56-296"><a href="#cb56-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-299"><a href="#cb56-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-300"><a href="#cb56-300" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">array</span>(</span>
-<span id="cb56-301"><a href="#cb56-301" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Taking sequence of elements</span></span>
-<span id="cb56-302"><a href="#cb56-302" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>),</span>
-<span id="cb56-303"><a href="#cb56-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-304"><a href="#cb56-304" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creating two rectangular matrices </span></span>
-<span id="cb56-305"><a href="#cb56-305" aria-hidden="true" tabindex="-1"></a>    <span class="co"># each with two rows and two columns</span></span>
-<span id="cb56-306"><a href="#cb56-306" aria-hidden="true" tabindex="-1"></a>    <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)                        </span>
-<span id="cb56-307"><a href="#cb56-307" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb56-308"><a href="#cb56-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-309"><a href="#cb56-309" aria-hidden="true" tabindex="-1"></a>A</span>
-<span id="cb56-310"><a href="#cb56-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-311"><a href="#cb56-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-314"><a href="#cb56-314" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-315"><a href="#cb56-315" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(A)</span>
-<span id="cb56-316"><a href="#cb56-316" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb56-317"><a href="#cb56-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-318"><a href="#cb56-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-319"><a href="#cb56-319" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference:</span></span>
-<span id="cb56-320"><a href="#cb56-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-321"><a href="#cb56-321" aria-hidden="true" tabindex="-1"></a>https://www.geeksforgeeks.org/data-structures-in-r-programming/</span>
+<div class="sourceCode" id="cb92" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data structure in R"</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb92-8"><a href="#cb92-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb92-9"><a href="#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb92-10"><a href="#cb92-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb92-11"><a href="#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb92-12"><a href="#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb92-13"><a href="#cb92-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb92-14"><a href="#cb92-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb92-15"><a href="#cb92-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb92-16"><a href="#cb92-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb92-17"><a href="#cb92-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb92-18"><a href="#cb92-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-19"><a href="#cb92-19" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/download.jpg)</span>{width="600"}</span>
+<span id="cb92-20"><a href="#cb92-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-21"><a href="#cb92-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-22"><a href="#cb92-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-23"><a href="#cb92-23" aria-hidden="true" tabindex="-1"></a><span class="fu"># vector</span></span>
+<span id="cb92-24"><a href="#cb92-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-25"><a href="#cb92-25" aria-hidden="true" tabindex="-1"></a>A vector is an ordered collection of basic data types of a given length. The only key thing here is all the elements of a vector must be same data type e.g homogeneous data structures. Vectors are one-dimensional data structures.</span>
+<span id="cb92-26"><a href="#cb92-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-29"><a href="#cb92-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-30"><a href="#cb92-30" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb92-31"><a href="#cb92-31" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb92-32"><a href="#cb92-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-33"><a href="#cb92-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-36"><a href="#cb92-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-37"><a href="#cb92-37" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span>
+<span id="cb92-38"><a href="#cb92-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-39"><a href="#cb92-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-42"><a href="#cb92-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-43"><a href="#cb92-43" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span>  <span class="fu">c</span>(<span class="st">"Debi"</span>, <span class="st">"Sandeep"</span>, <span class="st">"Subham"</span>, <span class="st">"Shiba"</span>)</span>
+<span id="cb92-44"><a href="#cb92-44" aria-hidden="true" tabindex="-1"></a>b</span>
+<span id="cb92-45"><a href="#cb92-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-46"><a href="#cb92-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-49"><a href="#cb92-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-50"><a href="#cb92-50" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(b)</span>
+<span id="cb92-51"><a href="#cb92-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-52"><a href="#cb92-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## create vector</span></span>
+<span id="cb92-53"><a href="#cb92-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-56"><a href="#cb92-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-57"><a href="#cb92-57" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">14</span>, <span class="at">by =</span> <span class="dv">2</span>) </span>
+<span id="cb92-58"><a href="#cb92-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-59"><a href="#cb92-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-60"><a href="#cb92-60" aria-hidden="true" tabindex="-1"></a>other way:</span>
+<span id="cb92-63"><a href="#cb92-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-64"><a href="#cb92-64" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="at">x =</span> <span class="fl">1.5</span>, <span class="at">times =</span> <span class="dv">4</span>)  </span>
+<span id="cb92-65"><a href="#cb92-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-66"><a href="#cb92-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-67"><a href="#cb92-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-68"><a href="#cb92-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-69"><a href="#cb92-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-70"><a href="#cb92-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## append vector</span></span>
+<span id="cb92-71"><a href="#cb92-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-74"><a href="#cb92-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-75"><a href="#cb92-75" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb92-76"><a href="#cb92-76" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb92-77"><a href="#cb92-77" aria-hidden="true" tabindex="-1"></a>z<span class="ot">=</span><span class="fu">c</span>(x,y)</span>
+<span id="cb92-78"><a href="#cb92-78" aria-hidden="true" tabindex="-1"></a>z</span>
+<span id="cb92-79"><a href="#cb92-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-80"><a href="#cb92-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-81"><a href="#cb92-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## calculate vector</span></span>
+<span id="cb92-82"><a href="#cb92-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-85"><a href="#cb92-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-86"><a href="#cb92-86" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb92-87"><a href="#cb92-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-88"><a href="#cb92-88" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span>
+<span id="cb92-89"><a href="#cb92-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-90"><a href="#cb92-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-91"><a href="#cb92-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-92"><a href="#cb92-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## select vector element</span></span>
+<span id="cb92-95"><a href="#cb92-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-96"><a href="#cb92-96" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb92-97"><a href="#cb92-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-98"><a href="#cb92-98" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span>
+<span id="cb92-99"><a href="#cb92-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-100"><a href="#cb92-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-101"><a href="#cb92-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## vector  Converting between types</span></span>
+<span id="cb92-102"><a href="#cb92-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-103"><a href="#cb92-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-104"><a href="#cb92-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### to factor</span></span>
+<span id="cb92-107"><a href="#cb92-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-108"><a href="#cb92-108" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"g"</span>, <span class="st">"b"</span>)</span>
+<span id="cb92-109"><a href="#cb92-109" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.factor</span>(x)</span>
+<span id="cb92-110"><a href="#cb92-110" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb92-111"><a href="#cb92-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-112"><a href="#cb92-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-113"><a href="#cb92-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-114"><a href="#cb92-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-115"><a href="#cb92-115" aria-hidden="true" tabindex="-1"></a><span class="fu">### to numeric</span></span>
+<span id="cb92-118"><a href="#cb92-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-119"><a href="#cb92-119" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'123'</span>,<span class="st">'44'</span>, <span class="st">'222'</span>)</span>
+<span id="cb92-120"><a href="#cb92-120" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.numeric</span>(x)</span>
+<span id="cb92-121"><a href="#cb92-121" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb92-122"><a href="#cb92-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-123"><a href="#cb92-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-124"><a href="#cb92-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-125"><a href="#cb92-125" aria-hidden="true" tabindex="-1"></a><span class="fu">### to character</span></span>
+<span id="cb92-128"><a href="#cb92-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-129"><a href="#cb92-129" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123123</span>,<span class="dv">111</span>,<span class="dv">5555</span>)</span>
+<span id="cb92-130"><a href="#cb92-130" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.character</span>(x)</span>
+<span id="cb92-131"><a href="#cb92-131" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb92-132"><a href="#cb92-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-133"><a href="#cb92-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-134"><a href="#cb92-134" aria-hidden="true" tabindex="-1"></a><span class="fu">### to boolen</span></span>
+<span id="cb92-137"><a href="#cb92-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-138"><a href="#cb92-138" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb92-139"><a href="#cb92-139" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.logical</span>(x)</span>
+<span id="cb92-140"><a href="#cb92-140" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb92-141"><a href="#cb92-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-142"><a href="#cb92-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-143"><a href="#cb92-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-144"><a href="#cb92-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-145"><a href="#cb92-145" aria-hidden="true" tabindex="-1"></a><span class="fu">## vector to other data format</span></span>
+<span id="cb92-146"><a href="#cb92-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-147"><a href="#cb92-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-148"><a href="#cb92-148" aria-hidden="true" tabindex="-1"></a><span class="fu">### vector to dataframe</span></span>
+<span id="cb92-149"><a href="#cb92-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-152"><a href="#cb92-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-153"><a href="#cb92-153" aria-hidden="true" tabindex="-1"></a>Name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Jhon"</span>, <span class="st">"Lee"</span>, <span class="st">"Suzan"</span>, <span class="st">"Abhinav"</span>, </span>
+<span id="cb92-154"><a href="#cb92-154" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Brain"</span>, <span class="st">"Emma"</span>, <span class="st">"David"</span>, <span class="st">"Alice"</span>) </span>
+<span id="cb92-155"><a href="#cb92-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-156"><a href="#cb92-156" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb92-157"><a href="#cb92-157" aria-hidden="true" tabindex="-1"></a>Marks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">76</span>, <span class="dv">86</span>, <span class="dv">96</span>, <span class="dv">73</span>, <span class="dv">87</span>, <span class="dv">47</span>, <span class="dv">98</span>) </span>
+<span id="cb92-158"><a href="#cb92-158" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb92-159"><a href="#cb92-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-160"><a href="#cb92-160" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Name,Marks) </span>
+<span id="cb92-161"><a href="#cb92-161" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb92-162"><a href="#cb92-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-163"><a href="#cb92-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-166"><a href="#cb92-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-167"><a href="#cb92-167" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb92-168"><a href="#cb92-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-169"><a href="#cb92-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-170"><a href="#cb92-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-171"><a href="#cb92-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### verctor to matrix</span></span>
+<span id="cb92-172"><a href="#cb92-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-175"><a href="#cb92-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-176"><a href="#cb92-176" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">76</span>, <span class="dv">86</span>, <span class="dv">96</span>, <span class="dv">73</span>, <span class="dv">87</span>, <span class="dv">47</span>, <span class="dv">98</span>) </span>
+<span id="cb92-177"><a href="#cb92-177" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb92-178"><a href="#cb92-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-179"><a href="#cb92-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-182"><a href="#cb92-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-183"><a href="#cb92-183" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">matrix</span>(v1,<span class="at">nrow=</span><span class="dv">4</span>)</span>
+<span id="cb92-184"><a href="#cb92-184" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb92-185"><a href="#cb92-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-186"><a href="#cb92-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-189"><a href="#cb92-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-190"><a href="#cb92-190" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb92-191"><a href="#cb92-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-192"><a href="#cb92-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-193"><a href="#cb92-193" aria-hidden="true" tabindex="-1"></a>other way:</span>
+<span id="cb92-196"><a href="#cb92-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-197"><a href="#cb92-197" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(v1,v1),<span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb92-198"><a href="#cb92-198" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb92-199"><a href="#cb92-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-200"><a href="#cb92-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-201"><a href="#cb92-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-202"><a href="#cb92-202" aria-hidden="true" tabindex="-1"></a><span class="fu">### verctor to list</span></span>
+<span id="cb92-203"><a href="#cb92-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-206"><a href="#cb92-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-207"><a href="#cb92-207" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">list</span>(v1)</span>
+<span id="cb92-208"><a href="#cb92-208" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb92-209"><a href="#cb92-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-210"><a href="#cb92-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-213"><a href="#cb92-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-214"><a href="#cb92-214" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb92-215"><a href="#cb92-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-216"><a href="#cb92-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-217"><a href="#cb92-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-218"><a href="#cb92-218" aria-hidden="true" tabindex="-1"></a>each element in vetor as a element in list</span>
+<span id="cb92-219"><a href="#cb92-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-220"><a href="#cb92-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-223"><a href="#cb92-223" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-224"><a href="#cb92-224" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">as.list</span>(v1)</span>
+<span id="cb92-225"><a href="#cb92-225" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb92-226"><a href="#cb92-226" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-227"><a href="#cb92-227" aria-hidden="true" tabindex="-1"></a><span class="fu">### verctor to array</span></span>
+<span id="cb92-228"><a href="#cb92-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-229"><a href="#cb92-229" aria-hidden="true" tabindex="-1"></a>3D array</span>
+<span id="cb92-232"><a href="#cb92-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-233"><a href="#cb92-233" aria-hidden="true" tabindex="-1"></a>vec1<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span>
+<span id="cb92-234"><a href="#cb92-234" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb92-235"><a href="#cb92-235" aria-hidden="true" tabindex="-1"></a>vec2<span class="ot">=</span><span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>) </span>
+<span id="cb92-236"><a href="#cb92-236" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb92-237"><a href="#cb92-237" aria-hidden="true" tabindex="-1"></a>arr<span class="ot">=</span><span class="fu">array</span>(<span class="fu">c</span>(vec1,vec2),<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>)) </span>
+<span id="cb92-238"><a href="#cb92-238" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb92-239"><a href="#cb92-239" aria-hidden="true" tabindex="-1"></a><span class="co"># printing the array</span></span>
+<span id="cb92-240"><a href="#cb92-240" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(arr)</span>
+<span id="cb92-241"><a href="#cb92-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-242"><a href="#cb92-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-245"><a href="#cb92-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-246"><a href="#cb92-246" aria-hidden="true" tabindex="-1"></a>arr</span>
+<span id="cb92-247"><a href="#cb92-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-248"><a href="#cb92-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-249"><a href="#cb92-249" aria-hidden="true" tabindex="-1"></a><span class="fu"># Dataframe</span></span>
+<span id="cb92-250"><a href="#cb92-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-251"><a href="#cb92-251" aria-hidden="true" tabindex="-1"></a>Dataframes are generic data objects of R which are used to store the tabular data. Dataframes are the foremost popular data objects in R programming because we are comfortable in seeing the data within the tabular form. They are two-dimensional, heterogeneous data structures</span>
+<span id="cb92-252"><a href="#cb92-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-255"><a href="#cb92-255" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-256"><a href="#cb92-256" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a character vector</span></span>
+<span id="cb92-257"><a href="#cb92-257" aria-hidden="true" tabindex="-1"></a>Name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Amiya"</span>, <span class="st">"Raj"</span>, <span class="st">"Asish"</span>)</span>
+<span id="cb92-258"><a href="#cb92-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-259"><a href="#cb92-259" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a character vector</span></span>
+<span id="cb92-260"><a href="#cb92-260" aria-hidden="true" tabindex="-1"></a>Language <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"Python"</span>, <span class="st">"Java"</span>)</span>
+<span id="cb92-261"><a href="#cb92-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-262"><a href="#cb92-262" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector which is a numeric vector</span></span>
+<span id="cb92-263"><a href="#cb92-263" aria-hidden="true" tabindex="-1"></a>Age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">45</span>)</span>
+<span id="cb92-264"><a href="#cb92-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-265"><a href="#cb92-265" aria-hidden="true" tabindex="-1"></a><span class="co"># To create dataframe use data.frame command</span></span>
+<span id="cb92-266"><a href="#cb92-266" aria-hidden="true" tabindex="-1"></a><span class="co"># and then pass each of the vectors </span></span>
+<span id="cb92-267"><a href="#cb92-267" aria-hidden="true" tabindex="-1"></a><span class="co"># we have created as arguments</span></span>
+<span id="cb92-268"><a href="#cb92-268" aria-hidden="true" tabindex="-1"></a><span class="co"># to the function data.frame()</span></span>
+<span id="cb92-269"><a href="#cb92-269" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(Name, Language, Age)</span>
+<span id="cb92-270"><a href="#cb92-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-271"><a href="#cb92-271" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb92-272"><a href="#cb92-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-273"><a href="#cb92-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-276"><a href="#cb92-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-277"><a href="#cb92-277" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span>
+<span id="cb92-278"><a href="#cb92-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-279"><a href="#cb92-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-280"><a href="#cb92-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-281"><a href="#cb92-281" aria-hidden="true" tabindex="-1"></a><span class="fu">## dataframe to other data format</span></span>
+<span id="cb92-282"><a href="#cb92-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-283"><a href="#cb92-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-284"><a href="#cb92-284" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to matrix</span></span>
+<span id="cb92-285"><a href="#cb92-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-288"><a href="#cb92-288" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-289"><a href="#cb92-289" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(df)</span>
+<span id="cb92-290"><a href="#cb92-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-291"><a href="#cb92-291" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mat)</span>
+<span id="cb92-292"><a href="#cb92-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-293"><a href="#cb92-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-296"><a href="#cb92-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-297"><a href="#cb92-297" aria-hidden="true" tabindex="-1"></a>mat</span>
+<span id="cb92-298"><a href="#cb92-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-299"><a href="#cb92-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-300"><a href="#cb92-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to vector</span></span>
+<span id="cb92-301"><a href="#cb92-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-304"><a href="#cb92-304" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-305"><a href="#cb92-305" aria-hidden="true" tabindex="-1"></a>vec<span class="ot">=</span>df[[<span class="st">'Name'</span>]]</span>
+<span id="cb92-306"><a href="#cb92-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-307"><a href="#cb92-307" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(vec)</span>
+<span id="cb92-308"><a href="#cb92-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-309"><a href="#cb92-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-312"><a href="#cb92-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-313"><a href="#cb92-313" aria-hidden="true" tabindex="-1"></a>vec</span>
+<span id="cb92-314"><a href="#cb92-314" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-315"><a href="#cb92-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-316"><a href="#cb92-316" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to list</span></span>
+<span id="cb92-317"><a href="#cb92-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-320"><a href="#cb92-320" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-321"><a href="#cb92-321" aria-hidden="true" tabindex="-1"></a>list<span class="ot">=</span><span class="fu">as.list</span>(df[[<span class="st">'Name'</span>]])</span>
+<span id="cb92-322"><a href="#cb92-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-323"><a href="#cb92-323" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(list)</span>
+<span id="cb92-324"><a href="#cb92-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-325"><a href="#cb92-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-328"><a href="#cb92-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-329"><a href="#cb92-329" aria-hidden="true" tabindex="-1"></a>list</span>
+<span id="cb92-330"><a href="#cb92-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-331"><a href="#cb92-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-332"><a href="#cb92-332" aria-hidden="true" tabindex="-1"></a><span class="fu"># Matrices</span></span>
+<span id="cb92-333"><a href="#cb92-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-334"><a href="#cb92-334" aria-hidden="true" tabindex="-1"></a>A matrix is a rectangular arrangement of numbers in rows and columns. In a matrix, as we know rows are the ones that run horizontally and columns are the ones that run vertically. Matrices are two-dimensional, homogeneous data structures.</span>
+<span id="cb92-335"><a href="#cb92-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-338"><a href="#cb92-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-339"><a href="#cb92-339" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">matrix</span>(</span>
+<span id="cb92-340"><a href="#cb92-340" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Taking sequence of elements</span></span>
+<span id="cb92-341"><a href="#cb92-341" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>), </span>
+<span id="cb92-342"><a href="#cb92-342" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb92-343"><a href="#cb92-343" aria-hidden="true" tabindex="-1"></a>    <span class="co"># No of rows and columns</span></span>
+<span id="cb92-344"><a href="#cb92-344" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>,  </span>
+<span id="cb92-345"><a href="#cb92-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-346"><a href="#cb92-346" aria-hidden="true" tabindex="-1"></a>    <span class="co"># By default matrices are </span></span>
+<span id="cb92-347"><a href="#cb92-347" aria-hidden="true" tabindex="-1"></a>    <span class="co"># in column-wise order </span></span>
+<span id="cb92-348"><a href="#cb92-348" aria-hidden="true" tabindex="-1"></a>    <span class="co"># So this parameter decides</span></span>
+<span id="cb92-349"><a href="#cb92-349" aria-hidden="true" tabindex="-1"></a>    <span class="co"># how to arrange the matrix          </span></span>
+<span id="cb92-350"><a href="#cb92-350" aria-hidden="true" tabindex="-1"></a>    <span class="at">byrow =</span> <span class="cn">TRUE</span>                             </span>
+<span id="cb92-351"><a href="#cb92-351" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb92-352"><a href="#cb92-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-353"><a href="#cb92-353" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb92-354"><a href="#cb92-354" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-355"><a href="#cb92-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-358"><a href="#cb92-358" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-359"><a href="#cb92-359" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(A)</span>
+<span id="cb92-360"><a href="#cb92-360" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-361"><a href="#cb92-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-364"><a href="#cb92-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-365"><a href="#cb92-365" aria-hidden="true" tabindex="-1"></a>matrix002<span class="ot">=</span>A<span class="sc">+</span>A</span>
+<span id="cb92-366"><a href="#cb92-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-367"><a href="#cb92-367" aria-hidden="true" tabindex="-1"></a>matrix002</span>
+<span id="cb92-368"><a href="#cb92-368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-369"><a href="#cb92-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-372"><a href="#cb92-372" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-373"><a href="#cb92-373" aria-hidden="true" tabindex="-1"></a>matrix003<span class="ot">=</span>A<span class="sc">*</span>A</span>
+<span id="cb92-374"><a href="#cb92-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-375"><a href="#cb92-375" aria-hidden="true" tabindex="-1"></a>matrix003</span>
+<span id="cb92-376"><a href="#cb92-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-377"><a href="#cb92-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-378"><a href="#cb92-378" aria-hidden="true" tabindex="-1"></a><span class="fu">## matrix to other data format</span></span>
+<span id="cb92-379"><a href="#cb92-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-380"><a href="#cb92-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-381"><a href="#cb92-381" aria-hidden="true" tabindex="-1"></a><span class="fu">### matrix to dataframe</span></span>
+<span id="cb92-382"><a href="#cb92-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-383"><a href="#cb92-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-386"><a href="#cb92-386" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-387"><a href="#cb92-387" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(matrix003)</span>
+<span id="cb92-388"><a href="#cb92-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-389"><a href="#cb92-389" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df)</span>
+<span id="cb92-390"><a href="#cb92-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-391"><a href="#cb92-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-394"><a href="#cb92-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-395"><a href="#cb92-395" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb92-396"><a href="#cb92-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-397"><a href="#cb92-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-398"><a href="#cb92-398" aria-hidden="true" tabindex="-1"></a><span class="fu">### matrix to vector</span></span>
+<span id="cb92-399"><a href="#cb92-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-402"><a href="#cb92-402" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-403"><a href="#cb92-403" aria-hidden="true" tabindex="-1"></a>vec<span class="ot">=</span><span class="fu">as.vector</span>(matrix003)</span>
+<span id="cb92-404"><a href="#cb92-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-405"><a href="#cb92-405" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(vec)</span>
+<span id="cb92-406"><a href="#cb92-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-407"><a href="#cb92-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-410"><a href="#cb92-410" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-411"><a href="#cb92-411" aria-hidden="true" tabindex="-1"></a>vec</span>
+<span id="cb92-412"><a href="#cb92-412" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-413"><a href="#cb92-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-414"><a href="#cb92-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-415"><a href="#cb92-415" aria-hidden="true" tabindex="-1"></a><span class="fu">### matrix to list</span></span>
+<span id="cb92-416"><a href="#cb92-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-419"><a href="#cb92-419" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-420"><a href="#cb92-420" aria-hidden="true" tabindex="-1"></a>list<span class="ot">=</span><span class="fu">as.list</span>(matrix003)</span>
+<span id="cb92-421"><a href="#cb92-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-422"><a href="#cb92-422" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(list)</span>
+<span id="cb92-423"><a href="#cb92-423" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-424"><a href="#cb92-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-427"><a href="#cb92-427" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-428"><a href="#cb92-428" aria-hidden="true" tabindex="-1"></a>list</span>
+<span id="cb92-429"><a href="#cb92-429" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-430"><a href="#cb92-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-431"><a href="#cb92-431" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lists</span></span>
+<span id="cb92-432"><a href="#cb92-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-433"><a href="#cb92-433" aria-hidden="true" tabindex="-1"></a>A list is a generic object consisting of an ordered collection of objects. Lists are heterogeneous data structures. These are also one-dimensional data structures. A list can be a list of vectors, list of matrices, a list of characters and a list of functions and so on.</span>
+<span id="cb92-434"><a href="#cb92-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-437"><a href="#cb92-437" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-438"><a href="#cb92-438" aria-hidden="true" tabindex="-1"></a>empId <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb92-439"><a href="#cb92-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-440"><a href="#cb92-440" aria-hidden="true" tabindex="-1"></a><span class="co"># The second attribute is the employee name </span></span>
+<span id="cb92-441"><a href="#cb92-441" aria-hidden="true" tabindex="-1"></a><span class="co"># which is created using this line of code here</span></span>
+<span id="cb92-442"><a href="#cb92-442" aria-hidden="true" tabindex="-1"></a><span class="co"># which is the character vector </span></span>
+<span id="cb92-443"><a href="#cb92-443" aria-hidden="true" tabindex="-1"></a>empName <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Debi"</span>, <span class="st">"Sandeep"</span>, <span class="st">"Subham"</span>, <span class="st">"Shiba"</span>)</span>
+<span id="cb92-444"><a href="#cb92-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-445"><a href="#cb92-445" aria-hidden="true" tabindex="-1"></a><span class="co"># The third attribute is the number of employees</span></span>
+<span id="cb92-446"><a href="#cb92-446" aria-hidden="true" tabindex="-1"></a><span class="co"># which is a single numeric variable.</span></span>
+<span id="cb92-447"><a href="#cb92-447" aria-hidden="true" tabindex="-1"></a>numberOfEmp <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb92-448"><a href="#cb92-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-449"><a href="#cb92-449" aria-hidden="true" tabindex="-1"></a><span class="co"># We can combine all these three different</span></span>
+<span id="cb92-450"><a href="#cb92-450" aria-hidden="true" tabindex="-1"></a><span class="co"># data types into a list</span></span>
+<span id="cb92-451"><a href="#cb92-451" aria-hidden="true" tabindex="-1"></a><span class="co"># containing the details of employees</span></span>
+<span id="cb92-452"><a href="#cb92-452" aria-hidden="true" tabindex="-1"></a><span class="co"># which can be done using a list command</span></span>
+<span id="cb92-453"><a href="#cb92-453" aria-hidden="true" tabindex="-1"></a>empList <span class="ot">=</span> <span class="fu">list</span>(empId, empName, numberOfEmp)</span>
+<span id="cb92-454"><a href="#cb92-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-455"><a href="#cb92-455" aria-hidden="true" tabindex="-1"></a>empList</span>
+<span id="cb92-456"><a href="#cb92-456" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-457"><a href="#cb92-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-460"><a href="#cb92-460" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-461"><a href="#cb92-461" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(empList)</span>
+<span id="cb92-462"><a href="#cb92-462" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-463"><a href="#cb92-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-464"><a href="#cb92-464" aria-hidden="true" tabindex="-1"></a><span class="fu"># Arrays</span></span>
+<span id="cb92-465"><a href="#cb92-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-466"><a href="#cb92-466" aria-hidden="true" tabindex="-1"></a>3D arrays</span>
+<span id="cb92-467"><a href="#cb92-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-470"><a href="#cb92-470" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-471"><a href="#cb92-471" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">array</span>(</span>
+<span id="cb92-472"><a href="#cb92-472" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Taking sequence of elements</span></span>
+<span id="cb92-473"><a href="#cb92-473" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>),</span>
+<span id="cb92-474"><a href="#cb92-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-475"><a href="#cb92-475" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creating two rectangular matrices </span></span>
+<span id="cb92-476"><a href="#cb92-476" aria-hidden="true" tabindex="-1"></a>    <span class="co"># each with two rows and two columns</span></span>
+<span id="cb92-477"><a href="#cb92-477" aria-hidden="true" tabindex="-1"></a>    <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)                        </span>
+<span id="cb92-478"><a href="#cb92-478" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb92-479"><a href="#cb92-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-480"><a href="#cb92-480" aria-hidden="true" tabindex="-1"></a>A</span>
+<span id="cb92-481"><a href="#cb92-481" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-482"><a href="#cb92-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-485"><a href="#cb92-485" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb92-486"><a href="#cb92-486" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(A)</span>
+<span id="cb92-487"><a href="#cb92-487" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb92-488"><a href="#cb92-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-489"><a href="#cb92-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-490"><a href="#cb92-490" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference:</span></span>
+<span id="cb92-491"><a href="#cb92-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-492"><a href="#cb92-492" aria-hidden="true" tabindex="-1"></a>https://www.geeksforgeeks.org/data-structures-in-r-programming/</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

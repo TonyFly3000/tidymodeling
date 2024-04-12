@@ -16,25 +16,23 @@ format:
     code-block-border-left: "#31BAE9"
 ---
 
-dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.
+The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
 
+![](images/ggplot_hive.jpg)
+
+dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.
 
 ![](images/logo.png){width="231"}
 
-
-## load package
+# load package
 
 ```{r}
 library(tidyverse)
 ```
 
-
 ```{r}
 packageVersion("dplyr")
 ```
-
-
-
 
 ```{r}
 data(mtcars)
@@ -42,8 +40,7 @@ small_mtcars = mtcars %>% select(cyl, mpg,hp) %>% head()
 
 ```
 
-
-## make rowname into one column
+make rowname into one column
 
 ```{r}
 library(tibble)
@@ -51,37 +48,29 @@ small_mtcars=rownames_to_column(small_mtcars, var="car_name")
 
 small_mtcars %>% head
 ```
-
+# Data manipulation
 
 ## select column
 
-### get column names
+## get column names
 
 ```{r}
 names(small_mtcars)
 ```
 
-### select by name
-
+## select by name
 
 ```{r}
 mtcars %>% select(cyl, mpg,hp) 
 ```
 
+## select columns by name match with 'p'
 
+## select columns by index
 
+### select first and 3rd columns
 
-### select columns by name match with 'p'
-
-
-
-### select columns by index
-
-#### select first and 3rd columns
-
-
-#### select first to 3rd columns
-
+### select first to 3rd columns
 
 ## drop column
 
@@ -116,6 +105,7 @@ small_mtcars %>%filter(cyl>5)
 ```
 
 ### Filters with AND conditions
+
 ```{r}
 small_mtcars %>%filter(cyl>5,mpg>20)
 ```
@@ -126,8 +116,6 @@ small_mtcars %>%filter(cyl>5,mpg>20)
 small_mtcars %>%filter(cyl>5|mpg>20)
 ```
 
-
-
 ### filter row with index
 
 #### 5th rows
@@ -135,8 +123,6 @@ small_mtcars %>%filter(cyl>5|mpg>20)
 ```{r}
 small_mtcars %>% slice(5)
 ```
-
-
 
 #### 1 and 5h rows
 
@@ -150,26 +136,29 @@ small_mtcars %>% slice(1:5)
 small_mtcars %>% sample_n(5)
 ```
 
-
 ## Append
 
 ### append by row
-
 
 ```{r}
 small_mtcars %>% rbind(small_mtcars)
 ```
 
-
-
 ### append by column
+
 ```{r}
 small_mtcars %>% cbind(small_mtcars)
 ```
 
-### Dropping NA values
+### Sepcial vales
 
-### keep NA values
+#### NAN
+
+#### NA
+
+#### NULL
+
+
 
 ## group by
 
@@ -190,6 +179,7 @@ small_mtcars %>%group_by(cyl) %>% summarise(n_mpg=n()
                                             
                                             )
 ```
+
 ## order rows
 
 ```{r}
@@ -201,15 +191,14 @@ small_mtcars %>%arrange(cyl)
 ```{r}
 small_mtcars %>%arrange(desc(cyl) )
 ```
+
 ### Arrange by multiple variables
 
 ```{r}
 small_mtcars %>%arrange(cyl,mpg)
 ```
 
-
 ## join
-
 
 ```{r}
 left_data=small_mtcars %>% slice(1:2)
@@ -224,20 +213,14 @@ left_data
 right_data
 ```
 
-
 ### inner_join
-
 
 ```{r}
 data=left_data %>% inner_join(right_data,join_by(car_name== car_name), suffix = c("_l", "._r"))
 data
 ```
 
-
-
-
 ### left join
-
 
 ```{r}
 data=left_data %>% left_join(right_data,join_by(car_name== car_name), suffix = c("_l", "._r"))
@@ -246,12 +229,10 @@ data
 
 ### full join
 
-
 ```{r}
 data=left_data %>% full_join(right_data,join_by(car_name== car_name), suffix = c("_l", "._r"))
 data
 ```
-
 
 ### anti join
 
@@ -262,8 +243,6 @@ anti_join() return all rows from x without a match in y
 data=left_data %>% anti_join(right_data,join_by(car_name== car_name))
 data
 ```
-
-
 
 ## Reshape tables
 
@@ -281,7 +260,6 @@ olddata_wide <- read.table(header=TRUE, text='
 olddata_wide
 ```
 
-
 ### Gather data long(wide to long)
 
 ```{r}
@@ -291,8 +269,8 @@ data_long=olddata_wide %>%
 data_long
 ```
 
-
 ### Spread data wide (long to wide)
+
 ```{r}
 data_wide=data_long %>%
   pivot_wider(names_from = income, values_from = DATA)
@@ -300,32 +278,271 @@ data_wide=data_long %>%
 data_wide
 ```
 
+# string
 
-## string
+stringr is built on top of stringi, which uses the ICU C library to provide fast, correct implementations of common string manipulations.
+
+![](images/logo-01.png)
+
+## length
+
+```{r}
+x <- "I like horses."
+str_length(x)
+```
+
+## upper case
+
+```{r}
+x <- "I like horses."
+
+str_to_upper(x)
+```
+
+## lower case
+
+```{r}
+x <- "I like horses."
+
+str_to_lower(x)
+```
+
+## match
+
+```{r}
+
+trx='abc1993'
+
+num=str_match(trx, "(\\d)+")
+
+num
+
+```
 
 
-### upper case
+## concatenation
+
+```{r}
+a='aaaa'
+b='bbbb'
+```
+
+```{r}
+paste(a,b)
+```
+
+```{r}
+paste0(a,b)
+```
+## replace
+
+str_replace()
+
+```{r}
+text001="abcb"
+text001 %>% str_replace('b','1')
+```
+
+str_replace_all()
+
+```{r}
+text001="abcb"
+text001 %>% str_replace_all('b','1')
+```
+
+## extract
+
+```{r}
+data001=mtcars
+data001 <- cbind(names = rownames(data001), data001)
+```
+
+### subset string by postion
+
+extract 2 to 4
+
+```{r}
+data001$new_names=data001$names %>% str_sub(2,4)
+head(data001 %>% select(new_names,names))
+```
+
+### extracting number from a string
+
+```{r}
 
 
-### lower case
+trx='abc1993 ccc'
+
+num=str_extract(trx, "(\\d)+")
+
+num
+```
+
+# date
+
+using lubridate package to handle date and time in R
+
+![](images/logo-02.png)
 
 
-
-### match
-
-
-### concatenation
-
-
-### replace
+```{r}
+library(tidyverse)
+library(lubridate)
+library(nycflights13)
+```
 
 
+## date format
 
-### extract
+input as character
+
+```{r}
+date1='2023-01-01'
+class(date1)
+```
+
+```{r}
+date1
+```
+
+convert into date type with `as.Date()`
+
+```{r}
+date2=as.Date('2023-01-01')
+class(date2)
+```
+
+```{r}
+date2
+```
+
+convert into date type with `ymd()`
+
+```{r}
+date3=ymd('2023-01-01')
+class(date3)
+```
+
+```{r}
+date3
+```
+
+get today with `today()`
+
+```{r}
+today()
+```
+
+get local timezone
+
+```{r}
+Sys.timezone()
+```
+
+## change date format
+
+make multiple column character to date with `make_date()`
+
+```{r}
+flights %>% 
+  select(year, month, day, hour, minute) %>% 
+  mutate(departure = make_date(year, month, day))
+```
+
+```{r}
+flights %>% 
+  select(year, month, day, hour, minute) %>% 
+  mutate(departure = make_datetime(year, month, day, hour, minute))
+```
+
+## day differnce between two dates
+
+```{r}
+day1=ymd('2022-01-01')
+day2=ymd('2023-02-03')
+
+diff=day2-day1
+```
+
+```{r}
+diff
+```
+
+using `interval()` find two dates gap
+
+```{r}
+interval(day1,day2) %>% as.period()
+```
+
+find day gap
+
+```{r}
+interval(day1,day2)%/% days(1)
+```
+
+find month gap
+
+```{r}
+interval(day1,day2)%/% months(1)
+```
+
+find year gap
+
+```{r}
+interval(day1,day2)%/% years(1)
+```
+## day and time
+
+```{r}
+now_time=now()
+now_time
+```
+
+### get year
+```{r}
+year(now_time)
+```
 
 
+### get month
+```{r}
+month(now_time)
+```
 
-## date
+
+### get date of the month
+```{r}
+mday(now_time)
+```
+
+
+### get date of the year
+```{r}
+yday(now_time)
+```
+
+### get date of the week
+```{r}
+wday(now_time)
+```
+
+#### get hour
+```{r}
+hour(now_time)
+```
+
+
+### get minute
+```{r}
+minute(now_time)
+```
+
+### get second
+```{r}
+second(now_time)
+```
+
+
 
 ## dataframe to other data format
 
@@ -336,11 +553,9 @@ data=small_mtcars$cyl
 data
 ```
 
-
 ```{r}
 class(data)
 ```
-
 
 ### dataframe to matrix
 
@@ -349,11 +564,9 @@ data=data.matrix(small_mtcars)
 data
 ```
 
-
 ```{r}
 class(data)
 ```
-
 
 ### dataframe to list
 

@@ -136,6 +136,101 @@ adding_ten <- function(x) {
 adding_ten(5)
 ```
 
+## return result with default
+
+```{r}
+adding_ten <- function(x=10) { 
+  a=x+10
+  return(a)
+}
+
+adding_ten(5)
+```
+
+if not define x, then x=10
+
+```{r}
+adding_ten()
+```
+
+## check function Arguments
+
+```{r}
+args(adding_ten)
+```
+
+Many functions exhibit variadic behavior. That is, they can accept any num- ber of arguments, and it’s up to the user to decide how many arguments to provide. The functions c, data.frame, and list are all like this. When you call a function like data.frame, you can specify any number of members as arguments.
+
+```{r}
+args(data.frame)
+```
+
+## warning in function
+
+print out warning
+
+```{r}
+adding_ten <- function(x=10) { 
+  a=x+10
+  if(a>50){
+    warning('its better than 50')
+  }
+  return(a)
+}
+```
+
+```{r}
+adding_ten(100)
+```
+
+## stop in function
+
+print out stop error message
+
+```{r}
+adding_ten <- function(x=10) { 
+  a=x+10
+  if(a>50){
+    stop('its better than 50')
+  }
+  return(a)
+}
+```
+
+```{r}
+adding_ten(100)
+```
+
+## use try to by pass error
+
+```{r}
+try(adding_ten(100))
+5+10
+```
+
+# program running time
+
+```{r}
+start_time=Sys.time()
+
+v=matrix(1:100000000)
+c=v*v
+
+end_time=Sys.time()
+```
+
+```{r}
+start_time
+```
+
+```{r}
+end_time
+```
+
+```{r}
+end_time-start_time
+```
+
 # Package
 
 ## check R version
@@ -145,7 +240,6 @@ version
 ```
 
 ## install R package
-
 
 ### install from Cran
 
@@ -165,7 +259,6 @@ install.packages('tidyverse')
 pak::pkg_install("tidymodels/learntidymodels")
 ```
 
-
 ### install from Bioconductor
 
 ```{r}
@@ -173,14 +266,12 @@ pak::pkg_install("tidymodels/learntidymodels")
 pak::pkg_install("text2vec")
 ```
 
-
 ### install from local
 
 ```{r}
 #| eval: false
 pak::local_install("cli")
 ```
-
 
 ## check one package version
 
@@ -193,6 +284,7 @@ packageVersion("tidyverse")
 ```{r}
 pak::pkg_deps_explain("tibble", "rlang")
 ```
+
 ## check pacakge dependencies
 
 ```{r}
@@ -218,3 +310,29 @@ head(ip)
 ```{r}
 .libPaths()
 ```
+
+# Statistics
+
+
+
+## Centrality: Mean, Median, Mode
+
+## Spread: Variance, Standard Deviation, and the Interquartile Range
+
+## Covariance and Correlation
+
+When analyzing data, it’s often useful to be able to investigate the rela- tionship between two numeric variables to assess trends. For example, you might expect height and weight observations to have a noticeable positive relationship—taller people tend to weigh more. Conversely, you might imag- ine that handspan and length of hair would have less of an association. One of the simplest and most common ways such associations are quantified and compared is through the idea of correlation, for which you need the covariance. The covariance expresses how much two numeric variables “change together” and the nature of that relationship,
+
+![](images/clipboard-4055345945.png)
+
+## Correlation,Pearson’s product-moment correlation coefficient
+
+Pearson’s sample correlation coef- ficient ρxy is computed by dividing the sample covariance by the product of the standard deviation of each data set
+
+![](images/clipboard-1822919442.png)
+
+Some Correlation Example:
+
+![](images/clipboard-775702636.png)
+
+# Probability 

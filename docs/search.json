@@ -3368,7 +3368,7 @@
     "href": "intro/5 R boook.html",
     "title": "R book",
     "section": "",
-    "text": "The Art of R Programming\nby Norman Matloff\n\n\n\nThe book of R\nby Norman Matloff\n\n\n\nR Packages\nby Hadley Wickham Jennifer Bryan\n\n\n\n\n\n Back to top",
+    "text": "The Art of R Programming\nby Norman Matloff 2011\n\n\n\nThe book of R\nby Tilman M. Davie 2016\n\n\n\nR in action\nby Robert I. Kabacoff 2011\n\n\n\nR Packages\nby Hadley Wickham Jennifer Bryan\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Intro",
       "R book"
@@ -5370,7 +5370,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html",
     "title": "Data manipulation with tidyverse",
     "section": "",
-    "text": "dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.",
+    "text": "The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.\ndplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6688,8 +6688,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#select-column",
     "href": "data manipulation/3 data manipulation with tidyverse.html#select-column",
     "title": "Data manipulation with tidyverse",
-    "section": "0.3 select column",
-    "text": "0.3 select column\n\n0.3.1 get column names\n\n\nCode\nnames(small_mtcars)\n\n\n[1] \"car_name\" \"cyl\"      \"mpg\"      \"hp\"      \n\n\n\n\n0.3.2 select by name\n\n\nCode\nmtcars %&gt;% select(cyl, mpg,hp) \n\n\n                    cyl  mpg  hp\nMazda RX4             6 21.0 110\nMazda RX4 Wag         6 21.0 110\nDatsun 710            4 22.8  93\nHornet 4 Drive        6 21.4 110\nHornet Sportabout     8 18.7 175\nValiant               6 18.1 105\nDuster 360            8 14.3 245\nMerc 240D             4 24.4  62\nMerc 230              4 22.8  95\nMerc 280              6 19.2 123\nMerc 280C             6 17.8 123\nMerc 450SE            8 16.4 180\nMerc 450SL            8 17.3 180\nMerc 450SLC           8 15.2 180\nCadillac Fleetwood    8 10.4 205\nLincoln Continental   8 10.4 215\nChrysler Imperial     8 14.7 230\nFiat 128              4 32.4  66\nHonda Civic           4 30.4  52\nToyota Corolla        4 33.9  65\nToyota Corona         4 21.5  97\nDodge Challenger      8 15.5 150\nAMC Javelin           8 15.2 150\nCamaro Z28            8 13.3 245\nPontiac Firebird      8 19.2 175\nFiat X1-9             4 27.3  66\nPorsche 914-2         4 26.0  91\nLotus Europa          4 30.4 113\nFord Pantera L        8 15.8 264\nFerrari Dino          6 19.7 175\nMaserati Bora         8 15.0 335\nVolvo 142E            4 21.4 109\n\n\n\n\n0.3.3 select columns by name match with ‘p’\n\n\n0.3.4 select columns by index\n\n0.3.4.1 select first and 3rd columns\n\n\n0.3.4.2 select first to 3rd columns",
+    "section": "2.1 select column",
+    "text": "2.1 select column",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6699,8 +6699,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#drop-column",
     "href": "data manipulation/3 data manipulation with tidyverse.html#drop-column",
     "title": "Data manipulation with tidyverse",
-    "section": "0.4 drop column",
-    "text": "0.4 drop column\n\n\nCode\nsmall_mtcars %&gt;% select(-cyl)\n\n\n           car_name  mpg  hp\n1         Mazda RX4 21.0 110\n2     Mazda RX4 Wag 21.0 110\n3        Datsun 710 22.8  93\n4    Hornet 4 Drive 21.4 110\n5 Hornet Sportabout 18.7 175\n6           Valiant 18.1 105",
+    "section": "2.6 drop column",
+    "text": "2.6 drop column\n\n\nCode\nsmall_mtcars %&gt;% select(-cyl)\n\n\n           car_name  mpg  hp\n1         Mazda RX4 21.0 110\n2     Mazda RX4 Wag 21.0 110\n3        Datsun 710 22.8  93\n4    Hornet 4 Drive 21.4 110\n5 Hornet Sportabout 18.7 175\n6           Valiant 18.1 105",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6710,8 +6710,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#renaming-column",
     "href": "data manipulation/3 data manipulation with tidyverse.html#renaming-column",
     "title": "Data manipulation with tidyverse",
-    "section": "0.5 Renaming column",
-    "text": "0.5 Renaming column\n\n\nCode\nsmall_mtcars %&gt;%rename(new_cyl=cyl)\n\n\n           car_name new_cyl  mpg  hp\n1         Mazda RX4       6 21.0 110\n2     Mazda RX4 Wag       6 21.0 110\n3        Datsun 710       4 22.8  93\n4    Hornet 4 Drive       6 21.4 110\n5 Hornet Sportabout       8 18.7 175\n6           Valiant       6 18.1 105",
+    "section": "2.7 Renaming column",
+    "text": "2.7 Renaming column\n\n\nCode\nsmall_mtcars %&gt;%rename(new_cyl=cyl)\n\n\n           car_name new_cyl  mpg  hp\n1         Mazda RX4       6 21.0 110\n2     Mazda RX4 Wag       6 21.0 110\n3        Datsun 710       4 22.8  93\n4    Hornet 4 Drive       6 21.4 110\n5 Hornet Sportabout       8 18.7 175\n6           Valiant       6 18.1 105",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6721,8 +6721,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#create-column",
     "href": "data manipulation/3 data manipulation with tidyverse.html#create-column",
     "title": "Data manipulation with tidyverse",
-    "section": "0.6 Create column",
-    "text": "0.6 Create column\n\n0.6.1 Mutate\n\n\nCode\nsmall_mtcars %&gt;%mutate(new_cyl=cyl+1)\n\n\n           car_name cyl  mpg  hp new_cyl\n1         Mazda RX4   6 21.0 110       7\n2     Mazda RX4 Wag   6 21.0 110       7\n3        Datsun 710   4 22.8  93       5\n4    Hornet 4 Drive   6 21.4 110       7\n5 Hornet Sportabout   8 18.7 175       9\n6           Valiant   6 18.1 105       7\n\n\n\n\n0.6.2 Transmute,create column and only keep this column\n\n\nCode\nsmall_mtcars %&gt;%transmute(new_cyl=cyl+1)\n\n\n  new_cyl\n1       7\n2       7\n3       5\n4       7\n5       9\n6       7",
+    "section": "2.8 Create column",
+    "text": "2.8 Create column\n\n2.8.1 Mutate\n\n\nCode\nsmall_mtcars %&gt;%mutate(new_cyl=cyl+1)\n\n\n           car_name cyl  mpg  hp new_cyl\n1         Mazda RX4   6 21.0 110       7\n2     Mazda RX4 Wag   6 21.0 110       7\n3        Datsun 710   4 22.8  93       5\n4    Hornet 4 Drive   6 21.4 110       7\n5 Hornet Sportabout   8 18.7 175       9\n6           Valiant   6 18.1 105       7\n\n\n\n\n2.8.2 Transmute,create column and only keep this column\n\n\nCode\nsmall_mtcars %&gt;%transmute(new_cyl=cyl+1)\n\n\n  new_cyl\n1       7\n2       7\n3       5\n4       7\n5       9\n6       7",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6732,8 +6732,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#filter-rows",
     "href": "data manipulation/3 data manipulation with tidyverse.html#filter-rows",
     "title": "Data manipulation with tidyverse",
-    "section": "0.7 Filter rows",
-    "text": "0.7 Filter rows\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3    Hornet 4 Drive   6 21.4 110\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105\n\n\n\n0.7.1 Filters with AND conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5,mpg&gt;20)\n\n\n        car_name cyl  mpg  hp\n1      Mazda RX4   6 21.0 110\n2  Mazda RX4 Wag   6 21.0 110\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n\n0.7.2 Filters with OR conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5|mpg&gt;20)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105\n\n\n\n\n0.7.3 filter row with index\n\n0.7.3.1 5th rows\n\n\nCode\nsmall_mtcars %&gt;% slice(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n\n\n\n\n0.7.3.2 1 and 5h rows\n\n\nCode\nsmall_mtcars %&gt;% slice(1:5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n\n\n\n\n0.7.3.3 get ramdon 5 rows\n\n\nCode\nsmall_mtcars %&gt;% sample_n(5)\n\n\n           car_name cyl  mpg  hp\n1     Mazda RX4 Wag   6 21.0 110\n2         Mazda RX4   6 21.0 110\n3        Datsun 710   4 22.8  93\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105",
+    "section": "2.9 Filter rows",
+    "text": "2.9 Filter rows\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3    Hornet 4 Drive   6 21.4 110\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105\n\n\n\n2.9.1 Filters with AND conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5,mpg&gt;20)\n\n\n        car_name cyl  mpg  hp\n1      Mazda RX4   6 21.0 110\n2  Mazda RX4 Wag   6 21.0 110\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n\n2.9.2 Filters with OR conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5|mpg&gt;20)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105\n\n\n\n\n2.9.3 filter row with index\n\n2.9.3.1 5th rows\n\n\nCode\nsmall_mtcars %&gt;% slice(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.2 1 and 5h rows\n\n\nCode\nsmall_mtcars %&gt;% slice(1:5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.3 get ramdon 5 rows\n\n\nCode\nsmall_mtcars %&gt;% sample_n(5)\n\n\n           car_name cyl  mpg  hp\n1     Mazda RX4 Wag   6 21.0 110\n2 Hornet Sportabout   8 18.7 175\n3         Mazda RX4   6 21.0 110\n4           Valiant   6 18.1 105\n5        Datsun 710   4 22.8  93",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6743,8 +6743,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#append",
     "href": "data manipulation/3 data manipulation with tidyverse.html#append",
     "title": "Data manipulation with tidyverse",
-    "section": "0.8 Append",
-    "text": "0.8 Append\n\n0.8.1 append by row\n\n\nCode\nsmall_mtcars %&gt;% rbind(small_mtcars)\n\n\n            car_name cyl  mpg  hp\n1          Mazda RX4   6 21.0 110\n2      Mazda RX4 Wag   6 21.0 110\n3         Datsun 710   4 22.8  93\n4     Hornet 4 Drive   6 21.4 110\n5  Hornet Sportabout   8 18.7 175\n6            Valiant   6 18.1 105\n7          Mazda RX4   6 21.0 110\n8      Mazda RX4 Wag   6 21.0 110\n9         Datsun 710   4 22.8  93\n10    Hornet 4 Drive   6 21.4 110\n11 Hornet Sportabout   8 18.7 175\n12           Valiant   6 18.1 105\n\n\n\n\n0.8.2 append by column\n\n\nCode\nsmall_mtcars %&gt;% cbind(small_mtcars)\n\n\n           car_name cyl  mpg  hp          car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105           Valiant   6 18.1 105\n\n\n\n\n0.8.3 Dropping NA values\n\n\n0.8.4 keep NA values",
+    "section": "2.10 Append",
+    "text": "2.10 Append\n\n2.10.1 append by row\n\n\nCode\nsmall_mtcars %&gt;% rbind(small_mtcars)\n\n\n            car_name cyl  mpg  hp\n1          Mazda RX4   6 21.0 110\n2      Mazda RX4 Wag   6 21.0 110\n3         Datsun 710   4 22.8  93\n4     Hornet 4 Drive   6 21.4 110\n5  Hornet Sportabout   8 18.7 175\n6            Valiant   6 18.1 105\n7          Mazda RX4   6 21.0 110\n8      Mazda RX4 Wag   6 21.0 110\n9         Datsun 710   4 22.8  93\n10    Hornet 4 Drive   6 21.4 110\n11 Hornet Sportabout   8 18.7 175\n12           Valiant   6 18.1 105\n\n\n\n\n2.10.2 append by column\n\n\nCode\nsmall_mtcars %&gt;% cbind(small_mtcars)\n\n\n           car_name cyl  mpg  hp          car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105           Valiant   6 18.1 105\n\n\n\n\n2.10.3 Dropping NA values\n\n\n2.10.4 keep NA values",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6754,8 +6754,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#group-by",
     "href": "data manipulation/3 data manipulation with tidyverse.html#group-by",
     "title": "Data manipulation with tidyverse",
-    "section": "0.9 group by",
-    "text": "0.9 group by\n\n0.9.1 average,min,max,sum\n\n\nCode\nsmall_mtcars %&gt;%group_by(cyl) %&gt;% summarise(avg_mpg=mean(mpg)\n                                            ,min_mpg=min(mpg)\n                                            ,max_mpg=max(mpg)\n                                            ,sum_mpg=sum(mpg))\n\n\n# A tibble: 3 × 5\n    cyl avg_mpg min_mpg max_mpg sum_mpg\n  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1     4    22.8    22.8    22.8    22.8\n2     6    20.4    18.1    21.4    81.5\n3     8    18.7    18.7    18.7    18.7\n\n\n\n\n0.9.2 count record and count distinct record\n\n\nCode\nsmall_mtcars %&gt;%group_by(cyl) %&gt;% summarise(n_mpg=n()\n                                            ,distinct_n_mpg=n_distinct(mpg)\n                                            \n                                            )\n\n\n# A tibble: 3 × 3\n    cyl n_mpg distinct_n_mpg\n  &lt;dbl&gt; &lt;int&gt;          &lt;int&gt;\n1     4     1              1\n2     6     4              3\n3     8     1              1",
+    "section": "2.11 group by",
+    "text": "2.11 group by\n\n2.11.1 average,min,max,sum\n\n\nCode\nsmall_mtcars %&gt;%group_by(cyl) %&gt;% summarise(avg_mpg=mean(mpg)\n                                            ,min_mpg=min(mpg)\n                                            ,max_mpg=max(mpg)\n                                            ,sum_mpg=sum(mpg))\n\n\n# A tibble: 3 × 5\n    cyl avg_mpg min_mpg max_mpg sum_mpg\n  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1     4    22.8    22.8    22.8    22.8\n2     6    20.4    18.1    21.4    81.5\n3     8    18.7    18.7    18.7    18.7\n\n\n\n\n2.11.2 count record and count distinct record\n\n\nCode\nsmall_mtcars %&gt;%group_by(cyl) %&gt;% summarise(n_mpg=n()\n                                            ,distinct_n_mpg=n_distinct(mpg)\n                                            \n                                            )\n\n\n# A tibble: 3 × 3\n    cyl n_mpg distinct_n_mpg\n  &lt;dbl&gt; &lt;int&gt;          &lt;int&gt;\n1     4     1              1\n2     6     4              3\n3     8     1              1",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6765,8 +6765,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#order-rows",
     "href": "data manipulation/3 data manipulation with tidyverse.html#order-rows",
     "title": "Data manipulation with tidyverse",
-    "section": "0.10 order rows",
-    "text": "0.10 order rows\n\n\nCode\nsmall_mtcars %&gt;%arrange(cyl) \n\n\n           car_name cyl  mpg  hp\n1        Datsun 710   4 22.8  93\n2         Mazda RX4   6 21.0 110\n3     Mazda RX4 Wag   6 21.0 110\n4    Hornet 4 Drive   6 21.4 110\n5           Valiant   6 18.1 105\n6 Hornet Sportabout   8 18.7 175\n\n\n\n0.10.1 Sort in descending order\n\n\nCode\nsmall_mtcars %&gt;%arrange(desc(cyl) )\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n2         Mazda RX4   6 21.0 110\n3     Mazda RX4 Wag   6 21.0 110\n4    Hornet 4 Drive   6 21.4 110\n5           Valiant   6 18.1 105\n6        Datsun 710   4 22.8  93\n\n\n\n\n0.10.2 Arrange by multiple variables\n\n\nCode\nsmall_mtcars %&gt;%arrange(cyl,mpg)\n\n\n           car_name cyl  mpg  hp\n1        Datsun 710   4 22.8  93\n2           Valiant   6 18.1 105\n3         Mazda RX4   6 21.0 110\n4     Mazda RX4 Wag   6 21.0 110\n5    Hornet 4 Drive   6 21.4 110\n6 Hornet Sportabout   8 18.7 175",
+    "section": "2.12 order rows",
+    "text": "2.12 order rows\n\n\nCode\nsmall_mtcars %&gt;%arrange(cyl) \n\n\n           car_name cyl  mpg  hp\n1        Datsun 710   4 22.8  93\n2         Mazda RX4   6 21.0 110\n3     Mazda RX4 Wag   6 21.0 110\n4    Hornet 4 Drive   6 21.4 110\n5           Valiant   6 18.1 105\n6 Hornet Sportabout   8 18.7 175\n\n\n\n2.12.1 Sort in descending order\n\n\nCode\nsmall_mtcars %&gt;%arrange(desc(cyl) )\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n2         Mazda RX4   6 21.0 110\n3     Mazda RX4 Wag   6 21.0 110\n4    Hornet 4 Drive   6 21.4 110\n5           Valiant   6 18.1 105\n6        Datsun 710   4 22.8  93\n\n\n\n\n2.12.2 Arrange by multiple variables\n\n\nCode\nsmall_mtcars %&gt;%arrange(cyl,mpg)\n\n\n           car_name cyl  mpg  hp\n1        Datsun 710   4 22.8  93\n2           Valiant   6 18.1 105\n3         Mazda RX4   6 21.0 110\n4     Mazda RX4 Wag   6 21.0 110\n5    Hornet 4 Drive   6 21.4 110\n6 Hornet Sportabout   8 18.7 175",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6776,8 +6776,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#join",
     "href": "data manipulation/3 data manipulation with tidyverse.html#join",
     "title": "Data manipulation with tidyverse",
-    "section": "0.11 join",
-    "text": "0.11 join\n\n\nCode\nleft_data=small_mtcars %&gt;% slice(1:2)\nright_data=small_mtcars %&gt;% slice(2:4)\n\n\n\n\nCode\nleft_data\n\n\n       car_name cyl mpg  hp\n1     Mazda RX4   6  21 110\n2 Mazda RX4 Wag   6  21 110\n\n\n\n\nCode\nright_data\n\n\n        car_name cyl  mpg  hp\n1  Mazda RX4 Wag   6 21.0 110\n2     Datsun 710   4 22.8  93\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n0.11.1 inner_join\n\n\nCode\ndata=left_data %&gt;% inner_join(right_data,join_by(car_name== car_name), suffix = c(\"_l\", \"._r\"))\ndata\n\n\n       car_name cyl_l mpg_l hp_l cyl._r mpg._r hp._r\n1 Mazda RX4 Wag     6    21  110      6     21   110\n\n\n\n\n0.11.2 left join\n\n\nCode\ndata=left_data %&gt;% left_join(right_data,join_by(car_name== car_name), suffix = c(\"_l\", \"._r\"))\ndata\n\n\n       car_name cyl_l mpg_l hp_l cyl._r mpg._r hp._r\n1     Mazda RX4     6    21  110     NA     NA    NA\n2 Mazda RX4 Wag     6    21  110      6     21   110\n\n\n\n\n0.11.3 full join\n\n\nCode\ndata=left_data %&gt;% full_join(right_data,join_by(car_name== car_name), suffix = c(\"_l\", \"._r\"))\ndata\n\n\n        car_name cyl_l mpg_l hp_l cyl._r mpg._r hp._r\n1      Mazda RX4     6    21  110     NA     NA    NA\n2  Mazda RX4 Wag     6    21  110      6   21.0   110\n3     Datsun 710    NA    NA   NA      4   22.8    93\n4 Hornet 4 Drive    NA    NA   NA      6   21.4   110\n\n\n\n\n0.11.4 anti join\nanti_join() return all rows from x without a match in y\n\n\nCode\ndata=left_data %&gt;% anti_join(right_data,join_by(car_name== car_name))\ndata\n\n\n   car_name cyl mpg  hp\n1 Mazda RX4   6  21 110",
+    "section": "2.13 join",
+    "text": "2.13 join\n\n\nCode\nleft_data=small_mtcars %&gt;% slice(1:2)\nright_data=small_mtcars %&gt;% slice(2:4)\n\n\n\n\nCode\nleft_data\n\n\n       car_name cyl mpg  hp\n1     Mazda RX4   6  21 110\n2 Mazda RX4 Wag   6  21 110\n\n\n\n\nCode\nright_data\n\n\n        car_name cyl  mpg  hp\n1  Mazda RX4 Wag   6 21.0 110\n2     Datsun 710   4 22.8  93\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n2.13.1 inner_join\n\n\nCode\ndata=left_data %&gt;% inner_join(right_data,join_by(car_name== car_name), suffix = c(\"_l\", \"._r\"))\ndata\n\n\n       car_name cyl_l mpg_l hp_l cyl._r mpg._r hp._r\n1 Mazda RX4 Wag     6    21  110      6     21   110\n\n\n\n\n2.13.2 left join\n\n\nCode\ndata=left_data %&gt;% left_join(right_data,join_by(car_name== car_name), suffix = c(\"_l\", \"._r\"))\ndata\n\n\n       car_name cyl_l mpg_l hp_l cyl._r mpg._r hp._r\n1     Mazda RX4     6    21  110     NA     NA    NA\n2 Mazda RX4 Wag     6    21  110      6     21   110\n\n\n\n\n2.13.3 full join\n\n\nCode\ndata=left_data %&gt;% full_join(right_data,join_by(car_name== car_name), suffix = c(\"_l\", \"._r\"))\ndata\n\n\n        car_name cyl_l mpg_l hp_l cyl._r mpg._r hp._r\n1      Mazda RX4     6    21  110     NA     NA    NA\n2  Mazda RX4 Wag     6    21  110      6   21.0   110\n3     Datsun 710    NA    NA   NA      4   22.8    93\n4 Hornet 4 Drive    NA    NA   NA      6   21.4   110\n\n\n\n\n2.13.4 anti join\nanti_join() return all rows from x without a match in y\n\n\nCode\ndata=left_data %&gt;% anti_join(right_data,join_by(car_name== car_name))\ndata\n\n\n   car_name cyl mpg  hp\n1 Mazda RX4   6  21 110",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6787,8 +6787,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#reshape-tables",
     "href": "data manipulation/3 data manipulation with tidyverse.html#reshape-tables",
     "title": "Data manipulation with tidyverse",
-    "section": "0.12 Reshape tables",
-    "text": "0.12 Reshape tables\n\n\nCode\nolddata_wide &lt;- read.table(header=TRUE, text='\n subject sex control cond1 cond2\n       1   M     7.9  12.3  10.7\n       2   F     6.3  10.6  11.1\n       3   F     9.5  13.1  13.8\n       4   M    11.5  13.4  12.9\n')\n\n\n\n\nCode\nolddata_wide\n\n\n  subject sex control cond1 cond2\n1       1   M     7.9  12.3  10.7\n2       2   F     6.3  10.6  11.1\n3       3   F     9.5  13.1  13.8\n4       4   M    11.5  13.4  12.9\n\n\n\n0.12.1 Gather data long(wide to long)\n\n\nCode\ndata_long=olddata_wide %&gt;%\n  pivot_longer(!c(subject,sex), names_to = 'income', values_to = 'DATA')\n\ndata_long\n\n\n# A tibble: 12 × 4\n   subject sex   income   DATA\n     &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;\n 1       1 M     control   7.9\n 2       1 M     cond1    12.3\n 3       1 M     cond2    10.7\n 4       2 F     control   6.3\n 5       2 F     cond1    10.6\n 6       2 F     cond2    11.1\n 7       3 F     control   9.5\n 8       3 F     cond1    13.1\n 9       3 F     cond2    13.8\n10       4 M     control  11.5\n11       4 M     cond1    13.4\n12       4 M     cond2    12.9\n\n\n\n\n0.12.2 Spread data wide (long to wide)\n\n\nCode\ndata_wide=data_long %&gt;%\n  pivot_wider(names_from = income, values_from = DATA)\n\ndata_wide\n\n\n# A tibble: 4 × 5\n  subject sex   control cond1 cond2\n    &lt;int&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1       1 M         7.9  12.3  10.7\n2       2 F         6.3  10.6  11.1\n3       3 F         9.5  13.1  13.8\n4       4 M        11.5  13.4  12.9",
+    "section": "2.14 Reshape tables",
+    "text": "2.14 Reshape tables\n\n\nCode\nolddata_wide &lt;- read.table(header=TRUE, text='\n subject sex control cond1 cond2\n       1   M     7.9  12.3  10.7\n       2   F     6.3  10.6  11.1\n       3   F     9.5  13.1  13.8\n       4   M    11.5  13.4  12.9\n')\n\n\n\n\nCode\nolddata_wide\n\n\n  subject sex control cond1 cond2\n1       1   M     7.9  12.3  10.7\n2       2   F     6.3  10.6  11.1\n3       3   F     9.5  13.1  13.8\n4       4   M    11.5  13.4  12.9\n\n\n\n2.14.1 Gather data long(wide to long)\n\n\nCode\ndata_long=olddata_wide %&gt;%\n  pivot_longer(!c(subject,sex), names_to = 'income', values_to = 'DATA')\n\ndata_long\n\n\n# A tibble: 12 × 4\n   subject sex   income   DATA\n     &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;\n 1       1 M     control   7.9\n 2       1 M     cond1    12.3\n 3       1 M     cond2    10.7\n 4       2 F     control   6.3\n 5       2 F     cond1    10.6\n 6       2 F     cond2    11.1\n 7       3 F     control   9.5\n 8       3 F     cond1    13.1\n 9       3 F     cond2    13.8\n10       4 M     control  11.5\n11       4 M     cond1    13.4\n12       4 M     cond2    12.9\n\n\n\n\n2.14.2 Spread data wide (long to wide)\n\n\nCode\ndata_wide=data_long %&gt;%\n  pivot_wider(names_from = income, values_from = DATA)\n\ndata_wide\n\n\n# A tibble: 4 × 5\n  subject sex   control cond1 cond2\n    &lt;int&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1       1 M         7.9  12.3  10.7\n2       2 F         6.3  10.6  11.1\n3       3 F         9.5  13.1  13.8\n4       4 M        11.5  13.4  12.9",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6799,7 +6799,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#string",
     "title": "Data manipulation with tidyverse",
     "section": "0.13 string",
-    "text": "0.13 string\n\n0.13.1 upper case\n\n\n0.13.2 lower case\n\n\n0.13.3 match\n\n\n0.13.4 concatenation\n\n\n0.13.5 replace\n\n\n0.13.6 extract",
+    "text": "0.13 string\nstringr is built on top of stringi, which uses the ICU C library to provide fast, correct implementations of common string manipulations.\n\n\n0.13.1 length\n\n\nCode\nx &lt;- \"I like horses.\"\nstr_length(x)\n\n\n[1] 14\n\n\n\n\n0.13.2 upper case\n\n\nCode\nx &lt;- \"I like horses.\"\n\nstr_to_upper(x)\n\n\n[1] \"I LIKE HORSES.\"\n\n\n\n\n0.13.3 lower case\n\n\nCode\nx &lt;- \"I like horses.\"\n\nstr_to_lower(x)\n\n\n[1] \"i like horses.\"\n\n\n\n\n0.13.4 match\n\n\n0.13.5 concatenation\n\n\nCode\na='aaaa'\nb='bbbb'\n\n\n\n\nCode\npaste(a,b)\n\n\n[1] \"aaaa bbbb\"\n\n\n\n\nCode\npaste0(a,b)\n\n\n[1] \"aaaabbbb\"\n\n\n\n\n0.13.6 replace\nstr_replace()\n\n\nCode\ntext001=\"abcb\"\ntext001 %&gt;% str_replace('b','1')\n\n\n[1] \"a1cb\"\n\n\nstr_replace_all()\n\n\nCode\ntext001=\"abcb\"\ntext001 %&gt;% str_replace_all('b','1')\n\n\n[1] \"a1c1\"\n\n\n\n\n0.13.7 extract\n\n\nCode\ndata001=mtcars\ndata001 &lt;- cbind(names = rownames(data001), data001)\n\n\n\n0.13.7.1 subset string by postion\nextract 2 to 4\n\n\nCode\ndata001$new_names=data001$names %&gt;% str_sub(2,4)\nhead(data001 %&gt;% select(new_names,names))\n\n\n                  new_names             names\nMazda RX4               azd         Mazda RX4\nMazda RX4 Wag           azd     Mazda RX4 Wag\nDatsun 710              ats        Datsun 710\nHornet 4 Drive          orn    Hornet 4 Drive\nHornet Sportabout       orn Hornet Sportabout\nValiant                 ali           Valiant\n\n\n\n\n0.13.7.2 extracting number from a string\n\n\nCode\nlibrary(stringr)\n\ntrx='abc1993 ccc'\n\nnum=str_extract(trx, \"(\\\\d)+\")\n\nnum\n\n\n[1] \"1993\"",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -6809,8 +6809,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#date",
     "href": "data manipulation/3 data manipulation with tidyverse.html#date",
     "title": "Data manipulation with tidyverse",
-    "section": "0.14 date",
-    "text": "0.14 date",
+    "section": "3.8 date",
+    "text": "3.8 date\nusing lubridate package to handle date and time in R\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(lubridate)\nlibrary(nycflights13)\n\n\n\n3.8.1 date format\ninput as character\n\n\nCode\ndate1='2023-01-01'\nclass(date1)\n\n\n[1] \"character\"\n\n\n\n\nCode\ndate1\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with as.Date()\n\n\nCode\ndate2=as.Date('2023-01-01')\nclass(date2)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate2\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with ymd()\n\n\nCode\ndate3=ymd('2023-01-01')\nclass(date3)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate3\n\n\n[1] \"2023-01-01\"\n\n\nget today with today()\n\n\nCode\ntoday()\n\n\n[1] \"2024-04-12\"\n\n\nget local timezone\n\n\nCode\nSys.timezone()\n\n\n[1] \"Asia/Shanghai\"\n\n\n\n\n3.8.2 change date format\nmake multiple column character to date with make_date()\n\n\nCode\nflights %&gt;% \n  select(year, month, day, hour, minute) %&gt;% \n  mutate(departure = make_date(year, month, day))\n\n\n# A tibble: 336,776 × 6\n    year month   day  hour minute departure \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;    \n 1  2013     1     1     5     15 2013-01-01\n 2  2013     1     1     5     29 2013-01-01\n 3  2013     1     1     5     40 2013-01-01\n 4  2013     1     1     5     45 2013-01-01\n 5  2013     1     1     6      0 2013-01-01\n 6  2013     1     1     5     58 2013-01-01\n 7  2013     1     1     6      0 2013-01-01\n 8  2013     1     1     6      0 2013-01-01\n 9  2013     1     1     6      0 2013-01-01\n10  2013     1     1     6      0 2013-01-01\n# ℹ 336,766 more rows\n\n\n\n\nCode\nflights %&gt;% \n  select(year, month, day, hour, minute) %&gt;% \n  mutate(departure = make_datetime(year, month, day, hour, minute))\n\n\n# A tibble: 336,776 × 6\n    year month   day  hour minute departure          \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;             \n 1  2013     1     1     5     15 2013-01-01 05:15:00\n 2  2013     1     1     5     29 2013-01-01 05:29:00\n 3  2013     1     1     5     40 2013-01-01 05:40:00\n 4  2013     1     1     5     45 2013-01-01 05:45:00\n 5  2013     1     1     6      0 2013-01-01 06:00:00\n 6  2013     1     1     5     58 2013-01-01 05:58:00\n 7  2013     1     1     6      0 2013-01-01 06:00:00\n 8  2013     1     1     6      0 2013-01-01 06:00:00\n 9  2013     1     1     6      0 2013-01-01 06:00:00\n10  2013     1     1     6      0 2013-01-01 06:00:00\n# ℹ 336,766 more rows\n\n\n\n\n3.8.3 day differnce between two dates\n\n\nCode\nday1=ymd('2022-01-01')\nday2=ymd('2023-02-03')\n\ndiff=day2-day1\n\n\n\n\nCode\ndiff\n\n\nTime difference of 398 days\n\n\nusing interval() find two dates gap\n\n\nCode\ninterval(day1,day2) %&gt;% as.period()\n\n\n[1] \"1y 1m 2d 0H 0M 0S\"\n\n\nfind day gap\n\n\nCode\ninterval(day1,day2)%/% days(1)\n\n\n[1] 398\n\n\nfind month gap\n\n\nCode\ninterval(day1,day2)%/% months(1)\n\n\n[1] 13\n\n\nfind year gap\n\n\nCode\ninterval(day1,day2)%/% years(1)\n\n\n[1] 1\n\n\n\n\n3.8.4 day and time\n\n\nCode\nnow_time=now()\nnow_time\n\n\n[1] \"2024-04-12 15:53:44 CST\"\n\n\n\n3.8.4.1 get year\n\n\nCode\nyear(now_time)\n\n\n[1] 2024\n\n\n\n\n3.8.4.2 get month\n\n\nCode\nmonth(now_time)\n\n\n[1] 4\n\n\n\n\n3.8.4.3 get date of the month\n\n\nCode\nmday(now_time)\n\n\n[1] 12\n\n\n\n\n3.8.4.4 get date of the year\n\n\nCode\nyday(now_time)\n\n\n[1] 103\n\n\n\n\n3.8.4.5 get date of the week\n\n\nCode\nwday(now_time)\n\n\n[1] 6\n\n\n\n\n3.8.4.6 get hour\n\n\nCode\nhour(now_time)\n\n\n[1] 15\n\n\n\n\n3.8.4.7 get minute\n\n\nCode\nminute(now_time)\n\n\n[1] 53\n\n\n\n\n3.8.4.8 get second\n\n\nCode\nsecond(now_time)\n\n\n[1] 44.6701",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -7106,8 +7106,8 @@
     "objectID": "data manipulation/2 data structure in R.html#vector-to-other-data-format",
     "href": "data manipulation/2 data structure in R.html#vector-to-other-data-format",
     "title": "Data structure in R",
-    "section": "1.5 vector to other data format",
-    "text": "1.5 vector to other data format\n\n1.5.1 vector to dataframe\n\n\nCode\nName &lt;- c(\"Jhon\", \"Lee\", \"Suzan\", \"Abhinav\", \n          \"Brain\", \"Emma\", \"David\", \"Alice\") \n\n   \nMarks &lt;- c(56, 76, 86, 96, 73, 87, 47, 98) \n    \n\ndata&lt;- data.frame(Name,Marks) \ndata\n\n\n     Name Marks\n1    Jhon    56\n2     Lee    76\n3   Suzan    86\n4 Abhinav    96\n5   Brain    73\n6    Emma    87\n7   David    47\n8   Alice    98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"data.frame\"\n\n\n\n\n1.5.2 verctor to matrix\n\n\nCode\nv1 &lt;- c(56, 76, 86, 96, 73, 87, 47, 98) \n\n\n\n\nCode\ndata&lt;-matrix(v1,nrow=4)\ndata\n\n\n     [,1] [,2]\n[1,]   56   73\n[2,]   76   87\n[3,]   86   47\n[4,]   96   98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"matrix\" \"array\" \n\n\nother way:\n\n\nCode\ndata&lt;-matrix(c(v1,v1),ncol = 2)\ndata\n\n\n     [,1] [,2]\n[1,]   56   56\n[2,]   76   76\n[3,]   86   86\n[4,]   96   96\n[5,]   73   73\n[6,]   87   87\n[7,]   47   47\n[8,]   98   98\n\n\n\n\n1.5.3 verctor to list\n\n\nCode\ndata=list(v1)\ndata\n\n\n[[1]]\n[1] 56 76 86 96 73 87 47 98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"list\"\n\n\neach element in vetor as a element in list\n\n\nCode\ndata=as.list(v1)\ndata\n\n\n[[1]]\n[1] 56\n\n[[2]]\n[1] 76\n\n[[3]]\n[1] 86\n\n[[4]]\n[1] 96\n\n[[5]]\n[1] 73\n\n[[6]]\n[1] 87\n\n[[7]]\n[1] 47\n\n[[8]]\n[1] 98",
+    "section": "1.6 vector to other data format",
+    "text": "1.6 vector to other data format\n\n1.6.1 vector to dataframe\n\n\nCode\nName &lt;- c(\"Jhon\", \"Lee\", \"Suzan\", \"Abhinav\", \n          \"Brain\", \"Emma\", \"David\", \"Alice\") \n\n   \nMarks &lt;- c(56, 76, 86, 96, 73, 87, 47, 98) \n    \n\ndata&lt;- data.frame(Name,Marks) \ndata\n\n\n     Name Marks\n1    Jhon    56\n2     Lee    76\n3   Suzan    86\n4 Abhinav    96\n5   Brain    73\n6    Emma    87\n7   David    47\n8   Alice    98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"data.frame\"\n\n\n\n\n1.6.2 verctor to matrix\n\n\nCode\nv1 &lt;- c(56, 76, 86, 96, 73, 87, 47, 98) \n\n\n\n\nCode\ndata&lt;-matrix(v1,nrow=4)\ndata\n\n\n     [,1] [,2]\n[1,]   56   73\n[2,]   76   87\n[3,]   86   47\n[4,]   96   98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"matrix\" \"array\" \n\n\nother way:\n\n\nCode\ndata&lt;-matrix(c(v1,v1),ncol = 2)\ndata\n\n\n     [,1] [,2]\n[1,]   56   56\n[2,]   76   76\n[3,]   86   86\n[4,]   96   96\n[5,]   73   73\n[6,]   87   87\n[7,]   47   47\n[8,]   98   98\n\n\n\n\n1.6.3 verctor to list\n\n\nCode\ndata=list(v1)\ndata\n\n\n[[1]]\n[1] 56 76 86 96 73 87 47 98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"list\"\n\n\neach element in vetor as a element in list\n\n\nCode\ndata=as.list(v1)\ndata\n\n\n[[1]]\n[1] 56\n\n[[2]]\n[1] 76\n\n[[3]]\n[1] 86\n\n[[4]]\n[1] 96\n\n[[5]]\n[1] 73\n\n[[6]]\n[1] 87\n\n[[7]]\n[1] 47\n\n[[8]]\n[1] 98\n\n\n\n\n1.6.4 verctor to array\n3D array\n\n\nCode\nvec1=c(1:5) \n \nvec2=c(6:10) \n \narr=array(c(vec1,vec2),dim=c(2,5,3)) \n \n# printing the array\nclass(arr)\n\n\n[1] \"array\"\n\n\n\n\nCode\narr\n\n\n, , 1\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    7    9\n[2,]    2    4    6    8   10\n\n, , 2\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    7    9\n[2,]    2    4    6    8   10\n\n, , 3\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    7    9\n[2,]    2    4    6    8   10",
     "crumbs": [
       "data manipulation",
       "Data structure in R"
@@ -7117,8 +7117,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#dataframe-to-other-data-format",
     "href": "data manipulation/3 data manipulation with tidyverse.html#dataframe-to-other-data-format",
     "title": "Data manipulation with tidyverse",
-    "section": "0.15 dataframe to other data format",
-    "text": "0.15 dataframe to other data format\n\n0.15.1 dataframe to vector\n\n\nCode\ndata=small_mtcars$cyl\ndata\n\n\n[1] 6 6 4 6 8 6\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"numeric\"\n\n\n\n\n0.15.2 dataframe to matrix\n\n\nCode\ndata=data.matrix(small_mtcars)\ndata\n\n\n     car_name cyl  mpg  hp\n[1,]        4   6 21.0 110\n[2,]        5   6 21.0 110\n[3,]        1   4 22.8  93\n[4,]        2   6 21.4 110\n[5,]        3   8 18.7 175\n[6,]        6   6 18.1 105\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"matrix\" \"array\" \n\n\n\n\n0.15.3 dataframe to list\n\n\nCode\ndata=as.list(small_mtcars)\ndata\n\n\n$car_name\n[1] \"Mazda RX4\"         \"Mazda RX4 Wag\"     \"Datsun 710\"       \n[4] \"Hornet 4 Drive\"    \"Hornet Sportabout\" \"Valiant\"          \n\n$cyl\n[1] 6 6 4 6 8 6\n\n$mpg\n[1] 21.0 21.0 22.8 21.4 18.7 18.1\n\n$hp\n[1] 110 110  93 110 175 105\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"list\"",
+    "section": "4.5 dataframe to other data format",
+    "text": "4.5 dataframe to other data format\n\n4.5.1 dataframe to vector\n\n\nCode\ndata=small_mtcars$cyl\ndata\n\n\n[1] 6 6 4 6 8 6\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"numeric\"\n\n\n\n\n4.5.2 dataframe to matrix\n\n\nCode\ndata=data.matrix(small_mtcars)\ndata\n\n\n     car_name cyl  mpg  hp\n[1,]        4   6 21.0 110\n[2,]        5   6 21.0 110\n[3,]        1   4 22.8  93\n[4,]        2   6 21.4 110\n[5,]        3   8 18.7 175\n[6,]        6   6 18.1 105\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"matrix\" \"array\" \n\n\n\n\n4.5.3 dataframe to list\n\n\nCode\ndata=as.list(small_mtcars)\ndata\n\n\n$car_name\n[1] \"Mazda RX4\"         \"Mazda RX4 Wag\"     \"Datsun 710\"       \n[4] \"Hornet 4 Drive\"    \"Hornet Sportabout\" \"Valiant\"          \n\n$cyl\n[1] 6 6 4 6 8 6\n\n$mpg\n[1] 21.0 21.0 22.8 21.4 18.7 18.1\n\n$hp\n[1] 110 110  93 110 175 105\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"list\"",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -7540,6 +7540,204 @@
     "crumbs": [
       "Multiclass classification",
       "Multiple Classification Model with recipe,workflow, tuning"
+    ]
+  },
+  {
+    "objectID": "data manipulation/2 data structure in R.html#dataframe-to-other-data-format",
+    "href": "data manipulation/2 data structure in R.html#dataframe-to-other-data-format",
+    "title": "Data structure in R",
+    "section": "2.1 dataframe to other data format",
+    "text": "2.1 dataframe to other data format\n\n2.1.1 dataframe to matrix\n\n\nCode\nmat &lt;- as.matrix(df)\n\nclass(mat)\n\n\n[1] \"matrix\" \"array\" \n\n\n\n\nCode\nmat\n\n\n     Name    Language Age \n[1,] \"Amiya\" \"R\"      \"22\"\n[2,] \"Raj\"   \"Python\" \"25\"\n[3,] \"Asish\" \"Java\"   \"45\"\n\n\n\n\n2.1.2 dataframe to vector\n\n\nCode\nvec=df[['Name']]\n\nclass(vec)\n\n\n[1] \"character\"\n\n\n\n\nCode\nvec\n\n\n[1] \"Amiya\" \"Raj\"   \"Asish\"\n\n\n\n\n2.1.3 dataframe to list\n\n\nCode\nlist=as.list(df[['Name']])\n\nclass(list)\n\n\n[1] \"list\"\n\n\n\n\nCode\nlist\n\n\n[[1]]\n[1] \"Amiya\"\n\n[[2]]\n[1] \"Raj\"\n\n[[3]]\n[1] \"Asish\"",
+    "crumbs": [
+      "data manipulation",
+      "Data structure in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/2 data structure in R.html#matrix-to-other-data-format",
+    "href": "data manipulation/2 data structure in R.html#matrix-to-other-data-format",
+    "title": "Data structure in R",
+    "section": "3.1 matrix to other data format",
+    "text": "3.1 matrix to other data format\n\n3.1.1 matrix to dataframe\n\n\nCode\ndf &lt;- as.data.frame(matrix003)\n\nclass(df)\n\n\n[1] \"data.frame\"\n\n\n\n\nCode\ndf\n\n\n  V1 V2 V3\n1  1  4  9\n2 16 25 36\n3 49 64 81\n\n\n\n\n3.1.2 matrix to vector\n\n\nCode\nvec=as.vector(matrix003)\n\nclass(vec)\n\n\n[1] \"numeric\"\n\n\n\n\nCode\nvec\n\n\n[1]  1 16 49  4 25 64  9 36 81\n\n\n\n\n3.1.3 matrix to list\n\n\nCode\nlist=as.list(matrix003)\n\nclass(list)\n\n\n[1] \"list\"\n\n\n\n\nCode\nlist\n\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 16\n\n[[3]]\n[1] 49\n\n[[4]]\n[1] 4\n\n[[5]]\n[1] 25\n\n[[6]]\n[1] 64\n\n[[7]]\n[1] 9\n\n[[8]]\n[1] 36\n\n[[9]]\n[1] 81",
+    "crumbs": [
+      "data manipulation",
+      "Data structure in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/2 data structure in R.html#vector-converting-between-types",
+    "href": "data manipulation/2 data structure in R.html#vector-converting-between-types",
+    "title": "Data structure in R",
+    "section": "1.5 vector Converting between types",
+    "text": "1.5 vector Converting between types\n\n1.5.1 to factor\n\n\nCode\nx &lt;- c(\"a\", \"g\", \"b\")\ny=as.factor(x)\ny\n\n\n[1] a g b\nLevels: a b g\n\n\n\n\n1.5.2 to numeric\n\n\nCode\nx &lt;- c('123','44', '222')\ny=as.numeric(x)\ny\n\n\n[1] 123  44 222\n\n\n\n\n1.5.3 to character\n\n\nCode\nx &lt;- c(123123,111,5555)\ny=as.character(x)\ny\n\n\n[1] \"123123\" \"111\"    \"5555\"  \n\n\n\n\n1.5.4 to boolen\n\n\nCode\nx &lt;- c(1,0,1)\ny=as.logical(x)\ny\n\n\n[1]  TRUE FALSE  TRUE",
+    "crumbs": [
+      "data manipulation",
+      "Data structure in R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#get-column-names",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#get-column-names",
+    "title": "Data manipulation with tidyverse",
+    "section": "2.2 get column names",
+    "text": "2.2 get column names\n\n\nCode\nnames(small_mtcars)\n\n\n[1] \"car_name\" \"cyl\"      \"mpg\"      \"hp\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#select-by-name",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#select-by-name",
+    "title": "Data manipulation with tidyverse",
+    "section": "2.3 select by name",
+    "text": "2.3 select by name\n\n\nCode\nmtcars %&gt;% select(cyl, mpg,hp) \n\n\n                    cyl  mpg  hp\nMazda RX4             6 21.0 110\nMazda RX4 Wag         6 21.0 110\nDatsun 710            4 22.8  93\nHornet 4 Drive        6 21.4 110\nHornet Sportabout     8 18.7 175\nValiant               6 18.1 105\nDuster 360            8 14.3 245\nMerc 240D             4 24.4  62\nMerc 230              4 22.8  95\nMerc 280              6 19.2 123\nMerc 280C             6 17.8 123\nMerc 450SE            8 16.4 180\nMerc 450SL            8 17.3 180\nMerc 450SLC           8 15.2 180\nCadillac Fleetwood    8 10.4 205\nLincoln Continental   8 10.4 215\nChrysler Imperial     8 14.7 230\nFiat 128              4 32.4  66\nHonda Civic           4 30.4  52\nToyota Corolla        4 33.9  65\nToyota Corona         4 21.5  97\nDodge Challenger      8 15.5 150\nAMC Javelin           8 15.2 150\nCamaro Z28            8 13.3 245\nPontiac Firebird      8 19.2 175\nFiat X1-9             4 27.3  66\nPorsche 914-2         4 26.0  91\nLotus Europa          4 30.4 113\nFord Pantera L        8 15.8 264\nFerrari Dino          6 19.7 175\nMaserati Bora         8 15.0 335\nVolvo 142E            4 21.4 109",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#select-columns-by-name-match-with-p",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#select-columns-by-name-match-with-p",
+    "title": "Data manipulation with tidyverse",
+    "section": "2.4 select columns by name match with ‘p’",
+    "text": "2.4 select columns by name match with ‘p’",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#select-columns-by-index",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#select-columns-by-index",
+    "title": "Data manipulation with tidyverse",
+    "section": "2.5 select columns by index",
+    "text": "2.5 select columns by index\n\n2.5.1 select first and 3rd columns\n\n\n2.5.2 select first to 3rd columns",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#length",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#length",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.1 length",
+    "text": "3.1 length\n\n\nCode\nx &lt;- \"I like horses.\"\nstr_length(x)\n\n\n[1] 14",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#upper-case",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#upper-case",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.2 upper case",
+    "text": "3.2 upper case\n\n\nCode\nx &lt;- \"I like horses.\"\n\nstr_to_upper(x)\n\n\n[1] \"I LIKE HORSES.\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#lower-case",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#lower-case",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.3 lower case",
+    "text": "3.3 lower case\n\n\nCode\nx &lt;- \"I like horses.\"\n\nstr_to_lower(x)\n\n\n[1] \"i like horses.\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#match",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#match",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.4 match",
+    "text": "3.4 match\n\n\nCode\ntrx='abc1993'\n\nnum=str_match(trx, \"(\\\\d)+\")\n\nnum\n\n\n     [,1]   [,2]\n[1,] \"1993\" \"3\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#concatenation",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#concatenation",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.5 concatenation",
+    "text": "3.5 concatenation\n\n\nCode\na='aaaa'\nb='bbbb'\n\n\n\n\nCode\npaste(a,b)\n\n\n[1] \"aaaa bbbb\"\n\n\n\n\nCode\npaste0(a,b)\n\n\n[1] \"aaaabbbb\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#replace",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#replace",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.6 replace",
+    "text": "3.6 replace\nstr_replace()\n\n\nCode\ntext001=\"abcb\"\ntext001 %&gt;% str_replace('b','1')\n\n\n[1] \"a1cb\"\n\n\nstr_replace_all()\n\n\nCode\ntext001=\"abcb\"\ntext001 %&gt;% str_replace_all('b','1')\n\n\n[1] \"a1c1\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#extract",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#extract",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.7 extract",
+    "text": "3.7 extract\n\n\nCode\ndata001=mtcars\ndata001 &lt;- cbind(names = rownames(data001), data001)\n\n\n\n3.7.1 subset string by postion\nextract 2 to 4\n\n\nCode\ndata001$new_names=data001$names %&gt;% str_sub(2,4)\nhead(data001 %&gt;% select(new_names,names))\n\n\n                  new_names             names\nMazda RX4               azd         Mazda RX4\nMazda RX4 Wag           azd     Mazda RX4 Wag\nDatsun 710              ats        Datsun 710\nHornet 4 Drive          orn    Hornet 4 Drive\nHornet Sportabout       orn Hornet Sportabout\nValiant                 ali           Valiant\n\n\n\n\n3.7.2 extracting number from a string\n\n\nCode\ntrx='abc1993 ccc'\n\nnum=str_extract(trx, \"(\\\\d)+\")\n\nnum\n\n\n[1] \"1993\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#date-format",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#date-format",
+    "title": "Data manipulation with tidyverse",
+    "section": "4.1 date format",
+    "text": "4.1 date format\ninput as character\n\n\nCode\ndate1='2023-01-01'\nclass(date1)\n\n\n[1] \"character\"\n\n\n\n\nCode\ndate1\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with as.Date()\n\n\nCode\ndate2=as.Date('2023-01-01')\nclass(date2)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate2\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with ymd()\n\n\nCode\ndate3=ymd('2023-01-01')\nclass(date3)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate3\n\n\n[1] \"2023-01-01\"\n\n\nget today with today()\n\n\nCode\ntoday()\n\n\n[1] \"2024-04-12\"\n\n\nget local timezone\n\n\nCode\nSys.timezone()\n\n\n[1] \"Asia/Shanghai\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#change-date-format",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#change-date-format",
+    "title": "Data manipulation with tidyverse",
+    "section": "4.2 change date format",
+    "text": "4.2 change date format\nmake multiple column character to date with make_date()\n\n\nCode\nflights %&gt;% \n  select(year, month, day, hour, minute) %&gt;% \n  mutate(departure = make_date(year, month, day))\n\n\n# A tibble: 336,776 × 6\n    year month   day  hour minute departure \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;    \n 1  2013     1     1     5     15 2013-01-01\n 2  2013     1     1     5     29 2013-01-01\n 3  2013     1     1     5     40 2013-01-01\n 4  2013     1     1     5     45 2013-01-01\n 5  2013     1     1     6      0 2013-01-01\n 6  2013     1     1     5     58 2013-01-01\n 7  2013     1     1     6      0 2013-01-01\n 8  2013     1     1     6      0 2013-01-01\n 9  2013     1     1     6      0 2013-01-01\n10  2013     1     1     6      0 2013-01-01\n# ℹ 336,766 more rows\n\n\n\n\nCode\nflights %&gt;% \n  select(year, month, day, hour, minute) %&gt;% \n  mutate(departure = make_datetime(year, month, day, hour, minute))\n\n\n# A tibble: 336,776 × 6\n    year month   day  hour minute departure          \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;             \n 1  2013     1     1     5     15 2013-01-01 05:15:00\n 2  2013     1     1     5     29 2013-01-01 05:29:00\n 3  2013     1     1     5     40 2013-01-01 05:40:00\n 4  2013     1     1     5     45 2013-01-01 05:45:00\n 5  2013     1     1     6      0 2013-01-01 06:00:00\n 6  2013     1     1     5     58 2013-01-01 05:58:00\n 7  2013     1     1     6      0 2013-01-01 06:00:00\n 8  2013     1     1     6      0 2013-01-01 06:00:00\n 9  2013     1     1     6      0 2013-01-01 06:00:00\n10  2013     1     1     6      0 2013-01-01 06:00:00\n# ℹ 336,766 more rows",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#day-differnce-between-two-dates",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#day-differnce-between-two-dates",
+    "title": "Data manipulation with tidyverse",
+    "section": "4.3 day differnce between two dates",
+    "text": "4.3 day differnce between two dates\n\n\nCode\nday1=ymd('2022-01-01')\nday2=ymd('2023-02-03')\n\ndiff=day2-day1\n\n\n\n\nCode\ndiff\n\n\nTime difference of 398 days\n\n\nusing interval() find two dates gap\n\n\nCode\ninterval(day1,day2) %&gt;% as.period()\n\n\n[1] \"1y 1m 2d 0H 0M 0S\"\n\n\nfind day gap\n\n\nCode\ninterval(day1,day2)%/% days(1)\n\n\n[1] 398\n\n\nfind month gap\n\n\nCode\ninterval(day1,day2)%/% months(1)\n\n\n[1] 13\n\n\nfind year gap\n\n\nCode\ninterval(day1,day2)%/% years(1)\n\n\n[1] 1",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#day-and-time",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#day-and-time",
+    "title": "Data manipulation with tidyverse",
+    "section": "4.4 day and time",
+    "text": "4.4 day and time\n\n\nCode\nnow_time=now()\nnow_time\n\n\n[1] \"2024-04-12 15:54:31 CST\"\n\n\n\n4.4.1 get year\n\n\nCode\nyear(now_time)\n\n\n[1] 2024\n\n\n\n\n4.4.2 get month\n\n\nCode\nmonth(now_time)\n\n\n[1] 4\n\n\n\n\n4.4.3 get date of the month\n\n\nCode\nmday(now_time)\n\n\n[1] 12\n\n\n\n\n4.4.4 get date of the year\n\n\nCode\nyday(now_time)\n\n\n[1] 103\n\n\n\n\n4.4.5 get date of the week\n\n\nCode\nwday(now_time)\n\n\n[1] 6\n\n\n\n4.4.5.1 get hour\n\n\nCode\nhour(now_time)\n\n\n[1] 15\n\n\n\n\n\n4.4.6 get minute\n\n\nCode\nminute(now_time)\n\n\n[1] 54\n\n\n\n\n4.4.7 get second\n\n\nCode\nsecond(now_time)\n\n\n[1] 31.37547",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
     ]
   }
 ]
