@@ -188,6 +188,7 @@ adding_ten(100)
 print out stop error message
 
 ```{r}
+#| eval: false
 adding_ten <- function(x=10) { 
   a=x+10
   if(a>50){
@@ -198,6 +199,7 @@ adding_ten <- function(x=10) {
 ```
 
 ```{r}
+#| eval: false
 adding_ten(100)
 ```
 

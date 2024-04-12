@@ -47,9 +47,12 @@ image_array <- as.integer(image_tiff[[1]])
 ```
 
 
+
+
 ```{r}
 magick::image_read(image_array/ 255)
 ```
+
 235 * 214 pixcel and 3 channels
 ```{r}
 dim(image_array)
@@ -58,6 +61,15 @@ dim(image_array)
 ```{r}
 class(image_array)
 ```
+
+Data Normalization
+
+Since the dataset contains a range of values from 0 to 255, the dataset has to be normalized. Data Normalization is an important preprocessing step which ensures that each input parameter (pixel, in this case) has a similar data distribution. This fastens the process of covergence while training the model. Also Normalization makes sure no one particular parameter influences the output significantly.
+
+```{r}
+image_array=image_array/255
+```
+
 
 
 ```{r}
@@ -154,10 +166,18 @@ result2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_ol
 dim(result2arrary)
 ```
 
+convert from 0-1 back to 0-255
+
+```{r}
+result2arrary=result2arrary*255
+```
 
 ```{r}
 magick::image_read(result2arrary/ 255)
 ```
+
+
+
 # RBG with alpha channel picture:
 
 
@@ -201,6 +221,18 @@ dim(image_array) <- c(dim(image_array)[1]*dim(image_array)[2],4)
 ```{r}
 dim(image_array)
 ```
+
+Data Normalization
+
+Since the dataset contains a range of values from 0 to 255, the dataset has to be normalized. Data Normalization is an important preprocessing step which ensures that each input parameter (pixel, in this case) has a similar data distribution. This fastens the process of covergence while training the model. Also Normalization makes sure no one particular parameter influences the output significantly.
+
+
+```{r}
+image_array=image_array/255
+```
+
+
+
 
 ## Optimal number of k-clusters
 
@@ -283,9 +315,22 @@ result2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_ol
 dim(result2arrary)
 ```
 
+convert from 0-1 back to 0-255
+
+```{r}
+result2arrary=result2arrary*255
+```
+
+
 
 ```{r}
 magick::image_read(result2arrary/ 255)
+```
+
+```{r}
+img <- magick::image_read(result2arrary / 255)
+
+image_write(img, path = "final.png", format = "png")
 ```
 
 # reference:

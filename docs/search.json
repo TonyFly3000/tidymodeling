@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "About",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nhttps://tonyfly3000.github.io/tidymodeling/\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n Back to top"
+    "text": "R is based heavily on the S language, first developed in the 1960s and 1970s by researchers at Bell Laboratories in New Jersey\nR’s developers—Ross Ihaka and Robert Gentleman at the Univer- sity of Auckland in New Zealand—released it in the early 1990s under the\nGNU public license. (The software was named for Ross and Robert’s shared first initial.)\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "house price regression model/Level 2 Regression Tidy Modeling.html",
@@ -3379,7 +3379,7 @@
     "href": "intro/6 data analytic in R book.html",
     "title": "Data analytic in R book",
     "section": "",
-    "text": "R for Data Science\nby Garrett Grolemund, Hadley Wickham\n\n\n\nHands on programming with R\nby Garrett Grolemund, Hadley Wickham\n\n\n\nTidy Modeling with R\nby Max Kuhn and Julia Silge\n\n(https://www.tmwr.org/)\n\n\nDeep Learning with R\nby François Chollet,J. J. Allaire\n\n\n\n\n\n Back to top",
+    "text": "R for Data Science\nby Garrett Grolemund, Hadley Wickham 2017\n\n\n\nHands on programming with R\nby Garrett Grolemund, Hadley Wickham\n\n\n\nTidy Modeling with R\nby Max Kuhn and Julia Silge\n\n(https://www.tmwr.org/)\n\n\nDeep Learning with R\nby François Chollet,J. J. Allaire\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Intro",
       "Data analytic in R book"
@@ -5491,7 +5491,7 @@
     "href": "intro/1 basic R.html#get-all-file-name-under-current-directory",
     "title": "Basic R",
     "section": "1.2 get all file name under current directory",
-    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R.qmd\"                 \"1 basic R.rmarkdown\"          \n[3] \"1-basic-R.rmarkdown\"           \"5 R boook.qmd\"                \n[5] \"6 data analytic in R book.qmd\" \"hotels.csv\"                   \n[7] \"images\"",
+    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R_files\"               \"1 basic R.qmd\"                \n[3] \"1 basic R.rmarkdown\"           \"1-basic-R.rmarkdown\"          \n[5] \"5 R boook.qmd\"                 \"6 data analytic in R book.qmd\"\n[7] \"hotels.csv\"                    \"images\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5600,8 +5600,8 @@
     "objectID": "intro/1 basic R.html#check-r-version",
     "href": "intro/1 basic R.html#check-r-version",
     "title": "Basic R",
-    "section": "5.1 check R version",
-    "text": "5.1 check R version\n\n\nCode\nversion\n\n\n               _                           \nplatform       aarch64-apple-darwin20      \narch           aarch64                     \nos             darwin20                    \nsystem         aarch64, darwin20           \nstatus                                     \nmajor          4                           \nminor          3.1                         \nyear           2023                        \nmonth          06                          \nday            16                          \nsvn rev        84548                       \nlanguage       R                           \nversion.string R version 4.3.1 (2023-06-16)\nnickname       Beagle Scouts",
+    "section": "6.1 check R version",
+    "text": "6.1 check R version\n\n\nCode\nversion\n\n\n               _                           \nplatform       aarch64-apple-darwin20      \narch           aarch64                     \nos             darwin20                    \nsystem         aarch64, darwin20           \nstatus                                     \nmajor          4                           \nminor          3.1                         \nyear           2023                        \nmonth          06                          \nday            16                          \nsvn rev        84548                       \nlanguage       R                           \nversion.string R version 4.3.1 (2023-06-16)\nnickname       Beagle Scouts",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5611,8 +5611,8 @@
     "objectID": "intro/1 basic R.html#install-r-package",
     "href": "intro/1 basic R.html#install-r-package",
     "title": "Basic R",
-    "section": "5.2 install R package",
-    "text": "5.2 install R package\n\n5.2.1 install from Cran\n99% of the time will install pacakge from The Comprehensive R Archive Network(cran).https://cran.r-project.org/\n\n\n\nCode\ninstall.packages('tidyverse')\n\n\n\n\n5.2.2 install from Github\n\n\nCode\npak::pkg_install(\"tidymodels/learntidymodels\")\n\n\n\n\n5.2.3 install from Bioconductor\n\n\nCode\npak::pkg_install(\"text2vec\")\n\n\n\n\n5.2.4 install from local\n\n\nCode\npak::local_install(\"cli\")",
+    "section": "6.2 install R package",
+    "text": "6.2 install R package\n\n6.2.1 install from Cran\n99% of the time will install pacakge from The Comprehensive R Archive Network(cran).https://cran.r-project.org/\n\n\n\nCode\ninstall.packages('tidyverse')\n\n\n\n\n6.2.2 install from Github\n\n\nCode\npak::pkg_install(\"tidymodels/learntidymodels\")\n\n\n\n\n6.2.3 install from Bioconductor\n\n\nCode\npak::pkg_install(\"text2vec\")\n\n\n\n\n6.2.4 install from local\n\n\nCode\npak::local_install(\"cli\")",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5622,8 +5622,8 @@
     "objectID": "intro/1 basic R.html#check-one-package-version",
     "href": "intro/1 basic R.html#check-one-package-version",
     "title": "Basic R",
-    "section": "5.3 check one package version",
-    "text": "5.3 check one package version\n\n\nCode\npackageVersion(\"tidyverse\")\n\n\n[1] '2.0.0'",
+    "section": "6.3 check one package version",
+    "text": "6.3 check one package version\n\n\nCode\npackageVersion(\"tidyverse\")\n\n\n[1] '2.0.0'",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5633,8 +5633,8 @@
     "objectID": "intro/1 basic R.html#check-all-package-version",
     "href": "intro/1 basic R.html#check-all-package-version",
     "title": "Basic R",
-    "section": "5.7 check all package version",
-    "text": "5.7 check all package version\n\n\nCode\nip = as.data.frame(installed.packages()[,c(1,3:4)])\nip = ip[is.na(ip$Priority),1:2,drop=FALSE]\nhead(ip)\n\n\n              Package Version\nabind           abind   1.4-5\nanytime       anytime   0.3.9\napplicable applicable   0.1.0\narchive       archive   1.1.7\narrow           arrow  15.0.1\naskpass       askpass   1.2.0",
+    "section": "6.7 check all package version",
+    "text": "6.7 check all package version\n\n\nCode\nip = as.data.frame(installed.packages()[,c(1,3:4)])\nip = ip[is.na(ip$Priority),1:2,drop=FALSE]\nhead(ip)\n\n\n              Package Version\nabind           abind   1.4-5\nanytime       anytime   0.3.9\napplicable applicable   0.1.0\narchive       archive   1.1.7\narrow           arrow  15.0.1\naskpass       askpass   1.2.0",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5644,8 +5644,8 @@
     "objectID": "intro/1 basic R.html#check-package-install-loaciton",
     "href": "intro/1 basic R.html#check-package-install-loaciton",
     "title": "Basic R",
-    "section": "5.8 check package install loaciton",
-    "text": "5.8 check package install loaciton\n\n\nCode\n.libPaths()\n\n\n[1] \"/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library\"",
+    "section": "6.8 check package install loaciton",
+    "text": "6.8 check package install loaciton\n\n\nCode\n.libPaths()\n\n\n[1] \"/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5831,8 +5831,8 @@
     "objectID": "intro/1 basic R.html#check-current-loaded-package",
     "href": "intro/1 basic R.html#check-current-loaded-package",
     "title": "Basic R",
-    "section": "5.6 check current loaded package",
-    "text": "5.6 check current loaded package\n\n\nCode\nsessionInfo()\n\n\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.35     R6_2.5.1          fastmap_1.1.1     xfun_0.43        \n [5] knitr_1.45        htmltools_0.5.8.1 rmarkdown_2.26    ps_1.7.6         \n [9] cli_3.6.2         processx_3.8.4    callr_3.7.6       pak_0.7.2        \n[13] compiler_4.3.1    rstudioapi_0.16.0 tools_4.3.1       evaluate_0.23    \n[17] yaml_2.3.8        rlang_1.1.3       jsonlite_1.8.8    htmlwidgets_1.6.4",
+    "section": "6.6 check current loaded package",
+    "text": "6.6 check current loaded package\n\n\nCode\nsessionInfo()\n\n\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.35     R6_2.5.1          fastmap_1.1.1     xfun_0.43        \n [5] knitr_1.45        htmltools_0.5.8.1 rmarkdown_2.26    ps_1.7.6         \n [9] cli_3.6.2         processx_3.8.4    callr_3.7.6       pak_0.7.2        \n[13] compiler_4.3.1    rstudioapi_0.16.0 tools_4.3.1       evaluate_0.23    \n[17] yaml_2.3.8        rlang_1.1.3       jsonlite_1.8.8    htmlwidgets_1.6.4",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -6942,7 +6942,7 @@
     "href": "clustering/1.2 k mean Clustering.html#convert-png-to-matrix",
     "title": "K mean Clustering with image",
     "section": "2.2 convert png to matrix",
-    "text": "2.2 convert png to matrix\n\n\nCode\nimage_tiff &lt;- image_convert(image, \"tiff\")\nimage_array &lt;- as.integer(image_tiff[[1]])                \n\n\n\n\nCode\nmagick::image_read(image_array/ 255)\n\n\n\n\n\n\n\n\n\n235 * 214 pixcel and 3 channels\n\n\nCode\ndim(image_array)\n\n\n[1] 235 214   3\n\n\n\n\nCode\nclass(image_array)\n\n\n[1] \"array\"\n\n\n\n\nCode\nimage_array_old=image_array",
+    "text": "2.2 convert png to matrix\n\n\nCode\nimage_tiff &lt;- image_convert(image, \"tiff\")\nimage_array &lt;- as.integer(image_tiff[[1]])                \n\n\n\n\nCode\nmagick::image_read(image_array/ 255)\n\n\n\n\n\n\n\n\n\n235 * 214 pixcel and 3 channels\n\n\nCode\ndim(image_array)\n\n\n[1] 235 214   3\n\n\n\n\nCode\nclass(image_array)\n\n\n[1] \"array\"\n\n\nData Normalization\nSince the dataset contains a range of values from 0 to 255, the dataset has to be normalized. Data Normalization is an important preprocessing step which ensures that each input parameter (pixel, in this case) has a similar data distribution. This fastens the process of covergence while training the model. Also Normalization makes sure no one particular parameter influences the output significantly.\n\n\nCode\nimage_array=image_array/255\n\n\n\n\nCode\nimage_array_old=image_array",
     "crumbs": [
       "Clustering",
       "K mean Clustering with image"
@@ -6997,7 +6997,7 @@
     "href": "clustering/1.2 k mean Clustering.html#convert-2-d-back-to-3-d",
     "title": "K mean Clustering with image",
     "section": "2.7 convert 2 D back to 3 D",
-    "text": "2.7 convert 2 D back to 3 D\n\n\nCode\nresult2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_old)[2],3))\n\n\n\n\nCode\ndim(result2arrary)\n\n\n[1] 235 214   3\n\n\n\n\nCode\nmagick::image_read(result2arrary/ 255)",
+    "text": "2.7 convert 2 D back to 3 D\n\n\nCode\nresult2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_old)[2],3))\n\n\n\n\nCode\ndim(result2arrary)\n\n\n[1] 235 214   3\n\n\nconvert from 0-1 back to 0-255\n\n\nCode\nresult2arrary=result2arrary*255\n\n\n\n\nCode\nmagick::image_read(result2arrary/ 255)",
     "crumbs": [
       "Clustering",
       "K mean Clustering with image"
@@ -7030,7 +7030,7 @@
     "href": "clustering/1.2 k mean Clustering.html#reshape-from-3-d-to-2-d-1",
     "title": "K mean Clustering with image",
     "section": "3.3 reshape from 3 D to 2 D",
-    "text": "3.3 reshape from 3 D to 2 D\n\n\nCode\ndim(image_array) &lt;- c(dim(image_array)[1]*dim(image_array)[2],4)\n\n\n\n\nCode\ndim(image_array)\n\n\n[1] 406164      4",
+    "text": "3.3 reshape from 3 D to 2 D\n\n\nCode\ndim(image_array) &lt;- c(dim(image_array)[1]*dim(image_array)[2],4)\n\n\n\n\nCode\ndim(image_array)\n\n\n[1] 406164      4\n\n\nData Normalization\nSince the dataset contains a range of values from 0 to 255, the dataset has to be normalized. Data Normalization is an important preprocessing step which ensures that each input parameter (pixel, in this case) has a similar data distribution. This fastens the process of covergence while training the model. Also Normalization makes sure no one particular parameter influences the output significantly.\n\n\nCode\nimage_array=image_array/255",
     "crumbs": [
       "Clustering",
       "K mean Clustering with image"
@@ -7074,7 +7074,7 @@
     "href": "clustering/1.2 k mean Clustering.html#convert-2-d-back-to-4-d",
     "title": "K mean Clustering with image",
     "section": "3.7 convert 2 D back to 4 D",
-    "text": "3.7 convert 2 D back to 4 D\n\n\nCode\nresult2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_old)[2],4))\n\n\n\n\nCode\ndim(result2arrary)\n\n\n[1] 561 724   4\n\n\n\n\nCode\nmagick::image_read(result2arrary/ 255)",
+    "text": "3.7 convert 2 D back to 4 D\n\n\nCode\nresult2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_old)[2],4))\n\n\n\n\nCode\ndim(result2arrary)\n\n\n[1] 561 724   4\n\n\nconvert from 0-1 back to 0-255\n\n\nCode\nresult2arrary=result2arrary*255\n\n\n\n\nCode\nmagick::image_read(result2arrary/ 255)\n\n\n\n\n\n\n\n\n\n\n\nCode\nimg &lt;- magick::image_read(result2arrary / 255)\n\nimage_write(img, path = \"final.png\", format = \"png\")",
     "crumbs": [
       "Clustering",
       "K mean Clustering with image"
@@ -7128,8 +7128,8 @@
     "objectID": "intro/1 basic R.html#check-pacakge-relationship",
     "href": "intro/1 basic R.html#check-pacakge-relationship",
     "title": "Basic R",
-    "section": "5.4 check pacakge relationship",
-    "text": "5.4 check pacakge relationship\n\n\nCode\npak::pkg_deps_explain(\"tibble\", \"rlang\")\n\n\ntibble -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; rlang\ntibble -&gt; rlang\ntibble -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; vctrs -&gt; rlang",
+    "section": "6.4 check pacakge relationship",
+    "text": "6.4 check pacakge relationship\n\n\nCode\npak::pkg_deps_explain(\"tibble\", \"rlang\")\n\n\ntibble -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; rlang\ntibble -&gt; rlang\ntibble -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; vctrs -&gt; rlang",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -7139,8 +7139,8 @@
     "objectID": "intro/1 basic R.html#check-pacakge-dependencies",
     "href": "intro/1 basic R.html#check-pacakge-dependencies",
     "title": "Basic R",
-    "section": "5.5 check pacakge dependencies",
-    "text": "5.5 check pacakge dependencies\n\n\nCode\npak::pkg_deps_tree(\"tibble\")\n\n\ntibble 3.2.1 ✨ ⬇ (684.10 kB)\n├─fansi 1.0.6 ✨ ⬇ (381.01 kB)\n├─lifecycle 1.0.4 ✨ ⬇ (124.48 kB)\n│ ├─cli 3.6.2 ✨ ⬇ (1.39 MB)\n│ ├─glue 1.7.0 ✨ ⬇ (159.26 kB)\n│ └─rlang 1.1.3 ✨ ⬇ (1.89 MB)\n├─magrittr 2.0.3 ✨ ⬇ (232.43 kB)\n├─pillar 1.9.0 ✨ ⬇ (648.86 kB)\n│ ├─cli\n│ ├─fansi\n│ ├─glue\n│ ├─lifecycle\n│ ├─rlang\n│ ├─utf8 1.2.4 ✨ ⬇ (206.92 kB)\n│ └─vctrs 0.6.5 ✨ ⬇ (1.88 MB)\n│   ├─cli\n│   ├─glue\n│   ├─lifecycle\n│   └─rlang\n├─pkgconfig 2.0.3 ✨ ⬇ (18.21 kB)\n├─rlang\n└─vctrs\n\nKey:  ✨ new |  ⬇ download",
+    "section": "6.5 check pacakge dependencies",
+    "text": "6.5 check pacakge dependencies\n\n\nCode\npak::pkg_deps_tree(\"tibble\")\n\n\ntibble 3.2.1 ✨ ⬇ (684.10 kB)\n├─fansi 1.0.6 ✨ ⬇ (381.01 kB)\n├─lifecycle 1.0.4 ✨ ⬇ (124.48 kB)\n│ ├─cli 3.6.2 ✨ ⬇ (1.39 MB)\n│ ├─glue 1.7.0 ✨ ⬇ (159.26 kB)\n│ └─rlang 1.1.3 ✨ ⬇ (1.89 MB)\n├─magrittr 2.0.3 ✨ ⬇ (232.43 kB)\n├─pillar 1.9.0 ✨ ⬇ (648.86 kB)\n│ ├─cli\n│ ├─fansi\n│ ├─glue\n│ ├─lifecycle\n│ ├─rlang\n│ ├─utf8 1.2.4 ✨ ⬇ (206.92 kB)\n│ └─vctrs 0.6.5 ✨ ⬇ (1.88 MB)\n│   ├─cli\n│   ├─glue\n│   ├─lifecycle\n│   └─rlang\n├─pkgconfig 2.0.3 ✨ ⬇ (18.21 kB)\n├─rlang\n└─vctrs\n\nKey:  ✨ new |  ⬇ download",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -7738,6 +7738,182 @@
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#return-result-with-default",
+    "href": "intro/1 basic R.html#return-result-with-default",
+    "title": "Basic R",
+    "section": "4.3 return result with default",
+    "text": "4.3 return result with default\n\n\nCode\nadding_ten &lt;- function(x=10) { \n  a=x+10\n  return(a)\n}\n\nadding_ten(5)\n\n\n[1] 15\n\n\nif not define x, then x=10\n\n\nCode\nadding_ten()\n\n\n[1] 20",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#check-function-arguments",
+    "href": "intro/1 basic R.html#check-function-arguments",
+    "title": "Basic R",
+    "section": "4.4 check function Arguments",
+    "text": "4.4 check function Arguments\n\n\nCode\nargs(adding_ten)\n\n\nfunction (x = 10) \nNULL\n\n\nMany functions exhibit variadic behavior. That is, they can accept any num- ber of arguments, and it’s up to the user to decide how many arguments to provide. The functions c, data.frame, and list are all like this. When you call a function like data.frame, you can specify any number of members as arguments.\n\n\nCode\nargs(data.frame)\n\n\nfunction (..., row.names = NULL, check.rows = FALSE, check.names = TRUE, \n    fix.empty.names = TRUE, stringsAsFactors = FALSE) \nNULL",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#warning-in-function",
+    "href": "intro/1 basic R.html#warning-in-function",
+    "title": "Basic R",
+    "section": "4.5 warning in function",
+    "text": "4.5 warning in function\nprint out warning\n\n\nCode\nadding_ten &lt;- function(x=10) { \n  a=x+10\n  if(a&gt;50){\n    warning('its better than 50')\n  }\n  return(a)\n}\n\n\n\n\nCode\nadding_ten(100)\n\n\n[1] 110",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#stop-in-function",
+    "href": "intro/1 basic R.html#stop-in-function",
+    "title": "Basic R",
+    "section": "4.6 stop in function",
+    "text": "4.6 stop in function\nprint out stop error message\n\n\nCode\nadding_ten &lt;- function(x=10) { \n  a=x+10\n  if(a&gt;50){\n    stop('its better than 50')\n  }\n  return(a)\n}\n\n\n\n\nCode\nadding_ten(100)",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#use-try-to-by-pass-error",
+    "href": "intro/1 basic R.html#use-try-to-by-pass-error",
+    "title": "Basic R",
+    "section": "4.7 use try to by pass error",
+    "text": "4.7 use try to by pass error\n\n\nCode\ntry(adding_ten(100))\n\n\n[1] 110\n\n\nCode\n5+10\n\n\n[1] 15",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#centrality-mean-median-mode",
+    "href": "intro/1 basic R.html#centrality-mean-median-mode",
+    "title": "Basic R",
+    "section": "7.1 Centrality: Mean, Median, Mode",
+    "text": "7.1 Centrality: Mean, Median, Mode",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#spread-variance-standard-deviation-and-the-interquartile-range",
+    "href": "intro/1 basic R.html#spread-variance-standard-deviation-and-the-interquartile-range",
+    "title": "Basic R",
+    "section": "7.2 Spread: Variance, Standard Deviation, and the Interquartile Range",
+    "text": "7.2 Spread: Variance, Standard Deviation, and the Interquartile Range",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#covariance-and-correlation",
+    "href": "intro/1 basic R.html#covariance-and-correlation",
+    "title": "Basic R",
+    "section": "7.3 Covariance and Correlation",
+    "text": "7.3 Covariance and Correlation\nWhen analyzing data, it’s often useful to be able to investigate the rela- tionship between two numeric variables to assess trends. For example, you might expect height and weight observations to have a noticeable positive relationship—taller people tend to weigh more. Conversely, you might imag- ine that handspan and length of hair would have less of an association. One of the simplest and most common ways such associations are quantified and compared is through the idea of correlation, for which you need the covariance. The covariance expresses how much two numeric variables “change together” and the nature of that relationship,",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#correlationpearsons-product-moment-correlation-coefficient",
+    "href": "intro/1 basic R.html#correlationpearsons-product-moment-correlation-coefficient",
+    "title": "Basic R",
+    "section": "7.4 Correlation,Pearson’s product-moment correlation coefficient",
+    "text": "7.4 Correlation,Pearson’s product-moment correlation coefficient\nPearson’s sample correlation coef- ficient ρxy is computed by dividing the sample covariance by the product of the standard deviation of each data set\n\nSome Correlation Example:",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#input-image-2",
+    "href": "clustering/1.2 k mean Clustering.html#input-image-2",
+    "title": "K mean Clustering with image",
+    "section": "4.1 input image",
+    "text": "4.1 input image\n\n\nCode\nimage &lt;- image_read('final.png')",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#convert-png-to-matrix-2",
+    "href": "clustering/1.2 k mean Clustering.html#convert-png-to-matrix-2",
+    "title": "K mean Clustering with image",
+    "section": "4.2 convert png to matrix",
+    "text": "4.2 convert png to matrix\n\n\nCode\nimage_tiff &lt;- image_convert(image, \"tiff\")\nimage_array &lt;- as.integer(image_tiff[[1]])                \n\n\n\n\nCode\nmagick::image_read(image_array/ 255)\n\n\n\n\n\n\n\n\n\n561 * 724 pixcel and 4 channels\n\n\nCode\ndim(image_array)\n\n\n[1] 561 724   4\n\n\n\n\nCode\nclass(image_array)\n\n\n[1] \"array\"\n\n\n\n\nCode\nimage_array_old=image_array",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#reshape-from-3-d-to-2-d-2",
+    "href": "clustering/1.2 k mean Clustering.html#reshape-from-3-d-to-2-d-2",
+    "title": "K mean Clustering with image",
+    "section": "4.3 reshape from 3 D to 2 D",
+    "text": "4.3 reshape from 3 D to 2 D\n\n\nCode\ndim(image_array) &lt;- c(dim(image_array)[1]*dim(image_array)[2],4)\n\n\n\n\nCode\ndim(image_array)\n\n\n[1] 406164      4\n\n\nData Normalization\nSince the dataset contains a range of values from 0 to 255, the dataset has to be normalized. Data Normalization is an important preprocessing step which ensures that each input parameter (pixel, in this case) has a similar data distribution. This fastens the process of covergence while training the model. Also Normalization makes sure no one particular parameter influences the output significantly.\n\n\nCode\nimage_array=image_array/255",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#optimal-number-of-k-clusters-2",
+    "href": "clustering/1.2 k mean Clustering.html#optimal-number-of-k-clusters-2",
+    "title": "K mean Clustering with image",
+    "section": "4.4 Optimal number of k-clusters",
+    "text": "4.4 Optimal number of k-clusters\n\n\nCode\nkclusts &lt;- \n  tibble(k = 1:9) %&gt;%\n  mutate(\n    kclust = map(k, ~kmeans(image_array, .x)),\n    tidied = map(kclust, tidy),\n    glanced = map(kclust, glance),\n    augmented = map(kclust, augment, image_array)\n  )\n\nkclusts\n\n\n# A tibble: 9 × 5\n      k kclust   tidied           glanced          augmented             \n  &lt;int&gt; &lt;list&gt;   &lt;list&gt;           &lt;list&gt;           &lt;list&gt;                \n1     1 &lt;kmeans&gt; &lt;tibble [1 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n2     2 &lt;kmeans&gt; &lt;tibble [2 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n3     3 &lt;kmeans&gt; &lt;tibble [3 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n4     4 &lt;kmeans&gt; &lt;tibble [4 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n5     5 &lt;kmeans&gt; &lt;tibble [5 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n6     6 &lt;kmeans&gt; &lt;tibble [6 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n7     7 &lt;kmeans&gt; &lt;tibble [7 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n8     8 &lt;kmeans&gt; &lt;tibble [8 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n9     9 &lt;kmeans&gt; &lt;tibble [9 × 7]&gt; &lt;tibble [1 × 4]&gt; &lt;tibble [406,164 × 5]&gt;\n\n\n\n\nCode\nclusters &lt;- \n  kclusts %&gt;%\n  unnest(cols = c(tidied))\n\nassignments &lt;- \n  kclusts %&gt;% \n  unnest(cols = c(augmented))\n\nclusterings &lt;- \n  kclusts %&gt;%\n  unnest(cols = c(glanced))\n\n\n\n\nCode\nlibrary(scales)\nggplot(clusterings, aes(k, tot.withinss)) +\n  geom_line() +\n  geom_point()+scale_x_continuous(breaks= pretty_breaks())+scale_y_continuous(labels = scales::comma)",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#group-to-2",
+    "href": "clustering/1.2 k mean Clustering.html#group-to-2",
+    "title": "K mean Clustering with image",
+    "section": "4.5 group to 2",
+    "text": "4.5 group to 2\n\n\nCode\nkclust &lt;- kmeans(image_array, centers = 2)\n\n\n\n\nCode\nresult=augment(kclust, image_array) %&gt;% clean_names()\n\n\n\n\nCode\nresult %&gt;% count(cluster)\n\n\n# A tibble: 2 × 2\n  cluster      n\n  &lt;fct&gt;    &lt;int&gt;\n1 1       285299\n2 2       120865",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#change-2-color-2",
+    "href": "clustering/1.2 k mean Clustering.html#change-2-color-2",
+    "title": "K mean Clustering with image",
+    "section": "4.6 change 2 color",
+    "text": "4.6 change 2 color\n\n\nCode\n# black RGB code 0 0 0\n# red RGB code 255 0 0\n\nresult2=result %&gt;%mutate(x1=if_else(cluster==2,0,255) \n                          ,x2=if_else(cluster==2,255,0) \n                          ,x3=if_else(cluster==2,0,0) )",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
+    ]
+  },
+  {
+    "objectID": "clustering/1.2 k mean Clustering.html#convert-2-d-back-to-4-d-1",
+    "href": "clustering/1.2 k mean Clustering.html#convert-2-d-back-to-4-d-1",
+    "title": "K mean Clustering with image",
+    "section": "4.7 convert 2 D back to 4 D",
+    "text": "4.7 convert 2 D back to 4 D\n\n\nCode\nresult2arrary=array(unlist(result2),c(dim(image_array_old)[1],dim(image_array_old)[2],4))\n\n\n\n\nCode\ndim(result2arrary)\n\n\n[1] 561 724   4\n\n\nconvert from 0-1 back to 0-255\n\n\nCode\nresult2arrary=result2arrary*255\n\n\n\n\nCode\nmagick::image_read(result2arrary/ 255)",
+    "crumbs": [
+      "Clustering",
+      "K mean Clustering with image"
     ]
   }
 ]

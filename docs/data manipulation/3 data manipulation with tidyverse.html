@@ -491,8 +491,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#append-by-row" id="toc-append-by-row" class="nav-link" data-scroll-target="#append-by-row"><span class="header-section-number">2.10.1</span> append by row</a></li>
   <li><a href="#append-by-column" id="toc-append-by-column" class="nav-link" data-scroll-target="#append-by-column"><span class="header-section-number">2.10.2</span> append by column</a></li>
-  <li><a href="#dropping-na-values" id="toc-dropping-na-values" class="nav-link" data-scroll-target="#dropping-na-values"><span class="header-section-number">2.10.3</span> Dropping NA values</a></li>
-  <li><a href="#keep-na-values" id="toc-keep-na-values" class="nav-link" data-scroll-target="#keep-na-values"><span class="header-section-number">2.10.4</span> keep NA values</a></li>
+  <li><a href="#sepcial-vales" id="toc-sepcial-vales" class="nav-link" data-scroll-target="#sepcial-vales"><span class="header-section-number">2.10.3</span> Sepcial vales</a></li>
   </ul></li>
   <li><a href="#group-by" id="toc-group-by" class="nav-link" data-scroll-target="#group-by"><span class="header-section-number">2.11</span> group by</a>
   <ul class="collapse">
@@ -865,11 +864,11 @@ Volvo 142E            4 21.4 109</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>           car_name cyl  mpg  hp
-1     Mazda RX4 Wag   6 21.0 110
-2 Hornet Sportabout   8 18.7 175
-3         Mazda RX4   6 21.0 110
-4           Valiant   6 18.1 105
-5        Datsun 710   4 22.8  93</code></pre>
+1    Hornet 4 Drive   6 21.4 110
+2     Mazda RX4 Wag   6 21.0 110
+3 Hornet Sportabout   8 18.7 175
+4         Mazda RX4   6 21.0 110
+5           Valiant   6 18.1 105</code></pre>
 </div>
 </div>
 </section>
@@ -919,11 +918,17 @@ Volvo 142E            4 21.4 109</code></pre>
 </div>
 </div>
 </section>
-<section id="dropping-na-values" class="level3" data-number="2.10.3">
-<h3 data-number="2.10.3" class="anchored" data-anchor-id="dropping-na-values"><span class="header-section-number">2.10.3</span> Dropping NA values</h3>
+<section id="sepcial-vales" class="level3" data-number="2.10.3">
+<h3 data-number="2.10.3" class="anchored" data-anchor-id="sepcial-vales"><span class="header-section-number">2.10.3</span> Sepcial vales</h3>
+<section id="nan" class="level4" data-number="2.10.3.1">
+<h4 data-number="2.10.3.1" class="anchored" data-anchor-id="nan"><span class="header-section-number">2.10.3.1</span> NAN</h4>
 </section>
-<section id="keep-na-values" class="level3" data-number="2.10.4">
-<h3 data-number="2.10.4" class="anchored" data-anchor-id="keep-na-values"><span class="header-section-number">2.10.4</span> keep NA values</h3>
+<section id="na" class="level4" data-number="2.10.3.2">
+<h4 data-number="2.10.3.2" class="anchored" data-anchor-id="na"><span class="header-section-number">2.10.3.2</span> NA</h4>
+</section>
+<section id="null" class="level4" data-number="2.10.3.3">
+<h4 data-number="2.10.3.3" class="anchored" data-anchor-id="null"><span class="header-section-number">2.10.3.3</span> NULL</h4>
+</section>
 </section>
 </section>
 <section id="group-by" class="level2" data-number="2.11">
@@ -1575,7 +1580,7 @@ Valiant                 ali           Valiant</code></pre>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>now_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-04-12 15:54:31 CST"</code></pre>
+<pre><code>[1] "2024-04-12 17:51:28 CST"</code></pre>
 </div>
 </div>
 <section id="get-year" class="level3" data-number="4.4.1">
@@ -1645,7 +1650,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hour</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15</code></pre>
+<pre><code>[1] 17</code></pre>
 </div>
 </div>
 </section>
@@ -1658,7 +1663,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">minute</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 54</code></pre>
+<pre><code>[1] 51</code></pre>
 </div>
 </div>
 </section>
@@ -1670,7 +1675,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">second</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 31.37547</code></pre>
+<pre><code>[1] 28.22906</code></pre>
 </div>
 </div>
 </section>
@@ -2362,428 +2367,434 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb149-186"><a href="#cb149-186" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">cbind</span>(small_mtcars)</span>
 <span id="cb149-187"><a href="#cb149-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-188"><a href="#cb149-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-189"><a href="#cb149-189" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dropping NA values</span></span>
+<span id="cb149-189"><a href="#cb149-189" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sepcial vales</span></span>
 <span id="cb149-190"><a href="#cb149-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-191"><a href="#cb149-191" aria-hidden="true" tabindex="-1"></a><span class="fu">### keep NA values</span></span>
+<span id="cb149-191"><a href="#cb149-191" aria-hidden="true" tabindex="-1"></a><span class="fu">#### NAN</span></span>
 <span id="cb149-192"><a href="#cb149-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-193"><a href="#cb149-193" aria-hidden="true" tabindex="-1"></a><span class="fu">## group by</span></span>
+<span id="cb149-193"><a href="#cb149-193" aria-hidden="true" tabindex="-1"></a><span class="fu">#### NA</span></span>
 <span id="cb149-194"><a href="#cb149-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-195"><a href="#cb149-195" aria-hidden="true" tabindex="-1"></a><span class="fu">### average,min,max,sum</span></span>
+<span id="cb149-195"><a href="#cb149-195" aria-hidden="true" tabindex="-1"></a><span class="fu">#### NULL</span></span>
 <span id="cb149-196"><a href="#cb149-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-199"><a href="#cb149-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-200"><a href="#cb149-200" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg)</span>
-<span id="cb149-201"><a href="#cb149-201" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">min_mpg=</span><span class="fu">min</span>(mpg)</span>
-<span id="cb149-202"><a href="#cb149-202" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">max_mpg=</span><span class="fu">max</span>(mpg)</span>
-<span id="cb149-203"><a href="#cb149-203" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">sum_mpg=</span><span class="fu">sum</span>(mpg))</span>
-<span id="cb149-204"><a href="#cb149-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-205"><a href="#cb149-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-206"><a href="#cb149-206" aria-hidden="true" tabindex="-1"></a><span class="fu">### count record and count distinct record</span></span>
-<span id="cb149-207"><a href="#cb149-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-210"><a href="#cb149-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-211"><a href="#cb149-211" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n_mpg=</span><span class="fu">n</span>()</span>
-<span id="cb149-212"><a href="#cb149-212" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">distinct_n_mpg=</span><span class="fu">n_distinct</span>(mpg)</span>
-<span id="cb149-213"><a href="#cb149-213" aria-hidden="true" tabindex="-1"></a>                                            </span>
-<span id="cb149-214"><a href="#cb149-214" aria-hidden="true" tabindex="-1"></a>                                            )</span>
-<span id="cb149-215"><a href="#cb149-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-216"><a href="#cb149-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-217"><a href="#cb149-217" aria-hidden="true" tabindex="-1"></a><span class="fu">## order rows</span></span>
-<span id="cb149-218"><a href="#cb149-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-221"><a href="#cb149-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-222"><a href="#cb149-222" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl) </span>
-<span id="cb149-223"><a href="#cb149-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-197"><a href="#cb149-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-198"><a href="#cb149-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-199"><a href="#cb149-199" aria-hidden="true" tabindex="-1"></a><span class="fu">## group by</span></span>
+<span id="cb149-200"><a href="#cb149-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-201"><a href="#cb149-201" aria-hidden="true" tabindex="-1"></a><span class="fu">### average,min,max,sum</span></span>
+<span id="cb149-202"><a href="#cb149-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-205"><a href="#cb149-205" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-206"><a href="#cb149-206" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg)</span>
+<span id="cb149-207"><a href="#cb149-207" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">min_mpg=</span><span class="fu">min</span>(mpg)</span>
+<span id="cb149-208"><a href="#cb149-208" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">max_mpg=</span><span class="fu">max</span>(mpg)</span>
+<span id="cb149-209"><a href="#cb149-209" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">sum_mpg=</span><span class="fu">sum</span>(mpg))</span>
+<span id="cb149-210"><a href="#cb149-210" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-211"><a href="#cb149-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-212"><a href="#cb149-212" aria-hidden="true" tabindex="-1"></a><span class="fu">### count record and count distinct record</span></span>
+<span id="cb149-213"><a href="#cb149-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-216"><a href="#cb149-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-217"><a href="#cb149-217" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n_mpg=</span><span class="fu">n</span>()</span>
+<span id="cb149-218"><a href="#cb149-218" aria-hidden="true" tabindex="-1"></a>                                            ,<span class="at">distinct_n_mpg=</span><span class="fu">n_distinct</span>(mpg)</span>
+<span id="cb149-219"><a href="#cb149-219" aria-hidden="true" tabindex="-1"></a>                                            </span>
+<span id="cb149-220"><a href="#cb149-220" aria-hidden="true" tabindex="-1"></a>                                            )</span>
+<span id="cb149-221"><a href="#cb149-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-222"><a href="#cb149-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-223"><a href="#cb149-223" aria-hidden="true" tabindex="-1"></a><span class="fu">## order rows</span></span>
 <span id="cb149-224"><a href="#cb149-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-225"><a href="#cb149-225" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sort in descending order</span></span>
-<span id="cb149-226"><a href="#cb149-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-229"><a href="#cb149-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-230"><a href="#cb149-230" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(cyl) )</span>
-<span id="cb149-231"><a href="#cb149-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-227"><a href="#cb149-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-228"><a href="#cb149-228" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl) </span>
+<span id="cb149-229"><a href="#cb149-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-230"><a href="#cb149-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-231"><a href="#cb149-231" aria-hidden="true" tabindex="-1"></a><span class="fu">### Sort in descending order</span></span>
 <span id="cb149-232"><a href="#cb149-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-233"><a href="#cb149-233" aria-hidden="true" tabindex="-1"></a><span class="fu">### Arrange by multiple variables</span></span>
-<span id="cb149-234"><a href="#cb149-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-237"><a href="#cb149-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-238"><a href="#cb149-238" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl,mpg)</span>
-<span id="cb149-239"><a href="#cb149-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-235"><a href="#cb149-235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-236"><a href="#cb149-236" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(cyl) )</span>
+<span id="cb149-237"><a href="#cb149-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-238"><a href="#cb149-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-239"><a href="#cb149-239" aria-hidden="true" tabindex="-1"></a><span class="fu">### Arrange by multiple variables</span></span>
 <span id="cb149-240"><a href="#cb149-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-241"><a href="#cb149-241" aria-hidden="true" tabindex="-1"></a><span class="fu">## join</span></span>
-<span id="cb149-242"><a href="#cb149-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-245"><a href="#cb149-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-246"><a href="#cb149-246" aria-hidden="true" tabindex="-1"></a>left_data<span class="ot">=</span>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
-<span id="cb149-247"><a href="#cb149-247" aria-hidden="true" tabindex="-1"></a>right_data<span class="ot">=</span>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb149-248"><a href="#cb149-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-249"><a href="#cb149-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-252"><a href="#cb149-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-253"><a href="#cb149-253" aria-hidden="true" tabindex="-1"></a>left_data</span>
+<span id="cb149-243"><a href="#cb149-243" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-244"><a href="#cb149-244" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span><span class="fu">arrange</span>(cyl,mpg)</span>
+<span id="cb149-245"><a href="#cb149-245" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-246"><a href="#cb149-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-247"><a href="#cb149-247" aria-hidden="true" tabindex="-1"></a><span class="fu">## join</span></span>
+<span id="cb149-248"><a href="#cb149-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-251"><a href="#cb149-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-252"><a href="#cb149-252" aria-hidden="true" tabindex="-1"></a>left_data<span class="ot">=</span>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb149-253"><a href="#cb149-253" aria-hidden="true" tabindex="-1"></a>right_data<span class="ot">=</span>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span>
 <span id="cb149-254"><a href="#cb149-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-255"><a href="#cb149-255" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb149-258"><a href="#cb149-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-259"><a href="#cb149-259" aria-hidden="true" tabindex="-1"></a>right_data</span>
+<span id="cb149-259"><a href="#cb149-259" aria-hidden="true" tabindex="-1"></a>left_data</span>
 <span id="cb149-260"><a href="#cb149-260" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-261"><a href="#cb149-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-262"><a href="#cb149-262" aria-hidden="true" tabindex="-1"></a><span class="fu">### inner_join</span></span>
-<span id="cb149-263"><a href="#cb149-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-266"><a href="#cb149-266" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-267"><a href="#cb149-267" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
-<span id="cb149-268"><a href="#cb149-268" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb149-269"><a href="#cb149-269" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-270"><a href="#cb149-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-271"><a href="#cb149-271" aria-hidden="true" tabindex="-1"></a><span class="fu">### left join</span></span>
-<span id="cb149-272"><a href="#cb149-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-275"><a href="#cb149-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-276"><a href="#cb149-276" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
-<span id="cb149-277"><a href="#cb149-277" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb149-278"><a href="#cb149-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-279"><a href="#cb149-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-280"><a href="#cb149-280" aria-hidden="true" tabindex="-1"></a><span class="fu">### full join</span></span>
-<span id="cb149-281"><a href="#cb149-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-284"><a href="#cb149-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-285"><a href="#cb149-285" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
-<span id="cb149-286"><a href="#cb149-286" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb149-287"><a href="#cb149-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-288"><a href="#cb149-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-289"><a href="#cb149-289" aria-hidden="true" tabindex="-1"></a><span class="fu">### anti join</span></span>
-<span id="cb149-290"><a href="#cb149-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-291"><a href="#cb149-291" aria-hidden="true" tabindex="-1"></a>anti_join() return all rows from x without a match in y</span>
-<span id="cb149-292"><a href="#cb149-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-295"><a href="#cb149-295" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-296"><a href="#cb149-296" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name))</span>
-<span id="cb149-297"><a href="#cb149-297" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb149-298"><a href="#cb149-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-299"><a href="#cb149-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-300"><a href="#cb149-300" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reshape tables</span></span>
-<span id="cb149-301"><a href="#cb149-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-304"><a href="#cb149-304" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-305"><a href="#cb149-305" aria-hidden="true" tabindex="-1"></a>olddata_wide <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">text=</span><span class="st">'</span></span>
-<span id="cb149-306"><a href="#cb149-306" aria-hidden="true" tabindex="-1"></a><span class="st"> subject sex control cond1 cond2</span></span>
-<span id="cb149-307"><a href="#cb149-307" aria-hidden="true" tabindex="-1"></a><span class="st">       1   M     7.9  12.3  10.7</span></span>
-<span id="cb149-308"><a href="#cb149-308" aria-hidden="true" tabindex="-1"></a><span class="st">       2   F     6.3  10.6  11.1</span></span>
-<span id="cb149-309"><a href="#cb149-309" aria-hidden="true" tabindex="-1"></a><span class="st">       3   F     9.5  13.1  13.8</span></span>
-<span id="cb149-310"><a href="#cb149-310" aria-hidden="true" tabindex="-1"></a><span class="st">       4   M    11.5  13.4  12.9</span></span>
-<span id="cb149-311"><a href="#cb149-311" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>)</span>
-<span id="cb149-312"><a href="#cb149-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-313"><a href="#cb149-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-316"><a href="#cb149-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-317"><a href="#cb149-317" aria-hidden="true" tabindex="-1"></a>olddata_wide</span>
+<span id="cb149-264"><a href="#cb149-264" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-265"><a href="#cb149-265" aria-hidden="true" tabindex="-1"></a>right_data</span>
+<span id="cb149-266"><a href="#cb149-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-267"><a href="#cb149-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-268"><a href="#cb149-268" aria-hidden="true" tabindex="-1"></a><span class="fu">### inner_join</span></span>
+<span id="cb149-269"><a href="#cb149-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-272"><a href="#cb149-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-273"><a href="#cb149-273" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
+<span id="cb149-274"><a href="#cb149-274" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb149-275"><a href="#cb149-275" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-276"><a href="#cb149-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-277"><a href="#cb149-277" aria-hidden="true" tabindex="-1"></a><span class="fu">### left join</span></span>
+<span id="cb149-278"><a href="#cb149-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-281"><a href="#cb149-281" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-282"><a href="#cb149-282" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
+<span id="cb149-283"><a href="#cb149-283" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb149-284"><a href="#cb149-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-285"><a href="#cb149-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-286"><a href="#cb149-286" aria-hidden="true" tabindex="-1"></a><span class="fu">### full join</span></span>
+<span id="cb149-287"><a href="#cb149-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-290"><a href="#cb149-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-291"><a href="#cb149-291" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_l"</span>, <span class="st">"._r"</span>))</span>
+<span id="cb149-292"><a href="#cb149-292" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb149-293"><a href="#cb149-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-294"><a href="#cb149-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-295"><a href="#cb149-295" aria-hidden="true" tabindex="-1"></a><span class="fu">### anti join</span></span>
+<span id="cb149-296"><a href="#cb149-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-297"><a href="#cb149-297" aria-hidden="true" tabindex="-1"></a>anti_join() return all rows from x without a match in y</span>
+<span id="cb149-298"><a href="#cb149-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-301"><a href="#cb149-301" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-302"><a href="#cb149-302" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>left_data <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(right_data,<span class="fu">join_by</span>(car_name<span class="sc">==</span> car_name))</span>
+<span id="cb149-303"><a href="#cb149-303" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb149-304"><a href="#cb149-304" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-305"><a href="#cb149-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-306"><a href="#cb149-306" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reshape tables</span></span>
+<span id="cb149-307"><a href="#cb149-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-310"><a href="#cb149-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-311"><a href="#cb149-311" aria-hidden="true" tabindex="-1"></a>olddata_wide <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">text=</span><span class="st">'</span></span>
+<span id="cb149-312"><a href="#cb149-312" aria-hidden="true" tabindex="-1"></a><span class="st"> subject sex control cond1 cond2</span></span>
+<span id="cb149-313"><a href="#cb149-313" aria-hidden="true" tabindex="-1"></a><span class="st">       1   M     7.9  12.3  10.7</span></span>
+<span id="cb149-314"><a href="#cb149-314" aria-hidden="true" tabindex="-1"></a><span class="st">       2   F     6.3  10.6  11.1</span></span>
+<span id="cb149-315"><a href="#cb149-315" aria-hidden="true" tabindex="-1"></a><span class="st">       3   F     9.5  13.1  13.8</span></span>
+<span id="cb149-316"><a href="#cb149-316" aria-hidden="true" tabindex="-1"></a><span class="st">       4   M    11.5  13.4  12.9</span></span>
+<span id="cb149-317"><a href="#cb149-317" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>)</span>
 <span id="cb149-318"><a href="#cb149-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-319"><a href="#cb149-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-320"><a href="#cb149-320" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gather data long(wide to long)</span></span>
-<span id="cb149-321"><a href="#cb149-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-324"><a href="#cb149-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-325"><a href="#cb149-325" aria-hidden="true" tabindex="-1"></a>data_long<span class="ot">=</span>olddata_wide <span class="sc">%&gt;%</span></span>
-<span id="cb149-326"><a href="#cb149-326" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(subject,sex), <span class="at">names_to =</span> <span class="st">'income'</span>, <span class="at">values_to =</span> <span class="st">'DATA'</span>)</span>
+<span id="cb149-322"><a href="#cb149-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-323"><a href="#cb149-323" aria-hidden="true" tabindex="-1"></a>olddata_wide</span>
+<span id="cb149-324"><a href="#cb149-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-325"><a href="#cb149-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-326"><a href="#cb149-326" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gather data long(wide to long)</span></span>
 <span id="cb149-327"><a href="#cb149-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-328"><a href="#cb149-328" aria-hidden="true" tabindex="-1"></a>data_long</span>
-<span id="cb149-329"><a href="#cb149-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-330"><a href="#cb149-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-331"><a href="#cb149-331" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spread data wide (long to wide)</span></span>
-<span id="cb149-332"><a href="#cb149-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-335"><a href="#cb149-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-336"><a href="#cb149-336" aria-hidden="true" tabindex="-1"></a>data_wide<span class="ot">=</span>data_long <span class="sc">%&gt;%</span></span>
-<span id="cb149-337"><a href="#cb149-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> income, <span class="at">values_from =</span> DATA)</span>
+<span id="cb149-330"><a href="#cb149-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-331"><a href="#cb149-331" aria-hidden="true" tabindex="-1"></a>data_long<span class="ot">=</span>olddata_wide <span class="sc">%&gt;%</span></span>
+<span id="cb149-332"><a href="#cb149-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(subject,sex), <span class="at">names_to =</span> <span class="st">'income'</span>, <span class="at">values_to =</span> <span class="st">'DATA'</span>)</span>
+<span id="cb149-333"><a href="#cb149-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-334"><a href="#cb149-334" aria-hidden="true" tabindex="-1"></a>data_long</span>
+<span id="cb149-335"><a href="#cb149-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-336"><a href="#cb149-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-337"><a href="#cb149-337" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spread data wide (long to wide)</span></span>
 <span id="cb149-338"><a href="#cb149-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-339"><a href="#cb149-339" aria-hidden="true" tabindex="-1"></a>data_wide</span>
-<span id="cb149-340"><a href="#cb149-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-341"><a href="#cb149-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-342"><a href="#cb149-342" aria-hidden="true" tabindex="-1"></a><span class="fu"># string</span></span>
-<span id="cb149-343"><a href="#cb149-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-344"><a href="#cb149-344" aria-hidden="true" tabindex="-1"></a>stringr is built on top of stringi, which uses the ICU C library to provide fast, correct implementations of common string manipulations.</span>
-<span id="cb149-345"><a href="#cb149-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-346"><a href="#cb149-346" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/logo-01.png)</span></span>
+<span id="cb149-341"><a href="#cb149-341" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-342"><a href="#cb149-342" aria-hidden="true" tabindex="-1"></a>data_wide<span class="ot">=</span>data_long <span class="sc">%&gt;%</span></span>
+<span id="cb149-343"><a href="#cb149-343" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> income, <span class="at">values_from =</span> DATA)</span>
+<span id="cb149-344"><a href="#cb149-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-345"><a href="#cb149-345" aria-hidden="true" tabindex="-1"></a>data_wide</span>
+<span id="cb149-346"><a href="#cb149-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-347"><a href="#cb149-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-348"><a href="#cb149-348" aria-hidden="true" tabindex="-1"></a><span class="fu">## length</span></span>
+<span id="cb149-348"><a href="#cb149-348" aria-hidden="true" tabindex="-1"></a><span class="fu"># string</span></span>
 <span id="cb149-349"><a href="#cb149-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-352"><a href="#cb149-352" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-353"><a href="#cb149-353" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"I like horses."</span></span>
-<span id="cb149-354"><a href="#cb149-354" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(x)</span>
-<span id="cb149-355"><a href="#cb149-355" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-356"><a href="#cb149-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-357"><a href="#cb149-357" aria-hidden="true" tabindex="-1"></a><span class="fu">## upper case</span></span>
-<span id="cb149-358"><a href="#cb149-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-361"><a href="#cb149-361" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-362"><a href="#cb149-362" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"I like horses."</span></span>
-<span id="cb149-363"><a href="#cb149-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-364"><a href="#cb149-364" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_upper</span>(x)</span>
-<span id="cb149-365"><a href="#cb149-365" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-366"><a href="#cb149-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-367"><a href="#cb149-367" aria-hidden="true" tabindex="-1"></a><span class="fu">## lower case</span></span>
-<span id="cb149-368"><a href="#cb149-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-371"><a href="#cb149-371" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-372"><a href="#cb149-372" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"I like horses."</span></span>
-<span id="cb149-373"><a href="#cb149-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-374"><a href="#cb149-374" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_lower</span>(x)</span>
-<span id="cb149-375"><a href="#cb149-375" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-376"><a href="#cb149-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-377"><a href="#cb149-377" aria-hidden="true" tabindex="-1"></a><span class="fu">## match</span></span>
-<span id="cb149-378"><a href="#cb149-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-381"><a href="#cb149-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-382"><a href="#cb149-382" aria-hidden="true" tabindex="-1"></a>trx<span class="ot">=</span><span class="st">'abc1993'</span></span>
-<span id="cb149-383"><a href="#cb149-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-384"><a href="#cb149-384" aria-hidden="true" tabindex="-1"></a>num<span class="ot">=</span><span class="fu">str_match</span>(trx, <span class="st">"(</span><span class="sc">\\</span><span class="st">d)+"</span>)</span>
-<span id="cb149-385"><a href="#cb149-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-386"><a href="#cb149-386" aria-hidden="true" tabindex="-1"></a>num</span>
-<span id="cb149-387"><a href="#cb149-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-388"><a href="#cb149-388" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-350"><a href="#cb149-350" aria-hidden="true" tabindex="-1"></a>stringr is built on top of stringi, which uses the ICU C library to provide fast, correct implementations of common string manipulations.</span>
+<span id="cb149-351"><a href="#cb149-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-352"><a href="#cb149-352" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/logo-01.png)</span></span>
+<span id="cb149-353"><a href="#cb149-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-354"><a href="#cb149-354" aria-hidden="true" tabindex="-1"></a><span class="fu">## length</span></span>
+<span id="cb149-355"><a href="#cb149-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-358"><a href="#cb149-358" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-359"><a href="#cb149-359" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"I like horses."</span></span>
+<span id="cb149-360"><a href="#cb149-360" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(x)</span>
+<span id="cb149-361"><a href="#cb149-361" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-362"><a href="#cb149-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-363"><a href="#cb149-363" aria-hidden="true" tabindex="-1"></a><span class="fu">## upper case</span></span>
+<span id="cb149-364"><a href="#cb149-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-367"><a href="#cb149-367" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-368"><a href="#cb149-368" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"I like horses."</span></span>
+<span id="cb149-369"><a href="#cb149-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-370"><a href="#cb149-370" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_upper</span>(x)</span>
+<span id="cb149-371"><a href="#cb149-371" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-372"><a href="#cb149-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-373"><a href="#cb149-373" aria-hidden="true" tabindex="-1"></a><span class="fu">## lower case</span></span>
+<span id="cb149-374"><a href="#cb149-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-377"><a href="#cb149-377" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-378"><a href="#cb149-378" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"I like horses."</span></span>
+<span id="cb149-379"><a href="#cb149-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-380"><a href="#cb149-380" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_lower</span>(x)</span>
+<span id="cb149-381"><a href="#cb149-381" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-382"><a href="#cb149-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-383"><a href="#cb149-383" aria-hidden="true" tabindex="-1"></a><span class="fu">## match</span></span>
+<span id="cb149-384"><a href="#cb149-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-387"><a href="#cb149-387" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-388"><a href="#cb149-388" aria-hidden="true" tabindex="-1"></a>trx<span class="ot">=</span><span class="st">'abc1993'</span></span>
 <span id="cb149-389"><a href="#cb149-389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-390"><a href="#cb149-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-391"><a href="#cb149-391" aria-hidden="true" tabindex="-1"></a><span class="fu">## concatenation</span></span>
-<span id="cb149-392"><a href="#cb149-392" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-395"><a href="#cb149-395" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-396"><a href="#cb149-396" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="st">'aaaa'</span></span>
-<span id="cb149-397"><a href="#cb149-397" aria-hidden="true" tabindex="-1"></a>b<span class="ot">=</span><span class="st">'bbbb'</span></span>
-<span id="cb149-398"><a href="#cb149-398" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-399"><a href="#cb149-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-402"><a href="#cb149-402" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-403"><a href="#cb149-403" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(a,b)</span>
+<span id="cb149-390"><a href="#cb149-390" aria-hidden="true" tabindex="-1"></a>num<span class="ot">=</span><span class="fu">str_match</span>(trx, <span class="st">"(</span><span class="sc">\\</span><span class="st">d)+"</span>)</span>
+<span id="cb149-391"><a href="#cb149-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-392"><a href="#cb149-392" aria-hidden="true" tabindex="-1"></a>num</span>
+<span id="cb149-393"><a href="#cb149-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-394"><a href="#cb149-394" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-395"><a href="#cb149-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-396"><a href="#cb149-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-397"><a href="#cb149-397" aria-hidden="true" tabindex="-1"></a><span class="fu">## concatenation</span></span>
+<span id="cb149-398"><a href="#cb149-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-401"><a href="#cb149-401" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-402"><a href="#cb149-402" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="st">'aaaa'</span></span>
+<span id="cb149-403"><a href="#cb149-403" aria-hidden="true" tabindex="-1"></a>b<span class="ot">=</span><span class="st">'bbbb'</span></span>
 <span id="cb149-404"><a href="#cb149-404" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-405"><a href="#cb149-405" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb149-408"><a href="#cb149-408" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-409"><a href="#cb149-409" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(a,b)</span>
+<span id="cb149-409"><a href="#cb149-409" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(a,b)</span>
 <span id="cb149-410"><a href="#cb149-410" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-411"><a href="#cb149-411" aria-hidden="true" tabindex="-1"></a><span class="fu">## replace</span></span>
-<span id="cb149-412"><a href="#cb149-412" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-413"><a href="#cb149-413" aria-hidden="true" tabindex="-1"></a>str_replace()</span>
-<span id="cb149-414"><a href="#cb149-414" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-417"><a href="#cb149-417" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-418"><a href="#cb149-418" aria-hidden="true" tabindex="-1"></a>text001<span class="ot">=</span><span class="st">"abcb"</span></span>
-<span id="cb149-419"><a href="#cb149-419" aria-hidden="true" tabindex="-1"></a>text001 <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">'b'</span>,<span class="st">'1'</span>)</span>
-<span id="cb149-420"><a href="#cb149-420" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-421"><a href="#cb149-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-422"><a href="#cb149-422" aria-hidden="true" tabindex="-1"></a>str_replace_all()</span>
-<span id="cb149-423"><a href="#cb149-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-426"><a href="#cb149-426" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-427"><a href="#cb149-427" aria-hidden="true" tabindex="-1"></a>text001<span class="ot">=</span><span class="st">"abcb"</span></span>
-<span id="cb149-428"><a href="#cb149-428" aria-hidden="true" tabindex="-1"></a>text001 <span class="sc">%&gt;%</span> <span class="fu">str_replace_all</span>(<span class="st">'b'</span>,<span class="st">'1'</span>)</span>
-<span id="cb149-429"><a href="#cb149-429" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-430"><a href="#cb149-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-431"><a href="#cb149-431" aria-hidden="true" tabindex="-1"></a><span class="fu">## extract</span></span>
-<span id="cb149-432"><a href="#cb149-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-435"><a href="#cb149-435" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-436"><a href="#cb149-436" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span>mtcars</span>
-<span id="cb149-437"><a href="#cb149-437" aria-hidden="true" tabindex="-1"></a>data001 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">names =</span> <span class="fu">rownames</span>(data001), data001)</span>
-<span id="cb149-438"><a href="#cb149-438" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-439"><a href="#cb149-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-440"><a href="#cb149-440" aria-hidden="true" tabindex="-1"></a><span class="fu">### subset string by postion</span></span>
-<span id="cb149-441"><a href="#cb149-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-442"><a href="#cb149-442" aria-hidden="true" tabindex="-1"></a>extract 2 to 4</span>
-<span id="cb149-443"><a href="#cb149-443" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-446"><a href="#cb149-446" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-447"><a href="#cb149-447" aria-hidden="true" tabindex="-1"></a>data001<span class="sc">$</span>new_names<span class="ot">=</span>data001<span class="sc">$</span>names <span class="sc">%&gt;%</span> <span class="fu">str_sub</span>(<span class="dv">2</span>,<span class="dv">4</span>)</span>
-<span id="cb149-448"><a href="#cb149-448" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001 <span class="sc">%&gt;%</span> <span class="fu">select</span>(new_names,names))</span>
-<span id="cb149-449"><a href="#cb149-449" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-450"><a href="#cb149-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-451"><a href="#cb149-451" aria-hidden="true" tabindex="-1"></a><span class="fu">### extracting number from a string</span></span>
-<span id="cb149-452"><a href="#cb149-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-455"><a href="#cb149-455" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-456"><a href="#cb149-456" aria-hidden="true" tabindex="-1"></a>trx<span class="ot">=</span><span class="st">'abc1993 ccc'</span></span>
-<span id="cb149-457"><a href="#cb149-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-458"><a href="#cb149-458" aria-hidden="true" tabindex="-1"></a>num<span class="ot">=</span><span class="fu">str_extract</span>(trx, <span class="st">"(</span><span class="sc">\\</span><span class="st">d)+"</span>)</span>
-<span id="cb149-459"><a href="#cb149-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-460"><a href="#cb149-460" aria-hidden="true" tabindex="-1"></a>num</span>
-<span id="cb149-461"><a href="#cb149-461" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-462"><a href="#cb149-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-463"><a href="#cb149-463" aria-hidden="true" tabindex="-1"></a><span class="fu"># date</span></span>
-<span id="cb149-464"><a href="#cb149-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-465"><a href="#cb149-465" aria-hidden="true" tabindex="-1"></a>using lubridate package to handle date and time in R</span>
-<span id="cb149-466"><a href="#cb149-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-467"><a href="#cb149-467" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/logo-02.png)</span></span>
+<span id="cb149-411"><a href="#cb149-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-414"><a href="#cb149-414" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-415"><a href="#cb149-415" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(a,b)</span>
+<span id="cb149-416"><a href="#cb149-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-417"><a href="#cb149-417" aria-hidden="true" tabindex="-1"></a><span class="fu">## replace</span></span>
+<span id="cb149-418"><a href="#cb149-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-419"><a href="#cb149-419" aria-hidden="true" tabindex="-1"></a>str_replace()</span>
+<span id="cb149-420"><a href="#cb149-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-423"><a href="#cb149-423" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-424"><a href="#cb149-424" aria-hidden="true" tabindex="-1"></a>text001<span class="ot">=</span><span class="st">"abcb"</span></span>
+<span id="cb149-425"><a href="#cb149-425" aria-hidden="true" tabindex="-1"></a>text001 <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">'b'</span>,<span class="st">'1'</span>)</span>
+<span id="cb149-426"><a href="#cb149-426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-427"><a href="#cb149-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-428"><a href="#cb149-428" aria-hidden="true" tabindex="-1"></a>str_replace_all()</span>
+<span id="cb149-429"><a href="#cb149-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-432"><a href="#cb149-432" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-433"><a href="#cb149-433" aria-hidden="true" tabindex="-1"></a>text001<span class="ot">=</span><span class="st">"abcb"</span></span>
+<span id="cb149-434"><a href="#cb149-434" aria-hidden="true" tabindex="-1"></a>text001 <span class="sc">%&gt;%</span> <span class="fu">str_replace_all</span>(<span class="st">'b'</span>,<span class="st">'1'</span>)</span>
+<span id="cb149-435"><a href="#cb149-435" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-436"><a href="#cb149-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-437"><a href="#cb149-437" aria-hidden="true" tabindex="-1"></a><span class="fu">## extract</span></span>
+<span id="cb149-438"><a href="#cb149-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-441"><a href="#cb149-441" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-442"><a href="#cb149-442" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span>mtcars</span>
+<span id="cb149-443"><a href="#cb149-443" aria-hidden="true" tabindex="-1"></a>data001 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">names =</span> <span class="fu">rownames</span>(data001), data001)</span>
+<span id="cb149-444"><a href="#cb149-444" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-445"><a href="#cb149-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-446"><a href="#cb149-446" aria-hidden="true" tabindex="-1"></a><span class="fu">### subset string by postion</span></span>
+<span id="cb149-447"><a href="#cb149-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-448"><a href="#cb149-448" aria-hidden="true" tabindex="-1"></a>extract 2 to 4</span>
+<span id="cb149-449"><a href="#cb149-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-452"><a href="#cb149-452" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-453"><a href="#cb149-453" aria-hidden="true" tabindex="-1"></a>data001<span class="sc">$</span>new_names<span class="ot">=</span>data001<span class="sc">$</span>names <span class="sc">%&gt;%</span> <span class="fu">str_sub</span>(<span class="dv">2</span>,<span class="dv">4</span>)</span>
+<span id="cb149-454"><a href="#cb149-454" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001 <span class="sc">%&gt;%</span> <span class="fu">select</span>(new_names,names))</span>
+<span id="cb149-455"><a href="#cb149-455" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-456"><a href="#cb149-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-457"><a href="#cb149-457" aria-hidden="true" tabindex="-1"></a><span class="fu">### extracting number from a string</span></span>
+<span id="cb149-458"><a href="#cb149-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-461"><a href="#cb149-461" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-462"><a href="#cb149-462" aria-hidden="true" tabindex="-1"></a>trx<span class="ot">=</span><span class="st">'abc1993 ccc'</span></span>
+<span id="cb149-463"><a href="#cb149-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-464"><a href="#cb149-464" aria-hidden="true" tabindex="-1"></a>num<span class="ot">=</span><span class="fu">str_extract</span>(trx, <span class="st">"(</span><span class="sc">\\</span><span class="st">d)+"</span>)</span>
+<span id="cb149-465"><a href="#cb149-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-466"><a href="#cb149-466" aria-hidden="true" tabindex="-1"></a>num</span>
+<span id="cb149-467"><a href="#cb149-467" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-468"><a href="#cb149-468" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-469"><a href="#cb149-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-472"><a href="#cb149-472" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-473"><a href="#cb149-473" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb149-474"><a href="#cb149-474" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb149-475"><a href="#cb149-475" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb149-476"><a href="#cb149-476" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-477"><a href="#cb149-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-478"><a href="#cb149-478" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-479"><a href="#cb149-479" aria-hidden="true" tabindex="-1"></a><span class="fu">## date format</span></span>
-<span id="cb149-480"><a href="#cb149-480" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-481"><a href="#cb149-481" aria-hidden="true" tabindex="-1"></a>input as character</span>
-<span id="cb149-482"><a href="#cb149-482" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-485"><a href="#cb149-485" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-486"><a href="#cb149-486" aria-hidden="true" tabindex="-1"></a>date1<span class="ot">=</span><span class="st">'2023-01-01'</span></span>
-<span id="cb149-487"><a href="#cb149-487" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(date1)</span>
-<span id="cb149-488"><a href="#cb149-488" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-489"><a href="#cb149-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-492"><a href="#cb149-492" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-493"><a href="#cb149-493" aria-hidden="true" tabindex="-1"></a>date1</span>
+<span id="cb149-469"><a href="#cb149-469" aria-hidden="true" tabindex="-1"></a><span class="fu"># date</span></span>
+<span id="cb149-470"><a href="#cb149-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-471"><a href="#cb149-471" aria-hidden="true" tabindex="-1"></a>using lubridate package to handle date and time in R</span>
+<span id="cb149-472"><a href="#cb149-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-473"><a href="#cb149-473" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/logo-02.png)</span></span>
+<span id="cb149-474"><a href="#cb149-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-475"><a href="#cb149-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-478"><a href="#cb149-478" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-479"><a href="#cb149-479" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb149-480"><a href="#cb149-480" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb149-481"><a href="#cb149-481" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb149-482"><a href="#cb149-482" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-483"><a href="#cb149-483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-484"><a href="#cb149-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-485"><a href="#cb149-485" aria-hidden="true" tabindex="-1"></a><span class="fu">## date format</span></span>
+<span id="cb149-486"><a href="#cb149-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-487"><a href="#cb149-487" aria-hidden="true" tabindex="-1"></a>input as character</span>
+<span id="cb149-488"><a href="#cb149-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-491"><a href="#cb149-491" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-492"><a href="#cb149-492" aria-hidden="true" tabindex="-1"></a>date1<span class="ot">=</span><span class="st">'2023-01-01'</span></span>
+<span id="cb149-493"><a href="#cb149-493" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(date1)</span>
 <span id="cb149-494"><a href="#cb149-494" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-495"><a href="#cb149-495" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-496"><a href="#cb149-496" aria-hidden="true" tabindex="-1"></a>convert into date type with <span class="in">`as.Date()`</span></span>
-<span id="cb149-497"><a href="#cb149-497" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-500"><a href="#cb149-500" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-501"><a href="#cb149-501" aria-hidden="true" tabindex="-1"></a>date2<span class="ot">=</span><span class="fu">as.Date</span>(<span class="st">'2023-01-01'</span>)</span>
-<span id="cb149-502"><a href="#cb149-502" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(date2)</span>
-<span id="cb149-503"><a href="#cb149-503" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-504"><a href="#cb149-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-507"><a href="#cb149-507" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-508"><a href="#cb149-508" aria-hidden="true" tabindex="-1"></a>date2</span>
+<span id="cb149-498"><a href="#cb149-498" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-499"><a href="#cb149-499" aria-hidden="true" tabindex="-1"></a>date1</span>
+<span id="cb149-500"><a href="#cb149-500" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-501"><a href="#cb149-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-502"><a href="#cb149-502" aria-hidden="true" tabindex="-1"></a>convert into date type with <span class="in">`as.Date()`</span></span>
+<span id="cb149-503"><a href="#cb149-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-506"><a href="#cb149-506" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-507"><a href="#cb149-507" aria-hidden="true" tabindex="-1"></a>date2<span class="ot">=</span><span class="fu">as.Date</span>(<span class="st">'2023-01-01'</span>)</span>
+<span id="cb149-508"><a href="#cb149-508" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(date2)</span>
 <span id="cb149-509"><a href="#cb149-509" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-510"><a href="#cb149-510" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-511"><a href="#cb149-511" aria-hidden="true" tabindex="-1"></a>convert into date type with <span class="in">`ymd()`</span></span>
-<span id="cb149-512"><a href="#cb149-512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-515"><a href="#cb149-515" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-516"><a href="#cb149-516" aria-hidden="true" tabindex="-1"></a>date3<span class="ot">=</span><span class="fu">ymd</span>(<span class="st">'2023-01-01'</span>)</span>
-<span id="cb149-517"><a href="#cb149-517" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(date3)</span>
-<span id="cb149-518"><a href="#cb149-518" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-519"><a href="#cb149-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-522"><a href="#cb149-522" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-523"><a href="#cb149-523" aria-hidden="true" tabindex="-1"></a>date3</span>
+<span id="cb149-513"><a href="#cb149-513" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-514"><a href="#cb149-514" aria-hidden="true" tabindex="-1"></a>date2</span>
+<span id="cb149-515"><a href="#cb149-515" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-516"><a href="#cb149-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-517"><a href="#cb149-517" aria-hidden="true" tabindex="-1"></a>convert into date type with <span class="in">`ymd()`</span></span>
+<span id="cb149-518"><a href="#cb149-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-521"><a href="#cb149-521" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-522"><a href="#cb149-522" aria-hidden="true" tabindex="-1"></a>date3<span class="ot">=</span><span class="fu">ymd</span>(<span class="st">'2023-01-01'</span>)</span>
+<span id="cb149-523"><a href="#cb149-523" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(date3)</span>
 <span id="cb149-524"><a href="#cb149-524" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-525"><a href="#cb149-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-526"><a href="#cb149-526" aria-hidden="true" tabindex="-1"></a>get today with <span class="in">`today()`</span></span>
-<span id="cb149-527"><a href="#cb149-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-530"><a href="#cb149-530" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-531"><a href="#cb149-531" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb149-532"><a href="#cb149-532" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-528"><a href="#cb149-528" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-529"><a href="#cb149-529" aria-hidden="true" tabindex="-1"></a>date3</span>
+<span id="cb149-530"><a href="#cb149-530" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-531"><a href="#cb149-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-532"><a href="#cb149-532" aria-hidden="true" tabindex="-1"></a>get today with <span class="in">`today()`</span></span>
 <span id="cb149-533"><a href="#cb149-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-534"><a href="#cb149-534" aria-hidden="true" tabindex="-1"></a>get local timezone</span>
-<span id="cb149-535"><a href="#cb149-535" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-538"><a href="#cb149-538" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-539"><a href="#cb149-539" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span>
-<span id="cb149-540"><a href="#cb149-540" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-536"><a href="#cb149-536" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-537"><a href="#cb149-537" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
+<span id="cb149-538"><a href="#cb149-538" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-539"><a href="#cb149-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-540"><a href="#cb149-540" aria-hidden="true" tabindex="-1"></a>get local timezone</span>
 <span id="cb149-541"><a href="#cb149-541" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-542"><a href="#cb149-542" aria-hidden="true" tabindex="-1"></a><span class="fu">## change date format</span></span>
-<span id="cb149-543"><a href="#cb149-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-544"><a href="#cb149-544" aria-hidden="true" tabindex="-1"></a>make multiple column character to date with <span class="in">`make_date()`</span></span>
-<span id="cb149-545"><a href="#cb149-545" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-548"><a href="#cb149-548" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-549"><a href="#cb149-549" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb149-550"><a href="#cb149-550" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, day, hour, minute) <span class="sc">%&gt;%</span> </span>
-<span id="cb149-551"><a href="#cb149-551" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">departure =</span> <span class="fu">make_date</span>(year, month, day))</span>
-<span id="cb149-552"><a href="#cb149-552" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-553"><a href="#cb149-553" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-556"><a href="#cb149-556" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-557"><a href="#cb149-557" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb149-558"><a href="#cb149-558" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, day, hour, minute) <span class="sc">%&gt;%</span> </span>
-<span id="cb149-559"><a href="#cb149-559" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">departure =</span> <span class="fu">make_datetime</span>(year, month, day, hour, minute))</span>
-<span id="cb149-560"><a href="#cb149-560" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-561"><a href="#cb149-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-562"><a href="#cb149-562" aria-hidden="true" tabindex="-1"></a><span class="fu">## day differnce between two dates</span></span>
-<span id="cb149-563"><a href="#cb149-563" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-566"><a href="#cb149-566" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-567"><a href="#cb149-567" aria-hidden="true" tabindex="-1"></a>day1<span class="ot">=</span><span class="fu">ymd</span>(<span class="st">'2022-01-01'</span>)</span>
-<span id="cb149-568"><a href="#cb149-568" aria-hidden="true" tabindex="-1"></a>day2<span class="ot">=</span><span class="fu">ymd</span>(<span class="st">'2023-02-03'</span>)</span>
+<span id="cb149-544"><a href="#cb149-544" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-545"><a href="#cb149-545" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span>
+<span id="cb149-546"><a href="#cb149-546" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-547"><a href="#cb149-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-548"><a href="#cb149-548" aria-hidden="true" tabindex="-1"></a><span class="fu">## change date format</span></span>
+<span id="cb149-549"><a href="#cb149-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-550"><a href="#cb149-550" aria-hidden="true" tabindex="-1"></a>make multiple column character to date with <span class="in">`make_date()`</span></span>
+<span id="cb149-551"><a href="#cb149-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-554"><a href="#cb149-554" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-555"><a href="#cb149-555" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb149-556"><a href="#cb149-556" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, day, hour, minute) <span class="sc">%&gt;%</span> </span>
+<span id="cb149-557"><a href="#cb149-557" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">departure =</span> <span class="fu">make_date</span>(year, month, day))</span>
+<span id="cb149-558"><a href="#cb149-558" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-559"><a href="#cb149-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-562"><a href="#cb149-562" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-563"><a href="#cb149-563" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb149-564"><a href="#cb149-564" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, day, hour, minute) <span class="sc">%&gt;%</span> </span>
+<span id="cb149-565"><a href="#cb149-565" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">departure =</span> <span class="fu">make_datetime</span>(year, month, day, hour, minute))</span>
+<span id="cb149-566"><a href="#cb149-566" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-567"><a href="#cb149-567" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-568"><a href="#cb149-568" aria-hidden="true" tabindex="-1"></a><span class="fu">## day differnce between two dates</span></span>
 <span id="cb149-569"><a href="#cb149-569" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-570"><a href="#cb149-570" aria-hidden="true" tabindex="-1"></a>diff<span class="ot">=</span>day2<span class="sc">-</span>day1</span>
-<span id="cb149-571"><a href="#cb149-571" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-572"><a href="#cb149-572" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-575"><a href="#cb149-575" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-576"><a href="#cb149-576" aria-hidden="true" tabindex="-1"></a>diff</span>
+<span id="cb149-572"><a href="#cb149-572" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-573"><a href="#cb149-573" aria-hidden="true" tabindex="-1"></a>day1<span class="ot">=</span><span class="fu">ymd</span>(<span class="st">'2022-01-01'</span>)</span>
+<span id="cb149-574"><a href="#cb149-574" aria-hidden="true" tabindex="-1"></a>day2<span class="ot">=</span><span class="fu">ymd</span>(<span class="st">'2023-02-03'</span>)</span>
+<span id="cb149-575"><a href="#cb149-575" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-576"><a href="#cb149-576" aria-hidden="true" tabindex="-1"></a>diff<span class="ot">=</span>day2<span class="sc">-</span>day1</span>
 <span id="cb149-577"><a href="#cb149-577" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-578"><a href="#cb149-578" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-579"><a href="#cb149-579" aria-hidden="true" tabindex="-1"></a>using <span class="in">`interval()`</span> find two dates gap</span>
-<span id="cb149-580"><a href="#cb149-580" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-583"><a href="#cb149-583" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-584"><a href="#cb149-584" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(day1,day2) <span class="sc">%&gt;%</span> <span class="fu">as.period</span>()</span>
-<span id="cb149-585"><a href="#cb149-585" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-581"><a href="#cb149-581" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-582"><a href="#cb149-582" aria-hidden="true" tabindex="-1"></a>diff</span>
+<span id="cb149-583"><a href="#cb149-583" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-584"><a href="#cb149-584" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-585"><a href="#cb149-585" aria-hidden="true" tabindex="-1"></a>using <span class="in">`interval()`</span> find two dates gap</span>
 <span id="cb149-586"><a href="#cb149-586" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-587"><a href="#cb149-587" aria-hidden="true" tabindex="-1"></a>find day gap</span>
-<span id="cb149-588"><a href="#cb149-588" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-591"><a href="#cb149-591" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-592"><a href="#cb149-592" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(day1,day2)<span class="sc">%/%</span> <span class="fu">days</span>(<span class="dv">1</span>)</span>
-<span id="cb149-593"><a href="#cb149-593" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-589"><a href="#cb149-589" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-590"><a href="#cb149-590" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(day1,day2) <span class="sc">%&gt;%</span> <span class="fu">as.period</span>()</span>
+<span id="cb149-591"><a href="#cb149-591" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-592"><a href="#cb149-592" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-593"><a href="#cb149-593" aria-hidden="true" tabindex="-1"></a>find day gap</span>
 <span id="cb149-594"><a href="#cb149-594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-595"><a href="#cb149-595" aria-hidden="true" tabindex="-1"></a>find month gap</span>
-<span id="cb149-596"><a href="#cb149-596" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-599"><a href="#cb149-599" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-600"><a href="#cb149-600" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(day1,day2)<span class="sc">%/%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
-<span id="cb149-601"><a href="#cb149-601" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-597"><a href="#cb149-597" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-598"><a href="#cb149-598" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(day1,day2)<span class="sc">%/%</span> <span class="fu">days</span>(<span class="dv">1</span>)</span>
+<span id="cb149-599"><a href="#cb149-599" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-600"><a href="#cb149-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-601"><a href="#cb149-601" aria-hidden="true" tabindex="-1"></a>find month gap</span>
 <span id="cb149-602"><a href="#cb149-602" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-603"><a href="#cb149-603" aria-hidden="true" tabindex="-1"></a>find year gap</span>
-<span id="cb149-604"><a href="#cb149-604" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-607"><a href="#cb149-607" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-608"><a href="#cb149-608" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(day1,day2)<span class="sc">%/%</span> <span class="fu">years</span>(<span class="dv">1</span>)</span>
-<span id="cb149-609"><a href="#cb149-609" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-610"><a href="#cb149-610" aria-hidden="true" tabindex="-1"></a><span class="fu">## day and time</span></span>
-<span id="cb149-611"><a href="#cb149-611" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-614"><a href="#cb149-614" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-615"><a href="#cb149-615" aria-hidden="true" tabindex="-1"></a>now_time<span class="ot">=</span><span class="fu">now</span>()</span>
-<span id="cb149-616"><a href="#cb149-616" aria-hidden="true" tabindex="-1"></a>now_time</span>
-<span id="cb149-617"><a href="#cb149-617" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-618"><a href="#cb149-618" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-619"><a href="#cb149-619" aria-hidden="true" tabindex="-1"></a><span class="fu">### get year</span></span>
-<span id="cb149-622"><a href="#cb149-622" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-623"><a href="#cb149-623" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(now_time)</span>
-<span id="cb149-624"><a href="#cb149-624" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-625"><a href="#cb149-625" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-626"><a href="#cb149-626" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-627"><a href="#cb149-627" aria-hidden="true" tabindex="-1"></a><span class="fu">### get month</span></span>
-<span id="cb149-630"><a href="#cb149-630" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-631"><a href="#cb149-631" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(now_time)</span>
-<span id="cb149-632"><a href="#cb149-632" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-633"><a href="#cb149-633" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-634"><a href="#cb149-634" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-635"><a href="#cb149-635" aria-hidden="true" tabindex="-1"></a><span class="fu">### get date of the month</span></span>
-<span id="cb149-638"><a href="#cb149-638" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-639"><a href="#cb149-639" aria-hidden="true" tabindex="-1"></a><span class="fu">mday</span>(now_time)</span>
-<span id="cb149-640"><a href="#cb149-640" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-641"><a href="#cb149-641" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-642"><a href="#cb149-642" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-643"><a href="#cb149-643" aria-hidden="true" tabindex="-1"></a><span class="fu">### get date of the year</span></span>
-<span id="cb149-646"><a href="#cb149-646" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-647"><a href="#cb149-647" aria-hidden="true" tabindex="-1"></a><span class="fu">yday</span>(now_time)</span>
-<span id="cb149-648"><a href="#cb149-648" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-649"><a href="#cb149-649" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-650"><a href="#cb149-650" aria-hidden="true" tabindex="-1"></a><span class="fu">### get date of the week</span></span>
-<span id="cb149-653"><a href="#cb149-653" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-654"><a href="#cb149-654" aria-hidden="true" tabindex="-1"></a><span class="fu">wday</span>(now_time)</span>
-<span id="cb149-655"><a href="#cb149-655" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-656"><a href="#cb149-656" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-657"><a href="#cb149-657" aria-hidden="true" tabindex="-1"></a><span class="fu">#### get hour</span></span>
-<span id="cb149-660"><a href="#cb149-660" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-661"><a href="#cb149-661" aria-hidden="true" tabindex="-1"></a><span class="fu">hour</span>(now_time)</span>
-<span id="cb149-662"><a href="#cb149-662" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-663"><a href="#cb149-663" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-664"><a href="#cb149-664" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-665"><a href="#cb149-665" aria-hidden="true" tabindex="-1"></a><span class="fu">### get minute</span></span>
-<span id="cb149-668"><a href="#cb149-668" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-669"><a href="#cb149-669" aria-hidden="true" tabindex="-1"></a><span class="fu">minute</span>(now_time)</span>
-<span id="cb149-670"><a href="#cb149-670" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-671"><a href="#cb149-671" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-672"><a href="#cb149-672" aria-hidden="true" tabindex="-1"></a><span class="fu">### get second</span></span>
-<span id="cb149-675"><a href="#cb149-675" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-676"><a href="#cb149-676" aria-hidden="true" tabindex="-1"></a><span class="fu">second</span>(now_time)</span>
-<span id="cb149-677"><a href="#cb149-677" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-678"><a href="#cb149-678" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-679"><a href="#cb149-679" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-680"><a href="#cb149-680" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-681"><a href="#cb149-681" aria-hidden="true" tabindex="-1"></a><span class="fu">## dataframe to other data format</span></span>
-<span id="cb149-682"><a href="#cb149-682" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-683"><a href="#cb149-683" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to vector</span></span>
+<span id="cb149-605"><a href="#cb149-605" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-606"><a href="#cb149-606" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(day1,day2)<span class="sc">%/%</span> <span class="fu">months</span>(<span class="dv">1</span>)</span>
+<span id="cb149-607"><a href="#cb149-607" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-608"><a href="#cb149-608" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-609"><a href="#cb149-609" aria-hidden="true" tabindex="-1"></a>find year gap</span>
+<span id="cb149-610"><a href="#cb149-610" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-613"><a href="#cb149-613" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-614"><a href="#cb149-614" aria-hidden="true" tabindex="-1"></a><span class="fu">interval</span>(day1,day2)<span class="sc">%/%</span> <span class="fu">years</span>(<span class="dv">1</span>)</span>
+<span id="cb149-615"><a href="#cb149-615" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-616"><a href="#cb149-616" aria-hidden="true" tabindex="-1"></a><span class="fu">## day and time</span></span>
+<span id="cb149-617"><a href="#cb149-617" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-620"><a href="#cb149-620" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-621"><a href="#cb149-621" aria-hidden="true" tabindex="-1"></a>now_time<span class="ot">=</span><span class="fu">now</span>()</span>
+<span id="cb149-622"><a href="#cb149-622" aria-hidden="true" tabindex="-1"></a>now_time</span>
+<span id="cb149-623"><a href="#cb149-623" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-624"><a href="#cb149-624" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-625"><a href="#cb149-625" aria-hidden="true" tabindex="-1"></a><span class="fu">### get year</span></span>
+<span id="cb149-628"><a href="#cb149-628" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-629"><a href="#cb149-629" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(now_time)</span>
+<span id="cb149-630"><a href="#cb149-630" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-631"><a href="#cb149-631" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-632"><a href="#cb149-632" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-633"><a href="#cb149-633" aria-hidden="true" tabindex="-1"></a><span class="fu">### get month</span></span>
+<span id="cb149-636"><a href="#cb149-636" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-637"><a href="#cb149-637" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(now_time)</span>
+<span id="cb149-638"><a href="#cb149-638" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-639"><a href="#cb149-639" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-640"><a href="#cb149-640" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-641"><a href="#cb149-641" aria-hidden="true" tabindex="-1"></a><span class="fu">### get date of the month</span></span>
+<span id="cb149-644"><a href="#cb149-644" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-645"><a href="#cb149-645" aria-hidden="true" tabindex="-1"></a><span class="fu">mday</span>(now_time)</span>
+<span id="cb149-646"><a href="#cb149-646" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-647"><a href="#cb149-647" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-648"><a href="#cb149-648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-649"><a href="#cb149-649" aria-hidden="true" tabindex="-1"></a><span class="fu">### get date of the year</span></span>
+<span id="cb149-652"><a href="#cb149-652" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-653"><a href="#cb149-653" aria-hidden="true" tabindex="-1"></a><span class="fu">yday</span>(now_time)</span>
+<span id="cb149-654"><a href="#cb149-654" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-655"><a href="#cb149-655" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-656"><a href="#cb149-656" aria-hidden="true" tabindex="-1"></a><span class="fu">### get date of the week</span></span>
+<span id="cb149-659"><a href="#cb149-659" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-660"><a href="#cb149-660" aria-hidden="true" tabindex="-1"></a><span class="fu">wday</span>(now_time)</span>
+<span id="cb149-661"><a href="#cb149-661" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-662"><a href="#cb149-662" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-663"><a href="#cb149-663" aria-hidden="true" tabindex="-1"></a><span class="fu">#### get hour</span></span>
+<span id="cb149-666"><a href="#cb149-666" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-667"><a href="#cb149-667" aria-hidden="true" tabindex="-1"></a><span class="fu">hour</span>(now_time)</span>
+<span id="cb149-668"><a href="#cb149-668" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-669"><a href="#cb149-669" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-670"><a href="#cb149-670" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-671"><a href="#cb149-671" aria-hidden="true" tabindex="-1"></a><span class="fu">### get minute</span></span>
+<span id="cb149-674"><a href="#cb149-674" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-675"><a href="#cb149-675" aria-hidden="true" tabindex="-1"></a><span class="fu">minute</span>(now_time)</span>
+<span id="cb149-676"><a href="#cb149-676" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-677"><a href="#cb149-677" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-678"><a href="#cb149-678" aria-hidden="true" tabindex="-1"></a><span class="fu">### get second</span></span>
+<span id="cb149-681"><a href="#cb149-681" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-682"><a href="#cb149-682" aria-hidden="true" tabindex="-1"></a><span class="fu">second</span>(now_time)</span>
+<span id="cb149-683"><a href="#cb149-683" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-684"><a href="#cb149-684" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-687"><a href="#cb149-687" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-688"><a href="#cb149-688" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>small_mtcars<span class="sc">$</span>cyl</span>
-<span id="cb149-689"><a href="#cb149-689" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb149-690"><a href="#cb149-690" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-691"><a href="#cb149-691" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-694"><a href="#cb149-694" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-695"><a href="#cb149-695" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb149-685"><a href="#cb149-685" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-686"><a href="#cb149-686" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-687"><a href="#cb149-687" aria-hidden="true" tabindex="-1"></a><span class="fu">## dataframe to other data format</span></span>
+<span id="cb149-688"><a href="#cb149-688" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-689"><a href="#cb149-689" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to vector</span></span>
+<span id="cb149-690"><a href="#cb149-690" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-693"><a href="#cb149-693" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-694"><a href="#cb149-694" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>small_mtcars<span class="sc">$</span>cyl</span>
+<span id="cb149-695"><a href="#cb149-695" aria-hidden="true" tabindex="-1"></a>data</span>
 <span id="cb149-696"><a href="#cb149-696" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-697"><a href="#cb149-697" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-698"><a href="#cb149-698" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to matrix</span></span>
-<span id="cb149-699"><a href="#cb149-699" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-702"><a href="#cb149-702" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-703"><a href="#cb149-703" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">data.matrix</span>(small_mtcars)</span>
-<span id="cb149-704"><a href="#cb149-704" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb149-705"><a href="#cb149-705" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-706"><a href="#cb149-706" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-709"><a href="#cb149-709" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-710"><a href="#cb149-710" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb149-700"><a href="#cb149-700" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-701"><a href="#cb149-701" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb149-702"><a href="#cb149-702" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-703"><a href="#cb149-703" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-704"><a href="#cb149-704" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to matrix</span></span>
+<span id="cb149-705"><a href="#cb149-705" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-708"><a href="#cb149-708" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-709"><a href="#cb149-709" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">data.matrix</span>(small_mtcars)</span>
+<span id="cb149-710"><a href="#cb149-710" aria-hidden="true" tabindex="-1"></a>data</span>
 <span id="cb149-711"><a href="#cb149-711" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-712"><a href="#cb149-712" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-713"><a href="#cb149-713" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to list</span></span>
-<span id="cb149-714"><a href="#cb149-714" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-717"><a href="#cb149-717" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-718"><a href="#cb149-718" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">as.list</span>(small_mtcars)</span>
-<span id="cb149-719"><a href="#cb149-719" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb149-720"><a href="#cb149-720" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb149-721"><a href="#cb149-721" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-724"><a href="#cb149-724" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb149-725"><a href="#cb149-725" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb149-715"><a href="#cb149-715" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-716"><a href="#cb149-716" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb149-717"><a href="#cb149-717" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-718"><a href="#cb149-718" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-719"><a href="#cb149-719" aria-hidden="true" tabindex="-1"></a><span class="fu">### dataframe to list</span></span>
+<span id="cb149-720"><a href="#cb149-720" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-723"><a href="#cb149-723" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-724"><a href="#cb149-724" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">as.list</span>(small_mtcars)</span>
+<span id="cb149-725"><a href="#cb149-725" aria-hidden="true" tabindex="-1"></a>data</span>
 <span id="cb149-726"><a href="#cb149-726" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb149-727"><a href="#cb149-727" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-728"><a href="#cb149-728" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
-<span id="cb149-729"><a href="#cb149-729" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-730"><a href="#cb149-730" aria-hidden="true" tabindex="-1"></a>https://dplyr.tidyverse.org/</span>
+<span id="cb149-730"><a href="#cb149-730" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb149-731"><a href="#cb149-731" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span>
+<span id="cb149-732"><a href="#cb149-732" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb149-733"><a href="#cb149-733" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-734"><a href="#cb149-734" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
+<span id="cb149-735"><a href="#cb149-735" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-736"><a href="#cb149-736" aria-hidden="true" tabindex="-1"></a>https://dplyr.tidyverse.org/</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

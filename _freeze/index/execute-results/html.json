@@ -1,9 +1,11 @@
 {
-  "hash": "3c9f116807d8300672eda44fc65d2fd7",
+  "hash": "3cbadcf1f444cdeb34421515bfcb1341",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"About\"\n---\n\n\nThis is a Quarto website.\n\nTo learn more about Quarto websites visit <https://quarto.org/docs/websites>.\n\n\nhttps://tonyfly3000.github.io/tidymodeling/\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"About\"\n---\n\n\n\nR is based heavily on the S language, first developed in the 1960s and 1970s by researchers at Bell Laboratories in New Jersey\n\n\nR’s developers—Ross Ihaka and Robert Gentleman at the Univer-\nsity of Auckland in New Zealand—released it in the early 1990s under the\n \nGNU public license. (The software was named for Ross and Robert’s shared first initial.)\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
