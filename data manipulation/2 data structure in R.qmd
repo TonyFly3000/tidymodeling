@@ -41,18 +41,55 @@ b
 ```{r}
 class(b)
 ```
-## create vector
+## create sequence vector
 
 ```{r}
 seq(from = 2, to = 14, by = 2) 
 ```
 
-other way:
+## create repeat vector
 ```{r}
 rep(x = 1.5, times = 4)  
 ```
 
+## create random vector
 
+create 5 random number from 1 to 10 without replacement
+
+```{r}
+sample(1:10,5, replace=F) 
+```
+
+create 5 random number from 1 to 10 with replacement
+
+```{r}
+sample(1:10,5, replace=T) 
+```
+
+
+create 1 random number from 0 to 1 from random uniform distribution
+
+```{r}
+runif(1, min=0, max=1)
+```
+
+generate 4 random number that follows the normal distribution with mean being 0 and standard deviation being 1
+
+```{r}
+sn1 <- rnorm(4, mean=0, sd=1) # standard nromal
+sn1
+```
+
+## create unique vector
+
+```{r}
+v1=c(1,1,2,2,5,6)
+v1
+```
+
+```{r}
+unique(v1)
+```
 
 
 ## append vector
@@ -63,6 +100,40 @@ y=c(4,5,6)
 z=c(x,y)
 z
 ```
+
+## remove element in vector
+
+```{r}
+
+x=c(1,2,3,4,5)
+x
+```
+
+
+### remove first one
+```{r}
+x[-1]
+```
+
+
+### remove last one
+```{r}
+x[-length(x)]
+```
+
+
+### remove from last second
+```{r}
+x[1:(length(x)-2)]
+```
+
+### remove from from another vector
+
+```{r}
+remove=c(2,4)
+x[-remove]
+```
+
 
 ## sort vector
 
@@ -105,17 +176,17 @@ x=c(1,2,3,6,9,10)
 x[1]
 ```
 
+
+### select last
+
+
+
 ### select first to 3th
 ```{r}
 x[1:3]
 ```
 
 
-### select exclude first
-```{r}
-x[-1]
-```
-```
 
 
 ## vector  Converting between types

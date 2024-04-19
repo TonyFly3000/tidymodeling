@@ -1,0 +1,183 @@
+---
+title: "on page"
+subtitle: "with whiskyfun.com data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(stringr)
+```
+
+```{r}
+packageVersion("rvest")
+```
+
+
+# review page
+
+```{r}
+review_url='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'
+
+#review_url='https://www.whiskynotes.be/2011/port-ellen/port-ellen-10th-release-1978/'
+```
+
+
+# read in html
+```{r}
+review_page <- read_html(review_url)
+```
+
+# bottle_review
+
+```{r}
+bottle_review=review_page  %>% html_elements("p , .textegrandfoncegras , .textegrandfoncegras .TextenormalNEW , .Textenormal .textenormalgras , .Textenormal .TextenormalNEW , td.TextenormalNEW") %>% html_text2()
+# remove space element
+
+bottle_review1=bottle_review[bottle_review %>% str_detect('SGP:')] 
+
+bottle_review2=bottle_review1[bottle_review1 %>% str_detect('Nose:')] 
+
+bottle_review2=bottle_review2%>% str_replace("Palate:", "Mouth")%>% str_replace("–", "-")
+
+
+ss=head(bottle_review2)
+```
+
+
+
+
+# bottle_name
+```{r}
+bottle_name=str_extract(bottle_review2, 
+ regex( "[^)]+")
+    )
+bottle_name=paste0(bottle_name,")")
+length(bottle_name)
+```
+
+
+# bottle_score
+```{r}
+
+res <- str_match(bottle_review2, "SGP:\\s*(.*?)\\s*points")
+
+bottle_score=paste("SGP:",res[,2]," points")
+
+length(bottle_score)
+```
+
+# bottle__final_score
+```{r}
+
+res <- str_match(bottle_score, " - \\s*(.*?)\\s*points")
+
+bottle_final_score=res[,2]
+
+length(bottle_final_score)
+```
+
+```{r}
+bottle_score[91]
+bottle_final_score[91]
+```
+
+```{r}
+bottle_score[92]
+bottle_final_score[92]
+```
+
+# Nose
+
+```{r}
+
+res <- str_match(bottle_review2, "Nose:\\s*(.*?)\\s*Mouth")
+
+bottle_name_nose=paste("Nose:",res[,2])
+
+length(bottle_name_nose)
+```
+
+#  Mouth
+```{r}
+
+res <- str_match(bottle_review2, "Mouth\\s*(.*?)\\s*Finish:")
+
+bottle_name_mouth=paste("Mouth:",res[,2])
+
+length(bottle_name_mouth)
+```
+
+
+#  Colour
+```{r}
+
+res <- str_match(bottle_review2, "Colour\\s*(.*?)\\s*\\.")
+
+bottle_name_colour=paste("Colour ",res[,2])
+
+length(bottle_name_colour)
+```
+
+
+
+# bottle_name_finish
+```{r}
+
+res <- str_match(bottle_review2, "Finish:\\s*(.*?)\\s*Comments:")
+bottle_name_finish=paste("Finish:",res[,2])
+
+length(bottle_name_finish)
+```
+
+# bottle_name_comments
+```{r}
+
+res <- str_match(bottle_review2, "Comments:\\s*(.*?)\\s*SGP:")
+bottle_name_comments=paste("Comments:",res[,2])
+
+length(bottle_name_comments)
+```
+
+# combine
+
+```{r}
+data=tibble(bottle_name,bottle_name_nose,bottle_name_mouth,bottle_name_finish,bottle_name_colour,bottle_name_comments,bottle_score,bottle_final_score,review_url)
+
+head(data)
+```
+
+
+# output
+
+```{r}
+library(openxlsx)
+write.xlsx(data, file = "whiskyfun one page.xlsx")
+```
+
+
+
+# other package
+
+
+rvest
+chromote
+selenium
+selenider
+

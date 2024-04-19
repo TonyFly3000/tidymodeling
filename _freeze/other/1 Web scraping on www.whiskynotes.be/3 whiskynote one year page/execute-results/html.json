@@ -1,0 +1,15 @@
+{
+  "hash": "7fbcc74ca16d0bdca5fbe20655017694",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Web scraping with rvest on one year page\"\nsubtitle: \"with whiskynote.be data\"\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(rvest)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\npackageVersion(\"rvest\")\n```\n:::\n\n\nWeb scraping on www.whiskynotes.be\n\n# year page\n\n\n::: {.cell}\n\n```{.r .cell-code}\nyear_ur='https://www.whiskynotes.be/2023'\n```\n:::\n\n\n![](images/clipboard-677064128.png)\n\n# read in html\n\n\n::: {.cell}\n\n```{.r .cell-code}\nyear_page <- read_html(year_ur)\n```\n:::\n\n\n# review bottle name on one year\n\n\n::: {.cell}\n\n```{.r .cell-code}\nbottle001 <- year_page %>% html_elements(\"p\")%>% html_text2()\nbottle001[length(bottle001)]\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# drop last one which is not bottle\nbottle002=bottle001[-length(bottle001)]\nhead(bottle002,3)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlength(bottle002)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# split to each bottle \nbottle003=unlist(strsplit(bottle002,\"\\n\"))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nhead(bottle003,5)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlength(bottle003)\n```\n:::\n\n\n\n# review topic name on one year\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntopic001 <- year_page %>% html_elements(\".archive-link\") %>% html_text2()\nhead(topic001)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlength(topic001)\n```\n:::\n\n\n\n# review topic link on one year\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntopic_link_list <- year_page %>%\n  html_elements(css = \".entry-permalink\")%>% html_attr(\"href\")\n\nhead(topic_link_list)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlength(topic_link_list)\n```\n:::\n\n\n# combine \n\n\n::: {.cell}\n\n```{.r .cell-code}\ndata=tibble(topic001,topic_link_list)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nbottle003=tibble(bottle003)\n```\n:::\n\n\n# output\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(openxlsx)\nlist_of_datasets <- list(\"Name of DataSheet1\" = data, \"Name of Datasheet2\" = bottle003)\n\nwrite.xlsx(list_of_datasets, file = \"on year page.xlsx\")\n```\n:::\n\n\n\n\n\n# reference:\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

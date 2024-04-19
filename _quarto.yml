@@ -40,6 +40,7 @@ website:
       - sidebar:bar4b
       - sidebar:bar5
       - sidebar:bar6 
+      - sidebar:bar7
   
   sidebar:
     - id: intro
@@ -105,6 +106,13 @@ website:
       background: light
       collapse-level: 2
       contents: clustering
+
+    - id: bar7
+      title: "Other"
+      style: "floating"
+      background: light
+      collapse-level: 3
+      contents: other
 
   page-footer:
     right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."

@@ -1,0 +1,47 @@
+---
+title: "Whiskynotes.be data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+# whiskynotes.be data
+
+<https://www.whiskynotes.be/>
+
+![](images/clipboard-2598102391.png)
+
+WhiskyNotes is a personal collection of impressions, written while searching for the ultimate single malt whisky. A work in progress, and a continuous exercise for the senses.
+
+I started it in 2008 while living in Spain for a couple of years. I had discovered whisky a few years earlier but suddenly I was cut off from festivals, shops and whisky friends in my home country. A whisky blog seemed a good way of keeping in touch. It quickly gained a following, first in Belgium but now from all over the world.
+
+# rvest package
+
+rvest helps you scrape (or harvest) data from web pages. It is designed to work with magrittr to make it easy to express common web scraping tasks, inspired by libraries like beautiful soup and RoboBrowser.
+
+If you’re scraping multiple pages, I highly recommend using rvest in concert with polite. The polite package ensures that you’re respecting the robots.txt and not hammering the site with too many requests.
+
+![](images/clipboard-1520421631.png){width="500"}
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+```{r}
+packageVersion("rvest")
+```
+
+# reference:

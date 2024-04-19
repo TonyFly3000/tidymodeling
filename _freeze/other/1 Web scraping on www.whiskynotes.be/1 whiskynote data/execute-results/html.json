@@ -1,0 +1,15 @@
+{
+  "hash": "5270356d250ba67d99442c6dc3b22032",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Whiskynotes.be data\"\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n---\n\n\n# whiskynotes.be data\n\n<https://www.whiskynotes.be/>\n\n![](images/clipboard-2598102391.png)\n\nWhiskyNotes is a personal collection of impressions, written while searching for the ultimate single malt whisky. A work in progress, and a continuous exercise for the senses.\n\nI started it in 2008 while living in Spain for a couple of years. I had discovered whisky a few years earlier but suddenly I was cut off from festivals, shops and whisky friends in my home country. A whisky blog seemed a good way of keeping in touch. It quickly gained a following, first in Belgium but now from all over the world.\n\n# rvest package\n\nrvest helps you scrape (or harvest) data from web pages. It is designed to work with magrittr to make it easy to express common web scraping tasks, inspired by libraries like beautiful soup and RoboBrowser.\n\nIf you’re scraping multiple pages, I highly recommend using rvest in concert with polite. The polite package ensures that you’re respecting the robots.txt and not hammering the site with too many requests.\n\n![](images/clipboard-1520421631.png){width=\"500\"}\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(rvest)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\npackageVersion(\"rvest\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] '1.0.4'\n```\n\n\n:::\n:::\n\n\n# reference:\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

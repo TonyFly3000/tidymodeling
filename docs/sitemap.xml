@@ -182,7 +182,7 @@
   </url>
   <url>
     <loc>https://example.com/data manipulation/2 data structure in R.html</loc>
-    <lastmod>2024-04-12T07:14:27.764Z</lastmod>
+    <lastmod>2024-04-18T08:08:28.430Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/data manipulation/3 data manipulation with tidyverse.html</loc>
@@ -190,7 +190,7 @@
   </url>
   <url>
     <loc>https://example.com/intro/1 basic R.html</loc>
-    <lastmod>2024-04-12T09:52:12.344Z</lastmod>
+    <lastmod>2024-04-18T07:46:10.000Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/data manipulation/5 SQL database.html</loc>
@@ -267,5 +267,73 @@
   <url>
     <loc>https://example.com/Multiclass classification/0 multclass classification.html</loc>
     <lastmod>2024-04-11T15:23:01.699Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/Web scraping with rvest/2 web scraping with rvest on whiskynote.html</loc>
+    <lastmod>2024-04-18T04:46:47.580Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/Web scraping with rvest/2 web scraping with rvest copy.html</loc>
+    <lastmod>2024-04-18T03:31:43.851Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/Web scraping with other/1 whiskynote data.html</loc>
+    <lastmod>2024-04-18T04:46:39.446Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/Web scraping with rvest/1 whiskynote data.html</loc>
+    <lastmod>2024-04-18T04:46:45.487Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/4 whiskynote all year page.html</loc>
+    <lastmod>2024-04-18T05:36:08.129Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/2 whiskynote one page.html</loc>
+    <lastmod>2024-04-18T09:12:51.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/3 whiskynote one year page.html</loc>
+    <lastmod>2024-04-18T05:30:53.121Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/2 Web scraping on whiskybase.com/1 whiskynote data.html</loc>
+    <lastmod>2024-04-18T04:46:39.446Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/1 whiskynote data.html</loc>
+    <lastmod>2024-04-18T04:46:45.487Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/5 web scraping with rvest all.html</loc>
+    <lastmod>2024-04-18T05:53:49.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/5 web scraping with rvest all first time.html</loc>
+    <lastmod>2024-04-18T07:56:06.315Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/6 web scraping with rvest all second time.html</loc>
+    <lastmod>2024-04-18T07:55:57.056Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/2 Web scraping on whiskybase.com/whiskybase data.html</loc>
+    <lastmod>2024-04-18T07:57:56.712Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/3 Web scraping on whiskyfun.com/2 whiskyfun one page.html</loc>
+    <lastmod>2024-04-18T10:58:17.147Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/3 Web scraping on whiskyfun.com/1 whiskyfun data.html</loc>
+    <lastmod>2024-04-18T08:37:33.406Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/2 Web scraping on whiskybase.com/1 whiskybase data.html</loc>
+    <lastmod>2024-04-18T08:17:11.327Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/3 Web scraping on whiskyfun.com/3 whiskyfun all page link.html</loc>
+    <lastmod>2024-04-18T10:58:17.133Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,102 @@
+---
+title: "All page link"
+subtitle: "with whiskyfun.com data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(stringr)
+```
+
+```{r}
+packageVersion("rvest")
+```
+
+
+# all review page
+
+# first page
+```{r}
+first_url='https://www.whiskyfun.com'
+first_page=read_html(first_url)
+```
+
+
+
+```{r}
+last_page <- first_page %>%
+  html_elements(css = "a.textegrandfoncegras")%>% html_attr("href")
+```
+
+
+# start from secound page
+
+
+```{r}
+page_list=c()
+```
+
+
+```{r}
+url='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'
+
+page=read_html(first_url)
+
+last_page <- (first_page %>%html_elements(css = "font:nth-child(1) strong a")%>%html_attr("href"))[1]
+
+print(last_page)
+page_list=c(page_list,last_page)
+```
+
+# start to download 50 pages
+
+```{r}
+last_page='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'
+page_list=c()
+
+for (i in seq(1:3)){
+  print(i)
+  page=read_html(last_page)
+  last_page <- (page %>%html_elements(css = "font:nth-child(1) strong a")%>%html_attr("href"))[1]
+  last_page=paste0('https://www.whiskyfun.com/',last_page)
+  print(last_page)
+  page_list=c(page_list,last_page)
+  Sys.sleep(runif(n=1, min=0.1, max=0.8))
+  
+  
+  }
+```
+
+```{r}
+page_list_data=page_list %>% tibble()
+```
+
+
+# ouput
+
+```{r}
+library(openxlsx)
+write.xlsx(page_list_data, file = "whiskyfun page_list.xlsx")
+```
+
+
+
+
+
