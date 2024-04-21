@@ -178,7 +178,7 @@
   </url>
   <url>
     <loc>https://example.com/data manipulation/1 input ouput.html</loc>
-    <lastmod>2024-04-07T14:47:52.000Z</lastmod>
+    <lastmod>2024-04-21T14:27:16.392Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/data manipulation/2 data structure in R.html</loc>
@@ -190,7 +190,7 @@
   </url>
   <url>
     <loc>https://example.com/intro/1 basic R.html</loc>
-    <lastmod>2024-04-18T07:46:10.000Z</lastmod>
+    <lastmod>2024-04-19T19:33:42.477Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/data manipulation/5 SQL database.html</loc>
@@ -322,7 +322,7 @@
   </url>
   <url>
     <loc>https://example.com/other/3 Web scraping on whiskyfun.com/2 whiskyfun one page.html</loc>
-    <lastmod>2024-04-18T10:58:17.147Z</lastmod>
+    <lastmod>2024-04-21T14:31:32.520Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/other/3 Web scraping on whiskyfun.com/1 whiskyfun data.html</loc>
@@ -334,6 +334,14 @@
   </url>
   <url>
     <loc>https://example.com/other/3 Web scraping on whiskyfun.com/3 whiskyfun all page link.html</loc>
-    <lastmod>2024-04-18T10:58:17.133Z</lastmod>
+    <lastmod>2024-04-18T18:02:18.421Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/3 Web scraping on whiskyfun.com/4 whiskyfun all page.html</loc>
+    <lastmod>2024-04-21T14:31:45.389Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/3 Web scraping on whiskyfun.com/5 whiskyfun all page data cleaning.html</loc>
+    <lastmod>2024-04-19T18:56:17.086Z</lastmod>
   </url>
 </urlset>

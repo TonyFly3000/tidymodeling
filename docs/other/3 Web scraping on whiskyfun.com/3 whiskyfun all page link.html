@@ -526,6 +526,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">All page link</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/3 Web scraping on whiskyfun.com/4 whiskyfun all page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All page first time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/3 Web scraping on whiskyfun.com/5 whiskyfun all page data cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All page first time</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -641,7 +653,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>last_page<span class="ot">=</span><span class="st">'https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>page_list<span class="ot">=</span><span class="fu">c</span>()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>)){</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)){</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  page<span class="ot">=</span><span class="fu">read_html</span>(last_page)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  last_page <span class="ot">&lt;-</span> (page <span class="sc">%&gt;%</span><span class="fu">html_elements</span>(<span class="at">css =</span> <span class="st">"font:nth-child(1) strong a"</span>)<span class="sc">%&gt;%</span><span class="fu">html_attr</span>(<span class="st">"href"</span>))[<span class="dv">1</span>]</span>
@@ -1188,7 +1200,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>last_page<span class="ot">=</span><span class="st">'https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'</span></span>
 <span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>page_list<span class="ot">=</span><span class="fu">c</span>()</span>
 <span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>)){</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)){</span>
 <span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
 <span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>  page<span class="ot">=</span><span class="fu">read_html</span>(last_page)</span>
 <span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>  last_page <span class="ot">&lt;-</span> (page <span class="sc">%&gt;%</span><span class="fu">html_elements</span>(<span class="at">css =</span> <span class="st">"font:nth-child(1) strong a"</span>)<span class="sc">%&gt;%</span><span class="fu">html_attr</span>(<span class="st">"href"</span>))[<span class="dv">1</span>]</span>

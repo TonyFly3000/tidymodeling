@@ -142,6 +142,14 @@ write_feather(data001,'data/feather_file.feather')
 
 
 
+## write txt
+
+```{r}
+text=tibble('hello world
+its time!')
+
+write_delim(text, "text.txt")
+```
 
 
 

@@ -66,8 +66,9 @@ print(last_page)
 page_list=c(page_list,last_page)
 ```
 
-# start to download 1000 pages
 
+
+# start to download 500 pages
 ```{r}
 last_page='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'
 
@@ -77,7 +78,7 @@ data_list=tibble()
 i=0
 a=0
 
-while (i < 1000) {
+while (i < 500) {
   loop_num=i
   print(paste0("current page: ",loop_num))
   old_page=last_page
@@ -86,7 +87,7 @@ while (i < 1000) {
     i=i+1
     
   Sys.sleep(runif(n=1, min=0.1, max=0.3))
- },error = function(msg){print('eeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+ },error = function(msg){print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
     i=i-1
     print(paste0("new i : ",i))
     a=a+1
@@ -155,7 +156,7 @@ while (i < 1000) {
   # 
   # data_list=rbind(data_list,data)
   # print(paste0("total bootle downlaoded: ",nrow(data_list)))
-  data=tibble(bottle_review2,bottle_name) %>% unique()
+  data=tibble(bottle_review2,bottle_name,old_page,loop_num) %>% unique()
   data_list=rbind(data_list,data)
   print(paste0("total bootle downlaoded: ",nrow(data_list)))
   
