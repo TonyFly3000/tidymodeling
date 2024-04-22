@@ -1,0 +1,129 @@
+---
+title: "all distrillery and bottler name"
+subtitle: "with whiskybase.com data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(stringr)
+library(openxlsx)
+library(readxl)
+library(janitor)
+library(writexl)
+library(gt)
+```
+
+# all distrillery
+```{r}
+url='https://www.whiskybase.com/whiskies/distilleries'
+```
+
+```{r}
+page=read_html(url)
+element=page %>% 
+  html_nodes("*") %>% 
+  html_attr("class") %>% 
+  unique()
+```
+
+
+```{r}
+text=page%>% html_nodes("*")%>% html_text2()
+```
+
+```{r}
+head(text)
+```
+
+
+```{r}
+write_delim(tibble(text), "./data/all distillery name.txt")
+```
+
+
+
+```{r}
+link= page%>%html_nodes(".clickable a")%>% html_attr('href')
+```
+
+
+```{r}
+data=page%>% html_nodes("table")%>%html_table(fill = TRUE) %>% as.data.frame() %>% mutate(link=link) %>% select(-Var.6)
+```
+
+
+
+output
+
+```{r}
+write.xlsx(data,'./output/all distillery.xlsx')
+```
+
+# summary of the data
+
+
+```{r}
+data002=data %>% filter(Whiskies>10,Votes>100) %>% arrange(desc(Rating)) %>% select(-link)
+
+data003=data002 %>% rowid_to_column("No")
+head(data003) %>% gt() %>% as_raw_html()
+```
+
+# all bottler
+```{r}
+url='https://www.whiskybase.com/whiskies/bottlers'
+```
+
+
+```{r}
+link= page%>%html_nodes(".clickable a")%>% html_attr('href')
+```
+
+```{r}
+data=page%>% html_nodes("table")%>%html_table(fill = TRUE) %>% as.data.frame() %>% mutate(link=link) %>% select(-'Var.6')
+```
+
+
+
+```{r}
+names(data)
+```
+
+
+```{r}
+#glimpse(data)
+```
+
+output
+
+```{r}
+write.xlsx(data,'./output/all bottler.xlsx')
+```
+
+# summary of the data
+
+
+
+```{r}
+data002=data %>% filter(Whiskies>10,Votes>100) %>% arrange(desc(Rating))  %>% select(-link)
+
+data003=data002 %>% rowid_to_column("No")
+head(data003) %>% gt() %>% as_raw_html()
+```

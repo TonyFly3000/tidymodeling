@@ -1,0 +1,51 @@
+---
+title: "clean up"
+subtitle: "with whiskynote.be data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(stringr)
+library(openxlsx)
+library(readxl)
+library(janitor)
+library(writexl)
+```
+
+# input data
+```{r}
+data001=read_excel('all_page_review_list_final_new.xlsx')
+```
+
+# clean data
+```{r}
+data002=data001 %>% clean_names()
+```
+
+```{r}
+glimpse(data002)
+```
+```{r}
+data003=data002 %>% arrange(all_page_score)
+glimpse(data003)
+```
+
+
+
+# reference:

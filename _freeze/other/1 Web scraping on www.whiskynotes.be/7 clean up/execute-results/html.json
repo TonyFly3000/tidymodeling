@@ -1,0 +1,15 @@
+{
+  "hash": "23bcbbf0d03ac7682df0e5fba432618c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"clean up\"\nsubtitle: \"with whiskynote.be data\"\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(stringr)\nlibrary(openxlsx)\nlibrary(readxl)\nlibrary(janitor)\nlibrary(writexl)\n```\n:::\n\n\n# input data\n\n::: {.cell}\n\n```{.r .cell-code}\ndata001=read_excel('all_page_review_list_final_new.xlsx')\n```\n:::\n\n\n# clean data\n\n::: {.cell}\n\n```{.r .cell-code}\ndata002=data001 %>% clean_names()\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nglimpse(data002)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ndata003=data002 %>% arrange(all_page_score)\nglimpse(data003)\n```\n:::\n\n\n\n\n# reference:\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

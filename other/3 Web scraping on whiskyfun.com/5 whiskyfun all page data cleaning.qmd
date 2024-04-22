@@ -1,5 +1,5 @@
 ---
-title: "All page first time"
+title: "All page clean up"
 subtitle: "with whiskyfun.com data"
 author: "Tony Duan"
 
@@ -227,21 +227,37 @@ write.xlsx(data003,'all_page_review_after_clean.xlsx')
 
 
 # reference
+
 %d = Day number of month (5, 17, 28, etc.)
+
 %j = Day number of the year (Julian day 001-366)
+
 %a = Abbreviated weekday (Mon, Tue, Wed, etc.)
+
 %A = Full weekday (Monday, Tuesday, etc.) %w = Weekday number (0-6, Sunday is 0)
+
 %u = Weekday number (1-7, Monday is 1)
+
 %W = Week number (00-53, Monday is week start)
+
 %U = Week number (01-53, Sunday is week start)
+
 %m = Month number (e.g. 01, 02, 03, 04)
+
 %b = Abbreviated month (Jan, Feb, etc.)
+
 %B = Full month (January, February, etc.)
+
 %y = 2-digit year (e.g. 89)
+
 %Y = 4-digit year (e.g. 1989)
+
 %h = hours (24-hr clock)
+
 %m = minutes
+
 %s = seconds %z = offset from GMT
+
 %Z = Time zone (character)
 
 

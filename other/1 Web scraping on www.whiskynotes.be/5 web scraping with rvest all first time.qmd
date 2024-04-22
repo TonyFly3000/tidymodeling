@@ -1,5 +1,5 @@
 ---
-title: "Web scraping with rvest on all year all topic first time"
+title: "All year all topic first time"
 subtitle: "with whiskynote.be data"
 author: "Tony Duan"
 
@@ -85,7 +85,7 @@ one_page_function <- function(review_url){
 
   bottle_score=review_page  %>% html_elements("strong") %>% html_text2()
   
-  bottle_score2=bottle_score %>% str_match('[0-9][0-9]/100') %>% as.data.frame() %>% filter(is.na(V1)==FALSE)
+  bottle_score2=bottle_score %>% str_remove("/100")%>% str_match('[0-9][0-9]') %>% as.data.frame() %>% filter(is.na(V1)==FALSE)
   bottle_score2=bottle_score2 %>% mutate(V1=str_replace(V1,'/100',''))
 
 
