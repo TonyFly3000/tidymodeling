@@ -381,7 +381,7 @@ write.xlsx(all_page_review_list_total,'all_page_review_list_final_new.xlsx')
 
 
 ```{r}
-review_url="https://www.whiskynotes.be/2024/ardbeg/spheric-spirits-springbank-blended-malt-islay-malt/"
+review_url="https://www.whiskynotes.be/2013/blends/johnnie-walker-red-label-black-label/"
 
   print(review_url)
   review_page <- read_html(review_url)
@@ -486,9 +486,6 @@ review_url="https://www.whiskynotes.be/2024/ardbeg/spheric-spirits-springbank-bl
 ```
 
 
-```{r}
-c('43','3','adsfs34dfdf') %>%  str_remove("/100") %>% str_detect("^[:digit:]+$")
-```
 
 
 

@@ -26,11 +26,12 @@ library(openxlsx)
 library(readxl)
 library(janitor)
 library(writexl)
+library(lubridate)
 ```
 
 # input data
 ```{r}
-data001=read_excel('all_page_review_list_final_new.xlsx')
+data001=read_excel('./output/all_page_review_list_final_new.xlsx')
 ```
 
 # clean data
@@ -41,10 +42,82 @@ data002=data001 %>% clean_names()
 ```{r}
 glimpse(data002)
 ```
+
+
 ```{r}
-data003=data002 %>% arrange(all_page_score)
+data003=data002 %>%  mutate(published_date=dmy(page_published_date)
+                            ,year=year(published_date)
+                            ,score=as.numeric(all_page_score)
+                            ,high_score=if_else(score>=90,1,0)
+                            ,bottle_name=bottle_name%>% str_replace('allt-à-bhainne','Allt-a-Bhainne')%>% str_replace('Allt-a-Bhaine','Allt-a-Bhainne') %>% str_to_lower()
+                            )%>% filter(score>0,!page_class %in% c("* Armagnac","* Cognac","* Rum","* Armagnac-* Cognac","* Other spirits")) %>% arrange(score)
 glimpse(data003)
 ```
+
+```{r}
+p=ggplot(data003, aes(year,score,group=year)) + geom_boxplot()
+p
+```
+
+
+
+```{r}
+summary001=data003 %>% group_by(year) %>% summarise(bottles=n(),avg_score=mean(score),high=sum(high_score)
+                                                 
+                                                 ,high_pct=sum(high_score)/n()
+                                                 )
+summary001
+```
+
+
+```{r}
+summary002=data003 %>% group_by(page_class) %>% summarise(bottles=n(),avg_score=mean(score),high=sum(high_score)
+                                                 
+                                                 ,high_pct=sum(high_score)/n()
+                                                 ) %>% arrange(desc(bottles))
+summary002
+```
+
+
+```{r}
+all_distrillery_from_wb=read_xlsx('data/all distrillery from wb.xlsx') %>% mutate(name=Name %>% str_replace('Isle of Jura','jura')  %>% str_replace('Teeling Whiskey Distillery','Teeling') %>% str_replace('Distillery','')%>% str_replace('(Closed)','') %>% str_replace('St. Magdalene','St Magdalene') %>% str_trim()%>% str_to_lower()
+                                                                              ) 
+```
+
+```{r}
+
+keywords <- as.character(all_distrillery_from_wb$name)
+
+```
+
+```{r}
+data004=data003[grepl(paste(keywords, collapse="|"), data003$bottle_name),]
+```
+
+
+```{r}
+data005=str_extract_all(tolower(data003$bottle_name),paste(keywords,collapse  = "|"))
+```
+
+
+
+keep first match
+```{r}
+data006=lapply(data005, `[`, 1)
+```
+
+
+```{r}
+data006[lengths(data006)==0] <- NA
+data007=unlist(data006)
+```
+
+
+```{r}
+data008=data003 %>% mutate(distillery_name=data007)
+```
+
+
 
 
 
