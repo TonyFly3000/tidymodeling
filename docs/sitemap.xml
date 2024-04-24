@@ -314,7 +314,7 @@
   </url>
   <url>
     <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/6 web scraping with rvest all second time.html</loc>
-    <lastmod>2024-04-22T09:07:46.874Z</lastmod>
+    <lastmod>2024-04-23T05:16:07.405Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/other/2 Web scraping on whiskybase.com/whiskybase data.html</loc>
@@ -370,6 +370,10 @@
   </url>
   <url>
     <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/7 clean up.html</loc>
-    <lastmod>2024-04-22T09:08:29.483Z</lastmod>
+    <lastmod>2024-04-23T06:22:45.486Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/4 other web scraping package/chromote.html</loc>
+    <lastmod>2024-04-24T05:15:11.305Z</lastmod>
   </url>
 </urlset>
