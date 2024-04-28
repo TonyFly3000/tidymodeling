@@ -92,6 +92,25 @@ small_mtcars %>%rename(new_cyl=cyl)
 small_mtcars %>%mutate(new_cyl=cyl+1)
 ```
 
+### if else
+
+```{r}
+small_mtcars %>%mutate(new_cly_group=if_else(cyl>6,'big','small'))
+```
+
+
+
+### case when
+
+```{r}
+small_mtcars %>%mutate(cly_group=case_when(
+    cyl > 6 ~ "very big",
+    cyl > 4 ~ "big",
+    TRUE ~ "other",
+  ))
+```
+
+
 ### Transmute,create column and only keep this column
 
 ```{r}

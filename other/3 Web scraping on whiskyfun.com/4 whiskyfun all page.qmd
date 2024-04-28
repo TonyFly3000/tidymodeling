@@ -1,5 +1,5 @@
 ---
-title: "All page first time"
+title: "All page second time"
 subtitle: "with whiskyfun.com data"
 author: "Tony Duan"
 
@@ -291,9 +291,12 @@ missing_page=c('https://www.whiskyfun.com/archiveaugust22-2-Speyburn-Caroni.html
 # ouput
 
 ```{r}
-write.xlsx(data_list,'all_page_review.xlsx')
+write.xlsx(data_list,'wf_all_page_review.xlsx')
 #write.xlsx(page_list_data,'all_page_link.xlsx')
 ```
+
+
+
 
 
 # whiskyfun first page

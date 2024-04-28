@@ -38,12 +38,18 @@ review_url='https://www.whiskynotes.be/2024/ardbeg/spheric-spirits-springbank-bl
 ```
 
 
-![](images/clipboard-714698276.png){width="441"}
+![](images/c  lipboard-714698276.png){width="441"}
 
 # read in html
 ```{r}
 review_page <- read_html(review_url)
 ```
+
+# take picture of url
+
+
+
+
 
 # bottle_name
 ```{r}

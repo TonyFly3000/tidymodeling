@@ -74,6 +74,13 @@ data002= data001 %>% group_by(continent,year) %>% summarise(pop=sum(pop))
 p=ggplot(data002 %>%filter(continent=='Asia'), aes(year, pop)) + geom_line()
 p
 ```
+### change line size
+
+```{r}
+p=ggplot(data002 %>%filter(continent=='Asia'), aes(year, pop)) + geom_line(size=5)
+p
+```
+
 
 ## color by group
 
@@ -110,6 +117,12 @@ data002= data001 %>% filter(year==1997) %>% group_by(continent) %>% summarise(po
 ```{r}
 ggplot(data002, aes(x=continent, y=pop)) +
   geom_bar(stat="identity")+scale_y_continuous(labels = scales::comma)
+```
+## add number
+
+```{r}
+ggplot(data002, aes(x=continent, y=pop)) +
+  geom_bar(stat="identity")+scale_y_continuous(labels = scales::comma)+geom_text(aes(label = pop), vjust = -0.2)
 ```
 
 
@@ -181,6 +194,12 @@ p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle("tip by s
 p
 ```
 
+## add footnote
+
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle("tip by sex")+labs(caption = "this is footnote")
+p
+```
 
 
 
@@ -205,7 +224,53 @@ p
 p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
 p
 ```
-## x y break and scales
+
+## add chinses
+
+```{r}
+library(showtext)
+showtext_auto()
+
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="新的 x name")+ scale_y_continuous(name="新的 y name")
+p
+
+```
+
+
+
+
+## x y break and scales limit
+
+### x scales limit
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+p+ xlim(min=0, 20)
+```
+### y scales limit
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+p+ ylim(0, 100)
+```
+
+
+
+
+### adding second aix
+
+```{r}
+data002= data001%>% group_by(year,continent) %>% summarise(pop=sum(pop),lifeExp=mean(lifeExp))%>%filter(continent=='Asia')
+```
+
+
+remove scientific notation 
+```{r}
+coeff=1/40000000
+
+
+p=ggplot(data002, aes(year, pop)) + geom_col() +
+  geom_line(aes(year,lifeExp/ coeff),size=2, color = "red") +scale_y_continuous("pop", sec.axis = sec_axis(~.*coeff, name = "lifeExp"),labels = scales::comma)
+p
+```
 
 
 
@@ -257,7 +322,8 @@ p=ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
   scale_size(range = c(2, 12)) +
   scale_x_log10() +
   # Here comes the gganimate specific bits
-  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy',colour = "country") +
+  # labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy',colour = "country") +
+  labs(title ='Year: {as.integer(frame_time)}', x = 'GDP per capita', y = 'life expectancy',colour = "country") +
   transition_time(year) +
   ease_aes('linear')
 

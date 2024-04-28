@@ -19,15 +19,19 @@ format:
 ---
 
 
+```{r}
+library(tidyverse)
+library(rvest)
+```
 
 # one page function
 
 ```{r}
 one_page_function <- function(review_url){
-
-     #review_url="https://www.whiskynotes.be/2023/linkwood/linkwood-2008-benrinnes-2000-glentauchers-2009-maltbarn/"
+  #review_url='https://www.whiskynotes.be/2010/bowmore/bowmore-9y-1997-cigar-malt/'
   
-
+ #review_url= 'https://www.whiskynotes.be/2020/laphroaig/williamson-2010-the-whisky-jury/'
+  
   print(review_url)
   review_page <- read_html(review_url)
 
@@ -35,7 +39,11 @@ one_page_function <- function(review_url){
   page_class=str_flatten(page_class,collapse = "-")
   
   bottle_name=review_page  %>% html_elements(".entry-content h2") %>% html_text2()
+  # remove empty
   bottle_name=bottle_name[nzchar(bottle_name)]
+  # remove space element
+  bottle_name=bottle_name[nchar(bottle_name)>2]
+  
   
   # remove ? mark non bottle name element
   bottle_name=bottle_name[!bottle_name%>% str_detect("\\?")]
@@ -48,7 +56,7 @@ one_page_function <- function(review_url){
   bottle_review=unlist(strsplit(bottle_review,"(?= Mouth: )",perl = TRUE))
    bottle_review=unlist(strsplit(bottle_review,"(?= Finish: )",perl = TRUE))
   
-  bottle_review_Nose=bottle_review[bottle_review %>% str_detect('Nose:')]
+  bottle_review_Nose=bottle_review[bottle_review %>% str_detect('Nose:|Attractive nose:')]
   bottle_review_Nose=bottle_review_Nose[nzchar(bottle_review_Nose)]
 
   bottle_review_Mouth=bottle_review[bottle_review %>% str_detect('Mouth:')]
@@ -79,23 +87,35 @@ one_page_function <- function(review_url){
   #   }
 ################################################
     
-  
-  
+#"^[:digit:]+$" 
+################# score  
   first_bottle_score=review_page  %>% html_elements(".entry-score") %>% html_text2()
 
   bottle_score=review_page  %>% html_elements("strong") %>% html_text2()
   
-  bottle_score2=bottle_score %>% str_remove("/100")%>% str_match('[0-9][0-9]') %>% as.data.frame() %>% filter(is.na(V1)==FALSE)
-  bottle_score2=bottle_score2 %>% mutate(V1=str_replace(V1,'/100',''))
+  bottle_score2=bottle_score %>% str_remove("100")%>% str_remove("/") %>% str_remove("/100.") %>% str_remove("/100")%>% str_remove("Score:")%>%str_trim() %>%  str_match("^[0-9]{2}$") %>% as.data.frame() %>% filter(is.na(V1)==FALSE)
+  
+  bottle_score2=bottle_score2 %>% mutate(V1=str_replace(V1,'/100',''))%>% rename(all_page_score=V1) 
 
-
+# if no other score then use first score
   if(identical(bottle_score, character(0))==TRUE|nrow(bottle_score2)==0){
     all_page_score=first_bottle_score %>% tibble()%>% rename(all_page_score='.') 
+    
+# if no first score then use other score
+  }else if (identical(first_bottle_score, character(0))==TRUE){
+    all_page_score=bottle_score2
+    
+# the other score have same length as bottle.aka the first score appear twices
+    
+  }else if (nrow(bottle_score2)==length(bottle_review_Nose)){
+    all_page_score=bottle_score2
+    
+# if both have first score and other score then combine    
   }else{
   #bottle_score=bottle_score %>% str_match('[0-9][0-9]') %>% as.data.frame() %>% filter(is.na(V1)==FALSE)
-  all_page_score=rbind(first_bottle_score,bottle_score2) %>% rename(all_page_score=V1) 
+  all_page_score=rbind(first_bottle_score,bottle_score2)
   }
-
+##############################
   page_published_date=review_page  %>% html_elements(".published") %>% html_text2()
 
 
@@ -120,11 +140,13 @@ one_page_function <- function(review_url){
 ```
 
 
+
+
 # read in all link 
 
 ```{r}
 library(readxl)
-topic_link=read_excel('all year page.xlsx',sheet='topic')
+topic_link=read_excel('./output/all year page2.xlsx',sheet='topic')
 ```
 
 ```{r}
@@ -146,19 +168,19 @@ length(topic_link002)
 ```
 
 
-```{r}
-topic_link_small=head(topic_link002,10)
-```
-
-
-
 #  start downlaod all page on first first try
 
+```{r}
+#test=one_page_function('https://www.whiskynotes.be/2020/irish-whiskey/teeling-1996-fill-your-own-teeling-chinkapin-oak-single-pot-still-distillery-exclusive/')%>% mutate(loop_num=3)
+```
 
 ```{r}
+sink("log3.txt", append=FALSE, split=TRUE)  # for screen and log
+
 library(openxlsx)
 
 page=topic_link002
+
 
 all_page_review_list=data.frame()
 
@@ -171,21 +193,19 @@ for (i in page){
    tryCatch({
 #############################     
    loop_num=loop_num+1
-   print(paste0("Running loop No.",which(page==i)))
+   print(paste0("################ Running loop No.",which(page==i)))
          
    print(paste0("current time: ", Sys.time()))
    
-   a=one_page_function(i)
+   output=one_page_function(i) %>% mutate(loop_num=loop_num)
 
-      
-      
-   all_page_review_list=rbind(all_page_review_list,a)
+   all_page_review_list=rbind(all_page_review_list,output)
+   
    print(paste0("Used time: ", Sys.time()-start_time))
    # ouput every 20 page
    if (loop_num%%20==0){
-      print(paste0("output to excel: ", loop_num))
-      all_page_review_list_total=(all_page_review_list)
-      write.xlsx(all_page_review_list_total,'all_page_review_list_final_new.xlsx')
+      print(paste0("############################## output to excel: ", loop_num))
+      write.xlsx(all_page_review_list,'./output/all_page_bottle_list3.xlsx')
      }
     
    
@@ -197,11 +217,10 @@ end_time=Sys.time()
 print(paste0("End time: ", end_time))
 print(paste0("total used time: ", end_time-start_time))
 
+write.xlsx(all_page_review_list,'./output/all_page_bottle_list3.xlsx')
 
+sink()
 
-all_page_review_list_total=(all_page_review_list)
-
-write.xlsx(all_page_review_list_total,'all_page_review_list_final_new.xlsx')
 
 ```
 

@@ -168,38 +168,7 @@ head(data)
 
 ```{r}
 library(openxlsx)
-write.xlsx(data, file = "whiskyfun one page.xlsx")
+write.xlsx(data, file = "./output/whiskyfun one page.xlsx")
 ```
 
-
-
-```{r}
-last_page='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'
-page=read_html(last_page)
-element=page %>% 
-  html_nodes("*") %>% 
-  html_attr("class") %>% 
-  unique()
-```
-
-```{r}
-text=page%>% html_nodes("*")%>% html_text2()
-```
-
-```{r}
-head(text)
-```
-
-
-```{r}
-write_delim(tibble(text), "text.txt")
-```
-
-# other package
-
-
-rvest
-chromote
-selenium
-selenider
 

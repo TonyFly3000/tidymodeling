@@ -33,6 +33,13 @@ getwd()
 list.files()
 ```
 
+## get all file name under currrents parent directory
+
+```{r}
+list.files("../")
+```
+
+
 ## get file info
 
 ```{r}

@@ -31,7 +31,7 @@ library(lubridate)
 
 # input data
 ```{r}
-data001=read_excel('./output/all_page_review_list_final_new.xlsx')
+data001=read_excel('./output/all_page_bottle_list_all.xlsx')
 ```
 
 # clean data
@@ -49,8 +49,20 @@ data003=data002 %>%  mutate(published_date=dmy(page_published_date)
                             ,year=year(published_date)
                             ,score=as.numeric(all_page_score)
                             ,high_score=if_else(score>=90,1,0)
+                             ,score_group=case_when(
+                                        score >= 90 ~ "1.>=90",
+                                        score > 85 ~ "2. >=85",
+                                          TRUE ~ "3. <85")
                             ,bottle_name=bottle_name%>% str_replace('allt-à-bhainne','Allt-a-Bhainne')%>% str_replace('Allt-a-Bhaine','Allt-a-Bhainne') %>% str_to_lower()
-                            )%>% filter(score>0,!page_class %in% c("* Armagnac","* Cognac","* Rum","* Armagnac-* Cognac","* Other spirits")) %>% arrange(score)
+                            )%>% filter(score>0
+                                        ,score<=100
+                                        ,!page_class %in% c("* Armagnac","* Cognac","* Rum","* Armagnac-* Cognac","* Other spirits","* Distillery visits","")
+                                        ,bottle_review_nose!='no comment'
+                                        ,bottle_review_mouth!='no comment'
+                                        ,bottle_review_finish!='no comment')%>% arrange(score)
+
+
+
 glimpse(data003)
 ```
 
@@ -70,13 +82,6 @@ summary001
 ```
 
 
-```{r}
-summary002=data003 %>% group_by(page_class) %>% summarise(bottles=n(),avg_score=mean(score),high=sum(high_score)
-                                                 
-                                                 ,high_pct=sum(high_score)/n()
-                                                 ) %>% arrange(desc(bottles))
-summary002
-```
 
 
 ```{r}
@@ -118,7 +123,42 @@ data008=data003 %>% mutate(distillery_name=data007)
 ```
 
 
+```{r}
+library("ggthemes")
+library("scales")
+library(showtext)
+showtext_auto()
 
+coeff <- 5
+
+p=ggplot(summary001, aes(year,avg_score)) + geom_line(size=2) +
+  geom_col(aes(year,bottles/ coeff), fill = "blue")+scale_y_continuous("平均分",limits=c(0,100), sec.axis = sec_axis(~.*coeff, name = "评分酒款数量",breaks = seq(0, 500, by = 100)))+labs(caption = "2010-01 to 2024-04")+ ggtitle("whiskynote.be")+ xlim(min=2009, 2025)
+p+theme_economist()+scale_x_continuous(breaks=pretty_breaks(n = 20))+scale_y_continuous(breaks=pretty_breaks(n = 20))
+```
+
+
+```{r}
+summary002=data003 %>% group_by(year,score_group) %>% 
+  summarise(bottles=n())%>% 
+  mutate(score_group=score_group %>% as.factor()) %>% group_by(year) %>% mutate(share=round(bottles/sum(bottles),2))
+
+summary002
+```
+
+```{r}
+library("ggthemes")
+library("scales")
+library(showtext)
+showtext_auto()
+
+
+p=ggplot(summary002, aes(y=share, x=year,colour=score_group)) + 
+    geom_line()
+
+p+theme_economist()+scale_x_continuous(breaks=pretty_breaks(n = 20))+scale_y_continuous(breaks=pretty_breaks(n = 10))
+
+
+```
 
 
 # reference:

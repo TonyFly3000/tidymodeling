@@ -1,5 +1,5 @@
 ---
-title: "All page link"
+title: "All page link frist time"
 subtitle: "with whiskyfun.com data"
 author: "Tony Duan"
 
@@ -65,13 +65,13 @@ print(last_page)
 page_list=c(page_list,last_page)
 ```
 
-# start to download 50 pages
+# start to download 500 pages
 
 ```{r}
 last_page='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'
 page_list=c()
 
-for (i in seq(1:3)){
+for (i in seq(1:500)){
   print(i)
   page=read_html(last_page)
   last_page <- (page %>%html_elements(css = "font:nth-child(1) strong a")%>%html_attr("href"))[1]
@@ -93,7 +93,7 @@ page_list_data=page_list %>% tibble()
 
 ```{r}
 library(openxlsx)
-write.xlsx(page_list_data, file = "whiskyfun page_list.xlsx")
+write.xlsx(page_list_data, file = "./output/wf_all_page_review.xlsx.xlsx")
 ```
 
 
