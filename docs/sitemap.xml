@@ -186,7 +186,7 @@
   </url>
   <url>
     <loc>https://example.com/data manipulation/3 data manipulation with tidyverse.html</loc>
-    <lastmod>2024-04-12T07:54:29.355Z</lastmod>
+    <lastmod>2024-04-26T09:37:20.749Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/intro/1 basic R.html</loc>
@@ -210,7 +210,7 @@
   </url>
   <url>
     <loc>https://example.com/Plot/1 ggplot2.html</loc>
-    <lastmod>2024-04-09T09:12:51.925Z</lastmod>
+    <lastmod>2024-04-26T09:30:04.627Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/Plot/3 shiny.html</loc>
@@ -286,7 +286,7 @@
   </url>
   <url>
     <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/4 whiskynote all year page.html</loc>
-    <lastmod>2024-04-22T05:49:10.072Z</lastmod>
+    <lastmod>2024-04-26T11:51:18.724Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/2 whiskynote one page.html</loc>
@@ -310,11 +310,11 @@
   </url>
   <url>
     <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/5 web scraping with rvest all first time.html</loc>
-    <lastmod>2024-04-22T07:22:20.974Z</lastmod>
+    <lastmod>2024-04-27T17:30:33.216Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/6 web scraping with rvest all second time.html</loc>
-    <lastmod>2024-04-23T05:16:07.405Z</lastmod>
+    <lastmod>2024-04-28T07:38:03.731Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/other/2 Web scraping on whiskybase.com/whiskybase data.html</loc>
@@ -322,7 +322,7 @@
   </url>
   <url>
     <loc>https://example.com/other/3 Web scraping on whiskyfun.com/2 whiskyfun one page.html</loc>
-    <lastmod>2024-04-21T14:31:32.520Z</lastmod>
+    <lastmod>2024-04-28T07:59:47.560Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/other/3 Web scraping on whiskyfun.com/1 whiskyfun data.html</loc>
@@ -334,11 +334,11 @@
   </url>
   <url>
     <loc>https://example.com/other/3 Web scraping on whiskyfun.com/3 whiskyfun all page link.html</loc>
-    <lastmod>2024-04-18T18:02:18.421Z</lastmod>
+    <lastmod>2024-04-28T08:00:54.504Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/other/3 Web scraping on whiskyfun.com/4 whiskyfun all page.html</loc>
-    <lastmod>2024-04-21T14:31:45.389Z</lastmod>
+    <lastmod>2024-04-28T08:01:18.276Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/other/3 Web scraping on whiskyfun.com/5 whiskyfun all page data cleaning.html</loc>
@@ -370,10 +370,14 @@
   </url>
   <url>
     <loc>https://example.com/other/1 Web scraping on www.whiskynotes.be/7 clean up.html</loc>
-    <lastmod>2024-04-23T06:22:45.486Z</lastmod>
+    <lastmod>2024-04-28T07:53:15.746Z</lastmod>
   </url>
   <url>
     <loc>https://example.com/other/4 other web scraping package/chromote.html</loc>
     <lastmod>2024-04-24T05:15:11.305Z</lastmod>
+  </url>
+  <url>
+    <loc>https://example.com/other/3 Web scraping on whiskyfun.com/5 clean up.html</loc>
+    <lastmod>2024-04-28T07:58:53.290Z</lastmod>
   </url>
 </urlset>
