@@ -1,0 +1,102 @@
+---
+title: "Model"
+subtitle: "with whiskynote.be data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+```{python}
+#| eval: false
+import os
+os.system('pip3 install openpyxl')
+```
+
+```{python}
+import tensorflow as tf
+
+import pandas as pd
+import numpy as np
+import matplotlib.pylab as plt
+import seaborn as sns
+
+from siuba.siu import call
+from siuba import _, mutate, filter, group_by, summarize,show_query
+from siuba import *
+
+from siuba.data import mtcars,penguins
+```
+
+```{python}
+import os
+os.system('pip3 show tensorflow')
+```
+
+
+
+# read in data
+
+```{python}
+import pandas as pd
+data=pd.read_excel('./output/all_page_bottle_list_all.xlsx')
+```
+
+```{python}
+data.head()
+```
+
+```{python}
+list(data)
+```
+
+
+```{python}
+data001=data>> filter(_.all_page_score >0
+                      ,_.all_page_score <100
+                      ,_.bottle_review_Nose !='no comment'
+                      ,_.bottle_review_Mouth !='no comment'
+                      ,_.bottle_review_Finish !='no comment'
+                      ) >> mutate(review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish
+                      ,review_flag=if_else(_.all_page_score >=90,1, 0))
+```
+
+
+```{python}
+info(data001)
+```
+
+```{python}
+data001.info()
+```
+
+
+
+```{python}
+review=data001['review'].to_numpy()
+review[1:3]
+```
+
+```{python}
+review_flag=data001["review_flag"].to_numpy()
+review_flag[1:3]
+```
+
+
+
+# model
+
+
+
+

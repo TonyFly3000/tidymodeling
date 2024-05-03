@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tony Duan">
+
+<title>Tidymodel with R - Model</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../logo.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="Tidymodel with R - Model">
+<meta name="twitter:description" content="with whiskynote.be data">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo.jpg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Tidymodel with R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-intro" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">intro</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-intro">    
+        <li class="dropdown-header">Intro</li>
+        <li>
+    <a class="dropdown-item" href="../../intro/1 basic R.html">
+ <span class="dropdown-text">Basic R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../intro/5 R boook.html">
+ <span class="dropdown-text">R book</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../intro/6 data analytic in R book.html">
+ <span class="dropdown-text">Data analytic in R book</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data">    
+        <li class="dropdown-header">data manipulation</li>
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/1 input ouput.html">
+ <span class="dropdown-text">input &amp; ouput in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/2 data structure in R.html">
+ <span class="dropdown-text">Data structure in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/3 data manipulation with tidyverse.html">
+ <span class="dropdown-text">Data manipulation with tidyverse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/4 resample.html">
+ <span class="dropdown-text">resample</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/5 recipe.html">
+ <span class="dropdown-text">recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/5 SQL database.html">
+ <span class="dropdown-text">SQL database with R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ploting</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ploting">    
+        <li class="dropdown-header">Plot</li>
+        <li>
+    <a class="dropdown-item" href="../../Plot/1 ggplot2.html">
+ <span class="dropdown-text">ggplot2 in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Plot/2 plotly.html">
+ <span class="dropdown-text">Plotly in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Plot/3 shiny weight tracking.html">
+ <span class="dropdown-text">Shiny in R:weight tracking</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Plot/4 shiny photo editor.html">
+ <span class="dropdown-text">Shiny in R:photo editor</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-model-type" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Model type</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-model-type">    
+        <li class="dropdown-header">model type</li>
+        <li>
+    <a class="dropdown-item" href="../../model type/1 decision tree.html">
+ <span class="dropdown-text">Decision tree</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../model type/2 random forest.html">
+ <span class="dropdown-text">Random forest</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../model type/3 gradient boosted trees.html">
+ <span class="dropdown-text">Gradient boosted trees</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classification</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification">    
+        <li class="dropdown-header">titanic classification model</li>
+        <li>
+    <a class="dropdown-item" href="../../titanic classification model/0 classification Tidy Modeling.html">
+ <span class="dropdown-text">Titanic data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../titanic classification model/1 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../titanic classification model/2 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model with Recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../titanic classification model/3 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model with Recipe,workflow,tunning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../titanic classification model/4 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification model with Recipe,workflow,fast tunning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../titanic classification model/5 classification Tidy Modeling.html">
+ <span class="dropdown-text">Multiple classification model with Recipe,workflow set,fast tunning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification-imbanlance" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classification imbanlance</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification-imbanlance">    
+        <li class="dropdown-header">hotel classification model</li>
+        <li>
+    <a class="dropdown-item" href="../../hotel classification model/0 classification Tidy Modeling.html">
+ <span class="dropdown-text">Hotel booking data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../hotel classification model/1 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../hotel classification model/3 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification Model with recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../hotel classification model/4 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification Model with recipe,workflow,tuning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../hotel classification model/5 classification Tidy Modeling.html">
+ <span class="dropdown-text">Classification Model with recipe,workflow,fast tuning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../hotel classification model/6 classification Tidy Modeling.html">
+ <span class="dropdown-text">Multiple Classification Model with recipe,workflow set,fast tuning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-multiclass-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Multiclass classification</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-multiclass-classification">    
+        <li class="dropdown-header">Multiclass classification</li>
+        <li>
+    <a class="dropdown-item" href="../../Multiclass classification/0 multclass classification.html">
+ <span class="dropdown-text">Customer Segmentation Dataset</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Multiclass classification/1 multclass classification.html">
+ <span class="dropdown-text">Classification Model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Multiclass classification/3 multclass classification.html">
+ <span class="dropdown-text">Multiple Classification Model with recipe,workflow, tuning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Multiclass classification/6 multclass classification.html">
+ <span class="dropdown-text">Multiple Classification Model with recipe,workflow set,fast tuning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regression" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Regression</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-regression">    
+        <li class="dropdown-header">house price regression model</li>
+        <li>
+    <a class="dropdown-item" href="../../house price regression model/0 Regression Tidy Modeling.html">
+ <span class="dropdown-text">House price data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../house price regression model/1 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../house price regression model/3 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model with Recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../house price regression model/4 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model with Recipe,workflow,tuning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../house price regression model/5 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Regression model with Recipe,workflow,fast tuning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../house price regression model/6 Regression Tidy Modeling.html">
+ <span class="dropdown-text">Multiple Regression model with Recipe,workflow set,fast tuning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clustering" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Clustering</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-clustering">    
+        <li class="dropdown-header">Clustering</li>
+        <li>
+    <a class="dropdown-item" href="../../clustering/0 Mall Customers.html">
+ <span class="dropdown-text">Mall Customers Dataset</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../clustering/1 k mean Clustering.html">
+ <span class="dropdown-text">K mean Clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../clustering/1.2 k mean Clustering.html">
+ <span class="dropdown-text">K mean Clustering with image</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../clustering/2 Hierarchical Clustering.html">
+ <span class="dropdown-text">Hierarchical Clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../clustering/3 k mode Clustering.html">
+ <span class="dropdown-text">k mode Clustering</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../clustering/4 Principal component analysis .html">
+ <span class="dropdown-text">Principal component analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Other</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-other">    
+        <li class="dropdown-header">Other</li>
+        <li>
+    <a class="dropdown-item" href="../../other/1 Web scraping on www.whiskynotes.be/1 whiskynote data.html">
+ <span class="dropdown-text">1 Web scraping on www.whiskynotes.be</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../other/2 Web scraping on whiskybase.com/1 whiskybase data.html">
+ <span class="dropdown-text">2 Web scraping on whiskybase.com</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../other/3 Web scraping on whiskyfun.com/1 whiskyfun data.html">
+ <span class="dropdown-text">3 Web scraping on whiskyfun.com</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../other/4 other web scraping package/chromote.html">
+ <span class="dropdown-text">4 other web scraping package</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Other</li><li class="breadcrumb-item"><a href="../../other/1 Web scraping on www.whiskynotes.be/1 whiskynote data.html">1 Web scraping on www.whiskynotes.be</a></li><li class="breadcrumb-item"><a href="../../other/1 Web scraping on www.whiskynotes.be/8 model.html">Model</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Other</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">1 Web scraping on www.whiskynotes.be</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/1 Web scraping on www.whiskynotes.be/1 whiskynote data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Whiskynotes.be data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/1 Web scraping on www.whiskynotes.be/2 whiskynote one page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">One page reveiw</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/1 Web scraping on www.whiskynotes.be/3 whiskynote one year page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">One year page review</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/1 Web scraping on www.whiskynotes.be/4 whiskynote all year page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All year page</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/1 Web scraping on www.whiskynotes.be/5 web scraping with rvest all first time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All year all topic first time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/1 Web scraping on www.whiskynotes.be/6 web scraping with rvest all second time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All year all topic second time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/1 Web scraping on www.whiskynotes.be/7 clean up.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">clean up</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/1 Web scraping on www.whiskynotes.be/8 model.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Model</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">2 Web scraping on whiskybase.com</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/2 Web scraping on whiskybase.com/1 whiskybase data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Whiskybase data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/2 Web scraping on whiskybase.com/2 one bottle review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">on bottle review</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/2 Web scraping on whiskybase.com/3 one bottle review with login.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">on bottle review with log in</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/2 Web scraping on whiskybase.com/4 all distillery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">all distrillery and bottler name</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/2 Web scraping on whiskybase.com/5 all bottle from a distillery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All bottle from a distillery review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">3 Web scraping on whiskyfun.com</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/3 Web scraping on whiskyfun.com/1 whiskyfun data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">whiskyfun data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/3 Web scraping on whiskyfun.com/2 whiskyfun one page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">on page</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/3 Web scraping on whiskyfun.com/3 whiskyfun all page link.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All page link frist time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/3 Web scraping on whiskyfun.com/4 whiskyfun all page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All page second time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/3 Web scraping on whiskyfun.com/5 clean up.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">All page clean up</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">4 other web scraping package</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/4 other web scraping package/chromote.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">chromote</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#read-in-data" id="toc-read-in-data" class="nav-link active" data-scroll-target="#read-in-data"><span class="header-section-number">1</span> read in data</a></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">2</span> model</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">3</span> </a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Other</li><li class="breadcrumb-item"><a href="../../other/1 Web scraping on www.whiskynotes.be/1 whiskynote data.html">1 Web scraping on www.whiskynotes.be</a></li><li class="breadcrumb-item"><a href="../../other/1 Web scraping on www.whiskynotes.be/8 model.html">Model</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Model</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<p class="subtitle lead">with whiskynote.be data</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tony Duan </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="845af162" class="cell" data-execution_count="1">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>os.system(<span class="st">'pip3 install openpyxl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="68064a06" class="cell" data-execution_count="2">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pylab <span class="im">as</span> plt</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> siuba.siu <span class="im">import</span> call</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> siuba <span class="im">import</span> _, mutate, <span class="bu">filter</span>, group_by, summarize,show_query</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> siuba <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> siuba.data <span class="im">import</span> mtcars,penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="ddf3d496" class="cell" data-execution_count="3">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>os.system(<span class="st">'pip3 show tensorflow'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Name: tensorflow
+Version: 2.16.1
+Summary: TensorFlow is an open source machine learning framework for everyone.
+Home-page: https://www.tensorflow.org/
+Author: Google Inc.
+Author-email: packages@tensorflow.org
+License: Apache 2.0
+Location: /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages
+Requires: absl-py, astunparse, flatbuffers, gast, google-pasta, grpcio, h5py, keras, libclang, ml-dtypes, numpy, opt-einsum, packaging, protobuf, requests, setuptools, six, tensorboard, termcolor, typing-extensions, wrapt
+Required-by: </code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>0</code></pre>
+</div>
+</div>
+<section id="read-in-data" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> read in data</h1>
+<div id="b1e09e86" class="cell" data-execution_count="4">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>pd.read_excel(<span class="st">'./output/all_page_bottle_list_all.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="b0ec72fd" class="cell" data-execution_count="5">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">bottle_name</th>
+<th data-quarto-table-cell-role="th">bottle_review_Nose</th>
+<th data-quarto-table-cell-role="th">bottle_review_Mouth</th>
+<th data-quarto-table-cell-role="th">bottle_review_Finish</th>
+<th data-quarto-table-cell-role="th">all_page_score</th>
+<th data-quarto-table-cell-role="th">page_class</th>
+<th data-quarto-table-cell-role="th">page_published_date</th>
+<th data-quarto-table-cell-role="th">page_title</th>
+<th data-quarto-table-cell-role="th">review_url</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Cognac Chollet Lot 1960 ‘Le Bon Vivant’ – Fins...</td>
+<td>Nose: a rich, fragrant and fruity style. Honey...</td>
+<td>Mouth: more spices now. Mint and pepper, leadi...</td>
+<td>Finish: medium to long, more on fruit tea now,...</td>
+<td>0</td>
+<td>* Cognac</td>
+<td>30 November 2020</td>
+<td>Cognac Lot 1960 / XO / Lot 1906 (Malternative ...</td>
+<td>https://www.whiskynotes.be/2020/cognac/cognac-...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Cognac Vallein-Tercinier XO ‘Bûche de Noël’ (4...</td>
+<td>Nose: a profile that I haven’t seen before in ...</td>
+<td>Mouth: same thoughts, this is far from the fru...</td>
+<td>Finish: not too long, still on sweet spices, c...</td>
+<td>0</td>
+<td>* Cognac</td>
+<td>30 November 2020</td>
+<td>Cognac Lot 1960 / XO / Lot 1906 (Malternative ...</td>
+<td>https://www.whiskynotes.be/2020/cognac/cognac-...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Cognac Héritage René Rivière Lot 1906 ‘La Fine...</td>
+<td>Nose: very soft and restrained, especially in ...</td>
+<td>Mouth: still fresh, certainly not tired, just ...</td>
+<td>Finish: not too long, I’m afraid. Still on swe...</td>
+<td>0</td>
+<td>* Cognac</td>
+<td>30 November 2020</td>
+<td>Cognac Lot 1960 / XO / Lot 1906 (Malternative ...</td>
+<td>https://www.whiskynotes.be/2020/cognac/cognac-...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Ledaig 10 yo 2010 (53,2%, The Whisky Jury 2020...</td>
+<td>Nose: classic Ledaig sharpness at first. Brine...</td>
+<td>Mouth:&nbsp;aniseed and brine again, then smoked ki...</td>
+<td>Finish:&nbsp;long, returning to the classic Ledaig ...</td>
+<td>0</td>
+<td>Ledaig</td>
+<td>13 November 2020</td>
+<td>Ledaig 2010 Oloroso (The Whisky Jury)</td>
+<td>https://www.whiskynotes.be/2020/ledaig/ledaig-...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Ledaig 10 yo 2010 (54,1%, The Whisky Jury for ...</td>
+<td>Nose: right, this is going to be difficult. It...</td>
+<td>Mouth:&nbsp;despite the higher ABV, this takes a bi...</td>
+<td>Finish:&nbsp;so similar, really.</td>
+<td>0</td>
+<td>Ledaig</td>
+<td>13 November 2020</td>
+<td>Ledaig 2010 Oloroso (The Whisky Jury)</td>
+<td>https://www.whiskynotes.be/2020/ledaig/ledaig-...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="5bfbc503" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>['bottle_name',
+ 'bottle_review_Nose',
+ 'bottle_review_Mouth',
+ 'bottle_review_Finish',
+ 'all_page_score',
+ 'page_class',
+ 'page_published_date',
+ 'page_title',
+ 'review_url']</code></pre>
+</div>
+</div>
+<div id="3474582f" class="cell" data-execution_count="7">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data001<span class="op">=</span>data<span class="op">&gt;&gt;</span> <span class="bu">filter</span>(_.all_page_score <span class="op">&gt;</span><span class="dv">0</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                      ,_.all_page_score <span class="op">&lt;</span><span class="dv">100</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                      ,_.bottle_review_Nose <span class="op">!=</span><span class="st">'no comment'</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                      ,_.bottle_review_Mouth <span class="op">!=</span><span class="st">'no comment'</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                      ,_.bottle_review_Finish <span class="op">!=</span><span class="st">'no comment'</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                      ) <span class="op">&gt;&gt;</span> mutate(review<span class="op">=</span>_.bottle_review_Nose<span class="op">+</span>_.bottle_review_Mouth<span class="op">+</span>_.bottle_review_Finish</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                      ,review_flag<span class="op">=</span>if_else(_.all_page_score <span class="op">&gt;=</span><span class="dv">90</span>,<span class="dv">1</span>, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="61b47e77" class="cell" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(data001)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>'                                            bottle_name  \\\n7     Caol Ila 8 yo 2011 ‘Wee Brother’ (60,2%, Na Br...   \n8     Caol Ila 9 yo 2011 ‘Big Brother’ (58%, Na Brài...   \n9     Williamson (Lp) 2010 (52,2%, The Whisky Jury 2...   \n10    Williamson (Lp) 2010 (53,1%, The Whisky Jury f...   \n31                   Ardbeg Supernova\\n(60,1%, OB 2010)   \n...                                                 ...   \n4916  Brora 30 yo\\n(56,6%, OB 2004, 3rd release, 300...   \n4917  Glen Grant 21 yo (70° proof, Gordon &amp; MacPhail...   \n4918  Brora 30 yo 1972 (49,7%, Douglas Laing Old &amp; R...   \n4919  Longmorn 39 yo 1969\\n(58,9%, Gordon &amp; MacPhail...   \n4920  Port Ellen 12 yo (59%, James MacArthur ‘Fine M...   \n\n                                     bottle_review_Nose  \\\n7     Nose: sweet but even more sea shore salinity. ...   \n8     Nose: more bready notes, hints of roasted nuts...   \n9     Nose: plenty of warm smoky notes with the typi...   \n10    Nose: very similar, clearly sisters. I’d say t...   \n31    Nose: it shares a lot of elements with the 200...   \n...                                                 ...   \n4916  Nose: goat stables and hay. This farminess is ...   \n4917  Nose: it’s a typical profile, but one we haven...   \n4918  Nose: without doubt one of the farmiest noses ...   \n4919  Nose: where is your dictionary of superlatives...   \n4920  Nose: a myriad of aromas and a sublime combina...   \n\n                                    bottle_review_Mouth  \\\n7     Mouth: fairly hot and robust, but showing the ...   \n8     Mouth: it exchanged some of the robustness and...   \n9     Mouth: quite oily and full of character. More ...   \n10    Mouth: again difficult to set apart. Here as w...   \n31    Mouth: very earthy and grassy now, with wet ha...   \n...                                                 ...   \n4916  Mouth: firmer now but still very oily and crea...   \n4917  Mouth: fairly savoury, with tobacco stepping f...   \n4918  Mouth: a peaty, earthy start, which gradually ...   \n4919  Mouth: rich and powerful. Where to start… Clas...   \n4920  Mouth: more powerful now, with a good dose of ...   \n\n                                   bottle_review_Finish  all_page_score  \\\n7     Finish: long, spicy, with zesty lemon, plenty ...              85   \n8     Finish: long, on bittersweet ashes, ginger and...              82   \n9     Finish:\xa0long, coming back to the drier leather...              88   \n10    Finish:\xa0quite long, probably more intensely sm...              87   \n31    Finish: hot and quite sharp. Liquorice and dry...              85   \n...                                                 ...             ...   \n4916  Finish: very long, smoked lemons, tar, crushed...              95   \n4917  Finish: alright, not huge, mainly a mix of her...              96   \n4918  Finish: rather endless. Most of the sherry not...              96   \n4919  Finish: very long, oaky and minty, but with th...              96   \n4920  Finish: very long, on ashtrays, slightly bitte...              97   \n\n                        page_class page_published_date  \\\n7                         Caol Ila       5 August 2020   \n8                         Caol Ila       5 August 2020   \n9                        Laphroaig       3 August 2020   \n10                       Laphroaig       3 August 2020   \n31                          Ardbeg        27 July 2010   \n...                            ...                 ...   \n4916                         Brora       20 April 2018   \n4917                    Glen Grant       15 April 2014   \n4918                         Brora      28 August 2015   \n4919                      Longmorn    6 September 2016   \n4920  Caol Ila-Macallan-Port Ellen     7 December 2018   \n\n                                             page_title  \\\n7          Caol Ila 2011 “The Brothers” (Na Bràithrean)   \n8          Caol Ila 2011 “The Brothers” (Na Bràithrean)   \n9                     Williamson 2010 (The Whisky Jury)   \n10                    Williamson 2010 (The Whisky Jury)   \n31                      Ardbeg Supernova (2010 edition)   \n...                                                 ...   \n4916                          Brora 30 years old (2004)   \n4917                    Glen Grant 21 Years (70° Proof)   \n4918           Brora 1972 30yo (DL Old &amp; Rare Platinum)   \n4919                        Longmorn 1969 (G&amp;M for JIS)   \n4920  Caol Ila 1968 G&amp;M // Macallan 1954 Rinaldi // ...   \n\n                                             review_url  \\\n7     https://www.whiskynotes.be/2020/caol-ila/caol-...   \n8     https://www.whiskynotes.be/2020/caol-ila/caol-...   \n9     https://www.whiskynotes.be/2020/laphroaig/will...   \n10    https://www.whiskynotes.be/2020/laphroaig/will...   \n31    https://www.whiskynotes.be/2010/ardbeg/ardbeg-...   \n...                                                 ...   \n4916  https://www.whiskynotes.be/2018/brora/brora-30...   \n4917  https://www.whiskynotes.be/2014/glen-grant/gle...   \n4918  https://www.whiskynotes.be/2015/brora/brora-19...   \n4919  https://www.whiskynotes.be/2016/longmorn/longm...   \n4920  https://www.whiskynotes.be/2018/port-ellen/cao...   \n\n                                                 review  review_flag  \n7     Nose: sweet but even more sea shore salinity. ...          0.0  \n8     Nose: more bready notes, hints of roasted nuts...          0.0  \n9     Nose: plenty of warm smoky notes with the typi...          0.0  \n10    Nose: very similar, clearly sisters. I’d say t...          1.0  \n31    Nose: it shares a lot of elements with the 200...          0.0  \n...                                                 ...          ...  \n4916  Nose: goat stables and hay. This farminess is ...          NaN  \n4917  Nose: it’s a typical profile, but one we haven...          NaN  \n4918  Nose: without doubt one of the farmiest noses ...          NaN  \n4919  Nose: where is your dictionary of superlatives...          NaN  \n4920  Nose: a myriad of aromas and a sublime combina...          NaN  \n\n[4655 rows x 11 columns]'</code></pre>
+</div>
+</div>
+<div id="3c3b33e7" class="cell" data-execution_count="9">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>review<span class="op">=</span>data001[<span class="st">'review'</span>].to_numpy()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>review[<span class="dv">1</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>array(['Nose: more bready notes, hints of roasted nuts and smoked almonds. Some leathery touches. Slightly less peat but the coastal punch is still there. A hint of popcorn, vanilla pastry and chocolate as well. Not even close to a sherry bomb, the influence is fairly light and the original whisky is still recognizable, a good choice.Mouth: it exchanged some of the robustness and heat for chocolate biscuits, ginger, nutmeg and grassy notes. The zesty grapefruit and brine are still there. Just a hint of toffee sweetness. The smoke seems deeper, more earthy and sooty now.Finish: long, on bittersweet ashes, ginger and charred oak.',
+       'Nose: plenty of warm smoky notes with the typical mercurochrome and bandages. Tarry ropes and seaweed. Sweet apples and a hint of vanilla biscuit in the background. Leather saddle, as well as some farmy notes (stables). A subtle whiff of oil paint as well.Mouth: quite oily and full of character. More iodine, seaweed, smoked kippers and brine. It gets rounder with hints of almonds and sesame. Sooty notes with a touch of cough syrup. Brine and tapenade.Finish:\xa0long, coming back to the drier leathery notes, with liquorice and brine in the very end, as well as some smoldering peat.'],
+      dtype=object)</code></pre>
+</div>
+</div>
+<div id="e8ee0a08" class="cell" data-execution_count="10">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>review_flag<span class="op">=</span>data001[<span class="st">"review_flag"</span>].to_numpy()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>review_flag[<span class="dv">1</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>array([0., 0.])</code></pre>
+</div>
+</div>
+</section>
+<section id="model" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> model</h1>
+</section>
+<section id="section" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> </h1>
+
+
+<!-- -->
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb17" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Model"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with whiskynote.be data"</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>os.system(<span class="st">'pip3 install openpyxl'</span>)</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pylab <span class="im">as</span> plt</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> siuba.siu <span class="im">import</span> call</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> siuba <span class="im">import</span> _, mutate, <span class="bu">filter</span>, group_by, summarize,show_query</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> siuba <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> siuba.data <span class="im">import</span> mtcars,penguins</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>os.system(<span class="st">'pip3 show tensorflow'</span>)</span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a><span class="fu"># read in data</span></span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span>pd.read_excel(<span class="st">'./output/all_page_bottle_list_all.xlsx'</span>)</span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>data.head()</span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(data)</span>
+<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a>data001<span class="op">=</span>data<span class="op">&gt;&gt;</span> <span class="bu">filter</span>(_.all_page_score <span class="op">&gt;</span><span class="dv">0</span></span>
+<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a>                      ,_.all_page_score <span class="op">&lt;</span><span class="dv">100</span></span>
+<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a>                      ,_.bottle_review_Nose <span class="op">!=</span><span class="st">'no comment'</span></span>
+<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a>                      ,_.bottle_review_Mouth <span class="op">!=</span><span class="st">'no comment'</span></span>
+<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a>                      ,_.bottle_review_Finish <span class="op">!=</span><span class="st">'no comment'</span></span>
+<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a>                      ) <span class="op">&gt;&gt;</span> mutate(review<span class="op">=</span>_.bottle_review_Nose<span class="op">+</span>_.bottle_review_Mouth<span class="op">+</span>_.bottle_review_Finish</span>
+<span id="cb17-86"><a href="#cb17-86" aria-hidden="true" tabindex="-1"></a>                      ,review_flag<span class="op">=</span>if_else(_.all_page_score <span class="op">&gt;=</span><span class="dv">90</span>,<span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb17-87"><a href="#cb17-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-88"><a href="#cb17-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-91"><a href="#cb17-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-92"><a href="#cb17-92" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(data001)</span>
+<span id="cb17-93"><a href="#cb17-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-94"><a href="#cb17-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-95"><a href="#cb17-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-96"><a href="#cb17-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-99"><a href="#cb17-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-100"><a href="#cb17-100" aria-hidden="true" tabindex="-1"></a>review<span class="op">=</span>data001[<span class="st">'review'</span>].to_numpy()</span>
+<span id="cb17-101"><a href="#cb17-101" aria-hidden="true" tabindex="-1"></a>review[<span class="dv">1</span>:<span class="dv">3</span>]</span>
+<span id="cb17-102"><a href="#cb17-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-103"><a href="#cb17-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-106"><a href="#cb17-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-107"><a href="#cb17-107" aria-hidden="true" tabindex="-1"></a>review_flag<span class="op">=</span>data001[<span class="st">"review_flag"</span>].to_numpy()</span>
+<span id="cb17-108"><a href="#cb17-108" aria-hidden="true" tabindex="-1"></a>review_flag[<span class="dv">1</span>:<span class="dv">3</span>]</span>
+<span id="cb17-109"><a href="#cb17-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-110"><a href="#cb17-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-111"><a href="#cb17-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-112"><a href="#cb17-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-113"><a href="#cb17-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-114"><a href="#cb17-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-115"><a href="#cb17-115" aria-hidden="true" tabindex="-1"></a><span class="fu"># model</span></span>
+<span id="cb17-116"><a href="#cb17-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-117"><a href="#cb17-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-118"><a href="#cb17-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-119"><a href="#cb17-119" aria-hidden="true" tabindex="-1"></a>#</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This website is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
