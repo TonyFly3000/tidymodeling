@@ -212,7 +212,7 @@ my_function <- function() {
 my_function()
 ```
 
-## return result
+## with Arguments
 
 ```{r}
 adding_ten <- function(x) { 
@@ -223,7 +223,7 @@ adding_ten <- function(x) {
 adding_ten(5)
 ```
 
-## return result with default
+## with default Arguments
 
 ```{r}
 adding_ten <- function(x=10) { 
@@ -231,12 +231,8 @@ adding_ten <- function(x=10) {
   return(a)
 }
 
-adding_ten(5)
-```
+#if not define x, then x=10
 
-if not define x, then x=10
-
-```{r}
 adding_ten()
 ```
 
