@@ -25,6 +25,7 @@ library(ggpubr)
 library(ggthemr)
 
 library(ggplot2)
+library(plotly)
 packageVersion("ggplot2")
 ```
 

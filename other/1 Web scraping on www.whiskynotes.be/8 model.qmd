@@ -85,7 +85,7 @@ data001=data>> filter(_.all_page_score >0
 data001['review_flag']= np.where(data001['all_page_score']>=90, 1, 0)
 ```
 
-
+# shuffle data
 ```{python}
 data002=data001.sample(frac=1)
 ```
@@ -202,6 +202,7 @@ res = data002.review.str.split(expand=True).stack().value_counts()
 res.to_excel('res.xlsx')
 ```
 
+
 ```{python}
 # wordcloud function
 
@@ -229,9 +230,46 @@ def show_wordcloud(data, title = None):
 
 
 
+
+```{python}
+def drop_words(phrase, disallowed_wordlist):
+  # 1. Split the phrase into an array of strings
+  phrase_split = phrase.split()
+  
+  # 2. Create an empty array to contain the allowed words
+  allowed_words_list = []
+
+  # 3. Loop through the array of strings from step#1
+  for word in phrase_split:
+  
+    # 4. Inside the loop, check if the word is present in the list of disallowed words
+    if word not in disallowed_wordlist:
+
+       # 5. Add the word to the list of allowed words from step#2
+       allowed_words_list.append(word)
+
+  # 6. Join all the strings in the allowed words list using the .join() string method.
+  new_phrase = " ".join(allowed_words_list)
+  return new_phrase
+```
+
+```{python}
+test_list = review_remove_stop_word
+char_list = ['hint', 'hints','long','quite','rather','well','plenty','lot','still','start','end','towards','little','light','big','slightly','subtle','soft','really','background','even','nice','smoke','note','maybe','medium','side','time']
+
+new_all=[]
+for i in test_list:
+  #print(i)
+  #print("###############")
+  new=drop_words(i, char_list)
+  new_all.append(new)
+```
+
+
+
 ```{python}
 # print wordcloud
-show_wordcloud(review_remove_stop_word)
+show_wordcloud(new_all)
 ```
 
 
@@ -341,36 +379,50 @@ review_flag[4]
 
 # using 4000 to train and 655 to test
 ```{python}
-padded_train=padded[1:4000]
-padded_test=padded[4001:-1]
+padded_train=padded[0:4000]
+padded_test=padded[4000:]
 ```
 
 ```{python}
-review_flag_final_train=review_flag_final[1:4000]
-review_flag_final_test=review_flag_final[4001:-1]
+review_flag_final_train=review_flag_final[0:4000]
+review_flag_final_test=review_flag_final[4000:]
 ```
 
 
+## total
 ```{python}
-sum(review_flag_final_train)
+len(padded)
+len(review_flag_final)
 ```
+
+## train
+```{python}
+len(padded_train)
+len(review_flag_final_train)
+```
+
+## test
+```{python}
+len(padded_test)
+len(review_flag_final_test)
+```
+
+
 
 
 ```{python}
 sum(review_flag_final_test)
 ```
 
+## if all guess lower than 90 points then 0.72 accuracy 
 
 ```{python}
-(655-169)/655
+(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)
 ```
 
 
 
 # define model
-
-
-
 
 
 ```{python}
@@ -427,10 +479,10 @@ callbacks = myCallback()
 
 # train DNN model
 ```{python}
-num_epochs = 30
+num_epochs = 20
 
 # Train the model
-history=model_dnn.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,callbacks=[callbacks])
+history=model_dnn.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks])
 
 #history=model.fit(x=padded, y=review_flag_final, validation_split=0.2, shuffle=True,epochs=num_epochs,callbacks=[callbacks])
 ```
@@ -473,10 +525,10 @@ plt.show()
 
 # train LSTM model
 ```{python}
-num_epochs = 10
+num_epochs = 5
 
 # Train the model
-history2=model_lstm.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,callbacks=[callbacks])
+history2=model_lstm.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,,shuffle=True,callbacks=[callbacks])
 
 ```
 
