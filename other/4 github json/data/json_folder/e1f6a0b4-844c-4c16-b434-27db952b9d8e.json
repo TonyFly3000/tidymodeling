@@ -1,0 +1,23 @@
+{
+    "item_id": "e1f6a0b4-844c-4c16-b434-27db952b9d8e",
+    "news_channel": "安全新天地",
+    "title": "广东揭阳：厂房发生火灾致1人死亡",
+    "report": "2024年3月26日，广东揭阳榕城区溪南街道龙飞村一厂房发生火灾，造成1人遇难，2人送医救治（无生命危险）。",
+    "original_websites": "https://mp.weixin.qq.com/s/nEMtPnl0_5o7nt6S7Kd9kw",
+    "start_date": "2024-03-26",
+    "start_time": "2024-03-26 11:42:00",
+    "update_time": "2024-05-03 13:23:53",
+    "incident_type": "火灾",
+    "incident_reason": "广东揭阳榕城区溪南街道龙飞村一厂房发生火灾",
+    "person_death_num": 1,
+    "person_injury_num": 2,
+    "person_missing_num": 0,
+    "location": [116.43037506892452, 23.547173202309946],
+    "place": "广东揭阳榕城区溪南街道龙飞村一厂房",
+    "province": "广东省",
+    "city": "揭阳市",
+    "county": "榕城区",
+    "town": "溪南街道",
+    "village": "龙飞村",
+    "is_final": true
+}

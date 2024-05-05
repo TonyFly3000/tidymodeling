@@ -1,0 +1,23 @@
+{
+    "item_id": "e7fedbbd-c299-4864-9387-865cfe45236d",
+    "news_channel": "微博",
+    "title": "梅大高速路面塌陷事故已致48人遇难，梅州召开发布会",
+    "report": "5月2日，梅州市举行新闻发布会，通报梅大高速路面塌陷事故有关情况。1日凌晨2时10分许，梅大高速往福建方向K11+900m附近发生高速公路路面塌陷事故。截至2日14时，已造成48人死亡，另有3人的DNA在进一步比对确认，30人受伤。",
+    "original_websites": "https://weibo.com/5044281310/Ocqcvh7Bh",
+    "start_date": "2024-05-01",
+    "start_time": "2024-05-01 02:10:00",
+    "update_time": "2024-05-02 21:34:46",
+    "incident_type": "路面塌陷",
+    "incident_reason": "梅大高速路面塌陷",
+    "person_death_num": 48,
+    "person_injury_num": 30,
+    "person_missing_num": 0,
+    "location": [116.67644, 24.51673],
+    "place": "梅大高速往福建方向K11+900m附近",
+    "province": "广东省",
+    "city": "梅州市",
+    "county": "大埔县",
+    "town": "茶阳镇",
+    "village": "",
+    "is_final": true
+}

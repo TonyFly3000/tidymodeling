@@ -1,0 +1,23 @@
+{
+    "item_id": "76dbd9e7-338e-43ad-af6e-50aa609e3c28",
+    "news_channel": "中国新闻网",
+    "title": "海南屯昌发生一起货车撞人事故 致1死7伤",
+    "report": "中新网1月9日电 据屯昌警方微信公众号消息，2024年1月9日上午11时许，屯昌县坡心镇辖区内发生一起货车撞到路人的交通事故，事故导致1人死亡，7人受伤。\n\n　　事故发生后，屯昌县公安局立即组织交管大队、坡心派出所、消防大队等部门赶赴现场全力处置善后。目前，受伤人员正在医院救治，暂无生命危险。事故原因正在进一步调查中。\n\n\n来源：屯昌警方微信公众号\n",
+    "original_websites": "https://www.chinanews.com.cn/sh/2024/01-09/10142800.shtml",
+    "start_date": "2024-01-09",
+    "start_time": "2024-01-09 11:00:00",
+    "update_time": "2024-05-03 16:01:22",
+    "incident_type": "交通事故",
+    "incident_reason": "货车撞到路人",
+    "person_death_num": 1,
+    "person_injury_num": 7,
+    "person_missing_num": 0,
+    "location": [110.09292662143709, 19.308508251617763],
+    "place": "海南屯昌县坡心镇中心小学门口",
+    "province": "海南省",
+    "city": "",
+    "county": "屯昌县",
+    "town": "坡心镇",
+    "village": "",
+    "is_final": true
+}

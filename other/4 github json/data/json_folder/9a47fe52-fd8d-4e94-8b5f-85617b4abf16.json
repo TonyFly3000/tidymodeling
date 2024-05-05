@@ -1,0 +1,23 @@
+{
+    "item_id": "9a47fe52-fd8d-4e94-8b5f-85617b4abf16",
+    "news_channel": "澎湃新闻",
+    "title": "上海一小区深夜突发大火，7岁女孩不幸坠楼身亡",
+    "report": "1月10日凌晨，上海金山区一小区突发火灾，一父女在逃离时意外坠楼，7岁的女儿不幸身亡，父亲被送至ICU抢救，现已苏醒。目前，火灾事故原因正在调查中。",
+    "original_websites": "https://www.thepaper.cn/newsDetail_forward_26004573",
+    "start_date": "2024-01-10",
+    "start_time": "2024-01-10 03:20:00",
+    "update_time": "2024-05-03 16:16:48",
+    "incident_type": "火灾",
+    "incident_reason": "一小区突发火灾，一父女在逃离时意外坠楼",
+    "person_death_num": 1,
+    "person_injury_num": 1,
+    "person_missing_num": 0,
+    "location": [121.16074562072755, 30.903697625641286],
+    "place": "上海金山区",
+    "province": "上海市",
+    "city": "金山区",
+    "county": "",
+    "town": "朱泾镇",
+    "village": "秀州新村",
+    "is_final": true
+}

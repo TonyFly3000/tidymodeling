@@ -1,0 +1,23 @@
+{
+    "item_id": "81dcd085-1972-47bd-acfd-0c5c56c51e27",
+    "news_channel": "央视网",
+    "title": "山东济南一酒店发生火灾致4人死亡 火灾原因正在调查",
+    "report": "央视网消息：据“济南消防”公众号消息，山东济南市长清区消防救援大队1月24日通报，1月23日1时50分，银座佳驿长清园博园店发生火灾，长清区消防救援大队接警后立即赶赴现场处置。凌晨3时，现场扑救结束。受伤人员第一时间送往医院救治，其中4人经抢救无效死亡。火灾原因正在调查中。 ",
+    "original_websites": "https://news.cctv.com/2024/01/24/ARTIbUmRHSKj0YqCNqA55Tay240124.shtml",
+    "start_date": "2024-01-23",
+    "start_time": "2024-01-23 01:50:00",
+    "update_time": "2024-05-03 14:07:43",
+    "incident_type": "火灾",
+    "incident_reason": "火灾原因正在调查中",
+    "person_death_num": 4,
+    "person_injury_num": 0,
+    "person_missing_num": 0,
+    "location": [116.77443802356721, 36.55693384258158],
+    "place": "山东济南市长清区银座佳驿长清园博园店",
+    "province": "山东省",
+    "city": "济南市",
+    "county": "长清区",
+    "town": "",
+    "village": "",
+    "is_final": true
+}

@@ -1,0 +1,23 @@
+{
+    "item_id": "6824a18f-4ec2-46c9-909e-e1f0c4608c02",
+    "news_channel": "中国新闻社",
+    "title": "突发！河北一船只侧翻，12死6失联",
+    "report": "据央视新闻客户端消息，河北秦皇岛卢龙县发布情况通报：4月13日14时30分左右，秦皇岛市卢龙县刘家营乡桃林口村发生一起船只侧翻导致人员落水事故。经初步核实，事故造成31人落水，目前已搜救出25人送医救治（其中13人无生命危险，12人无生命体征），6人失联。\n\n事发后，省市县应急、消防、水务、卫健、公安等部门赶赴现场开展搜救、医疗救治等工作。现场救援仍在进行中，事故原因调查已同步开展。",
+    "original_websites": "https://mp.weixin.qq.com/s/J4DtEyritJmtqrdAr6xJxQ",
+    "start_date": "2024-04-13",
+    "start_time": "2024-04-13 14:30:00",
+    "update_time": "2024-05-03 10:55:35",
+    "incident_type": "船只侧翻",
+    "incident_reason": "船只侧翻导致人员落水事故",
+    "person_death_num": 12,
+    "person_injury_num": 0,
+    "person_missing_num": 6,
+    "location": [119.04253005981447, 40.11682499338563],
+    "place": "秦皇岛市卢龙县刘家营乡桃林口村",
+    "province": "河北省",
+    "city": "秦皇岛市",
+    "county": "卢龙县",
+    "town": "刘家营乡",
+    "village": "桃林口村",
+    "is_final": true
+}

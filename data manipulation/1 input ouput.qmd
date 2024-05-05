@@ -91,7 +91,21 @@ data001=read_feather('data/feather_file.feather')
 head(data001)
 
 ```
+## read JSON file and convert into data frame
 
+```{r}
+library(jsonlite)
+data=read_json("./data/dataj.json")
+```
+
+```{r}
+data002=(data) %>% as.data.frame()
+```
+
+
+```{r}
+glimpse(data002)
+```
 
 # Output
 

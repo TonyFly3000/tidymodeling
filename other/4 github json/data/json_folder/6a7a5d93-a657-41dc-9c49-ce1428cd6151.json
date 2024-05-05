@@ -1,0 +1,23 @@
+{
+    "item_id": "6a7a5d93-a657-41dc-9c49-ce1428cd6151",
+    "news_channel": "安全新天地",
+    "title": "湖南湘西：厂房起火致2死4伤",
+    "report": "2024年3月11日上午，湖南湘西吉首市峒河街道大田社区一沥青混凝土公司起火，导致2死1重伤3轻伤，初步调查起火原因是厂房拆除时电切割产生火花引起下方重油桶起火。",
+    "original_websites": "https://mp.weixin.qq.com/s/nEMtPnl0_5o7nt6S7Kd9kw",
+    "start_date": "2024-03-11",
+    "start_time": "2024-03-11 10:00:00",
+    "update_time": "2024-05-03 13:30:01",
+    "incident_type": "火灾",
+    "incident_reason": "初步调查起火原因是厂房拆除时电切割产生火花引起下方重油桶起火",
+    "person_death_num": 2,
+    "person_injury_num": 4,
+    "person_missing_num": 0,
+    "location": [109.7576188732589, 28.309870349065484],
+    "place": "湖南湘西吉首市峒河街道大田社区一沥青混凝土公司",
+    "province": "湖南省",
+    "city": "湘西土家族苗族自治州",
+    "county": "吉首市",
+    "town": "峒河街道",
+    "village": "大田社区",
+    "is_final": true
+}

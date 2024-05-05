@@ -1,0 +1,23 @@
+{
+    "item_id": "918808cb-7cf2-4e3f-96d7-97aafe5b3348",
+    "news_channel": "央视网",
+    "title": "江苏海安一工厂发生爆炸，已造成3人死亡2人失联",
+    "report": "央视网消息：据海安市应急管理局官微消息，2024年2月18日2时11分，海安经济技术开发区亚太轻合金（南通）科技股份有限公司车间内生产铝棒的铸造井区域发生爆炸。截至目前，共造成3人死亡，2人失联，搜救和善后工作正在进行中。",
+    "original_websites": "https://news.cctv.com/2024/02/18/ARTIuFbrL1ojhiPS3ZUUL2i4240218.shtml",
+    "start_date": "2024-02-18",
+    "start_time": "2024-02-18 02:11:00",
+    "update_time": "2024-05-03 15:42:57",
+    "incident_type": "爆炸",
+    "incident_reason": "车间内生产铝棒的铸造井区域发生爆炸",
+    "person_death_num": 3,
+    "person_injury_num": 0,
+    "person_missing_num": 2,
+    "location": [120.53750753402711, 32.530324638045805],
+    "place": "海安经济技术开发区亚太轻合金（南通）科技股份有限公司车间",
+    "province": "江苏省",
+    "city": "南通市",
+    "county": "海安市",
+    "town": "",
+    "village": "",
+    "is_final": true
+}

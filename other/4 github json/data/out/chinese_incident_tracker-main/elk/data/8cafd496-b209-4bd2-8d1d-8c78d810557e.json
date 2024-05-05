@@ -1,0 +1,23 @@
+{
+    "item_id": "8cafd496-b209-4bd2-8d1d-8c78d810557e",
+    "news_channel": "煤业矿工圈",
+    "title": "突发！晚七点，山西一煤矿突发事故！",
+    "report": "2024年5月1日19点35分，山西晋能控股集团旗下一煤矿发生一起运输事故，造成一人死亡。经初步了解，该矿9107材料巷掘进工作面运输道轨过程中，车辆发生侧翻挤压一名职工腹部受伤致死，具体原因待进一步调查。",
+    "original_websites": "https://mp.weixin.qq.com/s/ZsiM2i6cGokKwlaGLUiNRg",
+    "start_date": "2024-05-01",
+    "start_time": "2024-05-01 19:35:00",
+    "update_time": "2024-05-03 11:04:51",
+    "incident_type": "运输事故",
+    "incident_reason": "该矿9107材料巷掘进工作面运输道轨过程中，车辆发生侧翻挤压一名职工腹部受伤致死",
+    "person_death_num": 1,
+    "person_injury_num": 0,
+    "person_missing_num": 0,
+    "location": [113.3618688583374, 40.09837835660557],
+    "place": "山西晋能控股集团旗下一煤矿",
+    "province": "山西省",
+    "city": "大同市",
+    "county": "平城区",
+    "town": "",
+    "village": "",
+    "is_final": true
+}

@@ -1,0 +1,23 @@
+{
+    "item_id": "c2bb3bca-131b-4618-b3de-77eaba3f243e",
+    "news_channel": "微博",
+    "title": "#宁夏一化工厂突发爆炸2死4伤#",
+    "report": "4月18日凌晨，宁夏宝丰能源集团股份有限公司发生爆炸事故，事故造成2人死亡、4人烧伤。目前，受伤人员正在全力救治中。事故原因正在调查中。#工厂企业要绷紧防火弦#\n春季天气干燥，易产生静电，同时随着气温的升高，一些危险化学品易挥发或热量聚积极易导致火灾或爆炸事故。保障生产安全，这份春季化工和危化品安全生产提示请收好！",
+    "original_websites": "https://s.weibo.com/weibo?q=%23%E5%AE%81%E5%A4%8F%E4%B8%80%E5%8C%96%E5%B7%A5%E5%8E%82%E7%AA%81%E5%8F%91%E7%88%86%E7%82%B82%E6%AD%BB4%E4%BC%A4%23",
+    "start_date": "2024-04-18",
+    "start_time": "2024-04-18 01:54:00",
+    "update_time": "2024-05-03 15:20:18",
+    "incident_type": "爆炸",
+    "incident_reason": "事故原因正在调查中。",
+    "person_death_num": 2,
+    "person_injury_num": 4,
+    "person_missing_num": 0,
+    "location": [106.55652523040773, 38.234781890275],
+    "place": "宁夏宝丰能源集团股份有限公司子公司宁夏东毅环保科技有限公司",
+    "province": "宁夏回族自治区",
+    "city": "银川市",
+    "county": "灵武市",
+    "town": "",
+    "village": "",
+    "is_final": true
+}
