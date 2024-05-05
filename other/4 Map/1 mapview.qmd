@@ -31,6 +31,8 @@ library(curl)
 library(lubridate)
 library(plotly)
 library(ggplot2)
+library(openxlsx)
+library(readxl)
 ```
 # one file 
 
@@ -150,11 +152,21 @@ pp
 
 
 # map
+
+```{r}
+all_data2 =all_data %>%  mutate(report=report %>% str_trunc(100))
+```
+
+```{r}
+#write.xlsx(all_data2,'all_data2.xlsx')
+```
+
 ```{r fig.height=8}
 library(mapview)
 library(sf)
+library(stringr)
 
-mapview(all_data, map.types='OpenStreetMap',label='text',xcol = "Longitude", ycol = "Latitude", zcol='incident_type',cex="person_death_num",crs = 4269, grid = FALSE)
+mapview(all_data2, map.types='OpenStreetMap',label='text',xcol = "Longitude", ycol = "Latitude", zcol='incident_type',cex="person_death_num",crs = 4269, grid = FALSE)
 ```
 
 

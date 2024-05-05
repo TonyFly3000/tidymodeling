@@ -528,7 +528,7 @@ plt.show()
 num_epochs = 5
 
 # Train the model
-history2=model_lstm.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,,shuffle=True,callbacks=[callbacks])
+history2=model_lstm.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks])
 
 ```
 
