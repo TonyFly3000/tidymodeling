@@ -28,6 +28,9 @@ library(tidyverse)
 library(rvest)
 library(jsonlite)
 library(curl)
+library(lubridate)
+library(plotly)
+library(ggplot2)
 ```
 # one file 
 
@@ -90,16 +93,68 @@ for (i in list.files("./data/json_folder")) {
 }
 ```
 
+
+```{r}
+all_data=all_data %>% mutate(text=paste0(incident_type," ","死亡人数:",person_death_num," 受伤人数:",person_injury_num)
+                             ,month_year= format_ISO8601(ymd(start_date), precision = "ym")
+                             )
+```
+
 ```{r}
 glimpse(all_data)
 ```
 
 
-```{r fig.height=12}
+```{r}
+#write.xlsx(all_data,'all_data.xlsx')
+```
+
+# chart
+
+group to month
+```{r}
+chartdata001=all_data %>% group_by(month_year)  %>%  summarise(person_death_num=sum(person_death_num)
+                                                           ,person_injury_num=sum(person_injury_num)
+                                                           )
+
+```
+
+wide to long
+```{r}
+chartdata002=chartdata001 %>%select(month_year,person_death_num,person_injury_num) %>% 
+  pivot_longer(!c(month_year), names_to = 'type', values_to = 'DATA')
+
+```
+
+```{r}
+gg=ggplot(chartdata001, aes(x=month_year, y=person_death_num,label = person_death_num))+
+  geom_bar(stat="identity",fill='red')+ geom_text(vjust = -1,
+              position = position_dodge(width = 0.9))+ theme_bw()
+
+
+ggplotly(gg)
+```
+
+
+```{r}
+gg=ggplot(chartdata002, aes(fill=type, y=DATA, x=month_year)) +
+    geom_col(position = "dodge") +
+    geom_text(aes(label = DATA), vjust = 1.5,
+              position = position_dodge(width = 0.9))+scale_y_log10()+ theme_light()
+
+pp=ggplotly(gg)
+
+pp
+```
+
+
+
+# map
+```{r fig.height=8}
 library(mapview)
 library(sf)
 
-mapview(all_data, map.types='OpenStreetMap',zoom=5,label='incident_type',xcol = "Longitude", ycol = "Latitude", crs = 4269, grid = FALSE)
+mapview(all_data, map.types='OpenStreetMap',label='text',xcol = "Longitude", ycol = "Latitude", zcol='incident_type',cex="person_death_num",crs = 4269, grid = FALSE)
 ```
 
 
@@ -111,5 +166,7 @@ mapview(all_data, map.types='OpenStreetMap',zoom=5,label='incident_type',xcol = 
 https://github.com/percent4/chinese_incident_tracker
 
 https://github.com/r-spatial/mapview
+
+https://maps.clb.org.hk/
 
 

@@ -300,6 +300,16 @@ p+ theme_economist()
 
 :::
 
+# convert ggplot to plotly
+
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+
+pp=ggplotly(p)
+
+pp
+```
+
 
 # Save plot
 
