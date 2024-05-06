@@ -119,19 +119,22 @@ data002= data001 %>% filter(year==1997) %>% group_by(continent) %>% summarise(po
 ggplot(data002, aes(x=continent, y=pop)) +
   geom_bar(stat="identity")+scale_y_continuous(labels = scales::comma)
 ```
-## add number
+
+## show number
 
 ```{r}
 ggplot(data002, aes(x=continent, y=pop)) +
   geom_bar(stat="identity")+scale_y_continuous(labels = scales::comma)+geom_text(aes(label = pop), vjust = -0.2)
 ```
 
-
-# box plot
+## change bar color
 
 ```{r}
-p=ggplot(tips, aes(day,tip,fill=day)) + geom_boxplot()
-p
+ggplot(data002, aes(x=continent, y=pop)) +
+  geom_bar(stat="identity",fill='red')+scale_y_continuous(labels = scales::comma)+geom_text(aes(label = pop), vjust = -0.2)
+# box plot
+
+
 ```
 
 
@@ -183,7 +186,7 @@ p
 
 
 
-# title,size,x y name
+# title,size,x y name,footnote
 
 
 
@@ -205,7 +208,7 @@ p
 
 
 
-## adjust size
+## adjust plot size
 
 
 
@@ -214,6 +217,14 @@ p
 p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle("tip by sex")+theme(
   plot.margin = margin(2, 2, 5, 5, "cm"))
 p
+```
+
+## adjust text size and center title
+
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle("tip by sex")+labs(caption = "this is footnote")
+
+p+theme(plot.title = element_text(hjust = 0.5),text = element_text(size = 30))
 ```
 
 

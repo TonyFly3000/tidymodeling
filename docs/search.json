@@ -6337,8 +6337,8 @@
     "objectID": "Plot/1 ggplot2.html#color-by-group-3",
     "href": "Plot/1 ggplot2.html#color-by-group-3",
     "title": "ggplot2 in R",
-    "section": "4.1 color by group",
-    "text": "4.1 color by group\n\n\nCode\np=ggplot(tips, aes(day,tip,fill=sex)) + geom_boxplot()\np",
+    "section": "3.3 color by group",
+    "text": "3.3 color by group\n\n\nCode\np=ggplot(tips, aes(day,tip,fill=sex)) + geom_boxplot()\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -6348,8 +6348,8 @@
     "objectID": "Plot/1 ggplot2.html#color-by-group-4",
     "href": "Plot/1 ggplot2.html#color-by-group-4",
     "title": "ggplot2 in R",
-    "section": "5.1 color by group",
-    "text": "5.1 color by group\n\n\nCode\np=ggplot(tips, aes(day,tip,color=sex)) + geom_jitter(position=position_jitterdodge())\np",
+    "section": "4.1 color by group",
+    "text": "4.1 color by group\n\n\nCode\np=ggplot(tips, aes(day,tip,color=sex)) + geom_jitter(position=position_jitterdodge())\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -6359,8 +6359,8 @@
     "objectID": "Plot/1 ggplot2.html#add-title",
     "href": "Plot/1 ggplot2.html#add-title",
     "title": "ggplot2 in R",
-    "section": "7.1 add title",
-    "text": "7.1 add title\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")\np",
+    "section": "6.1 add title",
+    "text": "6.1 add title\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -6381,8 +6381,8 @@
     "objectID": "Plot/1 ggplot2.html#change-x-y-name",
     "href": "Plot/1 ggplot2.html#change-x-y-name",
     "title": "ggplot2 in R",
-    "section": "7.4 change x y name",
-    "text": "7.4 change x y name\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np",
+    "section": "6.5 change x y name",
+    "text": "6.5 change x y name\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8435,8 +8435,8 @@
     "objectID": "Plot/1 ggplot2.html#add-footnote",
     "href": "Plot/1 ggplot2.html#add-footnote",
     "title": "ggplot2 in R",
-    "section": "7.2 add footnote",
-    "text": "7.2 add footnote\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+labs(caption = \"this is footnote\")\np",
+    "section": "6.2 add footnote",
+    "text": "6.2 add footnote\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+labs(caption = \"this is footnote\")\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8446,8 +8446,8 @@
     "objectID": "Plot/1 ggplot2.html#add-chinses",
     "href": "Plot/1 ggplot2.html#add-chinses",
     "title": "ggplot2 in R",
-    "section": "7.5 add chinses",
-    "text": "7.5 add chinses\n\n\nCode\nlibrary(showtext)\nshowtext_auto()\n\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"新的 x name\")+ scale_y_continuous(name=\"新的 y name\")\np",
+    "section": "6.6 add chinses",
+    "text": "6.6 add chinses\n\n\nCode\nlibrary(showtext)\nshowtext_auto()\n\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"新的 x name\")+ scale_y_continuous(name=\"新的 y name\")\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8457,8 +8457,8 @@
     "objectID": "Plot/1 ggplot2.html#x-y-break-and-scales-limit",
     "href": "Plot/1 ggplot2.html#x-y-break-and-scales-limit",
     "title": "ggplot2 in R",
-    "section": "7.6 x y break and scales limit",
-    "text": "7.6 x y break and scales limit\n\n7.6.1 x scales limit\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np+ xlim(min=0, 20)\n\n\n\n\n\n\n\n\n\n\n\n7.6.2 y scales limit\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np+ ylim(0, 100)\n\n\n\n\n\n\n\n\n\n\n\n7.6.3 adding second aix\n\n\nCode\ndata002= data001%&gt;% group_by(year,continent) %&gt;% summarise(pop=sum(pop),lifeExp=mean(lifeExp))%&gt;%filter(continent=='Asia')\n\n\nremove scientific notation\n\n\nCode\ncoeff=1/40000000\n\n\np=ggplot(data002, aes(year, pop)) + geom_col() +\n  geom_line(aes(year,lifeExp/ coeff),size=2, color = \"red\") +scale_y_continuous(\"pop\", sec.axis = sec_axis(~.*coeff, name = \"lifeExp\"),labels = scales::comma)\np",
+    "section": "6.7 x y break and scales limit",
+    "text": "6.7 x y break and scales limit\n\n6.7.1 x scales limit\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np+ xlim(min=0, 20)\n\n\n\n\n\n\n\n\n\n\n\n6.7.2 y scales limit\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np+ ylim(0, 100)\n\n\n\n\n\n\n\n\n\n\n\n6.7.3 adding second aix\n\n\nCode\ndata002= data001%&gt;% group_by(year,continent) %&gt;% summarise(pop=sum(pop),lifeExp=mean(lifeExp))%&gt;%filter(continent=='Asia')\n\n\nremove scientific notation\n\n\nCode\ncoeff=1/40000000\n\n\np=ggplot(data002, aes(year, pop)) + geom_col() +\n  geom_line(aes(year,lifeExp/ coeff),size=2, color = \"red\") +scale_y_continuous(\"pop\", sec.axis = sec_axis(~.*coeff, name = \"lifeExp\"),labels = scales::comma)\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8636,6 +8636,50 @@
     "crumbs": [
       "Plot",
       "Shiny in R:China accident map"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#adjust-plot-size",
+    "href": "Plot/1 ggplot2.html#adjust-plot-size",
+    "title": "ggplot2 in R",
+    "section": "6.3 adjust plot size",
+    "text": "6.3 adjust plot size\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+theme(\n  plot.margin = margin(2, 2, 5, 5, \"cm\"))\np",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#adjust-text-size-and-center-title",
+    "href": "Plot/1 ggplot2.html#adjust-text-size-and-center-title",
+    "title": "ggplot2 in R",
+    "section": "6.4 adjust text size and center title",
+    "text": "6.4 adjust text size and center title\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+labs(caption = \"this is footnote\")\n\np+theme(plot.title = element_text(hjust = 0.5),text = element_text(size = 30))",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#show-number",
+    "href": "Plot/1 ggplot2.html#show-number",
+    "title": "ggplot2 in R",
+    "section": "3.1 show number",
+    "text": "3.1 show number\n\n\nCode\nggplot(data002, aes(x=continent, y=pop)) +\n  geom_bar(stat=\"identity\")+scale_y_continuous(labels = scales::comma)+geom_text(aes(label = pop), vjust = -0.2)",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#change-bar-color",
+    "href": "Plot/1 ggplot2.html#change-bar-color",
+    "title": "ggplot2 in R",
+    "section": "3.2 change bar color",
+    "text": "3.2 change bar color\n\n\nCode\nggplot(data002, aes(x=continent, y=pop)) +\n  geom_bar(stat=\"identity\",fill='red')+scale_y_continuous(labels = scales::comma)+geom_text(aes(label = pop), vjust = -0.2)\n\n\n\n\n\n\n\n\n\nCode\n# box plot",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
     ]
   }
 ]
