@@ -8626,5 +8626,16 @@
       "1 Web scraping on www.whiskynotes.be",
       "Model"
     ]
+  },
+  {
+    "objectID": "Plot/5 China accident map.html",
+    "href": "Plot/5 China accident map.html",
+    "title": "Shiny in R:China accident map",
+    "section": "",
+    "text": "1 Shiny app:https://tduan.shinyapps.io/China_accident_map/\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "Shiny in R:China accident map"
+    ]
   }
 ]
