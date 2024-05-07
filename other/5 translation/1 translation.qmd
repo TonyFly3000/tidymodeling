@@ -1,0 +1,68 @@
+---
+title: "Translation"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+---
+
+
+```{r}
+library(polyglotr)
+```
+
+
+# Translation word
+
+```{r}
+word_translation <- linguee_word_translation("fruit", source_language = "en", target_language = "zh")
+
+word_translation
+
+```
+
+
+# translate sentences
+
+```{r}
+google_get_supported_languages()
+```
+
+
+```{r}
+texts <- c("Hello, how are you?", 
+           "I love programming!", 
+           "This is a test.")
+
+languages <- c("es", "fr", "zh-CN")
+
+
+create_translation_table(texts, languages)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

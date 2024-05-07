@@ -198,6 +198,14 @@ p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle("tip by s
 p
 ```
 
+## add subtitle
+
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle("tip by sex",subtitle = "Subtitle of the plot")
+p
+```
+
+
 ## add footnote
 
 ```{r}

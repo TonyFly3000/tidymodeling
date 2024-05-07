@@ -6447,8 +6447,8 @@
     "objectID": "Plot/2 plotly.html#legend",
     "href": "Plot/2 plotly.html#legend",
     "title": "Plotly in R",
-    "section": "7.4 legend",
-    "text": "7.4 legend\n\n7.4.1 hide legend\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(showlegend = FALSE)\nfig\n\n\n\n\n\n\n\n\n7.4.2 show legend and change legend name\n\n\nCode\nfig &lt;- plot_ly(data = data002 %&gt;% filter(continent=='Asia'), x = ~year, y = ~pop,color = ~continent,mode = 'lines',name='Asia pop') %&gt;% layout(showlegend = TRUE)\nfig\n\n\n\n\n\n\n\n\n7.4.3 change legend and change legend Position\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(legend = list(orientation = 'h'))\n\nfig\n\n\n\n\n\n\n=",
+    "section": "7.5 legend",
+    "text": "7.5 legend\n\n7.5.1 hide legend\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(showlegend = FALSE)\nfig\n\n\n\n\n\n\n\n\n7.5.2 show legend and change legend name\n\n\nCode\nfig &lt;- plot_ly(data = data002 %&gt;% filter(continent=='Asia'), x = ~year, y = ~pop,color = ~continent,mode = 'lines',name='Asia pop') %&gt;% layout(showlegend = TRUE)\nfig\n\n\n\n\n\n\n\n\n7.5.3 change legend and change legend Position\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(legend = list(orientation = 'h'))\n\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -8608,7 +8608,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/8 model.html#test",
     "title": "Model",
     "section": "4.3 test",
-    "text": "4.3 test\n\n\nCode\nlen(padded_test)\nlen(review_flag_final_test)\n\n\n655\n\n\n\n\nCode\nsum(review_flag_final_test)\n\n\n160",
+    "text": "4.3 test\n\n\nCode\nlen(padded_test)\nlen(review_flag_final_test)\n\n\n655\n\n\n\n\nCode\nsum(review_flag_final_test)\n\n\n169",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8620,7 +8620,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/8 model.html#if-all-guess-lower-than-90-points-then-0.72-accuracy",
     "title": "Model",
     "section": "4.4 if all guess lower than 90 points then 0.72 accuracy",
-    "text": "4.4 if all guess lower than 90 points then 0.72 accuracy\n\n\nCode\n(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)\n\n\n0.7557251908396947",
+    "text": "4.4 if all guess lower than 90 points then 0.72 accuracy\n\n\nCode\n(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)\n\n\n0.7419847328244275",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8680,6 +8680,29 @@
     "crumbs": [
       "Plot",
       "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#add-footnote",
+    "href": "Plot/2 plotly.html#add-footnote",
+    "title": "Plotly in R",
+    "section": "7.4 add footnote",
+    "text": "7.4 add footnote\n\n\nCode\nfig%&gt;% layout(annotations = \n                         list(x = 0, y = -0.1, \n                              text = \"this is footnote\", \n                              showarrow = F, \n                              xref='paper', \n                              yref='paper')\n    )",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "other/5 translation/1 translation.html",
+    "href": "other/5 translation/1 translation.html",
+    "title": "Translation",
+    "section": "",
+    "text": "Code\nlibrary(polyglotr)\n\n\n\n1 Translation word\n\n\nCode\nword_translation &lt;- linguee_word_translation(\"fruit\", source_language = \"en\", target_language = \"zh\")\n\nword_translation\n\n\n[1] \"水果\" \"果香\" \"果子\" \"果品\" \"实\"   \"檎\"  \n\n\n\n\n2 translate sentences\n\n\nCode\ngoogle_get_supported_languages()\n\n\n# A tibble: 134 × 2\n   Language    `ISO-639 code`\n   &lt;chr&gt;       &lt;chr&gt;         \n 1 Afrikaans   af            \n 2 Albanian    sq            \n 3 Amharic     am            \n 4 Arabic      ar            \n 5 Armenian    hy            \n 6 Assamese    as            \n 7 Aymara      ay            \n 8 Azerbaijani az            \n 9 Bambara     bm            \n10 Basque      eu            \n# ℹ 124 more rows\n\n\n\n\nCode\ntexts &lt;- c(\"Hello, how are you?\", \n           \"I love programming!\", \n           \"This is a test.\")\n\nlanguages &lt;- c(\"es\", \"fr\", \"zh-CN\")\n\n\ncreate_translation_table(texts, languages)\n\n\n        original_word                     es                          fr\n1 Hello, how are you?     ¿Hola, cómo estás? Bonjour comment allez-vous?\n2 I love programming! ¡Me encanta programar!  J'adore la programmation !\n3     This is a test.    Esto es una prueba.              C'est un test.\n           zh-CN\n1       你好吗？\n2   我喜欢编程！\n3 这是一个测试。\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "5 translation",
+      "Translation"
     ]
   }
 ]

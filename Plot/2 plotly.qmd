@@ -157,7 +157,7 @@ p=ggplot(tips, aes(tip,total_bill,)) + geom_point(aes(color=sex)) + facet_wrap("
 ggplotly(p)
 ```
 
-# title,size,x y name
+# title,size,x y name,footnote
 
 
 
@@ -189,6 +189,20 @@ fig <- plot_ly(data=tips,x = ~total_bill,color=~sex, type = "histogram") %>% lay
 fig
 ```
 
+## add footnote
+
+```{r}
+fig%>% layout(annotations = 
+                         list(x = 0, y = -0.1, 
+                              text = "this is footnote", 
+                              showarrow = F, 
+                              xref='paper', 
+                              yref='paper')
+    )
+```
+
+
+
 
 ## legend
 
@@ -212,7 +226,8 @@ fig <- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'li
 
 fig
 ```
-=
+
+
 
 
 # applying themes
@@ -252,8 +267,10 @@ ggplotly(p+ theme_economist())
 
 install orca in https://github.com/plotly/orca#installation
 
+conda install -c plotly plotly-orca
+
 ```{r}
-kaleido(p, "surface-plot.png")
+#kaleido(p, "surface-plot.png")
 ```
 
 

@@ -86,7 +86,7 @@ data=tibble(topic_list,topic_link_list,all_year_list_topic)
 
 
 ```{r}
-bottle003=tibble(bottle_list,all_year_list_bottle)
+#bottle003=tibble(bottle_list,all_year_list_bottle)
 ```
 
 
@@ -96,16 +96,8 @@ bottle003=tibble(bottle_list,all_year_list_bottle)
 
 ```{r}
 library(openxlsx)
-list_of_datasets <- list("topic" = data, "bottle" = bottle003)
+list_of_datasets <- list("topic" = data)
 
 write.xlsx(list_of_datasets, file = "./output/all year page.xlsx")
 ```
 
-
-
-
-
-
-
-
-# reference:

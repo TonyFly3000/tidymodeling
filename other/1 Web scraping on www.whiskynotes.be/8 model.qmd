@@ -18,11 +18,7 @@ format:
     code-block-border-left: "#31BAE9"
 ---
 
-```{python}
-#| eval: false
-import os
-os.system('pip3 install openpyxl')
-```
+
 
 ```{python}
 import tensorflow as tf
@@ -39,13 +35,6 @@ from siuba import *
 from siuba.data import mtcars,penguins
 ```
 
-```{python}
-import os
-os.system('pip3 show tensorflow')
-```
-
-
-
 # read in data
 
 ```{python}
@@ -53,9 +42,6 @@ import pandas as pd
 data=pd.read_excel('./output/all_page_bottle_list_all.xlsx')
 ```
 
-```{python}
-data.head()
-```
 
 ```{python}
 list(data)
@@ -68,6 +54,7 @@ data.info()
 
 
 ```{python}
+import re
 data001=data>> filter(_.all_page_score >0
                       ,_.all_page_score <100
                       ,_.bottle_review_Nose !='no comment'
@@ -75,7 +62,7 @@ data001=data>> filter(_.all_page_score >0
                       ,_.bottle_review_Finish !='no comment'
                       ) >>mutate(
                       review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish
-                      )>>mutate(review=_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',',''))>>mutate(review_len=_.review.str.count(' ') + 1)
+                      )>>mutate(review=_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))>>mutate(review_len=_.review.str.count(' ') + 1)
                       
                       
                       
@@ -99,8 +86,6 @@ data002.to_excel('data002.xlsx')
 ```{python}
 data002.info()
 ```
-
-
 
 
 ```{python}
@@ -134,7 +119,7 @@ print(len(review_flag))
 
 
 
-Removing stop words with SkLearn
+# Removing stop words with SkLearn
 
 ```{python}
 import nltk
@@ -182,66 +167,181 @@ def remove_stopwords(data):
 review_remove_stop_word=remove_stopwords(review)
 ```
 
+# world cloud from dataframe 
 
 ```{python}
-review_remove_stop_word[3]
+temp_list=[]
+for sentence in review_remove_stop_word:
+        for word in sentence.split():
+          temp_list.append(word)
 ```
 
 ```{python}
-review[3]
-```
-
-
-
-```{python}
-# Calculating the frequency of each word
-res = data002.review.str.split(expand=True).stack().value_counts()
-```
-
-```{python}
-res.to_excel('res.xlsx')
+from collections import Counter
+counts = Counter(temp_list)
+df = pd.DataFrame(list(counts.items()), columns=['Key', 'Values'])
 ```
 
 
 ```{python}
-# wordcloud function
+df.to_excel('res.xlsx')
+```
 
+
+```{python}
+df002=df>>arrange(-_.Values) >>filter(_.Key!='notes'
+,_.Key!='well'
+,_.Key!='long'
+,_.Key!='quite'
+,_.Key!='hints'
+,_.Key!='hint'
+,_.Key!='light'
+,_.Key!='little'
+,_.Key!='slightly'
+,_.Key!='nice'
+,_.Key!='still'
+,_.Key!='medium'
+,_.Key!='subtle'
+,_.Key!='rather'
+,_.Key!='note'
+,_.Key!='also'
+,_.Key!='there’s'
+,_.Key!='background'
+,_.Key!='end'
+,_.Key!='side'
+,_.Key!='plenty'
+)
+
+df003=df002[0:30]
+```
+
+# english word cloud
+```{python}
+d = {}
+for a, x in df003.values:
+    d[a] = x
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+wordcloud = WordCloud(background_color = "#FFFFFF", contour_width = 2,
+     contour_color = '#FFFFFF')
+wordcloud.generate_from_frequencies(frequencies=d)
+plt.figure()
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+
+wordcloud.to_file('wordcloud_en.png')
+```
+# chinese word cloud
+
+
+```{python}
+#from translate import Translator
+from deep_translator import GoogleTranslator
+
+en=df003['Key'].tolist()
+
+
+cn_list=[]
+for word in en:
+  result = GoogleTranslator(source='auto', target='zh-CN').translate(word) 
+  cn_list.append(result)
+  
+
+cn_list
+```
+
+```{python}
+#| warning: false
+df003["Key"]=np.array(cn_list)
+```
+
+```{python}
+df003
+```
+
+
+```{python}
+d = {}
+for a, x in df003.values:
+    d[a] = x
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+wordcloud = WordCloud(font_path='simfang.ttf',background_color = "#FFFFFF", contour_width = 2,
+     contour_color = '#FFFFFF')
+wordcloud.generate_from_frequencies(frequencies=d)
+plt.figure()
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+wordcloud.to_file('wordcloud_cn.png')
+```
+
+
+```{python}
+import numpy as np
+from PIL import Image
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-
-def show_wordcloud(data, title = None):
-    wordcloud = WordCloud(
-        background_color = 'white',
-        max_words = 200,
-        max_font_size = 40, 
-        scale = 3,
-        random_state = 42
-    ).generate(str(data))
-
-    fig = plt.figure(1, figsize = (20, 20))
-    plt.axis('off')
-    if title: 
-        fig.suptitle(title, fontsize = 20)
-        fig.subplots_adjust(top = 2.3)
-
-    plt.imshow(wordcloud)
-    plt.show()
+from nltk.corpus import stopwords
 ```
 
+```{python}
+image = Image.open('logo.png')
+new_image = image.resize((3000, 3000))
+meta_mask = np.array(new_image)
 
+meta_mask[meta_mask< 10] = 255
+meta_mask[meta_mask!=246] = 0
+meta_mask[meta_mask==246] = 255
+#meta_mask
+#im = Image.fromarray(meta_mask)
+#im.save('myimage_1.jpg')
+
+np.unique(meta_mask)
+```
+
+```{python}
+d = {}
+for a, x in df003.values:
+    d[a] = x
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+wordcloud = WordCloud(font_path='simfang.ttf',background_color = "#CD5C5C", contour_width = 2,
+     contour_color = '#FFFFFF',mask = meta_mask)
+
+
+
+wordcloud.generate_from_frequencies(frequencies=d)
+
+plt.figure()
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+
+wordcloud.to_file('wordcloud_cn_bottle.png')
+```
+
+# word cloud from list
 
 
 ```{python}
 def drop_words(phrase, disallowed_wordlist):
   # 1. Split the phrase into an array of strings
   phrase_split = phrase.split()
-  
+
   # 2. Create an empty array to contain the allowed words
   allowed_words_list = []
 
   # 3. Loop through the array of strings from step#1
   for word in phrase_split:
-  
+
     # 4. Inside the loop, check if the word is present in the list of disallowed words
     if word not in disallowed_wordlist:
 
@@ -267,9 +367,31 @@ for i in test_list:
 
 
 
+
+
+
+```{python}
+
+stopword= ['s','lot','lots','note','notes','also','there','bit','hint', 'hints','long','quite','rather','well','plenty','lot','still','start','end','towards','little','light','big','slightly','subtle','soft','really','background','even','nice','smoke','note','maybe','medium','side','time','like']
+
+unique_string=(" ").join(new_all)
+len(unique_string)
+
+```
+
+
+
+```{python}
+wc = WordCloud(stopwords =stopword,background_color = '#FFFFFF', contour_width = 2,
+     contour_color = '#FFFFFF', colormap = 'bone',mask = meta_mask).generate(unique_string)
+plt.imshow(wc)
+plt.show()
+```
+
+
 ```{python}
 # print wordcloud
-show_wordcloud(new_all)
+#show_wordcloud(new_all)
 ```
 
 
@@ -528,41 +650,43 @@ plt.show()
 num_epochs = 5
 
 # Train the model
-history2=model_lstm.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks])
+# history2=model_lstm.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks])
 
 ```
 
 ```{python}
-acc = history2.history['accuracy']
-val_acc = history2.history['val_accuracy']
-loss = history2.history['loss']
-val_loss = history2.history['val_loss']
-epochs = range(len(acc))
+# acc = history2.history['accuracy']
+# val_acc = history2.history['val_accuracy']
+# loss = history2.history['loss']
+# val_loss = history2.history['val_loss']
+# epochs = range(len(acc))
 ```
 
 
 
 ```{python}
-import matplotlib.image as mpimg
-import matplotlib.pyplot as plt
-#------------------------------------------------
-# Plot training and validation accuracy per epoch
-#------------------------------------------------
-plt.plot(epochs, acc, 'r', label='Training accuracy')
-plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
-plt.title('Training and validation accuracy')
-plt.legend()
-plt.show()
-plt.figure()
-
-plt.plot(epochs, loss, 'r', label='Training Loss')
-plt.plot(epochs, val_loss, 'b', label='Validation Loss')
-plt.title('LSTM model Training and validation loss')
-plt.legend()
-
-plt.show()
+# import matplotlib.image as mpimg
+# import matplotlib.pyplot as plt
+# #------------------------------------------------
+# # Plot training and validation accuracy per epoch
+# #------------------------------------------------
+# plt.plot(epochs, acc, 'r', label='Training accuracy')
+# plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
+# plt.title('Training and validation accuracy')
+# plt.legend()
+# plt.show()
+# plt.figure()
+# 
+# plt.plot(epochs, loss, 'r', label='Training Loss')
+# plt.plot(epochs, val_loss, 'b', label='Validation Loss')
+# plt.title('LSTM model Training and validation loss')
+# plt.legend()
+# 
+# plt.show()
 ```
 
 
+# resource:
 
+https://medium.com/@m3redithw/wordclouds-with-python-c287887acc8b
 
