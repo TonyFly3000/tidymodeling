@@ -1,0 +1,51 @@
+---
+title: "quarto block"
+subtitle: "with magick"
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+---
+
+# add a output folder bottom
+
+1. add foldableCodeBlcok.lua into blog root folder
+
+2. add in `_quarto.yml`
+
+filters:
+  - fold_results.lua
+
+3. put following on code chunk
+
+{r, attr.output='.details summary="sessionInfo()"'}
+#| echo: false
+sessionInfo()
+
+
+referece:
+
+https://github.com/quarto-dev/quarto-cli/issues/341
+
+https://gist.github.com/atusy/f2b5b992e45c68ab6823499f2339c6e6
+
+# resource:
+
+
+https://themockup.blog/posts/2021-01-28-removing-image-backgrounds-with-magick/
+
+https://cran.r-project.org/web/packages/magick/vignettes/intro.html
+

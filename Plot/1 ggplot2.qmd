@@ -162,6 +162,25 @@ ggplot(data002, aes(x=reorder(continent,pop), y=pop)) +
 # box plot
 ```
 
+## make bar transparency
+
+```{r}
+ggplot(data002, aes(x=reorder(continent,pop), y=pop)) +
+  geom_bar(stat="identity",fill='red' ,alpha=0.2)+coord_flip()
+```
+
+## make bar close to axis
+```{r}
+ggplot(data002, aes(x=reorder(continent,pop), y=pop)) +
+  geom_bar(stat="identity",alpha=0.2,fill='red')+coord_flip()+scale_y_continuous(expand = expansion(mult = c(0, .1)))
+```
+
+## change one bar color
+
+```{r}
+ggplot(data002, aes(x=reorder(continent,pop), y=pop,fill=factor(ifelse(continent=="Asia","Highlighted","Normal")))) +
+  geom_bar(stat="identity",alpha=0.2,show.legend = FALSE)+scale_fill_manual(name = "continent", values=c("red","grey50"))+coord_flip()+scale_y_continuous(expand = expansion(mult = c(0, .1)))
+```
 
 
 ## color by group
@@ -365,6 +384,29 @@ p+ theme_economist()
 ggsave("myplot.png")
 ```
 
+# add image into the chart
+
+
+
+
+## add background image
+
+
+
+```{r}
+library(ggplot2)
+library(magick)
+img4=image_read("bee.png")
+
+"bee.png"
+  
+
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + background_image(img4) +geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+
+
+p
+```
+
 
 # Animation plot
 
@@ -394,7 +436,7 @@ p
 
 
 
-
+https://cran.r-project.org/web/packages/magick/vignettes/intro.html
 
 
 

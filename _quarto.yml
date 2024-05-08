@@ -120,3 +120,6 @@ website:
 execute:
   freeze: auto
 
+filters:
+  - foldableCodeBlcok.lua
+  

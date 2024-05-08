@@ -409,12 +409,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">4 Map</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../other/5 other web scraping package/chromote.html">
- <span class="dropdown-text">5 other web scraping package</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../other/5 translation/1 translation.html">
- <span class="dropdown-text">5 translation</span></a>
+    <a class="dropdown-item" href="../../other/5 other/1 chromote.html">
+ <span class="dropdown-text">5 other</span></a>
   </li>  
     </ul>
   </li>
@@ -510,12 +506,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../other/1 Web scraping on www.whiskynotes.be/7 clean up.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">clean up</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../other/1 Web scraping on www.whiskynotes.be/8 summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summary</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -646,7 +636,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
- <span class="menu-text">5 other web scraping package</span></a>
+ <span class="menu-text">5 other</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -654,25 +644,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../other/5 other web scraping package/chromote.html" class="sidebar-item-text sidebar-link">
+  <a href="../../other/5 other/1 chromote.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">chromote</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
- <span class="menu-text">5 translation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../other/5 translation/1 translation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../other/5 other/2 translation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Translation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/5 other/3 image processing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">image processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/5 other/4 quarto blog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">quarto block</span></a>
   </div>
 </li>
       </ul>
@@ -983,9 +974,9 @@ $ review_url           &lt;chr&gt; "https://www.whiskynotes.be/2020/cognac/cogna
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(<span class="st">"en_glass.png"</span>)</span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>img3<span class="ot">=</span><span class="fu">rasterGrob</span>(img2, <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>), <span class="at">height =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>))</span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>gg<span class="ot">=</span><span class="fu">ggplot</span>(data005, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(string,n), <span class="at">y=</span>n))<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span> <span class="fu">ylim</span>(<span class="at">min=</span><span class="dv">0</span>, <span class="dv">3200</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"Flavor"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Frequency"</span>)<span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>gg<span class="ot">=</span><span class="fu">ggplot</span>(data005, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(string,n), <span class="at">y=</span>n))<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"Flavor"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Frequency"</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3200</span>))<span class="sc">+</span></span>
 <span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">"#CD5C5C"</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Whisky notes Top30 most used words"</span>,<span class="at">subtitle =</span> <span class="st">"5K review"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"data source from www.whiskynote.be between 2010 to 2024"</span>)<span class="sc">+</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inset_element</span>(img3, <span class="fl">0.65</span>, <span class="fl">0.15</span>, <span class="dv">1</span>, <span class="fl">0.75</span>,<span class="at">align_to =</span> <span class="st">'full'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inset_element</span>(img3, <span class="fl">0.66</span>, <span class="fl">0.15</span>, <span class="dv">1</span>, <span class="fl">0.75</span>,<span class="at">align_to =</span> <span class="st">'full'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -1012,13 +1003,16 @@ $ review_url           &lt;chr&gt; "https://www.whiskynotes.be/2020/cognac/cogna
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) </span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(<span class="st">"cn_glass.png"</span>)</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>img3<span class="ot">=</span><span class="fu">rasterGrob</span>(img2, <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>), <span class="at">height =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>()</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>gg<span class="ot">=</span><span class="fu">ggplot</span>(data005_cn, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(data005_cn,n), <span class="at">y=</span>n))<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span> <span class="fu">ylim</span>(<span class="at">min=</span><span class="dv">0</span>, <span class="dv">3200</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"风味"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"次数"</span>)<span class="sc">+</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">"#CD5C5C"</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Whisky notes Top30 风味词"</span>,<span class="at">subtitle =</span> <span class="st">"5K+ 酒评"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"数据源:www.whiskynote.be 从2010年到2024年"</span>)<span class="sc">+</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inset_element</span>(img3, <span class="fl">0.65</span>, <span class="fl">0.15</span>, <span class="dv">1</span>, <span class="fl">0.75</span>,<span class="at">align_to =</span> <span class="st">'full'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(<span class="st">"cn_glass.png"</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>img3<span class="ot">=</span><span class="fu">rasterGrob</span>(img2, <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>), <span class="at">height =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>))</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>gg<span class="ot">=</span><span class="fu">ggplot</span>(data005_cn, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(data005_cn,n), <span class="at">y=</span>n))<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"风味"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"次数"</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3200</span>))<span class="sc">+</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">"#CD5C5C"</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Whisky notes Top30 风味词"</span>,<span class="at">subtitle =</span> <span class="st">"5K+ 酒评"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"数据源:www.whiskynote.be 从2010年到2024年"</span>)<span class="sc">+</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inset_element</span>(img3, <span class="fl">0.65</span>, <span class="fl">0.15</span>, <span class="dv">1</span>, <span class="fl">0.75</span>,<span class="at">align_to =</span> <span class="st">'full'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -1668,63 +1662,73 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb27-223"><a href="#cb27-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()</span>
 <span id="cb27-224"><a href="#cb27-224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb27-225"><a href="#cb27-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-226"><a href="#cb27-226" aria-hidden="true" tabindex="-1"></a><span class="fu"># chart 2 add image gglolt</span></span>
+<span id="cb27-226"><a href="#cb27-226" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-227"><a href="#cb27-227" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-228"><a href="#cb27-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-231"><a href="#cb27-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-232"><a href="#cb27-232" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
-<span id="cb27-233"><a href="#cb27-233" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(png)</span>
-<span id="cb27-234"><a href="#cb27-234" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
-<span id="cb27-235"><a href="#cb27-235" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) </span>
-<span id="cb27-236"><a href="#cb27-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-237"><a href="#cb27-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-238"><a href="#cb27-238" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(<span class="st">"en_glass.png"</span>)</span>
-<span id="cb27-239"><a href="#cb27-239" aria-hidden="true" tabindex="-1"></a>img3<span class="ot">=</span><span class="fu">rasterGrob</span>(img2, <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>), <span class="at">height =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>))</span>
-<span id="cb27-240"><a href="#cb27-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-241"><a href="#cb27-241" aria-hidden="true" tabindex="-1"></a>gg<span class="ot">=</span><span class="fu">ggplot</span>(data005, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(string,n), <span class="at">y=</span>n))<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span> <span class="fu">ylim</span>(<span class="at">min=</span><span class="dv">0</span>, <span class="dv">3200</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"Flavor"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Frequency"</span>)<span class="sc">+</span></span>
-<span id="cb27-242"><a href="#cb27-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">"#CD5C5C"</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Whisky notes Top30 most used words"</span>,<span class="at">subtitle =</span> <span class="st">"5K review"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"data source from www.whiskynote.be between 2010 to 2024"</span>)<span class="sc">+</span></span>
-<span id="cb27-243"><a href="#cb27-243" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inset_element</span>(img3, <span class="fl">0.65</span>, <span class="fl">0.15</span>, <span class="dv">1</span>, <span class="fl">0.75</span>,<span class="at">align_to =</span> <span class="st">'full'</span>)</span>
-<span id="cb27-244"><a href="#cb27-244" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-229"><a href="#cb27-229" aria-hidden="true" tabindex="-1"></a><span class="fu"># chart 2 add image gglolt</span></span>
+<span id="cb27-230"><a href="#cb27-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-231"><a href="#cb27-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-232"><a href="#cb27-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-233"><a href="#cb27-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-236"><a href="#cb27-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-237"><a href="#cb27-237" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb27-238"><a href="#cb27-238" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(png)</span>
+<span id="cb27-239"><a href="#cb27-239" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb27-240"><a href="#cb27-240" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) </span>
+<span id="cb27-241"><a href="#cb27-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-242"><a href="#cb27-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-243"><a href="#cb27-243" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(<span class="st">"en_glass.png"</span>)</span>
+<span id="cb27-244"><a href="#cb27-244" aria-hidden="true" tabindex="-1"></a>img3<span class="ot">=</span><span class="fu">rasterGrob</span>(img2, <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>), <span class="at">height =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>))</span>
 <span id="cb27-245"><a href="#cb27-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-248"><a href="#cb27-248" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-249"><a href="#cb27-249" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb27-250"><a href="#cb27-250" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
-<span id="cb27-251"><a href="#cb27-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-252"><a href="#cb27-252" aria-hidden="true" tabindex="-1"></a>gg</span>
-<span id="cb27-253"><a href="#cb27-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-254"><a href="#cb27-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-255"><a href="#cb27-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-256"><a href="#cb27-256" aria-hidden="true" tabindex="-1"></a><span class="fu"># chart 2 add image gglolt in chinese</span></span>
-<span id="cb27-257"><a href="#cb27-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-258"><a href="#cb27-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-261"><a href="#cb27-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-262"><a href="#cb27-262" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
-<span id="cb27-263"><a href="#cb27-263" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(png)</span>
-<span id="cb27-264"><a href="#cb27-264" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
-<span id="cb27-265"><a href="#cb27-265" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) </span>
-<span id="cb27-266"><a href="#cb27-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-267"><a href="#cb27-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-268"><a href="#cb27-268" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(<span class="st">"cn_glass.png"</span>)</span>
-<span id="cb27-269"><a href="#cb27-269" aria-hidden="true" tabindex="-1"></a>img3<span class="ot">=</span><span class="fu">rasterGrob</span>(img2, <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>), <span class="at">height =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>))</span>
-<span id="cb27-270"><a href="#cb27-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-271"><a href="#cb27-271" aria-hidden="true" tabindex="-1"></a>gg<span class="ot">=</span><span class="fu">ggplot</span>(data005_cn, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(data005_cn,n), <span class="at">y=</span>n))<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span> <span class="fu">ylim</span>(<span class="at">min=</span><span class="dv">0</span>, <span class="dv">3200</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"风味"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"次数"</span>)<span class="sc">+</span></span>
-<span id="cb27-272"><a href="#cb27-272" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">"#CD5C5C"</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Whisky notes Top30 风味词"</span>,<span class="at">subtitle =</span> <span class="st">"5K+ 酒评"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"数据源:www.whiskynote.be 从2010年到2024年"</span>)<span class="sc">+</span></span>
-<span id="cb27-273"><a href="#cb27-273" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inset_element</span>(img3, <span class="fl">0.65</span>, <span class="fl">0.15</span>, <span class="dv">1</span>, <span class="fl">0.75</span>,<span class="at">align_to =</span> <span class="st">'full'</span>)</span>
-<span id="cb27-274"><a href="#cb27-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-246"><a href="#cb27-246" aria-hidden="true" tabindex="-1"></a>gg<span class="ot">=</span><span class="fu">ggplot</span>(data005, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(string,n), <span class="at">y=</span>n))<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"Flavor"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Frequency"</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3200</span>))<span class="sc">+</span></span>
+<span id="cb27-247"><a href="#cb27-247" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">"#CD5C5C"</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Whisky notes Top30 most used words"</span>,<span class="at">subtitle =</span> <span class="st">"5K review"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"data source from www.whiskynote.be between 2010 to 2024"</span>)<span class="sc">+</span></span>
+<span id="cb27-248"><a href="#cb27-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inset_element</span>(img3, <span class="fl">0.66</span>, <span class="fl">0.15</span>, <span class="dv">1</span>, <span class="fl">0.75</span>,<span class="at">align_to =</span> <span class="st">'full'</span>)</span>
+<span id="cb27-249"><a href="#cb27-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-250"><a href="#cb27-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-253"><a href="#cb27-253" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-254"><a href="#cb27-254" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb27-255"><a href="#cb27-255" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb27-256"><a href="#cb27-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-257"><a href="#cb27-257" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb27-258"><a href="#cb27-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-259"><a href="#cb27-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-260"><a href="#cb27-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-261"><a href="#cb27-261" aria-hidden="true" tabindex="-1"></a><span class="fu"># chart 2 add image gglolt in chinese</span></span>
+<span id="cb27-262"><a href="#cb27-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-263"><a href="#cb27-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-266"><a href="#cb27-266" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-267"><a href="#cb27-267" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb27-268"><a href="#cb27-268" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(png)</span>
+<span id="cb27-269"><a href="#cb27-269" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb27-270"><a href="#cb27-270" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork) </span>
+<span id="cb27-271"><a href="#cb27-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-272"><a href="#cb27-272" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb27-273"><a href="#cb27-273" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>()</span>
+<span id="cb27-274"><a href="#cb27-274" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-275"><a href="#cb27-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-278"><a href="#cb27-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-279"><a href="#cb27-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
-<span id="cb27-280"><a href="#cb27-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
-<span id="cb27-281"><a href="#cb27-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-282"><a href="#cb27-282" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb27-276"><a href="#cb27-276" aria-hidden="true" tabindex="-1"></a>img2 <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(<span class="st">"cn_glass.png"</span>)</span>
+<span id="cb27-277"><a href="#cb27-277" aria-hidden="true" tabindex="-1"></a>img3<span class="ot">=</span><span class="fu">rasterGrob</span>(img2, <span class="at">width =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>), <span class="at">height =</span> <span class="fu">unit</span>(<span class="dv">1</span>,<span class="st">"npc"</span>))</span>
+<span id="cb27-278"><a href="#cb27-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-279"><a href="#cb27-279" aria-hidden="true" tabindex="-1"></a>gg<span class="ot">=</span><span class="fu">ggplot</span>(data005_cn, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(data005_cn,n), <span class="at">y=</span>n))<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"风味"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"次数"</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3200</span>))<span class="sc">+</span></span>
+<span id="cb27-280"><a href="#cb27-280" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">"#CD5C5C"</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Whisky notes Top30 风味词"</span>,<span class="at">subtitle =</span> <span class="st">"5K+ 酒评"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"数据源:www.whiskynote.be 从2010年到2024年"</span>)<span class="sc">+</span></span>
+<span id="cb27-281"><a href="#cb27-281" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inset_element</span>(img3, <span class="fl">0.65</span>, <span class="fl">0.15</span>, <span class="dv">1</span>, <span class="fl">0.75</span>,<span class="at">align_to =</span> <span class="st">'full'</span>)</span>
+<span id="cb27-282"><a href="#cb27-282" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-283"><a href="#cb27-283" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb27-284"><a href="#cb27-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-285"><a href="#cb27-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-286"><a href="#cb27-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-287"><a href="#cb27-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-288"><a href="#cb27-288" aria-hidden="true" tabindex="-1"></a><span class="fu"># resource:</span></span>
-<span id="cb27-289"><a href="#cb27-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-290"><a href="#cb27-290" aria-hidden="true" tabindex="-1"></a>https://github.com/Lchiffon/wordcloud2</span>
+<span id="cb27-287"><a href="#cb27-287" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-288"><a href="#cb27-288" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb27-289"><a href="#cb27-289" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb27-290"><a href="#cb27-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-291"><a href="#cb27-291" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb27-292"><a href="#cb27-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-293"><a href="#cb27-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-294"><a href="#cb27-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-295"><a href="#cb27-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-296"><a href="#cb27-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-297"><a href="#cb27-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-298"><a href="#cb27-298" aria-hidden="true" tabindex="-1"></a><span class="fu"># resource:</span></span>
+<span id="cb27-299"><a href="#cb27-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-300"><a href="#cb27-300" aria-hidden="true" tabindex="-1"></a>https://github.com/Lchiffon/wordcloud2</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
