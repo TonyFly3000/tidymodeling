@@ -224,8 +224,10 @@ cn_list
 
 
 ```{python}
+df003.to_excel('df003.xlsx',index=False)
 df004_cn=df003.copy()
 df004_cn['Key']=cn_list
+df004_cn.to_excel('df004_cn.xlsx',index=False)
 ```
 
 
