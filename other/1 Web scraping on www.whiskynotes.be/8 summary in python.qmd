@@ -1,5 +1,5 @@
 ---
-title: "Summary"
+title: "Summary in Python"
 subtitle: "with whiskynote.be data"
 author: "Tony Duan"
 
@@ -204,9 +204,8 @@ wordcloud.to_file('wordcloud_en.png')
 ```
 
 
-#  word cloud 2 chinese 
 
-
+# translate to chinese
 ```{python}
 #from translate import Translator
 from deep_translator import GoogleTranslator
@@ -230,6 +229,9 @@ df004_cn['Key']=cn_list
 df004_cn.to_excel('df004_cn.xlsx',index=False)
 ```
 
+
+
+#  word cloud 2 chinese 
 
 ```{python}
 d = {}
@@ -280,10 +282,8 @@ sample_img_resize.shape
 
 sample_img_resize[sample_img_resize>240] = 255
 
-#meta_mask
-#im = Image.fromarray(meta_mask)
-#im.save('myimage_1.jpg')
-#np.unique(meta_mask)
+
+#imsave("glass_new.png", sample_img_resize)
 
 ```
 
@@ -309,6 +309,7 @@ plt.show()
 
 wordcloud.to_file('wordcloud_cn_bottle.png')
 ```
+
 #  word cloud 4 English glass
 
 ```{python}
@@ -337,6 +338,8 @@ wordcloud.to_file('wordcloud_en_bottle.png')
 # Chart 1 
 
 
+using seaborn
+
 ```{python}
 plt.figure(figsize=(10, 6))
 
@@ -345,7 +348,7 @@ plt.rcParams['axes.unicode_minus'] = False #用来正常显示负号
  
 sns.set_style('whitegrid',{'font.sans-serif':['Arial Unicode MS','Arial']})
 
-ax=sns.barplot(df004_cn, x="Values", y="Key", legend=False)
+ax=sns.barplot(df004_cn, x="Values", y="Key", legend=False,orient = 'h')
 
 ax.set_title("各风味出现频率")
 ax.set(xlabel='出现次数', ylabel='风味')
@@ -356,6 +359,7 @@ plt.show()
 
 # Chart 2 combine image and seaborn
 
+using plotly
 
 ```{python}
 import plotly.express as px
@@ -369,13 +373,8 @@ fig=px.bar(df004_cn,x="Values", y="Key",orientation='h',text="Values",title="各
          }
 )
 
-# Add trace
-# fig.add_trace(
-#     go.Bar(x=df003["Values"], y=df003["Key"],orientation='h',text=df003["Values"])
-#     #go.Bar(x=[0, 50, 100, 200, 220], y=[100, 200, 420, 300, 100])
-# )
-# 
-# # Add images
+
+# Add images
 fig.add_layout_image(
         dict(
             source=pyLogo 
@@ -400,3 +399,7 @@ fig.show()
 # resource:
 
 https://medium.com/@m3redithw/wordclouds-with-python-c287887acc8b
+
+https://github.com/nidhaloff/deep-translator
+
+https://cran.r-project.org/web/packages/polyglotr/vignettes/polyglotr.html

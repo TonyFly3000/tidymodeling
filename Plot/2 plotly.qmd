@@ -107,10 +107,50 @@ fig
 # bar chart
 
 ```{r}
-fig <- plot_ly(data=tips,x = ~sex,y=~total_bill,color=~sex, type = "bar")
+tips2=tips %>% group_by(sex) %>% summarise(total_bill=sum(total_bill))
+```
+
+
+```{r}
+fig <- plot_ly(data=tips2,x = ~sex,y=~total_bill,color=~sex, type = "bar")
 
 fig
 ```
+
+## show number 
+
+```{r}
+fig <- plot_ly(data=tips2,x = ~sex,y=~total_bill,text=~total_bill, type = "bar")
+
+fig
+```
+
+## Horizontal Barplot
+
+```{r}
+fig <- plot_ly(data=tips2,y = ~sex,x=~total_bill,color=~sex, type = "bar",orientation = 'h')
+
+fig
+```
+
+
+## bar chart order
+
+```{r}
+fig <- plot_ly(data=tips2,x = ~sex,y=~total_bill,color=~sex, type = "bar")%>% 
+  layout(xaxis = list(categoryorder = "total ascending"))
+
+fig
+```
+
+
+```{r}
+fig <- plot_ly(data=tips2,x = ~sex,y=~total_bill,color=~sex, type = "bar")%>% 
+  layout(xaxis = list(categoryorder = "total descending"))
+
+fig
+```
+
 
 # box plot
 

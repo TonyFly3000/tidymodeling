@@ -139,8 +139,35 @@ ggplot(data002, aes(x=continent, y=pop)) +
 
 
 
+## bar plot order
+
+```{r}
+ggplot(data002, aes(x=reorder(continent,pop), y=pop)) +
+  geom_bar(stat="identity",fill='red')+scale_y_continuous(labels = scales::comma)+geom_text(aes(label = pop), vjust = -0.2)
+# box plot
+```
+
+```{r}
+ggplot(data002, aes(x=reorder(continent,-pop), y=pop)) +
+  geom_bar(stat="identity",fill='red')+scale_y_continuous(labels = scales::comma)+geom_text(aes(label = pop), vjust = -0.2)
+# box plot
+```
+
+## Horizontal Barplot
+
+`
+```{r}
+ggplot(data002, aes(x=reorder(continent,pop), y=pop)) +
+  geom_bar(stat="identity",fill='red')+scale_y_continuous(labels = scales::comma)+geom_text(aes(label = pop), vjust = -0.2)+coord_flip()
+# box plot
+```
+
+
+
 ## color by group
 
+
+# box plot
 
 ```{r}
 p=ggplot(tips, aes(day,tip,fill=sex)) + geom_boxplot()
@@ -241,11 +268,11 @@ p+theme(plot.title = element_text(hjust = 0.5),text = element_text(size = 30))
 
 
 ```{r}
-p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+xlab("new x name") + ylab("new y name")
 p
 ```
 
-## add chinses
+## add chinese
 
 ```{r}
 library(showtext)

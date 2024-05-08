@@ -1,0 +1,232 @@
+---
+title: "Summary in R"
+subtitle: "with whiskynote.be data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+```{r}
+#must install the package from github
+#install.packages('devtools')  
+#devtools::install_github("lchiffon/wordcloud2")  
+```
+
+```{r}
+library(tidyverse)
+library(openxlsx)
+library(readxl)
+```
+
+# read in data
+
+```{r}
+data001=read_excel('./output/all_page_bottle_list_all.xlsx')
+glimpse(data001)
+```
+
+```{r}
+
+
+data002=data001 %>% filter(as.numeric(all_page_score)>0,as.numeric(all_page_score)<100
+                       ,bottle_review_Nose !='no comment'
+                      ,bottle_review_Mouth !='no comment'
+                      ,bottle_review_Finish !='no comment'
+                           
+                           
+                           ) %>% 
+  mutate(review=paste(bottle_review_Nose,bottle_review_Mouth,bottle_review_Finish) %>% 
+                             str_to_lower() %>% str_replace_all("[[:punct:]]", "") %>% 
+                            str_replace_all('sweetness','sweet') %>% str_replace_all('apples','apple')%>% str_replace_all('oranges','orange') %>% str_replace_all('fruits','fruit')
+
+                           )
+
+reivew002=data002$review
+
+```
+
+
+```{r}
+reivew003=reivew002 %>% str_unique()
+```
+
+
+
+```{r}
+
+string <- reivew003
+
+data002=data.frame(string) %>%
+  separate_rows(string) %>%
+  count(string, sort = TRUE) %>%
+  filter(n >= 2)
+```
+
+# remove stop word
+
+```{r}
+library(tidytext)
+
+data003 <- data002 %>%
+  anti_join(stop_words, by= c("string" = "word"))
+```
+
+# remove non favour word
+
+```{r}
+
+
+data004 <- data003 %>% filter(!string %in% c('notes','hints'
+                                            ,'nose'
+                                           ,'finish'
+                                            ,'light', 'slightly', 'hint', 'nice'
+                                           ,'medium' , 'subtle', 'background','note' ,'plenty' ,'lots'
+                                           ,'mouth','bit','soft','dark')
+                                          )
+```
+
+# translate to chinese
+
+```{r}
+data005=head(data004,30)
+```
+
+
+
+```{r}
+library(gtranslate)
+#lang_codes
+
+data005_cn=translate(data005$string, from = "en", to = "zh-CN")
+
+```
+
+```{r}
+data005_cn=cbind(data005_cn,data005)
+data005_cn=data005_cn %>% select(-string)
+```
+
+
+# word cloud  1 english
+
+```{r}
+library(wordcloud2) 
+```
+
+```{r}
+my_graph_en=wordcloud2(data=data005, size=1)
+#my_graph_en
+```
+
+```{r}
+
+library(webshot2)
+library(htmlwidgets)
+
+saveWidget(my_graph_en,"tmp_en.html")#先保存为网页格式
+
+webshot("tmp_en.html", "wordcloud_en.jpg", delay = 2) ##IRIENI
+```
+
+
+# word cloud  2 chinese
+
+
+```{r}
+library(showtext)
+showtext_auto()
+par(family="PingFangSC-Regular")
+my_graph=wordcloud2(data=data005_cn,size=1)
+#my_graph
+```
+
+
+```{r}
+
+library(webshot2)
+library(htmlwidgets)
+
+saveWidget(my_graph,"tmp.html")#先保存为网页格式
+
+webshot("tmp.html", "wordcloud.jpg", delay = 2) ##IRIENI
+```
+
+# chart 1 with gglolt
+```{r}
+library(ggplot2) 
+ggplot(data005, aes(x=reorder(string,n), y=n)) +geom_text(aes(label = n), hjust = -0.1)+ ylim(min=0, 5000)+
+  geom_bar(stat="identity")+coord_flip()
+```
+
+# chart 2 add image gglolt
+
+
+```{r}
+  
+library(ggplot2) 
+library(png)
+library(grid)
+library(patchwork) 
+
+
+img2 <- readPNG("en_glass.png")
+img3=rasterGrob(img2, width = unit(1,"npc"), height = unit(1,"npc"))
+
+gg=ggplot(data005, aes(x=reorder(string,n), y=n))+theme_classic()+geom_text(aes(label = n), hjust = -0.1)+ ylim(min=0, 5000)+xlab("Flavor") + ylab("Frequency")+
+  geom_bar(stat="identity",fill="#CD5C5C")+coord_flip()+ggtitle("Whisky notes Top30 most used words",subtitle = "5K review")+labs(caption = "data source from www.whiskynote.be between 2010 to 2024")+
+  inset_element(img3, 0.65, 0.15, 1, 0.75,align_to = 'full')
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 7
+
+gg
+```
+
+
+# chart 2 add image gglolt in chinese
+
+
+```{r}
+  
+library(ggplot2) 
+library(png)
+library(grid)
+library(patchwork) 
+
+
+img2 <- readPNG("cn_glass.png")
+img3=rasterGrob(img2, width = unit(1,"npc"), height = unit(1,"npc"))
+
+gg=ggplot(data005_cn, aes(x=reorder(data005_cn,n), y=n))+theme_classic()+geom_text(aes(label = n), hjust = -0.1)+ ylim(min=0, 5000)+xlab("风味") + ylab("次数")+
+  geom_bar(stat="identity",fill="#CD5C5C")+coord_flip()+ggtitle("Whisky notes Top30 风味词",subtitle = "5K+ 酒评")+labs(caption = "数据源:www.whiskynote.be 2010年-2024年")+
+  inset_element(img3, 0.65, 0.15, 1, 0.75,align_to = 'full')
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 7
+
+gg
+```
+
+
+
+
+# resource:
+
+https://github.com/Lchiffon/wordcloud2
