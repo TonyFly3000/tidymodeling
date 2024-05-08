@@ -1,0 +1,55 @@
+---
+title: "map"
+subtitle: "with leaflet"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+---
+
+# data
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(jsonlite)
+library(curl)
+library(lubridate)
+library(plotly)
+library(ggplot2)
+library(openxlsx)
+library(readxl)
+library(leaflet)
+```
+
+
+```{r}
+
+
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+m  # Print the map
+```
+
+
+
+
+# resouce:
+
+
+https://rstudio.github.io/leaflet/
+

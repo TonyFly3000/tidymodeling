@@ -1,0 +1,400 @@
+---
+title: "Summary"
+subtitle: "with whiskynote.be data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+```{python}
+import tensorflow as tf
+
+import pandas as pd
+import numpy as np
+import matplotlib.pylab as plt
+import seaborn as sns
+
+from siuba.siu import call
+from siuba import _, mutate, filter, group_by, summarize,show_query
+from siuba import *
+
+from siuba.data import mtcars,penguins
+```
+
+# read in data
+
+```{python}
+import pandas as pd
+data=pd.read_excel('./output/all_page_bottle_list_all.xlsx')
+```
+
+```{python}
+list(data)
+```
+
+```{python}
+data.info()
+```
+
+```{python}
+import re
+data001=data>> filter(_.all_page_score >0
+                      ,_.all_page_score <100
+                      ,_.bottle_review_Nose !='no comment'
+                      ,_.bottle_review_Mouth !='no comment'
+                      ,_.bottle_review_Finish !='no comment'
+                      ) >>mutate(
+                      review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish
+                      )>>mutate(review=_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))>>mutate(review_len=_.review.str.count(' ') + 1)
+                      
+                      
+                      
+```
+
+```{python}
+data001['review_flag']= np.where(data001['all_page_score']>=90, 1, 0)
+```
+
+# shuffle data
+
+```{python}
+data002=data001.sample(frac=1)
+```
+
+```{python}
+data002.to_excel('data002.xlsx')
+```
+
+```{python}
+data002.info()
+```
+
+# Removing stop words with SkLearn
+
+```{python}
+import nltk
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+nltk.download('stopwords')
+
+```
+
+```{python}
+from stop_words import get_stop_words
+from nltk.corpus import stopwords
+
+stop_words = list(get_stop_words('en'))         #About 900 stopwords
+nltk_words = list(stopwords.words('english')) #About 150 stopwords
+stop_words.extend(nltk_words)
+
+```
+
+```{python}
+from nltk.corpus import stopwords
+import string
+
+review=data002["review"]
+#stop_words = set(stopwords.words("english"))
+exclude = set(string.punctuation)
+
+def remove_stopwords(data):
+    output_array=[]
+    for sentence in data:
+        temp_list=[]
+        for word in sentence.split():
+            if word.lower() not in stop_words and word.lower() not in exclude :
+                temp_list.append(word)
+        output_array.append(' '.join(temp_list))
+    return output_array
+
+review_remove_stop_word=remove_stopwords(review)
+```
+
+
+
+```{python}
+temp_list=[]
+for sentence in review_remove_stop_word:
+        for word in sentence.split():
+          temp_list.append(word)
+```
+
+```{python}
+from collections import Counter
+counts = Counter(temp_list)
+df = pd.DataFrame(list(counts.items()), columns=['Key', 'Values'])
+```
+
+```{python}
+df.to_excel('res.xlsx')
+```
+
+```{python}
+df002=df>>arrange(-_.Values) >>filter(_.Key!='notes'
+,_.Key!='well'
+,_.Key!='long'
+,_.Key!='quite'
+,_.Key!='hints'
+,_.Key!='hint'
+,_.Key!='light'
+,_.Key!='little'
+,_.Key!='slightly'
+,_.Key!='nice'
+,_.Key!='still'
+,_.Key!='medium'
+,_.Key!='subtle'
+,_.Key!='rather'
+,_.Key!='note'
+,_.Key!='also'
+,_.Key!='there’s'
+,_.Key!='background'
+,_.Key!='end'
+,_.Key!='side'
+,_.Key!='plenty'
+,_.Key!='towards'
+,_.Key!='bit'
+,_.Key!='dark'
+,_.Key!='really'
+,_.Key!='even'
+,_.Key!='like'
+,_.Key!='it’s'
+)
+
+df003=df002[0:30]
+```
+
+# Word cloud 1 from data frame english
+
+```{python}
+d = {}
+for a, x in df003.values:
+    d[a] = x
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+wordcloud = WordCloud(background_color = "#FFFFFF", contour_width = 2,
+     contour_color = '#FFFFFF')
+wordcloud.generate_from_frequencies(frequencies=d)
+plt.figure()
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+
+wordcloud.to_file('wordcloud_en.png')
+```
+
+
+#  word cloud 2 chinese 
+
+
+```{python}
+#from translate import Translator
+from deep_translator import GoogleTranslator
+
+en=df003['Key'].tolist()
+
+
+cn_list=[]
+for word in en:
+  result = GoogleTranslator(source='auto', target='zh-CN').translate(word) 
+  cn_list.append(result)
+  
+cn_list
+```
+
+
+```{python}
+df004_cn=df003.copy()
+df004_cn['Key']=cn_list
+```
+
+
+```{python}
+d = {}
+for a, x in df004_cn.values:
+    d[a] = x
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+wordcloud = WordCloud(font_path='simfang.ttf',background_color = "#FFFFFF", contour_width = 2,
+     contour_color = '#FFFFFF')
+wordcloud.generate_from_frequencies(frequencies=d)
+plt.figure()
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+wordcloud.to_file('wordcloud_cn.png')
+```
+
+
+#  word cloud 3 chinese glass
+
+```{python}
+import cv2
+
+from siuba.siu import call
+from siuba import _, mutate, filter, group_by, summarize,show_query
+from siuba import *
+import numpy as np
+from sklearn.cluster import KMeans
+from skimage.io import imread, imsave
+from skimage import util, data, transform
+from skimage.transform import rescale, resize, downscale_local_mean
+
+
+sample_img = imread('Glencairn.png')
+sample_img_resize=util.img_as_ubyte(transform.rescale(sample_img, 3))
+sample_img.shape
+
+sample_img_resize.shape
+```
+
+
+```{python}
+#image = Image.open('glass.png')
+#new_image = image.resize((3000, 3000))
+#meta_mask = np.array(new_image)
+
+sample_img_resize[sample_img_resize>240] = 255
+
+#meta_mask
+#im = Image.fromarray(meta_mask)
+#im.save('myimage_1.jpg')
+#np.unique(meta_mask)
+
+```
+
+
+```{python}
+d = {}
+for a, x in df004_cn.values:
+    d[a] = x
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+wordcloud = WordCloud(font_path='simfang.ttf',background_color = "white", contour_width = 2,mask = sample_img_resize)
+
+
+
+wordcloud.generate_from_frequencies(frequencies=d)
+
+plt.figure()
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+
+wordcloud.to_file('wordcloud_cn_bottle.png')
+```
+#  word cloud 4 English glass
+
+```{python}
+d = {}
+for a, x in df003.values:
+    d[a] = x
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+wordcloud = WordCloud(font_path='simfang.ttf',background_color = "white", contour_width = 2,mask = sample_img_resize)
+
+
+
+wordcloud.generate_from_frequencies(frequencies=d)
+
+plt.figure()
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+
+wordcloud.to_file('wordcloud_en_bottle.png')
+```
+
+
+# Chart 1 
+
+
+```{python}
+plt.figure(figsize=(10, 6))
+
+plt.rcParams['font.family'] = ['Arial Unicode MS'] #用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False #用来正常显示负号
+ 
+sns.set_style('whitegrid',{'font.sans-serif':['Arial Unicode MS','Arial']})
+
+ax=sns.barplot(df004_cn, x="Values", y="Key", legend=False)
+
+ax.set_title("各风味出现频率")
+ax.set(xlabel='出现次数', ylabel='风味')
+for i in ax.containers:
+    ax.bar_label(i,)
+plt.show()
+```
+
+# Chart 2 combine image and seaborn
+
+
+```{python}
+import plotly.express as px
+from PIL import Image
+pyLogo = Image.open("en_glass.png")
+
+
+fig=px.bar(df004_cn,x="Values", y="Key",orientation='h',text="Values",title="各风味出现频率"
+,labels={"Values": "出现次数",
+         "Key": "风味"
+         }
+)
+
+# Add trace
+# fig.add_trace(
+#     go.Bar(x=df003["Values"], y=df003["Key"],orientation='h',text=df003["Values"])
+#     #go.Bar(x=[0, 50, 100, 200, 220], y=[100, 200, 420, 300, 100])
+# )
+# 
+# # Add images
+fig.add_layout_image(
+        dict(
+            source=pyLogo 
+            ,x=0.6
+            ,y=0.8
+            ,sizex=1
+            ,sizey=0.8
+            #,sizing="stretch"
+            ,opacity=0.8
+            ,layer="above")
+)
+
+# # Set templates
+fig.update_layout(template="plotly_white")
+fig.update_layout(yaxis=dict(autorange="reversed"),height=600)
+
+
+fig.show()
+```
+
+
+# resource:
+
+https://medium.com/@m3redithw/wordclouds-with-python-c287887acc8b

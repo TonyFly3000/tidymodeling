@@ -6272,7 +6272,7 @@
     "href": "Plot/1 ggplot2.html",
     "title": "ggplot2 in R",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(gapminder)\nlibrary(ggpubr)\nlibrary(ggthemr)\n\nlibrary(ggplot2)\nlibrary(plotly)\npackageVersion(\"ggplot2\")\n\n\n[1] '3.5.0'\nCode\nlibrary(reshape2)\ntips=tips\nhead(tips)\n\n\n  total_bill  tip    sex smoker day   time size\n1      16.99 1.01 Female     No Sun Dinner    2\n2      10.34 1.66   Male     No Sun Dinner    3\n3      21.01 3.50   Male     No Sun Dinner    3\n4      23.68 3.31   Male     No Sun Dinner    2\n5      24.59 3.61 Female     No Sun Dinner    4\n6      25.29 4.71   Male     No Sun Dinner    4\nCode\ndata001=gapminder\nhead(data001)\n\n\n# A tibble: 6 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740.\n6 Afghanistan Asia       1977    38.4 14880372      786.",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(gapminder)\nlibrary(ggpubr)\nlibrary(ggthemr)\n\nlibrary(ggplot2)\nlibrary(plotly)\npackageVersion(\"ggplot2\")\n\n\n[1] '3.5.1'\nCode\nlibrary(reshape2)\ntips=tips\nhead(tips)\n\n\n  total_bill  tip    sex smoker day   time size\n1      16.99 1.01 Female     No Sun Dinner    2\n2      10.34 1.66   Male     No Sun Dinner    3\n3      21.01 3.50   Male     No Sun Dinner    3\n4      23.68 3.31   Male     No Sun Dinner    2\n5      24.59 3.61 Female     No Sun Dinner    4\n6      25.29 4.71   Male     No Sun Dinner    4\nCode\ndata001=gapminder\nhead(data001)\n\n\n# A tibble: 6 × 6\n  country     continent  year lifeExp      pop gdpPercap\n  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 Afghanistan Asia       1952    28.8  8425333      779.\n2 Afghanistan Asia       1957    30.3  9240934      821.\n3 Afghanistan Asia       1962    32.0 10267083      853.\n4 Afghanistan Asia       1967    34.0 11537966      836.\n5 Afghanistan Asia       1972    36.1 13079460      740.\n6 Afghanistan Asia       1977    38.4 14880372      786.",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -6381,8 +6381,8 @@
     "objectID": "Plot/1 ggplot2.html#change-x-y-name",
     "href": "Plot/1 ggplot2.html#change-x-y-name",
     "title": "ggplot2 in R",
-    "section": "6.5 change x y name",
-    "text": "6.5 change x y name\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np",
+    "section": "6.6 change x y name",
+    "text": "6.6 change x y name\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8036,7 +8036,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/4 whiskynote all year page.html",
     "title": "All year page",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 loop all year page\n\n\nCode\nyear_list=seq(2010,2024)\nyear_list\n\n\n\n\nCode\nurl_list=paste0('https://www.whiskynotes.be/',year_list)\nurl_list\n\n\n\n\nCode\nbottle_list=c()\ntopic_list=c()\ntopic_link_list=c()\nall_year_list_topic=c()\nall_year_list_bottle=c()\n\nfor (i in url_list){\n  year=tail(unlist(strsplit(i, split = \"/\")),1)\n  print(year)\n  print(i)\n  year_ur=i\n  year_page &lt;- read_html(year_ur)\n  bottle001 &lt;- year_page %&gt;% html_elements(\"p\")%&gt;% html_text2()\n  bottle003=unlist(strsplit(bottle001,\"\\n\"))\n  \n  \n  topic001 &lt;- year_page %&gt;% html_elements(\".archive-link\") %&gt;% html_text2()\n  topic_link_001 &lt;- year_page %&gt;%\n    html_elements(css = \".entry-permalink\")%&gt;% html_attr(\"href\")\n\n  year_list_topic=rep(year,length(topic001))\n  year_list_bottle=rep(year,length(bottle003))\n  \n  all_year_list_topic=c(all_year_list_topic,year_list_topic)\n  all_year_list_bottle=c(all_year_list_bottle,year_list_bottle)\n  \n  bottle_list=c(bottle_list,bottle003)\n  topic_list=c(topic_list,topic001)\n  topic_link_list=c(topic_link_list,topic_link_001)\n  \n  Sys.sleep(1)\n  }\n\n\n\n\n2 combine\n\n\nCode\ndata=tibble(topic_list,topic_link_list,all_year_list_topic)\n\n\n\n\nCode\nbottle003=tibble(bottle_list,all_year_list_bottle)\n\n\n\n\n3 output\n\n\nCode\nlibrary(openxlsx)\nlist_of_datasets &lt;- list(\"topic\" = data, \"bottle\" = bottle003)\n\nwrite.xlsx(list_of_datasets, file = \"./output/all year page.xlsx\")\n\n\n\n\n4 reference:\n\n\n\n\n\n\n Back to top",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 loop all year page\n\n\nCode\nyear_list=seq(2010,2024)\nyear_list\n\n\n\n\nCode\nurl_list=paste0('https://www.whiskynotes.be/',year_list)\nurl_list\n\n\n\n\nCode\nbottle_list=c()\ntopic_list=c()\ntopic_link_list=c()\nall_year_list_topic=c()\nall_year_list_bottle=c()\n\nfor (i in url_list){\n  year=tail(unlist(strsplit(i, split = \"/\")),1)\n  print(year)\n  print(i)\n  year_ur=i\n  year_page &lt;- read_html(year_ur)\n  bottle001 &lt;- year_page %&gt;% html_elements(\"p\")%&gt;% html_text2()\n  bottle003=unlist(strsplit(bottle001,\"\\n\"))\n  \n  \n  topic001 &lt;- year_page %&gt;% html_elements(\".archive-link\") %&gt;% html_text2()\n  topic_link_001 &lt;- year_page %&gt;%\n    html_elements(css = \".entry-permalink\")%&gt;% html_attr(\"href\")\n\n  year_list_topic=rep(year,length(topic001))\n  year_list_bottle=rep(year,length(bottle003))\n  \n  all_year_list_topic=c(all_year_list_topic,year_list_topic)\n  all_year_list_bottle=c(all_year_list_bottle,year_list_bottle)\n  \n  bottle_list=c(bottle_list,bottle003)\n  topic_list=c(topic_list,topic001)\n  topic_link_list=c(topic_link_list,topic_link_001)\n  \n  Sys.sleep(1)\n  }\n\n\n\n\n2 combine\n\n\nCode\ndata=tibble(topic_list,topic_link_list,all_year_list_topic)\n\n\n\n\nCode\n#bottle003=tibble(bottle_list,all_year_list_bottle)\n\n\n\n\n3 output\n\n\nCode\nlibrary(openxlsx)\nlist_of_datasets &lt;- list(\"topic\" = data)\n\nwrite.xlsx(list_of_datasets, file = \"./output/all year page.xlsx\")\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8130,7 +8130,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/5 web scraping with rvest all first time.html",
     "title": "All year all topic first time",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\n\n\n\n1 one page function\n\n\nCode\none_page_function &lt;- function(review_url){\n  #review_url='https://www.whiskynotes.be/2010/bowmore/bowmore-9y-1997-cigar-malt/'\n  \n #review_url= 'https://www.whiskynotes.be/2020/laphroaig/williamson-2010-the-whisky-jury/'\n  \n  print(review_url)\n  review_page &lt;- read_html(review_url)\n\n  page_class=review_page  %&gt;% html_elements(\".cat-links a\") %&gt;% html_text2()\n  page_class=str_flatten(page_class,collapse = \"-\")\n  \n  bottle_name=review_page  %&gt;% html_elements(\".entry-content h2\") %&gt;% html_text2()\n  # remove empty\n  bottle_name=bottle_name[nzchar(bottle_name)]\n  # remove space element\n  bottle_name=bottle_name[nchar(bottle_name)&gt;2]\n  \n  \n  # remove ? mark non bottle name element\n  bottle_name=bottle_name[!bottle_name%&gt;% str_detect(\"\\\\?\")]\n  # remove Drams Delivered revisited  non bottle name element\n  bottle_name=bottle_name[ !bottle_name == 'Drams Delivered revisited']\n  print(bottle_name) \n  \n  bottle_review_raw=review_page  %&gt;% html_elements(\"p\") %&gt;% html_text()\n  bottle_review=unlist(strsplit(bottle_review_raw,\"(?= Nose: )\",perl = TRUE))\n  bottle_review=unlist(strsplit(bottle_review,\"(?= Mouth: )\",perl = TRUE))\n   bottle_review=unlist(strsplit(bottle_review,\"(?= Finish: )\",perl = TRUE))\n  \n  bottle_review_Nose=bottle_review[bottle_review %&gt;% str_detect('Nose:|Attractive nose:')]\n  bottle_review_Nose=bottle_review_Nose[nzchar(bottle_review_Nose)]\n\n  bottle_review_Mouth=bottle_review[bottle_review %&gt;% str_detect('Mouth:')]\n  bottle_review_Mouth=bottle_review_Mouth[nzchar(bottle_review_Mouth)]\n\n  bottle_review_Finish=bottle_review[bottle_review %&gt;% str_detect('Finish:')]\n  bottle_review_Finish=bottle_review_Finish[nzchar(bottle_review_Finish)]\n  \n  ########### add dummy score if there is no score review #########\n  # bottle_review_Finish_score=bottle_review[bottle_review %&gt;% str_detect('Finish:|Score:')][-1]\n \n  # # bottle_review_Finish_score2=bottle_review_Finish_score\n  \n  \n  # order=1\n  # for (word in bottle_review_Finish_score){\n  #   print(word)\n  #   print(order)\n  #   print(order%%2)\n  #   print(word %&gt;% str_detect('Score:'))\n  #   print(order%%2==0 & word %&gt;% str_detect('Score:')==FALSE)\n  #   if (order%%2==0 & word %&gt;% str_detect('Score:')==FALSE){\n  #     print('adding add dummy score if there is no score review ')\n  #     bottle_review_Finish_score2=append(bottle_review_Finish_score2,'Score:00/100',order-1)\n  #   }else{\n  #   }\n  #   order=order+1\n  #   }\n################################################\n    \n#\"^[:digit:]+$\" \n################# score  \n  first_bottle_score=review_page  %&gt;% html_elements(\".entry-score\") %&gt;% html_text2()\n\n  bottle_score=review_page  %&gt;% html_elements(\"strong\") %&gt;% html_text2()\n  \n  bottle_score2=bottle_score %&gt;% str_remove(\"100\")%&gt;% str_remove(\"/\") %&gt;% str_remove(\"/100.\") %&gt;% str_remove(\"/100\")%&gt;% str_remove(\"Score:\")%&gt;%str_trim() %&gt;%  str_match(\"^[0-9]{2}$\") %&gt;% as.data.frame() %&gt;% filter(is.na(V1)==FALSE)\n  \n  bottle_score2=bottle_score2 %&gt;% mutate(V1=str_replace(V1,'/100',''))%&gt;% rename(all_page_score=V1) \n\n# if no other score then use first score\n  if(identical(bottle_score, character(0))==TRUE|nrow(bottle_score2)==0){\n    all_page_score=first_bottle_score %&gt;% tibble()%&gt;% rename(all_page_score='.') \n    \n# if no first score then use other score\n  }else if (identical(first_bottle_score, character(0))==TRUE){\n    all_page_score=bottle_score2\n    \n# the other score have same length as bottle.aka the first score appear twices\n    \n  }else if (nrow(bottle_score2)==length(bottle_review_Nose)){\n    all_page_score=bottle_score2\n    \n# if both have first score and other score then combine    \n  }else{\n  #bottle_score=bottle_score %&gt;% str_match('[0-9][0-9]') %&gt;% as.data.frame() %&gt;% filter(is.na(V1)==FALSE)\n  all_page_score=rbind(first_bottle_score,bottle_score2)\n  }\n##############################\n  page_published_date=review_page  %&gt;% html_elements(\".published\") %&gt;% html_text2()\n\n\n  page_title=review_page  %&gt;% html_elements(\".entry-title\") %&gt;% html_text2()\n  \n  if(nrow(all_page_score)!=length(bottle_name)){all_page_score=0}\n  if(length(bottle_review_Nose)!=length(bottle_name)){bottle_review_Nose='no comment'}\n  if(length(bottle_review_Mouth)!=length(bottle_name)){bottle_review_Mouth='no comment'}\n  if(length(bottle_review_Finish)!=length(bottle_name)){bottle_review_Finish='no comment'}\n  \n  \n  \n  one_page_review=tibble(bottle_name,bottle_review_Nose,bottle_review_Mouth,bottle_review_Finish,all_page_score,page_class,page_published_date,page_title,review_url) \n  \n\n  Sys.sleep(runif(n=1, min=0.1, max=0.8))\n  #print(one_page_review)\n  print(dim(one_page_review))\n  #remove(review_page)\n  return(one_page_review)\n}\n\n\n\n\n2 read in all link\n\n\nCode\nlibrary(readxl)\ntopic_link=read_excel('./output/all year page2.xlsx',sheet='topic')\n\n\n\n\nCode\nglimpse(topic_link)\n\n\nexclude news\n\n\nCode\nnews=topic_link$topic_link_list %&gt;% str_detect('/whisky-news/')\n\n\n\n\nCode\ntopic_link002=topic_link$topic_link_list[!news]\n\n\n\n\nCode\nlength(topic_link002)\n\n\n\n\n3 start downlaod all page on first first try\n\n\nCode\n#test=one_page_function('https://www.whiskynotes.be/2020/irish-whiskey/teeling-1996-fill-your-own-teeling-chinkapin-oak-single-pot-still-distillery-exclusive/')%&gt;% mutate(loop_num=3)\n\n\n\n\nCode\nsink(\"log3.txt\", append=FALSE, split=TRUE)  # for screen and log\n\nlibrary(openxlsx)\n\npage=topic_link002\n\n\nall_page_review_list=data.frame()\n\nstart_time=Sys.time()\nprint(paste0(\"Start time: \", start_time))\n\nloop_num=0\n\nfor (i in page){\n   tryCatch({\n#############################     \n   loop_num=loop_num+1\n   print(paste0(\"################ Running loop No.\",which(page==i)))\n         \n   print(paste0(\"current time: \", Sys.time()))\n   \n   output=one_page_function(i) %&gt;% mutate(loop_num=loop_num)\n\n   all_page_review_list=rbind(all_page_review_list,output)\n   \n   print(paste0(\"Used time: \", Sys.time()-start_time))\n   # ouput every 20 page\n   if (loop_num%%20==0){\n      print(paste0(\"############################## output to excel: \", loop_num))\n      write.xlsx(all_page_review_list,'./output/all_page_bottle_list3.xlsx')\n     }\n    \n   \n#############################        \n    }, error=function(e){cat(\"ERROR :\",conditionMessage(e), \"\\n\")})\n}\n\nend_time=Sys.time()\nprint(paste0(\"End time: \", end_time))\nprint(paste0(\"total used time: \", end_time-start_time))\n\nwrite.xlsx(all_page_review_list,'./output/all_page_bottle_list3.xlsx')\n\nsink()\n\n\n\n\n\n\n\n\n Back to top",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\n\n\n\n1 one page function\n\n\nCode\nsource('one_page.r')\n\n\n\n\n2 read in all link\n\n\nCode\nlibrary(readxl)\ntopic_link=read_excel('./output/all year page2.xlsx',sheet='topic')\n\n\n\n\nCode\nglimpse(topic_link)\n\n\nexclude news\n\n\nCode\nnews=topic_link$topic_link_list %&gt;% str_detect('/whisky-news/')\n\n\n\n\nCode\ntopic_link002=topic_link$topic_link_list[!news]\n\n\n\n\nCode\nlength(topic_link002)\n\n\n\n\n3 start downlaod all page on first first try\n\n\nCode\n#test=one_page_function('https://www.whiskynotes.be/2020/irish-whiskey/teeling-1996-fill-your-own-teeling-chinkapin-oak-single-pot-still-distillery-exclusive/')%&gt;% mutate(loop_num=3)\n\n\n\n\nCode\nsink(\"log3.txt\", append=FALSE, split=TRUE)  # for screen and log\n\nlibrary(openxlsx)\n\npage=topic_link002\n\n\nall_page_review_list=data.frame()\n\nstart_time=Sys.time()\nprint(paste0(\"Start time: \", start_time))\n\nloop_num=0\n\nfor (i in page){\n   tryCatch({\n#############################     \n   loop_num=loop_num+1\n   print(paste0(\"################ Running loop No.\",which(page==i)))\n         \n   print(paste0(\"current time: \", Sys.time()))\n   \n   output=one_page_function(i) %&gt;% mutate(loop_num=loop_num)\n\n   all_page_review_list=rbind(all_page_review_list,output)\n   \n   print(paste0(\"Used time: \", Sys.time()-start_time))\n   # ouput every 20 page\n   if (loop_num%%20==0){\n      print(paste0(\"############################## output to excel: \", loop_num))\n      write.xlsx(all_page_review_list,'./output/all_page_bottle_list3.xlsx')\n     }\n    \n   \n#############################        \n    }, error=function(e){cat(\"ERROR :\",conditionMessage(e), \"\\n\")})\n}\n\nend_time=Sys.time()\nprint(paste0(\"End time: \", end_time))\nprint(paste0(\"total used time: \", end_time-start_time))\n\nwrite.xlsx(all_page_review_list,'./output/all_page_bottle_list3.xlsx')\n\nsink()\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8142,7 +8142,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/6 web scraping with rvest all second time.html",
     "title": "All year all topic second time",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\n\n\n\n1 one page function\n\n\nCode\none_page_function &lt;- function(review_url){\n  #review_url='https://www.whiskynotes.be/2010/bowmore/bowmore-9y-1997-cigar-malt/'\n  \n #review_url= 'https://www.whiskynotes.be/2013/whisky-bars/whisky-bar-oishii-hasselt/'\n  \n  print(review_url)\n  review_page &lt;- read_html(review_url)\n\n  page_class=review_page  %&gt;% html_elements(\".cat-links a\") %&gt;% html_text2()\n  page_class=str_flatten(page_class,collapse = \"-\")\n  \n  bottle_name=review_page  %&gt;% html_elements(\".entry-content h2\") %&gt;% html_text2()\n  # remove empty\n  bottle_name=bottle_name[nzchar(bottle_name)]\n  # remove space element\n  bottle_name=bottle_name[nchar(bottle_name)&gt;2]\n  \n  \n  # remove ? mark non bottle name element\n  bottle_name=bottle_name[!bottle_name%&gt;% str_detect(\"\\\\?\")]\n  # remove Drams Delivered revisited  non bottle name element\n  bottle_name=bottle_name[ !bottle_name == 'Drams Delivered revisited']\n  print(bottle_name) \n  \n  bottle_review_raw=review_page  %&gt;% html_elements(\"p\") %&gt;% html_text()\n  bottle_review=unlist(strsplit(bottle_review_raw,\"(?= Nose: )\",perl = TRUE))\n  bottle_review=unlist(strsplit(bottle_review,\"(?= Mouth: )\",perl = TRUE))\n   bottle_review=unlist(strsplit(bottle_review,\"(?= Finish: )\",perl = TRUE))\n  \n  bottle_review_Nose=bottle_review[bottle_review %&gt;% str_detect('Nose:|Attractive nose:')]\n  bottle_review_Nose=bottle_review_Nose[nzchar(bottle_review_Nose)]\n\n  bottle_review_Mouth=bottle_review[bottle_review %&gt;% str_detect('Mouth:')]\n  bottle_review_Mouth=bottle_review_Mouth[nzchar(bottle_review_Mouth)]\n\n  bottle_review_Finish=bottle_review[bottle_review %&gt;% str_detect('Finish:')]\n  bottle_review_Finish=bottle_review_Finish[nzchar(bottle_review_Finish)]\n  \n  ########### add dummy score if there is no score review #########\n  # bottle_review_Finish_score=bottle_review[bottle_review %&gt;% str_detect('Finish:|Score:')][-1]\n \n  # # bottle_review_Finish_score2=bottle_review_Finish_score\n  \n  \n  # order=1\n  # for (word in bottle_review_Finish_score){\n  #   print(word)\n  #   print(order)\n  #   print(order%%2)\n  #   print(word %&gt;% str_detect('Score:'))\n  #   print(order%%2==0 & word %&gt;% str_detect('Score:')==FALSE)\n  #   if (order%%2==0 & word %&gt;% str_detect('Score:')==FALSE){\n  #     print('adding add dummy score if there is no score review ')\n  #     bottle_review_Finish_score2=append(bottle_review_Finish_score2,'Score:00/100',order-1)\n  #   }else{\n  #   }\n  #   order=order+1\n  #   }\n################################################\n    \n#\"^[:digit:]+$\" \n################# score  \n  first_bottle_score=review_page  %&gt;% html_elements(\".entry-score\") %&gt;% html_text2()\n\n  bottle_score=review_page  %&gt;% html_elements(\"strong\") %&gt;% html_text2()\n  \n  bottle_score2=bottle_score %&gt;% str_remove(\"100\")%&gt;% str_remove(\"/\") %&gt;% str_remove(\"/100.\") %&gt;% str_remove(\"/100\")%&gt;% str_remove(\"Score:\")%&gt;%str_trim() %&gt;%  str_match(\"^[0-9]{2}$\") %&gt;% as.data.frame() %&gt;% filter(is.na(V1)==FALSE)\n  \n  bottle_score2=bottle_score2 %&gt;% mutate(V1=str_replace(V1,'/100',''))%&gt;% rename(all_page_score=V1) \n\n# if no other score then use first score\n  if(identical(bottle_score, character(0))==TRUE|nrow(bottle_score2)==0){\n    all_page_score=first_bottle_score %&gt;% tibble()%&gt;% rename(all_page_score='.') \n    \n# if no first score then use other score\n  }else if (identical(first_bottle_score, character(0))==TRUE){\n    all_page_score=bottle_score2\n    \n# the other score have same length as bottle.aka the first score appear twices\n    \n  }else if (nrow(bottle_score2)==length(bottle_review_Nose)){\n    all_page_score=bottle_score2\n    \n# if both have first score and other score then combine    \n  }else{\n  #bottle_score=bottle_score %&gt;% str_match('[0-9][0-9]') %&gt;% as.data.frame() %&gt;% filter(is.na(V1)==FALSE)\n  all_page_score=rbind(first_bottle_score,bottle_score2)\n  }\n##############################\n  page_published_date=review_page  %&gt;% html_elements(\".published\") %&gt;% html_text2()\n\n\n  page_title=review_page  %&gt;% html_elements(\".entry-title\") %&gt;% html_text2()\n  \n  if(nrow(all_page_score)!=length(bottle_name)){all_page_score=0}\n  if(length(bottle_review_Nose)!=length(bottle_name)){bottle_review_Nose='no comment'}\n  if(length(bottle_review_Mouth)!=length(bottle_name)){bottle_review_Mouth='no comment'}\n  if(length(bottle_review_Finish)!=length(bottle_name)){bottle_review_Finish='no comment'}\n  \n  \n  \n  one_page_review=tibble(bottle_name,bottle_review_Nose,bottle_review_Mouth,bottle_review_Finish,all_page_score,page_class,page_published_date,page_title,review_url) \n  \n\n  Sys.sleep(runif(n=1, min=0.1, max=0.8))\n  #print(one_page_review)\n  print(dim(one_page_review))\n  #remove(review_page)\n  return(one_page_review)\n}\n\n\n\n\n2 read in all link\n\n\nCode\nlibrary(readxl)\ntopic_link=read_excel('./output/all year page.xlsx',sheet='topic')\n\n\n\n\nCode\nglimpse(topic_link)\n\n\nexclude news\n\n\nCode\nnews=topic_link$topic_link_list %&gt;% str_detect('whisky-news|whisky-bar')\n\n\n\n\nCode\ntopic_link002=topic_link$topic_link_list[!news]\n\n\nexclude no score page:\n\n\nCode\nno_score_page=c(\n\"https://www.whiskynotes.be/2011/blends/bloggers-blend-masterofmalt/\"         \n,\"https://www.whiskynotes.be/2012/glenfarclas/glenfarclas-1968-mytribute-5241/\"\n,\"https://www.whiskynotes.be/2012/ancnoc/ancnoc-distillery-visit/\"             \n,\"https://www.whiskynotes.be/2012/distillery-visits/old-pulteney/\"             \n,\"https://www.whiskynotes.be/2013/blends/cutty-sark-storm-appletiser/\"         \n,\"https://www.whiskynotes.be/2013/glenfarclas/glenfarclas-verticale/\"  \n)\n\n\n\n\n3 read in donload page:\n\n\nCode\nfinish_download=read_excel('./output/all_page_bottle_list_all.xlsx')\n\n\n\n\nCode\nfinish_download_topic_link=unique(finish_download$review_url)\n\n\n\n\nCode\nlength(finish_download_topic_link)\n\n\n\n\nCode\nnon_finish_link=topic_link002 [! topic_link002 %in% c(finish_download_topic_link,no_score_page)]\n\n\n\n\nCode\nlength(non_finish_link)\n\n\n\n\n4 download non download page:\n\n\nCode\nlibrary(openxlsx)\npage=non_finish_link\n\nall_page_review_list=data.frame()\n\nstart_time=Sys.time()\nprint(paste0(\"Start time: \", start_time))\n\nloop_num=0\n\nfor (i in page){\n   tryCatch({\n#############################     \n   loop_num=loop_num+1\n   print(paste0(\"Running loop No.\",which(page==i)))\n         \n   print(paste0(\"current time: \", Sys.time()))\n   \n   output=one_page_function(i) %&gt;% mutate(loop_num=loop_num)\n\n   all_page_review_list=rbind(all_page_review_list,output)\n   \n   \n   print(paste0(\"Used time: \", Sys.time()-start_time))\n   # ouput every 20 page\n   if (loop_num%%20==0){\n      print(paste0(\"#########################. output to excel: \", loop_num))\n      all_page_review_list_total=rbind(finish_download,all_page_review_list)\n      write.xlsx(all_page_review_list_total,'./output/all_page_bottle_list_v2.xlsx')\n     }\n    \n   \n#############################        \n    }, error=function(e){cat(\"ERROR :\",conditionMessage(e), \"\\n\")})\n}\n\nend_time=Sys.time()\nprint(paste0(\"End time: \", end_time))\nprint(paste0(\"total used time: \", end_time-start_time))\n\n\noutput=one_page_function(i) %&gt;% mutate(loop_num=loop_num)\n\nall_page_review_list=rbind(all_page_review_list,output)\n   \nwrite.xlsx(all_page_review_list_total,'./output/all_page_bottle_list_v2.xlsx')\n\n\n\n\n\n\n\n\n Back to top",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\n\n\n\n1 one page function\n\n\nCode\nsource('one_page.r')\n\n\n\n\n2 read in all link\n\n\nCode\nlibrary(readxl)\ntopic_link=read_excel('./output/all year page.xlsx',sheet='topic')\n\n\n\n\nCode\nglimpse(topic_link)\n\n\nexclude news\n\n\nCode\nnews=topic_link$topic_link_list %&gt;% str_detect('whisky-news|whisky-bar')\n\n\n\n\nCode\ntopic_link002=topic_link$topic_link_list[!news]\n\n\nexclude no score page:\n\n\nCode\nno_score_page=c(\n\"https://www.whiskynotes.be/2011/blends/bloggers-blend-masterofmalt/\"         \n,\"https://www.whiskynotes.be/2012/glenfarclas/glenfarclas-1968-mytribute-5241/\"\n,\"https://www.whiskynotes.be/2012/ancnoc/ancnoc-distillery-visit/\"             \n,\"https://www.whiskynotes.be/2012/distillery-visits/old-pulteney/\"             \n,\"https://www.whiskynotes.be/2013/blends/cutty-sark-storm-appletiser/\"         \n,\"https://www.whiskynotes.be/2013/glenfarclas/glenfarclas-verticale/\"  \n)\n\n\n\n\n3 read in donload page:\n\n\nCode\nfinish_download=read_excel('./output/all_page_bottle_list_all.xlsx')\n\n\n\n\nCode\nfinish_download_topic_link=unique(finish_download$review_url)\n\n\n\n\nCode\nlength(finish_download_topic_link)\n\n\n\n\nCode\nnon_finish_link=topic_link002 [! topic_link002 %in% c(finish_download_topic_link,no_score_page)]\n\n\n\n\nCode\nlength(non_finish_link)\n\n\n\n\n4 download non download page:\n\n\nCode\nlibrary(openxlsx)\npage=non_finish_link\n\nall_page_review_list=data.frame()\n\nstart_time=Sys.time()\nprint(paste0(\"Start time: \", start_time))\n\nloop_num=0\n\nfor (i in page){\n   tryCatch({\n#############################     \n   loop_num=loop_num+1\n   print(paste0(\"Running loop No.\",which(page==i)))\n         \n   print(paste0(\"current time: \", Sys.time()))\n   \n   output=one_page_function(i)\n\n   all_page_review_list=rbind(all_page_review_list,output)\n   \n   \n   print(paste0(\"Used time: \", Sys.time()-start_time))\n   # ouput every 20 page\n   if (loop_num%%20==0){\n      print(paste0(\"#########################. output to excel: \", loop_num))\n      all_page_review_list_total=rbind(finish_download,all_page_review_list)\n      write.xlsx(all_page_review_list_total,'./output/all_page_bottle_list_all.xlsx')\n     }\n    \n   \n#############################        \n    }, error=function(e){cat(\"ERROR :\",conditionMessage(e), \"\\n\")})\n}\n\nend_time=Sys.time()\nprint(paste0(\"End time: \", end_time))\nprint(paste0(\"total used time: \", end_time-start_time))\n\n\noutput=one_page_function(i)\n\nall_page_review_list_total=rbind(finish_download,all_page_review_list)\n   \nwrite.xlsx(all_page_review_list_total,'./output/all_page_bottle_list_all.xlsx')\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8435,8 +8435,8 @@
     "objectID": "Plot/1 ggplot2.html#add-footnote",
     "href": "Plot/1 ggplot2.html#add-footnote",
     "title": "ggplot2 in R",
-    "section": "6.2 add footnote",
-    "text": "6.2 add footnote\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+labs(caption = \"this is footnote\")\np",
+    "section": "6.3 add footnote",
+    "text": "6.3 add footnote\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+labs(caption = \"this is footnote\")\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8446,8 +8446,8 @@
     "objectID": "Plot/1 ggplot2.html#add-chinses",
     "href": "Plot/1 ggplot2.html#add-chinses",
     "title": "ggplot2 in R",
-    "section": "6.6 add chinses",
-    "text": "6.6 add chinses\n\n\nCode\nlibrary(showtext)\nshowtext_auto()\n\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"新的 x name\")+ scale_y_continuous(name=\"新的 y name\")\np",
+    "section": "6.7 add chinses",
+    "text": "6.7 add chinses\n\n\nCode\nlibrary(showtext)\nshowtext_auto()\n\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"新的 x name\")+ scale_y_continuous(name=\"新的 y name\")\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8457,8 +8457,8 @@
     "objectID": "Plot/1 ggplot2.html#x-y-break-and-scales-limit",
     "href": "Plot/1 ggplot2.html#x-y-break-and-scales-limit",
     "title": "ggplot2 in R",
-    "section": "6.7 x y break and scales limit",
-    "text": "6.7 x y break and scales limit\n\n6.7.1 x scales limit\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np+ xlim(min=0, 20)\n\n\n\n\n\n\n\n\n\n\n\n6.7.2 y scales limit\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np+ ylim(0, 100)\n\n\n\n\n\n\n\n\n\n\n\n6.7.3 adding second aix\n\n\nCode\ndata002= data001%&gt;% group_by(year,continent) %&gt;% summarise(pop=sum(pop),lifeExp=mean(lifeExp))%&gt;%filter(continent=='Asia')\n\n\nremove scientific notation\n\n\nCode\ncoeff=1/40000000\n\n\np=ggplot(data002, aes(year, pop)) + geom_col() +\n  geom_line(aes(year,lifeExp/ coeff),size=2, color = \"red\") +scale_y_continuous(\"pop\", sec.axis = sec_axis(~.*coeff, name = \"lifeExp\"),labels = scales::comma)\np",
+    "section": "6.8 x y break and scales limit",
+    "text": "6.8 x y break and scales limit\n\n6.8.1 x scales limit\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np+ xlim(min=0, 20)\n\n\n\n\n\n\n\n\n\n\n\n6.8.2 y scales limit\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name=\"new x name\")+ scale_y_continuous(name=\"new y name\")\np+ ylim(0, 100)\n\n\n\n\n\n\n\n\n\n\n\n6.8.3 adding second aix\n\n\nCode\ndata002= data001%&gt;% group_by(year,continent) %&gt;% summarise(pop=sum(pop),lifeExp=mean(lifeExp))%&gt;%filter(continent=='Asia')\n\n\nremove scientific notation\n\n\nCode\ncoeff=1/40000000\n\n\np=ggplot(data002, aes(year, pop)) + geom_col() +\n  geom_line(aes(year,lifeExp/ coeff),size=2, color = \"red\") +scale_y_continuous(\"pop\", sec.axis = sec_axis(~.*coeff, name = \"lifeExp\"),labels = scales::comma)\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8642,8 +8642,8 @@
     "objectID": "Plot/1 ggplot2.html#adjust-plot-size",
     "href": "Plot/1 ggplot2.html#adjust-plot-size",
     "title": "ggplot2 in R",
-    "section": "6.3 adjust plot size",
-    "text": "6.3 adjust plot size\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+theme(\n  plot.margin = margin(2, 2, 5, 5, \"cm\"))\np",
+    "section": "6.4 adjust plot size",
+    "text": "6.4 adjust plot size\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+theme(\n  plot.margin = margin(2, 2, 5, 5, \"cm\"))\np",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8653,8 +8653,8 @@
     "objectID": "Plot/1 ggplot2.html#adjust-text-size-and-center-title",
     "href": "Plot/1 ggplot2.html#adjust-text-size-and-center-title",
     "title": "ggplot2 in R",
-    "section": "6.4 adjust text size and center title",
-    "text": "6.4 adjust text size and center title\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+labs(caption = \"this is footnote\")\n\np+theme(plot.title = element_text(hjust = 0.5),text = element_text(size = 30))",
+    "section": "6.5 adjust text size and center title",
+    "text": "6.5 adjust text size and center title\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\")+labs(caption = \"this is footnote\")\n\np+theme(plot.title = element_text(hjust = 0.5),text = element_text(size = 30))",
     "crumbs": [
       "Plot",
       "ggplot2 in R"
@@ -8703,6 +8703,257 @@
       "Other",
       "5 translation",
       "Translation"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/8 summary.html",
+    "href": "other/1 Web scraping on www.whiskynotes.be/8 summary.html",
+    "title": "Summary",
+    "section": "",
+    "text": "Code\nimport tensorflow as tf\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pylab as plt\nimport seaborn as sns\n\nfrom siuba.siu import call\nfrom siuba import _, mutate, filter, group_by, summarize,show_query\nfrom siuba import *\n\nfrom siuba.data import mtcars,penguins\n\n\n\n1 read in data\n\n\nCode\nimport pandas as pd\ndata=pd.read_excel('./output/all_page_bottle_list_all.xlsx')\n\n\n\n\nCode\nlist(data)\n\n\n['bottle_name',\n 'bottle_review_Nose',\n 'bottle_review_Mouth',\n 'bottle_review_Finish',\n 'all_page_score',\n 'page_class',\n 'page_published_date',\n 'page_title',\n 'review_url']\n\n\n\n\nCode\ndata.info()\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 4934 entries, 0 to 4933\nData columns (total 9 columns):\n #   Column                Non-Null Count  Dtype \n---  ------                --------------  ----- \n 0   bottle_name           4934 non-null   object\n 1   bottle_review_Nose    4934 non-null   object\n 2   bottle_review_Mouth   4934 non-null   object\n 3   bottle_review_Finish  4934 non-null   object\n 4   all_page_score        4934 non-null   int64 \n 5   page_class            4934 non-null   object\n 6   page_published_date   4934 non-null   object\n 7   page_title            4934 non-null   object\n 8   review_url            4934 non-null   object\ndtypes: int64(1), object(8)\nmemory usage: 347.1+ KB\n\n\n\n\nCode\nimport re\ndata001=data&gt;&gt; filter(_.all_page_score &gt;0\n                      ,_.all_page_score &lt;100\n                      ,_.bottle_review_Nose !='no comment'\n                      ,_.bottle_review_Mouth !='no comment'\n                      ,_.bottle_review_Finish !='no comment'\n                      ) &gt;&gt;mutate(\n                      review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish\n                      )&gt;&gt;mutate(review=_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))&gt;&gt;mutate(review_len=_.review.str.count(' ') + 1)\n\n\n\n\nCode\ndata001['review_flag']= np.where(data001['all_page_score']&gt;=90, 1, 0)\n\n\n\n\n2 shuffle data\n\n\nCode\ndata002=data001.sample(frac=1)\n\n\n\n\nCode\ndata002.to_excel('data002.xlsx')\n\n\n\n\nCode\ndata002.info()\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nIndex: 4668 entries, 2179 to 1073\nData columns (total 12 columns):\n #   Column                Non-Null Count  Dtype \n---  ------                --------------  ----- \n 0   bottle_name           4668 non-null   object\n 1   bottle_review_Nose    4668 non-null   object\n 2   bottle_review_Mouth   4668 non-null   object\n 3   bottle_review_Finish  4668 non-null   object\n 4   all_page_score        4668 non-null   int64 \n 5   page_class            4668 non-null   object\n 6   page_published_date   4668 non-null   object\n 7   page_title            4668 non-null   object\n 8   review_url            4668 non-null   object\n 9   review                4668 non-null   object\n 10  review_len            4668 non-null   int64 \n 11  review_flag           4668 non-null   int64 \ndtypes: int64(3), object(9)\nmemory usage: 474.1+ KB\n\n\n\n\n3 Removing stop words with SkLearn\n\n\nCode\nimport nltk\nimport ssl\n\ntry:\n    _create_unverified_https_context = ssl._create_unverified_context\nexcept AttributeError:\n    pass\nelse:\n    ssl._create_default_https_context = _create_unverified_https_context\n\nnltk.download('stopwords')\n\n\nTrue\n\n\n\n\nCode\nfrom stop_words import get_stop_words\nfrom nltk.corpus import stopwords\n\nstop_words = list(get_stop_words('en'))         #About 900 stopwords\nnltk_words = list(stopwords.words('english')) #About 150 stopwords\nstop_words.extend(nltk_words)\n\n\n\n\nCode\nfrom nltk.corpus import stopwords\nimport string\n\nreview=data002[\"review\"]\n#stop_words = set(stopwords.words(\"english\"))\nexclude = set(string.punctuation)\n\ndef remove_stopwords(data):\n    output_array=[]\n    for sentence in data:\n        temp_list=[]\n        for word in sentence.split():\n            if word.lower() not in stop_words and word.lower() not in exclude :\n                temp_list.append(word)\n        output_array.append(' '.join(temp_list))\n    return output_array\n\nreview_remove_stop_word=remove_stopwords(review)\n\n\n\n\nCode\ntemp_list=[]\nfor sentence in review_remove_stop_word:\n        for word in sentence.split():\n          temp_list.append(word)\n\n\n\n\nCode\nfrom collections import Counter\ncounts = Counter(temp_list)\ndf = pd.DataFrame(list(counts.items()), columns=['Key', 'Values'])\n\n\n\n\nCode\ndf.to_excel('res.xlsx')\n\n\n\n\nCode\ndf002=df&gt;&gt;arrange(-_.Values) &gt;&gt;filter(_.Key!='notes'\n,_.Key!='well'\n,_.Key!='long'\n,_.Key!='quite'\n,_.Key!='hints'\n,_.Key!='hint'\n,_.Key!='light'\n,_.Key!='little'\n,_.Key!='slightly'\n,_.Key!='nice'\n,_.Key!='still'\n,_.Key!='medium'\n,_.Key!='subtle'\n,_.Key!='rather'\n,_.Key!='note'\n,_.Key!='also'\n,_.Key!='there’s'\n,_.Key!='background'\n,_.Key!='end'\n,_.Key!='side'\n,_.Key!='plenty'\n,_.Key!='towards'\n,_.Key!='bit'\n,_.Key!='dark'\n,_.Key!='really'\n,_.Key!='even'\n,_.Key!='like'\n,_.Key!='it’s'\n)\n\ndf003=df002[0:30]\n\n\n\n\n4 Word cloud 1 from data frame english\n\n\nCode\nd = {}\nfor a, x in df003.values:\n    d[a] = x\n\nimport matplotlib.pyplot as plt\nfrom wordcloud import WordCloud\n\nwordcloud = WordCloud(background_color = \"#FFFFFF\", contour_width = 2,\n     contour_color = '#FFFFFF')\nwordcloud.generate_from_frequencies(frequencies=d)\nplt.figure()\nplt.imshow(wordcloud, interpolation=\"bilinear\")\nplt.axis(\"off\")\nplt.show()\n\nwordcloud.to_file('wordcloud_en.png')\n\n\n\n\n\n\n\n\n\n\n\n5 word cloud 2 chinese\n\n\nCode\n#from translate import Translator\nfrom deep_translator import GoogleTranslator\n\nen=df003['Key'].tolist()\n\n\ncn_list=[]\nfor word in en:\n  result = GoogleTranslator(source='auto', target='zh-CN').translate(word) \n  cn_list.append(result)\n  \ncn_list\n\n\n['甜的',\n '水果',\n '橡木',\n '香草',\n '苹果',\n '橙子',\n '胡椒',\n '果味的',\n '蜂蜜',\n '草药的',\n '巧克力',\n '姜',\n '柠檬',\n '木头',\n '抽烟',\n '甘草',\n '烟草',\n '薄荷',\n '绿色的',\n '茶',\n '柚子',\n '肉桂',\n '新鲜的',\n '柑橘',\n '干的',\n '香料',\n '雪莉酒',\n '菠萝',\n '葡萄干',\n '长满青草的']\n\n\n\n\nCode\ndf004_cn=df003.copy()\ndf004_cn['Key']=cn_list\n\n\n\n\nCode\nd = {}\nfor a, x in df004_cn.values:\n    d[a] = x\n\nimport matplotlib.pyplot as plt\nfrom wordcloud import WordCloud\n\nwordcloud = WordCloud(font_path='simfang.ttf',background_color = \"#FFFFFF\", contour_width = 2,\n     contour_color = '#FFFFFF')\nwordcloud.generate_from_frequencies(frequencies=d)\nplt.figure()\nplt.imshow(wordcloud, interpolation=\"bilinear\")\nplt.axis(\"off\")\nplt.show()\nwordcloud.to_file('wordcloud_cn.png')\n\n\n\n\n\n\n\n\n\n\n\n6 word cloud 3 chinese glass\n\n\nCode\nimport cv2\n\nfrom siuba.siu import call\nfrom siuba import _, mutate, filter, group_by, summarize,show_query\nfrom siuba import *\nimport numpy as np\nfrom sklearn.cluster import KMeans\nfrom skimage.io import imread, imsave\nfrom skimage import util, data, transform\nfrom skimage.transform import rescale, resize, downscale_local_mean\n\n\nsample_img = imread('Glencairn.png')\nsample_img_resize=util.img_as_ubyte(transform.rescale(sample_img, 3))\nsample_img.shape\n\nsample_img_resize.shape\n\n\n(2328, 2892, 12)\n\n\n\n\nCode\n#image = Image.open('glass.png')\n#new_image = image.resize((3000, 3000))\n#meta_mask = np.array(new_image)\n\nsample_img_resize[sample_img_resize&gt;240] = 255\n\n#meta_mask\n#im = Image.fromarray(meta_mask)\n#im.save('myimage_1.jpg')\n#np.unique(meta_mask)\n\n\n\n\nCode\nd = {}\nfor a, x in df004_cn.values:\n    d[a] = x\n\nimport matplotlib.pyplot as plt\nfrom wordcloud import WordCloud\n\nwordcloud = WordCloud(font_path='simfang.ttf',background_color = \"white\", contour_width = 2,mask = sample_img_resize)\n\n\n\nwordcloud.generate_from_frequencies(frequencies=d)\n\nplt.figure()\nplt.imshow(wordcloud, interpolation=\"bilinear\")\nplt.axis(\"off\")\nplt.show()\n\nwordcloud.to_file('wordcloud_cn_bottle.png')\n\n\n\n\n\n\n\n\n\n\n\n7 word cloud 4 English glass\n\n\nCode\nd = {}\nfor a, x in df003.values:\n    d[a] = x\n\nimport matplotlib.pyplot as plt\nfrom wordcloud import WordCloud\n\nwordcloud = WordCloud(font_path='simfang.ttf',background_color = \"white\", contour_width = 2,mask = sample_img_resize)\n\n\n\nwordcloud.generate_from_frequencies(frequencies=d)\n\nplt.figure()\nplt.imshow(wordcloud, interpolation=\"bilinear\")\nplt.axis(\"off\")\nplt.show()\n\nwordcloud.to_file('wordcloud_en_bottle.png')\n\n\n\n\n\n\n\n\n\n\n\n8 Chart 1\n\n\nCode\nplt.figure(figsize=(10, 6))\n\nplt.rcParams['font.family'] = ['Arial Unicode MS'] #用来正常显示中文标签\nplt.rcParams['axes.unicode_minus'] = False #用来正常显示负号\n \nsns.set_style('whitegrid',{'font.sans-serif':['Arial Unicode MS','Arial']})\n\nax=sns.barplot(df004_cn, x=\"Values\", y=\"Key\", legend=False)\n\nax.set_title(\"各风味出现频率\")\nax.set(xlabel='出现次数', ylabel='风味')\nfor i in ax.containers:\n    ax.bar_label(i,)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n9 Chart 2 combine image and seaborn\n\n\nCode\nimport plotly.express as px\nfrom PIL import Image\npyLogo = Image.open(\"en_glass.png\")\n\n\nfig=px.bar(df004_cn,x=\"Values\", y=\"Key\",orientation='h',text=\"Values\",title=\"各风味出现频率\"\n,labels={\"Values\": \"出现次数\",\n         \"Key\": \"风味\"\n         }\n)\n\n# Add trace\n# fig.add_trace(\n#     go.Bar(x=df003[\"Values\"], y=df003[\"Key\"],orientation='h',text=df003[\"Values\"])\n#     #go.Bar(x=[0, 50, 100, 200, 220], y=[100, 200, 420, 300, 100])\n# )\n# \n# # Add images\nfig.add_layout_image(\n        dict(\n            source=pyLogo \n            ,x=0.6\n            ,y=0.8\n            ,sizex=1\n            ,sizey=0.8\n            #,sizing=\"stretch\"\n            ,opacity=0.8\n            ,layer=\"above\")\n)\n\n# # Set templates\nfig.update_layout(template=\"plotly_white\")\nfig.update_layout(yaxis=dict(autorange=\"reversed\"),height=600)\n\n\nfig.show()\n\n\n                                                \n\n\n\n\n10 resource:\nhttps://medium.com/@m3redithw/wordclouds-with-python-c287887acc8b\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Summary"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/4b whiskynote all year page second time.html",
+    "href": "other/1 Web scraping on www.whiskynotes.be/4b whiskynote all year page second time.html",
+    "title": "All year page second time",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 read from 2024\n\n\nCode\nurl_list=\"https://www.whiskynotes.be/2024\"\n\n\n\n\nCode\nbottle_list=c()\ntopic_list=c()\ntopic_link_list=c()\nall_year_list_topic=c()\nall_year_list_bottle=c()\n\nfor (i in url_list){\n  year=tail(unlist(strsplit(i, split = \"/\")),1)\n  print(year)\n  print(i)\n  year_ur=i\n  year_page &lt;- read_html(year_ur)\n  bottle001 &lt;- year_page %&gt;% html_elements(\"p\")%&gt;% html_text2()\n  bottle003=unlist(strsplit(bottle001,\"\\n\"))\n  \n  \n  topic001 &lt;- year_page %&gt;% html_elements(\".archive-link\") %&gt;% html_text2()\n  topic_link_001 &lt;- year_page %&gt;%\n    html_elements(css = \".entry-permalink\")%&gt;% html_attr(\"href\")\n\n  year_list_topic=rep(year,length(topic001))\n  year_list_bottle=rep(year,length(bottle003))\n  \n  all_year_list_topic=c(all_year_list_topic,year_list_topic)\n  all_year_list_bottle=c(all_year_list_bottle,year_list_bottle)\n  \n  bottle_list=c(bottle_list,bottle003)\n  topic_list=c(topic_list,topic001)\n  topic_link_list=c(topic_link_list,topic_link_001)\n  \n  Sys.sleep(1)\n  }\n\n\n\n\n2 combine\n\n\nCode\ndata=tibble(topic_list,topic_link_list,all_year_list_topic)\n\n\n\n\nCode\nlibrary(openxlsx)\nlibrary(readxl)\ndata_all=read_excel('./output/all year page.xlsx')\n\n\n\n\nCode\ndata_all_new001=rbind(data_all,data)\n\n\n\n\nCode\nglimpse(data_all_new001)\n\n\n\n\nCode\ndata_all_new002=data_all_new001 %&gt;% unique()\n\n\n\n\nCode\nglimpse(data_all_new002)\n\n\n\n\n3 output\n\n\nCode\nlibrary(openxlsx)\nlist_of_datasets &lt;- list(\"topic\" = data_all_new002)\n\nwrite.xlsx(list_of_datasets, file = \"./output/all year page.xlsx\")\n\n\n\n\n4 reference:\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "All year page second time"
+    ]
+  },
+  {
+    "objectID": "Plot/1 ggplot2.html#add-subtitle",
+    "href": "Plot/1 ggplot2.html#add-subtitle",
+    "title": "ggplot2 in R",
+    "section": "6.2 add subtitle",
+    "text": "6.2 add subtitle\n\n\nCode\np=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ ggtitle(\"tip by sex\",subtitle = \"Subtitle of the plot\")\np",
+    "crumbs": [
+      "Plot",
+      "ggplot2 in R"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html",
+    "title": "Model",
+    "section": "",
+    "text": "Code\nimport tensorflow as tf\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pylab as plt\nimport seaborn as sns\n\nfrom siuba.siu import call\nfrom siuba import _, mutate, filter, group_by, summarize,show_query\nfrom siuba import *\n\nfrom siuba.data import mtcars,penguins",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#total",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#total",
+    "title": "Model",
+    "section": "4.1 total",
+    "text": "4.1 total\n\n\nCode\nlen(padded)\nlen(review_flag_final)\n\n\n4633",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#train",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#train",
+    "title": "Model",
+    "section": "4.2 train",
+    "text": "4.2 train\n\n\nCode\nlen(padded_train)\nlen(review_flag_final_train)\n\n\n4000",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#test",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#test",
+    "title": "Model",
+    "section": "4.3 test",
+    "text": "4.3 test\n\n\nCode\nlen(padded_test)\nlen(review_flag_final_test)\n\n\n633\n\n\n\n\nCode\nsum(review_flag_final_test)\n\n\n167",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#if-all-guess-lower-than-90-points-then-0.72-accuracy",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#if-all-guess-lower-than-90-points-then-0.72-accuracy",
+    "title": "Model",
+    "section": "4.4 if all guess lower than 90 points then 0.72 accuracy",
+    "text": "4.4 if all guess lower than 90 points then 0.72 accuracy\n\n\nCode\n(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)\n\n\n0.7361769352290679",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#define-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#define-model",
+    "title": "Model",
+    "section": "5.1 define model",
+    "text": "5.1 define model\n\n\nCode\n# Build the model\nmodel_dnn = tf.keras.Sequential([\n    tf.keras.layers.Embedding(input_dim=vocab_size,output_dim=  32),\n    tf.keras.layers.GlobalAveragePooling1D(),\n    tf.keras.layers.Dense(24, activation='relu'),\n    tf.keras.layers.Dense(24, activation='relu'),\n    tf.keras.layers.Dense(1, activation='sigmoid')\n])",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#compile-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#compile-model",
+    "title": "Model",
+    "section": "5.2 compile model",
+    "text": "5.2 compile model\n\n\nCode\n# Setup the training parameters\nmodel_dnn.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])\n\n\n\n\nCode\nmodel_dnn.summary()\n\n\nModel: \"sequential_6\"\n\n\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃\n┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n│ embedding_6 (Embedding)         │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ global_average_pooling1d_4      │ ?                      │   0 (unbuilt) │\n│ (GlobalAveragePooling1D)        │                        │               │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_18 (Dense)                │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_19 (Dense)                │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_20 (Dense)                │ ?                      │   0 (unbuilt) │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n\n\n\n Total params: 0 (0.00 B)\n\n\n\n Trainable params: 0 (0.00 B)\n\n\n\n Non-trainable params: 0 (0.00 B)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#callbacks",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#callbacks",
+    "title": "Model",
+    "section": "5.3 Callbacks",
+    "text": "5.3 Callbacks\n\n\nCode\nclass myCallback(tf.keras.callbacks.Callback):\n  def on_epoch_end(self, epoch, logs={}):\n    if(logs.get('val_accuracy')&gt;0.90):\n      print(\"\\nReached 88% val_accuracy so cancelling training!\")\n      self.model.stop_training = True\n\n# Instantiate class\ncallbacks = myCallback()",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#train-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#train-model",
+    "title": "Model",
+    "section": "5.4 train model",
+    "text": "5.4 train model\n\n\nCode\nnum_epochs = 20\n\n# Train the model\nhistory=model_dnn.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks],verbose=0)\n\n#history=model.fit(x=padded, y=review_flag_final, validation_split=0.2, shuffle=True,epochs=num_epochs,callbacks=[callbacks])\n\n\n\n\nCode\nacc = history.history['accuracy']\nval_acc = history.history['val_accuracy']\nloss = history.history['loss']\nval_loss = history.history['val_loss']\nepochs = range(len(acc))\n\n\n\n\nCode\nimport matplotlib.image as mpimg\nimport matplotlib.pyplot as plt\n#------------------------------------------------\n# Plot training and validation accuracy per epoch\n#------------------------------------------------\nplt.plot(epochs, acc, 'r', label='Training accuracy')\nplt.plot(epochs, val_acc, 'b', label='Validation accuracy')\nplt.title('Training and validation accuracy')\nplt.legend()\nplt.show()\nplt.figure()\n\nplt.plot(epochs, loss, 'r', label='Training Loss')\nplt.plot(epochs, val_loss, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#define-model-1",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#define-model-1",
+    "title": "Model",
+    "section": "6.1 define model",
+    "text": "6.1 define model\n\n\nCode\nmodel_lstm = tf.keras.Sequential([\n    tf.keras.layers.Embedding(input_dim=vocab_size,output_dim= 32),\n    tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(32, return_sequences=True)),\n      tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(16)),\n    tf.keras.layers.Dense(16, activation='relu'),\n    tf.keras.layers.Dense(1, activation='sigmoid')\n])",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#compile-model-1",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#compile-model-1",
+    "title": "Model",
+    "section": "6.2 compile model",
+    "text": "6.2 compile model\n\n\nCode\n# Setup the training parameters\nmodel_lstm.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])\n\n\n\n\nCode\nmodel_lstm.summary()\n\n\nModel: \"sequential_7\"\n\n\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃\n┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n│ embedding_7 (Embedding)         │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ bidirectional_4 (Bidirectional) │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ bidirectional_5 (Bidirectional) │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_21 (Dense)                │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_22 (Dense)                │ ?                      │   0 (unbuilt) │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n\n\n\n Total params: 0 (0.00 B)\n\n\n\n Trainable params: 0 (0.00 B)\n\n\n\n Non-trainable params: 0 (0.00 B)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#train-model-2",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#train-model-2",
+    "title": "Model",
+    "section": "9.1 train model",
+    "text": "9.1 train model\n\n\nCode\n# Train the model\nhistory = model_dnn.fit(x=padded_train, y=review_socre_final_train,validation_data=(padded_test, review_socre_final_test),epochs=200,verbose=0 )\n\n#history = model_dnn.fit(x=padded_train, y=review_socre_final_train,validation_split=0.2,epochs=20)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#predication",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#predication",
+    "title": "Model",
+    "section": "9.4 predication",
+    "text": "9.4 predication\n\n\nCode\nx = padded_test\ny = model_dnn.predict(x)\n\n\n 1/20 ━━━━━━━━━━━━━━━━━━━━ 0s 27ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b20/20 ━━━━━━━━━━━━━━━━━━━━ 0s 2ms/step \n\n\n\n\nCode\nlen(padded_test)\nlen(y)\nlen(review_socre_final_test)\n\n\n633\n\n\n\n\nCode\nreview_socre_final_test.shape\n\n\n(633,)\n\n\n\n\nCode\ny.shape\n\n\n(633, 1)\n\n\n\n\nCode\ny2 = y.flatten()\n\n\n\n\nCode\ny2.shape\n\n\n(633,)\n\n\n\n\nCode\ndataset = pd.DataFrame({'real': review_socre_final_test, 'predic': list(y2)}, columns=['real', 'predic'])\n\n\n\n\nCode\ndataset['predic']=round(dataset['predic'])\ndataset['predic']=round(dataset['predic'])\n\n\n\n\nCode\ndataset=dataset&gt;&gt; mutate(predic=if_else(_.predic &lt;70, 70, _.predic)\n                          ,dummy_pred=86\n                         ,diff=_.predic-_.real \n                         ,dummy_diff=_.dummy_pred-_.real\n                          )&gt;&gt; mutate(predic=if_else(_.predic &gt;100,100, _.predic))\n                          \ndataset002 = pd.concat([data002[4000:].reset_index(drop=True),dataset.reset_index(drop=True)], axis=1)                    \n\n\n\n\nCode\ndataset002.to_excel('pred.xlsx')\n\n\n\n\nCode\nimport seaborn as sns\nsns.scatterplot(data=dataset,x='real',y='predic')\nsns.regplot(data=dataset, x=\"real\", y=\"predic\", x_jitter=.15)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#save-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#save-model",
+    "title": "Model",
+    "section": "9.2 save model",
+    "text": "9.2 save model\n\n\nCode\nmodel_dnn.save('whiskynote_score_dnn.keras')",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#load-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#load-model",
+    "title": "Model",
+    "section": "9.3 load model",
+    "text": "9.3 load model\n\n\nCode\nnew_model = tf.keras.models.load_model('whiskynote_score_dnn.keras')\n\n\n\n\nCode\nnew_model.summary()\n\n\nModel: \"sequential_8\"\n\n\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃\n┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n│ embedding_8 (Embedding)         │ (32, 300, 32)          │       224,000 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ global_average_pooling1d_5      │ (32, 32)               │             0 │\n│ (GlobalAveragePooling1D)        │                        │               │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_23 (Dense)                │ (32, 32)               │         1,056 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_24 (Dense)                │ (32, 24)               │           792 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_25 (Dense)                │ (32, 24)               │           600 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_26 (Dense)                │ (32, 1)                │            25 │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n\n\n\n Total params: 679,421 (2.59 MB)\n\n\n\n Trainable params: 226,473 (884.66 KB)\n\n\n\n Non-trainable params: 0 (0.00 B)\n\n\n\n Optimizer params: 452,948 (1.73 MB)\n\n\n\n\n\nCode\nloss = history.history['loss']\nval_loss = history.history['val_loss']\n\nmae = history.history['mae']\nval_mae = history.history['val_mae']\n\nepochs = range(len(val_loss))\n\n\n\n\nCode\nimport matplotlib.image as mpimg\nimport matplotlib.pyplot as plt\n#------------------------------------------------\n# Plot training and validation loss per epoch\n#------------------------------------------------\n\nplt.plot(epochs, loss, 'r', label='Training Loss')\nplt.plot(epochs, val_loss, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Only plot the last 80% of the epochs\nzoom_split = int(epochs[-1] * 0.2)\nepochs_zoom = epochs[zoom_split:]\nval_loss_zoom = val_loss[zoom_split:]\nloss_zoom = loss[zoom_split:]\n\n# Plot zoomed mae and loss\nplt.plot(epochs_zoom, loss_zoom, 'r', label='Training Loss')\nplt.plot(epochs_zoom, val_loss_zoom, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Only plot the last 80% of the epochs\nzoom_split = int(epochs[-1] * 0.2)\nepochs_zoom = epochs[zoom_split:]\n\nmae_zoom = mae[zoom_split:]\nval_mae_zoom = val_mae[zoom_split:]\n\n\n# Plot zoomed mae and loss\nplt.plot(epochs_zoom, mae_zoom, 'r', label='mae_zoom')\nplt.plot(epochs_zoom, val_mae_zoom, 'b', label='val_mae_zooms')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/4 Map/2 leaflet .html",
+    "href": "other/4 Map/2 leaflet .html",
+    "title": "map",
+    "section": "",
+    "text": "1 data\n\n\nCode\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(jsonlite)\nlibrary(curl)\nlibrary(lubridate)\nlibrary(plotly)\nlibrary(ggplot2)\nlibrary(openxlsx)\nlibrary(readxl)\nlibrary(leaflet)\n\n\n\n\nCode\nm &lt;- leaflet() %&gt;%\n  addTiles() %&gt;%  # Add default OpenStreetMap map tiles\n  addMarkers(lng=174.768, lat=-36.852, popup=\"The birthplace of R\")\nm  # Print the map\n\n\n\n\n\n\n\n\n2 resouce:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "4 Map",
+      "map"
+    ]
+  },
+  {
+    "objectID": "other/4 Map/1 China accident map with mapview.html",
+    "href": "other/4 Map/1 China accident map with mapview.html",
+    "title": "China accident map",
+    "section": "",
+    "text": "1 data\ndata source :https://github.com/percent4/chinese_incident_tracker\n\n\nCode\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(jsonlite)\nlibrary(curl)\nlibrary(lubridate)\nlibrary(plotly)\nlibrary(ggplot2)\nlibrary(openxlsx)\nlibrary(readxl)\n\n\n\n\n2 one file\n\n\nCode\n#url &lt;- \"https://raw.githubusercontent.com/percent4/chinese_incident_tracker/main/elk/data/00105670-df53-4be8-9039-8a07fe2d2b4d.json\"\n#download.file(url,\"./data/SAFI.json\", mode = \"wb\")\n\n\n\n\nCode\ndata001 &lt;- read_json(\"./data/SAFI.json\")\n\n\n\n\nCode\ndata002=data001 %&gt;% as.data.frame()\ncolnames(data002)[14] = \"latitude\"\ncolnames(data002)[15] = \"longitude\"\nglimpse(data002)\n\n\nRows: 1\nColumns: 22\n$ item_id            &lt;chr&gt; \"00105670-df53-4be8-9039-8a07fe2d2b4d\"\n$ news_channel       &lt;chr&gt; \"新闻坊\"\n$ title              &lt;chr&gt; \"一养老院突发火灾，已致3死10伤！\"\n$ report             &lt;chr&gt; \"4月4日\\n\\n“东莞应急管理”\\n\\n发布情况通报\\n\\n↓↓↓\\n\\…\n$ original_websites  &lt;chr&gt; \"https://mp.weixin.qq.com/s/xUZR8gZ_N0UqGj0GvH6L8A\"\n$ start_date         &lt;chr&gt; \"2024-04-04\"\n$ start_time         &lt;chr&gt; \"2024-04-04 04:21:00\"\n$ update_time        &lt;chr&gt; \"2024-05-03 10:50:01\"\n$ incident_type      &lt;chr&gt; \"火灾\"\n$ incident_reason    &lt;chr&gt; \"该建筑为一栋11层楼房，起火部位为第三层303房，过火…\n$ person_death_num   &lt;int&gt; 3\n$ person_injury_num  &lt;int&gt; 10\n$ person_missing_num &lt;int&gt; 0\n$ latitude           &lt;dbl&gt; 113.6952\n$ longitude          &lt;dbl&gt; 23.07464\n$ place              &lt;chr&gt; \"东莞万江街道康怡护理院（公助民办养老院）\"\n$ province           &lt;chr&gt; \"广东省\"\n$ city               &lt;chr&gt; \"东莞市\"\n$ county             &lt;chr&gt; \"\"\n$ town               &lt;chr&gt; \"万江街道\"\n$ village            &lt;chr&gt; \"\"\n$ is_final           &lt;lgl&gt; TRUE\n\n\n\n\n3 all file\n\n\nCode\n#url=\"https://github.com/percent4/chinese_incident_tracker/archive/refs/heads/main.zip\"\n#download.file(url,\"./data/data.zip\", mode = \"wb\")\n\n\n\n\nCode\n#unzip(\"./data/data.zip\",exdir=\"./data/out\")\n\n\n\n\nCode\nfrom &lt;- \"./data/out/chinese_incident_tracker-main/elk/data\"\nto   &lt;- \"./data/json_folder\"\nfile.copy(list.files(from, full.names = TRUE), \n          to, \n          recursive = TRUE)\n\n\n [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n[16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n[31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n[46] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n\n\n\n\nCode\n#list.files(\"./data/json_folder\")\n\n\n\n\nCode\nall_data=tibble()\n\nfor (i in list.files(\"./data/json_folder\")) {\n  #print(i)\n  data001=read_json(paste0(\"./data/json_folder/\",i))\n  data002=data001 %&gt;% as.data.frame()\n  colnames(data002)[14] = \"Longitude\"\n  colnames(data002)[15] = \"Latitude\"\n  #print(data002)\n  \n  all_data=rbind(all_data,data002)\n}\n\n\n\n\nCode\nall_data=all_data %&gt;% mutate(text=paste0(incident_type,\" \",\"死亡人数:\",person_death_num,\" 受伤人数:\",person_injury_num)\n                             ,month_year= format_ISO8601(ymd(start_date), precision = \"ym\")\n                             )\n\n\n\n\nCode\nglimpse(all_data)\n\n\nRows: 60\nColumns: 24\n$ item_id            &lt;chr&gt; \"00105670-df53-4be8-9039-8a07fe2d2b4d\", \"0683ba1e-7…\n$ news_channel       &lt;chr&gt; \"新闻坊\", \"中国新闻网\", \"凤凰网\", \"搜狐网\", \"每日经…\n$ title              &lt;chr&gt; \"一养老院突发火灾，已致3死10伤！\", \"江西于都一矿企…\n$ report             &lt;chr&gt; \"4月4日\\n\\n“东莞应急管理”\\n\\n发布情况通报\\n\\n↓↓↓\\n\\…\n$ original_websites  &lt;chr&gt; \"https://mp.weixin.qq.com/s/xUZR8gZ_N0UqGj0GvH6L8A\"…\n$ start_date         &lt;chr&gt; \"2024-04-04\", \"2024-04-24\", \"2024-01-22\", \"2024-02-…\n$ start_time         &lt;chr&gt; \"2024-04-04 04:21:00\", \"2024-04-24 00:08:48\", \"2024…\n$ update_time        &lt;chr&gt; \"2024-05-03 10:50:01\", \"2024-05-03 00:08:48\", \"2024…\n$ incident_type      &lt;chr&gt; \"火灾\", \"溃水\", \"山体滑坡\", \"房屋坍塌\", \"燃气爆炸\",…\n$ incident_reason    &lt;chr&gt; \"该建筑为一栋11层楼房，起火部位为第三层303房，过火…\n$ person_death_num   &lt;int&gt; 3, 3, 44, 1, 7, 4, 1, 1, 7, 1, 18, 4, 5, 1, 15, 12,…\n$ person_injury_num  &lt;int&gt; 10, 2, 2, 0, 27, 4, 0, 0, 0, 11, 1155, 0, 3, 2, 44,…\n$ person_missing_num &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 6, 0, …\n$ Longitude          &lt;dbl&gt; 113.69524, 115.32158, 104.95514, 113.28304, 116.808…\n$ Latitude           &lt;dbl&gt; 23.07464, 25.72126, 27.49063, 32.22574, 39.95258, 4…\n$ place              &lt;chr&gt; \"东莞万江街道康怡护理院（公助民办养老院）\", \"于都县…\n$ province           &lt;chr&gt; \"广东省\", \"江西省\", \"云南省\", \"湖北省\", \"河北省\", \"…\n$ city               &lt;chr&gt; \"东莞市\", \"赣州市\", \"昭通市\", \"随州市\", \"廊坊市\", \"…\n$ county             &lt;chr&gt; \"\", \"于都县\", \"镇雄县\", \"随县\", \"三河市\", \"新城区\",…\n$ town               &lt;chr&gt; \"万江街道\", \"祁禄山镇\", \"塘房镇\", \"万和镇\", \"燕郊镇…\n$ village            &lt;chr&gt; \"\", \"金沙村\", \"\", \"\", \"小张各庄\", \"\", \"\", \"\", \"乔家…\n$ is_final           &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRU…\n$ text               &lt;chr&gt; \"火灾 死亡人数:3 受伤人数:10\", \"溃水 死亡人数:3 受…\n$ month_year         &lt;chr&gt; \"2024-04\", \"2024-04\", \"2024-01\", \"2024-02\", \"2024-0…\n\n\n\n\nCode\n#write.xlsx(all_data,'all_data.xlsx')\n\n\n\n\n4 chart\ngroup to month\n\n\nCode\nchartdata001=all_data %&gt;% group_by(month_year)  %&gt;%  summarise(person_death_num=sum(person_death_num)\n                                                           ,person_injury_num=sum(person_injury_num)\n                                                           )\n\n\nwide to long\n\n\nCode\nchartdata002=chartdata001 %&gt;%select(month_year,person_death_num,person_injury_num) %&gt;% \n  pivot_longer(!c(month_year), names_to = 'type', values_to = 'DATA')\n\n\n\n\nCode\ngg=ggplot(chartdata001, aes(x=month_year, y=person_death_num,label = person_death_num))+\n  geom_bar(stat=\"identity\",fill='red')+ geom_text(vjust = -1,\n              position = position_dodge(width = 0.9))+ theme_bw()\n\n\nggplotly(gg)\n\n\n\n\n\n\n\n\nCode\ngg=ggplot(chartdata002, aes(fill=type, y=DATA, x=month_year)) +\n    geom_col(position = \"dodge\") +\n    geom_text(aes(label = DATA), vjust = 1.5,\n              position = position_dodge(width = 0.9))+scale_y_log10()+ theme_light()\n\npp=ggplotly(gg)\n\npp\n\n\n\n\n\n\n\n\n5 map\n\n\nCode\nall_data2 =all_data %&gt;%  mutate(report=report %&gt;% str_trunc(100))\n\n\n\n\nCode\n#write.xlsx(all_data2,'all_data2.xlsx')\n\n\n\n\nCode\nlibrary(mapview)\nlibrary(sf)\nlibrary(stringr)\n\nmapview(all_data2, map.types='OpenStreetMap',label='text',xcol = \"Longitude\", ycol = \"Latitude\", zcol='incident_type',cex=\"person_death_num\",crs = 4269, grid = FALSE)\n\n\n\n\n\n\n\n\n6 resouce:\nhttps://github.com/percent4/chinese_incident_tracker\nhttps://github.com/r-spatial/mapview\nhttps://maps.clb.org.hk/\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "4 Map",
+      "China accident map"
+    ]
+  },
+  {
+    "objectID": "other/4 Map/2 leaflet.html",
+    "href": "other/4 Map/2 leaflet.html",
+    "title": "map",
+    "section": "",
+    "text": "1 data\n\n\nCode\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(jsonlite)\nlibrary(curl)\nlibrary(lubridate)\nlibrary(plotly)\nlibrary(ggplot2)\nlibrary(openxlsx)\nlibrary(readxl)\nlibrary(leaflet)\n\n\n\n\nCode\nm &lt;- leaflet() %&gt;%\n  addTiles() %&gt;%  # Add default OpenStreetMap map tiles\n  addMarkers(lng=174.768, lat=-36.852, popup=\"The birthplace of R\")\nm  # Print the map\n\n\n\n\n\n\n\n\n2 resouce:\nhttps://rstudio.github.io/leaflet/\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "4 Map",
+      "map"
     ]
   }
 ]
