@@ -213,7 +213,7 @@ img2 <- readPNG("cn_glass.png")
 img3=rasterGrob(img2, width = unit(1,"npc"), height = unit(1,"npc"))
 
 gg=ggplot(data005_cn, aes(x=reorder(data005_cn,n), y=n))+theme_classic()+geom_text(aes(label = n), hjust = -0.1)+ ylim(min=0, 5000)+xlab("风味") + ylab("次数")+
-  geom_bar(stat="identity",fill="#CD5C5C")+coord_flip()+ggtitle("Whisky notes Top30 风味词",subtitle = "5K+ 酒评")+labs(caption = "数据源:www.whiskynote.be 2010年-2024年")+
+  geom_bar(stat="identity",fill="#CD5C5C")+coord_flip()+ggtitle("Whisky notes Top30 风味词",subtitle = "5K+ 酒评")+labs(caption = "数据源:www.whiskynote.be 从2010年到2024年")+
   inset_element(img3, 0.65, 0.15, 1, 0.75,align_to = 'full')
 ```
 
