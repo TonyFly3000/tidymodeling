@@ -1,5 +1,5 @@
 ---
-title: "Model"
+title: "Keras regression model"
 subtitle: "with whiskynote.be data"
 author: "Tony Duan"
 
@@ -61,7 +61,7 @@ data001=data>> filter(_.all_page_score >=70
                       ,_.bottle_review_Mouth !='no comment'
                       ,_.bottle_review_Finish !='no comment'
                       ) >>mutate(
-                      review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish
+                      review=_.bottle_name+_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish
                       )>>mutate(review=_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))>>mutate(review_len=_.review.str.count(' ') + 1)
                       
                       
@@ -264,162 +264,10 @@ sum(review_flag_final_test)
 ```
 
 
-# DNN classificaiton model 
-
-## define model
-
-```{python}
-# Build the model
-model_dnn = tf.keras.Sequential([
-    tf.keras.layers.Embedding(input_dim=vocab_size,output_dim=  32),
-    tf.keras.layers.GlobalAveragePooling1D(),
-    tf.keras.layers.Dense(24, activation='relu'),
-    tf.keras.layers.Dense(24, activation='relu'),
-    tf.keras.layers.Dense(1, activation='sigmoid')
-])
-```
-
-
-
-
-## compile model
-```{python}
-# Setup the training parameters
-model_dnn.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
-```
-
-```{python}
-model_dnn.summary()
-```
-
-
-
-## Callbacks
-```{python}
-class myCallback(tf.keras.callbacks.Callback):
-  def on_epoch_end(self, epoch, logs={}):
-    if(logs.get('val_accuracy')>0.90):
-      print("\nReached 88% val_accuracy so cancelling training!")
-      self.model.stop_training = True
-
-# Instantiate class
-callbacks = myCallback()
-```
-
-
-
-## train model
-```{python}
-num_epochs = 20
-
-# Train the model
-history=model_dnn.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks],verbose=0)
-
-#history=model.fit(x=padded, y=review_flag_final, validation_split=0.2, shuffle=True,epochs=num_epochs,callbacks=[callbacks])
-```
-
-
-
-
-```{python}
-acc = history.history['accuracy']
-val_acc = history.history['val_accuracy']
-loss = history.history['loss']
-val_loss = history.history['val_loss']
-epochs = range(len(acc))
-```
-
-
-
-```{python}
-import matplotlib.image as mpimg
-import matplotlib.pyplot as plt
-#------------------------------------------------
-# Plot training and validation accuracy per epoch
-#------------------------------------------------
-plt.plot(epochs, acc, 'r', label='Training accuracy')
-plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
-plt.title('Training and validation accuracy')
-plt.legend()
-plt.show()
-plt.figure()
-
-plt.plot(epochs, loss, 'r', label='Training Loss')
-plt.plot(epochs, val_loss, 'b', label='Validation Loss')
-plt.title('DNN model Training and validation loss')
-plt.legend()
-
-plt.show()
-```
-
-# LSTM model
-
-## define model
-```{python}
-model_lstm = tf.keras.Sequential([
-    tf.keras.layers.Embedding(input_dim=vocab_size,output_dim= 32),
-    tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(32, return_sequences=True)),
-      tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(16)),
-    tf.keras.layers.Dense(16, activation='relu'),
-    tf.keras.layers.Dense(1, activation='sigmoid')
-])
-```
-
-## compile model
-```{python}
-# Setup the training parameters
-model_lstm.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
-```
-
-
-```{python}
-model_lstm.summary()
-```
-
-
-# train model
-```{python}
-num_epochs = 5
-
-# Train the model
-# history2=model_lstm.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks])
-
-```
-
-```{python}
-# acc = history2.history['accuracy']
-# val_acc = history2.history['val_accuracy']
-# loss = history2.history['loss']
-# val_loss = history2.history['val_loss']
-# epochs = range(len(acc))
-```
-
-
-
-```{python}
-# import matplotlib.image as mpimg
-# import matplotlib.pyplot as plt
-# #------------------------------------------------
-# # Plot training and validation accuracy per epoch
-# #------------------------------------------------
-# plt.plot(epochs, acc, 'r', label='Training accuracy')
-# plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
-# plt.title('Training and validation accuracy')
-# plt.legend()
-# plt.show()
-# plt.figure()
-# 
-# plt.plot(epochs, loss, 'r', label='Training Loss')
-# plt.plot(epochs, val_loss, 'b', label='Validation Loss')
-# plt.title('LSTM model Training and validation loss')
-# plt.legend()
-# 
-# plt.show()
-```
 
 # dummy model
 
-trainning score average is 86
+trainning score average is 86.5
 ```{python}
 sum(review_socre_final_train)/len(review_socre_final_train)
 ```
@@ -429,7 +277,7 @@ sum(review_socre_final_train)/len(review_socre_final_train)
 
 ```{python}
 import numpy as np
-sum(np.absolute(86-review_socre_final_test))/len(review_socre_final_train)
+sum(np.absolute(86.5-review_socre_final_test))/len(review_socre_final_test)
 ```
 
 
@@ -515,6 +363,22 @@ plt.legend()
 plt.show()
 ```
 
+```{python}
+# import matplotlib.image as mpimg
+# import matplotlib.pyplot as plt
+# #------------------------------------------------
+# # Plot training and validation loss per epoch
+# #------------------------------------------------
+# 
+# plt.plot(epochs, mae, 'r', label='Training mae')
+# plt.plot(epochs, val_mae, 'b', label='Validation mae')
+# plt.title('DNN model Training and validation mae')
+# plt.legend()
+# 
+# plt.show()
+```
+
+
 
 ```{python}
 # Only plot the last 80% of the epochs
@@ -532,23 +396,6 @@ plt.legend()
 plt.show()
 ```
 
-```{python}
-# Only plot the last 80% of the epochs
-zoom_split = int(epochs[-1] * 0.2)
-epochs_zoom = epochs[zoom_split:]
-
-mae_zoom = mae[zoom_split:]
-val_mae_zoom = val_mae[zoom_split:]
-
-
-# Plot zoomed mae and loss
-plt.plot(epochs_zoom, mae_zoom, 'r', label='mae_zoom')
-plt.plot(epochs_zoom, val_mae_zoom, 'b', label='val_mae_zooms')
-plt.title('DNN model Training and validation loss')
-plt.legend()
-
-plt.show()
-```
 
 
 
@@ -599,7 +446,11 @@ dataset=dataset>> mutate(predic=if_else(_.predic <70, 70, _.predic)
                           ,dummy_pred=86
                          ,diff=_.predic-_.real 
                          ,dummy_diff=_.dummy_pred-_.real
-                          )>> mutate(predic=if_else(_.predic >100,100, _.predic))
+                          )>> mutate(predic=if_else(_.predic >100,100, _.predic)
+                                     ,predic_class=if_else(_.predic >=90,1, 0)
+                                    ,real_class=if_else(_.real>=90,1, 0)
+                                    ,dummy_class=0
+                          )
                           
 dataset002 = pd.concat([data002[4000:].reset_index(drop=True),dataset.reset_index(drop=True)], axis=1)                    
 
@@ -607,6 +458,49 @@ dataset002 = pd.concat([data002[4000:].reset_index(drop=True),dataset.reset_inde
 
 ```{python}
 dataset002.to_excel('pred.xlsx')
+```
+
+# mean absolute error 
+
+```{python}
+sum(abs(dataset002['diff']))/len(dataset002)
+```
+
+
+```{python}
+sum(abs(dataset002['dummy_diff']))/len(dataset002)
+```
+
+
+```{python}
+sum(dataset002['predic']>=90)
+```
+
+
+```{python}
+sum(dataset002['real']>=90)
+```
+
+
+```{python}
+from sklearn import metrics
+confusion_matrix_dt = metrics.confusion_matrix(dataset002['real_class'],dataset002['predic_class']) 
+confusion_matrix_dt
+```
+
+
+```{python}
+
+from sklearn import metrics
+accuracy = metrics.accuracy_score(dataset002['real_class'],dataset002['predic_class'])  
+accuracy
+```
+
+
+```{python}
+from sklearn import metrics
+accuracy = metrics.accuracy_score(dataset002['real_class'],dataset002['dummy_class'])  
+accuracy
 ```
 
 

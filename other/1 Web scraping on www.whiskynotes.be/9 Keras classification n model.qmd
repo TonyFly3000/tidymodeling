@@ -1,0 +1,160 @@
+---
+title: "Keras classification model"
+subtitle: "with whiskynote.be data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+```{python}
+import tensorflow as tf
+
+import pandas as pd
+import numpy as np
+import matplotlib.pylab as plt
+import seaborn as sns
+
+from siuba.siu import call
+from siuba import _, mutate, filter, group_by, summarize,show_query
+from siuba import *
+
+from siuba.data import mtcars,penguins
+```
+
+```{python}
+import tensorflow as tf
+tf.__version__
+```
+
+
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+import tensorflow as tf
+import tensorflow_hub as hub
+```
+
+```{python}
+import pandas as pd
+df_raw=pd.read_excel('./output/all_page_bottle_list_all.xlsx')
+```
+
+
+```{python}
+import re
+df=df_raw>> filter(_.all_page_score >=70
+                      ,_.all_page_score <100
+                      ,_.bottle_review_Nose !='no comment'
+                      ,_.bottle_review_Mouth !='no comment'
+                      ,_.bottle_review_Finish !='no comment'
+                      ) >>mutate(
+                         label=if_else(_.all_page_score>=90,1,0)
+                      ,review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish
+                      )>>mutate(review=_.bottle_name+_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))>>mutate(review_len=_.review.str.count(' ')+1) >>mutate(description=_.review)
+                      
+                      
+                      
+```
+
+
+```{python}
+df = df[["description", "label"]]
+```
+
+```{python}
+df = df.dropna(subset=["description", "label"])
+```
+
+```{python}
+df.label = df.label.astype(int)
+```
+
+
+```{python}
+df.head()
+```
+
+```{python}
+df.info()
+```
+# split data
+
+```{python}
+train, val, test = np.split(df.sample(frac=1), [int(0.8*len(df)), int(0.9*len(df))])
+```
+
+
+```{python}
+def df_to_dataset(dataframe, shuffle=True, batch_size=1024):
+  df = dataframe.copy()
+  labels = df.pop('label')
+  df = df["description"]
+  ds = tf.data.Dataset.from_tensor_slices((df, labels))
+  if shuffle:
+    ds = ds.shuffle(buffer_size=len(dataframe))
+  ds = ds.batch(batch_size)
+  ds = ds.prefetch(tf.data.AUTOTUNE)
+  return ds
+```
+
+```{python}
+train_data = df_to_dataset(train)
+valid_data = df_to_dataset(val)
+test_data = df_to_dataset(test)
+```
+
+
+```{python}
+embedding = "https://tfhub.dev/google/nnlm-en-dim50/2"
+hub_layer = hub.KerasLayer(embedding, dtype=tf.string, trainable=True)
+```
+
+```{python}
+hub_layer(list(train_data)[0][0])
+```
+
+
+```{python}
+from keras import models
+
+model = models.Sequential()
+model.add(hub_layer)
+model.add(tf.keras.layers.Dense(16, activation='relu'))
+model.add(tf.keras.layers.Dropout(0.4))
+model.add(tf.keras.layers.Dense(16, activation='relu'))
+model.add(tf.keras.layers.Dropout(0.4))
+model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
+```
+
+
+```{python}
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+              loss=tf.keras.losses.BinaryCrossentropy(),
+              metrics=['accuracy'])
+```
+
+
+```{python}
+model.evaluate(train_data)
+```
+
+
+# resource:
+
+https://colab.research.google.com/drive/1yO7EgCYSN3KW8hzDTz809nzNmacjBBXX?usp=sharing#scrollTo=7nYrbpVd96kr
+

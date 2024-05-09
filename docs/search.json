@@ -8781,7 +8781,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#test",
     "title": "Model",
     "section": "4.3 test",
-    "text": "4.3 test\n\n\nCode\nlen(padded_test)\nlen(review_flag_final_test)\n\n\n633\n\n\n\n\nCode\nsum(review_flag_final_test)\n\n\n176",
+    "text": "4.3 test\n\n\nCode\nlen(padded_test)\nlen(review_flag_final_test)\n\n\n633\n\n\n\n\nCode\nsum(review_flag_final_test)\n\n\n173",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8793,7 +8793,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#if-all-guess-lower-than-90-points-then-0.72-accuracy",
     "title": "Model",
     "section": "4.4 if all guess lower than 90 points then 0.72 accuracy",
-    "text": "4.4 if all guess lower than 90 points then 0.72 accuracy\n\n\nCode\n(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)\n\n\n0.721958925750395",
+    "text": "4.4 if all guess lower than 90 points then 0.72 accuracy\n\n\nCode\n(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)\n\n\n0.7266982622432859",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8805,7 +8805,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#define-model",
     "title": "Model",
     "section": "5.1 define model",
-    "text": "5.1 define model\n\n\nCode\n# Build the model\nmodel_dnn = tf.keras.Sequential([\n    tf.keras.layers.Embedding(input_dim=vocab_size,output_dim=  32),\n    tf.keras.layers.GlobalAveragePooling1D(),\n    tf.keras.layers.Dense(24, activation='relu'),\n    tf.keras.layers.Dense(24, activation='relu'),\n    tf.keras.layers.Dense(1, activation='sigmoid')\n])",
+    "text": "5.1 define model\n\n\nCode\n# Build the model\nmodel_dnn_classificaiton= tf.keras.Sequential([\n    tf.keras.layers.Embedding(input_dim=vocab_size,output_dim=  32),\n    tf.keras.layers.GlobalAveragePooling1D(),\n    tf.keras.layers.Dense(24, activation='relu'),\n    tf.keras.layers.Dense(24, activation='relu'),\n    tf.keras.layers.Dense(1, activation='sigmoid')\n])",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8817,7 +8817,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#compile-model",
     "title": "Model",
     "section": "5.2 compile model",
-    "text": "5.2 compile model\n\n\nCode\n# Setup the training parameters\nmodel_dnn.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])\n\n\n\n\nCode\nmodel_dnn.summary()\n\n\nModel: \"sequential\"\n\n\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃\n┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n│ embedding (Embedding)           │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ global_average_pooling1d        │ ?                      │   0 (unbuilt) │\n│ (GlobalAveragePooling1D)        │                        │               │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense (Dense)                   │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_1 (Dense)                 │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_2 (Dense)                 │ ?                      │   0 (unbuilt) │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n\n\n\n Total params: 0 (0.00 B)\n\n\n\n Trainable params: 0 (0.00 B)\n\n\n\n Non-trainable params: 0 (0.00 B)",
+    "text": "5.2 compile model\n\n\nCode\n# Setup the training parameters\nmodel_dnn_classificaiton.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])\n\n\n\n\nCode\nmodel_dnn_classificaiton.summary()\n\n\nModel: \"sequential\"\n\n\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃\n┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n│ embedding (Embedding)           │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ global_average_pooling1d        │ ?                      │   0 (unbuilt) │\n│ (GlobalAveragePooling1D)        │                        │               │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense (Dense)                   │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_1 (Dense)                 │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_2 (Dense)                 │ ?                      │   0 (unbuilt) │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n\n\n\n Total params: 0 (0.00 B)\n\n\n\n Trainable params: 0 (0.00 B)\n\n\n\n Non-trainable params: 0 (0.00 B)",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8841,7 +8841,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#train-model",
     "title": "Model",
     "section": "5.4 train model",
-    "text": "5.4 train model\n\n\nCode\nnum_epochs = 20\n\n# Train the model\nhistory=model_dnn.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks],verbose=0)\n\n#history=model.fit(x=padded, y=review_flag_final, validation_split=0.2, shuffle=True,epochs=num_epochs,callbacks=[callbacks])\n\n\n\n\nCode\nacc = history.history['accuracy']\nval_acc = history.history['val_accuracy']\nloss = history.history['loss']\nval_loss = history.history['val_loss']\nepochs = range(len(acc))\n\n\n\n\nCode\nimport matplotlib.image as mpimg\nimport matplotlib.pyplot as plt\n#------------------------------------------------\n# Plot training and validation accuracy per epoch\n#------------------------------------------------\nplt.plot(epochs, acc, 'r', label='Training accuracy')\nplt.plot(epochs, val_acc, 'b', label='Validation accuracy')\nplt.title('Training and validation accuracy')\nplt.legend()\nplt.show()\nplt.figure()\n\nplt.plot(epochs, loss, 'r', label='Training Loss')\nplt.plot(epochs, val_loss, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()",
+    "text": "5.4 train model\n\n\nCode\nnum_epochs = 20\n\n# Train the model\nhistory=model_dnn_classificaiton.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks],verbose=0)\n\n#history=model.fit(x=padded, y=review_flag_final, validation_split=0.2, shuffle=True,epochs=num_epochs,callbacks=[callbacks])\n\n\n\n\nCode\nacc = history.history['accuracy']\nval_acc = history.history['val_accuracy']\nloss = history.history['loss']\nval_loss = history.history['val_loss']\nepochs = range(len(acc))\n\n\n\n\nCode\nimport matplotlib.image as mpimg\nimport matplotlib.pyplot as plt\n#------------------------------------------------\n# Plot training and validation accuracy per epoch\n#------------------------------------------------\nplt.plot(epochs, acc, 'r', label='Training accuracy')\nplt.plot(epochs, val_acc, 'b', label='Validation accuracy')\nplt.title('Training and validation accuracy')\nplt.legend()\nplt.show()\nplt.figure()\n\nplt.plot(epochs, loss, 'r', label='Training Loss')\nplt.plot(epochs, val_loss, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -8888,8 +8888,8 @@
     "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#predication",
     "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#predication",
     "title": "Model",
-    "section": "9.4 predication",
-    "text": "9.4 predication\n\n\nCode\nx = padded_test\ny = model_dnn.predict(x)\n\n\n 1/20 ━━━━━━━━━━━━━━━━━━━━ 0s 29ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b20/20 ━━━━━━━━━━━━━━━━━━━━ 0s 2ms/step \n\n\n\n\nCode\nlen(padded_test)\nlen(y)\nlen(review_socre_final_test)\n\n\n633\n\n\n\n\nCode\nreview_socre_final_test.shape\n\n\n(633,)\n\n\n\n\nCode\ny.shape\n\n\n(633, 1)\n\n\n\n\nCode\ny2 = y.flatten()\n\n\n\n\nCode\ny2.shape\n\n\n(633,)\n\n\n\n\nCode\ndataset = pd.DataFrame({'real': review_socre_final_test, 'predic': list(y2)}, columns=['real', 'predic'])\n\n\n\n\nCode\ndataset['predic']=round(dataset['predic'])\ndataset['predic']=round(dataset['predic'])\n\n\n\n\nCode\ndataset=dataset&gt;&gt; mutate(predic=if_else(_.predic &lt;70, 70, _.predic)\n                          ,dummy_pred=86\n                         ,diff=_.predic-_.real \n                         ,dummy_diff=_.dummy_pred-_.real\n                          )&gt;&gt; mutate(predic=if_else(_.predic &gt;100,100, _.predic))\n                          \ndataset002 = pd.concat([data002[4000:].reset_index(drop=True),dataset.reset_index(drop=True)], axis=1)                    \n\n\n\n\nCode\ndataset002.to_excel('pred.xlsx')\n\n\n\n\nCode\nimport seaborn as sns\nfig, ax = plt.subplots()\n\nsns.scatterplot(data=dataset,x='real',y='predic',ax=ax)\nsns.regplot(data=dataset, x=\"real\", y=\"predic\", x_jitter=.15,ax=ax)\nax.set(xlim=(65, 100),ylim=(65, 100))",
+    "section": "5.5 predication",
+    "text": "5.5 predication\n\n\nCode\nx = padded_test\ny = model_dnn_classificaiton.predict(x)\n\n\n 1/20 ━━━━━━━━━━━━━━━━━━━━ 0s 25ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b20/20 ━━━━━━━━━━━━━━━━━━━━ 0s 1ms/step \n\n\n\n\nCode\nsum(review_flag_final_test)\n\n\n173\n\n\n\n\nCode\npredicted = np.argmax(y, axis=-1)\n\n\n\n\nCode\nfrom sklearn import metrics\naccuracy = metrics.accuracy_score(review_flag_final_test, predicted)  \naccuracy\n\n\n0.7266982622432859\n\n\n\n\nCode\nfrom sklearn.metrics import confusion_matrix \nconfusion_matrix(review_flag_final_test, predicted)\n\n\narray([[460,   0],\n       [173,   0]])",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -9126,6 +9126,390 @@
       "Other",
       "4 Map",
       "map"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html",
+    "title": "Model b include bottle info",
+    "section": "",
+    "text": "Code\nimport tensorflow as tf\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pylab as plt\nimport seaborn as sns\n\nfrom siuba.siu import call\nfrom siuba import _, mutate, filter, group_by, summarize,show_query\nfrom siuba import *\n\nfrom siuba.data import mtcars,penguins",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#total",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#total",
+    "title": "Model b include bottle info",
+    "section": "4.1 total",
+    "text": "4.1 total\n\n\nCode\nlen(padded)\nlen(review_flag_final)\n\n\n4633",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#train",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#train",
+    "title": "Model b include bottle info",
+    "section": "4.2 train",
+    "text": "4.2 train\n\n\nCode\nlen(padded_train)\nlen(review_flag_final_train)\n\n\n4000",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#test",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#test",
+    "title": "Model b include bottle info",
+    "section": "4.3 test",
+    "text": "4.3 test\n\n\nCode\nlen(padded_test)\nlen(review_flag_final_test)\n\n\n633\n\n\n\n\nCode\nsum(review_flag_final_test)\n\n\n156",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#if-all-guess-lower-than-90-points-then-0.75-accuracy",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#if-all-guess-lower-than-90-points-then-0.75-accuracy",
+    "title": "Model b include bottle info",
+    "section": "4.4 if all guess lower than 90 points then 0.75 accuracy",
+    "text": "4.4 if all guess lower than 90 points then 0.75 accuracy\n\n\nCode\n(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)\n\n\n0.7535545023696683",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#define-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#define-model",
+    "title": "Model b include bottle info",
+    "section": "5.1 define model",
+    "text": "5.1 define model\n\n\nCode\n# Build the model\nmodel_dnn_classificaiton = tf.keras.Sequential([\n    tf.keras.layers.Embedding(input_dim=vocab_size,output_dim=32),\n    tf.keras.layers.GlobalAveragePooling1D(),\n    tf.keras.layers.Dense(24, activation='tanh'),\n    tf.keras.layers.Dense(1, activation='sigmoid')\n])",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#compile-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#compile-model",
+    "title": "Model b include bottle info",
+    "section": "5.2 compile model",
+    "text": "5.2 compile model\n\n\nCode\n# Setup the training parameters\nmodel_dnn_classificaiton.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])\n\n\n\n\nCode\nmodel_dnn_classificaiton.summary()\n\n\nModel: \"sequential\"\n\n\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃\n┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n│ embedding (Embedding)           │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ global_average_pooling1d        │ ?                      │   0 (unbuilt) │\n│ (GlobalAveragePooling1D)        │                        │               │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense (Dense)                   │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_1 (Dense)                 │ ?                      │   0 (unbuilt) │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n\n\n\n Total params: 0 (0.00 B)\n\n\n\n Trainable params: 0 (0.00 B)\n\n\n\n Non-trainable params: 0 (0.00 B)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#callbacks",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#callbacks",
+    "title": "Model b include bottle info",
+    "section": "5.3 Callbacks",
+    "text": "5.3 Callbacks\n\n\nCode\nclass myCallback(tf.keras.callbacks.Callback):\n  def on_epoch_end(self, epoch, logs={}):\n    if(logs.get('val_accuracy')&gt;0.90):\n      print(\"\\nReached 88% val_accuracy so cancelling training!\")\n      self.model.stop_training = True\n\n# Instantiate class\ncallbacks = myCallback()",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#train-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#train-model",
+    "title": "Model b include bottle info",
+    "section": "5.4 train model",
+    "text": "5.4 train model\n\n\nCode\nnum_epochs = 20\n\n# Train the model\nhistory=model_dnn_classificaiton.fit(x=padded_train, y=review_flag_final_train, validation_data=(padded_test, review_flag_final_test),epochs=num_epochs,shuffle=True,callbacks=[callbacks],verbose=0)\n\n#history=model.fit(x=padded, y=review_flag_final, validation_split=0.2, shuffle=True,epochs=num_epochs,callbacks=[callbacks])\n\n\n\n\nCode\nacc = history.history['accuracy']\nval_acc = history.history['val_accuracy']\nloss = history.history['loss']\nval_loss = history.history['val_loss']\nepochs = range(len(acc))\n\n\n\n\nCode\nimport matplotlib.image as mpimg\nimport matplotlib.pyplot as plt\n#------------------------------------------------\n# Plot training and validation accuracy per epoch\n#------------------------------------------------\nplt.plot(epochs, acc, 'r', label='Training accuracy')\nplt.plot(epochs, val_acc, 'b', label='Validation accuracy')\nplt.title('Training and validation accuracy')\nplt.legend()\nplt.show()\nplt.figure()\n\nplt.plot(epochs, loss, 'r', label='Training Loss')\nplt.plot(epochs, val_loss, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#define-model-1",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#define-model-1",
+    "title": "Model b include bottle info",
+    "section": "6.1 define model",
+    "text": "6.1 define model\n\n\nCode\nmodel_lstm = tf.keras.Sequential([\n    tf.keras.layers.Embedding(input_dim=vocab_size,output_dim= 32),\n    tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(32, return_sequences=True)),\n      tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(16)),\n    tf.keras.layers.Dense(16, activation='relu'),\n    tf.keras.layers.Dense(1, activation='sigmoid')\n])",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#compile-model-1",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#compile-model-1",
+    "title": "Model b include bottle info",
+    "section": "6.2 compile model",
+    "text": "6.2 compile model\n\n\nCode\n# Setup the training parameters\nmodel_lstm.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])\n\n\n\n\nCode\nmodel_lstm.summary()\n\n\nModel: \"sequential_1\"\n\n\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃\n┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n│ embedding_1 (Embedding)         │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ bidirectional (Bidirectional)   │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ bidirectional_1 (Bidirectional) │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_2 (Dense)                 │ ?                      │   0 (unbuilt) │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_3 (Dense)                 │ ?                      │   0 (unbuilt) │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n\n\n\n Total params: 0 (0.00 B)\n\n\n\n Trainable params: 0 (0.00 B)\n\n\n\n Non-trainable params: 0 (0.00 B)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#train-model-2",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#train-model-2",
+    "title": "Model b include bottle info",
+    "section": "9.1 train model",
+    "text": "9.1 train model\n\n\nCode\n# Train the model\nhistory = model_dnn.fit(x=padded_train, y=review_socre_final_train,validation_data=(padded_test, review_socre_final_test),epochs=200,verbose=0 )\n\n#history = model_dnn.fit(x=padded_train, y=review_socre_final_train,validation_split=0.2,epochs=20)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#save-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#save-model",
+    "title": "Model b include bottle info",
+    "section": "9.2 save model",
+    "text": "9.2 save model\n\n\nCode\nmodel_dnn.save('whiskynote_score_dnn.keras')",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#load-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#load-model",
+    "title": "Model b include bottle info",
+    "section": "9.3 load model",
+    "text": "9.3 load model\n\n\nCode\nnew_model = tf.keras.models.load_model('whiskynote_score_dnn.keras')\n\n\n\n\nCode\nnew_model.summary()\n\n\nModel: \"sequential_2\"\n\n\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃\n┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n│ embedding_2 (Embedding)         │ (32, 300, 32)          │       224,000 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ global_average_pooling1d_1      │ (32, 32)               │             0 │\n│ (GlobalAveragePooling1D)        │                        │               │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_4 (Dense)                 │ (32, 32)               │         1,056 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_5 (Dense)                 │ (32, 24)               │           792 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_6 (Dense)                 │ (32, 24)               │           600 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_7 (Dense)                 │ (32, 1)                │            25 │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n\n\n\n Total params: 679,421 (2.59 MB)\n\n\n\n Trainable params: 226,473 (884.66 KB)\n\n\n\n Non-trainable params: 0 (0.00 B)\n\n\n\n Optimizer params: 452,948 (1.73 MB)\n\n\n\n\n\nCode\nloss = history.history['loss']\nval_loss = history.history['val_loss']\n\nmae = history.history['mae']\nval_mae = history.history['val_mae']\n\nepochs = range(len(val_loss))\n\n\n\n\nCode\nimport matplotlib.image as mpimg\nimport matplotlib.pyplot as plt\n#------------------------------------------------\n# Plot training and validation loss per epoch\n#------------------------------------------------\n\nplt.plot(epochs, loss, 'r', label='Training Loss')\nplt.plot(epochs, val_loss, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Only plot the last 80% of the epochs\nzoom_split = int(epochs[-1] * 0.2)\nepochs_zoom = epochs[zoom_split:]\nval_loss_zoom = val_loss[zoom_split:]\nloss_zoom = loss[zoom_split:]\n\n# Plot zoomed mae and loss\nplt.plot(epochs_zoom, loss_zoom, 'r', label='Training Loss')\nplt.plot(epochs_zoom, val_loss_zoom, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Only plot the last 80% of the epochs\nzoom_split = int(epochs[-1] * 0.2)\nepochs_zoom = epochs[zoom_split:]\n\nmae_zoom = mae[zoom_split:]\nval_mae_zoom = val_mae[zoom_split:]\n\n\n# Plot zoomed mae and loss\nplt.plot(epochs_zoom, mae_zoom, 'r', label='mae_zoom')\nplt.plot(epochs_zoom, val_mae_zoom, 'b', label='val_mae_zooms')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#predication",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#predication",
+    "title": "Model b include bottle info",
+    "section": "5.5 predication",
+    "text": "5.5 predication\n\n\nCode\nx = padded_test\ny = model_dnn_classificaiton.predict(x)\n\n\n 1/20 ━━━━━━━━━━━━━━━━━━━━ 0s 23ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b20/20 ━━━━━━━━━━━━━━━━━━━━ 0s 1ms/step \n\n\n\n\nCode\nsum(review_flag_final_test)\n\n\n156\n\n\n\n\nCode\npredicted = np.argmax(y, axis=-1)\n\n\n\n\nCode\nsum(predicted)\n\n\n0\n\n\n\n\nCode\nfrom sklearn import metrics\naccuracy = metrics.accuracy_score(review_flag_final_test, predicted)  \naccuracy\n\n\n0.7535545023696683\n\n\n\n\nCode\nfrom sklearn.metrics import confusion_matrix \nconfusion_matrix(review_flag_final_test, predicted)\n\n\narray([[477,   0],\n       [156,   0]])",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model.html#predication-1",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model.html#predication-1",
+    "title": "Model",
+    "section": "9.4 predication",
+    "text": "9.4 predication\n\n\nCode\nx = padded_test\ny = model_dnn.predict(x)\n\n\n 1/20 ━━━━━━━━━━━━━━━━━━━━ 0s 28ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b20/20 ━━━━━━━━━━━━━━━━━━━━ 0s 1ms/step \n\n\n\n\nCode\nlen(padded_test)\nlen(y)\nlen(review_socre_final_test)\n\n\n633\n\n\n\n\nCode\nreview_socre_final_test.shape\n\n\n(633,)\n\n\n\n\nCode\ny.shape\n\n\n(633, 1)\n\n\n\n\nCode\ny2 = y.flatten()\n\n\n\n\nCode\ny2.shape\n\n\n(633,)\n\n\n\n\nCode\ndataset = pd.DataFrame({'real': review_socre_final_test, 'predic': list(y2)}, columns=['real', 'predic'])\n\n\n\n\nCode\ndataset['predic']=round(dataset['predic'])\ndataset['predic']=round(dataset['predic'])\n\n\n\n\nCode\ndataset=dataset&gt;&gt; mutate(predic=if_else(_.predic &lt;70, 70, _.predic)\n                          ,dummy_pred=86\n                         ,diff=_.predic-_.real \n                         ,dummy_diff=_.dummy_pred-_.real\n                          )&gt;&gt; mutate(predic=if_else(_.predic &gt;100,100, _.predic))\n                          \ndataset002 = pd.concat([data002[4000:].reset_index(drop=True),dataset.reset_index(drop=True)], axis=1)                    \n\n\n\n\nCode\ndataset002.to_excel('pred.xlsx')\n\n\n\n\nCode\nimport seaborn as sns\nfig, ax = plt.subplots()\n\nsns.scatterplot(data=dataset,x='real',y='predic',ax=ax)\nsns.regplot(data=dataset, x=\"real\", y=\"predic\", x_jitter=.15,ax=ax)\nax.set(xlim=(65, 100),ylim=(65, 100))",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#predication-1",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 model b.html#predication-1",
+    "title": "Model b include bottle info",
+    "section": "9.4 predication",
+    "text": "9.4 predication\n\n\nCode\nx = padded_test\ny = model_dnn.predict(x)\n\n\n 1/20 ━━━━━━━━━━━━━━━━━━━━ 0s 28ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b20/20 ━━━━━━━━━━━━━━━━━━━━ 0s 1ms/step \n\n\n\n\nCode\nlen(padded_test)\nlen(y)\nlen(review_socre_final_test)\n\n\n633\n\n\n\n\nCode\nreview_socre_final_test.shape\n\n\n(633,)\n\n\n\n\nCode\ny.shape\n\n\n(633, 1)\n\n\n\n\nCode\ny2 = y.flatten()\n\n\n\n\nCode\ny2.shape\n\n\n(633,)\n\n\n\n\nCode\ndataset = pd.DataFrame({'real': review_socre_final_test, 'predic': list(y2)}, columns=['real', 'predic'])\n\n\n\n\nCode\ndataset['predic']=round(dataset['predic'])\ndataset['predic']=round(dataset['predic'])\n\n\n\n\nCode\ndataset=dataset&gt;&gt; mutate(predic=if_else(_.predic &lt;70, 70, _.predic)\n                          ,dummy_pred=86\n                         ,diff=_.predic-_.real \n                         ,dummy_diff=_.dummy_pred-_.real\n                          )&gt;&gt; mutate(predic=if_else(_.predic &gt;100,100, _.predic))\n                          \ndataset002 = pd.concat([data002[4000:].reset_index(drop=True),dataset.reset_index(drop=True)], axis=1)                    \n\n\n\n\nCode\ndataset002.to_excel('pred.xlsx')\n\n\n\n\nCode\nimport seaborn as sns\nfig, ax = plt.subplots()\n\nsns.scatterplot(data=dataset,x='real',y='predic',ax=ax)\nsns.regplot(data=dataset, x=\"real\", y=\"predic\", x_jitter=.15,ax=ax)\nax.set(xlim=(65, 100),ylim=(65, 100))",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Model b include bottle info"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html",
+    "title": "XGboost classification model",
+    "section": "",
+    "text": "Code\nimport tensorflow as tf\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pylab as plt\nimport seaborn as sns\n\nfrom siuba.siu import call\nfrom siuba import _, mutate, filter, group_by, summarize,show_query\nfrom siuba import *\n\nfrom siuba.data import mtcars,penguins",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "XGboost classification model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html#total",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html#total",
+    "title": "XGboost classification model",
+    "section": "4.1 total",
+    "text": "4.1 total\n\n\nCode\nlen(padded)\nlen(review_flag_final)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "XGboost classification model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html#train",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html#train",
+    "title": "XGboost classification model",
+    "section": "4.2 train",
+    "text": "4.2 train\n\n\nCode\nlen(padded_train)\nlen(review_flag_final_train)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "XGboost classification model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html#test",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html#test",
+    "title": "XGboost classification model",
+    "section": "4.3 test",
+    "text": "4.3 test\n\n\nCode\nlen(padded_test)\nlen(review_flag_final_test)\n\n\n\n\nCode\nsum(review_flag_final_test)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "XGboost classification model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html#if-all-guess-lower-than-90-points-then-0.75-accuracy",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 XGboost classification model.html#if-all-guess-lower-than-90-points-then-0.75-accuracy",
+    "title": "XGboost classification model",
+    "section": "4.4 if all guess lower than 90 points then 0.75 accuracy",
+    "text": "4.4 if all guess lower than 90 points then 0.75 accuracy\n\n\nCode\n(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "XGboost classification model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras classification n model.html",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras classification n model.html",
+    "title": "Keras classification model",
+    "section": "",
+    "text": "Code\nimport tensorflow as tf\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pylab as plt\nimport seaborn as sns\n\nfrom siuba.siu import call\nfrom siuba import _, mutate, filter, group_by, summarize,show_query\nfrom siuba import *\n\nfrom siuba.data import mtcars,penguins\n\n\n\n\nCode\nimport tensorflow as tf\ntf.__version__\n\n\n\n\nCode\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nimport tensorflow as tf\nimport tensorflow_hub as hub\n\n\n\n\nCode\nimport pandas as pd\ndf_raw=pd.read_excel('./output/all_page_bottle_list_all.xlsx')\n\n\n\n\nCode\nimport re\ndf=df_raw&gt;&gt; filter(_.all_page_score &gt;=70\n                      ,_.all_page_score &lt;100\n                      ,_.bottle_review_Nose !='no comment'\n                      ,_.bottle_review_Mouth !='no comment'\n                      ,_.bottle_review_Finish !='no comment'\n                      ) &gt;&gt;mutate(\n                         label=if_else(_.all_page_score&gt;=90,1,0)\n                      ,review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish\n                      )&gt;&gt;mutate(review=_.bottle_name+_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))&gt;&gt;mutate(review_len=_.review.str.count(' ')+1) &gt;&gt;mutate(description=_.review)\n\n\n\n\nCode\ndf = df[[\"description\", \"label\"]]\n\n\n\n\nCode\ndf = df.dropna(subset=[\"description\", \"label\"])\n\n\n\n\nCode\ndf.label = df.label.astype(int)\n\n\n\n\nCode\ndf.head()\n\n\n\n\nCode\ndf.info()\n\n\n\n1 split data\n\n\nCode\ntrain, val, test = np.split(df.sample(frac=1), [int(0.8*len(df)), int(0.9*len(df))])\n\n\n\n\nCode\ndef df_to_dataset(dataframe, shuffle=True, batch_size=1024):\n  df = dataframe.copy()\n  labels = df.pop('label')\n  df = df[\"description\"]\n  ds = tf.data.Dataset.from_tensor_slices((df, labels))\n  if shuffle:\n    ds = ds.shuffle(buffer_size=len(dataframe))\n  ds = ds.batch(batch_size)\n  ds = ds.prefetch(tf.data.AUTOTUNE)\n  return ds\n\n\n\n\nCode\ntrain_data = df_to_dataset(train)\nvalid_data = df_to_dataset(val)\ntest_data = df_to_dataset(test)\n\n\n\n\nCode\nembedding = \"https://tfhub.dev/google/nnlm-en-dim50/2\"\nhub_layer = hub.KerasLayer(embedding, dtype=tf.string, trainable=True)\n\n\n\n\nCode\nhub_layer(list(train_data)[0][0])\n\n\n\n\nCode\nfrom keras import models\n\nmodel = models.Sequential()\nmodel.add(hub_layer)\nmodel.add(tf.keras.layers.Dense(16, activation='relu'))\nmodel.add(tf.keras.layers.Dropout(0.4))\nmodel.add(tf.keras.layers.Dense(16, activation='relu'))\nmodel.add(tf.keras.layers.Dropout(0.4))\nmodel.add(tf.keras.layers.Dense(1, activation='sigmoid'))\n\n\n\n\nCode\nmodel.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),\n              loss=tf.keras.losses.BinaryCrossentropy(),\n              metrics=['accuracy'])\n\n\n\n\nCode\nmodel.evaluate(train_data)\n\n\n\n\n2 resource:\nhttps://colab.research.google.com/drive/1yO7EgCYSN3KW8hzDTz809nzNmacjBBXX?usp=sharing#scrollTo=7nYrbpVd96kr\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras classification model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html",
+    "title": "Keras regression model",
+    "section": "",
+    "text": "Code\nimport tensorflow as tf\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pylab as plt\nimport seaborn as sns\n\nfrom siuba.siu import call\nfrom siuba import _, mutate, filter, group_by, summarize,show_query\nfrom siuba import *\n\nfrom siuba.data import mtcars,penguins",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras regression model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#total",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#total",
+    "title": "Keras regression model",
+    "section": "4.1 total",
+    "text": "4.1 total\n\n\nCode\nlen(padded)\nlen(review_flag_final)\n\n\n4633",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras regression model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#train",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#train",
+    "title": "Keras regression model",
+    "section": "4.2 train",
+    "text": "4.2 train\n\n\nCode\nlen(padded_train)\nlen(review_flag_final_train)\n\n\n4000",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras regression model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#test",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#test",
+    "title": "Keras regression model",
+    "section": "4.3 test",
+    "text": "4.3 test\n\n\nCode\nlen(padded_test)\nlen(review_flag_final_test)\n\n\n633\n\n\n\n\nCode\nsum(review_flag_final_test)\n\n\n168",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras regression model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#if-all-guess-lower-than-90-points-then-0.72-accuracy",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#if-all-guess-lower-than-90-points-then-0.72-accuracy",
+    "title": "Keras regression model",
+    "section": "4.4 if all guess lower than 90 points then 0.72 accuracy",
+    "text": "4.4 if all guess lower than 90 points then 0.72 accuracy\n\n\nCode\n(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)\n\n\n0.7345971563981043",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras regression model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#train-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#train-model",
+    "title": "Keras regression model",
+    "section": "6.1 train model",
+    "text": "6.1 train model\n\n\nCode\n# Train the model\nhistory = model_dnn.fit(x=padded_train, y=review_socre_final_train,validation_data=(padded_test, review_socre_final_test),epochs=200,verbose=0 )\n\n#history = model_dnn.fit(x=padded_train, y=review_socre_final_train,validation_split=0.2,epochs=20)",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras regression model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#save-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#save-model",
+    "title": "Keras regression model",
+    "section": "6.2 save model",
+    "text": "6.2 save model\n\n\nCode\nmodel_dnn.save('whiskynote_score_dnn.keras')",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras regression model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#load-model",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#load-model",
+    "title": "Keras regression model",
+    "section": "6.3 load model",
+    "text": "6.3 load model\n\n\nCode\nnew_model = tf.keras.models.load_model('whiskynote_score_dnn.keras')\n\n\n\n\nCode\nnew_model.summary()\n\n\nModel: \"sequential_2\"\n\n\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\n┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃\n┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\n│ embedding_2 (Embedding)         │ (32, 300, 32)          │       224,000 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ global_average_pooling1d_2      │ (32, 32)               │             0 │\n│ (GlobalAveragePooling1D)        │                        │               │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_8 (Dense)                 │ (32, 32)               │         1,056 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_9 (Dense)                 │ (32, 24)               │           792 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_10 (Dense)                │ (32, 24)               │           600 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_11 (Dense)                │ (32, 1)                │            25 │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n\n\n\n Total params: 679,421 (2.59 MB)\n\n\n\n Trainable params: 226,473 (884.66 KB)\n\n\n\n Non-trainable params: 0 (0.00 B)\n\n\n\n Optimizer params: 452,948 (1.73 MB)\n\n\n\n\n\nCode\nloss = history.history['loss']\nval_loss = history.history['val_loss']\n\nmae = history.history['mae']\nval_mae = history.history['val_mae']\n\nepochs = range(len(val_loss))\n\n\n\n\nCode\nimport matplotlib.image as mpimg\nimport matplotlib.pyplot as plt\n#------------------------------------------------\n# Plot training and validation loss per epoch\n#------------------------------------------------\n\nplt.plot(epochs, loss, 'r', label='Training Loss')\nplt.plot(epochs, val_loss, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\nimport matplotlib.image as mpimg\nimport matplotlib.pyplot as plt\n#------------------------------------------------\n# Plot training and validation loss per epoch\n#------------------------------------------------\n\nplt.plot(epochs, mae, 'r', label='Training mae')\nplt.plot(epochs, val_mae, 'b', label='Validation mae')\nplt.title('DNN model Training and validation mae')\nplt.legend()\n\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Only plot the last 80% of the epochs\nzoom_split = int(epochs[-1] * 0.2)\nepochs_zoom = epochs[zoom_split:]\nval_loss_zoom = val_loss[zoom_split:]\nloss_zoom = loss[zoom_split:]\n\n# Plot zoomed mae and loss\nplt.plot(epochs_zoom, loss_zoom, 'r', label='Training Loss')\nplt.plot(epochs_zoom, val_loss_zoom, 'b', label='Validation Loss')\nplt.title('DNN model Training and validation loss')\nplt.legend()\n\nplt.show()",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras regression model"
+    ]
+  },
+  {
+    "objectID": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#predication",
+    "href": "other/1 Web scraping on www.whiskynotes.be/9 Keras regression model.html#predication",
+    "title": "Keras regression model",
+    "section": "6.4 predication",
+    "text": "6.4 predication\n\n\nCode\nx = padded_test\ny = model_dnn.predict(x)\n\n\n 1/20 ━━━━━━━━━━━━━━━━━━━━ 0s 26ms/step\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b20/20 ━━━━━━━━━━━━━━━━━━━━ 0s 1ms/step \n\n\n\n\nCode\nlen(padded_test)\nlen(y)\nlen(review_socre_final_test)\n\n\n633\n\n\n\n\nCode\nreview_socre_final_test.shape\n\n\n(633,)\n\n\n\n\nCode\ny.shape\n\n\n(633, 1)\n\n\n\n\nCode\ny2 = y.flatten()\n\n\n\n\nCode\ny2.shape\n\n\n(633,)\n\n\n\n\nCode\ndataset = pd.DataFrame({'real': review_socre_final_test, 'predic': list(y2)}, columns=['real', 'predic'])\n\n\n\n\nCode\ndataset['predic']=round(dataset['predic'])\ndataset['predic']=round(dataset['predic'])\n\n\n\n\nCode\ndataset=dataset&gt;&gt; mutate(predic=if_else(_.predic &lt;70, 70, _.predic)\n                          ,dummy_pred=86\n                         ,diff=_.predic-_.real \n                         ,dummy_diff=_.dummy_pred-_.real\n                          )&gt;&gt; mutate(predic=if_else(_.predic &gt;100,100, _.predic)\n                                     ,predic_class=if_else(_.predic &gt;=90,1, 0)\n                                    ,real_class=if_else(_.real&gt;=90,1, 0)\n                                    ,dummy_class=0\n                          )\n                          \ndataset002 = pd.concat([data002[4000:].reset_index(drop=True),dataset.reset_index(drop=True)], axis=1)                    \n\n\n\n\nCode\ndataset002.to_excel('pred.xlsx')",
+    "crumbs": [
+      "Other",
+      "1 Web scraping on www.whiskynotes.be",
+      "Keras regression model"
     ]
   }
 ]
