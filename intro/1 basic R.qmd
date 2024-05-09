@@ -396,6 +396,12 @@ head(ip)
 .libPaths()
 ```
 
+## uninstall pacakge
+
+```{r}
+#| eval: false
+remove.packages('xxxxx')
+```
 
 # sleep
 
@@ -438,3 +444,11 @@ Some Correlation Example:
 ![](images/clipboard-775702636.png)
 
 # Probability 
+
+
+
+```{r, attr.output='.details summary="sessionInfo()"'}
+sessionInfo()
+```
+
+

@@ -364,6 +364,27 @@ library("ggthemes")
 p+ theme_economist()
 ```
 
+
+## theme_tufte()
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+p+ theme_tufte()
+```
+
+## theme_wsj()
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+p+ theme_wsj()
+```
+
+
+## theme_fivethirtyeight()
+```{r}
+p=ggplot(tips, aes(tip, total_bill,color=sex)) + geom_point()+ scale_x_continuous(name="new x name")+ scale_y_continuous(name="new y name")
+p+ theme_fivethirtyeight()
+```
+
+
 :::
 
 # convert ggplot to plotly
@@ -439,5 +460,5 @@ p
 https://cran.r-project.org/web/packages/magick/vignettes/intro.html
 
 
-
+https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/
 

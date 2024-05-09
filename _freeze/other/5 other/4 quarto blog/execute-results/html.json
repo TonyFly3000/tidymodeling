@@ -1,0 +1,15 @@
+{
+  "hash": "b902916a195c5f638cfc88fa44301987",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"quarto block\"\nsubtitle: \"with magick\"\n\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    code-copy: true\n---\n\n\n# add a output folder bottom\n\n1. add foldableCodeBlcok.lua into blog root folder\n\n2. add in `_quarto.yml`\n\nfilters:\n  - fold_results.lua\n\n3. put following on code chunk\n\n{r, attr.output='.details summary=\"sessionInfo()\"'}\n#| echo: false\nsessionInfo()\n\n\nreferece:\n\nhttps://github.com/quarto-dev/quarto-cli/issues/341\n\nhttps://gist.github.com/atusy/f2b5b992e45c68ab6823499f2339c6e6\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsessionInfo()\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```{.details summary=\"sessionInfo()\"}\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] htmlwidgets_1.6.4 compiler_4.3.1    fastmap_1.1.1     cli_3.6.2        \n [5] tools_4.3.1       htmltools_0.5.8.1 rstudioapi_0.16.0 yaml_2.3.8       \n [9] rmarkdown_2.26    knitr_1.45        jsonlite_1.8.8    xfun_0.43        \n[13] digest_0.6.35     rlang_1.1.3       evaluate_0.23    \n```\n\n\n:::\n:::\n\n\n\n\n# resource:\n\n\nhttps://themockup.blog/posts/2021-01-28-removing-image-backgrounds-with-magick/\n\nhttps://cran.r-project.org/web/packages/magick/vignettes/intro.html\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

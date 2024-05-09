@@ -252,7 +252,9 @@ gg=ggplot(data005_cn, aes(x=reorder(data005_cn,n), y=n))+theme_classic()+geom_te
 gg
 ```
 
-
+```{r, attr.output='.details summary="sessionInfo()"'}
+sessionInfo()
+```
 
 
 

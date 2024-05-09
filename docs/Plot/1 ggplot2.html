@@ -1242,7 +1242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="applying-themes" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> applying themes</h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">theme_bw()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">theme_light()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">theme_economist()</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">theme_bw()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">theme_light()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">theme_economist()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">theme_tufte()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">theme_wsj()</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">theme_fivethirtyeight()</a></li></ul>
 <div class="tab-content nav-pills">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
@@ -1291,32 +1291,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</div>
-</div>
-</section>
-<section id="convert-ggplot-to-plotly" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> convert ggplot to plotly</h1>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>pp<span class="ot">=</span><span class="fu">ggplotly</span>(p)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>pp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_tufte</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-cbf34d375d010d2572e6" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-cbf34d375d010d2572e6">{"x":{"data":[{"x":[1.01,3.6099999999999999,5,3.02,1.6699999999999999,3.5,2.75,2.23,3,3,2.4500000000000002,3.0699999999999998,2.6000000000000001,5.2000000000000002,1.5,2.4700000000000002,1,3,3.1400000000000001,5,2.2000000000000002,1.8300000000000001,5.1699999999999999,1,4.2999999999999998,3.25,2.5,3,2.5,3.48,4.0800000000000001,4,1,4,3.5,1.5,1.8,2.9199999999999999,1.6799999999999999,2.52,4.2000000000000002,2,2,2.8300000000000001,1.5,2,3.25,1.25,2,2,2.75,3.5,5,2.2999999999999998,1.5,1.3600000000000001,1.6299999999999999,5.1399999999999997,3.75,2.6099999999999999,2,3,1.6100000000000001,2,4,3.5,3.5,4.1900000000000004,5,2,2.0099999999999998,2,2.5,3.23,2.23,2.5,6.5,1.1000000000000001,3.0899999999999999,3.48,3,2.5,2,2.8799999999999999,4.6699999999999999,2,3],"y":[16.989999999999998,24.59,35.259999999999998,14.83,10.33,16.969999999999999,20.289999999999999,15.77,19.649999999999999,15.06,20.690000000000001,16.93,10.289999999999999,34.810000000000002,26.41,16.449999999999999,3.0699999999999998,17.07,26.859999999999999,25.280000000000001,14.73,10.07,34.829999999999998,5.75,16.32,22.75,11.35,15.380000000000001,44.299999999999997,22.420000000000002,20.920000000000002,14.31,7.25,25.710000000000001,17.309999999999999,10.65,12.43,24.079999999999998,13.42,12.48,29.800000000000001,14.52,11.380000000000001,20.27,11.17,12.26,18.260000000000002,8.5099999999999998,10.33,14.15,13.16,17.469999999999999,27.050000000000001,16.43,8.3499999999999996,18.640000000000001,11.869999999999999,29.850000000000001,25,13.390000000000001,16.210000000000001,17.510000000000002,10.59,10.630000000000001,9.5999999999999996,20.899999999999999,18.149999999999999,19.809999999999999,43.109999999999999,13,12.74,13,16.399999999999999,16.469999999999999,12.76,13.27,28.170000000000002,12.9,30.140000000000001,13.42,15.98,16.27,10.09,22.120000000000001,35.829999999999998,27.18,18.780000000000001],"text":["tip:  1.01<br />total_bill: 16.99<br />sex: Female","tip:  3.61<br />total_bill: 24.59<br />sex: Female","tip:  5.00<br />total_bill: 35.26<br />sex: Female","tip:  3.02<br />total_bill: 14.83<br />sex: Female","tip:  1.67<br />total_bill: 10.33<br />sex: Female","tip:  3.50<br />total_bill: 16.97<br />sex: Female","tip:  2.75<br />total_bill: 20.29<br />sex: Female","tip:  2.23<br />total_bill: 15.77<br />sex: Female","tip:  3.00<br />total_bill: 19.65<br />sex: Female","tip:  3.00<br />total_bill: 15.06<br />sex: Female","tip:  2.45<br />total_bill: 20.69<br />sex: Female","tip:  3.07<br />total_bill: 16.93<br />sex: Female","tip:  2.60<br />total_bill: 10.29<br />sex: Female","tip:  5.20<br />total_bill: 34.81<br />sex: Female","tip:  1.50<br />total_bill: 26.41<br />sex: Female","tip:  2.47<br />total_bill: 16.45<br />sex: Female","tip:  1.00<br />total_bill:  3.07<br />sex: Female","tip:  3.00<br />total_bill: 17.07<br />sex: Female","tip:  3.14<br />total_bill: 26.86<br />sex: Female","tip:  5.00<br />total_bill: 25.28<br />sex: Female","tip:  2.20<br />total_bill: 14.73<br />sex: Female","tip:  1.83<br />total_bill: 10.07<br />sex: Female","tip:  5.17<br />total_bill: 34.83<br />sex: Female","tip:  1.00<br />total_bill:  5.75<br />sex: Female","tip:  4.30<br />total_bill: 16.32<br />sex: Female","tip:  3.25<br />total_bill: 22.75<br />sex: Female","tip:  2.50<br />total_bill: 11.35<br />sex: Female","tip:  3.00<br />total_bill: 15.38<br />sex: Female","tip:  2.50<br />total_bill: 44.30<br />sex: Female","tip:  3.48<br />total_bill: 22.42<br />sex: Female","tip:  4.08<br />total_bill: 20.92<br />sex: Female","tip:  4.00<br />total_bill: 14.31<br />sex: Female","tip:  1.00<br />total_bill:  7.25<br />sex: Female","tip:  4.00<br />total_bill: 25.71<br />sex: Female","tip:  3.50<br />total_bill: 17.31<br />sex: Female","tip:  1.50<br />total_bill: 10.65<br />sex: Female","tip:  1.80<br />total_bill: 12.43<br />sex: Female","tip:  2.92<br />total_bill: 24.08<br />sex: Female","tip:  1.68<br />total_bill: 13.42<br />sex: Female","tip:  2.52<br />total_bill: 12.48<br />sex: Female","tip:  4.20<br />total_bill: 29.80<br />sex: Female","tip:  2.00<br />total_bill: 14.52<br />sex: Female","tip:  2.00<br />total_bill: 11.38<br />sex: Female","tip:  2.83<br />total_bill: 20.27<br />sex: Female","tip:  1.50<br />total_bill: 11.17<br />sex: Female","tip:  2.00<br />total_bill: 12.26<br />sex: Female","tip:  3.25<br />total_bill: 18.26<br />sex: Female","tip:  1.25<br />total_bill:  8.51<br />sex: Female","tip:  2.00<br />total_bill: 10.33<br />sex: Female","tip:  2.00<br />total_bill: 14.15<br />sex: Female","tip:  2.75<br />total_bill: 13.16<br />sex: Female","tip:  3.50<br />total_bill: 17.47<br />sex: Female","tip:  5.00<br />total_bill: 27.05<br />sex: Female","tip:  2.30<br />total_bill: 16.43<br />sex: Female","tip:  1.50<br />total_bill:  8.35<br />sex: Female","tip:  1.36<br />total_bill: 18.64<br />sex: Female","tip:  1.63<br />total_bill: 11.87<br />sex: Female","tip:  5.14<br />total_bill: 29.85<br />sex: Female","tip:  3.75<br />total_bill: 25.00<br />sex: Female","tip:  2.61<br />total_bill: 13.39<br />sex: Female","tip:  2.00<br />total_bill: 16.21<br />sex: Female","tip:  3.00<br />total_bill: 17.51<br />sex: Female","tip:  1.61<br />total_bill: 10.59<br />sex: Female","tip:  2.00<br />total_bill: 10.63<br />sex: Female","tip:  4.00<br />total_bill:  9.60<br />sex: Female","tip:  3.50<br />total_bill: 20.90<br />sex: Female","tip:  3.50<br />total_bill: 18.15<br />sex: Female","tip:  4.19<br />total_bill: 19.81<br />sex: Female","tip:  5.00<br />total_bill: 43.11<br />sex: Female","tip:  2.00<br />total_bill: 13.00<br />sex: Female","tip:  2.01<br />total_bill: 12.74<br />sex: Female","tip:  2.00<br />total_bill: 13.00<br />sex: Female","tip:  2.50<br />total_bill: 16.40<br />sex: Female","tip:  3.23<br />total_bill: 16.47<br />sex: Female","tip:  2.23<br />total_bill: 12.76<br />sex: Female","tip:  2.50<br />total_bill: 13.27<br />sex: Female","tip:  6.50<br />total_bill: 28.17<br />sex: Female","tip:  1.10<br />total_bill: 12.90<br />sex: Female","tip:  3.09<br />total_bill: 30.14<br />sex: Female","tip:  3.48<br />total_bill: 13.42<br />sex: Female","tip:  3.00<br />total_bill: 15.98<br />sex: Female","tip:  2.50<br />total_bill: 16.27<br />sex: Female","tip:  2.00<br />total_bill: 10.09<br />sex: Female","tip:  2.88<br />total_bill: 22.12<br />sex: Female","tip:  4.67<br />total_bill: 35.83<br />sex: Female","tip:  2.00<br />total_bill: 27.18<br />sex: Female","tip:  3.00<br />total_bill: 18.78<br />sex: Female"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.6599999999999999,3.5,3.3100000000000001,4.71,2,3.1200000000000001,1.96,3.23,1.71,1.5700000000000001,3,3.9199999999999999,3.71,3.3500000000000001,4.0800000000000001,7.5800000000000001,3.1800000000000002,2.3399999999999999,2,2,4.2999999999999998,1.45,2.5,3.27,3.6000000000000001,2,2.3100000000000001,5,2.2400000000000002,2.54,3.0600000000000001,1.3200000000000001,5.5999999999999996,3,5,6,2.0499999999999998,3,2.5,1.5600000000000001,4.3399999999999999,3.5099999999999998,3,1.76,6.7300000000000004,3.21,2,1.98,3.7599999999999998,2.6400000000000001,3.1499999999999999,2.0099999999999998,2.0899999999999999,1.97,1.25,3.0800000000000001,4,3,2.71,3,3.3999999999999999,5,2.0299999999999998,2,4,5.8499999999999996,3,3,3.5,4.7300000000000004,4,1.5,3,1.5,1.6399999999999999,4.0599999999999996,4.29,3.7599999999999998,3,4,2.5499999999999998,5.0700000000000003,2.3100000000000001,2.5,2,1.48,2.1800000000000002,1.5,2,6.7000000000000002,5,1.73,2,2.5,2,2.7400000000000002,2,2,5,2,3.5,2.5,2,3.48,2.2400000000000002,4.5,10,3.1600000000000001,5.1500000000000004,3.1800000000000002,4,3.1099999999999999,2,2,3.5499999999999998,3.6800000000000002,5.6500000000000004,3.5,6.5,3,5,2,4,1.5,2.5600000000000001,2.02,4,1.4399999999999999,2,2,4,4,3.4100000000000001,3,2.0299999999999998,2,5.1600000000000001,9,3,1.5,1.4399999999999999,2.2000000000000002,1.9199999999999999,1.5800000000000001,3,2.7200000000000002,2,3,3.3900000000000001,1.47,3,1.25,1,1.1699999999999999,5.9199999999999999,2,1.75],"y":[10.34,21.010000000000002,23.68,25.289999999999999,8.7699999999999996,26.879999999999999,15.039999999999999,14.779999999999999,10.27,15.42,18.43,21.579999999999998,16.289999999999999,20.649999999999999,17.920000000000002,39.420000000000002,19.82,17.809999999999999,13.369999999999999,12.69,21.699999999999999,9.5500000000000007,18.350000000000001,17.780000000000001,24.059999999999999,16.309999999999999,18.690000000000001,31.27,16.039999999999999,17.460000000000001,13.94,9.6799999999999997,30.399999999999999,18.289999999999999,22.23,32.399999999999999,28.550000000000001,18.039999999999999,12.539999999999999,9.9399999999999995,25.559999999999999,19.489999999999998,38.009999999999998,11.24,48.270000000000003,20.289999999999999,13.81,11.02,18.289999999999999,17.59,20.079999999999998,20.23,15.01,12.02,10.51,17.920000000000002,27.199999999999999,22.760000000000002,17.289999999999999,19.440000000000001,16.66,32.68,15.98,13.029999999999999,18.280000000000001,24.710000000000001,21.16,28.969999999999999,22.489999999999998,40.170000000000002,27.280000000000001,12.029999999999999,21.010000000000002,12.460000000000001,15.359999999999999,20.489999999999998,25.210000000000001,18.239999999999998,14,38.07,23.949999999999999,29.93,11.69,14.26,15.949999999999999,8.5199999999999996,22.82,19.079999999999998,16,34.299999999999997,41.189999999999998,9.7799999999999994,7.5099999999999998,14.07,13.130000000000001,17.260000000000002,24.550000000000001,19.77,48.170000000000002,16.489999999999998,21.5,12.66,13.81,24.52,20.760000000000002,31.710000000000001,50.810000000000002,15.81,7.25,31.850000000000001,16.82,32.899999999999999,17.890000000000001,14.48,34.630000000000003,34.649999999999999,23.329999999999998,45.350000000000001,23.170000000000002,40.549999999999997,20.690000000000001,30.460000000000001,23.100000000000001,15.69,28.440000000000001,15.48,16.579999999999998,7.5599999999999996,10.34,13.51,18.710000000000001,20.530000000000001,26.59,38.729999999999997,24.27,30.059999999999999,25.890000000000001,48.329999999999998,28.149999999999999,11.59,7.7400000000000002,12.16,8.5800000000000001,13.42,20.449999999999999,13.279999999999999,24.010000000000002,15.69,11.609999999999999,10.77,15.529999999999999,10.07,12.6,32.829999999999998,29.030000000000001,22.670000000000002,17.82],"text":["tip:  1.66<br />total_bill: 10.34<br />sex: Male","tip:  3.50<br />total_bill: 21.01<br />sex: Male","tip:  3.31<br />total_bill: 23.68<br />sex: Male","tip:  4.71<br />total_bill: 25.29<br />sex: Male","tip:  2.00<br />total_bill:  8.77<br />sex: Male","tip:  3.12<br />total_bill: 26.88<br />sex: Male","tip:  1.96<br />total_bill: 15.04<br />sex: Male","tip:  3.23<br />total_bill: 14.78<br />sex: Male","tip:  1.71<br />total_bill: 10.27<br />sex: Male","tip:  1.57<br />total_bill: 15.42<br />sex: Male","tip:  3.00<br />total_bill: 18.43<br />sex: Male","tip:  3.92<br />total_bill: 21.58<br />sex: Male","tip:  3.71<br />total_bill: 16.29<br />sex: Male","tip:  3.35<br />total_bill: 20.65<br />sex: Male","tip:  4.08<br />total_bill: 17.92<br />sex: Male","tip:  7.58<br />total_bill: 39.42<br />sex: Male","tip:  3.18<br />total_bill: 19.82<br />sex: Male","tip:  2.34<br />total_bill: 17.81<br />sex: Male","tip:  2.00<br />total_bill: 13.37<br />sex: Male","tip:  2.00<br />total_bill: 12.69<br />sex: Male","tip:  4.30<br />total_bill: 21.70<br />sex: Male","tip:  1.45<br />total_bill:  9.55<br />sex: Male","tip:  2.50<br />total_bill: 18.35<br />sex: Male","tip:  3.27<br />total_bill: 17.78<br />sex: Male","tip:  3.60<br />total_bill: 24.06<br />sex: Male","tip:  2.00<br />total_bill: 16.31<br />sex: Male","tip:  2.31<br />total_bill: 18.69<br />sex: Male","tip:  5.00<br />total_bill: 31.27<br />sex: Male","tip:  2.24<br />total_bill: 16.04<br />sex: Male","tip:  2.54<br />total_bill: 17.46<br />sex: Male","tip:  3.06<br />total_bill: 13.94<br />sex: Male","tip:  1.32<br />total_bill:  9.68<br />sex: Male","tip:  5.60<br />total_bill: 30.40<br />sex: Male","tip:  3.00<br />total_bill: 18.29<br />sex: Male","tip:  5.00<br />total_bill: 22.23<br />sex: Male","tip:  6.00<br />total_bill: 32.40<br />sex: Male","tip:  2.05<br />total_bill: 28.55<br />sex: Male","tip:  3.00<br />total_bill: 18.04<br />sex: Male","tip:  2.50<br />total_bill: 12.54<br />sex: Male","tip:  1.56<br />total_bill:  9.94<br />sex: Male","tip:  4.34<br />total_bill: 25.56<br />sex: Male","tip:  3.51<br />total_bill: 19.49<br />sex: Male","tip:  3.00<br />total_bill: 38.01<br />sex: Male","tip:  1.76<br />total_bill: 11.24<br />sex: Male","tip:  6.73<br />total_bill: 48.27<br />sex: Male","tip:  3.21<br />total_bill: 20.29<br />sex: Male","tip:  2.00<br />total_bill: 13.81<br />sex: Male","tip:  1.98<br />total_bill: 11.02<br />sex: Male","tip:  3.76<br />total_bill: 18.29<br />sex: Male","tip:  2.64<br />total_bill: 17.59<br />sex: Male","tip:  3.15<br />total_bill: 20.08<br />sex: Male","tip:  2.01<br />total_bill: 20.23<br />sex: Male","tip:  2.09<br />total_bill: 15.01<br />sex: Male","tip:  1.97<br />total_bill: 12.02<br />sex: Male","tip:  1.25<br />total_bill: 10.51<br />sex: Male","tip:  3.08<br />total_bill: 17.92<br />sex: Male","tip:  4.00<br />total_bill: 27.20<br />sex: Male","tip:  3.00<br />total_bill: 22.76<br />sex: Male","tip:  2.71<br />total_bill: 17.29<br />sex: Male","tip:  3.00<br />total_bill: 19.44<br />sex: Male","tip:  3.40<br />total_bill: 16.66<br />sex: Male","tip:  5.00<br />total_bill: 32.68<br />sex: Male","tip:  2.03<br />total_bill: 15.98<br />sex: Male","tip:  2.00<br />total_bill: 13.03<br />sex: Male","tip:  4.00<br />total_bill: 18.28<br />sex: Male","tip:  5.85<br />total_bill: 24.71<br />sex: Male","tip:  3.00<br />total_bill: 21.16<br />sex: Male","tip:  3.00<br />total_bill: 28.97<br />sex: Male","tip:  3.50<br />total_bill: 22.49<br />sex: Male","tip:  4.73<br />total_bill: 40.17<br />sex: Male","tip:  4.00<br />total_bill: 27.28<br />sex: Male","tip:  1.50<br />total_bill: 12.03<br />sex: Male","tip:  3.00<br />total_bill: 21.01<br />sex: Male","tip:  1.50<br />total_bill: 12.46<br />sex: Male","tip:  1.64<br />total_bill: 15.36<br />sex: Male","tip:  4.06<br />total_bill: 20.49<br />sex: Male","tip:  4.29<br />total_bill: 25.21<br />sex: Male","tip:  3.76<br />total_bill: 18.24<br />sex: Male","tip:  3.00<br />total_bill: 14.00<br />sex: Male","tip:  4.00<br />total_bill: 38.07<br />sex: Male","tip:  2.55<br />total_bill: 23.95<br />sex: Male","tip:  5.07<br />total_bill: 29.93<br />sex: Male","tip:  2.31<br />total_bill: 11.69<br />sex: Male","tip:  2.50<br />total_bill: 14.26<br />sex: Male","tip:  2.00<br />total_bill: 15.95<br />sex: Male","tip:  1.48<br />total_bill:  8.52<br />sex: Male","tip:  2.18<br />total_bill: 22.82<br />sex: Male","tip:  1.50<br />total_bill: 19.08<br />sex: Male","tip:  2.00<br />total_bill: 16.00<br />sex: Male","tip:  6.70<br />total_bill: 34.30<br />sex: Male","tip:  5.00<br />total_bill: 41.19<br />sex: Male","tip:  1.73<br />total_bill:  9.78<br />sex: Male","tip:  2.00<br />total_bill:  7.51<br />sex: Male","tip:  2.50<br />total_bill: 14.07<br />sex: Male","tip:  2.00<br />total_bill: 13.13<br />sex: Male","tip:  2.74<br />total_bill: 17.26<br />sex: Male","tip:  2.00<br />total_bill: 24.55<br />sex: Male","tip:  2.00<br />total_bill: 19.77<br />sex: Male","tip:  5.00<br />total_bill: 48.17<br />sex: Male","tip:  2.00<br />total_bill: 16.49<br />sex: Male","tip:  3.50<br />total_bill: 21.50<br />sex: Male","tip:  2.50<br />total_bill: 12.66<br />sex: Male","tip:  2.00<br />total_bill: 13.81<br />sex: Male","tip:  3.48<br />total_bill: 24.52<br />sex: Male","tip:  2.24<br />total_bill: 20.76<br />sex: Male","tip:  4.50<br />total_bill: 31.71<br />sex: Male","tip: 10.00<br />total_bill: 50.81<br />sex: Male","tip:  3.16<br />total_bill: 15.81<br />sex: Male","tip:  5.15<br />total_bill:  7.25<br />sex: Male","tip:  3.18<br />total_bill: 31.85<br />sex: Male","tip:  4.00<br />total_bill: 16.82<br />sex: Male","tip:  3.11<br />total_bill: 32.90<br />sex: Male","tip:  2.00<br />total_bill: 17.89<br />sex: Male","tip:  2.00<br />total_bill: 14.48<br />sex: Male","tip:  3.55<br />total_bill: 34.63<br />sex: Male","tip:  3.68<br />total_bill: 34.65<br />sex: Male","tip:  5.65<br />total_bill: 23.33<br />sex: Male","tip:  3.50<br />total_bill: 45.35<br />sex: Male","tip:  6.50<br />total_bill: 23.17<br />sex: Male","tip:  3.00<br />total_bill: 40.55<br />sex: Male","tip:  5.00<br />total_bill: 20.69<br />sex: Male","tip:  2.00<br />total_bill: 30.46<br />sex: Male","tip:  4.00<br />total_bill: 23.10<br />sex: Male","tip:  1.50<br />total_bill: 15.69<br />sex: Male","tip:  2.56<br />total_bill: 28.44<br />sex: Male","tip:  2.02<br />total_bill: 15.48<br />sex: Male","tip:  4.00<br />total_bill: 16.58<br />sex: Male","tip:  1.44<br />total_bill:  7.56<br />sex: Male","tip:  2.00<br />total_bill: 10.34<br />sex: Male","tip:  2.00<br />total_bill: 13.51<br />sex: Male","tip:  4.00<br />total_bill: 18.71<br />sex: Male","tip:  4.00<br />total_bill: 20.53<br />sex: Male","tip:  3.41<br />total_bill: 26.59<br />sex: Male","tip:  3.00<br />total_bill: 38.73<br />sex: Male","tip:  2.03<br />total_bill: 24.27<br />sex: Male","tip:  2.00<br />total_bill: 30.06<br />sex: Male","tip:  5.16<br />total_bill: 25.89<br />sex: Male","tip:  9.00<br />total_bill: 48.33<br />sex: Male","tip:  3.00<br />total_bill: 28.15<br />sex: Male","tip:  1.50<br />total_bill: 11.59<br />sex: Male","tip:  1.44<br />total_bill:  7.74<br />sex: Male","tip:  2.20<br />total_bill: 12.16<br />sex: Male","tip:  1.92<br />total_bill:  8.58<br />sex: Male","tip:  1.58<br />total_bill: 13.42<br />sex: Male","tip:  3.00<br />total_bill: 20.45<br />sex: Male","tip:  2.72<br />total_bill: 13.28<br />sex: Male","tip:  2.00<br />total_bill: 24.01<br />sex: Male","tip:  3.00<br />total_bill: 15.69<br />sex: Male","tip:  3.39<br />total_bill: 11.61<br />sex: Male","tip:  1.47<br />total_bill: 10.77<br />sex: Male","tip:  3.00<br />total_bill: 15.53<br />sex: Male","tip:  1.25<br />total_bill: 10.07<br />sex: Male","tip:  1.00<br />total_bill: 12.60<br />sex: Male","tip:  1.17<br />total_bill: 32.83<br />sex: Male","tip:  5.92<br />total_bill: 29.03<br />sex: Male","tip:  2.00<br />total_bill: 22.67<br />sex: Male","tip:  1.75<br />total_bill: 17.82<br />sex: Male"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283108,"r":7.3059360730593621,"b":40.182648401826498,"l":37.260273972602747},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.55000000000000004,10.449999999999999],"tickmode":"array","ticktext":["2.5","5.0","7.5","10.0"],"tickvals":[2.5,5,7.5,10],"categoryorder":"array","categoryarray":["2.5","5.0","7.5","10.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"new x name","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.68299999999999983,53.197000000000003],"tickmode":"array","ticktext":["10","20","30","40","50"],"tickvals":[10,20,30,40,50],"categoryorder":"array","categoryarray":["10","20","30","40","50"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"new y name","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"sex","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"33b530ae3623":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"33b530ae3623","visdat":{"33b530ae3623":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div>
+<figure class="figure">
+<p><img src="1-ggplot2_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-</section>
-<section id="save-plot" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Save plot</h1>
+</div>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_economist</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_wsj</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1325,9 +1321,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+</div>
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"myplot.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_fivethirtyeight</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1-ggplot2_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-ggplot-to-plotly" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> convert ggplot to plotly</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>pp<span class="ot">=</span><span class="fu">ggplotly</span>(p)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>pp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-08f9dfde1067ca159c0a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-08f9dfde1067ca159c0a">{"x":{"data":[{"x":[1.01,3.6099999999999999,5,3.02,1.6699999999999999,3.5,2.75,2.23,3,3,2.4500000000000002,3.0699999999999998,2.6000000000000001,5.2000000000000002,1.5,2.4700000000000002,1,3,3.1400000000000001,5,2.2000000000000002,1.8300000000000001,5.1699999999999999,1,4.2999999999999998,3.25,2.5,3,2.5,3.48,4.0800000000000001,4,1,4,3.5,1.5,1.8,2.9199999999999999,1.6799999999999999,2.52,4.2000000000000002,2,2,2.8300000000000001,1.5,2,3.25,1.25,2,2,2.75,3.5,5,2.2999999999999998,1.5,1.3600000000000001,1.6299999999999999,5.1399999999999997,3.75,2.6099999999999999,2,3,1.6100000000000001,2,4,3.5,3.5,4.1900000000000004,5,2,2.0099999999999998,2,2.5,3.23,2.23,2.5,6.5,1.1000000000000001,3.0899999999999999,3.48,3,2.5,2,2.8799999999999999,4.6699999999999999,2,3],"y":[16.989999999999998,24.59,35.259999999999998,14.83,10.33,16.969999999999999,20.289999999999999,15.77,19.649999999999999,15.06,20.690000000000001,16.93,10.289999999999999,34.810000000000002,26.41,16.449999999999999,3.0699999999999998,17.07,26.859999999999999,25.280000000000001,14.73,10.07,34.829999999999998,5.75,16.32,22.75,11.35,15.380000000000001,44.299999999999997,22.420000000000002,20.920000000000002,14.31,7.25,25.710000000000001,17.309999999999999,10.65,12.43,24.079999999999998,13.42,12.48,29.800000000000001,14.52,11.380000000000001,20.27,11.17,12.26,18.260000000000002,8.5099999999999998,10.33,14.15,13.16,17.469999999999999,27.050000000000001,16.43,8.3499999999999996,18.640000000000001,11.869999999999999,29.850000000000001,25,13.390000000000001,16.210000000000001,17.510000000000002,10.59,10.630000000000001,9.5999999999999996,20.899999999999999,18.149999999999999,19.809999999999999,43.109999999999999,13,12.74,13,16.399999999999999,16.469999999999999,12.76,13.27,28.170000000000002,12.9,30.140000000000001,13.42,15.98,16.27,10.09,22.120000000000001,35.829999999999998,27.18,18.780000000000001],"text":["tip:  1.01<br />total_bill: 16.99<br />sex: Female","tip:  3.61<br />total_bill: 24.59<br />sex: Female","tip:  5.00<br />total_bill: 35.26<br />sex: Female","tip:  3.02<br />total_bill: 14.83<br />sex: Female","tip:  1.67<br />total_bill: 10.33<br />sex: Female","tip:  3.50<br />total_bill: 16.97<br />sex: Female","tip:  2.75<br />total_bill: 20.29<br />sex: Female","tip:  2.23<br />total_bill: 15.77<br />sex: Female","tip:  3.00<br />total_bill: 19.65<br />sex: Female","tip:  3.00<br />total_bill: 15.06<br />sex: Female","tip:  2.45<br />total_bill: 20.69<br />sex: Female","tip:  3.07<br />total_bill: 16.93<br />sex: Female","tip:  2.60<br />total_bill: 10.29<br />sex: Female","tip:  5.20<br />total_bill: 34.81<br />sex: Female","tip:  1.50<br />total_bill: 26.41<br />sex: Female","tip:  2.47<br />total_bill: 16.45<br />sex: Female","tip:  1.00<br />total_bill:  3.07<br />sex: Female","tip:  3.00<br />total_bill: 17.07<br />sex: Female","tip:  3.14<br />total_bill: 26.86<br />sex: Female","tip:  5.00<br />total_bill: 25.28<br />sex: Female","tip:  2.20<br />total_bill: 14.73<br />sex: Female","tip:  1.83<br />total_bill: 10.07<br />sex: Female","tip:  5.17<br />total_bill: 34.83<br />sex: Female","tip:  1.00<br />total_bill:  5.75<br />sex: Female","tip:  4.30<br />total_bill: 16.32<br />sex: Female","tip:  3.25<br />total_bill: 22.75<br />sex: Female","tip:  2.50<br />total_bill: 11.35<br />sex: Female","tip:  3.00<br />total_bill: 15.38<br />sex: Female","tip:  2.50<br />total_bill: 44.30<br />sex: Female","tip:  3.48<br />total_bill: 22.42<br />sex: Female","tip:  4.08<br />total_bill: 20.92<br />sex: Female","tip:  4.00<br />total_bill: 14.31<br />sex: Female","tip:  1.00<br />total_bill:  7.25<br />sex: Female","tip:  4.00<br />total_bill: 25.71<br />sex: Female","tip:  3.50<br />total_bill: 17.31<br />sex: Female","tip:  1.50<br />total_bill: 10.65<br />sex: Female","tip:  1.80<br />total_bill: 12.43<br />sex: Female","tip:  2.92<br />total_bill: 24.08<br />sex: Female","tip:  1.68<br />total_bill: 13.42<br />sex: Female","tip:  2.52<br />total_bill: 12.48<br />sex: Female","tip:  4.20<br />total_bill: 29.80<br />sex: Female","tip:  2.00<br />total_bill: 14.52<br />sex: Female","tip:  2.00<br />total_bill: 11.38<br />sex: Female","tip:  2.83<br />total_bill: 20.27<br />sex: Female","tip:  1.50<br />total_bill: 11.17<br />sex: Female","tip:  2.00<br />total_bill: 12.26<br />sex: Female","tip:  3.25<br />total_bill: 18.26<br />sex: Female","tip:  1.25<br />total_bill:  8.51<br />sex: Female","tip:  2.00<br />total_bill: 10.33<br />sex: Female","tip:  2.00<br />total_bill: 14.15<br />sex: Female","tip:  2.75<br />total_bill: 13.16<br />sex: Female","tip:  3.50<br />total_bill: 17.47<br />sex: Female","tip:  5.00<br />total_bill: 27.05<br />sex: Female","tip:  2.30<br />total_bill: 16.43<br />sex: Female","tip:  1.50<br />total_bill:  8.35<br />sex: Female","tip:  1.36<br />total_bill: 18.64<br />sex: Female","tip:  1.63<br />total_bill: 11.87<br />sex: Female","tip:  5.14<br />total_bill: 29.85<br />sex: Female","tip:  3.75<br />total_bill: 25.00<br />sex: Female","tip:  2.61<br />total_bill: 13.39<br />sex: Female","tip:  2.00<br />total_bill: 16.21<br />sex: Female","tip:  3.00<br />total_bill: 17.51<br />sex: Female","tip:  1.61<br />total_bill: 10.59<br />sex: Female","tip:  2.00<br />total_bill: 10.63<br />sex: Female","tip:  4.00<br />total_bill:  9.60<br />sex: Female","tip:  3.50<br />total_bill: 20.90<br />sex: Female","tip:  3.50<br />total_bill: 18.15<br />sex: Female","tip:  4.19<br />total_bill: 19.81<br />sex: Female","tip:  5.00<br />total_bill: 43.11<br />sex: Female","tip:  2.00<br />total_bill: 13.00<br />sex: Female","tip:  2.01<br />total_bill: 12.74<br />sex: Female","tip:  2.00<br />total_bill: 13.00<br />sex: Female","tip:  2.50<br />total_bill: 16.40<br />sex: Female","tip:  3.23<br />total_bill: 16.47<br />sex: Female","tip:  2.23<br />total_bill: 12.76<br />sex: Female","tip:  2.50<br />total_bill: 13.27<br />sex: Female","tip:  6.50<br />total_bill: 28.17<br />sex: Female","tip:  1.10<br />total_bill: 12.90<br />sex: Female","tip:  3.09<br />total_bill: 30.14<br />sex: Female","tip:  3.48<br />total_bill: 13.42<br />sex: Female","tip:  3.00<br />total_bill: 15.98<br />sex: Female","tip:  2.50<br />total_bill: 16.27<br />sex: Female","tip:  2.00<br />total_bill: 10.09<br />sex: Female","tip:  2.88<br />total_bill: 22.12<br />sex: Female","tip:  4.67<br />total_bill: 35.83<br />sex: Female","tip:  2.00<br />total_bill: 27.18<br />sex: Female","tip:  3.00<br />total_bill: 18.78<br />sex: Female"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.6599999999999999,3.5,3.3100000000000001,4.71,2,3.1200000000000001,1.96,3.23,1.71,1.5700000000000001,3,3.9199999999999999,3.71,3.3500000000000001,4.0800000000000001,7.5800000000000001,3.1800000000000002,2.3399999999999999,2,2,4.2999999999999998,1.45,2.5,3.27,3.6000000000000001,2,2.3100000000000001,5,2.2400000000000002,2.54,3.0600000000000001,1.3200000000000001,5.5999999999999996,3,5,6,2.0499999999999998,3,2.5,1.5600000000000001,4.3399999999999999,3.5099999999999998,3,1.76,6.7300000000000004,3.21,2,1.98,3.7599999999999998,2.6400000000000001,3.1499999999999999,2.0099999999999998,2.0899999999999999,1.97,1.25,3.0800000000000001,4,3,2.71,3,3.3999999999999999,5,2.0299999999999998,2,4,5.8499999999999996,3,3,3.5,4.7300000000000004,4,1.5,3,1.5,1.6399999999999999,4.0599999999999996,4.29,3.7599999999999998,3,4,2.5499999999999998,5.0700000000000003,2.3100000000000001,2.5,2,1.48,2.1800000000000002,1.5,2,6.7000000000000002,5,1.73,2,2.5,2,2.7400000000000002,2,2,5,2,3.5,2.5,2,3.48,2.2400000000000002,4.5,10,3.1600000000000001,5.1500000000000004,3.1800000000000002,4,3.1099999999999999,2,2,3.5499999999999998,3.6800000000000002,5.6500000000000004,3.5,6.5,3,5,2,4,1.5,2.5600000000000001,2.02,4,1.4399999999999999,2,2,4,4,3.4100000000000001,3,2.0299999999999998,2,5.1600000000000001,9,3,1.5,1.4399999999999999,2.2000000000000002,1.9199999999999999,1.5800000000000001,3,2.7200000000000002,2,3,3.3900000000000001,1.47,3,1.25,1,1.1699999999999999,5.9199999999999999,2,1.75],"y":[10.34,21.010000000000002,23.68,25.289999999999999,8.7699999999999996,26.879999999999999,15.039999999999999,14.779999999999999,10.27,15.42,18.43,21.579999999999998,16.289999999999999,20.649999999999999,17.920000000000002,39.420000000000002,19.82,17.809999999999999,13.369999999999999,12.69,21.699999999999999,9.5500000000000007,18.350000000000001,17.780000000000001,24.059999999999999,16.309999999999999,18.690000000000001,31.27,16.039999999999999,17.460000000000001,13.94,9.6799999999999997,30.399999999999999,18.289999999999999,22.23,32.399999999999999,28.550000000000001,18.039999999999999,12.539999999999999,9.9399999999999995,25.559999999999999,19.489999999999998,38.009999999999998,11.24,48.270000000000003,20.289999999999999,13.81,11.02,18.289999999999999,17.59,20.079999999999998,20.23,15.01,12.02,10.51,17.920000000000002,27.199999999999999,22.760000000000002,17.289999999999999,19.440000000000001,16.66,32.68,15.98,13.029999999999999,18.280000000000001,24.710000000000001,21.16,28.969999999999999,22.489999999999998,40.170000000000002,27.280000000000001,12.029999999999999,21.010000000000002,12.460000000000001,15.359999999999999,20.489999999999998,25.210000000000001,18.239999999999998,14,38.07,23.949999999999999,29.93,11.69,14.26,15.949999999999999,8.5199999999999996,22.82,19.079999999999998,16,34.299999999999997,41.189999999999998,9.7799999999999994,7.5099999999999998,14.07,13.130000000000001,17.260000000000002,24.550000000000001,19.77,48.170000000000002,16.489999999999998,21.5,12.66,13.81,24.52,20.760000000000002,31.710000000000001,50.810000000000002,15.81,7.25,31.850000000000001,16.82,32.899999999999999,17.890000000000001,14.48,34.630000000000003,34.649999999999999,23.329999999999998,45.350000000000001,23.170000000000002,40.549999999999997,20.690000000000001,30.460000000000001,23.100000000000001,15.69,28.440000000000001,15.48,16.579999999999998,7.5599999999999996,10.34,13.51,18.710000000000001,20.530000000000001,26.59,38.729999999999997,24.27,30.059999999999999,25.890000000000001,48.329999999999998,28.149999999999999,11.59,7.7400000000000002,12.16,8.5800000000000001,13.42,20.449999999999999,13.279999999999999,24.010000000000002,15.69,11.609999999999999,10.77,15.529999999999999,10.07,12.6,32.829999999999998,29.030000000000001,22.670000000000002,17.82],"text":["tip:  1.66<br />total_bill: 10.34<br />sex: Male","tip:  3.50<br />total_bill: 21.01<br />sex: Male","tip:  3.31<br />total_bill: 23.68<br />sex: Male","tip:  4.71<br />total_bill: 25.29<br />sex: Male","tip:  2.00<br />total_bill:  8.77<br />sex: Male","tip:  3.12<br />total_bill: 26.88<br />sex: Male","tip:  1.96<br />total_bill: 15.04<br />sex: Male","tip:  3.23<br />total_bill: 14.78<br />sex: Male","tip:  1.71<br />total_bill: 10.27<br />sex: Male","tip:  1.57<br />total_bill: 15.42<br />sex: Male","tip:  3.00<br />total_bill: 18.43<br />sex: Male","tip:  3.92<br />total_bill: 21.58<br />sex: Male","tip:  3.71<br />total_bill: 16.29<br />sex: Male","tip:  3.35<br />total_bill: 20.65<br />sex: Male","tip:  4.08<br />total_bill: 17.92<br />sex: Male","tip:  7.58<br />total_bill: 39.42<br />sex: Male","tip:  3.18<br />total_bill: 19.82<br />sex: Male","tip:  2.34<br />total_bill: 17.81<br />sex: Male","tip:  2.00<br />total_bill: 13.37<br />sex: Male","tip:  2.00<br />total_bill: 12.69<br />sex: Male","tip:  4.30<br />total_bill: 21.70<br />sex: Male","tip:  1.45<br />total_bill:  9.55<br />sex: Male","tip:  2.50<br />total_bill: 18.35<br />sex: Male","tip:  3.27<br />total_bill: 17.78<br />sex: Male","tip:  3.60<br />total_bill: 24.06<br />sex: Male","tip:  2.00<br />total_bill: 16.31<br />sex: Male","tip:  2.31<br />total_bill: 18.69<br />sex: Male","tip:  5.00<br />total_bill: 31.27<br />sex: Male","tip:  2.24<br />total_bill: 16.04<br />sex: Male","tip:  2.54<br />total_bill: 17.46<br />sex: Male","tip:  3.06<br />total_bill: 13.94<br />sex: Male","tip:  1.32<br />total_bill:  9.68<br />sex: Male","tip:  5.60<br />total_bill: 30.40<br />sex: Male","tip:  3.00<br />total_bill: 18.29<br />sex: Male","tip:  5.00<br />total_bill: 22.23<br />sex: Male","tip:  6.00<br />total_bill: 32.40<br />sex: Male","tip:  2.05<br />total_bill: 28.55<br />sex: Male","tip:  3.00<br />total_bill: 18.04<br />sex: Male","tip:  2.50<br />total_bill: 12.54<br />sex: Male","tip:  1.56<br />total_bill:  9.94<br />sex: Male","tip:  4.34<br />total_bill: 25.56<br />sex: Male","tip:  3.51<br />total_bill: 19.49<br />sex: Male","tip:  3.00<br />total_bill: 38.01<br />sex: Male","tip:  1.76<br />total_bill: 11.24<br />sex: Male","tip:  6.73<br />total_bill: 48.27<br />sex: Male","tip:  3.21<br />total_bill: 20.29<br />sex: Male","tip:  2.00<br />total_bill: 13.81<br />sex: Male","tip:  1.98<br />total_bill: 11.02<br />sex: Male","tip:  3.76<br />total_bill: 18.29<br />sex: Male","tip:  2.64<br />total_bill: 17.59<br />sex: Male","tip:  3.15<br />total_bill: 20.08<br />sex: Male","tip:  2.01<br />total_bill: 20.23<br />sex: Male","tip:  2.09<br />total_bill: 15.01<br />sex: Male","tip:  1.97<br />total_bill: 12.02<br />sex: Male","tip:  1.25<br />total_bill: 10.51<br />sex: Male","tip:  3.08<br />total_bill: 17.92<br />sex: Male","tip:  4.00<br />total_bill: 27.20<br />sex: Male","tip:  3.00<br />total_bill: 22.76<br />sex: Male","tip:  2.71<br />total_bill: 17.29<br />sex: Male","tip:  3.00<br />total_bill: 19.44<br />sex: Male","tip:  3.40<br />total_bill: 16.66<br />sex: Male","tip:  5.00<br />total_bill: 32.68<br />sex: Male","tip:  2.03<br />total_bill: 15.98<br />sex: Male","tip:  2.00<br />total_bill: 13.03<br />sex: Male","tip:  4.00<br />total_bill: 18.28<br />sex: Male","tip:  5.85<br />total_bill: 24.71<br />sex: Male","tip:  3.00<br />total_bill: 21.16<br />sex: Male","tip:  3.00<br />total_bill: 28.97<br />sex: Male","tip:  3.50<br />total_bill: 22.49<br />sex: Male","tip:  4.73<br />total_bill: 40.17<br />sex: Male","tip:  4.00<br />total_bill: 27.28<br />sex: Male","tip:  1.50<br />total_bill: 12.03<br />sex: Male","tip:  3.00<br />total_bill: 21.01<br />sex: Male","tip:  1.50<br />total_bill: 12.46<br />sex: Male","tip:  1.64<br />total_bill: 15.36<br />sex: Male","tip:  4.06<br />total_bill: 20.49<br />sex: Male","tip:  4.29<br />total_bill: 25.21<br />sex: Male","tip:  3.76<br />total_bill: 18.24<br />sex: Male","tip:  3.00<br />total_bill: 14.00<br />sex: Male","tip:  4.00<br />total_bill: 38.07<br />sex: Male","tip:  2.55<br />total_bill: 23.95<br />sex: Male","tip:  5.07<br />total_bill: 29.93<br />sex: Male","tip:  2.31<br />total_bill: 11.69<br />sex: Male","tip:  2.50<br />total_bill: 14.26<br />sex: Male","tip:  2.00<br />total_bill: 15.95<br />sex: Male","tip:  1.48<br />total_bill:  8.52<br />sex: Male","tip:  2.18<br />total_bill: 22.82<br />sex: Male","tip:  1.50<br />total_bill: 19.08<br />sex: Male","tip:  2.00<br />total_bill: 16.00<br />sex: Male","tip:  6.70<br />total_bill: 34.30<br />sex: Male","tip:  5.00<br />total_bill: 41.19<br />sex: Male","tip:  1.73<br />total_bill:  9.78<br />sex: Male","tip:  2.00<br />total_bill:  7.51<br />sex: Male","tip:  2.50<br />total_bill: 14.07<br />sex: Male","tip:  2.00<br />total_bill: 13.13<br />sex: Male","tip:  2.74<br />total_bill: 17.26<br />sex: Male","tip:  2.00<br />total_bill: 24.55<br />sex: Male","tip:  2.00<br />total_bill: 19.77<br />sex: Male","tip:  5.00<br />total_bill: 48.17<br />sex: Male","tip:  2.00<br />total_bill: 16.49<br />sex: Male","tip:  3.50<br />total_bill: 21.50<br />sex: Male","tip:  2.50<br />total_bill: 12.66<br />sex: Male","tip:  2.00<br />total_bill: 13.81<br />sex: Male","tip:  3.48<br />total_bill: 24.52<br />sex: Male","tip:  2.24<br />total_bill: 20.76<br />sex: Male","tip:  4.50<br />total_bill: 31.71<br />sex: Male","tip: 10.00<br />total_bill: 50.81<br />sex: Male","tip:  3.16<br />total_bill: 15.81<br />sex: Male","tip:  5.15<br />total_bill:  7.25<br />sex: Male","tip:  3.18<br />total_bill: 31.85<br />sex: Male","tip:  4.00<br />total_bill: 16.82<br />sex: Male","tip:  3.11<br />total_bill: 32.90<br />sex: Male","tip:  2.00<br />total_bill: 17.89<br />sex: Male","tip:  2.00<br />total_bill: 14.48<br />sex: Male","tip:  3.55<br />total_bill: 34.63<br />sex: Male","tip:  3.68<br />total_bill: 34.65<br />sex: Male","tip:  5.65<br />total_bill: 23.33<br />sex: Male","tip:  3.50<br />total_bill: 45.35<br />sex: Male","tip:  6.50<br />total_bill: 23.17<br />sex: Male","tip:  3.00<br />total_bill: 40.55<br />sex: Male","tip:  5.00<br />total_bill: 20.69<br />sex: Male","tip:  2.00<br />total_bill: 30.46<br />sex: Male","tip:  4.00<br />total_bill: 23.10<br />sex: Male","tip:  1.50<br />total_bill: 15.69<br />sex: Male","tip:  2.56<br />total_bill: 28.44<br />sex: Male","tip:  2.02<br />total_bill: 15.48<br />sex: Male","tip:  4.00<br />total_bill: 16.58<br />sex: Male","tip:  1.44<br />total_bill:  7.56<br />sex: Male","tip:  2.00<br />total_bill: 10.34<br />sex: Male","tip:  2.00<br />total_bill: 13.51<br />sex: Male","tip:  4.00<br />total_bill: 18.71<br />sex: Male","tip:  4.00<br />total_bill: 20.53<br />sex: Male","tip:  3.41<br />total_bill: 26.59<br />sex: Male","tip:  3.00<br />total_bill: 38.73<br />sex: Male","tip:  2.03<br />total_bill: 24.27<br />sex: Male","tip:  2.00<br />total_bill: 30.06<br />sex: Male","tip:  5.16<br />total_bill: 25.89<br />sex: Male","tip:  9.00<br />total_bill: 48.33<br />sex: Male","tip:  3.00<br />total_bill: 28.15<br />sex: Male","tip:  1.50<br />total_bill: 11.59<br />sex: Male","tip:  1.44<br />total_bill:  7.74<br />sex: Male","tip:  2.20<br />total_bill: 12.16<br />sex: Male","tip:  1.92<br />total_bill:  8.58<br />sex: Male","tip:  1.58<br />total_bill: 13.42<br />sex: Male","tip:  3.00<br />total_bill: 20.45<br />sex: Male","tip:  2.72<br />total_bill: 13.28<br />sex: Male","tip:  2.00<br />total_bill: 24.01<br />sex: Male","tip:  3.00<br />total_bill: 15.69<br />sex: Male","tip:  3.39<br />total_bill: 11.61<br />sex: Male","tip:  1.47<br />total_bill: 10.77<br />sex: Male","tip:  3.00<br />total_bill: 15.53<br />sex: Male","tip:  1.25<br />total_bill: 10.07<br />sex: Male","tip:  1.00<br />total_bill: 12.60<br />sex: Male","tip:  1.17<br />total_bill: 32.83<br />sex: Male","tip:  5.92<br />total_bill: 29.03<br />sex: Male","tip:  2.00<br />total_bill: 22.67<br />sex: Male","tip:  1.75<br />total_bill: 17.82<br />sex: Male"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.228310502283108,"r":7.3059360730593621,"b":40.182648401826498,"l":37.260273972602747},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.55000000000000004,10.449999999999999],"tickmode":"array","ticktext":["2.5","5.0","7.5","10.0"],"tickvals":[2.5,5,7.5,10],"categoryorder":"array","categoryarray":["2.5","5.0","7.5","10.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"new x name","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.68299999999999983,53.197000000000003],"tickmode":"array","ticktext":["10","20","30","40","50"],"tickvals":[10,20,30,40,50],"categoryorder":"array","categoryarray":["10","20","30","40","50"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"new y name","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"sex","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"3c9d5b686b4f":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"3c9d5b686b4f","visdat":{"3c9d5b686b4f":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="save-plot" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Save plot</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_economist</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1-ggplot2_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"myplot.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1338,26 +1386,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>img4<span class="ot">=</span><span class="fu">image_read</span>(<span class="st">"bee.png"</span>)</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="st">"bee.png"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>img4<span class="ot">=</span><span class="fu">image_read</span>(<span class="st">"bee.png"</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="st">"bee.png"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "bee.png"</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">background_image</span>(img4) <span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">background_image</span>(img4) <span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-ggplot2_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1-ggplot2_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1369,27 +1417,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pak::pak('thomasp85/gganimate')</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Here comes the gganimate specific bits</span></span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy',colour = "country") +</span></span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">'Year: {as.integer(frame_time)}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>,<span class="at">colour =</span> <span class="st">"country"</span>) <span class="sc">+</span></span>
-<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
-<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span>
-<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pak::pak('thomasp85/gganimate')</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Here comes the gganimate specific bits</span></span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy',colour = "country") +</span></span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">'Year: {as.integer(frame_time)}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>,<span class="at">colour =</span> <span class="st">"country"</span>) <span class="sc">+</span></span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-ggplot2_files/figure-html/unnamed-chunk-46-1.gif" class="img-fluid figure-img"></p>
+<p><img src="1-ggplot2_files/figure-html/unnamed-chunk-49-1.gif" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1398,6 +1446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reference" class="level1" data-number="13">
 <h1 data-number="13"><span class="header-section-number">13</span> reference:</h1>
 <p>https://cran.r-project.org/web/packages/magick/vignettes/intro.html</p>
+<p>https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/</p>
 
 
 <!-- -->
@@ -1843,444 +1892,465 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb57" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "ggplot2 in R"</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot 2023-07-08 at 5.03.46 PM.png)</span>{width="800"}</span>
-<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemr)</span>
-<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb57-31"><a href="#cb57-31" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggplot2"</span>)</span>
-<span id="cb57-32"><a href="#cb57-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-33"><a href="#cb57-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-34"><a href="#cb57-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-37"><a href="#cb57-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-38"><a href="#cb57-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb57-39"><a href="#cb57-39" aria-hidden="true" tabindex="-1"></a>tips<span class="ot">=</span>tips</span>
-<span id="cb57-40"><a href="#cb57-40" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tips)</span>
-<span id="cb57-41"><a href="#cb57-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-42"><a href="#cb57-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-45"><a href="#cb57-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-46"><a href="#cb57-46" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span>gapminder</span>
-<span id="cb57-47"><a href="#cb57-47" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span>
-<span id="cb57-48"><a href="#cb57-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-49"><a href="#cb57-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-50"><a href="#cb57-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-51"><a href="#cb57-51" aria-hidden="true" tabindex="-1"></a><span class="fu"># Scatter Plot</span></span>
-<span id="cb57-52"><a href="#cb57-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-55"><a href="#cb57-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-56"><a href="#cb57-56" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb57-57"><a href="#cb57-57" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-58"><a href="#cb57-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-59"><a href="#cb57-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-60"><a href="#cb57-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-61"><a href="#cb57-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb57-62"><a href="#cb57-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-65"><a href="#cb57-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-66"><a href="#cb57-66" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb57-67"><a href="#cb57-67" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-68"><a href="#cb57-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-69"><a href="#cb57-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-70"><a href="#cb57-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## size by group</span></span>
-<span id="cb57-71"><a href="#cb57-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-74"><a href="#cb57-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-75"><a href="#cb57-75" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">colour =</span> sex,<span class="at">size=</span>size)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb57-76"><a href="#cb57-76" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-77"><a href="#cb57-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-78"><a href="#cb57-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-79"><a href="#cb57-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-80"><a href="#cb57-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## line Plot</span></span>
-<span id="cb57-83"><a href="#cb57-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-84"><a href="#cb57-84" aria-hidden="true" tabindex="-1"></a>data002<span class="ot">=</span> data001 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(continent,year) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pop=</span><span class="fu">sum</span>(pop))</span>
-<span id="cb57-85"><a href="#cb57-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-86"><a href="#cb57-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-89"><a href="#cb57-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-90"><a href="#cb57-90" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(data002 <span class="sc">%&gt;%</span><span class="fu">filter</span>(continent<span class="sc">==</span><span class="st">'Asia'</span>), <span class="fu">aes</span>(year, pop)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
-<span id="cb57-91"><a href="#cb57-91" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-92"><a href="#cb57-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-93"><a href="#cb57-93" aria-hidden="true" tabindex="-1"></a><span class="fu">### change line size</span></span>
-<span id="cb57-94"><a href="#cb57-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-97"><a href="#cb57-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-98"><a href="#cb57-98" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(data002 <span class="sc">%&gt;%</span><span class="fu">filter</span>(continent<span class="sc">==</span><span class="st">'Asia'</span>), <span class="fu">aes</span>(year, pop)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">5</span>)</span>
-<span id="cb57-99"><a href="#cb57-99" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-100"><a href="#cb57-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-101"><a href="#cb57-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-102"><a href="#cb57-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-103"><a href="#cb57-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb57-104"><a href="#cb57-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-105"><a href="#cb57-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-108"><a href="#cb57-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-109"><a href="#cb57-109" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(year, pop,<span class="at">colour =</span> continent)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
-<span id="cb57-110"><a href="#cb57-110" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-111"><a href="#cb57-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-112"><a href="#cb57-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-113"><a href="#cb57-113" aria-hidden="true" tabindex="-1"></a><span class="fu"># histogram</span></span>
-<span id="cb57-114"><a href="#cb57-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-117"><a href="#cb57-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-118"><a href="#cb57-118" aria-hidden="true" tabindex="-1"></a>data002<span class="ot">=</span> data001 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1997</span>,continent <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'Asia'</span>,<span class="st">'Africa'</span>))</span>
-<span id="cb57-119"><a href="#cb57-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-120"><a href="#cb57-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-121"><a href="#cb57-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-124"><a href="#cb57-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-125"><a href="#cb57-125" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(gdpPercap)) <span class="sc">+</span> </span>
-<span id="cb57-126"><a href="#cb57-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb57-127"><a href="#cb57-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-128"><a href="#cb57-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-129"><a href="#cb57-129" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb57-130"><a href="#cb57-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-133"><a href="#cb57-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-134"><a href="#cb57-134" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(gdpPercap,,<span class="at">fill =</span> continent)) <span class="sc">+</span><span class="fu">geom_histogram</span>(<span class="at">position =</span> <span class="st">'dodge'</span>)</span>
-<span id="cb57-135"><a href="#cb57-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-136"><a href="#cb57-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-137"><a href="#cb57-137" aria-hidden="true" tabindex="-1"></a><span class="fu"># bar chart</span></span>
-<span id="cb57-138"><a href="#cb57-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-141"><a href="#cb57-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-142"><a href="#cb57-142" aria-hidden="true" tabindex="-1"></a>data002<span class="ot">=</span> data001 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1997</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pop=</span><span class="fu">sum</span>(pop))</span>
-<span id="cb57-143"><a href="#cb57-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-144"><a href="#cb57-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-147"><a href="#cb57-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-148"><a href="#cb57-148" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span>continent, <span class="at">y=</span>pop)) <span class="sc">+</span></span>
-<span id="cb57-149"><a href="#cb57-149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span>
-<span id="cb57-150"><a href="#cb57-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-151"><a href="#cb57-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-152"><a href="#cb57-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## show number</span></span>
-<span id="cb57-153"><a href="#cb57-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-156"><a href="#cb57-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-157"><a href="#cb57-157" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span>continent, <span class="at">y=</span>pop)) <span class="sc">+</span></span>
-<span id="cb57-158"><a href="#cb57-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)</span>
-<span id="cb57-159"><a href="#cb57-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-160"><a href="#cb57-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-161"><a href="#cb57-161" aria-hidden="true" tabindex="-1"></a><span class="fu">## change bar color</span></span>
-<span id="cb57-162"><a href="#cb57-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-165"><a href="#cb57-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-166"><a href="#cb57-166" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span>continent, <span class="at">y=</span>pop)) <span class="sc">+</span></span>
-<span id="cb57-167"><a href="#cb57-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)</span>
-<span id="cb57-168"><a href="#cb57-168" aria-hidden="true" tabindex="-1"></a><span class="co"># box plot</span></span>
-<span id="cb57-169"><a href="#cb57-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-170"><a href="#cb57-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-171"><a href="#cb57-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-172"><a href="#cb57-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-173"><a href="#cb57-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-174"><a href="#cb57-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-175"><a href="#cb57-175" aria-hidden="true" tabindex="-1"></a><span class="fu">## bar plot order</span></span>
-<span id="cb57-176"><a href="#cb57-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-179"><a href="#cb57-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-180"><a href="#cb57-180" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
-<span id="cb57-181"><a href="#cb57-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)</span>
-<span id="cb57-182"><a href="#cb57-182" aria-hidden="true" tabindex="-1"></a><span class="co"># box plot</span></span>
-<span id="cb57-183"><a href="#cb57-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-184"><a href="#cb57-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-187"><a href="#cb57-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-188"><a href="#cb57-188" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,<span class="sc">-</span>pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
-<span id="cb57-189"><a href="#cb57-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)</span>
-<span id="cb57-190"><a href="#cb57-190" aria-hidden="true" tabindex="-1"></a><span class="co"># box plot</span></span>
-<span id="cb57-191"><a href="#cb57-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-192"><a href="#cb57-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-193"><a href="#cb57-193" aria-hidden="true" tabindex="-1"></a><span class="fu">## Horizontal Barplot</span></span>
-<span id="cb57-194"><a href="#cb57-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-195"><a href="#cb57-195" aria-hidden="true" tabindex="-1"></a>`</span>
-<span id="cb57-198"><a href="#cb57-198" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-199"><a href="#cb57-199" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
-<span id="cb57-200"><a href="#cb57-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()</span>
-<span id="cb57-201"><a href="#cb57-201" aria-hidden="true" tabindex="-1"></a><span class="co"># box plot</span></span>
-<span id="cb57-202"><a href="#cb57-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-203"><a href="#cb57-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-204"><a href="#cb57-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## make bar transparency</span></span>
-<span id="cb57-205"><a href="#cb57-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-208"><a href="#cb57-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-209"><a href="#cb57-209" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
-<span id="cb57-210"><a href="#cb57-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span> ,<span class="at">alpha=</span><span class="fl">0.2</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()</span>
-<span id="cb57-211"><a href="#cb57-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-212"><a href="#cb57-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-213"><a href="#cb57-213" aria-hidden="true" tabindex="-1"></a><span class="fu">## make bar close to axis</span></span>
-<span id="cb57-216"><a href="#cb57-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-217"><a href="#cb57-217" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
-<span id="cb57-218"><a href="#cb57-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">alpha=</span><span class="fl">0.2</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">1</span>)))</span>
-<span id="cb57-219"><a href="#cb57-219" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-220"><a href="#cb57-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-221"><a href="#cb57-221" aria-hidden="true" tabindex="-1"></a><span class="fu">## change one bar color</span></span>
-<span id="cb57-222"><a href="#cb57-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-225"><a href="#cb57-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-226"><a href="#cb57-226" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop,<span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(continent<span class="sc">==</span><span class="st">"Asia"</span>,<span class="st">"Highlighted"</span>,<span class="st">"Normal"</span>)))) <span class="sc">+</span></span>
-<span id="cb57-227"><a href="#cb57-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">alpha=</span><span class="fl">0.2</span>,<span class="at">show.legend =</span> <span class="cn">FALSE</span>)<span class="sc">+</span><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">"continent"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"red"</span>,<span class="st">"grey50"</span>))<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">1</span>)))</span>
-<span id="cb57-228"><a href="#cb57-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-229"><a href="#cb57-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-230"><a href="#cb57-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-231"><a href="#cb57-231" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb57-232"><a href="#cb57-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-233"><a href="#cb57-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-234"><a href="#cb57-234" aria-hidden="true" tabindex="-1"></a><span class="fu"># box plot</span></span>
-<span id="cb57-235"><a href="#cb57-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-238"><a href="#cb57-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-239"><a href="#cb57-239" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(day,tip,<span class="at">fill=</span>sex)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
-<span id="cb57-240"><a href="#cb57-240" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-241"><a href="#cb57-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-242"><a href="#cb57-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-243"><a href="#cb57-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-244"><a href="#cb57-244" aria-hidden="true" tabindex="-1"></a><span class="fu"># strip plot</span></span>
-<span id="cb57-245"><a href="#cb57-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-246"><a href="#cb57-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-249"><a href="#cb57-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-250"><a href="#cb57-250" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(day,tip)) <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span>
-<span id="cb57-251"><a href="#cb57-251" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-252"><a href="#cb57-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-253"><a href="#cb57-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-254"><a href="#cb57-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-255"><a href="#cb57-255" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
-<span id="cb57-256"><a href="#cb57-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-259"><a href="#cb57-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-260"><a href="#cb57-260" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(day,tip,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">position=</span><span class="fu">position_jitterdodge</span>())</span>
-<span id="cb57-261"><a href="#cb57-261" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-262"><a href="#cb57-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-263"><a href="#cb57-263" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-264"><a href="#cb57-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-265"><a href="#cb57-265" aria-hidden="true" tabindex="-1"></a><span class="fu"># Facet plot</span></span>
-<span id="cb57-266"><a href="#cb57-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-269"><a href="#cb57-269" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-270"><a href="#cb57-270" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip,total_bill,)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="st">"day"</span>)</span>
-<span id="cb57-271"><a href="#cb57-271" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-272"><a href="#cb57-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-273"><a href="#cb57-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-274"><a href="#cb57-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-275"><a href="#cb57-275" aria-hidden="true" tabindex="-1"></a>make 3 plot per row</span>
-<span id="cb57-276"><a href="#cb57-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-279"><a href="#cb57-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-280"><a href="#cb57-280" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip,total_bill,)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="st">"day"</span>,<span class="at">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb57-281"><a href="#cb57-281" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-282"><a href="#cb57-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-283"><a href="#cb57-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-284"><a href="#cb57-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-285"><a href="#cb57-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-286"><a href="#cb57-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-287"><a href="#cb57-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-288"><a href="#cb57-288" aria-hidden="true" tabindex="-1"></a><span class="fu"># title,size,x y name,footnote</span></span>
-<span id="cb57-289"><a href="#cb57-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-290"><a href="#cb57-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-291"><a href="#cb57-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-292"><a href="#cb57-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-293"><a href="#cb57-293" aria-hidden="true" tabindex="-1"></a><span class="fu">## add title</span></span>
-<span id="cb57-294"><a href="#cb57-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-297"><a href="#cb57-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-298"><a href="#cb57-298" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>)</span>
-<span id="cb57-299"><a href="#cb57-299" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-300"><a href="#cb57-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-301"><a href="#cb57-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-302"><a href="#cb57-302" aria-hidden="true" tabindex="-1"></a><span class="fu">## add subtitle</span></span>
-<span id="cb57-303"><a href="#cb57-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-306"><a href="#cb57-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-307"><a href="#cb57-307" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>,<span class="at">subtitle =</span> <span class="st">"Subtitle of the plot"</span>)</span>
-<span id="cb57-308"><a href="#cb57-308" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-309"><a href="#cb57-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-310"><a href="#cb57-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-311"><a href="#cb57-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-312"><a href="#cb57-312" aria-hidden="true" tabindex="-1"></a><span class="fu">## add footnote</span></span>
-<span id="cb57-313"><a href="#cb57-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-316"><a href="#cb57-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-317"><a href="#cb57-317" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"this is footnote"</span>)</span>
-<span id="cb57-318"><a href="#cb57-318" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-319"><a href="#cb57-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-320"><a href="#cb57-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-321"><a href="#cb57-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-322"><a href="#cb57-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-323"><a href="#cb57-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-324"><a href="#cb57-324" aria-hidden="true" tabindex="-1"></a><span class="fu">## adjust plot size</span></span>
-<span id="cb57-325"><a href="#cb57-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-326"><a href="#cb57-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-327"><a href="#cb57-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-330"><a href="#cb57-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-331"><a href="#cb57-331" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>)<span class="sc">+</span><span class="fu">theme</span>(</span>
-<span id="cb57-332"><a href="#cb57-332" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="st">"cm"</span>))</span>
-<span id="cb57-333"><a href="#cb57-333" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-334"><a href="#cb57-334" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-335"><a href="#cb57-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-336"><a href="#cb57-336" aria-hidden="true" tabindex="-1"></a><span class="fu">## adjust text size and center title</span></span>
-<span id="cb57-337"><a href="#cb57-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-340"><a href="#cb57-340" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-341"><a href="#cb57-341" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"this is footnote"</span>)</span>
-<span id="cb57-342"><a href="#cb57-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-343"><a href="#cb57-343" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">30</span>))</span>
-<span id="cb57-344"><a href="#cb57-344" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-345"><a href="#cb57-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-346"><a href="#cb57-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-347"><a href="#cb57-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-348"><a href="#cb57-348" aria-hidden="true" tabindex="-1"></a><span class="fu">## change x y name</span></span>
-<span id="cb57-349"><a href="#cb57-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-350"><a href="#cb57-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-353"><a href="#cb57-353" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-354"><a href="#cb57-354" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"new x name"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"new y name"</span>)</span>
-<span id="cb57-355"><a href="#cb57-355" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-356"><a href="#cb57-356" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-357"><a href="#cb57-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-358"><a href="#cb57-358" aria-hidden="true" tabindex="-1"></a><span class="fu">## add chinese</span></span>
-<span id="cb57-359"><a href="#cb57-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-362"><a href="#cb57-362" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-363"><a href="#cb57-363" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext)</span>
-<span id="cb57-364"><a href="#cb57-364" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>()</span>
-<span id="cb57-365"><a href="#cb57-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-366"><a href="#cb57-366" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"新的 x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"新的 y name"</span>)</span>
-<span id="cb57-367"><a href="#cb57-367" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-368"><a href="#cb57-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-369"><a href="#cb57-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-370"><a href="#cb57-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-371"><a href="#cb57-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-372"><a href="#cb57-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-373"><a href="#cb57-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-374"><a href="#cb57-374" aria-hidden="true" tabindex="-1"></a><span class="fu">## x y break and scales limit</span></span>
-<span id="cb57-375"><a href="#cb57-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-376"><a href="#cb57-376" aria-hidden="true" tabindex="-1"></a><span class="fu">### x scales limit</span></span>
-<span id="cb57-379"><a href="#cb57-379" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-380"><a href="#cb57-380" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
-<span id="cb57-381"><a href="#cb57-381" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">xlim</span>(<span class="at">min=</span><span class="dv">0</span>, <span class="dv">20</span>)</span>
-<span id="cb57-382"><a href="#cb57-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-383"><a href="#cb57-383" aria-hidden="true" tabindex="-1"></a><span class="fu">### y scales limit</span></span>
-<span id="cb57-386"><a href="#cb57-386" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-387"><a href="#cb57-387" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
-<span id="cb57-388"><a href="#cb57-388" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">100</span>)</span>
-<span id="cb57-389"><a href="#cb57-389" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-390"><a href="#cb57-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-391"><a href="#cb57-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-392"><a href="#cb57-392" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-393"><a href="#cb57-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-394"><a href="#cb57-394" aria-hidden="true" tabindex="-1"></a><span class="fu">### adding second aix</span></span>
-<span id="cb57-395"><a href="#cb57-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-398"><a href="#cb57-398" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-399"><a href="#cb57-399" aria-hidden="true" tabindex="-1"></a>data002<span class="ot">=</span> data001<span class="sc">%&gt;%</span> <span class="fu">group_by</span>(year,continent) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pop=</span><span class="fu">sum</span>(pop),<span class="at">lifeExp=</span><span class="fu">mean</span>(lifeExp))<span class="sc">%&gt;%</span><span class="fu">filter</span>(continent<span class="sc">==</span><span class="st">'Asia'</span>)</span>
-<span id="cb57-400"><a href="#cb57-400" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-401"><a href="#cb57-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-402"><a href="#cb57-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-403"><a href="#cb57-403" aria-hidden="true" tabindex="-1"></a>remove scientific notation </span>
-<span id="cb57-406"><a href="#cb57-406" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-407"><a href="#cb57-407" aria-hidden="true" tabindex="-1"></a>coeff<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">40000000</span></span>
-<span id="cb57-408"><a href="#cb57-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-409"><a href="#cb57-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-410"><a href="#cb57-410" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(year, pop)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb57-411"><a href="#cb57-411" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(year,lifeExp<span class="sc">/</span> coeff),<span class="at">size=</span><span class="dv">2</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="st">"pop"</span>, <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span>.<span class="sc">*</span>coeff, <span class="at">name =</span> <span class="st">"lifeExp"</span>),<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span>
-<span id="cb57-412"><a href="#cb57-412" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-413"><a href="#cb57-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-414"><a href="#cb57-414" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-415"><a href="#cb57-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-416"><a href="#cb57-416" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-417"><a href="#cb57-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-418"><a href="#cb57-418" aria-hidden="true" tabindex="-1"></a><span class="fu"># applying themes</span></span>
-<span id="cb57-419"><a href="#cb57-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-420"><a href="#cb57-420" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset .nav-pills}</span>
-<span id="cb57-421"><a href="#cb57-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-422"><a href="#cb57-422" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-423"><a href="#cb57-423" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme_bw()</span></span>
-<span id="cb57-426"><a href="#cb57-426" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-427"><a href="#cb57-427" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
-<span id="cb57-428"><a href="#cb57-428" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
-<span id="cb57-429"><a href="#cb57-429" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-430"><a href="#cb57-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-431"><a href="#cb57-431" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme_light()</span></span>
-<span id="cb57-432"><a href="#cb57-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-435"><a href="#cb57-435" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-436"><a href="#cb57-436" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_light</span>()</span>
-<span id="cb57-437"><a href="#cb57-437" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-438"><a href="#cb57-438" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme_economist()</span></span>
-<span id="cb57-439"><a href="#cb57-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-442"><a href="#cb57-442" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-443"><a href="#cb57-443" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggthemes"</span>)</span>
-<span id="cb57-444"><a href="#cb57-444" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_economist</span>()</span>
-<span id="cb57-445"><a href="#cb57-445" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-446"><a href="#cb57-446" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-447"><a href="#cb57-447" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb57-448"><a href="#cb57-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-449"><a href="#cb57-449" aria-hidden="true" tabindex="-1"></a><span class="fu"># convert ggplot to plotly</span></span>
-<span id="cb57-450"><a href="#cb57-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-453"><a href="#cb57-453" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-454"><a href="#cb57-454" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
-<span id="cb57-455"><a href="#cb57-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-456"><a href="#cb57-456" aria-hidden="true" tabindex="-1"></a>pp<span class="ot">=</span><span class="fu">ggplotly</span>(p)</span>
-<span id="cb57-457"><a href="#cb57-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-458"><a href="#cb57-458" aria-hidden="true" tabindex="-1"></a>pp</span>
-<span id="cb57-459"><a href="#cb57-459" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-460"><a href="#cb57-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-461"><a href="#cb57-461" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-462"><a href="#cb57-462" aria-hidden="true" tabindex="-1"></a><span class="fu"># Save plot</span></span>
-<span id="cb57-463"><a href="#cb57-463" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-466"><a href="#cb57-466" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-467"><a href="#cb57-467" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_economist</span>()</span>
-<span id="cb57-468"><a href="#cb57-468" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"myplot.png"</span>)</span>
-<span id="cb57-469"><a href="#cb57-469" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-470"><a href="#cb57-470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-471"><a href="#cb57-471" aria-hidden="true" tabindex="-1"></a><span class="fu"># add image into the chart</span></span>
-<span id="cb57-472"><a href="#cb57-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-473"><a href="#cb57-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-474"><a href="#cb57-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-475"><a href="#cb57-475" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-476"><a href="#cb57-476" aria-hidden="true" tabindex="-1"></a><span class="fu">## add background image</span></span>
-<span id="cb57-477"><a href="#cb57-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-478"><a href="#cb57-478" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-479"><a href="#cb57-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-482"><a href="#cb57-482" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-483"><a href="#cb57-483" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb57-484"><a href="#cb57-484" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
-<span id="cb57-485"><a href="#cb57-485" aria-hidden="true" tabindex="-1"></a>img4<span class="ot">=</span><span class="fu">image_read</span>(<span class="st">"bee.png"</span>)</span>
-<span id="cb57-486"><a href="#cb57-486" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-487"><a href="#cb57-487" aria-hidden="true" tabindex="-1"></a><span class="st">"bee.png"</span></span>
-<span id="cb57-488"><a href="#cb57-488" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb57-489"><a href="#cb57-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-490"><a href="#cb57-490" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">background_image</span>(img4) <span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
-<span id="cb57-491"><a href="#cb57-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-492"><a href="#cb57-492" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-493"><a href="#cb57-493" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-494"><a href="#cb57-494" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-495"><a href="#cb57-495" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-496"><a href="#cb57-496" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-497"><a href="#cb57-497" aria-hidden="true" tabindex="-1"></a><span class="fu"># Animation plot</span></span>
-<span id="cb57-498"><a href="#cb57-498" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-501"><a href="#cb57-501" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb57-502"><a href="#cb57-502" aria-hidden="true" tabindex="-1"></a><span class="co">#pak::pak('thomasp85/gganimate')</span></span>
-<span id="cb57-503"><a href="#cb57-503" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb57-504"><a href="#cb57-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-505"><a href="#cb57-505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-506"><a href="#cb57-506" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
-<span id="cb57-507"><a href="#cb57-507" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb57-508"><a href="#cb57-508" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
-<span id="cb57-509"><a href="#cb57-509" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
-<span id="cb57-510"><a href="#cb57-510" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb57-511"><a href="#cb57-511" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Here comes the gganimate specific bits</span></span>
-<span id="cb57-512"><a href="#cb57-512" aria-hidden="true" tabindex="-1"></a>  <span class="co"># labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy',colour = "country") +</span></span>
-<span id="cb57-513"><a href="#cb57-513" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">'Year: {as.integer(frame_time)}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>,<span class="at">colour =</span> <span class="st">"country"</span>) <span class="sc">+</span></span>
-<span id="cb57-514"><a href="#cb57-514" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
-<span id="cb57-515"><a href="#cb57-515" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span>
-<span id="cb57-516"><a href="#cb57-516" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-517"><a href="#cb57-517" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb57-518"><a href="#cb57-518" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb57-519"><a href="#cb57-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-520"><a href="#cb57-520" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-521"><a href="#cb57-521" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-522"><a href="#cb57-522" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-523"><a href="#cb57-523" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
-<span id="cb57-524"><a href="#cb57-524" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-525"><a href="#cb57-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-526"><a href="#cb57-526" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-527"><a href="#cb57-527" aria-hidden="true" tabindex="-1"></a>https://cran.r-project.org/web/packages/magick/vignettes/intro.html</span>
-<span id="cb57-528"><a href="#cb57-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-529"><a href="#cb57-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-530"><a href="#cb57-530" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb60" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "ggplot2 in R"</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb60-18"><a href="#cb60-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-19"><a href="#cb60-19" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot 2023-07-08 at 5.03.46 PM.png)</span>{width="800"}</span>
+<span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-23"><a href="#cb60-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-24"><a href="#cb60-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb60-25"><a href="#cb60-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb60-26"><a href="#cb60-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb60-27"><a href="#cb60-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemr)</span>
+<span id="cb60-28"><a href="#cb60-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-29"><a href="#cb60-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb60-30"><a href="#cb60-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb60-31"><a href="#cb60-31" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb60-32"><a href="#cb60-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-33"><a href="#cb60-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-34"><a href="#cb60-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-37"><a href="#cb60-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-38"><a href="#cb60-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb60-39"><a href="#cb60-39" aria-hidden="true" tabindex="-1"></a>tips<span class="ot">=</span>tips</span>
+<span id="cb60-40"><a href="#cb60-40" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tips)</span>
+<span id="cb60-41"><a href="#cb60-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-42"><a href="#cb60-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-45"><a href="#cb60-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-46"><a href="#cb60-46" aria-hidden="true" tabindex="-1"></a>data001<span class="ot">=</span>gapminder</span>
+<span id="cb60-47"><a href="#cb60-47" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data001)</span>
+<span id="cb60-48"><a href="#cb60-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-49"><a href="#cb60-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-50"><a href="#cb60-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-51"><a href="#cb60-51" aria-hidden="true" tabindex="-1"></a><span class="fu"># Scatter Plot</span></span>
+<span id="cb60-52"><a href="#cb60-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-55"><a href="#cb60-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-56"><a href="#cb60-56" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb60-57"><a href="#cb60-57" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-58"><a href="#cb60-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-59"><a href="#cb60-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-60"><a href="#cb60-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-61"><a href="#cb60-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb60-62"><a href="#cb60-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-65"><a href="#cb60-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-66"><a href="#cb60-66" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb60-67"><a href="#cb60-67" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-68"><a href="#cb60-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-69"><a href="#cb60-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-70"><a href="#cb60-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## size by group</span></span>
+<span id="cb60-71"><a href="#cb60-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-74"><a href="#cb60-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-75"><a href="#cb60-75" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">colour =</span> sex,<span class="at">size=</span>size)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb60-76"><a href="#cb60-76" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-77"><a href="#cb60-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-78"><a href="#cb60-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-79"><a href="#cb60-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-80"><a href="#cb60-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## line Plot</span></span>
+<span id="cb60-83"><a href="#cb60-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-84"><a href="#cb60-84" aria-hidden="true" tabindex="-1"></a>data002<span class="ot">=</span> data001 <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(continent,year) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pop=</span><span class="fu">sum</span>(pop))</span>
+<span id="cb60-85"><a href="#cb60-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-86"><a href="#cb60-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-89"><a href="#cb60-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-90"><a href="#cb60-90" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(data002 <span class="sc">%&gt;%</span><span class="fu">filter</span>(continent<span class="sc">==</span><span class="st">'Asia'</span>), <span class="fu">aes</span>(year, pop)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
+<span id="cb60-91"><a href="#cb60-91" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-92"><a href="#cb60-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-93"><a href="#cb60-93" aria-hidden="true" tabindex="-1"></a><span class="fu">### change line size</span></span>
+<span id="cb60-94"><a href="#cb60-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-97"><a href="#cb60-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-98"><a href="#cb60-98" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(data002 <span class="sc">%&gt;%</span><span class="fu">filter</span>(continent<span class="sc">==</span><span class="st">'Asia'</span>), <span class="fu">aes</span>(year, pop)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">5</span>)</span>
+<span id="cb60-99"><a href="#cb60-99" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-100"><a href="#cb60-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-101"><a href="#cb60-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-102"><a href="#cb60-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-103"><a href="#cb60-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb60-104"><a href="#cb60-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-105"><a href="#cb60-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-108"><a href="#cb60-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-109"><a href="#cb60-109" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(year, pop,<span class="at">colour =</span> continent)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span>
+<span id="cb60-110"><a href="#cb60-110" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-111"><a href="#cb60-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-112"><a href="#cb60-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-113"><a href="#cb60-113" aria-hidden="true" tabindex="-1"></a><span class="fu"># histogram</span></span>
+<span id="cb60-114"><a href="#cb60-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-117"><a href="#cb60-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-118"><a href="#cb60-118" aria-hidden="true" tabindex="-1"></a>data002<span class="ot">=</span> data001 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1997</span>,continent <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'Asia'</span>,<span class="st">'Africa'</span>))</span>
+<span id="cb60-119"><a href="#cb60-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-120"><a href="#cb60-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-121"><a href="#cb60-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-124"><a href="#cb60-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-125"><a href="#cb60-125" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(gdpPercap)) <span class="sc">+</span> </span>
+<span id="cb60-126"><a href="#cb60-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb60-127"><a href="#cb60-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-128"><a href="#cb60-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-129"><a href="#cb60-129" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb60-130"><a href="#cb60-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-133"><a href="#cb60-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-134"><a href="#cb60-134" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(gdpPercap,,<span class="at">fill =</span> continent)) <span class="sc">+</span><span class="fu">geom_histogram</span>(<span class="at">position =</span> <span class="st">'dodge'</span>)</span>
+<span id="cb60-135"><a href="#cb60-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-136"><a href="#cb60-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-137"><a href="#cb60-137" aria-hidden="true" tabindex="-1"></a><span class="fu"># bar chart</span></span>
+<span id="cb60-138"><a href="#cb60-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-141"><a href="#cb60-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-142"><a href="#cb60-142" aria-hidden="true" tabindex="-1"></a>data002<span class="ot">=</span> data001 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1997</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pop=</span><span class="fu">sum</span>(pop))</span>
+<span id="cb60-143"><a href="#cb60-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-144"><a href="#cb60-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-147"><a href="#cb60-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-148"><a href="#cb60-148" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span>continent, <span class="at">y=</span>pop)) <span class="sc">+</span></span>
+<span id="cb60-149"><a href="#cb60-149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span>
+<span id="cb60-150"><a href="#cb60-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-151"><a href="#cb60-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-152"><a href="#cb60-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## show number</span></span>
+<span id="cb60-153"><a href="#cb60-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-156"><a href="#cb60-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-157"><a href="#cb60-157" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span>continent, <span class="at">y=</span>pop)) <span class="sc">+</span></span>
+<span id="cb60-158"><a href="#cb60-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)</span>
+<span id="cb60-159"><a href="#cb60-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-160"><a href="#cb60-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-161"><a href="#cb60-161" aria-hidden="true" tabindex="-1"></a><span class="fu">## change bar color</span></span>
+<span id="cb60-162"><a href="#cb60-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-165"><a href="#cb60-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-166"><a href="#cb60-166" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span>continent, <span class="at">y=</span>pop)) <span class="sc">+</span></span>
+<span id="cb60-167"><a href="#cb60-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)</span>
+<span id="cb60-168"><a href="#cb60-168" aria-hidden="true" tabindex="-1"></a><span class="co"># box plot</span></span>
+<span id="cb60-169"><a href="#cb60-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-170"><a href="#cb60-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-171"><a href="#cb60-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-172"><a href="#cb60-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-173"><a href="#cb60-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-174"><a href="#cb60-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-175"><a href="#cb60-175" aria-hidden="true" tabindex="-1"></a><span class="fu">## bar plot order</span></span>
+<span id="cb60-176"><a href="#cb60-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-179"><a href="#cb60-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-180"><a href="#cb60-180" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
+<span id="cb60-181"><a href="#cb60-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)</span>
+<span id="cb60-182"><a href="#cb60-182" aria-hidden="true" tabindex="-1"></a><span class="co"># box plot</span></span>
+<span id="cb60-183"><a href="#cb60-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-184"><a href="#cb60-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-187"><a href="#cb60-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-188"><a href="#cb60-188" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,<span class="sc">-</span>pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
+<span id="cb60-189"><a href="#cb60-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)</span>
+<span id="cb60-190"><a href="#cb60-190" aria-hidden="true" tabindex="-1"></a><span class="co"># box plot</span></span>
+<span id="cb60-191"><a href="#cb60-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-192"><a href="#cb60-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-193"><a href="#cb60-193" aria-hidden="true" tabindex="-1"></a><span class="fu">## Horizontal Barplot</span></span>
+<span id="cb60-194"><a href="#cb60-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-195"><a href="#cb60-195" aria-hidden="true" tabindex="-1"></a>`</span>
+<span id="cb60-198"><a href="#cb60-198" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-199"><a href="#cb60-199" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
+<span id="cb60-200"><a href="#cb60-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> pop), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()</span>
+<span id="cb60-201"><a href="#cb60-201" aria-hidden="true" tabindex="-1"></a><span class="co"># box plot</span></span>
+<span id="cb60-202"><a href="#cb60-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-203"><a href="#cb60-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-204"><a href="#cb60-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## make bar transparency</span></span>
+<span id="cb60-205"><a href="#cb60-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-208"><a href="#cb60-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-209"><a href="#cb60-209" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
+<span id="cb60-210"><a href="#cb60-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">fill=</span><span class="st">'red'</span> ,<span class="at">alpha=</span><span class="fl">0.2</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()</span>
+<span id="cb60-211"><a href="#cb60-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-212"><a href="#cb60-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-213"><a href="#cb60-213" aria-hidden="true" tabindex="-1"></a><span class="fu">## make bar close to axis</span></span>
+<span id="cb60-216"><a href="#cb60-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-217"><a href="#cb60-217" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop)) <span class="sc">+</span></span>
+<span id="cb60-218"><a href="#cb60-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">alpha=</span><span class="fl">0.2</span>,<span class="at">fill=</span><span class="st">'red'</span>)<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">1</span>)))</span>
+<span id="cb60-219"><a href="#cb60-219" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-220"><a href="#cb60-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-221"><a href="#cb60-221" aria-hidden="true" tabindex="-1"></a><span class="fu">## change one bar color</span></span>
+<span id="cb60-222"><a href="#cb60-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-225"><a href="#cb60-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-226"><a href="#cb60-226" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent,pop), <span class="at">y=</span>pop,<span class="at">fill=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>(continent<span class="sc">==</span><span class="st">"Asia"</span>,<span class="st">"Highlighted"</span>,<span class="st">"Normal"</span>)))) <span class="sc">+</span></span>
+<span id="cb60-227"><a href="#cb60-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">alpha=</span><span class="fl">0.2</span>,<span class="at">show.legend =</span> <span class="cn">FALSE</span>)<span class="sc">+</span><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">"continent"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"red"</span>,<span class="st">"grey50"</span>))<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">1</span>)))</span>
+<span id="cb60-228"><a href="#cb60-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-229"><a href="#cb60-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-230"><a href="#cb60-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-231"><a href="#cb60-231" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb60-232"><a href="#cb60-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-233"><a href="#cb60-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-234"><a href="#cb60-234" aria-hidden="true" tabindex="-1"></a><span class="fu"># box plot</span></span>
+<span id="cb60-235"><a href="#cb60-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-238"><a href="#cb60-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-239"><a href="#cb60-239" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(day,tip,<span class="at">fill=</span>sex)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
+<span id="cb60-240"><a href="#cb60-240" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-241"><a href="#cb60-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-242"><a href="#cb60-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-243"><a href="#cb60-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-244"><a href="#cb60-244" aria-hidden="true" tabindex="-1"></a><span class="fu"># strip plot</span></span>
+<span id="cb60-245"><a href="#cb60-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-246"><a href="#cb60-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-249"><a href="#cb60-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-250"><a href="#cb60-250" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(day,tip)) <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span>
+<span id="cb60-251"><a href="#cb60-251" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-252"><a href="#cb60-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-253"><a href="#cb60-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-254"><a href="#cb60-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-255"><a href="#cb60-255" aria-hidden="true" tabindex="-1"></a><span class="fu">## color by group</span></span>
+<span id="cb60-256"><a href="#cb60-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-259"><a href="#cb60-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-260"><a href="#cb60-260" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(day,tip,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">position=</span><span class="fu">position_jitterdodge</span>())</span>
+<span id="cb60-261"><a href="#cb60-261" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-262"><a href="#cb60-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-263"><a href="#cb60-263" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-264"><a href="#cb60-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-265"><a href="#cb60-265" aria-hidden="true" tabindex="-1"></a><span class="fu"># Facet plot</span></span>
+<span id="cb60-266"><a href="#cb60-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-269"><a href="#cb60-269" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-270"><a href="#cb60-270" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip,total_bill,)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="st">"day"</span>)</span>
+<span id="cb60-271"><a href="#cb60-271" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-272"><a href="#cb60-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-273"><a href="#cb60-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-274"><a href="#cb60-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-275"><a href="#cb60-275" aria-hidden="true" tabindex="-1"></a>make 3 plot per row</span>
+<span id="cb60-276"><a href="#cb60-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-279"><a href="#cb60-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-280"><a href="#cb60-280" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip,total_bill,)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="st">"day"</span>,<span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb60-281"><a href="#cb60-281" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-282"><a href="#cb60-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-283"><a href="#cb60-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-284"><a href="#cb60-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-285"><a href="#cb60-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-286"><a href="#cb60-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-287"><a href="#cb60-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-288"><a href="#cb60-288" aria-hidden="true" tabindex="-1"></a><span class="fu"># title,size,x y name,footnote</span></span>
+<span id="cb60-289"><a href="#cb60-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-290"><a href="#cb60-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-291"><a href="#cb60-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-292"><a href="#cb60-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-293"><a href="#cb60-293" aria-hidden="true" tabindex="-1"></a><span class="fu">## add title</span></span>
+<span id="cb60-294"><a href="#cb60-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-297"><a href="#cb60-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-298"><a href="#cb60-298" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>)</span>
+<span id="cb60-299"><a href="#cb60-299" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-300"><a href="#cb60-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-301"><a href="#cb60-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-302"><a href="#cb60-302" aria-hidden="true" tabindex="-1"></a><span class="fu">## add subtitle</span></span>
+<span id="cb60-303"><a href="#cb60-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-306"><a href="#cb60-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-307"><a href="#cb60-307" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>,<span class="at">subtitle =</span> <span class="st">"Subtitle of the plot"</span>)</span>
+<span id="cb60-308"><a href="#cb60-308" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-309"><a href="#cb60-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-310"><a href="#cb60-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-311"><a href="#cb60-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-312"><a href="#cb60-312" aria-hidden="true" tabindex="-1"></a><span class="fu">## add footnote</span></span>
+<span id="cb60-313"><a href="#cb60-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-316"><a href="#cb60-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-317"><a href="#cb60-317" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"this is footnote"</span>)</span>
+<span id="cb60-318"><a href="#cb60-318" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-319"><a href="#cb60-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-320"><a href="#cb60-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-321"><a href="#cb60-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-322"><a href="#cb60-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-323"><a href="#cb60-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-324"><a href="#cb60-324" aria-hidden="true" tabindex="-1"></a><span class="fu">## adjust plot size</span></span>
+<span id="cb60-325"><a href="#cb60-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-326"><a href="#cb60-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-327"><a href="#cb60-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-330"><a href="#cb60-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-331"><a href="#cb60-331" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>)<span class="sc">+</span><span class="fu">theme</span>(</span>
+<span id="cb60-332"><a href="#cb60-332" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="st">"cm"</span>))</span>
+<span id="cb60-333"><a href="#cb60-333" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-334"><a href="#cb60-334" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-335"><a href="#cb60-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-336"><a href="#cb60-336" aria-hidden="true" tabindex="-1"></a><span class="fu">## adjust text size and center title</span></span>
+<span id="cb60-337"><a href="#cb60-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-340"><a href="#cb60-340" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-341"><a href="#cb60-341" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"tip by sex"</span>)<span class="sc">+</span><span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"this is footnote"</span>)</span>
+<span id="cb60-342"><a href="#cb60-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-343"><a href="#cb60-343" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span><span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">30</span>))</span>
+<span id="cb60-344"><a href="#cb60-344" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-345"><a href="#cb60-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-346"><a href="#cb60-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-347"><a href="#cb60-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-348"><a href="#cb60-348" aria-hidden="true" tabindex="-1"></a><span class="fu">## change x y name</span></span>
+<span id="cb60-349"><a href="#cb60-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-350"><a href="#cb60-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-353"><a href="#cb60-353" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-354"><a href="#cb60-354" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"new x name"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"new y name"</span>)</span>
+<span id="cb60-355"><a href="#cb60-355" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-356"><a href="#cb60-356" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-357"><a href="#cb60-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-358"><a href="#cb60-358" aria-hidden="true" tabindex="-1"></a><span class="fu">## add chinese</span></span>
+<span id="cb60-359"><a href="#cb60-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-362"><a href="#cb60-362" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-363"><a href="#cb60-363" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb60-364"><a href="#cb60-364" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>()</span>
+<span id="cb60-365"><a href="#cb60-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-366"><a href="#cb60-366" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"新的 x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"新的 y name"</span>)</span>
+<span id="cb60-367"><a href="#cb60-367" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-368"><a href="#cb60-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-369"><a href="#cb60-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-370"><a href="#cb60-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-371"><a href="#cb60-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-372"><a href="#cb60-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-373"><a href="#cb60-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-374"><a href="#cb60-374" aria-hidden="true" tabindex="-1"></a><span class="fu">## x y break and scales limit</span></span>
+<span id="cb60-375"><a href="#cb60-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-376"><a href="#cb60-376" aria-hidden="true" tabindex="-1"></a><span class="fu">### x scales limit</span></span>
+<span id="cb60-379"><a href="#cb60-379" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-380"><a href="#cb60-380" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb60-381"><a href="#cb60-381" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">xlim</span>(<span class="at">min=</span><span class="dv">0</span>, <span class="dv">20</span>)</span>
+<span id="cb60-382"><a href="#cb60-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-383"><a href="#cb60-383" aria-hidden="true" tabindex="-1"></a><span class="fu">### y scales limit</span></span>
+<span id="cb60-386"><a href="#cb60-386" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-387"><a href="#cb60-387" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb60-388"><a href="#cb60-388" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb60-389"><a href="#cb60-389" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-390"><a href="#cb60-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-391"><a href="#cb60-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-392"><a href="#cb60-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-393"><a href="#cb60-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-394"><a href="#cb60-394" aria-hidden="true" tabindex="-1"></a><span class="fu">### adding second aix</span></span>
+<span id="cb60-395"><a href="#cb60-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-398"><a href="#cb60-398" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-399"><a href="#cb60-399" aria-hidden="true" tabindex="-1"></a>data002<span class="ot">=</span> data001<span class="sc">%&gt;%</span> <span class="fu">group_by</span>(year,continent) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pop=</span><span class="fu">sum</span>(pop),<span class="at">lifeExp=</span><span class="fu">mean</span>(lifeExp))<span class="sc">%&gt;%</span><span class="fu">filter</span>(continent<span class="sc">==</span><span class="st">'Asia'</span>)</span>
+<span id="cb60-400"><a href="#cb60-400" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-401"><a href="#cb60-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-402"><a href="#cb60-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-403"><a href="#cb60-403" aria-hidden="true" tabindex="-1"></a>remove scientific notation </span>
+<span id="cb60-406"><a href="#cb60-406" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-407"><a href="#cb60-407" aria-hidden="true" tabindex="-1"></a>coeff<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">40000000</span></span>
+<span id="cb60-408"><a href="#cb60-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-409"><a href="#cb60-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-410"><a href="#cb60-410" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(data002, <span class="fu">aes</span>(year, pop)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb60-411"><a href="#cb60-411" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(year,lifeExp<span class="sc">/</span> coeff),<span class="at">size=</span><span class="dv">2</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span><span class="fu">scale_y_continuous</span>(<span class="st">"pop"</span>, <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span>.<span class="sc">*</span>coeff, <span class="at">name =</span> <span class="st">"lifeExp"</span>),<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span>
+<span id="cb60-412"><a href="#cb60-412" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-413"><a href="#cb60-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-414"><a href="#cb60-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-415"><a href="#cb60-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-416"><a href="#cb60-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-417"><a href="#cb60-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-418"><a href="#cb60-418" aria-hidden="true" tabindex="-1"></a><span class="fu"># applying themes</span></span>
+<span id="cb60-419"><a href="#cb60-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-420"><a href="#cb60-420" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset .nav-pills}</span>
+<span id="cb60-421"><a href="#cb60-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-422"><a href="#cb60-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-423"><a href="#cb60-423" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme_bw()</span></span>
+<span id="cb60-426"><a href="#cb60-426" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-427"><a href="#cb60-427" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb60-428"><a href="#cb60-428" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb60-429"><a href="#cb60-429" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-430"><a href="#cb60-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-431"><a href="#cb60-431" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme_light()</span></span>
+<span id="cb60-432"><a href="#cb60-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-435"><a href="#cb60-435" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-436"><a href="#cb60-436" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_light</span>()</span>
+<span id="cb60-437"><a href="#cb60-437" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-438"><a href="#cb60-438" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme_economist()</span></span>
+<span id="cb60-439"><a href="#cb60-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-442"><a href="#cb60-442" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-443"><a href="#cb60-443" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggthemes"</span>)</span>
+<span id="cb60-444"><a href="#cb60-444" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_economist</span>()</span>
+<span id="cb60-445"><a href="#cb60-445" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-446"><a href="#cb60-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-447"><a href="#cb60-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-448"><a href="#cb60-448" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme_tufte()</span></span>
+<span id="cb60-451"><a href="#cb60-451" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-452"><a href="#cb60-452" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb60-453"><a href="#cb60-453" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_tufte</span>()</span>
+<span id="cb60-454"><a href="#cb60-454" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-455"><a href="#cb60-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-456"><a href="#cb60-456" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme_wsj()</span></span>
+<span id="cb60-459"><a href="#cb60-459" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-460"><a href="#cb60-460" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb60-461"><a href="#cb60-461" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_wsj</span>()</span>
+<span id="cb60-462"><a href="#cb60-462" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-463"><a href="#cb60-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-464"><a href="#cb60-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-465"><a href="#cb60-465" aria-hidden="true" tabindex="-1"></a><span class="fu">## theme_fivethirtyeight()</span></span>
+<span id="cb60-468"><a href="#cb60-468" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-469"><a href="#cb60-469" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb60-470"><a href="#cb60-470" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_fivethirtyeight</span>()</span>
+<span id="cb60-471"><a href="#cb60-471" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-472"><a href="#cb60-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-473"><a href="#cb60-473" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-474"><a href="#cb60-474" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb60-475"><a href="#cb60-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-476"><a href="#cb60-476" aria-hidden="true" tabindex="-1"></a><span class="fu"># convert ggplot to plotly</span></span>
+<span id="cb60-477"><a href="#cb60-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-480"><a href="#cb60-480" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-481"><a href="#cb60-481" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb60-482"><a href="#cb60-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-483"><a href="#cb60-483" aria-hidden="true" tabindex="-1"></a>pp<span class="ot">=</span><span class="fu">ggplotly</span>(p)</span>
+<span id="cb60-484"><a href="#cb60-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-485"><a href="#cb60-485" aria-hidden="true" tabindex="-1"></a>pp</span>
+<span id="cb60-486"><a href="#cb60-486" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-487"><a href="#cb60-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-488"><a href="#cb60-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-489"><a href="#cb60-489" aria-hidden="true" tabindex="-1"></a><span class="fu"># Save plot</span></span>
+<span id="cb60-490"><a href="#cb60-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-493"><a href="#cb60-493" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-494"><a href="#cb60-494" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span> <span class="fu">theme_economist</span>()</span>
+<span id="cb60-495"><a href="#cb60-495" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"myplot.png"</span>)</span>
+<span id="cb60-496"><a href="#cb60-496" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-497"><a href="#cb60-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-498"><a href="#cb60-498" aria-hidden="true" tabindex="-1"></a><span class="fu"># add image into the chart</span></span>
+<span id="cb60-499"><a href="#cb60-499" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-500"><a href="#cb60-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-501"><a href="#cb60-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-502"><a href="#cb60-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-503"><a href="#cb60-503" aria-hidden="true" tabindex="-1"></a><span class="fu">## add background image</span></span>
+<span id="cb60-504"><a href="#cb60-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-505"><a href="#cb60-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-506"><a href="#cb60-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-509"><a href="#cb60-509" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-510"><a href="#cb60-510" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb60-511"><a href="#cb60-511" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb60-512"><a href="#cb60-512" aria-hidden="true" tabindex="-1"></a>img4<span class="ot">=</span><span class="fu">image_read</span>(<span class="st">"bee.png"</span>)</span>
+<span id="cb60-513"><a href="#cb60-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-514"><a href="#cb60-514" aria-hidden="true" tabindex="-1"></a><span class="st">"bee.png"</span></span>
+<span id="cb60-515"><a href="#cb60-515" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb60-516"><a href="#cb60-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-517"><a href="#cb60-517" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(tips, <span class="fu">aes</span>(tip, total_bill,<span class="at">color=</span>sex)) <span class="sc">+</span> <span class="fu">background_image</span>(img4) <span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">"new x name"</span>)<span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">"new y name"</span>)</span>
+<span id="cb60-518"><a href="#cb60-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-519"><a href="#cb60-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-520"><a href="#cb60-520" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-521"><a href="#cb60-521" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-522"><a href="#cb60-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-523"><a href="#cb60-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-524"><a href="#cb60-524" aria-hidden="true" tabindex="-1"></a><span class="fu"># Animation plot</span></span>
+<span id="cb60-525"><a href="#cb60-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-528"><a href="#cb60-528" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-529"><a href="#cb60-529" aria-hidden="true" tabindex="-1"></a><span class="co">#pak::pak('thomasp85/gganimate')</span></span>
+<span id="cb60-530"><a href="#cb60-530" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb60-531"><a href="#cb60-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-532"><a href="#cb60-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-533"><a href="#cb60-533" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb60-534"><a href="#cb60-534" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb60-535"><a href="#cb60-535" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
+<span id="cb60-536"><a href="#cb60-536" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb60-537"><a href="#cb60-537" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb60-538"><a href="#cb60-538" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Here comes the gganimate specific bits</span></span>
+<span id="cb60-539"><a href="#cb60-539" aria-hidden="true" tabindex="-1"></a>  <span class="co"># labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy',colour = "country") +</span></span>
+<span id="cb60-540"><a href="#cb60-540" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">'Year: {as.integer(frame_time)}'</span>, <span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'life expectancy'</span>,<span class="at">colour =</span> <span class="st">"country"</span>) <span class="sc">+</span></span>
+<span id="cb60-541"><a href="#cb60-541" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
+<span id="cb60-542"><a href="#cb60-542" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span>
+<span id="cb60-543"><a href="#cb60-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-544"><a href="#cb60-544" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb60-545"><a href="#cb60-545" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb60-546"><a href="#cb60-546" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-547"><a href="#cb60-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-548"><a href="#cb60-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-549"><a href="#cb60-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-550"><a href="#cb60-550" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
+<span id="cb60-551"><a href="#cb60-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-552"><a href="#cb60-552" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-553"><a href="#cb60-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-554"><a href="#cb60-554" aria-hidden="true" tabindex="-1"></a>https://cran.r-project.org/web/packages/magick/vignettes/intro.html</span>
+<span id="cb60-555"><a href="#cb60-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-556"><a href="#cb60-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-557"><a href="#cb60-557" aria-hidden="true" tabindex="-1"></a>https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
