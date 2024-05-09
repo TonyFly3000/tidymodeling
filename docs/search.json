@@ -8949,7 +8949,7 @@
     "href": "other/4 Map/2 leaflet.html",
     "title": "map",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\n\n\nlibrary(leaflet)\nlibrary(geojsonio)\nlibrary(leaflet.extras)",
+    "text": "Code\nlibrary(tidyverse)\n\nlibrary(sf)\nlibrary(leaflet)\nlibrary(geojsonio)\nlibrary(leaflet.extras)",
     "crumbs": [
       "Other",
       "4 Map",
