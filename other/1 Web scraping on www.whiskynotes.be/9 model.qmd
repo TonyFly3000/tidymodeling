@@ -612,9 +612,11 @@ dataset002.to_excel('pred.xlsx')
 
 ```{python}
 import seaborn as sns
-sns.scatterplot(data=dataset,x='real',y='predic')
-sns.regplot(data=dataset, x="real", y="predic", x_jitter=.15)
+fig, ax = plt.subplots()
 
+sns.scatterplot(data=dataset,x='real',y='predic',ax=ax)
+sns.regplot(data=dataset, x="real", y="predic", x_jitter=.15,ax=ax)
+ax.set(xlim=(65, 100),ylim=(65, 100))
 ```
 
 
