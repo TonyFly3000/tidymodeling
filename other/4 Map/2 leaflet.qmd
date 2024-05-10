@@ -122,22 +122,102 @@ leaflet(df) %>% addTiles() %>%
 
 
 
-# US map
-
-## data source 
+# World map
 
 ```{r}
-states <- geojsonio::geojson_read("https://rstudio.github.io/leaflet/json/us-states.geojson", what = "sp")
+#install.packages("https://cran.r-project.org/src/contrib/Archive/maptools/maptools_1.1-8.tar.gz")
 ```
 
 ```{r}
-class(states)
+json_data=read_sf("world-administrative-boundaries.geojson")
 ```
 
 ```{r}
-
-names(states)
+map_df <- as.data.frame(json_data)
 ```
+
+
+```{r}
+#Get my variable
+#name<-c("Ghana", "Grenada", "Guyana", "India", "Jamaica", "Kenya", "United States","Canada")
+#val<-c(1,2,4,5,5,1000,20000, 100)
+
+#per_gdp_usd<-data.frame(name,val)
+```
+
+
+```{r}
+library(openxlsx)
+library(readxl)
+
+per_gdp_usd=read_excel('world data.xlsx') %>% mutate(
+  name=case_when(
+    name =="United States" ~ "United States of America"
+     ,name =="Russia" ~ "Russian Federation"
+   ,name =="U.K. of Great Britain and Northern Ireland" ~ "United Kingdom"
+   
+   ,name =="U.K. of Great Britain and Northern Ireland" ~ "United Kingdom"
+   
+   ,name == "South Korea"~ "Republic of Korea"
+   
+   ,name =="Lao People's Democratic Republic" ~ "Laos"
+   
+    ,TRUE ~ name
+  )
+)
+```
+
+```{r}
+#test=full_join(map_df, per_gdp_usd, by="name")
+
+#left =test %>% filter(is.na(iso3)==TRUE)
+
+#right=test %>% filter(is.na(per_gdp_total)==TRUE)
+```
+
+```{r}
+map_df002 <- merge(map_df, per_gdp_usd, by.x = "name", by.y = "name")
+```
+
+```{r}
+glimpse(map_df002)
+```
+
+
+```{r}
+map_sf002 <- sf::st_as_sf(map_df002, sf_column_name = "geometry")
+```
+
+
+
+```{r}
+pal <- colorNumeric("viridis", NULL)
+
+leaflet(map_sf002) %>%
+  addTiles() %>%
+  addPolygons(smoothFactor = 0.3, fillOpacity = 0.5,weight = 1,
+    fillColor = ~ pal(per_gdp_usd)
+    ,popup = ~ paste0(
+      "地区：", name, "<br/>",
+      "<hr/>",
+      "人均gpd：", per_gdp_usd, "（千 美元）", "<br/>"
+      
+    )
+     ,label = lapply(paste0(
+      "地区：", "<b>", map_sf002$name, "</b>", "<br/>",
+      "人均gpd 美元：", round(map_sf002$per_gdp_usd/1000), "K <br/>",
+       "总gpd 美元：", round(map_sf002$per_gdp_total/1000000), "M <br/>"
+
+    ), htmltools::HTML)
+    )%>% addLegend(
+    position = "bottomright", title = "人均gpd(美元)",
+    pal = pal, values = ~per_gdp_usd, opacity = 1.0
+    )
+  
+  
+```
+
+
 
 
 # China one city map
@@ -198,13 +278,13 @@ leaflet(map_sf002) %>%
   addPolygons(smoothFactor = 0.3, fillOpacity = 0.5,weight = 1,
     fillColor = ~ pal(per_gpd_usd)
     ,popup = ~ paste0(
-      "城市：", name, "<br/>",
+      "地区：", name, "<br/>",
       "<hr/>",
       "人均gpd：", per_gpd_usd, "（美万）", "<br/>"
       
     )
      ,label = lapply(paste0(
-      "城市：", "<b>", map_sf002$name, "</b>", "<br/>",
+      "地区：", "<b>", map_sf002$name, "</b>", "<br/>",
       "人均gpd 美元：", map_sf002$per_gpd_usd, "<br/>",
       "人均gpd 人民币：", map_sf002$per_gpd_rmb, "<br/>",
        "人口：", round(map_sf002$total_gpd_rmb/map_sf002$per_gpd_rmb), "<br/>"

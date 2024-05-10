@@ -344,6 +344,13 @@ install.packages('tidyverse')
 pak::pkg_install("tidymodels/learntidymodels")
 ```
 
+### install from .tar.gz
+
+```{r}
+#| eval: false
+install.packages("https://cran.r-project.org/src/contrib/Archive/maptools/maptools_1.1-8.tar.gz")
+```
+
 ### install from Bioconductor
 
 ```{r}
