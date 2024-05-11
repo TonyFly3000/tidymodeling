@@ -407,6 +407,14 @@ ggsave("myplot.png")
 
 # add image into the chart
 
+## add logo
+
+```{r}
+# Add your company's logo to the graph you created
+logo <- image_read("logo.png")
+p
+grid::grid.raster(logo, x = 0.1, y = 0, just = c('left', 'bottom'), width = unit(0.4, 'inches'))
+```
 
 
 
