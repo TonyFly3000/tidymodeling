@@ -1,0 +1,23 @@
+{
+    "item_id": "b945da3f-8744-46c1-ad3b-72678724b63b",
+    "news_channel": "安全新天地",
+    "title": "福建厦门：民房发生火灾致4死1伤",
+    "report": "2024年3月30日5时许，福建厦门市集美区后溪镇一民房发生火灾，造成4人死亡，另有1人受伤送医。",
+    "original_websites": "https://mp.weixin.qq.com/s/nEMtPnl0_5o7nt6S7Kd9kw",
+    "start_date": "2024-03-30",
+    "start_time": "2024-03-30 05:00:00",
+    "update_time": "2024-05-03 13:18:28",
+    "incident_type": "火灾",
+    "incident_reason": "福建厦门市集美区后溪镇一民房发生火灾",
+    "person_death_num": 4,
+    "person_injury_num": 1,
+    "person_missing_num": 0,
+    "location": [118.04419040679933, 24.642199889541768],
+    "place": "福建厦门市集美区后溪镇一民房",
+    "province": "福建省",
+    "city": "厦门市",
+    "county": "集美区",
+    "town": "后溪镇",
+    "village": "浦边村",
+    "is_final": true
+}

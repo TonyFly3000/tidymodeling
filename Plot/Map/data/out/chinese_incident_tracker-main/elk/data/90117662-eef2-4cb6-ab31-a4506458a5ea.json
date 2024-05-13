@@ -1,0 +1,23 @@
+{
+    "item_id": "90117662-eef2-4cb6-ab31-a4506458a5ea",
+    "news_channel": "安全新天地",
+    "title": "云南临沧：山火致3名扑火人员遇险身亡",
+    "report": "2024年3月16日，云南省临沧市临翔区圈内乡斗阁村发生森林火情，过火面积约5.33公顷，火灾扑救过程中3名地方扑火人员遇险身亡。",
+    "original_websites": "https://mp.weixin.qq.com/s/nEMtPnl0_5o7nt6S7Kd9kw",
+    "start_date": "2024-03-16",
+    "start_time": "2024-03-16 18:10:34",
+    "update_time": "2024-05-03 13:26:34",
+    "incident_type": "火灾",
+    "incident_reason": "火灾扑救过程中3名地方扑火人员遇险身亡",
+    "person_death_num": 3,
+    "person_injury_num": 0,
+    "person_missing_num": 0,
+    "location": [100.10627327043622, 23.610287751874996],
+    "place": "云南省临沧市临翔区圈内乡斗阁村",
+    "province": "云南省",
+    "city": "临沧市",
+    "county": "临翔区",
+    "town": "圈内乡",
+    "village": "斗阁村",
+    "is_final": true
+}

@@ -1,0 +1,23 @@
+{
+    "item_id": "8f974c79-239e-4ac1-9edc-ca3c3efbdac7",
+    "news_channel": "央广网",
+    "title": "浙江台州一高校汽车撞人事件已造成3死16伤",
+    "report": "今晚，浙江台州市公安局椒江分局发布最新通报称，3月19日11时20分左右发生在台州职业技术学院的车辆冲撞事件，共造成19人受伤，其中3人经抢救无效死亡，其他人员伤情稳定。\n\n\n\n经查，肇事者张某某（男，20岁）系台州职业技术学院学生，所驾车辆系其家庭所有。目前公安机关已控制张某某并立案侦查，伤员救治、善后处置等工作正在有序开展中。（总台记者 于晨 何丽丽）",
+    "original_websites": "https://news.sohu.com/a/765352860_362042",
+    "start_date": "2024-03-19",
+    "start_time": "2024-03-19 11:20:00",
+    "update_time": "2024-05-03 00:28:33",
+    "incident_type": "交通事故",
+    "incident_reason": "车辆冲撞",
+    "person_death_num": 3,
+    "person_injury_num": 16,
+    "person_missing_num": 0,
+    "location": [121.4017, 28.6526],
+    "place": "台州职业技术学院",
+    "province": "浙江省",
+    "city": "台州市",
+    "county": "椒江区",
+    "town": "",
+    "village": "",
+    "is_final": true
+}

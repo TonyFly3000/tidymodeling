@@ -1,0 +1,33 @@
+---
+title: "Shiny in R:weight tracking"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](images/1.png){width="600"}
+
+# Shiny app:<https://tduan.shinyapps.io/weightshiny/>
+
+```{=html}
+<iframe width="900" height="500" src="https://tduan.shinyapps.io/weightshiny/" title="shiny app"></iframe>
+```
+
+--------------------------------
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+{
+    "item_id": "8ccf7d3f-b4cb-4bc1-a3e2-88a689f703ce",
+    "news_channel": "央视网",
+    "title": "广西百色一民房发生火灾 致3人死亡",
+    "report": "央视网消息：据@百色消防 微博消息，1月5日凌晨2时许，广西百色平果市马头镇新港路39号民房发生火灾。2时4分，消防救援力量到达现场后立即展开扑救，现场第一时间搜救出11人，其中4人受伤被送医救治，经医院反馈，3人抢救无效死亡，1人受重伤已脱离生命危险。3时04分，现场火势全部被扑灭，火灾过火面积约70平方米。\n\n　　目前，火灾原因和财产损失正在进一步调查和统计之中。",
+    "original_websites": "https://news.cctv.com/2024/01/05/ARTIJvBwc6Gi3VY1Zospbuwh240105.shtml?spm=C94212.P4YnMod9m2uD.ENPMkWvfnaiV.68",
+    "start_date": "2024-01-05",
+    "start_time": "2024-01-05 02:00:00",
+    "update_time": "2024-05-03 14:19:14",
+    "incident_type": "火灾",
+    "incident_reason": "火灾原因正在进一步调查中",
+    "person_death_num": 3,
+    "person_injury_num": 1,
+    "person_missing_num": 0,
+    "location": [107.58748590946199, 23.313360506682375],
+    "place": "广西百色平果市马头镇新港路39号民房",
+    "province": "广西壮族自治区",
+    "city": "百色市",
+    "county": "平果市",
+    "town": "马头镇",
+    "village": "",
+    "is_final": true
+}

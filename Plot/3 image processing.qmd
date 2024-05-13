@@ -1,0 +1,257 @@
+---
+title: "image processing"
+subtitle: "with magick"
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+---
+
+
+```{r}
+library(magick)
+```
+
+# input 
+```{r}
+raw_logo <- image_read('./images/comb.webp')
+```
+
+# output 
+
+```{r}
+image_info(raw_logo)
+```
+
+# change format
+
+```{r}
+new_png <- image_convert(raw_logo, "png")
+```
+
+```{r}
+image_info(new_png)
+```
+
+# output
+
+```{r}
+image_write(new_png, path = "./images/new_png.png", format = "png")
+```
+
+
+
+
+
+```{r}
+raw_logo <- image_read('./images/logo1.png')
+```
+
+
+
+```{r}
+raw_logo %>% print()
+```
+
+
+# fill corner white to greem
+each corner (top left, top right, bottom left, bottom right). For our real usage, we’re going to convert this “green” space to transparent instead.
+
+```{r}
+img_filled <- raw_logo %>% 
+    image_fill("green", "+1+1", fuzz = 50, refcolor = "white") %>% 
+    image_fill("green", "+140+1", fuzz = 50, refcolor = "white") %>% 
+    image_fill("green", "+1+99", fuzz = 50, refcolor = "white") %>% 
+    image_fill("green", "+140+99", fuzz = 50, refcolor = "white")
+
+img_filled %>% print()
+```
+# rotate
+
+```{r}
+img_filled %>% image_rotate(45) %>% print()
+```
+
+# add border
+
+```{r}
+img_filled %>% image_border("#CD5C5C","20x20")
+```
+
+
+
+# make backgroup transparent
+
+```{r}
+# 0-100 distance fuzz match with green
+b=img_filled %>% image_transparent(color='green',10)
+
+b %>% print()
+
+image_write(b, path = "b.png", format = "png")
+```
+
+# change opacity level
+
+```{r}
+b=img_filled %>% image_colorize(opacity =80, color = 'white')
+b %>% print()
+```
+
+# change brightness level
+
+```{r}
+b=img_filled %>%image_modulate(brightness = 30)
+  
+b %>% print()
+```
+
+# change blur level
+
+```{r}
+b=img_filled %>%  image_blur(10, 5)
+  
+b %>% print()
+```
+
+
+# add text into picture
+
+```{r}
+b=img_filled %>% image_annotate( "The quick brown fox", font = 'Times', size = 80,gravity = "southwest", color = "red")
+  
+b %>% print()
+```
+# resize
+
+using image_resize or image_scale
+```{r}
+b= img_filled%>% image_resize("500")
+b %>% print()
+```
+
+
+```{r}
+image_info(img_filled)
+```
+
+```{r}
+image_info(b)
+```
+# make logo black
+```{r}
+img_filled2 <- raw_logo %>% 
+    image_fill("transparent", "+1+1", fuzz = 50, refcolor = "white") %>% 
+    image_fill("transparent", "+140+1", fuzz = 50, refcolor = "white") %>% 
+    image_fill("transparent", "+1+99", fuzz = 50, refcolor = "white") %>% 
+    image_fill("transparent", "+140+99", fuzz = 50, refcolor = "white")
+```
+
+```{r}
+img_filled2 %>% 
+    image_channel("Opacity") %>% 
+    image_convert(matte=FALSE) %>% 
+  print()
+```
+
+```{r, attr.output='.details summary="sessionInfo()"'}
+#| echo: false
+sessionInfo()
+```
+
+
+
+# add backgroup image
+
+```{r}
+library(ggplot2)
+library(png)
+library(grid)
+library(ggimage)
+```
+
+
+```{r}
+img <- readPNG("./images/new_png.png")
+```
+
+```{r}
+
+bees <- data.frame(distance = c(0.5, 1, 1.5, 2, 2.5, 3),
+                  number = c(40, 34, 32, 22,18, 10))
+
+ggplot(data = bees, aes(x = distance, y = number)) +
+  annotation_custom(rasterGrob(img, 
+                               width = unit(1,"npc"),
+                               height = unit(1,"npc")), 
+                    -Inf, Inf, -Inf, Inf) +
+  geom_point() +
+  xlab("Distance (km)") +
+  ylab("Number of Bees") +
+  ylim(0, 45)
+```
+# replace scatter with image
+
+```{r}
+bees$image <- "./images/bee.png"
+```
+
+
+```{r}
+ggplot(data = bees, aes(x = distance, y = number)) +
+  annotation_custom(rasterGrob(img, 
+                               width = unit(1,"npc"),
+                               height = unit(1,"npc")), 
+                    -Inf, Inf, -Inf, Inf) +
+  geom_image(aes(image = image), size = 0.15) +
+  xlab("Distance (km)") +
+  ylab("Number of Bees") +
+  ylim(0, 45)
+```
+# add logo 
+
+```{r}
+img2 =image_read("./images/logo1.png")
+```
+
+```{r}
+library(cowplot)
+p=ggplot(data = bees, aes(x = distance, y = number)) +
+  annotation_custom(rasterGrob(img, 
+                               width = unit(1,"npc"),
+                               height = unit(1,"npc")), 
+                    -Inf, Inf, -Inf, Inf) +
+  geom_image(aes(image = image), size = 0.15) +
+  xlab("Distance (km)") +
+  ylab("Number of Bees") +
+  ylim(0, 45)
+
+
+
+ggdraw() +draw_plot(p,x = 0, y = 0.15, width = 1, height = 0.85) +draw_image(img2,x = 0.1, y = 0.1, width = 0.1, height = 0.1) 
+```
+
+
+
+# resource:
+
+
+https://themockup.blog/posts/2021-01-28-removing-image-backgrounds-with-magick/
+
+https://cran.r-project.org/web/packages/magick/vignettes/intro.html
+
+https://buzzrbeeline.blog/2018/06/13/fun-and-easy-r-graphs-with-images/
+

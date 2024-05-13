@@ -1,0 +1,23 @@
+{
+    "item_id": "4b790044-816f-447e-b764-1e3eec02b747",
+    "news_channel": "搜狐网",
+    "title": "台湾花莲地震遇难人数增至18人，震后余震已超1300起",
+    "report": "综合台媒报道，4月3日发生在台湾花莲县海域的地震已造成18人死亡，1155人受伤，另有2人失联。\n\n\n\n△4月4日，台湾花莲\n\n根据台湾气象部门统计，截至27日上午6时，花莲已经累计发生1303起余震，其中6级以上余震有5起。\n\n台气象部门研究人员表示，预估4月3日地震的余震至少要持续3到6个月，仍会有较大规模余震，提醒民众注意做好防灾准备。",
+    "original_websites": "https://news.sohu.com/a/775012342_121218495",
+    "start_date": "2024-04-03",
+    "start_time": "2024-04-03 07:58:09",
+    "update_time": "2024-05-02 23:30:21",
+    "incident_type": "地震",
+    "incident_reason": "台湾花莲县海域地震",
+    "person_death_num": 18,
+    "person_injury_num": 1155,
+    "person_missing_num": 2,
+    "location": [121.67, 23.77],
+    "place": "台湾花莲县海域",
+    "province": "台湾省",
+    "city": "花莲县",
+    "county": "",
+    "town": "",
+    "village": "",
+    "is_final": true
+}

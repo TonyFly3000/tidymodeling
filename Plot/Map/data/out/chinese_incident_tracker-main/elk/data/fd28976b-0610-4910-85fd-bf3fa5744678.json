@@ -1,0 +1,23 @@
+{
+    "item_id": "fd28976b-0610-4910-85fd-bf3fa5744678",
+    "news_channel": "新浪",
+    "title": "痛心！山西一煤矿今日凌晨发生事故，1人遇难！",
+    "report": "2024年5月4日3时20分左右,山西焦煤集团旗下霍州煤电腾晖煤业井下2-206工作面移架顶溜过程中，发生一起支架与溜子连接立销崩出伤人致死事故，死亡1人，事故详细情况正在核查中。各单位要进一步提高安全生产意识,引起高度警觉,扎实做好作业现场安全管理工作。",
+    "original_websites": "https://finance.sina.cn/2024-05-04/detail-inauaqhv3390122.d.html?from=wap",
+    "start_date": "2024-05-04",
+    "start_time": "2024-05-04 03:20:00",
+    "update_time": "2024-05-05 12:26:09",
+    "incident_type": "煤矿事故",
+    "incident_reason": "支架与溜子连接立销崩出伤人致死事故",
+    "person_death_num": 1,
+    "person_injury_num": 0,
+    "person_missing_num": 0,
+    "location": [111.733653762531, 36.56869147704258],
+    "place": "山西焦煤集团旗下霍州煤电腾晖煤业井下2-206工作面",
+    "province": "山西省",
+    "city": "临汾市",
+    "county": "霍州市",
+    "town": "",
+    "village": "",
+    "is_final": true
+}

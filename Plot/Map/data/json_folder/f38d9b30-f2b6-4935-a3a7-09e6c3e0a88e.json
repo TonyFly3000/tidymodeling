@@ -1,0 +1,23 @@
+{
+    "item_id": "f38d9b30-f2b6-4935-a3a7-09e6c3e0a88e",
+    "news_channel": "环球网",
+    "title": "江西信丰一男子驾车撞向路人，已致两死三伤",
+    "report": "2024年3月29日上午，江西省赣州市信丰县突发一起交通事故。肇事司机撞人逃逸后又连撞两人，已造成两人死亡，三人受伤。信丰县交警大队办公室的工作人员表示，此次事故已在处理中。",
+    "original_websites": "https://mp.weixin.qq.com/s/ZjhlxUcG2hS6v3UdKUs_Gg",
+    "start_date": "2024-03-29",
+    "start_time": "2024-03-29 09:00:00",
+    "update_time": "2024-05-03 11:50:55",
+    "incident_type": "交通事故",
+    "incident_reason": "江西省赣州市信丰县突发一起交通事故。肇事司机撞人逃逸后又连撞两人，已造成两人死亡，三人受伤。",
+    "person_death_num": 2,
+    "person_injury_num": 3,
+    "person_missing_num": 0,
+    "location": [114.9426555633545, 25.383483235345327],
+    "place": "江西省赣州市信丰县",
+    "province": "江西省",
+    "city": "赣州市",
+    "county": "信丰县",
+    "town": "嘉定镇",
+    "village": "",
+    "is_final": true
+}

@@ -1,0 +1,23 @@
+{
+    "item_id": "cbd1aa41-984b-4e0e-b5dd-417ca57de1e1",
+    "news_channel": "广西头条NEWS",
+    "title": "广西一地发生交通事故，致3人死亡",
+    "report": "据央视新闻客户端报道，4月14日17时30分许，在广西柳州市鹿寨县中渡镇福龙村社脚屯路段，发生一起小轿车与县域班车相碰撞的交通事故，造成小轿车上2人死亡1人重伤，随后重伤人员被送医救治。4月15日6时50分许，伤者因伤势过重经医院抢救无效死亡。\n\n\n\n图片\n\n\n\n目前相关部门正在调查事故原因，将根据调查结果依法认定责任，同时做好逝者善后和家属安抚工作。",
+    "original_websites": "https://mp.weixin.qq.com/s/Hsl5mjJ5yq-gQJaMjKk7xA",
+    "start_date": "2024-04-14",
+    "start_time": "2024-04-14 17:30:00",
+    "update_time": "2024-05-03 11:37:34",
+    "incident_type": "交通事故",
+    "incident_reason": "相关部门正在调查事故原因",
+    "person_death_num": 3,
+    "person_injury_num": 0,
+    "person_missing_num": 0,
+    "location": [109.71010159359555, 24.66104952801914],
+    "place": "广西柳州市鹿寨县中渡镇福龙村社脚屯路段",
+    "province": "广西壮族自治区",
+    "city": "柳州市",
+    "county": "鹿寨县",
+    "town": "中渡镇",
+    "village": "福龙村",
+    "is_final": true
+}
