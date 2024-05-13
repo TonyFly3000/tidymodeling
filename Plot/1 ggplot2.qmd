@@ -14,6 +14,7 @@ format:
     number-sections: true
     code-block-bg: true
     code-block-border-left: "#31BAE9"
+    code-copy: true
 ---
 
 ![](images/Screenshot 2023-07-08 at 5.03.46 PM.png){width="800"}
@@ -26,6 +27,8 @@ library(ggthemr)
 
 library(ggplot2)
 library(plotly)
+
+library(magick)
 packageVersion("ggplot2")
 ```
 
@@ -423,8 +426,7 @@ grid::grid.raster(logo, x = 0.1, y = 0, just = c('left', 'bottom'), width = unit
 
 
 ```{r}
-library(ggplot2)
-library(magick)
+
 img4=image_read("bee.png")
 
 "bee.png"
