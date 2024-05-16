@@ -1,0 +1,97 @@
+---
+title: "Financial data"
+subtitle: "with quantmod"
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+---
+
+
+```{r}
+library(quantmod)
+library(tidyverse)
+library(yahoofinancer)
+library(Quandl)
+library(plotly)
+library(finreportr)
+```
+
+# stock price
+
+```{r}
+nifty_50 <- Index$new('^NSEI')
+
+data001=nifty_50$get_history(start = '2023-01-01', interval = '1d') %>% mutate(adj_close=adj_close %>% as.numeric())
+
+a=head(data001$adj_close,1)[[1]]
+
+data001b=data001 %>% mutate(adj_close2=adj_close/a)
+
+```
+
+
+```{r}
+aapl <- Ticker$new('aapl')
+
+data002=aapl$get_history(start = '2023-01-01', interval = '1d') %>% mutate(adj_close=adj_close %>% as.numeric())
+
+a=head(data002$adj_close,1)[[1]]
+
+data002b=data002 %>% mutate(adj_close2=adj_close/a)
+
+```
+
+
+```{r}
+# initialize plot
+fig <- plot_ly()
+
+# add data from first dataframe Df1
+fig <- fig %>%
+    add_lines(data=data001b, name="NSEI50", x = ~date, y = ~adj_close2)
+
+# add data from second dataframe Df2
+fig <- fig %>%
+    add_lines(data=data002b, name="apple", x = ~date, y = ~adj_close2)
+# show figure
+fig
+```
+
+# company info
+```{r}
+CompanyInfo("GOOG")
+```
+
+# company AnnualReports
+
+```{r}
+AnnualReports("GOOG")
+```
+
+# company Income
+```{r}
+
+data001=GetIncome("GOOG", 2017)
+```
+
+
+
+# resource:
+
+https://github.com/rsquaredacademy/yahoofinancer
+
+https://github.com/sewardlee337/finreportr
