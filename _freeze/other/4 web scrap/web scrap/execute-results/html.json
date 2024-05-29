@@ -1,0 +1,15 @@
+{
+  "hash": "77fc546a6f7c0fc9b28dcc9915510b41",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"web scrap\"\n\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(rvest)\n```\n:::\n\n\n# table \n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\ncontent <- read_html(\"https://en.wikipedia.org/wiki/List_of_highest-grossing_films_in_the_United_States_and_Canada\")\ntables <- content %>% html_table(fill = TRUE)\nfirst_table <- tables[[1]]\nfirst_table <- first_table[-1,]\nfirst_table\n```\n:::\n\n\n\n\n\n# Reference:\n\nhttps://rvest.tidyverse.org/reference/read_html_live.html\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

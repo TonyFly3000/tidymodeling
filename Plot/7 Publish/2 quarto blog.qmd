@@ -1,0 +1,139 @@
+---
+title: "quarto blog"
+subtitle: "with magick"
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+---
+
+
+
+# create quarto blog
+
+![](https://tidystep.netlify.app/posts/publish%20quarto%20blog/images/quarto-blog-v2.png)
+
+## blog post
+
+```{r}
+#| eval: false
+---
+title: "title"
+
+author: "name"
+date: "2024-05-03"
+categories: [R,quarto]
+execute:
+  warning: false
+  error: false
+  eval: false
+
+format:
+  html:
+    toc: true
+    toc-location: left
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    
+---
+```
+
+## hide post from main page
+
+```{r}
+#| eval: false
+---
+draft: true  
+  
+---
+```
+
+## \_quarto.yml
+
+```{r}
+#| eval: false
+project:
+  type: website
+
+website:
+  title: "tidystep"
+  site-url: https://tidystep.netlify.app/
+  description: "A blog for data stuff"
+  favicon: "profile3.png"
+  google-analytics: "G-2EQK8RFKFX"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/TonyFly3000
+      - icon: twitter
+        href: https://twitter.com/TonyJCD
+      - icon: rss
+        href: index.xml
+
+  page-footer:
+    right: "This blog is built with ❤️ and [Quarto](https://quarto.org/)."
+
+format:
+  html:
+    theme: 
+      light: flatly
+      dark: darkly
+    css: styles.css
+    grid:
+      body-width: 1100px
+      margin-width: 300px
+      gutter-width: 1.5rem
+
+editor: visual
+execute:
+  freeze: true
+```
+
+## index.qmd
+
+```{r}
+#| eval: false
+---
+title: "微步数据"
+listing:
+  page-size: 8
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: false
+  fields: [image, date, title, author,categories]
+  feed: true
+page-layout: full
+title-block-banner: true
+---
+
+```
+
+
+## draft post,not include in the main page
+
+```{r}
+#| eval: false
+draft:true
+```
+

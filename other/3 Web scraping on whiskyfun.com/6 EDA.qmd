@@ -1,0 +1,156 @@
+---
+title: "All page clean up"
+subtitle: "with whiskyfun.com data"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(stringr)
+library(openxlsx)
+library(readxl)
+library(lubridate)
+library(ggplot2)
+```
+
+
+
+# input
+
+
+```{r}
+data001=read_excel('./output/all_page_review_clean_v2.xlsx') %>% mutate(
+  title_length=nchar(name)
+  ,high_bottle=if_else(score>=90,1,0)
+  
+  )
+```
+
+```{r}
+glimpse(data001)
+```
+
+```{r}
+data002=data001 %>% select(-old_page,-review_date) %>% unique() %>% filter(score>0
+                                                              ,score<=100
+                                                              ,bottle_review2 %>% str_sub(1,6)!='Colour'
+                                                               ,bottle_review2 %>% str_sub(1,4)!='Nose'
+                                                               ,bottle_review2 %>%str_sub(1,5)!='Mouth'
+                                                              ,title_length<=180
+                                                              ) %>% arrange(desc(title_length))
+glimpse(data002)
+```
+
+
+```{r}
+summary001=data002 %>% group_by(review_year) %>% summarise(score=mean(score)
+                                                           ,bottles=n()
+                                                           ,high_bottle=sum(high_bottle)
+                                                           ) %>% mutate(high_bottle_per=high_bottle/bottles)
+
+summary001
+```
+
+
+```{r}
+p=ggplot(summary001, aes(review_year,score)) + geom_point()+ geom_line()
+p
+```
+
+
+```{r}
+p=ggplot(summary001, aes(review_year,bottles)) + geom_point()+ geom_line()
+p
+```
+```{r}
+p=ggplot(summary001, aes(review_year,high_bottle_per)) + geom_point()+ geom_line()
+p
+```
+
+
+```{r}
+library(plotly)
+pp=plot_ly(summary001, x = ~review_year, y = ~bottles, type = "bar", name = "bottles") %>%
+  add_trace(x = ~review_year, y = ~score, type = 'scatter', mode = "lines", yaxis = "y2", name = "score", line = list(color = 'rgb(205, 12, 24)', width = 8)) %>%
+  
+  layout(
+    title = 'Whiksyfun review bottles and average score'
+    ,legend = list(orientation = 'h')
+     ,xaxis = list(range=c(2003,2025))
+    ,yaxis2 = list(overlaying = "y", side = "right",range=c(80,90))
+    ,yaxis = list(range=c(0,1500))
+         )
+
+pp
+```
+
+
+```{r}
+orca(pp, "plot.png")
+```
+
+```{r}
+library(plotly)
+pp=plot_ly(summary001, x = ~review_year, y = ~bottles, type = "bar", name = "瓶",text=~bottles) %>%
+  add_trace(x = ~review_year, y = ~score, type = 'scatter', mode = "lines", yaxis = "y2", name = "平均分", line = list(color = 'rgb(205, 12, 24)', width = 8)) %>%
+  
+  layout(
+    title = 'WF每年酒评数量和平均分'
+    ,showlegend = FALSE
+     ,xaxis = list(title='年'
+                   ,dtick = 2
+                   ,tick0 = 2004
+      ,tickmode = "linear"
+      )
+    ,margin=list(
+  l = 50,
+  r = 50,
+  b = 100,
+  t = 100,
+  pad = 4
+)
+    ,yaxis2 = list(overlaying = "y", side = "left",range=c(80,90),title='平均分')
+    ,yaxis = list(side="left",zeroline = FALSE,showline = FALSE,showticklabels = FALSE,showgrid = FALSE,title='')
+    ,annotations = list(x = 1, y = -0.2, 
+                              text = "2004-09 to 2024-05", 
+                              showarrow = F, 
+                              xref='paper', 
+                              yref='paper'
+      )
+                              
+       ,images = list(  
+      list(  
+        source = base64enc::dataURI(file = "wf logo.png")
+        ,xref = "paper"
+        ,yref = "paper" 
+        ,x = 0.01
+        ,y = -0.08
+        ,sizex = 0.4
+        ,sizey = 0.4
+       ,xanchor="left"  
+      )  
+    )   )
+
+pp
+```
+
+
+```{r}
+orca(pp, "plot2.png")
+```

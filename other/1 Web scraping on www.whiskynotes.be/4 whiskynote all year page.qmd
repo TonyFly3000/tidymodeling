@@ -21,6 +21,8 @@ format:
 ```{r}
 library(tidyverse)
 library(rvest)
+library(openxlsx)
+library(readxl)
 ```
 
 ```{r}
@@ -47,6 +49,10 @@ topic_list=c()
 topic_link_list=c()
 all_year_list_topic=c()
 all_year_list_bottle=c()
+```
+
+
+```{r}
 
 for (i in url_list){
   year=tail(unlist(strsplit(i, split = "/")),1)
@@ -84,11 +90,9 @@ for (i in url_list){
 data=tibble(topic_list,topic_link_list,all_year_list_topic)
 ```
 
-
 ```{r}
-#bottle003=tibble(bottle_list,all_year_list_bottle)
+glimpse(data)
 ```
-
 
 
 # output
@@ -100,4 +104,102 @@ list_of_datasets <- list("topic" = data)
 
 write.xlsx(list_of_datasets, file = "./output/all year page.xlsx")
 ```
+
+
+
+# secound time web scraping
+
+
+
+
+```{r}
+year_list=2024
+year_list
+```
+
+```{r}
+url_list=paste0('https://www.whiskynotes.be/',year_list)
+url_list
+```
+
+
+```{r}
+
+bottle_list=c()
+topic_list=c()
+topic_link_list=c()
+all_year_list_topic=c()
+all_year_list_bottle=c()
+```
+
+
+```{r}
+
+for (i in url_list){
+  year=tail(unlist(strsplit(i, split = "/")),1)
+  print(year)
+  print(i)
+  year_ur=i
+  year_page <- read_html(year_ur)
+  bottle001 <- year_page %>% html_elements("p")%>% html_text2()
+  bottle003=unlist(strsplit(bottle001,"\n"))
+  
+  
+  topic001 <- year_page %>% html_elements(".archive-link") %>% html_text2()
+  topic_link_001 <- year_page %>%
+    html_elements(css = ".entry-permalink")%>% html_attr("href")
+
+  year_list_topic=rep(year,length(topic001))
+  year_list_bottle=rep(year,length(bottle003))
+  
+  all_year_list_topic=c(all_year_list_topic,year_list_topic)
+  all_year_list_bottle=c(all_year_list_bottle,year_list_bottle)
+  
+  bottle_list=c(bottle_list,bottle003)
+  topic_list=c(topic_list,topic001)
+  topic_link_list=c(topic_link_list,topic_link_001)
+  
+  Sys.sleep(1)
+  }
+
+```
+
+
+# combine
+
+```{r}
+data=tibble(topic_list,topic_link_list,all_year_list_topic)
+```
+
+```{r}
+glimpse(data)
+```
+
+
+append into downloaded data
+
+
+downloaded url
+```{r}
+download_url=read_excel("./output/all year page.xlsx")
+```
+
+```{r}
+glimpse(download_url)
+```
+```{r}
+all_data=rbind(data,download_url) %>% unique()
+```
+
+
+```{r}
+glimpse(all_data)
+```
+```{r}
+library(openxlsx)
+
+write.xlsx(all_data, file = "./output/all year page.xlsx")
+```
+
+
 

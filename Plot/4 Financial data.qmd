@@ -28,6 +28,7 @@ library(yahoofinancer)
 library(Quandl)
 library(plotly)
 library(finreportr)
+library(rvest)
 ```
 
 # stock price
@@ -71,21 +72,125 @@ fig <- fig %>%
 fig
 ```
 
-# company info
+
+# financials income statement
+
 ```{r}
-CompanyInfo("GOOG")
+library(chromote)
+library(httr)
 ```
 
-# company AnnualReports
-
 ```{r}
-AnnualReports("GOOG")
+url='https://finance.yahoo.com/quote/AMAT/financials'
 ```
 
-# company Income
-```{r}
 
-data001=GetIncome("GOOG", 2017)
+
+```{r}
+b <- ChromoteSession$new()
+```
+
+
+
+```{r}
+# In a web browser, open a viewer for the headless browser. Works best with
+# Chromium-based browsers.
+#b$view()
+b$Page$navigate(url)
+```
+```{r}
+x <- b$DOM$getDocument()
+```
+
+```{r}
+b$screenshot("sidebar.png")
+```
+
+```{r}
+page=b$Runtime$evaluate("document.querySelector('html').outerHTML")$result$value %>% 
+  read_html()
+```
+
+
+```{r}
+b$close()
+```
+
+```{r}
+col1=page%>% 
+  html_elements(".row .column:nth-child(1)") %>% html_text2()  %>% head(33)
+
+```
+
+
+
+```{r}
+col2=page%>% 
+  html_elements(".row .column:nth-child(2)") %>% html_text2()
+```
+
+```{r}
+col3=page%>% 
+  html_elements(".row .column:nth-child(3)") %>% html_text2()
+
+```
+
+```{r}
+col4=page%>% 
+  html_elements(".row .column:nth-child(4)") %>% html_text2()
+
+```
+
+```{r}
+col5=page%>% 
+  html_elements(".row .column:nth-child(5)") %>% html_text2()
+
+```
+
+
+```{r}
+col6=page%>% 
+  html_elements(".row .column:nth-child(6)") %>% html_text2()
+
+```
+
+
+```{r}
+data001=data.frame(col1,col2,col3,col4,col5,col6)
+```
+
+```{r}
+library(janitor )
+colnames(data001) <- data001[1,]
+data001 <- data001[-1, ]  %>%clean_names()
+```
+
+```{r}
+glimpse(data001)
+```
+
+
+```{r}
+data002=data001 %>% mutate(breakdown=breakdown %>% str_remove_all('HTML_TAG_START HTML_TAG_END')
+                           ,ttm=round(as.numeric(gsub(",","",ttm)))
+                           ,year_2023=round(as.numeric(gsub(",","",x10_31_2023)))
+                             ,year_2022=round(as.numeric(gsub(",","",x10_31_2022)))
+                             ,year_2021=round(as.numeric(gsub(",","",x10_31_2021)))
+                             ,year_2020=round(as.numeric(gsub(",","",x10_31_2020)))
+                           ) %>% select(-x10_31_2023,-x10_31_2022,-x10_31_2021,-x10_31_2020)
+```
+
+
+```{r}
+glimpse(data002)
+```
+
+
+```{r}
+options(scipen = 999)
+
+library(knitr)
+kable(data002)
 ```
 
 
@@ -95,3 +200,6 @@ data001=GetIncome("GOOG", 2017)
 https://github.com/rsquaredacademy/yahoofinancer
 
 https://github.com/sewardlee337/finreportr
+
+https://www.youtube.com/watch?v=uVHGgSXtQmE
+

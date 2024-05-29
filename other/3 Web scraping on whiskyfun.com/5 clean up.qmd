@@ -38,7 +38,7 @@ packageVersion("rvest")
 
 
 ```{r}
-data001=read_excel('/oputput/all_page_review.xlsx')
+data001=read_excel('./output/all_page_review_all_v2.xlsx')
 ```
 
 ```{r}
@@ -50,143 +50,91 @@ glimpse(data001)
 ```{r}
 data002=data001%>% mutate(
   
-  bottle_review2=bottle_review2%>% str_replace("–", "-")%>% str_replace("Palate:", "Mouth")
+  bottle_review2=bottle_review2%>% str_replace("–", "-")%>% str_replace("Palate", "Mouth")
   ,name=paste0(str_extract(bottle_review2, regex( "[^)]+")),")")
+  ,distillery=bottle_review2 %>% str_extract(".*?\\d")%>% str_sub(end=-3)
   
-  ,colour=(bottle_review2 %>% str_match("Colour\\s*(.*?)\\s*\\."))[,2]
-  ,nose=(bottle_review2 %>% str_match("Nose:\\s*(.*?)\\s*Mouth"))[,2]
-  ,mouth=(bottle_review2 %>% str_match("Mouth\\s*(.*?)\\s*Finish:"))[,2]
-  ,finish=(bottle_review2 %>% str_match("Finish:\\s*(.*?)\\s*Comments:"))[,2]
-  ,comments=(bottle_review2 %>% str_match("Comments:\\s*(.*?)\\s*SGP:"))[,2]
+  ,colour=(bottle_review2 %>% str_match("Colour:\\s*(.*?)\\s*\\."))[,2]
+  ,nose=(bottle_review2 %>% str_match("Nose\\s*(.*?)\\s*Mouth"))[,2]
+  ,mouth=(bottle_review2 %>% str_match("Mouth\\s*(.*?)\\s*Finish"))[,2]
+  ,finish=(bottle_review2 %>% str_match("Finish:\\s*(.*?)\\s*Comments"))[,2]
+  ,comments=(bottle_review2 %>% str_match("Comments:\\s*(.*?)\\s*SGP"))[,2]
   
   #,full_score=(bottle_review2 %>%str_match_all("[:digit:][:digit:][:space:]points."))%>% sapply(tail, 1)
   ,full_score=(bottle_review2 %>%str_match_all("[:digit:][:digit:][:space:]points."))%>% sapply(tail, 1)
   ,score=full_score %>% str_replace("points.","") %>% as.numeric()
   
   ,review_date=((str_match(old_page %>%str_to_lower(),"https://www.whiskyfun.com/archive\\s*(.*?)\\s*-"))[,2] )%>% str_to_title()
+ 
   ,review_date2= myd(review_date, truncated = 1)
+  ,review_date2=if_else(is.na(review_date)==TRUE,today(),review_date2)
+  
   ,review_year=year(review_date2)
-)
+) %>% unique()
 
 glimpse(data002)
 ```
 
-
-
-
 ```{r}
-data002=data001 %>% mutate(
-  page_link_count=str_count(old_page,'www.whiskyfun.com'))%>%mutate(
-    page_link=ifelse(page_link_count==2,str_replace(old_page,"https://www.whiskyfun.com/",""),old_page))%>%mutate(
-    after_page_link_count=str_count(page_link,'www.whiskyfun.com')) %>% mutate(
-      review_date=((str_match(page_link,"https://www.whiskyfun.com/archive\\s*(.*?)\\s*-"))[,2] )%>% str_to_title()
-      ,review_date2= myd(review_date, truncated = 1)
-      ,review_year=year(review_date2)
-      ,bottle_score=str_replace(bottle_score,'–','-')
-      ,bottle_final_score= (bottle_score%>% str_match("-\\s*(.*?)\\s*points"))[,2]
-        ,score=bottle_final_score %>% str_extract("(\\d)+")%>% as.numeric()           
-              ,review_year_flag=ifelse(review_year>=2020,'>=2020','<2020')    
-    ) %>% arrange(desc(score))
-```
-
-
-
-
-```{r}
-data003=data002 %>%  filter(review_date2>='2010-01-01'
-                            ,score<=98)
-                            #,score>=70)
+cols=names(data002)
+test001=data002 %>%filter(if_any(.cols = cols, .fns = ~is.na(.x)))
+glimpse(test001)
 ```
 
 
 ```{r}
-glimpse(data003)
+write.xlsx(data002,'./output/all_page_review_clean_v2.xlsx')
+```
+
+
+
+```{r}
+test001=data002 %>% filter(bottle_review2 %>% str_sub(1,4)=='Nose'|bottle_review2 %>% str_sub(1,6)=='Colour'|bottle_review2 %>% str_sub(1,5)=='Mouth'|bottle_review2 %>% str_sub(1,6)=='Finish'|bottle_review2 %>% str_sub(1,8)=='Comments')
 ```
 
 
 
 
 
+
+
 ```{r}
-library(scales)
-test001a=data003 %>% filter(review_year>=2018) %>% group_by(score) %>% summarise(n=n()) %>% mutate(percent = (n/sum(n))) %>% arrange(desc(score)) %>% mutate(review_year_flag='>=2020')
+glimpse(test001)
 ```
 
 
 ```{r}
-library(scales)
-test001b=data003 %>% filter(review_year<2018) %>% group_by(score) %>% summarise(n=n()) %>% mutate(percent = (n/sum(n))) %>% arrange(desc(score)) %>% mutate(review_year_flag='<2020')
+test002=test001 %>% head()
 ```
 
 
 ```{r}
-test001c=rbind(test001a,test001b) %>% filter(score>=75)
-```
+review_html_elements=".textegrandfoncegras , .TextenormalNEW, .Textenormal,td > font,div td font"
 
-```{r}
-p=ggplot(test001c, aes(score,percent,color=review_year_flag)) + geom_point()+ geom_line()
-p
-```
+bottle_review_up1_list=c()
+bottle_review_up2_list=c()
 
-
-
-```{r}
-ggplot(data003, aes(score,fill=review_year_flag))+geom_histogram(position = 'dodge')
-```
-
-```{r}
-ggplot(test001b, aes(x=score,y=percent))+ geom_bar(stat="identity")
-```
-
-```{r}
-ggplot(data003, aes(score)) + 
-  geom_histogram()
-```
-
-```{r}
-p=ggplot(data003, aes(review_date2, score)) + geom_point()
-p
-```
-
-
-```{r}
-data004=data003 %>% mutate(above_90=ifelse(score>=90,1,0)) %>% group_by(review_year) %>% summarise(n=n()
-                                            ,avg_score=mean(score)
-                                            ,above_90=sum(above_90)
-                                            )
-```
-
-
-```{r}
-p=ggplot(data004, aes(review_year,above_90/n)) + geom_point()+ geom_line()
-p
+for (i in test002$bottle_review2){
+  #print(i)
+  link=(test002 %>% filter(bottle_review2==i))$old_page
+  print(link)
+  page=read_html(curl(link, handle = curl::new_handle("useragent" = "Mozilla/5.0")))
+  bottle_review=page  %>% html_elements(review_html_elements) %>% html_text2()
+  
+  bottle_review=unique(bottle_review[bottle_review != ""])
+  
+  index_num=match(i,bottle_review)
+  
+  bottle_review_up1=bottle_review[index_num-1]
+  bottle_review_up2=bottle_review[index_num-2]
+  
+  bottle_review_up1_list=c(bottle_review_up1_list,bottle_review_up1)
+  bottle_review_up2_list=c(bottle_review_up2_list,bottle_review_up2)
+}
 ```
 
 
 
-```{r}
-p=ggplot(data004, aes(review_year,avg_score)) + geom_point()+ geom_line()
-p
-```
-
-```{r}
-p=ggplot(data004, aes(review_year,n)) + geom_point()+ geom_line()
-p
-```
-
-
-```{r}
-p=ggplot(data003, aes(review_year,score,color=as.character(review_year)))  + geom_boxplot()
-p
-```
-
-
-
-# ouput
-
-```{r}
-write.xlsx(data003,'all_page_review_after_clean.xlsx')
-```
 
 
 # reference

@@ -18,7 +18,7 @@ format:
 
 The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
 
-![](images/ggplot_hive.jpg)
+![](images/ggplot_hive.jpg){width="600"}
 
 dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.
 
@@ -48,6 +48,7 @@ small_mtcars=rownames_to_column(small_mtcars, var="car_name")
 
 small_mtcars %>% head
 ```
+
 # Data manipulation
 
 ## select column
@@ -98,8 +99,6 @@ small_mtcars %>%mutate(new_cyl=cyl+1)
 small_mtcars %>%mutate(new_cly_group=if_else(cyl>6,'big','small'))
 ```
 
-
-
 ### case when
 
 ```{r}
@@ -109,7 +108,6 @@ small_mtcars %>%mutate(cly_group=case_when(
     TRUE ~ "other",
   ))
 ```
-
 
 ### Transmute,create column and only keep this column
 
@@ -176,8 +174,6 @@ small_mtcars %>% cbind(small_mtcars)
 #### NA
 
 #### NULL
-
-
 
 ## group by
 
@@ -329,6 +325,40 @@ str_to_lower(x)
 ## match
 
 ```{r}
+word_list=c('abc','bbc','appale','bbaa','cc')
+```
+
+### match with 'a'
+
+```{r}
+word_list %>% str_detect('a')
+```
+
+### match with 'a' count
+
+```{r}
+word_list %>% str_count('a')
+```
+
+### index of vector match
+
+```{r}
+word_list %>% str_which('a')
+```
+
+### index of each word match (first match)
+
+```{r}
+word_list %>% str_locate('a')
+```
+
+### index of each word match (all match)
+
+```{r}
+word_list %>% str_locate_all('a')
+```
+
+```{r}
 
 trx='abc1993'
 
@@ -337,7 +367,6 @@ num=str_match(trx, "(\\d)+")
 num
 
 ```
-
 
 ## concatenation
 
@@ -353,30 +382,105 @@ paste(a,b)
 ```{r}
 paste0(a,b)
 ```
-## replace
 
-str_replace()
+## replace string
+
+### str_replace()
 
 ```{r}
 text001="abcb"
 text001 %>% str_replace('b','1')
 ```
 
-str_replace_all()
+### str_replace_all()
 
 ```{r}
 text001="abcb"
 text001 %>% str_replace_all('b','1')
 ```
 
-## extract
+### replace with regular expression
+
+
+```{r}
+word2=c('a-b','M6D5','M6D54','M6D55','M6D5') %>% as_tibble()
+word2
+```
+replace D+all number with '_'
+```{r}
+word2 %>% mutate(new=value %>% str_replace_all('D\\d*','_'))
+```
+
+
+
+## split string
+
+```{r}
+word=c('a-b','1-c','c-c')
+
+df_word=word %>% as.data.frame() %>% rename('word'='.')
+```
+
+### make 2 coloumn and split by `-` using stringr package
+
+```{r}
+df_word
+```
+
+```{r}
+library(stringr)
+df_word$word %>% str_split_fixed('-',2)
+```
+
+### make 2 coloumn and split by `-` using tidyr package
+
+```{r}
+df_word
+```
+
+```{r}
+library(tidyr)
+df_word %>% separate(word,c('col1','col2'),'-')
+```
+
+## subset element in list
+
+```{r}
+word=c('aabbbasdf','apple','pet','melon')
+```
+
+### word with 'a'
+
+```{r}
+word %>% str_subset('a')
+```
+
+### word with 'a,e,i,o,u'
+
+```{r}
+word %>% str_subset("[aeiou]")
+```
+
+### word with 'pet' or 'melon'
+
+```{r}
+word %>% str_subset('pet|melon')
+```
+
+### word with 'pet' or 'melon'
+
+```{r}
+word %>% str_subset('aa')
+```
+
+## extract string
 
 ```{r}
 data001=mtcars
 data001 <- cbind(names = rownames(data001), data001)
 ```
 
-### subset string by postion
+### by postion
 
 extract 2 to 4
 
@@ -385,17 +489,144 @@ data001$new_names=data001$names %>% str_sub(2,4)
 head(data001 %>% select(new_names,names))
 ```
 
-### extracting number from a string
+### extracting with Regular expressions
+
+extracting one letter
 
 ```{r}
-
-
 trx='abc1993 ccc'
-
-num=str_extract(trx, "(\\d)+")
-
-num
+trx %>% str_extract("\\w")
 ```
+
+extracting one letter/number
+
+```{r}
+trx='abc1993 ccc'
+trx %>% str_extract(".")
+```
+
+extracting one .
+
+```{r}
+trx='abc1993.ccc'
+trx %>% str_extract("\\.")
+```
+
+extracting 3 letter start with 'a'
+
+```{r}
+word=c('aabbbasdfe. e','appl.e e','pet','melon','asdf g 133asd') %>% as_tibble()
+word
+```
+
+extracting 2 letter start with 'a'
+
+```{r}
+word %>%mutate(new=value %>% str_extract("a.."))
+```
+
+extracting all letter start with 'a'
+
+```{r}
+word %>%mutate(new=value %>% str_extract("a.+"))
+```
+
+extracting all letter between 'a' and 'e'
+
+
+```{r}
+word %>%mutate(new=value %>% str_extract("(a).*?(e)"))
+```
+
+
+extracting all letter between 'a' and '.'
+
+
+
+```{r}
+word %>%mutate(new=value %>% str_extract("(a).*?(\\.)"))
+```
+
+extracting all letter between 'a' and space
+
+
+
+```{r}
+word %>%mutate(new=value %>% str_extract("(a).*?( )"))
+```
+
+extracting all letter end with number
+
+```{r}
+word %>%mutate(new=value %>% str_extract(".*?\\d")
+               , new2=new %>% str_sub(end=-3)
+                                         
+)
+```
+
+
+extracting one number
+
+```{r}
+trx='abc1993 ccc'
+trx %>% str_extract("\\d")
+```
+
+extracting more number
+
+```{r}
+trx='abc1993 ccc'
+trx %>% str_extract("(\\d)+")
+```
+
+extracting more non number
+
+```{r}
+trx='abc1993 ccc'
+trx %>% str_extract_all("\\D+")
+```
+
+
+extracting all letter from the begining
+
+```{r}
+trx='abc1993 ccc'
+trx %>% str_extract("[:alpha:]+")
+```
+
+extracting number after `points:`
+
+```{r}
+trx=c('abcpoints:100 ccc','asdfasd','points:66','thisis points:6')
+trx
+```
+
+extracting number after `points:` and remove non match
+
+```{r}
+t=trx %>% str_extract("points:[:digit:]+") %>% na.omit()%>% str_extract("points:[:digit:]+")
+t
+```
+
+
+## Regular expressions
+
+```{r}
+phones=c('abba','124','anna')
+phones
+
+```
+
+### get a+ (b or n) + (b or n) + a
+```{r}
+phones %>% str_view('a[bn][bn]a')
+```
+
+### bb or nn
+```{r}
+phones %>% str_view('(bb|nn)')
+```
+
 
 # date
 
@@ -403,13 +634,11 @@ using lubridate package to handle date and time in R
 
 ![](images/logo-02.png)
 
-
 ```{r}
 library(tidyverse)
 library(lubridate)
 library(nycflights13)
 ```
-
 
 ## date format
 
@@ -510,6 +739,7 @@ find year gap
 ```{r}
 interval(day1,day2)%/% years(1)
 ```
+
 ## day and time
 
 ```{r}
@@ -518,50 +748,52 @@ now_time
 ```
 
 ### get year
+
 ```{r}
 year(now_time)
 ```
 
-
 ### get month
+
 ```{r}
 month(now_time)
 ```
 
-
 ### get date of the month
+
 ```{r}
 mday(now_time)
 ```
 
-
 ### get date of the year
+
 ```{r}
 yday(now_time)
 ```
 
 ### get date of the week
+
 ```{r}
 wday(now_time)
 ```
 
 #### get hour
+
 ```{r}
 hour(now_time)
 ```
 
-
 ### get minute
+
 ```{r}
 minute(now_time)
 ```
 
 ### get second
+
 ```{r}
 second(now_time)
 ```
-
-
 
 ## dataframe to other data format
 
@@ -601,3 +833,9 @@ class(data)
 # reference:
 
 https://dplyr.tidyverse.org/
+
+https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf
+
+https://www.youtube.com/watch?v=3Aki_sQYQG0
+
+

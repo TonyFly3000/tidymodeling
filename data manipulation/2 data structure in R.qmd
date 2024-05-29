@@ -187,6 +187,26 @@ x[1:3]
 ```
 
 
+## compare two vector
+
+```{r}
+xx=c(1,2,3,4)
+xx
+```
+
+
+```{r}
+yy=c(2,4)
+yy
+```
+
+find number only in xx not in yy
+
+```{r}
+setdiff(xx, yy)
+```
+
+
 
 
 ## vector  Converting between types

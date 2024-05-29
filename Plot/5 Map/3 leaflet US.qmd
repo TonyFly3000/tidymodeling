@@ -1,0 +1,153 @@
+---
+title: "US map"
+subtitle: "with leaflet"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+---
+
+# data
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(chromote)
+library(janitor)
+library(tidygeocoder)
+library(leaflet)
+library(sf)
+```
+
+```{r}
+library(maps)
+mapStates = map("state", fill = TRUE, plot = FALSE)
+```
+
+```{r}
+json_data=read_sf("us-states.json")
+```
+
+
+```{r}
+map_df <- as.data.frame(json_data)
+```
+
+
+
+# map
+
+```{r}
+data001=read_csv('./data/us shooting dagta001.csv')
+```
+
+
+
+```{r}
+data001=sample_n(data001,10) %>% clean_names() %>% mutate(full_adress=paste(address,city_or_county,state))
+```
+
+```{r}
+glimpse(data001)
+```
+
+# search all address to latitude, longitude
+```{r}
+# geocode the addresses
+data002 <- data001 %>%
+  geocode(full_adress, method = 'arcgis', lat = latitude , long = longitude)
+
+glimpse(data002)
+```
+
+```{r}
+data003=data002 %>% filter(is.na(latitude)==FALSE,(is.na(longitude)==FALSE))
+```
+
+# map
+
+```{r}
+m <- leaflet(data=mapStates) %>%
+   # Add default OpenStreetMap map tiles
+  addTiles() %>%  
+  # add markers
+  addMarkers( lng=data003$longitude, lat=data003$latitude, popup=data003$state)%>% 
+  addPolygons(fillColor = topo.colors(10, alpha = NULL), stroke = FALSE)
+
+m  
+```
+
+
+# US gdp by State
+
+```{r}
+glimpse(mapStates)
+```
+
+```{r}
+library(openxlsx)
+library(readxl)
+
+per_gdp_usd=read_excel('US state gpd 2022.xlsx') %>% mutate(names=str_replace(names,'\\*','') %>% str_trim() )
+```
+
+
+
+```{r}
+map_df002 <- merge(map_df, per_gdp_usd, by.x = "name", by.y = "names")
+```
+
+
+```{r}
+map_sf002 <- sf::st_as_sf(map_df002, sf_column_name = "geometry")
+```
+
+```{r}
+
+pal <- colorNumeric("magma", NULL)
+
+
+m <- leaflet(map_sf002) %>%
+   # Add default OpenStreetMap map tiles
+  addTiles() %>%  
+   addPolygons(smoothFactor = 0.3, fillOpacity = 0.5,weight = 1,
+    fillColor = ~ pal(per_2022_usd)
+    ,popup = ~ paste0(
+      "地区：", name, "<br/>",
+      "<hr/>",
+      "人均gpd：", per_2022_usd, "（千 美元）", "<br/>"
+      
+    )
+     ,label = lapply(paste0(
+      "地区：", "<b>", map_sf002$name, "</b>", "<br/>",
+      "人均gpd 美元：", round(map_sf002$per_2022_usd/1000), "K <br/>",
+       "总gpd 美元：", round(map_sf002$total_2022_usd), "M <br/>"
+
+    ), htmltools::HTML)
+    )%>% addLegend(
+    position = "bottomright", title = "人均gpd(美元)",
+    pal = pal, values = ~per_2022_usd, opacity = 1.0
+    )
+  
+
+
+
+m  
+```
+
+# resouce:
+
+https://www.gunviolencearchive.org/reports/mass-shooting?page=8&year=2023

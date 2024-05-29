@@ -226,6 +226,14 @@ gg
 
 
 ```{r}
+# Add  logo to the graph you created
+library(magick)
+logo <- image_read("logo.png")
+
+```
+
+
+```{r}
   
 library(ggplot2) 
 library(png)
@@ -243,6 +251,7 @@ gg=ggplot(data005_cn, aes(x=reorder(data005_cn,n), y=n))+theme_classic()+geom_te
   geom_bar(stat="identity",fill="#CD5C5C")+coord_flip()+ggtitle("Whisky notes Top30 风味词",subtitle = "5K+ 酒评")+labs(caption = "数据源:www.whiskynote.be 从2010年到2024年")+
   inset_element(img3, 0.65, 0.15, 1, 0.75,align_to = 'full')
 
+
 ```
 
 ```{r}
@@ -250,7 +259,15 @@ gg=ggplot(data005_cn, aes(x=reorder(data005_cn,n), y=n))+theme_classic()+geom_te
 #| fig-height: 7
 
 gg
+grid::grid.raster(logo, x = 0.05, y = 0.01, just = c('left', 'bottom'), width = unit(2.5, 'inches'))
+
 ```
+
+```{r}
+ggsave("myplot.png")
+```
+
+
 
 ```{r, attr.output='.details summary="sessionInfo()"'}
 sessionInfo()

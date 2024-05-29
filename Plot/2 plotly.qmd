@@ -68,6 +68,14 @@ fig <- plot_ly(data = data002 %>%filter(continent=='Asia'), x = ~year, y = ~pop,
 fig
 ```
 
+## line width and colour
+
+
+```{r}
+fig <- plot_ly(data = data002 %>%filter(continent=='Asia'), x = ~year, y = ~pop,mode = 'lines',line = list(color = 'rgb(205, 12, 24)', width = 8))
+fig
+```
+
 
 
 ## color by group
@@ -229,6 +237,20 @@ fig <- plot_ly(data=tips,x = ~total_bill,color=~sex, type = "histogram") %>% lay
 fig
 ```
 
+
+## change x y  axis range 
+
+
+```{r}
+fig <- plot_ly(data=tips,x = ~total_bill,color=~sex, type = "histogram") %>% layout(title = 'new title'
+                                                                                   ,xaxis = list(title = 'new x',range=c(20,40))
+                                                                                  ,yaxis = list(title = 'new y',range=c(20,40)) 
+                                                                                    )
+
+fig
+```
+
+
 ## add footnote
 
 ```{r}
@@ -267,7 +289,51 @@ fig <- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'li
 fig
 ```
 
+# add image
 
+add online image 
+```{r}
+
+fig <- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %>% layout(
+    images = list(  
+      list(  
+        source =  "https://raw.githubusercontent.com/cldougl/plot_images/add_r_img/vox.png"
+        ,xref = "paper"
+        ,yref = "paper" 
+        ,x = 0.1
+        ,y = 0.1
+        ,sizex = 0.1 
+        ,sizey = 0.1
+       ,xanchor="left"  
+      )  
+    )
+    ) 
+                                                                                           
+fig
+```
+
+
+
+add local image 
+```{r}
+
+fig <- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %>% layout(
+    images = list(  
+      list(  
+        source = base64enc::dataURI(file = "bee.png")
+        ,xref = "paper"
+        ,yref = "paper" 
+        ,x = 0.1
+        ,y = 0.1
+        ,sizex = 0.1 
+        ,sizey = 0.1
+       ,xanchor="left"  
+      )  
+    )
+    ) 
+                                                                                           
+fig
+```
 
 
 # applying themes
@@ -308,9 +374,12 @@ ggplotly(p+ theme_economist())
 install orca in https://github.com/plotly/orca#installation
 
 conda install -c plotly plotly-orca
+```{r}
+#install.packages('processx')
+```
 
 ```{r}
-#kaleido(p, "surface-plot.png")
+#orca(p, "surface-plot.png")
 ```
 
 

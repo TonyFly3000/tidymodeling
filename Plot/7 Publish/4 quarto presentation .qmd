@@ -1,0 +1,109 @@
+---
+title: "quarto presentation"
+subtitle: "with Revealjs"
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+---
+
+# revealjs YAML
+
+```{r}
+---
+title: "Habits"
+author: "John Doe"
+format: revealjs
+---
+```
+
+# pages
+```{r}
+# pages
+
+# In the morning
+
+## Getting up
+
+- Turn off alarm
+- Get out of bed
+
+## Breakfast
+
+- Eat eggs
+- Drink coffee
+```
+
+
+
+# YAML format setting
+
+```{r}
+format:
+  revealjs:
+    controls: true
+    navigation-mode: vertical
+    height: 800
+    width: 1000    
+    fontsize: 20pt
+    page-layout: full
+    logo: images/logo.jpg
+    footer: "This is footer(https://google.com/)"
+    slide-number: c
+    show-slide-number: all
+    menu: false
+
+```
+
+# Main Title Slide Background YAML setting
+
+```{r}
+---
+title: My Slide Show
+title-slide-attributes:
+    data-background-image: /path/to/title_image.png
+    data-background-size: contain
+    data-background-opacity: "0.5"
+---
+```
+
+
+# Chalkboard YAML setting
+
+```{r}
+---
+title: "Presentation"
+format:
+  revealjs:
+    chalkboard: true
+---
+```
+
+
+# center whole page
+
+```{r}
+# This will be centered {.center}
+
+This text is moved as well
+```
+
+
+
+
+# reference:
+https://quarto.org/docs/presentations/revealjs/

@@ -935,7 +935,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/4 whiskynote all year page.html",
     "title": "All year page",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 loop all year page\n\n\nCode\nyear_list=seq(2010,2024)\nyear_list\n\n\n\n\nCode\nurl_list=paste0('https://www.whiskynotes.be/',year_list)\nurl_list\n\n\n\n\nCode\nbottle_list=c()\ntopic_list=c()\ntopic_link_list=c()\nall_year_list_topic=c()\nall_year_list_bottle=c()\n\nfor (i in url_list){\n  year=tail(unlist(strsplit(i, split = \"/\")),1)\n  print(year)\n  print(i)\n  year_ur=i\n  year_page &lt;- read_html(year_ur)\n  bottle001 &lt;- year_page %&gt;% html_elements(\"p\")%&gt;% html_text2()\n  bottle003=unlist(strsplit(bottle001,\"\\n\"))\n  \n  \n  topic001 &lt;- year_page %&gt;% html_elements(\".archive-link\") %&gt;% html_text2()\n  topic_link_001 &lt;- year_page %&gt;%\n    html_elements(css = \".entry-permalink\")%&gt;% html_attr(\"href\")\n\n  year_list_topic=rep(year,length(topic001))\n  year_list_bottle=rep(year,length(bottle003))\n  \n  all_year_list_topic=c(all_year_list_topic,year_list_topic)\n  all_year_list_bottle=c(all_year_list_bottle,year_list_bottle)\n  \n  bottle_list=c(bottle_list,bottle003)\n  topic_list=c(topic_list,topic001)\n  topic_link_list=c(topic_link_list,topic_link_001)\n  \n  Sys.sleep(1)\n  }\n\n\n\n\n2 combine\n\n\nCode\ndata=tibble(topic_list,topic_link_list,all_year_list_topic)\n\n\n\n\nCode\n#bottle003=tibble(bottle_list,all_year_list_bottle)\n\n\n\n\n3 output\n\n\nCode\nlibrary(openxlsx)\nlist_of_datasets &lt;- list(\"topic\" = data)\n\nwrite.xlsx(list_of_datasets, file = \"./output/all year page.xlsx\")\n\n\n\n\n\n\n\n\n Back to top",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(openxlsx)\nlibrary(readxl)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 loop all year page\n\n\nCode\nyear_list=seq(2010,2024)\nyear_list\n\n\n\n\nCode\nurl_list=paste0('https://www.whiskynotes.be/',year_list)\nurl_list\n\n\n\n\nCode\nbottle_list=c()\ntopic_list=c()\ntopic_link_list=c()\nall_year_list_topic=c()\nall_year_list_bottle=c()\n\n\n\n\nCode\nfor (i in url_list){\n  year=tail(unlist(strsplit(i, split = \"/\")),1)\n  print(year)\n  print(i)\n  year_ur=i\n  year_page &lt;- read_html(year_ur)\n  bottle001 &lt;- year_page %&gt;% html_elements(\"p\")%&gt;% html_text2()\n  bottle003=unlist(strsplit(bottle001,\"\\n\"))\n  \n  \n  topic001 &lt;- year_page %&gt;% html_elements(\".archive-link\") %&gt;% html_text2()\n  topic_link_001 &lt;- year_page %&gt;%\n    html_elements(css = \".entry-permalink\")%&gt;% html_attr(\"href\")\n\n  year_list_topic=rep(year,length(topic001))\n  year_list_bottle=rep(year,length(bottle003))\n  \n  all_year_list_topic=c(all_year_list_topic,year_list_topic)\n  all_year_list_bottle=c(all_year_list_bottle,year_list_bottle)\n  \n  bottle_list=c(bottle_list,bottle003)\n  topic_list=c(topic_list,topic001)\n  topic_link_list=c(topic_link_list,topic_link_001)\n  \n  Sys.sleep(1)\n  }\n\n\n\n\n2 combine\n\n\nCode\ndata=tibble(topic_list,topic_link_list,all_year_list_topic)\n\n\n\n\nCode\nglimpse(data)\n\n\n\n\n3 output\n\n\nCode\nlibrary(openxlsx)\nlist_of_datasets &lt;- list(\"topic\" = data)\n\nwrite.xlsx(list_of_datasets, file = \"./output/all year page.xlsx\")\n\n\n\n\n4 secound time web scraping\n\n\nCode\nyear_list=2024\nyear_list\n\n\n\n\nCode\nurl_list=paste0('https://www.whiskynotes.be/',year_list)\nurl_list\n\n\n\n\nCode\nbottle_list=c()\ntopic_list=c()\ntopic_link_list=c()\nall_year_list_topic=c()\nall_year_list_bottle=c()\n\n\n\n\nCode\nfor (i in url_list){\n  year=tail(unlist(strsplit(i, split = \"/\")),1)\n  print(year)\n  print(i)\n  year_ur=i\n  year_page &lt;- read_html(year_ur)\n  bottle001 &lt;- year_page %&gt;% html_elements(\"p\")%&gt;% html_text2()\n  bottle003=unlist(strsplit(bottle001,\"\\n\"))\n  \n  \n  topic001 &lt;- year_page %&gt;% html_elements(\".archive-link\") %&gt;% html_text2()\n  topic_link_001 &lt;- year_page %&gt;%\n    html_elements(css = \".entry-permalink\")%&gt;% html_attr(\"href\")\n\n  year_list_topic=rep(year,length(topic001))\n  year_list_bottle=rep(year,length(bottle003))\n  \n  all_year_list_topic=c(all_year_list_topic,year_list_topic)\n  all_year_list_bottle=c(all_year_list_bottle,year_list_bottle)\n  \n  bottle_list=c(bottle_list,bottle003)\n  topic_list=c(topic_list,topic001)\n  topic_link_list=c(topic_link_list,topic_link_001)\n  \n  Sys.sleep(1)\n  }\n\n\n\n\n5 combine\n\n\nCode\ndata=tibble(topic_list,topic_link_list,all_year_list_topic)\n\n\n\n\nCode\nglimpse(data)\n\n\nappend into downloaded data\ndownloaded url\n\n\nCode\ndownload_url=read_excel(\"./output/all year page.xlsx\")\n\n\n\n\nCode\nglimpse(download_url)\n\n\n\n\nCode\nall_data=rbind(data,download_url) %&gt;% unique()\n\n\n\n\nCode\nglimpse(all_data)\n\n\n\n\nCode\nlibrary(openxlsx)\n\nwrite.xlsx(all_data, file = \"./output/all year page.xlsx\")\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -983,7 +983,7 @@
     "href": "other/1 Web scraping on www.whiskynotes.be/8b summary in R.html",
     "title": "Summary in R",
     "section": "",
-    "text": "Code\n#must install the package from github\n#install.packages('devtools')  \n#devtools::install_github(\"lchiffon/wordcloud2\")  \n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(openxlsx)\nlibrary(readxl)\n\n\n\n1 read in data\n\n\nCode\ndata001=read_excel('./output/all_page_bottle_list_all.xlsx')\nglimpse(data001)\n\n\nRows: 4,934\nColumns: 9\n$ bottle_name          &lt;chr&gt; \"Cognac Chollet Lot 1960 ‘Le Bon Vivant’ – Fins B…\n$ bottle_review_Nose   &lt;chr&gt; \"Nose: a rich, fragrant and fruity style. Honeyed…\n$ bottle_review_Mouth  &lt;chr&gt; \"Mouth: more spices now. Mint and pepper, leading…\n$ bottle_review_Finish &lt;chr&gt; \"Finish: medium to long, more on fruit tea now, a…\n$ all_page_score       &lt;chr&gt; \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"85\", \"82\", \"8…\n$ page_class           &lt;chr&gt; \"* Cognac\", \"* Cognac\", \"* Cognac\", \"Ledaig\", \"Le…\n$ page_published_date  &lt;chr&gt; \"30 November 2020\", \"30 November 2020\", \"30 Novem…\n$ page_title           &lt;chr&gt; \"Cognac Lot 1960 / XO / Lot 1906 (Malternative Be…\n$ review_url           &lt;chr&gt; \"https://www.whiskynotes.be/2020/cognac/cognac-lo…\n\n\n\n\nCode\ndata002=data001 %&gt;% filter(as.numeric(all_page_score)&gt;0,as.numeric(all_page_score)&lt;100\n                       ,bottle_review_Nose !='no comment'\n                      ,bottle_review_Mouth !='no comment'\n                      ,bottle_review_Finish !='no comment'\n                           \n                           \n                           ) %&gt;% \n  mutate(review=paste(bottle_review_Nose,bottle_review_Mouth,bottle_review_Finish) %&gt;% \n                             str_to_lower() %&gt;% str_replace_all(\"[[:punct:]]\", \"\") %&gt;% \n                            str_replace_all('sweetness','sweet') %&gt;% str_replace_all('apples','apple')%&gt;% str_replace_all('oranges','orange') %&gt;% str_replace_all('fruits','fruit')\n\n                           )\n\nreivew002=data002$review\n\n\n\n\nCode\ntest='able stees a asdf df able' %&gt;%str_split(\" \") %&gt;% unlist %&gt;% unique %&gt;% paste(collapse = ' ')\ntest\n\n\n[1] \"able stees a asdf df\"\n\n\n\n\nCode\nreivew003=c()\n\nfor (i in reivew002){\n a=i%&gt;%str_split(\" \") %&gt;% unlist %&gt;% unique%&gt;% paste(collapse = ' ')\n  reivew003=c(reivew003,a)\n}\n\n\n\n\nCode\ntest001=reivew003 %&gt;% tibble() %&gt;% rename('review'='.')\n\n\n\n\nCode\ntest002_without_sweet=test001[!grepl(\"sweet\",test001$review),]\ntest002_sweet=test001[grepl(\"sweet\",test001$review),]\n\n\n\n\nCode\nstring &lt;- reivew003\n\ndata002=data.frame(string) %&gt;%\n  separate_rows(string) %&gt;%\n  count(string, sort = TRUE) %&gt;%\n  filter(n &gt;= 2)\n\n\n\n\n2 remove stop word\n\n\nCode\nlibrary(tidytext)\n\ndata003 &lt;- data002 %&gt;%\n  anti_join(stop_words, by= c(\"string\" = \"word\"))\n\n\n\n\n3 remove non favour word\n\n\nCode\ndata004 &lt;- data003 %&gt;% filter(!string %in% c('notes','hints'\n                                            ,'nose'\n                                           ,'finish'\n                                            ,'light', 'slightly', 'hint', 'nice'\n                                           ,'medium' , 'subtle', 'background','note' ,'plenty' ,'lots'\n                                           ,'mouth','bit','soft','dark')\n                                          )\n\n\n\n\n4 translate to chinese\n\n\nCode\ndata005=head(data004,30)\n\n\n\n\nCode\nlibrary(gtranslate)\n#lang_codes\n\ndata005_cn=translate(data005$string, from = \"en\", to = \"zh-CN\")\n\n\n\n\nCode\ndata005_cn=cbind(data005_cn,data005)\ndata005_cn=data005_cn %&gt;% select(-string)\n\n\n\n\n5 word cloud 1 english\n\n\nCode\nlibrary(wordcloud2) \n\n\n\n\nCode\nmy_graph_en=wordcloud2(data=data005, size=1)\n#my_graph_en\n\n\n\n\nCode\nlibrary(webshot2)\nlibrary(htmlwidgets)\n\nsaveWidget(my_graph_en,\"tmp_en.html\")#先保存为网页格式\n\nwebshot(\"tmp_en.html\", \"wordcloud_en.jpg\", delay = 2) ##IRIENI\n\n\n\n\n\n\n\n\n\n\n\n6 word cloud 2 chinese\n\n\nCode\nlibrary(showtext)\nshowtext_auto()\npar(family=\"PingFangSC-Regular\")\nmy_graph=wordcloud2(data=data005_cn,size=1)\n#my_graph\n\n\n\n\nCode\nlibrary(webshot2)\nlibrary(htmlwidgets)\n\nsaveWidget(my_graph,\"tmp.html\")#先保存为网页格式\n\nwebshot(\"tmp.html\", \"wordcloud.jpg\", delay = 2) ##IRIENI\n\n\n\n\n\n\n\n\n\n\n\n7 chart 1 with gglolt\n\n\nCode\nlibrary(ggplot2) \nggplot(data005, aes(x=reorder(string,n), y=n)) +geom_text(aes(label = n), hjust = -0.1)+ ylim(min=0, 3200)+\n  geom_bar(stat=\"identity\")+coord_flip()\n\n\n\n\n\n\n\n\n\n\n\n8 chart 2 add image gglolt\n\n\nCode\nlibrary(ggplot2) \nlibrary(png)\nlibrary(grid)\nlibrary(patchwork) \n\n\nimg2 &lt;- readPNG(\"en_glass.png\")\nimg3=rasterGrob(img2, width = unit(1,\"npc\"), height = unit(1,\"npc\"))\n\ngg=ggplot(data005, aes(x=reorder(string,n), y=n))+theme_classic()+geom_text(aes(label = n), hjust = -0.1)+xlab(\"Flavor\") + ylab(\"Frequency\")+scale_y_continuous(expand=c(0,0),limits=c(0,3200))+\n  geom_bar(stat=\"identity\",fill=\"#CD5C5C\")+coord_flip()+ggtitle(\"Whisky notes Top30 most used words\",subtitle = \"5K review\")+labs(caption = \"data source from www.whiskynote.be between 2010 to 2024\")+\n  inset_element(img3, 0.66, 0.15, 1, 0.75,align_to = 'full')\n\n\n\n\nCode\ngg\n\n\n\n\n\n\n\n\n\n\n\n9 chart 2 add image gglolt in chinese\n\n\nCode\nlibrary(ggplot2) \nlibrary(png)\nlibrary(grid)\nlibrary(patchwork) \n\nlibrary(showtext)\nshowtext_auto()\n\n\nimg2 &lt;- readPNG(\"cn_glass.png\")\nimg3=rasterGrob(img2, width = unit(1,\"npc\"), height = unit(1,\"npc\"))\n\ngg=ggplot(data005_cn, aes(x=reorder(data005_cn,n), y=n))+theme_classic()+geom_text(aes(label = n), hjust = -0.1)+xlab(\"风味\") + ylab(\"次数\")+scale_y_continuous(expand=c(0,0),limits=c(0,3200))+\n  geom_bar(stat=\"identity\",fill=\"#CD5C5C\")+coord_flip()+ggtitle(\"Whisky notes Top30 风味词\",subtitle = \"5K+ 酒评\")+labs(caption = \"数据源:www.whiskynote.be 从2010年到2024年\")+\n  inset_element(img3, 0.65, 0.15, 1, 0.75,align_to = 'full')\n\n\n\n\nCode\ngg\n\n\n\n\n\n\n\n\n\n\n\nCode\nsessionInfo()\n\n\nsessionInfo()\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] grid      stats     graphics  grDevices utils     datasets  methods  \n[8] base     \n\nother attached packages:\n [1] patchwork_1.2.0   png_0.1-8         showtext_0.9-7    showtextdb_3.0   \n [5] sysfonts_0.8.9    htmlwidgets_1.6.4 webshot2_0.1.1    wordcloud2_0.2.2 \n [9] gtranslate_0.0.1  tidytext_0.4.1    readxl_1.4.3      openxlsx_4.2.5.2 \n[13] lubridate_1.9.3   forcats_1.0.0     stringr_1.5.1     dplyr_1.1.4      \n[17] purrr_1.0.2       readr_2.1.5       tidyr_1.3.1       tibble_3.2.1     \n[21] ggplot2_3.5.1     tidyverse_2.0.0  \n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.5      xfun_0.43         websocket_1.4.1   processx_3.8.4   \n [5] lattice_0.22-6    tzdb_0.4.0        vctrs_0.6.5       tools_4.3.1      \n [9] ps_1.7.6          generics_0.1.3    curl_5.2.1        fansi_1.0.6      \n[13] janeaustenr_1.0.0 pkgconfig_2.0.3   tokenizers_0.3.0  Matrix_1.6-5     \n[17] lifecycle_1.0.4   farver_2.1.1      compiler_4.3.1    munsell_0.5.1    \n[21] chromote_0.2.0    htmltools_0.5.8.1 SnowballC_0.7.1   yaml_2.3.8       \n[25] pillar_1.9.0      later_1.3.2       tidyselect_1.2.1  rvest_1.0.4      \n[29] zip_2.3.1         digest_0.6.35     stringi_1.8.4     labeling_0.4.3   \n[33] fastmap_1.1.1     colorspace_2.1-0  cli_3.6.2         magrittr_2.0.3   \n[37] utf8_1.2.4        withr_3.0.0       scales_1.3.0      promises_1.3.0   \n[41] timechange_0.3.0  rmarkdown_2.26    httr_1.4.7        cellranger_1.1.0 \n[45] hms_1.1.3         evaluate_0.23     knitr_1.45        rlang_1.1.3      \n[49] Rcpp_1.0.12       glue_1.7.0        xml2_1.3.6        rstudioapi_0.16.0\n[53] jsonlite_1.8.8    R6_2.5.1         \n\n\n\n\n\n10 resource:\nhttps://github.com/Lchiffon/wordcloud2\n\n\n\n\n\n\n Back to top",
+    "text": "Code\n#must install the package from github\n#install.packages('devtools')  \n#devtools::install_github(\"lchiffon/wordcloud2\")  \n\n\n\n\nCode\nlibrary(tidyverse)\nlibrary(openxlsx)\nlibrary(readxl)\n\n\n\n1 read in data\n\n\nCode\ndata001=read_excel('./output/all_page_bottle_list_all.xlsx')\nglimpse(data001)\n\n\nRows: 4,934\nColumns: 9\n$ bottle_name          &lt;chr&gt; \"Cognac Chollet Lot 1960 ‘Le Bon Vivant’ – Fins B…\n$ bottle_review_Nose   &lt;chr&gt; \"Nose: a rich, fragrant and fruity style. Honeyed…\n$ bottle_review_Mouth  &lt;chr&gt; \"Mouth: more spices now. Mint and pepper, leading…\n$ bottle_review_Finish &lt;chr&gt; \"Finish: medium to long, more on fruit tea now, a…\n$ all_page_score       &lt;chr&gt; \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"85\", \"82\", \"8…\n$ page_class           &lt;chr&gt; \"* Cognac\", \"* Cognac\", \"* Cognac\", \"Ledaig\", \"Le…\n$ page_published_date  &lt;chr&gt; \"30 November 2020\", \"30 November 2020\", \"30 Novem…\n$ page_title           &lt;chr&gt; \"Cognac Lot 1960 / XO / Lot 1906 (Malternative Be…\n$ review_url           &lt;chr&gt; \"https://www.whiskynotes.be/2020/cognac/cognac-lo…\n\n\n\n\nCode\ndata002=data001 %&gt;% filter(as.numeric(all_page_score)&gt;0,as.numeric(all_page_score)&lt;100\n                       ,bottle_review_Nose !='no comment'\n                      ,bottle_review_Mouth !='no comment'\n                      ,bottle_review_Finish !='no comment'\n                           \n                           \n                           ) %&gt;% \n  mutate(review=paste(bottle_review_Nose,bottle_review_Mouth,bottle_review_Finish) %&gt;% \n                             str_to_lower() %&gt;% str_replace_all(\"[[:punct:]]\", \"\") %&gt;% \n                            str_replace_all('sweetness','sweet') %&gt;% str_replace_all('apples','apple')%&gt;% str_replace_all('oranges','orange') %&gt;% str_replace_all('fruits','fruit')\n\n                           )\n\nreivew002=data002$review\n\n\n\n\nCode\ntest='able stees a asdf df able' %&gt;%str_split(\" \") %&gt;% unlist %&gt;% unique %&gt;% paste(collapse = ' ')\ntest\n\n\n[1] \"able stees a asdf df\"\n\n\n\n\nCode\nreivew003=c()\n\nfor (i in reivew002){\n a=i%&gt;%str_split(\" \") %&gt;% unlist %&gt;% unique%&gt;% paste(collapse = ' ')\n  reivew003=c(reivew003,a)\n}\n\n\n\n\nCode\ntest001=reivew003 %&gt;% tibble() %&gt;% rename('review'='.')\n\n\n\n\nCode\ntest002_without_sweet=test001[!grepl(\"sweet\",test001$review),]\ntest002_sweet=test001[grepl(\"sweet\",test001$review),]\n\n\n\n\nCode\nstring &lt;- reivew003\n\ndata002=data.frame(string) %&gt;%\n  separate_rows(string) %&gt;%\n  count(string, sort = TRUE) %&gt;%\n  filter(n &gt;= 2)\n\n\n\n\n2 remove stop word\n\n\nCode\nlibrary(tidytext)\n\ndata003 &lt;- data002 %&gt;%\n  anti_join(stop_words, by= c(\"string\" = \"word\"))\n\n\n\n\n3 remove non favour word\n\n\nCode\ndata004 &lt;- data003 %&gt;% filter(!string %in% c('notes','hints'\n                                            ,'nose'\n                                           ,'finish'\n                                            ,'light', 'slightly', 'hint', 'nice'\n                                           ,'medium' , 'subtle', 'background','note' ,'plenty' ,'lots'\n                                           ,'mouth','bit','soft','dark')\n                                          )\n\n\n\n\n4 translate to chinese\n\n\nCode\ndata005=head(data004,30)\n\n\n\n\nCode\nlibrary(gtranslate)\n#lang_codes\n\ndata005_cn=translate(data005$string, from = \"en\", to = \"zh-CN\")\n\n\n\n\nCode\ndata005_cn=cbind(data005_cn,data005)\ndata005_cn=data005_cn %&gt;% select(-string)\n\n\n\n\n5 word cloud 1 english\n\n\nCode\nlibrary(wordcloud2) \n\n\n\n\nCode\nmy_graph_en=wordcloud2(data=data005, size=1)\n#my_graph_en\n\n\n\n\nCode\nlibrary(webshot2)\nlibrary(htmlwidgets)\n\nsaveWidget(my_graph_en,\"tmp_en.html\")#先保存为网页格式\n\nwebshot(\"tmp_en.html\", \"wordcloud_en.jpg\", delay = 2) ##IRIENI\n\n\n\n\n\n\n\n\n\n\n\n6 word cloud 2 chinese\n\n\nCode\nlibrary(showtext)\nshowtext_auto()\npar(family=\"PingFangSC-Regular\")\nmy_graph=wordcloud2(data=data005_cn,size=1)\n#my_graph\n\n\n\n\nCode\nlibrary(webshot2)\nlibrary(htmlwidgets)\n\nsaveWidget(my_graph,\"tmp.html\")#先保存为网页格式\n\nwebshot(\"tmp.html\", \"wordcloud.jpg\", delay = 2) ##IRIENI\n\n\n\n\n\n\n\n\n\n\n\n7 chart 1 with gglolt\n\n\nCode\nlibrary(ggplot2) \nggplot(data005, aes(x=reorder(string,n), y=n)) +geom_text(aes(label = n), hjust = -0.1)+ ylim(min=0, 3200)+\n  geom_bar(stat=\"identity\")+coord_flip()\n\n\n\n\n\n\n\n\n\n\n\n8 chart 2 add image gglolt\n\n\nCode\nlibrary(ggplot2) \nlibrary(png)\nlibrary(grid)\nlibrary(patchwork) \n\n\nimg2 &lt;- readPNG(\"en_glass.png\")\nimg3=rasterGrob(img2, width = unit(1,\"npc\"), height = unit(1,\"npc\"))\n\ngg=ggplot(data005, aes(x=reorder(string,n), y=n))+theme_classic()+geom_text(aes(label = n), hjust = -0.1)+xlab(\"Flavor\") + ylab(\"Frequency\")+scale_y_continuous(expand=c(0,0),limits=c(0,3200))+\n  geom_bar(stat=\"identity\",fill=\"#CD5C5C\")+coord_flip()+ggtitle(\"Whisky notes Top30 most used words\",subtitle = \"5K review\")+labs(caption = \"data source from www.whiskynote.be between 2010 to 2024\")+\n  inset_element(img3, 0.66, 0.15, 1, 0.75,align_to = 'full')\n\n\n\n\nCode\ngg\n\n\n\n\n\n\n\n\n\n\n\n9 chart 2 add image gglolt in chinese\n\n\nCode\n# Add  logo to the graph you created\nlibrary(magick)\nlogo &lt;- image_read(\"logo.png\")\n\n\n\n\nCode\nlibrary(ggplot2) \nlibrary(png)\nlibrary(grid)\nlibrary(patchwork) \n\nlibrary(showtext)\nshowtext_auto()\n\n\nimg2 &lt;- readPNG(\"cn_glass.png\")\nimg3=rasterGrob(img2, width = unit(1,\"npc\"), height = unit(1,\"npc\"))\n\ngg=ggplot(data005_cn, aes(x=reorder(data005_cn,n), y=n))+theme_classic()+geom_text(aes(label = n), hjust = -0.1)+xlab(\"风味\") + ylab(\"次数\")+scale_y_continuous(expand=c(0,0),limits=c(0,3200))+\n  geom_bar(stat=\"identity\",fill=\"#CD5C5C\")+coord_flip()+ggtitle(\"Whisky notes Top30 风味词\",subtitle = \"5K+ 酒评\")+labs(caption = \"数据源:www.whiskynote.be 从2010年到2024年\")+\n  inset_element(img3, 0.65, 0.15, 1, 0.75,align_to = 'full')\n\n\n\n\nCode\ngg\ngrid::grid.raster(logo, x = 0.05, y = 0.01, just = c('left', 'bottom'), width = unit(2.5, 'inches'))\n\n\n\n\n\n\n\n\n\n\n\nCode\nggsave(\"myplot.png\")\n\n\n\n\nCode\nsessionInfo()\n\n\nsessionInfo()\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] grid      stats     graphics  grDevices utils     datasets  methods  \n[8] base     \n\nother attached packages:\n [1] magick_2.8.3      patchwork_1.2.0   png_0.1-8         showtext_0.9-7   \n [5] showtextdb_3.0    sysfonts_0.8.9    htmlwidgets_1.6.4 webshot2_0.1.1   \n [9] wordcloud2_0.2.2  gtranslate_0.0.1  tidytext_0.4.1    readxl_1.4.3     \n[13] openxlsx_4.2.5.2  lubridate_1.9.3   forcats_1.0.0     stringr_1.5.1    \n[17] dplyr_1.1.4       purrr_1.0.2       readr_2.1.5       tidyr_1.3.1      \n[21] tibble_3.2.1      ggplot2_3.5.1     tidyverse_2.0.0  \n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.5      xfun_0.43         websocket_1.4.1   processx_3.8.4   \n [5] lattice_0.22-6    tzdb_0.4.0        vctrs_0.6.5       tools_4.3.1      \n [9] ps_1.7.6          generics_0.1.3    curl_5.2.1        fansi_1.0.6      \n[13] janeaustenr_1.0.0 pkgconfig_2.0.3   tokenizers_0.3.0  Matrix_1.6-5     \n[17] lifecycle_1.0.4   farver_2.1.1      compiler_4.3.1    textshaping_0.3.7\n[21] munsell_0.5.1     chromote_0.2.0    htmltools_0.5.8.1 SnowballC_0.7.1  \n[25] yaml_2.3.8        pillar_1.9.0      later_1.3.2       tidyselect_1.2.1 \n[29] rvest_1.0.4       zip_2.3.1         digest_0.6.35     stringi_1.8.4    \n[33] labeling_0.4.3    fastmap_1.1.1     colorspace_2.1-0  cli_3.6.2        \n[37] magrittr_2.0.3    utf8_1.2.4        withr_3.0.0       scales_1.3.0     \n[41] promises_1.3.0    timechange_0.3.0  rmarkdown_2.26    httr_1.4.7       \n[45] cellranger_1.1.0  ragg_1.3.0        hms_1.1.3         evaluate_0.23    \n[49] knitr_1.45        rlang_1.1.3       Rcpp_1.0.12       glue_1.7.0       \n[53] xml2_1.3.6        rstudioapi_0.16.0 jsonlite_1.8.8    R6_2.5.1         \n[57] systemfonts_1.0.6\n\n\n\n\n\n10 resource:\nhttps://github.com/Lchiffon/wordcloud2\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Other",
       "1 Web scraping on www.whiskynotes.be",
@@ -1007,7 +1007,7 @@
     "href": "other/3 Web scraping on whiskyfun.com/5 clean up.html",
     "title": "All page clean up",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(stringr)\nlibrary(openxlsx)\nlibrary(readxl)\nlibrary(lubridate)\nlibrary(ggplot2)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 input\n\n\nCode\ndata001=read_excel('/oputput/all_page_review.xlsx')\n\n\n\n\nCode\nglimpse(data001)\n\n\n\n\nCode\ndata002=data001%&gt;% mutate(\n  \n  bottle_review2=bottle_review2%&gt;% str_replace(\"–\", \"-\")%&gt;% str_replace(\"Palate:\", \"Mouth\")\n  ,name=paste0(str_extract(bottle_review2, regex( \"[^)]+\")),\")\")\n  \n  ,colour=(bottle_review2 %&gt;% str_match(\"Colour\\\\s*(.*?)\\\\s*\\\\.\"))[,2]\n  ,nose=(bottle_review2 %&gt;% str_match(\"Nose:\\\\s*(.*?)\\\\s*Mouth\"))[,2]\n  ,mouth=(bottle_review2 %&gt;% str_match(\"Mouth\\\\s*(.*?)\\\\s*Finish:\"))[,2]\n  ,finish=(bottle_review2 %&gt;% str_match(\"Finish:\\\\s*(.*?)\\\\s*Comments:\"))[,2]\n  ,comments=(bottle_review2 %&gt;% str_match(\"Comments:\\\\s*(.*?)\\\\s*SGP:\"))[,2]\n  \n  #,full_score=(bottle_review2 %&gt;%str_match_all(\"[:digit:][:digit:][:space:]points.\"))%&gt;% sapply(tail, 1)\n  ,full_score=(bottle_review2 %&gt;%str_match_all(\"[:digit:][:digit:][:space:]points.\"))%&gt;% sapply(tail, 1)\n  ,score=full_score %&gt;% str_replace(\"points.\",\"\") %&gt;% as.numeric()\n  \n  ,review_date=((str_match(old_page %&gt;%str_to_lower(),\"https://www.whiskyfun.com/archive\\\\s*(.*?)\\\\s*-\"))[,2] )%&gt;% str_to_title()\n  ,review_date2= myd(review_date, truncated = 1)\n  ,review_year=year(review_date2)\n)\n\nglimpse(data002)\n\n\n\n\nCode\ndata002=data001 %&gt;% mutate(\n  page_link_count=str_count(old_page,'www.whiskyfun.com'))%&gt;%mutate(\n    page_link=ifelse(page_link_count==2,str_replace(old_page,\"https://www.whiskyfun.com/\",\"\"),old_page))%&gt;%mutate(\n    after_page_link_count=str_count(page_link,'www.whiskyfun.com')) %&gt;% mutate(\n      review_date=((str_match(page_link,\"https://www.whiskyfun.com/archive\\\\s*(.*?)\\\\s*-\"))[,2] )%&gt;% str_to_title()\n      ,review_date2= myd(review_date, truncated = 1)\n      ,review_year=year(review_date2)\n      ,bottle_score=str_replace(bottle_score,'–','-')\n      ,bottle_final_score= (bottle_score%&gt;% str_match(\"-\\\\s*(.*?)\\\\s*points\"))[,2]\n        ,score=bottle_final_score %&gt;% str_extract(\"(\\\\d)+\")%&gt;% as.numeric()           \n              ,review_year_flag=ifelse(review_year&gt;=2020,'&gt;=2020','&lt;2020')    \n    ) %&gt;% arrange(desc(score))\n\n\n\n\nCode\ndata003=data002 %&gt;%  filter(review_date2&gt;='2010-01-01'\n                            ,score&lt;=98)\n                            #,score&gt;=70)\n\n\n\n\nCode\nglimpse(data003)\n\n\n\n\nCode\nlibrary(scales)\ntest001a=data003 %&gt;% filter(review_year&gt;=2018) %&gt;% group_by(score) %&gt;% summarise(n=n()) %&gt;% mutate(percent = (n/sum(n))) %&gt;% arrange(desc(score)) %&gt;% mutate(review_year_flag='&gt;=2020')\n\n\n\n\nCode\nlibrary(scales)\ntest001b=data003 %&gt;% filter(review_year&lt;2018) %&gt;% group_by(score) %&gt;% summarise(n=n()) %&gt;% mutate(percent = (n/sum(n))) %&gt;% arrange(desc(score)) %&gt;% mutate(review_year_flag='&lt;2020')\n\n\n\n\nCode\ntest001c=rbind(test001a,test001b) %&gt;% filter(score&gt;=75)\n\n\n\n\nCode\np=ggplot(test001c, aes(score,percent,color=review_year_flag)) + geom_point()+ geom_line()\np\n\n\n\n\nCode\nggplot(data003, aes(score,fill=review_year_flag))+geom_histogram(position = 'dodge')\n\n\n\n\nCode\nggplot(test001b, aes(x=score,y=percent))+ geom_bar(stat=\"identity\")\n\n\n\n\nCode\nggplot(data003, aes(score)) + \n  geom_histogram()\n\n\n\n\nCode\np=ggplot(data003, aes(review_date2, score)) + geom_point()\np\n\n\n\n\nCode\ndata004=data003 %&gt;% mutate(above_90=ifelse(score&gt;=90,1,0)) %&gt;% group_by(review_year) %&gt;% summarise(n=n()\n                                            ,avg_score=mean(score)\n                                            ,above_90=sum(above_90)\n                                            )\n\n\n\n\nCode\np=ggplot(data004, aes(review_year,above_90/n)) + geom_point()+ geom_line()\np\n\n\n\n\nCode\np=ggplot(data004, aes(review_year,avg_score)) + geom_point()+ geom_line()\np\n\n\n\n\nCode\np=ggplot(data004, aes(review_year,n)) + geom_point()+ geom_line()\np\n\n\n\n\nCode\np=ggplot(data003, aes(review_year,score,color=as.character(review_year)))  + geom_boxplot()\np\n\n\n\n\n2 ouput\n\n\nCode\nwrite.xlsx(data003,'all_page_review_after_clean.xlsx')\n\n\n\n\n3 reference\n%d = Day number of month (5, 17, 28, etc.)\n%j = Day number of the year (Julian day 001-366)\n%a = Abbreviated weekday (Mon, Tue, Wed, etc.)\n%A = Full weekday (Monday, Tuesday, etc.) %w = Weekday number (0-6, Sunday is 0)\n%u = Weekday number (1-7, Monday is 1)\n%W = Week number (00-53, Monday is week start)\n%U = Week number (01-53, Sunday is week start)\n%m = Month number (e.g. 01, 02, 03, 04)\n%b = Abbreviated month (Jan, Feb, etc.)\n%B = Full month (January, February, etc.)\n%y = 2-digit year (e.g. 89)\n%Y = 4-digit year (e.g. 1989)\n%h = hours (24-hr clock)\n%m = minutes\n%s = seconds %z = offset from GMT\n%Z = Time zone (character)\nhttps://epirhandbook.com/en/working-with-dates.html\n\n\n\n\n\n\n Back to top",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(stringr)\nlibrary(openxlsx)\nlibrary(readxl)\nlibrary(lubridate)\nlibrary(ggplot2)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 input\n\n\nCode\ndata001=read_excel('./output/all_page_review_all_v2.xlsx')\n\n\n\n\nCode\nglimpse(data001)\n\n\n\n\nCode\ndata002=data001%&gt;% mutate(\n  \n  bottle_review2=bottle_review2%&gt;% str_replace(\"–\", \"-\")%&gt;% str_replace(\"Palate\", \"Mouth\")\n  ,name=paste0(str_extract(bottle_review2, regex( \"[^)]+\")),\")\")\n  ,distillery=bottle_review2 %&gt;% str_extract(\".*?\\\\d\")%&gt;% str_sub(end=-3)\n  \n  ,colour=(bottle_review2 %&gt;% str_match(\"Colour:\\\\s*(.*?)\\\\s*\\\\.\"))[,2]\n  ,nose=(bottle_review2 %&gt;% str_match(\"Nose\\\\s*(.*?)\\\\s*Mouth\"))[,2]\n  ,mouth=(bottle_review2 %&gt;% str_match(\"Mouth\\\\s*(.*?)\\\\s*Finish\"))[,2]\n  ,finish=(bottle_review2 %&gt;% str_match(\"Finish:\\\\s*(.*?)\\\\s*Comments\"))[,2]\n  ,comments=(bottle_review2 %&gt;% str_match(\"Comments:\\\\s*(.*?)\\\\s*SGP\"))[,2]\n  \n  #,full_score=(bottle_review2 %&gt;%str_match_all(\"[:digit:][:digit:][:space:]points.\"))%&gt;% sapply(tail, 1)\n  ,full_score=(bottle_review2 %&gt;%str_match_all(\"[:digit:][:digit:][:space:]points.\"))%&gt;% sapply(tail, 1)\n  ,score=full_score %&gt;% str_replace(\"points.\",\"\") %&gt;% as.numeric()\n  \n  ,review_date=((str_match(old_page %&gt;%str_to_lower(),\"https://www.whiskyfun.com/archive\\\\s*(.*?)\\\\s*-\"))[,2] )%&gt;% str_to_title()\n \n  ,review_date2= myd(review_date, truncated = 1)\n  ,review_date2=if_else(is.na(review_date)==TRUE,today(),review_date2)\n  \n  ,review_year=year(review_date2)\n) %&gt;% unique()\n\nglimpse(data002)\n\n\n\n\nCode\ncols=names(data002)\ntest001=data002 %&gt;%filter(if_any(.cols = cols, .fns = ~is.na(.x)))\nglimpse(test001)\n\n\n\n\nCode\nwrite.xlsx(data002,'./output/all_page_review_clean_v2.xlsx')\n\n\n\n\nCode\ntest001=data002 %&gt;% filter(bottle_review2 %&gt;% str_sub(1,4)=='Nose'|bottle_review2 %&gt;% str_sub(1,6)=='Colour'|bottle_review2 %&gt;% str_sub(1,5)=='Mouth'|bottle_review2 %&gt;% str_sub(1,6)=='Finish'|bottle_review2 %&gt;% str_sub(1,8)=='Comments')\n\n\n\n\nCode\nglimpse(test001)\n\n\n\n\nCode\ntest002=test001 %&gt;% head()\n\n\n\n\nCode\nreview_html_elements=\".textegrandfoncegras , .TextenormalNEW, .Textenormal,td &gt; font,div td font\"\n\nbottle_review_up1_list=c()\nbottle_review_up2_list=c()\n\nfor (i in test002$bottle_review2){\n  #print(i)\n  link=(test002 %&gt;% filter(bottle_review2==i))$old_page\n  print(link)\n  page=read_html(curl(link, handle = curl::new_handle(\"useragent\" = \"Mozilla/5.0\")))\n  bottle_review=page  %&gt;% html_elements(review_html_elements) %&gt;% html_text2()\n  \n  bottle_review=unique(bottle_review[bottle_review != \"\"])\n  \n  index_num=match(i,bottle_review)\n  \n  bottle_review_up1=bottle_review[index_num-1]\n  bottle_review_up2=bottle_review[index_num-2]\n  \n  bottle_review_up1_list=c(bottle_review_up1_list,bottle_review_up1)\n  bottle_review_up2_list=c(bottle_review_up2_list,bottle_review_up2)\n}\n\n\n\n\n2 reference\n%d = Day number of month (5, 17, 28, etc.)\n%j = Day number of the year (Julian day 001-366)\n%a = Abbreviated weekday (Mon, Tue, Wed, etc.)\n%A = Full weekday (Monday, Tuesday, etc.) %w = Weekday number (0-6, Sunday is 0)\n%u = Weekday number (1-7, Monday is 1)\n%W = Week number (00-53, Monday is week start)\n%U = Week number (01-53, Sunday is week start)\n%m = Month number (e.g. 01, 02, 03, 04)\n%b = Abbreviated month (Jan, Feb, etc.)\n%B = Full month (January, February, etc.)\n%y = 2-digit year (e.g. 89)\n%Y = 4-digit year (e.g. 1989)\n%h = hours (24-hr clock)\n%m = minutes\n%s = seconds %z = offset from GMT\n%Z = Time zone (character)\nhttps://epirhandbook.com/en/working-with-dates.html\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Other",
       "3 Web scraping on whiskyfun.com",
@@ -1019,7 +1019,7 @@
     "href": "other/3 Web scraping on whiskyfun.com/4 whiskyfun all page.html",
     "title": "All page second time",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(stringr)\nlibrary(openxlsx)\nlibrary(readxl)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 all review page\n\n\n2 first page\n\n\nCode\nfirst_url='https://www.whiskyfun.com'\nfirst_page=read_html(first_url)\n\n\n\n\nCode\nlast_page &lt;- first_page %&gt;%\n  html_elements(css = \"a.textegrandfoncegras\")%&gt;% html_attr(\"href\")\n\n\n\n\n3 start from secound page\n\n\nCode\npage_list=c()\n\n\n\n\nCode\nurl='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'\n\npage=read_html(first_url)\n\nlast_page &lt;- (first_page %&gt;%html_elements(css = \"font:nth-child(1) strong a\")%&gt;%html_attr(\"href\"))[1]\n\nprint(last_page)\npage_list=c(page_list,last_page)\n\n\n\n\n4 start to download 500 pages\n\n\nCode\nlast_page='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'\n\npage_list=c()\ndata_list=tibble()\n\ni=0\na=0\n\nwhile (i &lt; 500) {\n  loop_num=i\n  print(paste0(\"current page: \",loop_num))\n  old_page=last_page\n  tryCatch({\n    page=read_html(last_page)\n    i=i+1\n    \n  Sys.sleep(runif(n=1, min=0.1, max=0.3))\n },error = function(msg){print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')\n    i=i-1\n    print(paste0(\"new i : \",i))\n    a=a+1\n    })\n   if(a&gt;10){break}\n  \n\n last_page &lt;- (page %&gt;%html_elements(css = \"font:nth-child(1) strong a\")%&gt;%html_attr(\"href\"))[1]\n  last_page=paste0('https://www.whiskyfun.com/',last_page)\n    \n  page_link_count=str_count(last_page,'www.whiskyfun.com')\n  last_page=ifelse(page_link_count==2,str_replace(last_page,\"https://www.whiskyfun.com/\",\"\"),last_page)\n  \n  last_page=last_page\n  print(last_page)\n  page_list=c(page_list,last_page)\n  \n  #######################\n  review_html_elements=\".textegrandfoncegras , .TextenormalNEW, .Textenormal,td &gt; font,div td font\"\n  bottle_review=page  %&gt;% html_elements(review_html_elements) %&gt;% html_text2()\n# remove space element\n\n  bottle_review1=bottle_review[bottle_review %&gt;% str_detect(' points')]\n\n  bottle_review2=bottle_review1[bottle_review1 %&gt;% str_detect('Nose:')]\n\n  bottle_review2=bottle_review2%&gt;% str_replace(\"Palate:\", \"Mouth\")%&gt;% str_replace(\"–\", \"-\")\n\n  bottle_name=str_extract(bottle_review2, regex( \"[^)]+\"))\n  bottle_name=paste0(bottle_name,\")\")\n  print(head(bottle_name,2))\n  print(paste0(\"this page have bottle: \",length(bottle_name)))\n  \n\n  ##### break the loop if can not download continue &gt;=3 pages\n  if (length(bottle_name)==1){fail_num=fail_num+1}else{fail_num=0}\n    \n  if (fail_num&gt;=3){\n    print(paste0(\"breaking page url: \",old_page))\n    break\n    }\n  ################################################################\n  \n  # res &lt;- str_match(bottle_review2, \" \\\\s*(.*?)\\\\s*points\")\n  # bottle_score=paste(\"SGP:\",res[,2],\" points\")%&gt;% str_replace(\"–\", \"-\")\n  # \n  # res &lt;- str_match(bottle_score, \" - \\\\s*(.*?)\\\\s*points\")\n  # bottle_final_score=res[,2]\n  # \n  # res &lt;- str_match(bottle_review2, \"Nose:\\\\s*(.*?)\\\\s*Mouth\")\n  # bottle_name_nose=paste(\"Nose:\",res[,2])\n  # \n  # res &lt;- str_match(bottle_review2, \"Mouth\\\\s*(.*?)\\\\s*Finish:\")\n  # bottle_name_mouth=paste(\"Mouth:\",res[,2])\n  # \n  # res &lt;- str_match(bottle_review2, \"Colour\\\\s*(.*?)\\\\s*\\\\.\")\n  # bottle_name_colour=paste(\"Colour \",res[,2])\n  # \n  # res &lt;- str_match(bottle_review2, \"Finish:\\\\s*(.*?)\\\\s*Comments:\")\n  # bottle_name_finish=paste(\"Finish:\",res[,2])\n  # \n  # res &lt;- str_match(bottle_review2, \"Comments:\\\\s*(.*?)\\\\s*SGP:\")\n  # bottle_name_comments=paste(\"Comments:\",res[,2])\n  # \n  # data=tibble(bottle_review2,bottle_name,bottle_name_nose,bottle_name_mouth,bottle_name_finish,bottle_name_colour,bottle_name_comments,bottle_score,bottle_final_score,old_page,loop_num) %&gt;% unique()\n  # \n  # data_list=rbind(data_list,data)\n  # print(paste0(\"total bootle downlaoded: \",nrow(data_list)))\n  data=tibble(bottle_review2,bottle_name,old_page,loop_num) %&gt;% unique()\n  data_list=rbind(data_list,data)\n  print(paste0(\"total bootle downlaoded: \",nrow(data_list)))\n  \n\n  ####### ouput every 10 page\n  if (i%%10==0){\n\n      print(paste0(\"output to excel: \", i))\n      write.xlsx(data_list,'all_page_review_all.xlsx')\n     }\n  \n  Sys.sleep(runif(n=1, min=0.1, max=0.5))\n}\n\nwrite.xlsx(data_list,'all_page_review_all.xlsx')\n\n\n\n\n5 after(https://www.whiskyfun.com/ArchiveSeptember04.html) start to download 10 pages\n\n\nCode\nlast_page='https://www.whiskyfun.com/ArchiveSeptember04.html'\nfail_num=0\npage_list=c()\ndata_list=tibble()\n\nfor (i in seq(1:100)){\n\n  print(paste0(\"current page\",i))\n  old_page=last_page\n  tryCatch({\n    page=read_html(last_page)\n    Sys.sleep(runif(n=1, min=0.1, max=0.5))\n  }, error=function(e){cat(\"ERROR :\",conditionMessage(e), \"\\n\")})\n  \n  Sys.sleep(runif(n=1, min=0.1, max=0.3))\n  \n  last_page &lt;- (page %&gt;%html_elements(\"font:nth-child(1) b a\")%&gt;%html_attr(\"href\"))[1]\n  last_page=paste0('https://www.whiskyfun.com/',last_page)\n    \n  page_link_count=str_count(last_page,'www.whiskyfun.com')\n  last_page=ifelse(page_link_count==2,str_replace(last_page,\"https://www.whiskyfun.com/\",\"\"),last_page)\n  \n  last_page=last_page\n  print(last_page)\n  page_list=c(page_list,last_page)\n  \n  #######################\n  review_html_elements=\".textegrandfoncegras , .TextenormalNEW, .Textenormal,td &gt; font,div td font\"\n  bottle_review=page  %&gt;% html_elements(review_html_elements) %&gt;% html_text2()\n# remove space element\n\n  bottle_review1=bottle_review[bottle_review %&gt;% str_detect(' points')]\n\n  bottle_review2=bottle_review1[bottle_review1 %&gt;% str_detect('Nose:')]\n\n  bottle_review2=bottle_review2%&gt;% str_replace(\"Palate:\", \"Mouth\")%&gt;% str_replace(\"–\", \"-\")\n\n  bottle_name=str_extract(bottle_review2, regex( \"[^)]+\"))\n  bottle_name=paste0(bottle_name,\")\")\n  print(head(bottle_name,1))\n  print(paste0(\"this page have bottle: \",length(bottle_name)))\n  \n\n  ##### break the loop if can not download continue &gt;=3 pages\n  if (length(bottle_name)==1){fail_num=fail_num+1}else{fail_num=0}\n    \n  if (fail_num&gt;=3){\n    print(paste0(\"breaking page url: \",old_page))\n    break\n    }\n  ################################################################\n  \n  res &lt;- str_match(bottle_review2, \" \\\\s*(.*?)\\\\s*points\")\n  bottle_score=paste(\"SGP:\",res[,2],\" points\")%&gt;% str_replace(\"–\", \"-\")\n\n  res &lt;- str_match(bottle_score, \" - \\\\s*(.*?)\\\\s*points\")\n  bottle_final_score=res[,2]\n\n  res &lt;- str_match(bottle_review2, \"Nose:\\\\s*(.*?)\\\\s*Mouth\")\n  bottle_name_nose=paste(\"Nose:\",res[,2])\n\n  res &lt;- str_match(bottle_review2, \"Mouth\\\\s*(.*?)\\\\s*Finish:\")\n  bottle_name_mouth=paste(\"Mouth:\",res[,2])\n\n  res &lt;- str_match(bottle_review2, \"Colour\\\\s*(.*?)\\\\s*\\\\.\")\n  bottle_name_colour=paste(\"Colour \",res[,2])\n\n  res &lt;- str_match(bottle_review2, \"Finish:\\\\s*(.*?)\\\\s*Comments:\")\n  bottle_name_finish=paste(\"Finish:\",res[,2])\n\n  res &lt;- str_match(bottle_review2, \"Comments:\\\\s*(.*?)\\\\s*SGP:\")\n  bottle_name_comments=paste(\"Comments:\",res[,2])\n\n  data=tibble(bottle_review2,bottle_name,bottle_name_nose,bottle_name_mouth,bottle_name_finish,bottle_name_colour,bottle_name_comments,bottle_score,bottle_final_score,old_page) %&gt;% unique()\n\n  data_list=rbind(data_list,data)\n  # ouput every 10 page\n  if (i%%10==0){\n      print(paste0(\"output to excel: \", i/10))\n      write.xlsx(data_list,'all_page_review_v2.xlsx')\n     }\n  \n  Sys.sleep(runif(n=1, min=0.1, max=0.5))\n}\n\nwrite.xlsx(data_list,'all_page_review_missing.xlsx')\n\n\n\n\n6 download missing pages with speical method\n\n\nCode\nmissing_page=c('https://www.whiskyfun.com/archiveaugust22-2-Speyburn-Caroni.html'\n               ,'https://www.whiskyfun.com/archivejuly22-2-Strathisla-Dufftown.html')\n\n\n\n\n7 ouput\n\n\nCode\nwrite.xlsx(data_list,'wf_all_page_review.xlsx')\n#write.xlsx(page_list_data,'all_page_link.xlsx')\n\n\n\n\n8 whiskyfun first page\nhttps://www.whiskyfun.com/ArchiveJan04.html\n\n\n9 whiskyfun last muic page\nhttps://www.whiskyfun.com/archivejanuary18-1-Linkwood-Ardmore-Clynelish.html\n\n\n\n\n\n\n Back to top",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(curl)\nlibrary(stringr)\nlibrary(openxlsx)\nlibrary(readxl)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 all review page\n\n\n2 first page\n\n\nCode\nfirst_url='https://www.whiskyfun.com'\nfirst_page=read_html(first_url)\n\n\n\n\nCode\nlast_page &lt;- first_page %&gt;%\n  html_elements(css = \"a.textegrandfoncegras\")%&gt;% html_attr(\"href\")\n\n\n\n\n3 start from secound page\n\n\nCode\npage_list=c()\n\n\n\n\nCode\nurl='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'\n\npage=read_html(first_url)\n\nlast_page &lt;- (first_page %&gt;%html_elements(css = \"font:nth-child(1) strong a\")%&gt;%html_attr(\"href\"))[1]\n\nprint(last_page)\npage_list=c(page_list,last_page)\n\n\n\n\n4 start to download 500 pages\n\n\nCode\nlast_page='https://www.whiskyfun.com/'\n\npage_list=c()\ndata_list=tibble()\n\ni=0\na=0\n\nwhile (i &lt; 500) {\n  loop_num=i\n  print(paste0(\"current page: \",loop_num))\n\n  tryCatch({\n    #page=read_html(last_page)\n    old_page=last_page\n    page=read_html(curl(last_page, handle = curl::new_handle(\"useragent\" = \"Mozilla/5.0\")))\n    i=i+1\n    \n  Sys.sleep(runif(n=1, min=0.1, max=0.3))\n },error = function(msg){print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')\n    i=i-1\n    print(paste0(\"new i : \",i))\n    a=a+1\n    })\n   if(a&gt;10){break}\n  \n\n##############################################\n  #if (last_page %&gt;% is.na()==TRUE){break}\n\n  ### first page\n   if(last_page=='https://www.whiskyfun.com/'){\n    last_page &lt;- (page %&gt;%html_elements(css = \"a.textegrandfoncegras\")%&gt;%html_attr(\"href\"))[1]\n    \n  #### all other     \n    }else {\n  last_page &lt;- (page %&gt;%html_elements(css = \"font:nth-child(1) strong a\")%&gt;%html_attr(\"href\"))[1]\n   ###  before 2004 oct\n  if(last_page %&gt;% is.na()==TRUE){\n    last_page &lt;- (page %&gt;%html_elements(css = \"font:nth-child(1) b a\")%&gt;%html_attr(\"href\"))[1]\n  }\n    }\n  \n  if(last_page%&gt;% str_sub(1,26)=='https://www.whiskyfun.com/'){\n    last_page=last_page}else{\n  last_page=paste0('https://www.whiskyfun.com/',last_page)\n    }\n  \n  print(last_page)\n  #if (last_page %in% page_list|last_page==\"https://www.whiskyfun.com/http://www.lambchop.net/\"){break}\n  page_list=c(page_list,last_page)\n  Sys.sleep(runif(n=1, min=0.1, max=0.8))\n  \n  \n  #######################\n  review_html_elements=\".textegrandfoncegras , .TextenormalNEW, .Textenormal,td &gt; font,div td font\"\n  bottle_review=page  %&gt;% html_elements(review_html_elements) %&gt;% html_text2()\n# remove space element\n\n  bottle_review1=bottle_review[bottle_review %&gt;% str_detect(' points')]\n\n  bottle_review2=bottle_review1[bottle_review1 %&gt;% str_detect('Nose:')]\n\n  bottle_review2=bottle_review2%&gt;% str_replace(\"Palate:\", \"Mouth\")%&gt;% str_replace(\"–\", \"-\")\n\n  bottle_name=str_extract(bottle_review2, regex( \"[^)]+\"))\n  bottle_name=paste0(bottle_name,\")\")\n  print(head(bottle_name,2))\n  print(paste0(\"this page have bottle: \",length(bottle_name)))\n  \n\n  ##### break the loop if can not download continue &gt;=3 pages\n  if (length(bottle_name)==1){fail_num=fail_num+1}else{fail_num=0}\n    \n  if (fail_num&gt;=3){\n    print(paste0(\"breaking page url: \",old_page))\n    break\n    }\n  ################################################################\n  \n  # res &lt;- str_match(bottle_review2, \" \\\\s*(.*?)\\\\s*points\")\n  # bottle_score=paste(\"SGP:\",res[,2],\" points\")%&gt;% str_replace(\"–\", \"-\")\n  # \n  # res &lt;- str_match(bottle_score, \" - \\\\s*(.*?)\\\\s*points\")\n  # bottle_final_score=res[,2]\n  # \n  # res &lt;- str_match(bottle_review2, \"Nose:\\\\s*(.*?)\\\\s*Mouth\")\n  # bottle_name_nose=paste(\"Nose:\",res[,2])\n  # \n  # res &lt;- str_match(bottle_review2, \"Mouth\\\\s*(.*?)\\\\s*Finish:\")\n  # bottle_name_mouth=paste(\"Mouth:\",res[,2])\n  # \n  # res &lt;- str_match(bottle_review2, \"Colour\\\\s*(.*?)\\\\s*\\\\.\")\n  # bottle_name_colour=paste(\"Colour \",res[,2])\n  # \n  # res &lt;- str_match(bottle_review2, \"Finish:\\\\s*(.*?)\\\\s*Comments:\")\n  # bottle_name_finish=paste(\"Finish:\",res[,2])\n  # \n  # res &lt;- str_match(bottle_review2, \"Comments:\\\\s*(.*?)\\\\s*SGP:\")\n  # bottle_name_comments=paste(\"Comments:\",res[,2])\n  # \n  # data=tibble(bottle_review2,bottle_name,bottle_name_nose,bottle_name_mouth,bottle_name_finish,bottle_name_colour,bottle_name_comments,bottle_score,bottle_final_score,old_page,loop_num) %&gt;% unique()\n  # \n  # data_list=rbind(data_list,data)\n  # print(paste0(\"total bootle downlaoded: \",nrow(data_list)))\n  data=tibble(bottle_review2,bottle_name,old_page,loop_num) %&gt;% unique()\n  data_list=rbind(data_list,data)\n  print(paste0(\"total bootle downlaoded: \",nrow(data_list)))\n  \n\n  ####### ouput every 10 page\n  if (i%%10==0){\n\n      print(paste0(\"output to excel: \", i))\n      write.xlsx(data_list,'all_page_review_all_v2.xlsx')\n     }\n  \n  Sys.sleep(runif(n=1, min=0.1, max=0.3))\n}\n\ndata_list=data_list %&gt;% select(-loop_num)%&gt;% unique()\nwrite.xlsx(data_list,'./output/all_page_review_all_v2.xlsx')\n\n\n\n\n5 whiskyfun first page\nhttps://www.whiskyfun.com/ArchiveJan04.html\n\n\n6 whiskyfun last muic page\nhttps://www.whiskyfun.com/archivejanuary18-1-Linkwood-Ardmore-Clynelish.html\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Other",
       "3 Web scraping on whiskyfun.com",
@@ -1216,8 +1216,8 @@
     "objectID": "Plot/2 plotly.html#color-by-group-1",
     "href": "Plot/2 plotly.html#color-by-group-1",
     "title": "Plotly in R",
-    "section": "1.4 color by group",
-    "text": "1.4 color by group\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines')\nfig",
+    "section": "1.5 color by group",
+    "text": "1.5 color by group\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines')\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -1337,8 +1337,8 @@
     "objectID": "Plot/2 plotly.html#add-footnote",
     "href": "Plot/2 plotly.html#add-footnote",
     "title": "Plotly in R",
-    "section": "7.4 add footnote",
-    "text": "7.4 add footnote\n\n\nCode\nfig%&gt;% layout(annotations = \n                         list(x = 0, y = -0.1, \n                              text = \"this is footnote\", \n                              showarrow = F, \n                              xref='paper', \n                              yref='paper')\n    )",
+    "section": "7.5 add footnote",
+    "text": "7.5 add footnote\n\n\nCode\nfig%&gt;% layout(annotations = \n                         list(x = 0, y = -0.1, \n                              text = \"this is footnote\", \n                              showarrow = F, \n                              xref='paper', \n                              yref='paper')\n    )",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -1348,8 +1348,8 @@
     "objectID": "Plot/2 plotly.html#legend",
     "href": "Plot/2 plotly.html#legend",
     "title": "Plotly in R",
-    "section": "7.5 legend",
-    "text": "7.5 legend\n\n7.5.1 hide legend\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(showlegend = FALSE)\nfig\n\n\n\n\n\n\n\n\n7.5.2 show legend and change legend name\n\n\nCode\nfig &lt;- plot_ly(data = data002 %&gt;% filter(continent=='Asia'), x = ~year, y = ~pop,color = ~continent,mode = 'lines',name='Asia pop') %&gt;% layout(showlegend = TRUE)\nfig\n\n\n\n\n\n\n\n\n7.5.3 change legend and change legend Position\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(legend = list(orientation = 'h'))\n\nfig",
+    "section": "7.6 legend",
+    "text": "7.6 legend\n\n7.6.1 hide legend\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(showlegend = FALSE)\nfig\n\n\n\n\n\n\n\n\n7.6.2 show legend and change legend name\n\n\nCode\nfig &lt;- plot_ly(data = data002 %&gt;% filter(continent=='Asia'), x = ~year, y = ~pop,color = ~continent,mode = 'lines',name='Asia pop') %&gt;% layout(showlegend = TRUE)\nfig\n\n\n\n\n\n\n\n\n7.6.3 change legend and change legend Position\n\n\nCode\nfig &lt;- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'lines') %&gt;% layout(legend = list(orientation = 'h'))\n\nfig",
     "crumbs": [
       "Plot",
       "Plotly in R"
@@ -2196,7 +2196,7 @@
     "href": "data manipulation/2 data structure in R.html#create-random-vector",
     "title": "Data structure in R",
     "section": "1.3 create random vector",
-    "text": "1.3 create random vector\ncreate 5 random number from 1 to 10 without replacement\n\n\nCode\nsample(1:10,5, replace=F) \n\n\n[1] 5 4 6 7 2\n\n\ncreate 5 random number from 1 to 10 with replacement\n\n\nCode\nsample(1:10,5, replace=T) \n\n\n[1]  1  1  7  9 10\n\n\ncreate 1 random number from 0 to 1 from random uniform distribution\n\n\nCode\nrunif(1, min=0, max=1)\n\n\n[1] 0.4916644\n\n\ngenerate 4 random number that follows the normal distribution with mean being 0 and standard deviation being 1\n\n\nCode\nsn1 &lt;- rnorm(4, mean=0, sd=1) # standard nromal\nsn1\n\n\n[1]  1.2887053 -0.4671360  0.7490033  0.5851018",
+    "text": "1.3 create random vector\ncreate 5 random number from 1 to 10 without replacement\n\n\nCode\nsample(1:10,5, replace=F) \n\n\n[1] 4 6 7 9 5\n\n\ncreate 5 random number from 1 to 10 with replacement\n\n\nCode\nsample(1:10,5, replace=T) \n\n\n[1] 4 7 1 4 8\n\n\ncreate 1 random number from 0 to 1 from random uniform distribution\n\n\nCode\nrunif(1, min=0, max=1)\n\n\n[1] 0.4145574\n\n\ngenerate 4 random number that follows the normal distribution with mean being 0 and standard deviation being 1\n\n\nCode\nsn1 &lt;- rnorm(4, mean=0, sd=1) # standard nromal\nsn1\n\n\n[1]  0.02581398  1.12306894 -0.89522470 -0.56427842",
     "crumbs": [
       "data manipulation",
       "Data structure in R"
@@ -2283,8 +2283,8 @@
     "objectID": "data manipulation/2 data structure in R.html#vector-converting-between-types",
     "href": "data manipulation/2 data structure in R.html#vector-converting-between-types",
     "title": "Data structure in R",
-    "section": "1.11 vector Converting between types",
-    "text": "1.11 vector Converting between types\n\n1.11.1 to factor\n\n\nCode\nx &lt;- c(\"a\", \"g\", \"b\")\ny=as.factor(x)\ny\n\n\n[1] a g b\nLevels: a b g\n\n\n\n\n1.11.2 to numeric\n\n\nCode\nx &lt;- c('123','44', '222')\ny=as.numeric(x)\ny\n\n\n[1] 123  44 222\n\n\n\n\n1.11.3 to character\n\n\nCode\nx &lt;- c(123123,111,5555)\ny=as.character(x)\ny\n\n\n[1] \"123123\" \"111\"    \"5555\"  \n\n\n\n\n1.11.4 to boolen\n\n\nCode\nx &lt;- c(1,0,1)\ny=as.logical(x)\ny\n\n\n[1]  TRUE FALSE  TRUE",
+    "section": "1.12 vector Converting between types",
+    "text": "1.12 vector Converting between types\n\n1.12.1 to factor\n\n\nCode\nx &lt;- c(\"a\", \"g\", \"b\")\ny=as.factor(x)\ny\n\n\n[1] a g b\nLevels: a b g\n\n\n\n\n1.12.2 to numeric\n\n\nCode\nx &lt;- c('123','44', '222')\ny=as.numeric(x)\ny\n\n\n[1] 123  44 222\n\n\n\n\n1.12.3 to character\n\n\nCode\nx &lt;- c(123123,111,5555)\ny=as.character(x)\ny\n\n\n[1] \"123123\" \"111\"    \"5555\"  \n\n\n\n\n1.12.4 to boolen\n\n\nCode\nx &lt;- c(1,0,1)\ny=as.logical(x)\ny\n\n\n[1]  TRUE FALSE  TRUE",
     "crumbs": [
       "data manipulation",
       "Data structure in R"
@@ -2294,8 +2294,8 @@
     "objectID": "data manipulation/2 data structure in R.html#vector-to-other-data-format",
     "href": "data manipulation/2 data structure in R.html#vector-to-other-data-format",
     "title": "Data structure in R",
-    "section": "1.12 vector to other data format",
-    "text": "1.12 vector to other data format\n\n1.12.1 vector to dataframe\n\n\nCode\nName &lt;- c(\"Jhon\", \"Lee\", \"Suzan\", \"Abhinav\", \n          \"Brain\", \"Emma\", \"David\", \"Alice\") \n\n   \nMarks &lt;- c(56, 76, 86, 96, 73, 87, 47, 98) \n    \n\ndata&lt;- data.frame(Name,Marks) \ndata\n\n\n     Name Marks\n1    Jhon    56\n2     Lee    76\n3   Suzan    86\n4 Abhinav    96\n5   Brain    73\n6    Emma    87\n7   David    47\n8   Alice    98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"data.frame\"\n\n\n\n\n1.12.2 verctor to matrix\n\n\nCode\nv1 &lt;- c(56, 76, 86, 96, 73, 87, 47, 98) \n\n\n\n\nCode\ndata&lt;-matrix(v1,nrow=4)\ndata\n\n\n     [,1] [,2]\n[1,]   56   73\n[2,]   76   87\n[3,]   86   47\n[4,]   96   98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"matrix\" \"array\" \n\n\nother way:\n\n\nCode\ndata&lt;-matrix(c(v1,v1),ncol = 2)\ndata\n\n\n     [,1] [,2]\n[1,]   56   56\n[2,]   76   76\n[3,]   86   86\n[4,]   96   96\n[5,]   73   73\n[6,]   87   87\n[7,]   47   47\n[8,]   98   98\n\n\n\n\n1.12.3 verctor to list\n\n\nCode\ndata=list(v1)\ndata\n\n\n[[1]]\n[1] 56 76 86 96 73 87 47 98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"list\"\n\n\neach element in vetor as a element in list\n\n\nCode\ndata=as.list(v1)\ndata\n\n\n[[1]]\n[1] 56\n\n[[2]]\n[1] 76\n\n[[3]]\n[1] 86\n\n[[4]]\n[1] 96\n\n[[5]]\n[1] 73\n\n[[6]]\n[1] 87\n\n[[7]]\n[1] 47\n\n[[8]]\n[1] 98\n\n\n\n\n1.12.4 verctor to array\n3D array\n\n\nCode\nvec1=c(1:5) \n \nvec2=c(6:10) \n \narr=array(c(vec1,vec2),dim=c(2,5,3)) \n \n# printing the array\nclass(arr)\n\n\n[1] \"array\"\n\n\n\n\nCode\narr\n\n\n, , 1\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    7    9\n[2,]    2    4    6    8   10\n\n, , 2\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    7    9\n[2,]    2    4    6    8   10\n\n, , 3\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    7    9\n[2,]    2    4    6    8   10",
+    "section": "1.13 vector to other data format",
+    "text": "1.13 vector to other data format\n\n1.13.1 vector to dataframe\n\n\nCode\nName &lt;- c(\"Jhon\", \"Lee\", \"Suzan\", \"Abhinav\", \n          \"Brain\", \"Emma\", \"David\", \"Alice\") \n\n   \nMarks &lt;- c(56, 76, 86, 96, 73, 87, 47, 98) \n    \n\ndata&lt;- data.frame(Name,Marks) \ndata\n\n\n     Name Marks\n1    Jhon    56\n2     Lee    76\n3   Suzan    86\n4 Abhinav    96\n5   Brain    73\n6    Emma    87\n7   David    47\n8   Alice    98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"data.frame\"\n\n\n\n\n1.13.2 verctor to matrix\n\n\nCode\nv1 &lt;- c(56, 76, 86, 96, 73, 87, 47, 98) \n\n\n\n\nCode\ndata&lt;-matrix(v1,nrow=4)\ndata\n\n\n     [,1] [,2]\n[1,]   56   73\n[2,]   76   87\n[3,]   86   47\n[4,]   96   98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"matrix\" \"array\" \n\n\nother way:\n\n\nCode\ndata&lt;-matrix(c(v1,v1),ncol = 2)\ndata\n\n\n     [,1] [,2]\n[1,]   56   56\n[2,]   76   76\n[3,]   86   86\n[4,]   96   96\n[5,]   73   73\n[6,]   87   87\n[7,]   47   47\n[8,]   98   98\n\n\n\n\n1.13.3 verctor to list\n\n\nCode\ndata=list(v1)\ndata\n\n\n[[1]]\n[1] 56 76 86 96 73 87 47 98\n\n\n\n\nCode\nclass(data)\n\n\n[1] \"list\"\n\n\neach element in vetor as a element in list\n\n\nCode\ndata=as.list(v1)\ndata\n\n\n[[1]]\n[1] 56\n\n[[2]]\n[1] 76\n\n[[3]]\n[1] 86\n\n[[4]]\n[1] 96\n\n[[5]]\n[1] 73\n\n[[6]]\n[1] 87\n\n[[7]]\n[1] 47\n\n[[8]]\n[1] 98\n\n\n\n\n1.13.4 verctor to array\n3D array\n\n\nCode\nvec1=c(1:5) \n \nvec2=c(6:10) \n \narr=array(c(vec1,vec2),dim=c(2,5,3)) \n \n# printing the array\nclass(arr)\n\n\n[1] \"array\"\n\n\n\n\nCode\narr\n\n\n, , 1\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    7    9\n[2,]    2    4    6    8   10\n\n, , 2\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    7    9\n[2,]    2    4    6    8   10\n\n, , 3\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    7    9\n[2,]    2    4    6    8   10",
     "crumbs": [
       "data manipulation",
       "Data structure in R"
@@ -2438,7 +2438,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#filter-rows",
     "title": "Data manipulation with tidyverse",
     "section": "2.9 Filter rows",
-    "text": "2.9 Filter rows\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3    Hornet 4 Drive   6 21.4 110\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105\n\n\n\n2.9.1 Filters with AND conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5,mpg&gt;20)\n\n\n        car_name cyl  mpg  hp\n1      Mazda RX4   6 21.0 110\n2  Mazda RX4 Wag   6 21.0 110\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n\n2.9.2 Filters with OR conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5|mpg&gt;20)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105\n\n\n\n\n2.9.3 filter row with index\n\n2.9.3.1 5th rows\n\n\nCode\nsmall_mtcars %&gt;% slice(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.2 1 and 5h rows\n\n\nCode\nsmall_mtcars %&gt;% slice(1:5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.3 get ramdon 5 rows\n\n\nCode\nsmall_mtcars %&gt;% sample_n(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n2     Mazda RX4 Wag   6 21.0 110\n3         Mazda RX4   6 21.0 110\n4        Datsun 710   4 22.8  93\n5           Valiant   6 18.1 105",
+    "text": "2.9 Filter rows\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3    Hornet 4 Drive   6 21.4 110\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105\n\n\n\n2.9.1 Filters with AND conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5,mpg&gt;20)\n\n\n        car_name cyl  mpg  hp\n1      Mazda RX4   6 21.0 110\n2  Mazda RX4 Wag   6 21.0 110\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n\n2.9.2 Filters with OR conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5|mpg&gt;20)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105\n\n\n\n\n2.9.3 filter row with index\n\n2.9.3.1 5th rows\n\n\nCode\nsmall_mtcars %&gt;% slice(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.2 1 and 5h rows\n\n\nCode\nsmall_mtcars %&gt;% slice(1:5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.3 get ramdon 5 rows\n\n\nCode\nsmall_mtcars %&gt;% sample_n(5)\n\n\n        car_name cyl  mpg  hp\n1 Hornet 4 Drive   6 21.4 110\n2      Mazda RX4   6 21.0 110\n3        Valiant   6 18.1 105\n4     Datsun 710   4 22.8  93\n5  Mazda RX4 Wag   6 21.0 110",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -2537,7 +2537,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#match",
     "title": "Data manipulation with tidyverse",
     "section": "3.4 match",
-    "text": "3.4 match\n\n\nCode\ntrx='abc1993'\n\nnum=str_match(trx, \"(\\\\d)+\")\n\nnum\n\n\n     [,1]   [,2]\n[1,] \"1993\" \"3\"",
+    "text": "3.4 match\n\n\nCode\nword_list=c('abc','bbc','appale','bbaa','cc')\n\n\n\n3.4.1 match with ‘a’\n\n\nCode\nword_list %&gt;% str_detect('a')\n\n\n[1]  TRUE FALSE  TRUE  TRUE FALSE\n\n\n\n\n3.4.2 match with ‘a’ count\n\n\nCode\nword_list %&gt;% str_count('a')\n\n\n[1] 1 0 2 2 0\n\n\n\n\n3.4.3 index of vector match\n\n\nCode\nword_list %&gt;% str_which('a')\n\n\n[1] 1 3 4\n\n\n\n\n3.4.4 index of each word match (first match)\n\n\nCode\nword_list %&gt;% str_locate('a')\n\n\n     start end\n[1,]     1   1\n[2,]    NA  NA\n[3,]     1   1\n[4,]     3   3\n[5,]    NA  NA\n\n\n\n\n3.4.5 index of each word match (all match)\n\n\nCode\nword_list %&gt;% str_locate_all('a')\n\n\n[[1]]\n     start end\n[1,]     1   1\n\n[[2]]\n     start end\n\n[[3]]\n     start end\n[1,]     1   1\n[2,]     4   4\n\n[[4]]\n     start end\n[1,]     3   3\n[2,]     4   4\n\n[[5]]\n     start end\n\n\n\n\nCode\ntrx='abc1993'\n\nnum=str_match(trx, \"(\\\\d)+\")\n\nnum\n\n\n     [,1]   [,2]\n[1,] \"1993\" \"3\"",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -2569,8 +2569,8 @@
     "objectID": "data manipulation/3 data manipulation with tidyverse.html#extract",
     "href": "data manipulation/3 data manipulation with tidyverse.html#extract",
     "title": "Data manipulation with tidyverse",
-    "section": "3.7 extract",
-    "text": "3.7 extract\n\n\nCode\ndata001=mtcars\ndata001 &lt;- cbind(names = rownames(data001), data001)\n\n\n\n3.7.1 subset string by postion\nextract 2 to 4\n\n\nCode\ndata001$new_names=data001$names %&gt;% str_sub(2,4)\nhead(data001 %&gt;% select(new_names,names))\n\n\n                  new_names             names\nMazda RX4               azd         Mazda RX4\nMazda RX4 Wag           azd     Mazda RX4 Wag\nDatsun 710              ats        Datsun 710\nHornet 4 Drive          orn    Hornet 4 Drive\nHornet Sportabout       orn Hornet Sportabout\nValiant                 ali           Valiant\n\n\n\n\n3.7.2 extracting number from a string\n\n\nCode\ntrx='abc1993 ccc'\n\nnum=str_extract(trx, \"(\\\\d)+\")\n\nnum\n\n\n[1] \"1993\"",
+    "section": "3.8 extract",
+    "text": "3.8 extract\n\n\nCode\ndata001=mtcars\ndata001 &lt;- cbind(names = rownames(data001), data001)\n\n\n\n3.8.1 subset string by postion\nextract 2 to 4\n\n\nCode\ndata001$new_names=data001$names %&gt;% str_sub(2,4)\nhead(data001 %&gt;% select(new_names,names))\n\n\n                  new_names             names\nMazda RX4               azd         Mazda RX4\nMazda RX4 Wag           azd     Mazda RX4 Wag\nDatsun 710              ats        Datsun 710\nHornet 4 Drive          orn    Hornet 4 Drive\nHornet Sportabout       orn Hornet Sportabout\nValiant                 ali           Valiant\n\n\n\n\n3.8.2 extracting number from a string\n\n\nCode\ntrx='abc1993 ccc'\n\nnum=str_extract(trx, \"(\\\\d)+\")\n\nnum\n\n\n[1] \"1993\"",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -2581,7 +2581,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#date-format",
     "title": "Data manipulation with tidyverse",
     "section": "4.1 date format",
-    "text": "4.1 date format\ninput as character\n\n\nCode\ndate1='2023-01-01'\nclass(date1)\n\n\n[1] \"character\"\n\n\n\n\nCode\ndate1\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with as.Date()\n\n\nCode\ndate2=as.Date('2023-01-01')\nclass(date2)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate2\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with ymd()\n\n\nCode\ndate3=ymd('2023-01-01')\nclass(date3)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate3\n\n\n[1] \"2023-01-01\"\n\n\nget today with today()\n\n\nCode\ntoday()\n\n\n[1] \"2024-05-01\"\n\n\nget local timezone\n\n\nCode\nSys.timezone()\n\n\n[1] \"Asia/Shanghai\"",
+    "text": "4.1 date format\ninput as character\n\n\nCode\ndate1='2023-01-01'\nclass(date1)\n\n\n[1] \"character\"\n\n\n\n\nCode\ndate1\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with as.Date()\n\n\nCode\ndate2=as.Date('2023-01-01')\nclass(date2)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate2\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with ymd()\n\n\nCode\ndate3=ymd('2023-01-01')\nclass(date3)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate3\n\n\n[1] \"2023-01-01\"\n\n\nget today with today()\n\n\nCode\ntoday()\n\n\n[1] \"2024-05-25\"\n\n\nget local timezone\n\n\nCode\nSys.timezone()\n\n\n[1] \"Asia/Shanghai\"",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -2614,7 +2614,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#day-and-time",
     "title": "Data manipulation with tidyverse",
     "section": "4.4 day and time",
-    "text": "4.4 day and time\n\n\nCode\nnow_time=now()\nnow_time\n\n\n[1] \"2024-05-01 16:44:20 CST\"\n\n\n\n4.4.1 get year\n\n\nCode\nyear(now_time)\n\n\n[1] 2024\n\n\n\n\n4.4.2 get month\n\n\nCode\nmonth(now_time)\n\n\n[1] 5\n\n\n\n\n4.4.3 get date of the month\n\n\nCode\nmday(now_time)\n\n\n[1] 1\n\n\n\n\n4.4.4 get date of the year\n\n\nCode\nyday(now_time)\n\n\n[1] 122\n\n\n\n\n4.4.5 get date of the week\n\n\nCode\nwday(now_time)\n\n\n[1] 4\n\n\n\n4.4.5.1 get hour\n\n\nCode\nhour(now_time)\n\n\n[1] 16\n\n\n\n\n\n4.4.6 get minute\n\n\nCode\nminute(now_time)\n\n\n[1] 44\n\n\n\n\n4.4.7 get second\n\n\nCode\nsecond(now_time)\n\n\n[1] 20.81399",
+    "text": "4.4 day and time\n\n\nCode\nnow_time=now()\nnow_time\n\n\n[1] \"2024-05-25 16:43:06 CST\"\n\n\n\n4.4.1 get year\n\n\nCode\nyear(now_time)\n\n\n[1] 2024\n\n\n\n\n4.4.2 get month\n\n\nCode\nmonth(now_time)\n\n\n[1] 5\n\n\n\n\n4.4.3 get date of the month\n\n\nCode\nmday(now_time)\n\n\n[1] 25\n\n\n\n\n4.4.4 get date of the year\n\n\nCode\nyday(now_time)\n\n\n[1] 146\n\n\n\n\n4.4.5 get date of the week\n\n\nCode\nwday(now_time)\n\n\n[1] 7\n\n\n\n4.4.5.1 get hour\n\n\nCode\nhour(now_time)\n\n\n[1] 16\n\n\n\n\n\n4.4.6 get minute\n\n\nCode\nminute(now_time)\n\n\n[1] 43\n\n\n\n\n4.4.7 get second\n\n\nCode\nsecond(now_time)\n\n\n[1] 6.129058",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -2922,7 +2922,7 @@
     "href": "intro/1 basic R.html#get-all-file-name-under-current-directory",
     "title": "Basic R",
     "section": "1.2 get all file name under current directory",
-    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R_files\"               \"1 basic R.qmd\"                \n[3] \"1 basic R.rmarkdown\"           \"1-basic-R.rmarkdown\"          \n[5] \"5 R boook.qmd\"                 \"6 data analytic in R book.qmd\"\n[7] \"hotels.csv\"                    \"images\"",
+    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R.qmd\"                 \"1 basic R.rmarkdown\"          \n[3] \"1-basic-R.rmarkdown\"           \"5 R boook.qmd\"                \n[5] \"6 data analytic in R book.qmd\" \"hotels.csv\"                   \n[7] \"images\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -2933,7 +2933,7 @@
     "href": "intro/1 basic R.html#get-all-file-name-under-currrents-parent-directory",
     "title": "Basic R",
     "section": "1.3 get all file name under currrents parent directory",
-    "text": "1.3 get all file name under currrents parent directory\n\n\nCode\nlist.files(\"../\")\n\n\n [1] \"_freeze\"                      \"_publish.yml\"                \n [3] \"_quarto.yml\"                  \"_site\"                       \n [5] \"clustering\"                   \"data manipulation\"           \n [7] \"docs\"                         \"foldableCodeBlcok.lua\"       \n [9] \"hotel classification model\"   \"house price regression model\"\n[11] \"images\"                       \"index.qmd\"                   \n[13] \"intro\"                        \"logo.jpg\"                    \n[15] \"model type\"                   \"Multiclass classification\"   \n[17] \"other\"                        \"Plot\"                        \n[19] \"styles.css\"                   \"tensorflow\"                  \n[21] \"tidymodeling.Rproj\"           \"titanic classification model\"",
+    "text": "1.3 get all file name under currrents parent directory\n\n\nCode\nlist.files(\"../\")\n\n\n [1] \"_freeze\"                      \"_publish.yml\"                \n [3] \"_quarto.yml\"                  \"_site\"                       \n [5] \"clustering\"                   \"data manipulation\"           \n [7] \"docs\"                         \"foldableCodeBlcok.lua\"       \n [9] \"hotel classification model\"   \"house price regression model\"\n[11] \"images\"                       \"index_files\"                 \n[13] \"index.qmd\"                    \"intro\"                       \n[15] \"logo.jpg\"                     \"model type\"                  \n[17] \"Multiclass classification\"    \"other\"                       \n[19] \"Plot\"                         \"styles.css\"                  \n[21] \"tensorflow\"                   \"tidymodeling.Rproj\"          \n[23] \"titanic classification model\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3358,7 +3358,7 @@
     "href": "other/3 Web scraping on whiskyfun.com/3 whiskyfun all page link.html",
     "title": "All page link frist time",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(stringr)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 all review page\n\n\n2 first page\n\n\nCode\nfirst_url='https://www.whiskyfun.com'\nfirst_page=read_html(first_url)\n\n\n\n\nCode\nlast_page &lt;- first_page %&gt;%\n  html_elements(css = \"a.textegrandfoncegras\")%&gt;% html_attr(\"href\")\n\n\n\n\n3 start from secound page\n\n\nCode\npage_list=c()\n\n\n\n\nCode\nurl='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'\n\npage=read_html(first_url)\n\nlast_page &lt;- (first_page %&gt;%html_elements(css = \"font:nth-child(1) strong a\")%&gt;%html_attr(\"href\"))[1]\n\nprint(last_page)\npage_list=c(page_list,last_page)\n\n\n\n\n4 start to download 500 pages\n\n\nCode\nlast_page='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'\npage_list=c()\n\nfor (i in seq(1:500)){\n  print(i)\n  page=read_html(last_page)\n  last_page &lt;- (page %&gt;%html_elements(css = \"font:nth-child(1) strong a\")%&gt;%html_attr(\"href\"))[1]\n  last_page=paste0('https://www.whiskyfun.com/',last_page)\n  print(last_page)\n  page_list=c(page_list,last_page)\n  Sys.sleep(runif(n=1, min=0.1, max=0.8))\n  \n  \n  }\n\n\n\n\nCode\npage_list_data=page_list %&gt;% tibble()\n\n\n\n\n5 ouput\n\n\nCode\nlibrary(openxlsx)\nwrite.xlsx(page_list_data, file = \"./output/wf_all_page_review.xlsx.xlsx\")\n\n\n\n\n\n\n\n\n Back to top",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(curl)\nlibrary(stringr)\n\n\n\n\nCode\npackageVersion(\"rvest\")\n\n\n\n1 all review page\n\n\n2 first page\n\n\nCode\nfirst_url='https://www.whiskyfun.com'\nfirst_page=read_html(first_url)\n\n\n\n\nCode\nlast_page &lt;- first_page %&gt;%\n  html_elements(css = \"a.textegrandfoncegras\")%&gt;% html_attr(\"href\")\n\nlast_page\n\n\n\n\n3 start to download 500 pages\n\n\nCode\n#last_page='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'\nlast_page='https://www.whiskyfun.com'\nlast_page=\"https://www.whiskyfun.com/ArchiveOctober04-2.html\"\npage_list=c()\na=0\n  \nfor (i in seq(1:500)){\n  print(i)\n  ###################### each page max try 10 times \n  tryCatch({\n    #page=read_html(last_page)\n    page=read_html(curl(last_page, handle = curl::new_handle(\"useragent\" = \"Mozilla/5.0\")))\n    i=i+1\n    \n  Sys.sleep(runif(n=1, min=0.1, max=0.3))\n },error = function(msg){print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')\n    i=i-1\n    print(paste0(\"new i : \",i))\n    a=a+1\n    })\n   if(a&gt;10){break}\n  \n  ##############################################\n  #if (last_page %&gt;% is.na()==TRUE){break}\n\n  ### first page\n   if(last_page=='https://www.whiskyfun.com'){\n    last_page &lt;- (page %&gt;%html_elements(css = \"a.textegrandfoncegras\")%&gt;%html_attr(\"href\"))[1]\n    \n  #### all other     \n    }else {\n  last_page &lt;- (page %&gt;%html_elements(css = \"font:nth-child(1) strong a\")%&gt;%html_attr(\"href\"))[1]\n   ###  before 2004 oct\n  if(last_page %&gt;% is.na()==TRUE){\n    last_page &lt;- (page %&gt;%html_elements(css = \"font:nth-child(1) b a\")%&gt;%html_attr(\"href\"))[1]\n  }\n    }\n  \n  if(last_page%&gt;% str_sub(1,26)=='https://www.whiskyfun.com/'){\n    last_page=last_page}else{\n  last_page=paste0('https://www.whiskyfun.com/',last_page)\n    }\n  \n  print(last_page)\n  if (last_page %in% page_list|last_page==\"https://www.whiskyfun.com/http://www.lambchop.net/\"){break}\n  page_list=c(page_list,last_page)\n  Sys.sleep(runif(n=1, min=0.1, max=0.8))\n  \n  \n  }\n\n\n\n\n4 add first page\n\n\nCode\npage_list_data=page_list %&gt;% tibble()\n\n\n\n\n5 ouput\n\n\nCode\nlibrary(openxlsx)\nwrite.xlsx(page_list_data, file = \"./output/wf_all_page_review_v2.xlsx\")\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Other",
       "3 Web scraping on whiskyfun.com",
@@ -5043,6 +5043,705 @@
       "Plot",
       "Map",
       "map"
+    ]
+  },
+  {
+    "objectID": "Plot/4 Financial data.html",
+    "href": "Plot/4 Financial data.html",
+    "title": "Financial data",
+    "section": "",
+    "text": "Code\nlibrary(quantmod)\nlibrary(tidyverse)\nlibrary(yahoofinancer)\nlibrary(Quandl)\nlibrary(plotly)\nlibrary(finreportr)\nlibrary(rvest)\n\n\n\n1 stock price\n\n\nCode\nnifty_50 &lt;- Index$new('^NSEI')\n\ndata001=nifty_50$get_history(start = '2023-01-01', interval = '1d') %&gt;% mutate(adj_close=adj_close %&gt;% as.numeric())\n\na=head(data001$adj_close,1)[[1]]\n\ndata001b=data001 %&gt;% mutate(adj_close2=adj_close/a)\n\n\n\n\nCode\naapl &lt;- Ticker$new('aapl')\n\ndata002=aapl$get_history(start = '2023-01-01', interval = '1d') %&gt;% mutate(adj_close=adj_close %&gt;% as.numeric())\n\na=head(data002$adj_close,1)[[1]]\n\ndata002b=data002 %&gt;% mutate(adj_close2=adj_close/a)\n\n\n\n\nCode\n# initialize plot\nfig &lt;- plot_ly()\n\n# add data from first dataframe Df1\nfig &lt;- fig %&gt;%\n    add_lines(data=data001b, name=\"NSEI50\", x = ~date, y = ~adj_close2)\n\n# add data from second dataframe Df2\nfig &lt;- fig %&gt;%\n    add_lines(data=data002b, name=\"apple\", x = ~date, y = ~adj_close2)\n# show figure\nfig\n\n\n\n\n\n\n\n\n2 financials income statement\n\n\nCode\nlibrary(chromote)\nlibrary(httr)\n\n\n\n\nCode\nurl='https://finance.yahoo.com/quote/AMAT/financials'\n\n\n\n\nCode\nb &lt;- ChromoteSession$new()\n\n\n\n\nCode\n# In a web browser, open a viewer for the headless browser. Works best with\n# Chromium-based browsers.\n#b$view()\nb$Page$navigate(url)\n\n\n$frameId\n[1] \"CC288F4F40D2609DEC6C62E4211051C9\"\n\n$loaderId\n[1] \"B9F093A6E0C38DDFEE66E928EBCC916E\"\n\n\n\n\nCode\nx &lt;- b$DOM$getDocument()\n\n\n\n\nCode\nb$screenshot(\"sidebar.png\")\n\n\n[1] \"An error occurred: Error in onRejected(...): code: -32000\\n  message: Cannot take screenshot with 0 height.\\n\"\n\n\n\n\nCode\npage=b$Runtime$evaluate(\"document.querySelector('html').outerHTML\")$result$value %&gt;% \n  read_html()\n\n\n\n\nCode\nb$close()\n\n\n[1] TRUE\n\n\n\n\nCode\ncol1=page%&gt;% \n  html_elements(\".row .column:nth-child(1)\") %&gt;% html_text2()  %&gt;% head(33)\n\n\n\n\nCode\ncol2=page%&gt;% \n  html_elements(\".row .column:nth-child(2)\") %&gt;% html_text2()\n\n\n\n\nCode\ncol3=page%&gt;% \n  html_elements(\".row .column:nth-child(3)\") %&gt;% html_text2()\n\n\n\n\nCode\ncol4=page%&gt;% \n  html_elements(\".row .column:nth-child(4)\") %&gt;% html_text2()\n\n\n\n\nCode\ncol5=page%&gt;% \n  html_elements(\".row .column:nth-child(5)\") %&gt;% html_text2()\n\n\n\n\nCode\ncol6=page%&gt;% \n  html_elements(\".row .column:nth-child(6)\") %&gt;% html_text2()\n\n\n\n\nCode\ndata001=data.frame(col1,col2,col3,col4,col5,col6)\n\n\n\n\nCode\nlibrary(janitor )\ncolnames(data001) &lt;- data001[1,]\ndata001 &lt;- data001[-1, ]  %&gt;%clean_names()\n\n\n\n\nCode\nglimpse(data001)\n\n\nRows: 32\nColumns: 6\n$ breakdown   &lt;chr&gt; \"Total Revenue\", \"Cost of Revenue\", \"Gross Profit\", \"Opera…\n$ ttm         &lt;chr&gt; \"26,485,000\", \"14,042,000\", \"12,443,000\", \"4,792,000\", \"7,…\n$ x10_31_2023 &lt;chr&gt; \"26,517,000\", \"14,133,000\", \"12,384,000\", \"4,730,000\", \"7,…\n$ x10_31_2022 &lt;chr&gt; \"25,785,000\", \"13,792,000\", \"11,993,000\", \"4,209,000\", \"7,…\n$ x10_31_2021 &lt;chr&gt; \"23,063,000\", \"12,149,000\", \"10,914,000\", \"3,714,000\", \"7,…\n$ x10_31_2020 &lt;chr&gt; \"17,202,000\", \"9,510,000\", \"7,692,000\", \"3,327,000\", \"4,36…\n\n\n\n\nCode\ndata002=data001 %&gt;% mutate(breakdown=breakdown %&gt;% str_remove_all('HTML_TAG_START HTML_TAG_END')\n                           ,ttm=round(as.numeric(gsub(\",\",\"\",ttm)))\n                           ,year_2023=round(as.numeric(gsub(\",\",\"\",x10_31_2023)))\n                             ,year_2022=round(as.numeric(gsub(\",\",\"\",x10_31_2022)))\n                             ,year_2021=round(as.numeric(gsub(\",\",\"\",x10_31_2021)))\n                             ,year_2020=round(as.numeric(gsub(\",\",\"\",x10_31_2020)))\n                           ) %&gt;% select(-x10_31_2023,-x10_31_2022,-x10_31_2021,-x10_31_2020)\n\n\n\n\nCode\nglimpse(data002)\n\n\nRows: 32\nColumns: 6\n$ breakdown &lt;chr&gt; \"Total Revenue\", \"Cost of Revenue\", \"Gross Profit\", \"Operati…\n$ ttm       &lt;dbl&gt; 26485000, 14042000, 12443000, 4792000, 7651000, 407000, NA, …\n$ year_2023 &lt;dbl&gt; 26517000, 14133000, 12384000, 4730000, 7654000, 62000, NA, 7…\n$ year_2022 &lt;dbl&gt; 25785000, 13792000, 11993000, 4209000, 7784000, -189000, 400…\n$ year_2021 &lt;dbl&gt; 23063000, 12149000, 10914000, 3714000, 7200000, -118000, -31…\n$ year_2020 &lt;dbl&gt; 17202000, 9510000, 7692000, 3327000, 4365000, -199000, NA, 4…\n\n\n\n\nCode\noptions(scipen = 999)\n\nlibrary(knitr)\nkable(data002)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbreakdown\nttm\nyear_2023\nyear_2022\nyear_2021\nyear_2020\n\n\n\n\n2\nTotal Revenue\n26485000\n26517000\n25785000\n23063000\n17202000\n\n\n3\nCost of Revenue\n14042000\n14133000\n13792000\n12149000\n9510000\n\n\n4\nGross Profit\n12443000\n12384000\n11993000\n10914000\n7692000\n\n\n5\nOperating Expense\n4792000\n4730000\n4209000\n3714000\n3327000\n\n\n6\nOperating Income\n7651000\n7654000\n7784000\n7200000\n4365000\n\n\n7\nNet Non Operating Interest Income Expense\n407000\n62000\n-189000\n-118000\n-199000\n\n\n8\nOther Income Expense\nNA\nNA\n4000\n-311000\nNA\n\n\n9\nPretax Income\n8058000\n7716000\n7599000\n6771000\n4166000\n\n\n10\nTax Provision\n900000\n860000\n1074000\n883000\n547000\n\n\n11\nNet Income Common Stockholders\n7158000\n6856000\n6525000\n5888000\n3619000\n\n\n12\nDiluted NI Available to Com Stockholders\n7158000\n6856000\n6525000\n5888000\n3619000\n\n\n13\nBasic EPS\n9\n8\n7\n6\n4\n\n\n14\nDiluted EPS\n8\n8\n7\n6\n4\n\n\n15\nBasic Average Shares\n836500\n840000\n871000\n910000\n916000\n\n\n16\nDiluted Average Shares\n842000\n845000\n877000\n919000\n923000\n\n\n17\nTotal Operating Income as Reported\n7651000\n7654000\n7788000\n6889000\n4365000\n\n\n18\nTotal Expenses\n18834000\n18863000\n18001000\n15863000\n12837000\n\n\n19\nNet Income from Continuing & Discontinued Operation\n7158000\n6856000\n6525000\n5888000\n3619000\n\n\n20\nNormalized Income\n7158000\n6856000\n6521564\n6158570\n3619000\n\n\n21\nInterest Income\n645000\n300000\n39000\n118000\n41000\n\n\n22\nInterest Expense\n238000\n238000\n228000\n236000\n240000\n\n\n23\nNet Interest Income\n407000\n62000\n-189000\n-118000\n-199000\n\n\n24\nEBIT\n8296000\n7954000\n7827000\n7007000\n4406000\n\n\n25\nEBITDA\n8782000\n8469000\n8271000\n7401000\n4782000\n\n\n26\nReconciled Cost of Revenue\n14042000\n14133000\n13792000\n12149000\n9510000\n\n\n27\nReconciled Depreciation\n486000\n515000\n444000\n394000\n376000\n\n\n28\nNet Income from Continuing Operation Net Minority Interest\n7158000\n6856000\n6525000\n5888000\n3619000\n\n\n29\nTotal Unusual Items Excluding Goodwill\nNA\nNA\n4000\n-311000\nNA\n\n\n30\nTotal Unusual Items\nNA\nNA\n4000\n-311000\nNA\n\n\n31\nNormalized EBITDA\n8782000\n8469000\n8267000\n7712000\n4782000\n\n\n32\nTax Rate for Calcs\n0\n0\n0\n0\n0\n\n\n33\nTax Effect of Unusual Items\nNA\nNA\n564\n-40430\nNA\n\n\n\n\n\n\n\n3 resource:\nhttps://github.com/rsquaredacademy/yahoofinancer\nhttps://github.com/sewardlee337/finreportr\nhttps://www.youtube.com/watch?v=uVHGgSXtQmE\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "Financial data"
+    ]
+  },
+  {
+    "objectID": "Plot/Map/3 leaflet US.html",
+    "href": "Plot/Map/3 leaflet US.html",
+    "title": "US map",
+    "section": "",
+    "text": "1 data\n\n\nCode\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(chromote)\nlibrary(janitor)\nlibrary(tidygeocoder)\nlibrary(leaflet)\nlibrary(sf)\n\n\n\n\nCode\nlibrary(maps)\nmapStates = map(\"state\", fill = TRUE, plot = FALSE)\n\n\n\n\nCode\njson_data=read_sf(\"us-states.json\")\n\n\n\n\nCode\nmap_df &lt;- as.data.frame(json_data)\n\n\n\n\n2 map\n\n\nCode\ndata001=read_csv('./data/us shooting dagta001.csv')\n\n\n\n\nCode\ndata001=sample_n(data001,10) %&gt;% clean_names() %&gt;% mutate(full_adress=paste(address,city_or_county,state))\n\n\n\n\nCode\nglimpse(data001)\n\n\nRows: 10\nColumns: 12\n$ incident_id       &lt;dbl&gt; 2780110, 2793699, 2787520, 2788152, 2785933, 2789593…\n$ incident_date     &lt;chr&gt; \"December 15, 2023\", \"December 20, 2023\", \"December …\n$ state             &lt;chr&gt; \"California\", \"North Carolina\", \"Kentucky\", \"Kansas\"…\n$ city_or_county    &lt;chr&gt; \"Bakersfield\", \"Wadesboro\", \"Louisville\", \"Galena\", …\n$ address           &lt;chr&gt; \"5000 block of Evanston Ct\", \"White Store Rd\", \"2300…\n$ victims_killed    &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 0\n$ victims_injured   &lt;dbl&gt; 0, 2, 1, 1, 1, 1, 0, 1, 1, 1\n$ suspects_killed   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n$ suspects_injured  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n$ suspects_arrested &lt;dbl&gt; 1, 0, 0, 1, 0, 1, 0, 0, 0, 0\n$ operations        &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/…\n$ full_adress       &lt;chr&gt; \"5000 block of Evanston Ct Bakersfield California\", …\n\n\n\n\n3 search all address to latitude, longitude\n\n\nCode\n# geocode the addresses\ndata002 &lt;- data001 %&gt;%\n  geocode(full_adress, method = 'arcgis', lat = latitude , long = longitude)\n\nglimpse(data002)\n\n\nRows: 10\nColumns: 14\n$ incident_id       &lt;dbl&gt; 2780110, 2793699, 2787520, 2788152, 2785933, 2789593…\n$ incident_date     &lt;chr&gt; \"December 15, 2023\", \"December 20, 2023\", \"December …\n$ state             &lt;chr&gt; \"California\", \"North Carolina\", \"Kentucky\", \"Kansas\"…\n$ city_or_county    &lt;chr&gt; \"Bakersfield\", \"Wadesboro\", \"Louisville\", \"Galena\", …\n$ address           &lt;chr&gt; \"5000 block of Evanston Ct\", \"White Store Rd\", \"2300…\n$ victims_killed    &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 0\n$ victims_injured   &lt;dbl&gt; 0, 2, 1, 1, 1, 1, 0, 1, 1, 1\n$ suspects_killed   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n$ suspects_injured  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n$ suspects_arrested &lt;dbl&gt; 1, 0, 0, 1, 0, 1, 0, 0, 0, 0\n$ operations        &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/…\n$ full_adress       &lt;chr&gt; \"5000 block of Evanston Ct Bakersfield California\", …\n$ latitude          &lt;dbl&gt; 35.31938, 34.92870, 38.21242, 37.07492, 41.47294, 39…\n$ longitude         &lt;dbl&gt; -119.05923, -80.17780, -85.75143, -94.63921, -81.591…\n\n\n\n\nCode\ndata003=data002 %&gt;% filter(is.na(latitude)==FALSE,(is.na(longitude)==FALSE))\n\n\n\n\n4 map\n\n\nCode\nm &lt;- leaflet(data=mapStates) %&gt;%\n   # Add default OpenStreetMap map tiles\n  addTiles() %&gt;%  \n  # add markers\n  addMarkers( lng=data003$longitude, lat=data003$latitude, popup=data003$state)%&gt;% \n  addPolygons(fillColor = topo.colors(10, alpha = NULL), stroke = FALSE)\n\nm  \n\n\n\n\n\n\n\n\n5 US gdp by State\n\n\nCode\nglimpse(mapStates)\n\n\nList of 4\n $ x    : num [1:15599] -87.5 -87.5 -87.5 -87.5 -87.6 ...\n $ y    : num [1:15599] 30.4 30.4 30.4 30.3 30.3 ...\n $ range: num [1:4] -124.7 -67 25.1 49.4\n $ names: chr [1:63] \"alabama\" \"arizona\" \"arkansas\" \"california\" ...\n - attr(*, \"class\")= chr \"map\"\n\n\n\n\nCode\nlibrary(openxlsx)\nlibrary(readxl)\n\nper_gdp_usd=read_excel('US state gpd 2022.xlsx') %&gt;% mutate(names=str_replace(names,'\\\\*','') %&gt;% str_trim() )\n\n\n\n\nCode\nmap_df002 &lt;- merge(map_df, per_gdp_usd, by.x = \"name\", by.y = \"names\")\n\n\n\n\nCode\nmap_sf002 &lt;- sf::st_as_sf(map_df002, sf_column_name = \"geometry\")\n\n\n\n\nCode\npal &lt;- colorNumeric(\"magma\", NULL)\n\n\nm &lt;- leaflet(map_sf002) %&gt;%\n   # Add default OpenStreetMap map tiles\n  addTiles() %&gt;%  \n   addPolygons(smoothFactor = 0.3, fillOpacity = 0.5,weight = 1,\n    fillColor = ~ pal(per_2022_usd)\n    ,popup = ~ paste0(\n      \"地区：\", name, \"&lt;br/&gt;\",\n      \"&lt;hr/&gt;\",\n      \"人均gpd：\", per_2022_usd, \"（千 美元）\", \"&lt;br/&gt;\"\n      \n    )\n     ,label = lapply(paste0(\n      \"地区：\", \"&lt;b&gt;\", map_sf002$name, \"&lt;/b&gt;\", \"&lt;br/&gt;\",\n      \"人均gpd 美元：\", round(map_sf002$per_2022_usd/1000), \"K &lt;br/&gt;\",\n       \"总gpd 美元：\", round(map_sf002$total_2022_usd), \"M &lt;br/&gt;\"\n\n    ), htmltools::HTML)\n    )%&gt;% addLegend(\n    position = \"bottomright\", title = \"人均gpd(美元)\",\n    pal = pal, values = ~per_2022_usd, opacity = 1.0\n    )\n  \n\n\n\nm  \n\n\n\n\n\n\n\n\n6 resouce:\nhttps://www.gunviolencearchive.org/reports/mass-shooting?page=8&year=2023\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "Map",
+      "US map"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/1 quarto tips.html",
+    "href": "other/5 Publish/1 quarto tips.html",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\n\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).\n\n\n\n\n\n\nCode\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\", se = FALSE)",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/1 quarto tips.html#in-yaml-header",
+    "href": "other/5 Publish/1 quarto tips.html#in-yaml-header",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\n\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/1 quarto tips.html#in-code-chunk",
+    "href": "other/5 Publish/1 quarto tips.html#in-code-chunk",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\", se = FALSE)",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/2 quarto blog.html",
+    "href": "other/5 Publish/2 quarto blog.html",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---\n\n\n\n\n\n\n\nCode\n---\ndraft: true  \n  \n---\n\n\n\n\n\n\n\nCode\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true\n\n\n\n\n\n\n\nCode\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---\n\n\n\n\n\n\n\nCode\ndraft:true",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/2 quarto blog.html#blog-post",
+    "href": "other/5 Publish/2 quarto blog.html#blog-post",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/2 quarto blog.html#hide-post-from-main-page",
+    "href": "other/5 Publish/2 quarto blog.html#hide-post-from-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ndraft: true  \n  \n---",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/2 quarto blog.html#quarto.yml",
+    "href": "other/5 Publish/2 quarto blog.html#quarto.yml",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/2 quarto blog.html#index.qmd",
+    "href": "other/5 Publish/2 quarto blog.html#index.qmd",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "href": "other/5 Publish/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\ndraft:true",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/3 quarto website.html",
+    "href": "other/5 Publish/3 quarto website.html",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub\n\n\n\n\n\n\n\n\n\n_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "href": "other/5 Publish/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/3 quarto website.html#publish-quarto-website-into-github-page",
+    "href": "other/5 Publish/3 quarto website.html#publish-quarto-website-into-github-page",
+    "title": "quarto website",
+    "section": "",
+    "text": "_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/4 quarto presentation .html",
+    "href": "other/5 Publish/4 quarto presentation .html",
+    "title": "quarto presentation",
+    "section": "",
+    "text": "1 revealjs YAML\n\n\nCode\n---\ntitle: \"Habits\"\nauthor: \"John Doe\"\nformat: revealjs\n---\n\n\n\n\n2 pages\n\n\nCode\n# pages\n\n# In the morning\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Breakfast\n\n- Eat eggs\n- Drink coffee\n\n\n\n\n3 YAML format setting\n\n\nCode\nformat:\n  revealjs:\n    controls: true\n    navigation-mode: vertical\n    height: 800\n    width: 1000    \n    fontsize: 20pt\n    page-layout: full\n    logo: images/logo.jpg\n    footer: \"This is footer(https://google.com/)\"\n    slide-number: c\n    show-slide-number: all\n    menu: false\n\n\n\n\n4 Main Title Slide Background YAML setting\n\n\nCode\n---\ntitle: My Slide Show\ntitle-slide-attributes:\n    data-background-image: /path/to/title_image.png\n    data-background-size: contain\n    data-background-opacity: \"0.5\"\n---\n\n\n\n\n5 Chalkboard YAML setting\n\n\nCode\n---\ntitle: \"Presentation\"\nformat:\n  revealjs:\n    chalkboard: true\n---\n\n\n\n\n6 center whole page\n\n\nCode\n# This will be centered {.center}\n\nThis text is moved as well\n\n\n\n\n7 reference:\nhttps://quarto.org/docs/presentations/revealjs/\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto presentation"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#replace-string",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#replace-string",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.6 replace string",
+    "text": "3.6 replace string\n\n3.6.1 str_replace()\n\n\nCode\ntext001=\"abcb\"\ntext001 %&gt;% str_replace('b','1')\n\n\n[1] \"a1cb\"\n\n\n\n\n3.6.2 str_replace_all()\n\n\nCode\ntext001=\"abcb\"\ntext001 %&gt;% str_replace_all('b','1')\n\n\n[1] \"a1c1\"\n\n\n\n\n3.6.3 replace with regular expression\n\n\nCode\nword2=c('a-b','M6D5','M6D54','M6D55','M6D5') %&gt;% as_tibble()\nword2\n\n\n# A tibble: 5 × 1\n  value\n  &lt;chr&gt;\n1 a-b  \n2 M6D5 \n3 M6D54\n4 M6D55\n5 M6D5 \n\n\nreplace D+all number with ’_’\n\n\nCode\nword2 %&gt;% mutate(new=value %&gt;% str_replace_all('D\\\\d*','_'))\n\n\n# A tibble: 5 × 2\n  value new  \n  &lt;chr&gt; &lt;chr&gt;\n1 a-b   a-b  \n2 M6D5  M6_  \n3 M6D54 M6_  \n4 M6D55 M6_  \n5 M6D5  M6_",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#split-string",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#split-string",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.7 split string",
+    "text": "3.7 split string\n\n\nCode\nword=c('a-b','1-c','c-c')\n\ndf_word=word %&gt;% as.data.frame() %&gt;% rename('word'='.')\n\n\n\n3.7.1 make 2 coloumn and split by - using stringr package\n\n\nCode\ndf_word\n\n\n  word\n1  a-b\n2  1-c\n3  c-c\n\n\n\n\nCode\nlibrary(stringr)\ndf_word$word %&gt;% str_split_fixed('-',2)\n\n\n     [,1] [,2]\n[1,] \"a\"  \"b\" \n[2,] \"1\"  \"c\" \n[3,] \"c\"  \"c\" \n\n\n\n\n3.7.2 make 2 coloumn and split by - using tidyr package\n\n\nCode\ndf_word\n\n\n  word\n1  a-b\n2  1-c\n3  c-c\n\n\n\n\nCode\nlibrary(tidyr)\ndf_word %&gt;% separate(word,c('col1','col2'),'-')\n\n\n  col1 col2\n1    a    b\n2    1    c\n3    c    c",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#subset-element-in-list",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#subset-element-in-list",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.8 subset element in list",
+    "text": "3.8 subset element in list\n\n\nCode\nword=c('aabbbasdf','apple','pet','melon')\n\n\n\n3.8.1 word with ‘a’\n\n\nCode\nword %&gt;% str_subset('a')\n\n\n[1] \"aabbbasdf\" \"apple\"    \n\n\n\n\n3.8.2 word with ‘a,e,i,o,u’\n\n\nCode\nword %&gt;% str_subset(\"[aeiou]\")\n\n\n[1] \"aabbbasdf\" \"apple\"     \"pet\"       \"melon\"    \n\n\n\n\n3.8.3 word with ‘pet’ or ‘melon’\n\n\nCode\nword %&gt;% str_subset('pet|melon')\n\n\n[1] \"pet\"   \"melon\"\n\n\n\n\n3.8.4 word with ‘pet’ or ‘melon’\n\n\nCode\nword %&gt;% str_subset('aa')\n\n\n[1] \"aabbbasdf\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#extract-string",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#extract-string",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.9 extract string",
+    "text": "3.9 extract string\n\n\nCode\ndata001=mtcars\ndata001 &lt;- cbind(names = rownames(data001), data001)\n\n\n\n3.9.1 by postion\nextract 2 to 4\n\n\nCode\ndata001$new_names=data001$names %&gt;% str_sub(2,4)\nhead(data001 %&gt;% select(new_names,names))\n\n\n                  new_names             names\nMazda RX4               azd         Mazda RX4\nMazda RX4 Wag           azd     Mazda RX4 Wag\nDatsun 710              ats        Datsun 710\nHornet 4 Drive          orn    Hornet 4 Drive\nHornet Sportabout       orn Hornet Sportabout\nValiant                 ali           Valiant\n\n\n\n\n3.9.2 extracting with Regular expressions\nextracting one letter\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"\\\\w\")\n\n\n[1] \"a\"\n\n\nextracting one letter/number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\".\")\n\n\n[1] \"a\"\n\n\nextracting one .\n\n\nCode\ntrx='abc1993.ccc'\ntrx %&gt;% str_extract(\"\\\\.\")\n\n\n[1] \".\"\n\n\nextracting 3 letter start with ‘a’\n\n\nCode\nword=c('aabbbasdfe. e','appl.e e','pet','melon')\nword\n\n\n[1] \"aabbbasdfe. e\" \"appl.e e\"      \"pet\"           \"melon\"        \n\n\nextracting 2 letter start with ‘a’\n\n\nCode\nword %&gt;% str_extract(\"a..\")\n\n\n[1] \"aab\" \"app\" NA    NA   \n\n\nextracting all letter start with ‘a’\n\n\nCode\nword %&gt;% str_extract(\"a.+\")\n\n\n[1] \"aabbbasdfe. e\" \"appl.e e\"      NA              NA             \n\n\nextracting all letter between ‘a’ and ‘e’\n\n\nCode\nword %&gt;% str_extract(\"(a).*?(e)\")\n\n\n[1] \"aabbbasdfe\" \"appl.e\"     NA           NA          \n\n\nextracting all letter between ‘a’ and ‘.’\n\n\nCode\nword %&gt;% str_extract(\"(a).*?(\\\\.)\")\n\n\n[1] \"aabbbasdfe.\" \"appl.\"       NA            NA           \n\n\nextracting all letter between ‘a’ and space\n\n\nCode\nword %&gt;% str_extract(\"(a).*?( )\")\n\n\n[1] \"aabbbasdfe. \" \"appl.e \"      NA             NA            \n\n\nextracting one number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"\\\\d\")\n\n\n[1] \"1\"\n\n\nextracting more number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"(\\\\d)+\")\n\n\n[1] \"1993\"\n\n\nextracting more non number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract_all(\"\\\\D+\")\n\n\n[[1]]\n[1] \"abc\"  \" ccc\"\n\n\nextracting all letter from the begining\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"[:alpha:]+\")\n\n\n[1] \"abc\"\n\n\nextracting number after points:\n\n\nCode\ntrx=c('abcpoints:100 ccc','asdfasd','points:66','thisis points:6')\ntrx\n\n\n[1] \"abcpoints:100 ccc\" \"asdfasd\"           \"points:66\"        \n[4] \"thisis points:6\"  \n\n\nextracting number after points: and remove non match\n\n\nCode\nt=trx %&gt;% str_extract(\"points:[:digit:]+\") %&gt;% na.omit()%&gt;% str_extract(\"points:[:digit:]+\")\nt\n\n\n[1] \"points:100\" \"points:66\"  \"points:6\"",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/3 data manipulation with tidyverse.html#regular-expressions",
+    "href": "data manipulation/3 data manipulation with tidyverse.html#regular-expressions",
+    "title": "Data manipulation with tidyverse",
+    "section": "3.10 Regular expressions",
+    "text": "3.10 Regular expressions\n\n\nCode\nphones=c('abba','124','anna')\nphones\n\n\n[1] \"abba\" \"124\"  \"anna\"\n\n\n\n3.10.1 get a+ (b or n) + (b or n) + a\n\n\nCode\nphones %&gt;% str_view('a[bn][bn]a')\n\n\n[1] │ &lt;abba&gt;\n[3] │ &lt;anna&gt;\n\n\n\n\n3.10.2 bb or nn\n\n\nCode\nphones %&gt;% str_view('(bb|nn)')\n\n\n[1] │ a&lt;bb&gt;a\n[3] │ a&lt;nn&gt;a",
+    "crumbs": [
+      "data manipulation",
+      "Data manipulation with tidyverse"
+    ]
+  },
+  {
+    "objectID": "data manipulation/2 data structure in R.html#compare-two-vector",
+    "href": "data manipulation/2 data structure in R.html#compare-two-vector",
+    "title": "Data structure in R",
+    "section": "1.11 compare two vector",
+    "text": "1.11 compare two vector\n\n\nCode\nxx=c(1,2,3,4)\nxx\n\n\n[1] 1 2 3 4\n\n\n\n\nCode\nyy=c(2,4)\nyy\n\n\n[1] 2 4\n\n\nfind number only in xx not in yy\n\n\nCode\nsetdiff(xx, yy)\n\n\n[1] 1 3",
+    "crumbs": [
+      "data manipulation",
+      "Data structure in R"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/1 quarto tips.html#embed-youtube",
+    "href": "other/5 Publish/1 quarto tips.html#embed-youtube",
+    "title": "quarto tips",
+    "section": "embed youtube",
+    "text": "embed youtube\n\n\nCode\n&lt;iframe width=\"640\" height=\"480\" src=\"https://www.youtube.com/embed/nku5zFMZAdU\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen&gt;\n&lt;/iframe&gt;",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/1 quarto tips.html#embed-local",
+    "href": "other/5 Publish/1 quarto tips.html#embed-local",
+    "title": "quarto tips",
+    "section": "embed local",
+    "text": "embed local\n\n\nCode\n{{&lt; video images/vv.mp4 height=\"600\" &gt;}}",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#line-width-and-colour",
+    "href": "Plot/2 plotly.html#line-width-and-colour",
+    "title": "Plotly in R",
+    "section": "1.4 line width and colour",
+    "text": "1.4 line width and colour\n\n\nCode\nfig &lt;- plot_ly(data = data002 %&gt;%filter(continent=='Asia'), x = ~year, y = ~pop,mode = 'lines',line = list(color = 'rgb(205, 12, 24)', width = 8))\nfig",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "Plot/2 plotly.html#change-x-y-axis-range",
+    "href": "Plot/2 plotly.html#change-x-y-axis-range",
+    "title": "Plotly in R",
+    "section": "7.4 change x y axis range",
+    "text": "7.4 change x y axis range\n\n\nCode\nfig &lt;- plot_ly(data=tips,x = ~total_bill,color=~sex, type = \"histogram\") %&gt;% layout(title = 'new title'\n                                                                                   ,xaxis = list(title = 'new x',range=c(20,40))\n                                                                                  ,yaxis = list(title = 'new y',range=c(20,40)) \n                                                                                    )\n\nfig",
+    "crumbs": [
+      "Plot",
+      "Plotly in R"
+    ]
+  },
+  {
+    "objectID": "other/3 Web scraping on whiskyfun.com/6 EDA.html",
+    "href": "other/3 Web scraping on whiskyfun.com/6 EDA.html",
+    "title": "All page clean up",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(stringr)\nlibrary(openxlsx)\nlibrary(readxl)\nlibrary(lubridate)\nlibrary(ggplot2)\n\n\n\n1 input\n\n\nCode\ndata001=read_excel('./output/all_page_review_clean_v2.xlsx') %&gt;% mutate(\n  title_length=nchar(name)\n  ,high_bottle=if_else(score&gt;=90,1,0)\n  \n  )\n\n\n\n\nCode\nglimpse(data001)\n\n\n\n\nCode\ndata002=data001 %&gt;% select(-old_page,-review_date) %&gt;% unique() %&gt;% filter(score&gt;0\n                                                              ,score&lt;=100\n                                                              ,bottle_review2 %&gt;% str_sub(1,6)!='Colour'\n                                                               ,bottle_review2 %&gt;% str_sub(1,4)!='Nose'\n                                                               ,bottle_review2 %&gt;%str_sub(1,5)!='Mouth'\n                                                              ,title_length&lt;=180\n                                                              ) %&gt;% arrange(desc(title_length))\nglimpse(data002)\n\n\n\n\nCode\nsummary001=data002 %&gt;% group_by(review_year) %&gt;% summarise(score=mean(score)\n                                                           ,bottles=n()\n                                                           ,high_bottle=sum(high_bottle)\n                                                           ) %&gt;% mutate(high_bottle_per=high_bottle/bottles)\n\nsummary001\n\n\n\n\nCode\np=ggplot(summary001, aes(review_year,score)) + geom_point()+ geom_line()\np\n\n\n\n\nCode\np=ggplot(summary001, aes(review_year,bottles)) + geom_point()+ geom_line()\np\n\n\n\n\nCode\np=ggplot(summary001, aes(review_year,high_bottle_per)) + geom_point()+ geom_line()\np\n\n\n\n\nCode\nlibrary(plotly)\npp=plot_ly(summary001, x = ~review_year, y = ~bottles, type = \"bar\", name = \"bottles\") %&gt;%\n  add_trace(x = ~review_year, y = ~score, type = 'scatter', mode = \"lines\", yaxis = \"y2\", name = \"score\", line = list(color = 'rgb(205, 12, 24)', width = 8)) %&gt;%\n  \n  layout(\n    title = 'Whiksyfun review bottles and average score'\n    ,legend = list(orientation = 'h')\n     ,xaxis = list(range=c(2003,2025))\n    ,yaxis2 = list(overlaying = \"y\", side = \"right\",range=c(80,90))\n    ,yaxis = list(range=c(0,1500))\n         )\n\npp\n\n\n\n\nCode\norca(pp, \"plot.png\")\n\n\n\n\nCode\nlibrary(plotly)\npp=plot_ly(summary001, x = ~review_year, y = ~bottles, type = \"bar\", name = \"瓶\",text=~bottles) %&gt;%\n  add_trace(x = ~review_year, y = ~score, type = 'scatter', mode = \"lines\", yaxis = \"y2\", name = \"平均分\", line = list(color = 'rgb(205, 12, 24)', width = 8)) %&gt;%\n  \n  layout(\n    title = 'WF每年酒评数量和平均分'\n    ,showlegend = FALSE\n     ,xaxis = list(title='年'\n                   ,dtick = 2\n                   ,tick0 = 2004\n      ,tickmode = \"linear\"\n      )\n    ,margin=list(\n  l = 50,\n  r = 50,\n  b = 100,\n  t = 100,\n  pad = 4\n)\n    ,yaxis2 = list(overlaying = \"y\", side = \"left\",range=c(80,90),title='平均分')\n    ,yaxis = list(side=\"left\",zeroline = FALSE,showline = FALSE,showticklabels = FALSE,showgrid = FALSE,title='')\n    ,annotations = list(x = 1, y = -0.2, \n                              text = \"2004-09 to 2024-05\", \n                              showarrow = F, \n                              xref='paper', \n                              yref='paper'\n      )\n                              \n       ,images = list(  \n      list(  \n        source = base64enc::dataURI(file = \"wf logo.png\")\n        ,xref = \"paper\"\n        ,yref = \"paper\" \n        ,x = 0.01\n        ,y = -0.08\n        ,sizex = 0.4\n        ,sizey = 0.4\n       ,xanchor=\"left\"  \n      )  \n    )   )\n\npp\n\n\n\n\nCode\norca(pp, \"plot2.png\")\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "3 Web scraping on whiskyfun.com",
+      "All page clean up"
+    ]
+  },
+  {
+    "objectID": "other/5 Publish/1 quarto tips.html#embed-local-video",
+    "href": "other/5 Publish/1 quarto tips.html#embed-local-video",
+    "title": "quarto tips",
+    "section": "embed local video",
+    "text": "embed local video\n\n\nCode\n{{&lt; video images/vv.mp4 height=\"600\" &gt;}}",
+    "crumbs": [
+      "Other",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/1 quarto tips.html",
+    "href": "Plot/5 Publish/1 quarto tips.html",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\n\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).\n\n\n\n\n\n\nCode\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\", se = FALSE)",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/1 quarto tips.html#in-yaml-header",
+    "href": "Plot/5 Publish/1 quarto tips.html#in-yaml-header",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\n\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/1 quarto tips.html#in-code-chunk",
+    "href": "Plot/5 Publish/1 quarto tips.html#in-code-chunk",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\", se = FALSE)",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/1 quarto tips.html#embed-youtube",
+    "href": "Plot/5 Publish/1 quarto tips.html#embed-youtube",
+    "title": "quarto tips",
+    "section": "embed youtube",
+    "text": "embed youtube\n\n\nCode\n&lt;iframe width=\"640\" height=\"480\" src=\"https://www.youtube.com/embed/nku5zFMZAdU\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen&gt;\n&lt;/iframe&gt;",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/1 quarto tips.html#embed-local-video",
+    "href": "Plot/5 Publish/1 quarto tips.html#embed-local-video",
+    "title": "quarto tips",
+    "section": "embed local video",
+    "text": "embed local video\n\n\nCode\n{{&lt; video images/vv.mp4 height=\"600\" &gt;}}",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/4 quarto presentation .html",
+    "href": "Plot/5 Publish/4 quarto presentation .html",
+    "title": "quarto presentation",
+    "section": "",
+    "text": "1 revealjs YAML\n\n\nCode\n---\ntitle: \"Habits\"\nauthor: \"John Doe\"\nformat: revealjs\n---\n\n\n\n\n2 pages\n\n\nCode\n# pages\n\n# In the morning\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Breakfast\n\n- Eat eggs\n- Drink coffee\n\n\n\n\n3 YAML format setting\n\n\nCode\nformat:\n  revealjs:\n    controls: true\n    navigation-mode: vertical\n    height: 800\n    width: 1000    \n    fontsize: 20pt\n    page-layout: full\n    logo: images/logo.jpg\n    footer: \"This is footer(https://google.com/)\"\n    slide-number: c\n    show-slide-number: all\n    menu: false\n\n\n\n\n4 Main Title Slide Background YAML setting\n\n\nCode\n---\ntitle: My Slide Show\ntitle-slide-attributes:\n    data-background-image: /path/to/title_image.png\n    data-background-size: contain\n    data-background-opacity: \"0.5\"\n---\n\n\n\n\n5 Chalkboard YAML setting\n\n\nCode\n---\ntitle: \"Presentation\"\nformat:\n  revealjs:\n    chalkboard: true\n---\n\n\n\n\n6 center whole page\n\n\nCode\n# This will be centered {.center}\n\nThis text is moved as well\n\n\n\n\n7 reference:\nhttps://quarto.org/docs/presentations/revealjs/\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto presentation"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/3 quarto website.html",
+    "href": "Plot/5 Publish/3 quarto website.html",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub\n\n\n\n\n\n\n\n\n\n_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "href": "Plot/5 Publish/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/3 quarto website.html#publish-quarto-website-into-github-page",
+    "href": "Plot/5 Publish/3 quarto website.html#publish-quarto-website-into-github-page",
+    "title": "quarto website",
+    "section": "",
+    "text": "_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/2 quarto blog.html",
+    "href": "Plot/5 Publish/2 quarto blog.html",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---\n\n\n\n\n\n\n\nCode\n---\ndraft: true  \n  \n---\n\n\n\n\n\n\n\nCode\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true\n\n\n\n\n\n\n\nCode\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---\n\n\n\n\n\n\n\nCode\ndraft:true",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/2 quarto blog.html#blog-post",
+    "href": "Plot/5 Publish/2 quarto blog.html#blog-post",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/2 quarto blog.html#hide-post-from-main-page",
+    "href": "Plot/5 Publish/2 quarto blog.html#hide-post-from-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ndraft: true  \n  \n---",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/2 quarto blog.html#quarto.yml",
+    "href": "Plot/5 Publish/2 quarto blog.html#quarto.yml",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/2 quarto blog.html#index.qmd",
+    "href": "Plot/5 Publish/2 quarto blog.html#index.qmd",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Publish/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "href": "Plot/5 Publish/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\ndraft:true",
+    "crumbs": [
+      "Plot",
+      "5 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html",
+    "href": "Plot/7 Publish/1 quarto tips.html",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\n\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).\n\n\n\n\n\n\nCode\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\", se = FALSE)",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#in-yaml-header",
+    "href": "Plot/7 Publish/1 quarto tips.html#in-yaml-header",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\n\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#in-code-chunk",
+    "href": "Plot/7 Publish/1 quarto tips.html#in-code-chunk",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\", se = FALSE)",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#embed-youtube",
+    "href": "Plot/7 Publish/1 quarto tips.html#embed-youtube",
+    "title": "quarto tips",
+    "section": "embed youtube",
+    "text": "embed youtube\n\n\nCode\n&lt;iframe width=\"640\" height=\"480\" src=\"https://www.youtube.com/embed/nku5zFMZAdU\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen&gt;\n&lt;/iframe&gt;",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#embed-local-video",
+    "href": "Plot/7 Publish/1 quarto tips.html#embed-local-video",
+    "title": "quarto tips",
+    "section": "embed local video",
+    "text": "embed local video\n\n\nCode\n{{&lt; video images/vv.mp4 height=\"600\" &gt;}}",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/2 quarto blog.html",
+    "href": "Plot/7 Publish/2 quarto blog.html",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---\n\n\n\n\n\n\n\nCode\n---\ndraft: true  \n  \n---\n\n\n\n\n\n\n\nCode\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true\n\n\n\n\n\n\n\nCode\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---\n\n\n\n\n\n\n\nCode\ndraft:true",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/2 quarto blog.html#blog-post",
+    "href": "Plot/7 Publish/2 quarto blog.html#blog-post",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/2 quarto blog.html#hide-post-from-main-page",
+    "href": "Plot/7 Publish/2 quarto blog.html#hide-post-from-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ndraft: true  \n  \n---",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/2 quarto blog.html#quarto.yml",
+    "href": "Plot/7 Publish/2 quarto blog.html#quarto.yml",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/2 quarto blog.html#index.qmd",
+    "href": "Plot/7 Publish/2 quarto blog.html#index.qmd",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "href": "Plot/7 Publish/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\ndraft:true",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/3 quarto website.html",
+    "href": "Plot/7 Publish/3 quarto website.html",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub\n\n\n\n\n\n\n\n\n\n_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "href": "Plot/7 Publish/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/3 quarto website.html#publish-quarto-website-into-github-page",
+    "href": "Plot/7 Publish/3 quarto website.html#publish-quarto-website-into-github-page",
+    "title": "quarto website",
+    "section": "",
+    "text": "_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/4 quarto presentation .html",
+    "href": "Plot/7 Publish/4 quarto presentation .html",
+    "title": "quarto presentation",
+    "section": "",
+    "text": "1 revealjs YAML\n\n\nCode\n---\ntitle: \"Habits\"\nauthor: \"John Doe\"\nformat: revealjs\n---\n\n\n\n\n2 pages\n\n\nCode\n# pages\n\n# In the morning\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Breakfast\n\n- Eat eggs\n- Drink coffee\n\n\n\n\n3 YAML format setting\n\n\nCode\nformat:\n  revealjs:\n    controls: true\n    navigation-mode: vertical\n    height: 800\n    width: 1000    \n    fontsize: 20pt\n    page-layout: full\n    logo: images/logo.jpg\n    footer: \"This is footer(https://google.com/)\"\n    slide-number: c\n    show-slide-number: all\n    menu: false\n\n\n\n\n4 Main Title Slide Background YAML setting\n\n\nCode\n---\ntitle: My Slide Show\ntitle-slide-attributes:\n    data-background-image: /path/to/title_image.png\n    data-background-size: contain\n    data-background-opacity: \"0.5\"\n---\n\n\n\n\n5 Chalkboard YAML setting\n\n\nCode\n---\ntitle: \"Presentation\"\nformat:\n  revealjs:\n    chalkboard: true\n---\n\n\n\n\n6 center whole page\n\n\nCode\n# This will be centered {.center}\n\nThis text is moved as well\n\n\n\n\n7 reference:\nhttps://quarto.org/docs/presentations/revealjs/\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto presentation"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Map/2 leaflet.html",
+    "href": "Plot/5 Map/2 leaflet.html",
+    "title": "map",
+    "section": "",
+    "text": "1 data\n\n\nCode\nlibrary(tidyverse)\n\nlibrary(sf)\nlibrary(leaflet)\nlibrary(geojsonio)\nlibrary(leaflet.extras)\n\n\n\n\n2 display at openstreet map\n\n\nCode\nm &lt;- leaflet() %&gt;%\n   # Add default OpenStreetMap map tiles\n  addTiles() %&gt;%  \n  # add markers\n  addMarkers(lng=174.768, lat=-36.852, popup=\"The birthplace of R\")\n\nm  \n\n\n\n\n\n\n\n\n3 display at google map\n\n\nCode\nleaflet() |&gt;\n  # add base mao\n  addTiles(urlTemplate = \"https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}\") |&gt;\n  # set view\n  setView(116.347817690225, 39.997202126977, zoom = 16) |&gt;\n  # add markers\n  addMarkers(116.347817690225, 39.997202126977)\n\n\n\n\n\n\n\n\n4 Third-Party map\n\n\nCode\n#m &lt;- leaflet() %&gt;% setView(lng = -71.0589, lat = 42.3601, zoom = 10)\n#m %&gt;% addProviderTiles(providers$Stadia.StamenToner)\n\n\n\n\n5 add pop up\nPopups are small boxes containing arbitrary HTML, that point to a specific point on the map.\n\n\nCode\ncontent &lt;- paste(sep = \"&lt;br/&gt;\",\n  \"&lt;b&gt;&lt;a href='https://www.samurainoodle.com/'&gt;Samurai Noodle&lt;/a&gt;&lt;/b&gt;\",\n  \"606 5th Ave. S\",\n  \"Seattle, WA 98138\"\n)\n\nleaflet() %&gt;% addTiles() %&gt;%\n  setView(-122.327298, 47.597131,zoom = 12) %&gt;% \n  addPopups(-122.327298, 47.597131, content,\n    #options = popupOptions(closeButton = FALSE)\n    options = popupOptions(closeButton = FALSE)\n  )\n\n\n\n\n\n\n\n\n6 add Markers\n\n\nCode\nlibrary(htmltools)\n\ndf &lt;- read.csv(textConnection(\n\"Name,Lat,Long\nSamurai Noodle,47.597131,-122.327298\nKukai Ramen,47.6154,-122.327157\nTsukushinbo,47.59987,-122.326726\"\n))\n\nleaflet(df) %&gt;% addTiles() %&gt;%\n  addMarkers(~Long, ~Lat, popup = ~htmlEscape(Name))\n\n\n\n\n\n\n\n\n7 add Labels\nA label is a textual or HTML content that can attached to markers and shapes to be always displayed or displayed on mouse over. Unlike popups you don’t need to click a marker/polygon for the label to be shown.\n\n\nCode\nlibrary(htmltools)\n\ndf &lt;- read.csv(textConnection(\n\"Name,Lat,Long\nSamurai Noodle,47.597131,-122.327298\nKukai Ramen,47.6154,-122.327157\nTsukushinbo,47.59987,-122.326726\"))\n\nleaflet(df) %&gt;% addTiles() %&gt;%\n  addMarkers(~Long, ~Lat, label = ~htmlEscape(Name))\n\n\n\n\n\n\n\n\n8 World map\n\n\nCode\n#install.packages(\"https://cran.r-project.org/src/contrib/Archive/maptools/maptools_1.1-8.tar.gz\")\n\n\n\n\nCode\njson_data=read_sf(\"world-administrative-boundaries.geojson\")\n\n\n\n\nCode\nmap_df &lt;- as.data.frame(json_data)\n\n\n\n\nCode\n#Get my variable\n#name&lt;-c(\"Ghana\", \"Grenada\", \"Guyana\", \"India\", \"Jamaica\", \"Kenya\", \"United States\",\"Canada\")\n#val&lt;-c(1,2,4,5,5,1000,20000, 100)\n\n#per_gdp_usd&lt;-data.frame(name,val)\n\n\n\n\nCode\nlibrary(openxlsx)\nlibrary(readxl)\n\nper_gdp_usd=read_excel('world data.xlsx') %&gt;% mutate(\n  name=case_when(\n    name ==\"United States\" ~ \"United States of America\"\n     ,name ==\"Russia\" ~ \"Russian Federation\"\n   ,name ==\"U.K. of Great Britain and Northern Ireland\" ~ \"United Kingdom\"\n   \n   ,name ==\"U.K. of Great Britain and Northern Ireland\" ~ \"United Kingdom\"\n   \n   ,name == \"South Korea\"~ \"Republic of Korea\"\n   \n   ,name ==\"Lao People's Democratic Republic\" ~ \"Laos\"\n   \n    ,TRUE ~ name\n  )\n)\n\n\n\n\nCode\n#test=full_join(map_df, per_gdp_usd, by=\"name\")\n\n#left =test %&gt;% filter(is.na(iso3)==TRUE)\n\n#right=test %&gt;% filter(is.na(per_gdp_total)==TRUE)\n\n\n\n\nCode\nmap_df002 &lt;- merge(map_df, per_gdp_usd, by.x = \"name\", by.y = \"name\")\n\n\n\n\nCode\nglimpse(map_df002)\n\n\nRows: 158\nColumns: 12\n$ name                     &lt;chr&gt; \"Albania\", \"Algeria\", \"Andorra\", \"Angola\", \"A…\n$ geo_point_2d             &lt;chr&gt; \"{ \\\"lon\\\": 20.068384605918776, \\\"lat\\\": 41.1…\n$ iso3                     &lt;chr&gt; \"ALB\", \"DZA\", \"AND\", \"AGO\", \"ARG\", \"ARM\", \"AU…\n$ status                   &lt;chr&gt; \"Member State\", \"Member State\", \"Member State…\n$ color_code               &lt;chr&gt; \"ALB\", \"DZA\", \"AND\", \"AGO\", \"ARG\", \"ARM\", \"AU…\n$ continent                &lt;chr&gt; \"Europe\", \"Africa\", \"Europe\", \"Africa\", \"Amer…\n$ region                   &lt;chr&gt; \"Southern Europe\", \"Northern Africa\", \"Southe…\n$ iso_3166_1_alpha_2_codes &lt;chr&gt; \"AL\", \"DZ\", \"AD\", \"AO\", \"AR\", \"AM\", \"AU\", \"AT…\n$ french_short             &lt;chr&gt; \"Albanie\", \"Algérie\", \"Andorre\", \"Angola\", \"A…\n$ geometry                 &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((20.07142 42..., …\n$ per_gdp_total            &lt;dbl&gt; 1.888210e+10, 1.919130e+11, 3.352033e+09, 1.0…\n$ per_gdp_usd              &lt;dbl&gt; 6643, 4274, 41993, 2999, 13904, 7014, 64003, …\n\n\n\n\nCode\nmap_sf002 &lt;- sf::st_as_sf(map_df002, sf_column_name = \"geometry\")\n\n\n\n\nCode\npal &lt;- colorNumeric(\"viridis\", NULL)\n\nleaflet(map_sf002) %&gt;%\n  addTiles() %&gt;%\n  addPolygons(smoothFactor = 0.3, fillOpacity = 0.5,weight = 1,\n    fillColor = ~ pal(per_gdp_usd)\n    ,popup = ~ paste0(\n      \"地区：\", name, \"&lt;br/&gt;\",\n      \"&lt;hr/&gt;\",\n      \"人均gpd：\", per_gdp_usd, \"（千 美元）\", \"&lt;br/&gt;\"\n      \n    )\n     ,label = lapply(paste0(\n      \"地区：\", \"&lt;b&gt;\", map_sf002$name, \"&lt;/b&gt;\", \"&lt;br/&gt;\",\n      \"人均gpd 美元：\", round(map_sf002$per_gdp_usd/1000), \"K &lt;br/&gt;\",\n       \"总gpd 美元：\", round(map_sf002$per_gdp_total/1000000), \"M &lt;br/&gt;\"\n\n    ), htmltools::HTML)\n    )%&gt;% addLegend(\n    position = \"bottomright\", title = \"人均gpd(美元)\",\n    pal = pal, values = ~per_gdp_usd, opacity = 1.0\n    )\n\n\n\n\n\n\n\n\n9 China one city map\n\n\nCode\njson_data &lt;- sf::read_sf(\"./GeoMapData_CN/citys/440300.json\") \n#or\njson_data=read_sf(\"https://geo.datav.aliyun.com/areas_v2/bound/440300_full.json\")\n\n\n深圳市：\n\n\nCode\npal &lt;- colorNumeric(\"viridis\", NULL)\n\nleaflet(json_data) %&gt;%\n  addTiles() %&gt;%\n  addPolygons(smoothFactor = 0.3, fillOpacity = 0.1)\n\n\n\n\n\n\n\n\n10 all China each province GPD map\n\n\nCode\njson_data=read_sf(\"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json\")\n\n\n中国 2022 各省 人均gpd usd：\n\n\nCode\nlibrary(openxlsx)\nlibrary(readxl)\nper_gdp_usd=read_excel('china gdp2022.xlsx')\n\n\n\n\nCode\nmap_df &lt;- as.data.frame(json_data)\n\n\n\n\nCode\nmap_df002 &lt;- merge(map_df, per_gdp_usd, by.x = \"name\", by.y = \"city\")\n\n\n\n\nCode\nmap_sf002 &lt;- sf::st_as_sf(map_df002, sf_column_name = \"geometry\")\n\n\n\n\nCode\npal &lt;- colorNumeric(\"viridis\", NULL)\n\nleaflet(map_sf002) %&gt;%\n  addTiles() %&gt;%\n  addPolygons(smoothFactor = 0.3, fillOpacity = 0.5,weight = 1,\n    fillColor = ~ pal(per_gpd_usd)\n    ,popup = ~ paste0(\n      \"地区：\", name, \"&lt;br/&gt;\",\n      \"&lt;hr/&gt;\",\n      \"人均gpd：\", per_gpd_usd, \"（美万）\", \"&lt;br/&gt;\"\n      \n    )\n     ,label = lapply(paste0(\n      \"地区：\", \"&lt;b&gt;\", map_sf002$name, \"&lt;/b&gt;\", \"&lt;br/&gt;\",\n      \"人均gpd 美元：\", map_sf002$per_gpd_usd, \"&lt;br/&gt;\",\n      \"人均gpd 人民币：\", map_sf002$per_gpd_rmb, \"&lt;br/&gt;\",\n       \"人口：\", round(map_sf002$total_gpd_rmb/map_sf002$per_gpd_rmb), \"&lt;br/&gt;\"\n    ), htmltools::HTML)\n    )%&gt;% addLegend(\n    position = \"bottomright\", title = \"人均gpd(美元)\",\n    pal = pal, values = ~per_gpd_usd, opacity = 1.0\n    )\n\n\n\n\n\n\nGPD data source:国家统计局数据库\n\n\n11 China one province map each city GPD\n\n\nCode\njson_data &lt;- sf::read_sf(\"./GeoMapData_CN/province/440000.json\") \n\n\n广东省 2021 人均gpd usd：\n\n\nCode\nlibrary(openxlsx)\nlibrary(readxl)\nper_gdp_usd=read_excel('guangdong city gdp2021.xlsx')\n\n\n\n\nCode\nmap_df &lt;- as.data.frame(json_data)\n\n\n\n\nCode\nmap_df002 &lt;- merge(map_df, per_gdp_usd, by.x = \"name\", by.y = \"city\")\n\n\n\n\nCode\nmap_sf002 &lt;- sf::st_as_sf(map_df002, sf_column_name = \"geometry\")\n\n\ndata source:广东统计年鉴2022\n\n\nCode\npal &lt;- colorNumeric(\"viridis\", NULL)\n\nleaflet(map_sf002) %&gt;%\n  addTiles() %&gt;%\n  addPolygons(smoothFactor = 0.3, fillOpacity = 0.5,weight = 1,\n    fillColor = ~ pal(per_gpd_usd)\n    ,popup = ~ paste0(\n      \"城市：\", name, \"&lt;br/&gt;\",\n      \"&lt;hr/&gt;\",\n      \"人均gpd：\", per_gpd_usd, \"（美万）\", \"&lt;br/&gt;\"\n      \n    )\n     ,label = lapply(paste0(\n      \"城市：\", \"&lt;b&gt;\", map_sf002$name, \"&lt;/b&gt;\", \"&lt;br/&gt;\",\n      \"人均gpd 美元：\", map_sf002$per_gpd_usd, \"&lt;br/&gt;\",\n      \"人均gpd 人民币：\", map_sf002$per_gpd_rmb, \"&lt;br/&gt;\",\n       \"人口：\", round(map_sf002$total_gpd_rmb*10000000/map_sf002$per_gpd_rmb), \"&lt;br/&gt;\"\n    ), htmltools::HTML)\n    )%&gt;% addLegend(\n    position = \"bottomright\", title = \"人均gpd(美元)\",\n    pal = pal, values = ~per_gpd_usd, opacity = 1.0\n    )\n\n\n\n\n\n\nhttps://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B8%9C%E5%90%84%E5%9C%B0%E7%BA%A7%E5%B8%82%E5%9C%B0%E5%8C%BA%E7%94%9F%E4%BA%A7%E6%80%BB%E5%80%BC%E5%88%97%E8%A1%A8\n\n\n12 China province map\n\n\nCode\nlibrary(leaflet)\nlibrary(sf)\n\njson_data &lt;- sf::read_sf(\"./GeoMapData_CN/china.json\") \n#or\njson_data=read_sf(\"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json\")\n\n\npal &lt;- colorNumeric(\"viridis\", NULL)\n\nm=leaflet(json_data) %&gt;%\n  addTiles() %&gt;%\n  addPolygons(smoothFactor = 0.3, fillOpacity = 0.1)\n \n\nm\n\n\n\n\n\n\nadd provincial capital\n\n\nCode\nChina=read_sf(\"https://geo.datav.aliyun.com/areas_v2/bound/100000_full.json\")\n\n\n\n\nCode\nChina002=China %&gt;% as_data_frame() %&gt;% mutate(\n                                            center2=as.character(center) %&gt;% str_replace('c','')%&gt;% str_replace('[(]','') %&gt;% str_replace('[)]','')\n                                               )\n\n\n\n\nCode\nChina003=China002%&gt;%separate(center2, c(\"x\", \"y\"), \", \")\n\n\n\n\nCode\nChina_point = China003 %&gt;% \n  slice(-35)\n\nm %&gt;% \n  addCircles(data = China_point,\n                  lng = ~as.numeric(x), lat = ~as.numeric(y),color = \"red\",weight = 10,\n                  fillOpacity =2)\n\n\n\n\n\n\n\n\n13 China province and city map\n\n\nCode\nmap_list &lt;- lapply(\n  X = list.files(\"./GeoMapData_CN/province\", recursive = T, full.names = T),\n  FUN = sf::read_sf\n)\n\nlength(map_list)\n\n\n[1] 34\n\n\n\n\nCode\nfor (i in c(1:length(map_list))){\n   #print(i)\n  #print(dim(map_list[[i]]))\n  #print(ncol(map_list[[i]]))\n  if(ncol(map_list[[i]])!=10){print(map_list[[i]])}\n  }\n\n\nSimple feature collection with 1 feature and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 119.3183 ymin: 21.75147 xmax: 124.5656 ymax: 25.92592\nGeodetic CRS:  WGS 84\n# A tibble: 1 × 5\n  adcode name   center               level                              geometry\n  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;                &lt;chr&gt;                    &lt;MULTIPOLYGON [°]&gt;\n1 710000 台湾省 121.509062,25.044332 province (((119.5543 23.68248, 119.555 23.…\n\n\n\n\nCode\nX = list.files(\"./GeoMapData_CN/province\", recursive = T, full.names = T)\n\nX2=X[-which(X %in% c(\"./GeoMapData_CN/province/710000.json\"\n         ))]\n\nmap_list &lt;- lapply(\n  X = X2,\n  FUN = sf::read_sf\n)\n\n\n\n\nCode\nlength(map_list)\n\n\n[1] 33\n\n\n\n\nCode\nprovince_map &lt;- Reduce(\"rbind\", map_list)\n\n\n\n\nCode\n# library(leaflet)\n# library(sf)\n# \n# json_data &lt;- province_map\n# \n# \n# pal &lt;- colorNumeric(c(\"red\", \"green\", \"blue\"), 1:10)\n# \n# leaflet(json_data) %&gt;%\n#   addTiles() %&gt;%\n#   addPolygons(smoothFactor = 0.3, fillOpacity = 0.1)\n\n\n\n\n14 China city and district map\n\n\nCode\nmap_list &lt;- lapply(\n  X = list.files(\"./GeoMapData_CN/citys\", recursive = T, full.names = T),\n  FUN = sf::read_sf\n)\n\nlength(map_list)\n\n\n[1] 334\n\n\n\n\nCode\nfor (i in c(1:length(map_list))){\n   #print(i)\n  #print(dim(map_list[[i]]))\n  #print(ncol(map_list[[i]]))\n  if(ncol(map_list[[i]])!=10){print(map_list[[i]])}\n  }\n\n\nSimple feature collection with 1 feature and 4 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: 113.5215 ymin: 22.65421 xmax: 114.2603 ymax: 23.14205\nGeodetic CRS:  WGS 84\n# A tibble: 1 × 5\n  adcode name   center               level                              geometry\n  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;                &lt;chr&gt;                         &lt;POLYGON [°]&gt;\n1 441900 东莞市 113.746262,23.046237 city  ((114.2292 22.81251, 114.2278 22.813…\nSimple feature collection with 1 feature and 4 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: 113.157 ymin: 22.20104 xmax: 113.692 ymax: 22.7726\nGeodetic CRS:  WGS 84\n# A tibble: 1 × 5\n  adcode name   center               level                              geometry\n  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;                &lt;chr&gt;                         &lt;POLYGON [°]&gt;\n1 442000 中山市 113.382391,22.521113 city  ((113.5687 22.41193, 113.5666 22.412…\nSimple feature collection with 1 feature and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 115.9267 ymin: 20.58265 xmax: 116.9338 ymax: 21.12693\nGeodetic CRS:  WGS 84\n# A tibble: 1 × 5\n  adcode name     center               level                            geometry\n  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;                &lt;chr&gt;                  &lt;MULTIPOLYGON [°]&gt;\n1 442100 东沙群岛 116.887312,20.617512 city  (((115.9433 21.09745, 115.95 21.11…\nSimple feature collection with 1 feature and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 108.9287 ymin: 19.17894 xmax: 109.7694 ymax: 19.92575\nGeodetic CRS:  WGS 84\n# A tibble: 1 × 5\n  adcode name   center               level                              geometry\n  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;                &lt;chr&gt;                    &lt;MULTIPOLYGON [°]&gt;\n1 460400 儋州市 109.576782,19.517486 city  (((109.4322 19.91302, 109.4253 19.91…\nSimple feature collection with 1 feature and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 97.8483 ymin: 39.65426 xmax: 98.52018 ymax: 39.99979\nGeodetic CRS:  WGS 84\n# A tibble: 1 × 5\n  adcode name     center              level                             geometry\n  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;               &lt;chr&gt;                   &lt;MULTIPOLYGON [°]&gt;\n1 620200 嘉峪关市 98.277304,39.786529 city  (((97.85974 39.7169, 97.85827 39.71…\n\n\n\n\nCode\nX = list.files(\"./GeoMapData_CN/citys\", recursive = T, full.names = T)\n\nX2=X[-which(X %in% c(\"./GeoMapData_CN/citys/620200.json\"\n         ,\"./GeoMapData_CN/citys/460400.json\"\n              ,\"./GeoMapData_CN/citys/442100.json\"\n              ,\"./GeoMapData_CN/citys/442000.json\"\n              ,\"./GeoMapData_CN/citys/441900.json\"\n         ))]\n\nmap_list &lt;- lapply(\n  X = X2,\n  FUN = sf::read_sf\n)\n\n\n\n\nCode\nlength(map_list)\n\n\n[1] 329\n\n\n\n\nCode\nprovince_map &lt;- Reduce(\"rbind\", map_list)\n\n\n\n\nCode\n# library(leaflet)\n# library(sf)\n# \n# json_data &lt;- province_map\n# \n# \n# pal &lt;- colorNumeric(c(\"red\", \"green\", \"blue\"), 1:10)\n# \n# leaflet(json_data) %&gt;%\n#   addTiles() %&gt;%\n#   addPolygons(smoothFactor = 0.3, fillOpacity = 0.1)\n\n\n\n\n15 show all map providers\n\n\nCode\nproviders\n\n\nproviders\n$OpenStreetMap\n[1] \"OpenStreetMap\"\n\n$OpenStreetMap.Mapnik\n[1] \"OpenStreetMap.Mapnik\"\n\n$OpenStreetMap.DE\n[1] \"OpenStreetMap.DE\"\n\n$OpenStreetMap.CH\n[1] \"OpenStreetMap.CH\"\n\n$OpenStreetMap.France\n[1] \"OpenStreetMap.France\"\n\n$OpenStreetMap.HOT\n[1] \"OpenStreetMap.HOT\"\n\n$OpenStreetMap.BZH\n[1] \"OpenStreetMap.BZH\"\n\n$MapTilesAPI\n[1] \"MapTilesAPI\"\n\n$MapTilesAPI.OSMEnglish\n[1] \"MapTilesAPI.OSMEnglish\"\n\n$MapTilesAPI.OSMFrancais\n[1] \"MapTilesAPI.OSMFrancais\"\n\n$MapTilesAPI.OSMEspagnol\n[1] \"MapTilesAPI.OSMEspagnol\"\n\n$OpenSeaMap\n[1] \"OpenSeaMap\"\n\n$OPNVKarte\n[1] \"OPNVKarte\"\n\n$OpenTopoMap\n[1] \"OpenTopoMap\"\n\n$OpenRailwayMap\n[1] \"OpenRailwayMap\"\n\n$OpenFireMap\n[1] \"OpenFireMap\"\n\n$SafeCast\n[1] \"SafeCast\"\n\n$Stadia\n[1] \"Stadia\"\n\n$Stadia.AlidadeSmooth\n[1] \"Stadia.AlidadeSmooth\"\n\n$Stadia.AlidadeSmoothDark\n[1] \"Stadia.AlidadeSmoothDark\"\n\n$Stadia.OSMBright\n[1] \"Stadia.OSMBright\"\n\n$Stadia.Outdoors\n[1] \"Stadia.Outdoors\"\n\n$Stadia.StamenToner\n[1] \"Stadia.StamenToner\"\n\n$Stadia.StamenTonerBackground\n[1] \"Stadia.StamenTonerBackground\"\n\n$Stadia.StamenTonerLines\n[1] \"Stadia.StamenTonerLines\"\n\n$Stadia.StamenTonerLabels\n[1] \"Stadia.StamenTonerLabels\"\n\n$Stadia.StamenTonerLite\n[1] \"Stadia.StamenTonerLite\"\n\n$Stadia.StamenWatercolor\n[1] \"Stadia.StamenWatercolor\"\n\n$Stadia.StamenTerrain\n[1] \"Stadia.StamenTerrain\"\n\n$Stadia.StamenTerrainBackground\n[1] \"Stadia.StamenTerrainBackground\"\n\n$Stadia.StamenTerrainLabels\n[1] \"Stadia.StamenTerrainLabels\"\n\n$Stadia.StamenTerrainLines\n[1] \"Stadia.StamenTerrainLines\"\n\n$Thunderforest\n[1] \"Thunderforest\"\n\n$Thunderforest.OpenCycleMap\n[1] \"Thunderforest.OpenCycleMap\"\n\n$Thunderforest.Transport\n[1] \"Thunderforest.Transport\"\n\n$Thunderforest.TransportDark\n[1] \"Thunderforest.TransportDark\"\n\n$Thunderforest.SpinalMap\n[1] \"Thunderforest.SpinalMap\"\n\n$Thunderforest.Landscape\n[1] \"Thunderforest.Landscape\"\n\n$Thunderforest.Outdoors\n[1] \"Thunderforest.Outdoors\"\n\n$Thunderforest.Pioneer\n[1] \"Thunderforest.Pioneer\"\n\n$Thunderforest.MobileAtlas\n[1] \"Thunderforest.MobileAtlas\"\n\n$Thunderforest.Neighbourhood\n[1] \"Thunderforest.Neighbourhood\"\n\n$CyclOSM\n[1] \"CyclOSM\"\n\n$Jawg\n[1] \"Jawg\"\n\n$Jawg.Streets\n[1] \"Jawg.Streets\"\n\n$Jawg.Terrain\n[1] \"Jawg.Terrain\"\n\n$Jawg.Sunny\n[1] \"Jawg.Sunny\"\n\n$Jawg.Dark\n[1] \"Jawg.Dark\"\n\n$Jawg.Light\n[1] \"Jawg.Light\"\n\n$Jawg.Matrix\n[1] \"Jawg.Matrix\"\n\n$MapBox\n[1] \"MapBox\"\n\n$MapTiler\n[1] \"MapTiler\"\n\n$MapTiler.Streets\n[1] \"MapTiler.Streets\"\n\n$MapTiler.Basic\n[1] \"MapTiler.Basic\"\n\n$MapTiler.Bright\n[1] \"MapTiler.Bright\"\n\n$MapTiler.Pastel\n[1] \"MapTiler.Pastel\"\n\n$MapTiler.Positron\n[1] \"MapTiler.Positron\"\n\n$MapTiler.Hybrid\n[1] \"MapTiler.Hybrid\"\n\n$MapTiler.Toner\n[1] \"MapTiler.Toner\"\n\n$MapTiler.Topo\n[1] \"MapTiler.Topo\"\n\n$MapTiler.Voyager\n[1] \"MapTiler.Voyager\"\n\n$TomTom\n[1] \"TomTom\"\n\n$TomTom.Basic\n[1] \"TomTom.Basic\"\n\n$TomTom.Hybrid\n[1] \"TomTom.Hybrid\"\n\n$TomTom.Labels\n[1] \"TomTom.Labels\"\n\n$Esri\n[1] \"Esri\"\n\n$Esri.WorldStreetMap\n[1] \"Esri.WorldStreetMap\"\n\n$Esri.DeLorme\n[1] \"Esri.DeLorme\"\n\n$Esri.WorldTopoMap\n[1] \"Esri.WorldTopoMap\"\n\n$Esri.WorldImagery\n[1] \"Esri.WorldImagery\"\n\n$Esri.WorldTerrain\n[1] \"Esri.WorldTerrain\"\n\n$Esri.WorldShadedRelief\n[1] \"Esri.WorldShadedRelief\"\n\n$Esri.WorldPhysical\n[1] \"Esri.WorldPhysical\"\n\n$Esri.OceanBasemap\n[1] \"Esri.OceanBasemap\"\n\n$Esri.NatGeoWorldMap\n[1] \"Esri.NatGeoWorldMap\"\n\n$Esri.WorldGrayCanvas\n[1] \"Esri.WorldGrayCanvas\"\n\n$OpenWeatherMap\n[1] \"OpenWeatherMap\"\n\n$OpenWeatherMap.Clouds\n[1] \"OpenWeatherMap.Clouds\"\n\n$OpenWeatherMap.CloudsClassic\n[1] \"OpenWeatherMap.CloudsClassic\"\n\n$OpenWeatherMap.Precipitation\n[1] \"OpenWeatherMap.Precipitation\"\n\n$OpenWeatherMap.PrecipitationClassic\n[1] \"OpenWeatherMap.PrecipitationClassic\"\n\n$OpenWeatherMap.Rain\n[1] \"OpenWeatherMap.Rain\"\n\n$OpenWeatherMap.RainClassic\n[1] \"OpenWeatherMap.RainClassic\"\n\n$OpenWeatherMap.Pressure\n[1] \"OpenWeatherMap.Pressure\"\n\n$OpenWeatherMap.PressureContour\n[1] \"OpenWeatherMap.PressureContour\"\n\n$OpenWeatherMap.Wind\n[1] \"OpenWeatherMap.Wind\"\n\n$OpenWeatherMap.Temperature\n[1] \"OpenWeatherMap.Temperature\"\n\n$OpenWeatherMap.Snow\n[1] \"OpenWeatherMap.Snow\"\n\n$HERE\n[1] \"HERE\"\n\n$HERE.normalDay\n[1] \"HERE.normalDay\"\n\n$HERE.normalDayCustom\n[1] \"HERE.normalDayCustom\"\n\n$HERE.normalDayGrey\n[1] \"HERE.normalDayGrey\"\n\n$HERE.normalDayMobile\n[1] \"HERE.normalDayMobile\"\n\n$HERE.normalDayGreyMobile\n[1] \"HERE.normalDayGreyMobile\"\n\n$HERE.normalDayTransit\n[1] \"HERE.normalDayTransit\"\n\n$HERE.normalDayTransitMobile\n[1] \"HERE.normalDayTransitMobile\"\n\n$HERE.normalDayTraffic\n[1] \"HERE.normalDayTraffic\"\n\n$HERE.normalNight\n[1] \"HERE.normalNight\"\n\n$HERE.normalNightMobile\n[1] \"HERE.normalNightMobile\"\n\n$HERE.normalNightGrey\n[1] \"HERE.normalNightGrey\"\n\n$HERE.normalNightGreyMobile\n[1] \"HERE.normalNightGreyMobile\"\n\n$HERE.normalNightTransit\n[1] \"HERE.normalNightTransit\"\n\n$HERE.normalNightTransitMobile\n[1] \"HERE.normalNightTransitMobile\"\n\n$HERE.reducedDay\n[1] \"HERE.reducedDay\"\n\n$HERE.reducedNight\n[1] \"HERE.reducedNight\"\n\n$HERE.basicMap\n[1] \"HERE.basicMap\"\n\n$HERE.mapLabels\n[1] \"HERE.mapLabels\"\n\n$HERE.trafficFlow\n[1] \"HERE.trafficFlow\"\n\n$HERE.carnavDayGrey\n[1] \"HERE.carnavDayGrey\"\n\n$HERE.hybridDay\n[1] \"HERE.hybridDay\"\n\n$HERE.hybridDayMobile\n[1] \"HERE.hybridDayMobile\"\n\n$HERE.hybridDayTransit\n[1] \"HERE.hybridDayTransit\"\n\n$HERE.hybridDayGrey\n[1] \"HERE.hybridDayGrey\"\n\n$HERE.hybridDayTraffic\n[1] \"HERE.hybridDayTraffic\"\n\n$HERE.pedestrianDay\n[1] \"HERE.pedestrianDay\"\n\n$HERE.pedestrianNight\n[1] \"HERE.pedestrianNight\"\n\n$HERE.satelliteDay\n[1] \"HERE.satelliteDay\"\n\n$HERE.terrainDay\n[1] \"HERE.terrainDay\"\n\n$HERE.terrainDayMobile\n[1] \"HERE.terrainDayMobile\"\n\n$HEREv3\n[1] \"HEREv3\"\n\n$HEREv3.normalDay\n[1] \"HEREv3.normalDay\"\n\n$HEREv3.normalDayCustom\n[1] \"HEREv3.normalDayCustom\"\n\n$HEREv3.normalDayGrey\n[1] \"HEREv3.normalDayGrey\"\n\n$HEREv3.normalDayMobile\n[1] \"HEREv3.normalDayMobile\"\n\n$HEREv3.normalDayGreyMobile\n[1] \"HEREv3.normalDayGreyMobile\"\n\n$HEREv3.normalDayTransit\n[1] \"HEREv3.normalDayTransit\"\n\n$HEREv3.normalDayTransitMobile\n[1] \"HEREv3.normalDayTransitMobile\"\n\n$HEREv3.normalNight\n[1] \"HEREv3.normalNight\"\n\n$HEREv3.normalNightMobile\n[1] \"HEREv3.normalNightMobile\"\n\n$HEREv3.normalNightGrey\n[1] \"HEREv3.normalNightGrey\"\n\n$HEREv3.normalNightGreyMobile\n[1] \"HEREv3.normalNightGreyMobile\"\n\n$HEREv3.normalNightTransit\n[1] \"HEREv3.normalNightTransit\"\n\n$HEREv3.normalNightTransitMobile\n[1] \"HEREv3.normalNightTransitMobile\"\n\n$HEREv3.reducedDay\n[1] \"HEREv3.reducedDay\"\n\n$HEREv3.reducedNight\n[1] \"HEREv3.reducedNight\"\n\n$HEREv3.basicMap\n[1] \"HEREv3.basicMap\"\n\n$HEREv3.mapLabels\n[1] \"HEREv3.mapLabels\"\n\n$HEREv3.trafficFlow\n[1] \"HEREv3.trafficFlow\"\n\n$HEREv3.carnavDayGrey\n[1] \"HEREv3.carnavDayGrey\"\n\n$HEREv3.hybridDay\n[1] \"HEREv3.hybridDay\"\n\n$HEREv3.hybridDayMobile\n[1] \"HEREv3.hybridDayMobile\"\n\n$HEREv3.hybridDayTransit\n[1] \"HEREv3.hybridDayTransit\"\n\n$HEREv3.hybridDayGrey\n[1] \"HEREv3.hybridDayGrey\"\n\n$HEREv3.pedestrianDay\n[1] \"HEREv3.pedestrianDay\"\n\n$HEREv3.pedestrianNight\n[1] \"HEREv3.pedestrianNight\"\n\n$HEREv3.satelliteDay\n[1] \"HEREv3.satelliteDay\"\n\n$HEREv3.terrainDay\n[1] \"HEREv3.terrainDay\"\n\n$HEREv3.terrainDayMobile\n[1] \"HEREv3.terrainDayMobile\"\n\n$FreeMapSK\n[1] \"FreeMapSK\"\n\n$MtbMap\n[1] \"MtbMap\"\n\n$CartoDB\n[1] \"CartoDB\"\n\n$CartoDB.Positron\n[1] \"CartoDB.Positron\"\n\n$CartoDB.PositronNoLabels\n[1] \"CartoDB.PositronNoLabels\"\n\n$CartoDB.PositronOnlyLabels\n[1] \"CartoDB.PositronOnlyLabels\"\n\n$CartoDB.DarkMatter\n[1] \"CartoDB.DarkMatter\"\n\n$CartoDB.DarkMatterNoLabels\n[1] \"CartoDB.DarkMatterNoLabels\"\n\n$CartoDB.DarkMatterOnlyLabels\n[1] \"CartoDB.DarkMatterOnlyLabels\"\n\n$CartoDB.Voyager\n[1] \"CartoDB.Voyager\"\n\n$CartoDB.VoyagerNoLabels\n[1] \"CartoDB.VoyagerNoLabels\"\n\n$CartoDB.VoyagerOnlyLabels\n[1] \"CartoDB.VoyagerOnlyLabels\"\n\n$CartoDB.VoyagerLabelsUnder\n[1] \"CartoDB.VoyagerLabelsUnder\"\n\n$HikeBike\n[1] \"HikeBike\"\n\n$HikeBike.HikeBike\n[1] \"HikeBike.HikeBike\"\n\n$HikeBike.HillShading\n[1] \"HikeBike.HillShading\"\n\n$BasemapAT\n[1] \"BasemapAT\"\n\n$BasemapAT.basemap\n[1] \"BasemapAT.basemap\"\n\n$BasemapAT.grau\n[1] \"BasemapAT.grau\"\n\n$BasemapAT.overlay\n[1] \"BasemapAT.overlay\"\n\n$BasemapAT.terrain\n[1] \"BasemapAT.terrain\"\n\n$BasemapAT.surface\n[1] \"BasemapAT.surface\"\n\n$BasemapAT.highdpi\n[1] \"BasemapAT.highdpi\"\n\n$BasemapAT.orthofoto\n[1] \"BasemapAT.orthofoto\"\n\n$nlmaps\n[1] \"nlmaps\"\n\n$nlmaps.standaard\n[1] \"nlmaps.standaard\"\n\n$nlmaps.pastel\n[1] \"nlmaps.pastel\"\n\n$nlmaps.grijs\n[1] \"nlmaps.grijs\"\n\n$nlmaps.water\n[1] \"nlmaps.water\"\n\n$nlmaps.luchtfoto\n[1] \"nlmaps.luchtfoto\"\n\n$NASAGIBS\n[1] \"NASAGIBS\"\n\n$NASAGIBS.ModisTerraTrueColorCR\n[1] \"NASAGIBS.ModisTerraTrueColorCR\"\n\n$NASAGIBS.ModisTerraBands367CR\n[1] \"NASAGIBS.ModisTerraBands367CR\"\n\n$NASAGIBS.ViirsEarthAtNight2012\n[1] \"NASAGIBS.ViirsEarthAtNight2012\"\n\n$NASAGIBS.ModisTerraLSTDay\n[1] \"NASAGIBS.ModisTerraLSTDay\"\n\n$NASAGIBS.ModisTerraSnowCover\n[1] \"NASAGIBS.ModisTerraSnowCover\"\n\n$NASAGIBS.ModisTerraAOD\n[1] \"NASAGIBS.ModisTerraAOD\"\n\n$NASAGIBS.ModisTerraChlorophyll\n[1] \"NASAGIBS.ModisTerraChlorophyll\"\n\n$NLS\n[1] \"NLS\"\n\n$JusticeMap\n[1] \"JusticeMap\"\n\n$JusticeMap.income\n[1] \"JusticeMap.income\"\n\n$JusticeMap.americanIndian\n[1] \"JusticeMap.americanIndian\"\n\n$JusticeMap.asian\n[1] \"JusticeMap.asian\"\n\n$JusticeMap.black\n[1] \"JusticeMap.black\"\n\n$JusticeMap.hispanic\n[1] \"JusticeMap.hispanic\"\n\n$JusticeMap.multi\n[1] \"JusticeMap.multi\"\n\n$JusticeMap.nonWhite\n[1] \"JusticeMap.nonWhite\"\n\n$JusticeMap.white\n[1] \"JusticeMap.white\"\n\n$JusticeMap.plurality\n[1] \"JusticeMap.plurality\"\n\n$GeoportailFrance\n[1] \"GeoportailFrance\"\n\n$GeoportailFrance.plan\n[1] \"GeoportailFrance.plan\"\n\n$GeoportailFrance.parcels\n[1] \"GeoportailFrance.parcels\"\n\n$GeoportailFrance.orthos\n[1] \"GeoportailFrance.orthos\"\n\n$OneMapSG\n[1] \"OneMapSG\"\n\n$OneMapSG.Default\n[1] \"OneMapSG.Default\"\n\n$OneMapSG.Night\n[1] \"OneMapSG.Night\"\n\n$OneMapSG.Original\n[1] \"OneMapSG.Original\"\n\n$OneMapSG.Grey\n[1] \"OneMapSG.Grey\"\n\n$OneMapSG.LandLot\n[1] \"OneMapSG.LandLot\"\n\n$USGS\n[1] \"USGS\"\n\n$USGS.USTopo\n[1] \"USGS.USTopo\"\n\n$USGS.USImagery\n[1] \"USGS.USImagery\"\n\n$USGS.USImageryTopo\n[1] \"USGS.USImageryTopo\"\n\n$WaymarkedTrails\n[1] \"WaymarkedTrails\"\n\n$WaymarkedTrails.hiking\n[1] \"WaymarkedTrails.hiking\"\n\n$WaymarkedTrails.cycling\n[1] \"WaymarkedTrails.cycling\"\n\n$WaymarkedTrails.mtb\n[1] \"WaymarkedTrails.mtb\"\n\n$WaymarkedTrails.slopes\n[1] \"WaymarkedTrails.slopes\"\n\n$WaymarkedTrails.riding\n[1] \"WaymarkedTrails.riding\"\n\n$WaymarkedTrails.skating\n[1] \"WaymarkedTrails.skating\"\n\n$OpenAIP\n[1] \"OpenAIP\"\n\n$OpenSnowMap\n[1] \"OpenSnowMap\"\n\n$OpenSnowMap.pistes\n[1] \"OpenSnowMap.pistes\"\n\n$AzureMaps\n[1] \"AzureMaps\"\n\n$AzureMaps.MicrosoftImagery\n[1] \"AzureMaps.MicrosoftImagery\"\n\n$AzureMaps.MicrosoftBaseDarkGrey\n[1] \"AzureMaps.MicrosoftBaseDarkGrey\"\n\n$AzureMaps.MicrosoftBaseRoad\n[1] \"AzureMaps.MicrosoftBaseRoad\"\n\n$AzureMaps.MicrosoftBaseHybridRoad\n[1] \"AzureMaps.MicrosoftBaseHybridRoad\"\n\n$AzureMaps.MicrosoftTerraMain\n[1] \"AzureMaps.MicrosoftTerraMain\"\n\n$AzureMaps.MicrosoftWeatherInfraredMain\n[1] \"AzureMaps.MicrosoftWeatherInfraredMain\"\n\n$AzureMaps.MicrosoftWeatherRadarMain\n[1] \"AzureMaps.MicrosoftWeatherRadarMain\"\n\n$SwissFederalGeoportal\n[1] \"SwissFederalGeoportal\"\n\n$SwissFederalGeoportal.NationalMapColor\n[1] \"SwissFederalGeoportal.NationalMapColor\"\n\n$SwissFederalGeoportal.NationalMapGrey\n[1] \"SwissFederalGeoportal.NationalMapGrey\"\n\n$SwissFederalGeoportal.SWISSIMAGE\n[1] \"SwissFederalGeoportal.SWISSIMAGE\"\n\n\n\n\n\nCode\nsessionInfo()\n\n\nsessionInfo()\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] readxl_1.4.3         openxlsx_4.2.5.2     htmltools_0.5.8.1   \n [4] leaflet.extras_1.0.0 geojsonio_0.11.3     leaflet_2.2.2       \n [7] sf_1.0-16            lubridate_1.9.3      forcats_1.0.0       \n[10] stringr_1.5.1        dplyr_1.1.4          purrr_1.0.2         \n[13] readr_2.1.5          tidyr_1.3.1          tibble_3.2.1        \n[16] ggplot2_3.5.1        tidyverse_2.0.0     \n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.5            xfun_0.43               htmlwidgets_1.6.4      \n [4] lattice_0.22-6          tzdb_0.4.0              leaflet.providers_2.0.0\n [7] vctrs_0.6.5             tools_4.3.1             crosstalk_1.2.1        \n[10] generics_0.1.3          curl_5.2.1              proxy_0.4-27           \n[13] fansi_1.0.6             pkgconfig_2.0.3         KernSmooth_2.23-22     \n[16] RColorBrewer_1.1-3      lifecycle_1.0.4         farver_2.1.1           \n[19] compiler_4.3.1          munsell_0.5.1           jqr_1.3.3              \n[22] class_7.3-22            yaml_2.3.8              lazyeval_0.2.2         \n[25] jquerylib_0.1.4         pillar_1.9.0            classInt_0.4-10        \n[28] zip_2.3.1               tidyselect_1.2.1        digest_0.6.35          \n[31] stringi_1.8.4           fastmap_1.1.1           grid_4.3.1             \n[34] colorspace_2.1-0        cli_3.6.2               magrittr_2.0.3         \n[37] crul_1.4.2              utf8_1.2.4              e1071_1.7-14           \n[40] withr_3.0.0             scales_1.3.0            sp_2.1-4               \n[43] timechange_0.3.0        rmarkdown_2.26          cellranger_1.1.0       \n[46] hms_1.1.3               evaluate_0.23           knitr_1.45             \n[49] V8_4.4.2                viridisLite_0.4.2       geojson_0.3.5          \n[52] rlang_1.1.3             Rcpp_1.0.12             glue_1.7.0             \n[55] DBI_1.2.2               httpcode_0.3.0          geojsonsf_2.0.3        \n[58] rstudioapi_0.16.0       jsonlite_1.8.8          R6_2.5.1               \n[61] units_0.8-5            \n\n\n\n\n\n16 resouce:\nhttps://rstudio.github.io/leaflet/\nhttps://github.com/Lchiffon/leafletCN\nhttps://github.com/longwosion/geojson-map-china\nhttps://xiangyun.rbind.io/2022/02/draw-china-maps/\nhttps://datav.aliyun.com/portal/school/atlas/area_selector\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "5 Map",
+      "map"
+    ]
+  },
+  {
+    "objectID": "Plot/5 Map/3 leaflet US.html",
+    "href": "Plot/5 Map/3 leaflet US.html",
+    "title": "US map",
+    "section": "",
+    "text": "1 data\n\n\nCode\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(chromote)\nlibrary(janitor)\nlibrary(tidygeocoder)\nlibrary(leaflet)\nlibrary(sf)\n\n\n\n\nCode\nlibrary(maps)\nmapStates = map(\"state\", fill = TRUE, plot = FALSE)\n\n\n\n\nCode\njson_data=read_sf(\"us-states.json\")\n\n\n\n\nCode\nmap_df &lt;- as.data.frame(json_data)\n\n\n\n\n2 map\n\n\nCode\ndata001=read_csv('./data/us shooting dagta001.csv')\n\n\n\n\nCode\ndata001=sample_n(data001,10) %&gt;% clean_names() %&gt;% mutate(full_adress=paste(address,city_or_county,state))\n\n\n\n\nCode\nglimpse(data001)\n\n\nRows: 10\nColumns: 12\n$ incident_id       &lt;dbl&gt; 2780182, 2781261, 2779721, 2790051, 2788874, 2781086…\n$ incident_date     &lt;chr&gt; \"December 15, 2023\", \"December 17, 2023\", \"December …\n$ state             &lt;chr&gt; \"North Carolina\", \"Mississippi\", \"Tennessee\", \"Conne…\n$ city_or_county    &lt;chr&gt; \"Maxton\", \"Jackson\", \"Nashville\", \"Dayville\", \"Washi…\n$ address           &lt;chr&gt; \"1482 NC-71\", \"1253 Wood Village Dr\", \"900 block of …\n$ victims_killed    &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 1, 0, 0\n$ victims_injured   &lt;dbl&gt; 1, 0, 1, 0, 1, 2, 1, 0, 1, 0\n$ suspects_killed   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n$ suspects_injured  &lt;dbl&gt; 2, 0, 0, 1, 0, 0, 0, 0, 0, 0\n$ suspects_arrested &lt;dbl&gt; 2, 0, 1, 0, 0, 0, 0, 1, 1, 1\n$ operations        &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/…\n$ full_adress       &lt;chr&gt; \"1482 NC-71 Maxton North Carolina\", \"1253 Wood Villa…\n\n\n\n\n3 search all address to latitude, longitude\n\n\nCode\n# geocode the addresses\ndata002 &lt;- data001 %&gt;%\n  geocode(full_adress, method = 'arcgis', lat = latitude , long = longitude)\n\nglimpse(data002)\n\n\nRows: 10\nColumns: 14\n$ incident_id       &lt;dbl&gt; 2780182, 2781261, 2779721, 2790051, 2788874, 2781086…\n$ incident_date     &lt;chr&gt; \"December 15, 2023\", \"December 17, 2023\", \"December …\n$ state             &lt;chr&gt; \"North Carolina\", \"Mississippi\", \"Tennessee\", \"Conne…\n$ city_or_county    &lt;chr&gt; \"Maxton\", \"Jackson\", \"Nashville\", \"Dayville\", \"Washi…\n$ address           &lt;chr&gt; \"1482 NC-71\", \"1253 Wood Village Dr\", \"900 block of …\n$ victims_killed    &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 1, 0, 0\n$ victims_injured   &lt;dbl&gt; 1, 0, 1, 0, 1, 2, 1, 0, 1, 0\n$ suspects_killed   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n$ suspects_injured  &lt;dbl&gt; 2, 0, 0, 1, 0, 0, 0, 0, 0, 0\n$ suspects_arrested &lt;dbl&gt; 2, 0, 1, 0, 0, 0, 0, 1, 1, 1\n$ operations        &lt;chr&gt; \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/A\", \"N/…\n$ full_adress       &lt;chr&gt; \"1482 NC-71 Maxton North Carolina\", \"1253 Wood Villa…\n$ latitude          &lt;dbl&gt; 34.77256, 32.29506, 36.18049, 41.84328, 38.88522, 29…\n$ longitude         &lt;dbl&gt; -79.33269, -90.24319, -86.80317, -71.88110, -76.9195…\n\n\n\n\nCode\ndata003=data002 %&gt;% filter(is.na(latitude)==FALSE,(is.na(longitude)==FALSE))\n\n\n\n\n4 map\n\n\nCode\nm &lt;- leaflet(data=mapStates) %&gt;%\n   # Add default OpenStreetMap map tiles\n  addTiles() %&gt;%  \n  # add markers\n  addMarkers( lng=data003$longitude, lat=data003$latitude, popup=data003$state)%&gt;% \n  addPolygons(fillColor = topo.colors(10, alpha = NULL), stroke = FALSE)\n\nm  \n\n\n\n\n\n\n\n\n5 US gdp by State\n\n\nCode\nglimpse(mapStates)\n\n\nList of 4\n $ x    : num [1:15599] -87.5 -87.5 -87.5 -87.5 -87.6 ...\n $ y    : num [1:15599] 30.4 30.4 30.4 30.3 30.3 ...\n $ range: num [1:4] -124.7 -67 25.1 49.4\n $ names: chr [1:63] \"alabama\" \"arizona\" \"arkansas\" \"california\" ...\n - attr(*, \"class\")= chr \"map\"\n\n\n\n\nCode\nlibrary(openxlsx)\nlibrary(readxl)\n\nper_gdp_usd=read_excel('US state gpd 2022.xlsx') %&gt;% mutate(names=str_replace(names,'\\\\*','') %&gt;% str_trim() )\n\n\n\n\nCode\nmap_df002 &lt;- merge(map_df, per_gdp_usd, by.x = \"name\", by.y = \"names\")\n\n\n\n\nCode\nmap_sf002 &lt;- sf::st_as_sf(map_df002, sf_column_name = \"geometry\")\n\n\n\n\nCode\npal &lt;- colorNumeric(\"magma\", NULL)\n\n\nm &lt;- leaflet(map_sf002) %&gt;%\n   # Add default OpenStreetMap map tiles\n  addTiles() %&gt;%  \n   addPolygons(smoothFactor = 0.3, fillOpacity = 0.5,weight = 1,\n    fillColor = ~ pal(per_2022_usd)\n    ,popup = ~ paste0(\n      \"地区：\", name, \"&lt;br/&gt;\",\n      \"&lt;hr/&gt;\",\n      \"人均gpd：\", per_2022_usd, \"（千 美元）\", \"&lt;br/&gt;\"\n      \n    )\n     ,label = lapply(paste0(\n      \"地区：\", \"&lt;b&gt;\", map_sf002$name, \"&lt;/b&gt;\", \"&lt;br/&gt;\",\n      \"人均gpd 美元：\", round(map_sf002$per_2022_usd/1000), \"K &lt;br/&gt;\",\n       \"总gpd 美元：\", round(map_sf002$total_2022_usd), \"M &lt;br/&gt;\"\n\n    ), htmltools::HTML)\n    )%&gt;% addLegend(\n    position = \"bottomright\", title = \"人均gpd(美元)\",\n    pal = pal, values = ~per_2022_usd, opacity = 1.0\n    )\n  \n\n\n\nm  \n\n\n\n\n\n\n\n\n6 resouce:\nhttps://www.gunviolencearchive.org/reports/mass-shooting?page=8&year=2023\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "5 Map",
+      "US map"
     ]
   }
 ]

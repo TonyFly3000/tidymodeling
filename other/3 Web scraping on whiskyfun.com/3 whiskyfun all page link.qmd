@@ -22,6 +22,7 @@ format:
 ```{r}
 library(tidyverse)
 library(rvest)
+library(curl)
 library(stringr)
 ```
 
@@ -43,46 +44,68 @@ first_page=read_html(first_url)
 ```{r}
 last_page <- first_page %>%
   html_elements(css = "a.textegrandfoncegras")%>% html_attr("href")
+
+last_page
 ```
 
-
-# start from secound page
-
-
-```{r}
-page_list=c()
-```
-
-
-```{r}
-url='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'
-
-page=read_html(first_url)
-
-last_page <- (first_page %>%html_elements(css = "font:nth-child(1) strong a")%>%html_attr("href"))[1]
-
-print(last_page)
-page_list=c(page_list,last_page)
-```
 
 # start to download 500 pages
 
-```{r}
-last_page='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'
-page_list=c()
 
+```{r}
+#last_page='https://www.whiskyfun.com/archivemarch24-2-Port-Ellen-Glen-Grant.html'
+last_page='https://www.whiskyfun.com'
+last_page="https://www.whiskyfun.com/ArchiveOctober04-2.html"
+page_list=c()
+a=0
+  
 for (i in seq(1:500)){
   print(i)
-  page=read_html(last_page)
+  ###################### each page max try 10 times 
+  tryCatch({
+    #page=read_html(last_page)
+    page=read_html(curl(last_page, handle = curl::new_handle("useragent" = "Mozilla/5.0")))
+    i=i+1
+    
+  Sys.sleep(runif(n=1, min=0.1, max=0.3))
+ },error = function(msg){print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+    i=i-1
+    print(paste0("new i : ",i))
+    a=a+1
+    })
+   if(a>10){break}
+  
+  ##############################################
+  #if (last_page %>% is.na()==TRUE){break}
+
+  ### first page
+   if(last_page=='https://www.whiskyfun.com'){
+    last_page <- (page %>%html_elements(css = "a.textegrandfoncegras")%>%html_attr("href"))[1]
+    
+  #### all other     
+    }else {
   last_page <- (page %>%html_elements(css = "font:nth-child(1) strong a")%>%html_attr("href"))[1]
+   ###  before 2004 oct
+  if(last_page %>% is.na()==TRUE){
+    last_page <- (page %>%html_elements(css = "font:nth-child(1) b a")%>%html_attr("href"))[1]
+  }
+    }
+  
+  if(last_page%>% str_sub(1,26)=='https://www.whiskyfun.com/'){
+    last_page=last_page}else{
   last_page=paste0('https://www.whiskyfun.com/',last_page)
+    }
+  
   print(last_page)
+  if (last_page %in% page_list|last_page=="https://www.whiskyfun.com/http://www.lambchop.net/"){break}
   page_list=c(page_list,last_page)
   Sys.sleep(runif(n=1, min=0.1, max=0.8))
   
   
   }
 ```
+
+# add first page
 
 ```{r}
 page_list_data=page_list %>% tibble()
@@ -93,7 +116,7 @@ page_list_data=page_list %>% tibble()
 
 ```{r}
 library(openxlsx)
-write.xlsx(page_list_data, file = "./output/wf_all_page_review.xlsx.xlsx")
+write.xlsx(page_list_data, file = "./output/wf_all_page_review_v2.xlsx")
 ```
 
 

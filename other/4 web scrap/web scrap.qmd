@@ -1,0 +1,42 @@
+---
+title: "web scrap"
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+# table 
+```{r}
+library(tidyverse)
+content <- read_html("https://en.wikipedia.org/wiki/List_of_highest-grossing_films_in_the_United_States_and_Canada")
+tables <- content %>% html_table(fill = TRUE)
+first_table <- tables[[1]]
+first_table <- first_table[-1,]
+first_table
+```
+
+
+
+
+# Reference:
+
+https://rvest.tidyverse.org/reference/read_html_live.html
+
