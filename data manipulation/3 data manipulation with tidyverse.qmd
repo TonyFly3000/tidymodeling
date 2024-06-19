@@ -171,9 +171,48 @@ small_mtcars %>% cbind(small_mtcars)
 
 #### NAN
 
+NaN (“Not a Number”) means 0/0
+
+```{r}
+v1 <- NaN
+v1
+```
+
+
+```{r}
+is.na(v1)
+```
+
+
+
 #### NA
 
+NA (“Not Available”) is generally interpreted as a missing value
+
+```{r}
+v2 <- NA
+v2
+```
+
+
+```{r}
+is.na(v2)
+```
+
+
 #### NULL
+
+NULL is an object and is returned when an expression or function results in an undefined value. In R language, NULL (capital letters) is a reserved word
+
+```{r}
+v3=NULL
+v3
+```
+
+```{r}
+is.na(v3)
+```
+
 
 ## group by
 
@@ -837,5 +876,7 @@ https://dplyr.tidyverse.org/
 https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf
 
 https://www.youtube.com/watch?v=3Aki_sQYQG0
+
+https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf
 
 

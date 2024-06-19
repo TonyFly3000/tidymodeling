@@ -2438,7 +2438,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#filter-rows",
     "title": "Data manipulation with tidyverse",
     "section": "2.9 Filter rows",
-    "text": "2.9 Filter rows\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3    Hornet 4 Drive   6 21.4 110\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105\n\n\n\n2.9.1 Filters with AND conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5,mpg&gt;20)\n\n\n        car_name cyl  mpg  hp\n1      Mazda RX4   6 21.0 110\n2  Mazda RX4 Wag   6 21.0 110\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n\n2.9.2 Filters with OR conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5|mpg&gt;20)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105\n\n\n\n\n2.9.3 filter row with index\n\n2.9.3.1 5th rows\n\n\nCode\nsmall_mtcars %&gt;% slice(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.2 1 and 5h rows\n\n\nCode\nsmall_mtcars %&gt;% slice(1:5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.3 get ramdon 5 rows\n\n\nCode\nsmall_mtcars %&gt;% sample_n(5)\n\n\n        car_name cyl  mpg  hp\n1 Hornet 4 Drive   6 21.4 110\n2      Mazda RX4   6 21.0 110\n3        Valiant   6 18.1 105\n4     Datsun 710   4 22.8  93\n5  Mazda RX4 Wag   6 21.0 110",
+    "text": "2.9 Filter rows\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3    Hornet 4 Drive   6 21.4 110\n4 Hornet Sportabout   8 18.7 175\n5           Valiant   6 18.1 105\n\n\n\n2.9.1 Filters with AND conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5,mpg&gt;20)\n\n\n        car_name cyl  mpg  hp\n1      Mazda RX4   6 21.0 110\n2  Mazda RX4 Wag   6 21.0 110\n3 Hornet 4 Drive   6 21.4 110\n\n\n\n\n2.9.2 Filters with OR conditions\n\n\nCode\nsmall_mtcars %&gt;%filter(cyl&gt;5|mpg&gt;20)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105\n\n\n\n\n2.9.3 filter row with index\n\n2.9.3.1 5th rows\n\n\nCode\nsmall_mtcars %&gt;% slice(5)\n\n\n           car_name cyl  mpg  hp\n1 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.2 1 and 5h rows\n\n\nCode\nsmall_mtcars %&gt;% slice(1:5)\n\n\n           car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175\n\n\n\n\n2.9.3.3 get ramdon 5 rows\n\n\nCode\nsmall_mtcars %&gt;% sample_n(5)\n\n\n        car_name cyl  mpg  hp\n1     Datsun 710   4 22.8  93\n2        Valiant   6 18.1 105\n3  Mazda RX4 Wag   6 21.0 110\n4 Hornet 4 Drive   6 21.4 110\n5      Mazda RX4   6 21.0 110",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -2449,7 +2449,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#append",
     "title": "Data manipulation with tidyverse",
     "section": "2.10 Append",
-    "text": "2.10 Append\n\n2.10.1 append by row\n\n\nCode\nsmall_mtcars %&gt;% rbind(small_mtcars)\n\n\n            car_name cyl  mpg  hp\n1          Mazda RX4   6 21.0 110\n2      Mazda RX4 Wag   6 21.0 110\n3         Datsun 710   4 22.8  93\n4     Hornet 4 Drive   6 21.4 110\n5  Hornet Sportabout   8 18.7 175\n6            Valiant   6 18.1 105\n7          Mazda RX4   6 21.0 110\n8      Mazda RX4 Wag   6 21.0 110\n9         Datsun 710   4 22.8  93\n10    Hornet 4 Drive   6 21.4 110\n11 Hornet Sportabout   8 18.7 175\n12           Valiant   6 18.1 105\n\n\n\n\n2.10.2 append by column\n\n\nCode\nsmall_mtcars %&gt;% cbind(small_mtcars)\n\n\n           car_name cyl  mpg  hp          car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105           Valiant   6 18.1 105\n\n\n\n\n2.10.3 Sepcial vales\n\n2.10.3.1 NAN\n\n\n2.10.3.2 NA\n\n\n2.10.3.3 NULL",
+    "text": "2.10 Append\n\n2.10.1 append by row\n\n\nCode\nsmall_mtcars %&gt;% rbind(small_mtcars)\n\n\n            car_name cyl  mpg  hp\n1          Mazda RX4   6 21.0 110\n2      Mazda RX4 Wag   6 21.0 110\n3         Datsun 710   4 22.8  93\n4     Hornet 4 Drive   6 21.4 110\n5  Hornet Sportabout   8 18.7 175\n6            Valiant   6 18.1 105\n7          Mazda RX4   6 21.0 110\n8      Mazda RX4 Wag   6 21.0 110\n9         Datsun 710   4 22.8  93\n10    Hornet 4 Drive   6 21.4 110\n11 Hornet Sportabout   8 18.7 175\n12           Valiant   6 18.1 105\n\n\n\n\n2.10.2 append by column\n\n\nCode\nsmall_mtcars %&gt;% cbind(small_mtcars)\n\n\n           car_name cyl  mpg  hp          car_name cyl  mpg  hp\n1         Mazda RX4   6 21.0 110         Mazda RX4   6 21.0 110\n2     Mazda RX4 Wag   6 21.0 110     Mazda RX4 Wag   6 21.0 110\n3        Datsun 710   4 22.8  93        Datsun 710   4 22.8  93\n4    Hornet 4 Drive   6 21.4 110    Hornet 4 Drive   6 21.4 110\n5 Hornet Sportabout   8 18.7 175 Hornet Sportabout   8 18.7 175\n6           Valiant   6 18.1 105           Valiant   6 18.1 105\n\n\n\n\n2.10.3 Sepcial vales\n\n2.10.3.1 NAN\nNaN (“Not a Number”) means 0/0\n\n\nCode\nv1 &lt;- NaN\nv1\n\n\n[1] NaN\n\n\n\n\nCode\nis.na(v1)\n\n\n[1] TRUE\n\n\n\n\n2.10.3.2 NA\nNA (“Not Available”) is generally interpreted as a missing value\n\n\nCode\nv2 &lt;- NA\nv2\n\n\n[1] NA\n\n\n\n\nCode\nis.na(v2)\n\n\n[1] TRUE\n\n\n\n\n2.10.3.3 NULL\nNULL is an object and is returned when an expression or function results in an undefined value. In R language, NULL (capital letters) is a reserved word\n\n\nCode\nv3=NULL\nv3\n\n\nNULL\n\n\n\n\nCode\nis.na(v3)\n\n\nlogical(0)",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -2581,7 +2581,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#date-format",
     "title": "Data manipulation with tidyverse",
     "section": "4.1 date format",
-    "text": "4.1 date format\ninput as character\n\n\nCode\ndate1='2023-01-01'\nclass(date1)\n\n\n[1] \"character\"\n\n\n\n\nCode\ndate1\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with as.Date()\n\n\nCode\ndate2=as.Date('2023-01-01')\nclass(date2)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate2\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with ymd()\n\n\nCode\ndate3=ymd('2023-01-01')\nclass(date3)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate3\n\n\n[1] \"2023-01-01\"\n\n\nget today with today()\n\n\nCode\ntoday()\n\n\n[1] \"2024-05-25\"\n\n\nget local timezone\n\n\nCode\nSys.timezone()\n\n\n[1] \"Asia/Shanghai\"",
+    "text": "4.1 date format\ninput as character\n\n\nCode\ndate1='2023-01-01'\nclass(date1)\n\n\n[1] \"character\"\n\n\n\n\nCode\ndate1\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with as.Date()\n\n\nCode\ndate2=as.Date('2023-01-01')\nclass(date2)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate2\n\n\n[1] \"2023-01-01\"\n\n\nconvert into date type with ymd()\n\n\nCode\ndate3=ymd('2023-01-01')\nclass(date3)\n\n\n[1] \"Date\"\n\n\n\n\nCode\ndate3\n\n\n[1] \"2023-01-01\"\n\n\nget today with today()\n\n\nCode\ntoday()\n\n\n[1] \"2024-06-18\"\n\n\nget local timezone\n\n\nCode\nSys.timezone()\n\n\n[1] \"Asia/Shanghai\"",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -2614,7 +2614,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#day-and-time",
     "title": "Data manipulation with tidyverse",
     "section": "4.4 day and time",
-    "text": "4.4 day and time\n\n\nCode\nnow_time=now()\nnow_time\n\n\n[1] \"2024-05-25 16:43:06 CST\"\n\n\n\n4.4.1 get year\n\n\nCode\nyear(now_time)\n\n\n[1] 2024\n\n\n\n\n4.4.2 get month\n\n\nCode\nmonth(now_time)\n\n\n[1] 5\n\n\n\n\n4.4.3 get date of the month\n\n\nCode\nmday(now_time)\n\n\n[1] 25\n\n\n\n\n4.4.4 get date of the year\n\n\nCode\nyday(now_time)\n\n\n[1] 146\n\n\n\n\n4.4.5 get date of the week\n\n\nCode\nwday(now_time)\n\n\n[1] 7\n\n\n\n4.4.5.1 get hour\n\n\nCode\nhour(now_time)\n\n\n[1] 16\n\n\n\n\n\n4.4.6 get minute\n\n\nCode\nminute(now_time)\n\n\n[1] 43\n\n\n\n\n4.4.7 get second\n\n\nCode\nsecond(now_time)\n\n\n[1] 6.129058",
+    "text": "4.4 day and time\n\n\nCode\nnow_time=now()\nnow_time\n\n\n[1] \"2024-06-18 16:48:43 CST\"\n\n\n\n4.4.1 get year\n\n\nCode\nyear(now_time)\n\n\n[1] 2024\n\n\n\n\n4.4.2 get month\n\n\nCode\nmonth(now_time)\n\n\n[1] 6\n\n\n\n\n4.4.3 get date of the month\n\n\nCode\nmday(now_time)\n\n\n[1] 18\n\n\n\n\n4.4.4 get date of the year\n\n\nCode\nyday(now_time)\n\n\n[1] 170\n\n\n\n\n4.4.5 get date of the week\n\n\nCode\nwday(now_time)\n\n\n[1] 3\n\n\n\n4.4.5.1 get hour\n\n\nCode\nhour(now_time)\n\n\n[1] 16\n\n\n\n\n\n4.4.6 get minute\n\n\nCode\nminute(now_time)\n\n\n[1] 48\n\n\n\n\n4.4.7 get second\n\n\nCode\nsecond(now_time)\n\n\n[1] 43.39117",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -2922,7 +2922,7 @@
     "href": "intro/1 basic R.html#get-all-file-name-under-current-directory",
     "title": "Basic R",
     "section": "1.2 get all file name under current directory",
-    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R.qmd\"                 \"1 basic R.rmarkdown\"          \n[3] \"1-basic-R.rmarkdown\"           \"5 R boook.qmd\"                \n[5] \"6 data analytic in R book.qmd\" \"hotels.csv\"                   \n[7] \"images\"",
+    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R_files\"               \"1 basic R.qmd\"                \n[3] \"1 basic R.rmarkdown\"           \"1-basic-R.rmarkdown\"          \n[5] \"2 probability.qmd\"             \"5 R boook.qmd\"                \n[7] \"6 data analytic in R book.qmd\" \"hotels.csv\"                   \n[9] \"images\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3164,7 +3164,7 @@
     "href": "intro/1 basic R.html#check-pacakge-dependencies",
     "title": "Basic R",
     "section": "6.5 check pacakge dependencies",
-    "text": "6.5 check pacakge dependencies\n\n\nCode\npak::pkg_deps_tree(\"tibble\")\n\n\ntibble 3.2.1 ✨ ⬇ (684.10 kB)\n├─fansi 1.0.6 ✨ ⬇ (381.01 kB)\n├─lifecycle 1.0.4 ✨ ⬇ (124.48 kB)\n│ ├─cli 3.6.2 ✨ ⬇ (1.39 MB)\n│ ├─glue 1.7.0 ✨ ⬇ (159.26 kB)\n│ └─rlang 1.1.3 ✨ ⬇ (1.89 MB)\n├─magrittr 2.0.3 ✨ ⬇ (232.43 kB)\n├─pillar 1.9.0 ✨ ⬇ (648.86 kB)\n│ ├─cli\n│ ├─fansi\n│ ├─glue\n│ ├─lifecycle\n│ ├─rlang\n│ ├─utf8 1.2.4 ✨ ⬇ (206.92 kB)\n│ └─vctrs 0.6.5 ✨ ⬇ (1.88 MB)\n│   ├─cli\n│   ├─glue\n│   ├─lifecycle\n│   └─rlang\n├─pkgconfig 2.0.3 ✨ ⬇ (18.21 kB)\n├─rlang\n└─vctrs\n\nKey:  ✨ new |  ⬇ download",
+    "text": "6.5 check pacakge dependencies\n\n\nCode\npak::pkg_deps_tree(\"tibble\")\n\n\ntibble 3.2.1 ✨ ⬇ (684.10 kB)\n├─fansi 1.0.6 ✨ ⬇ (381.01 kB)\n├─lifecycle 1.0.4 ✨ ⬇ (124.48 kB)\n│ ├─cli 3.6.2 ✨ ⬇ (1.39 MB)\n│ ├─glue 1.7.0 ✨ ⬇ (159.26 kB)\n│ └─rlang 1.1.4 ✨ ⬇ (1.89 MB)\n├─magrittr 2.0.3 ✨ ⬇ (232.43 kB)\n├─pillar 1.9.0 ✨ ⬇ (648.86 kB)\n│ ├─cli\n│ ├─fansi\n│ ├─glue\n│ ├─lifecycle\n│ ├─rlang\n│ ├─utf8 1.2.4 ✨ ⬇ (206.92 kB)\n│ └─vctrs 0.6.5 ✨ ⬇ (1.88 MB)\n│   ├─cli\n│   ├─glue\n│   ├─lifecycle\n│   └─rlang\n├─pkgconfig 2.0.3 ✨ ⬇ (18.21 kB)\n├─rlang\n└─vctrs\n\nKey:  ✨ new |  ⬇ download",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3252,7 +3252,7 @@
     "href": "intro/1 basic R.html#correlationpearsons-product-moment-correlation-coefficient",
     "title": "Basic R",
     "section": "9.4 Correlation,Pearson’s product-moment correlation coefficient",
-    "text": "9.4 Correlation,Pearson’s product-moment correlation coefficient\nPearson’s sample correlation coef- ficient ρxy is computed by dividing the sample covariance by the product of the standard deviation of each data set\n\nSome Correlation Example:",
+    "text": "9.4 Correlation,Pearson’s product-moment correlation coefficient\nPearson’s sample correlation coef- ficient ρxy is computed by dividing the sample covariance by the product of the standard deviation of each data set\n\nSome Correlation Example:\n\n\n\nCode\nsessionInfo()\n\n\nsessionInfo()\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.35     R6_2.5.1          fastmap_1.1.1     xfun_0.43        \n [5] knitr_1.45        htmltools_0.5.8.1 rmarkdown_2.26    ps_1.7.6         \n [9] cli_3.6.2         processx_3.8.4    callr_3.7.6       pak_0.7.2        \n[13] compiler_4.3.1    rstudioapi_0.16.0 tools_4.3.1       evaluate_0.23    \n[17] yaml_2.3.8        rlang_1.1.3       jsonlite_1.8.8    htmlwidgets_1.6.4",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -5262,7 +5262,7 @@
     "href": "data manipulation/3 data manipulation with tidyverse.html#extract-string",
     "title": "Data manipulation with tidyverse",
     "section": "3.9 extract string",
-    "text": "3.9 extract string\n\n\nCode\ndata001=mtcars\ndata001 &lt;- cbind(names = rownames(data001), data001)\n\n\n\n3.9.1 by postion\nextract 2 to 4\n\n\nCode\ndata001$new_names=data001$names %&gt;% str_sub(2,4)\nhead(data001 %&gt;% select(new_names,names))\n\n\n                  new_names             names\nMazda RX4               azd         Mazda RX4\nMazda RX4 Wag           azd     Mazda RX4 Wag\nDatsun 710              ats        Datsun 710\nHornet 4 Drive          orn    Hornet 4 Drive\nHornet Sportabout       orn Hornet Sportabout\nValiant                 ali           Valiant\n\n\n\n\n3.9.2 extracting with Regular expressions\nextracting one letter\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"\\\\w\")\n\n\n[1] \"a\"\n\n\nextracting one letter/number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\".\")\n\n\n[1] \"a\"\n\n\nextracting one .\n\n\nCode\ntrx='abc1993.ccc'\ntrx %&gt;% str_extract(\"\\\\.\")\n\n\n[1] \".\"\n\n\nextracting 3 letter start with ‘a’\n\n\nCode\nword=c('aabbbasdfe. e','appl.e e','pet','melon')\nword\n\n\n[1] \"aabbbasdfe. e\" \"appl.e e\"      \"pet\"           \"melon\"        \n\n\nextracting 2 letter start with ‘a’\n\n\nCode\nword %&gt;% str_extract(\"a..\")\n\n\n[1] \"aab\" \"app\" NA    NA   \n\n\nextracting all letter start with ‘a’\n\n\nCode\nword %&gt;% str_extract(\"a.+\")\n\n\n[1] \"aabbbasdfe. e\" \"appl.e e\"      NA              NA             \n\n\nextracting all letter between ‘a’ and ‘e’\n\n\nCode\nword %&gt;% str_extract(\"(a).*?(e)\")\n\n\n[1] \"aabbbasdfe\" \"appl.e\"     NA           NA          \n\n\nextracting all letter between ‘a’ and ‘.’\n\n\nCode\nword %&gt;% str_extract(\"(a).*?(\\\\.)\")\n\n\n[1] \"aabbbasdfe.\" \"appl.\"       NA            NA           \n\n\nextracting all letter between ‘a’ and space\n\n\nCode\nword %&gt;% str_extract(\"(a).*?( )\")\n\n\n[1] \"aabbbasdfe. \" \"appl.e \"      NA             NA            \n\n\nextracting one number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"\\\\d\")\n\n\n[1] \"1\"\n\n\nextracting more number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"(\\\\d)+\")\n\n\n[1] \"1993\"\n\n\nextracting more non number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract_all(\"\\\\D+\")\n\n\n[[1]]\n[1] \"abc\"  \" ccc\"\n\n\nextracting all letter from the begining\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"[:alpha:]+\")\n\n\n[1] \"abc\"\n\n\nextracting number after points:\n\n\nCode\ntrx=c('abcpoints:100 ccc','asdfasd','points:66','thisis points:6')\ntrx\n\n\n[1] \"abcpoints:100 ccc\" \"asdfasd\"           \"points:66\"        \n[4] \"thisis points:6\"  \n\n\nextracting number after points: and remove non match\n\n\nCode\nt=trx %&gt;% str_extract(\"points:[:digit:]+\") %&gt;% na.omit()%&gt;% str_extract(\"points:[:digit:]+\")\nt\n\n\n[1] \"points:100\" \"points:66\"  \"points:6\"",
+    "text": "3.9 extract string\n\n\nCode\ndata001=mtcars\ndata001 &lt;- cbind(names = rownames(data001), data001)\n\n\n\n3.9.1 by postion\nextract 2 to 4\n\n\nCode\ndata001$new_names=data001$names %&gt;% str_sub(2,4)\nhead(data001 %&gt;% select(new_names,names))\n\n\n                  new_names             names\nMazda RX4               azd         Mazda RX4\nMazda RX4 Wag           azd     Mazda RX4 Wag\nDatsun 710              ats        Datsun 710\nHornet 4 Drive          orn    Hornet 4 Drive\nHornet Sportabout       orn Hornet Sportabout\nValiant                 ali           Valiant\n\n\n\n\n3.9.2 extracting with Regular expressions\nextracting one letter\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"\\\\w\")\n\n\n[1] \"a\"\n\n\nextracting one letter/number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\".\")\n\n\n[1] \"a\"\n\n\nextracting one .\n\n\nCode\ntrx='abc1993.ccc'\ntrx %&gt;% str_extract(\"\\\\.\")\n\n\n[1] \".\"\n\n\nextracting 3 letter start with ‘a’\n\n\nCode\nword=c('aabbbasdfe. e','appl.e e','pet','melon','asdf g 133asd') %&gt;% as_tibble()\nword\n\n\n# A tibble: 5 × 1\n  value        \n  &lt;chr&gt;        \n1 aabbbasdfe. e\n2 appl.e e     \n3 pet          \n4 melon        \n5 asdf g 133asd\n\n\nextracting 2 letter start with ‘a’\n\n\nCode\nword %&gt;%mutate(new=value %&gt;% str_extract(\"a..\"))\n\n\n# A tibble: 5 × 2\n  value         new  \n  &lt;chr&gt;         &lt;chr&gt;\n1 aabbbasdfe. e aab  \n2 appl.e e      app  \n3 pet           &lt;NA&gt; \n4 melon         &lt;NA&gt; \n5 asdf g 133asd asd  \n\n\nextracting all letter start with ‘a’\n\n\nCode\nword %&gt;%mutate(new=value %&gt;% str_extract(\"a.+\"))\n\n\n# A tibble: 5 × 2\n  value         new          \n  &lt;chr&gt;         &lt;chr&gt;        \n1 aabbbasdfe. e aabbbasdfe. e\n2 appl.e e      appl.e e     \n3 pet           &lt;NA&gt;         \n4 melon         &lt;NA&gt;         \n5 asdf g 133asd asdf g 133asd\n\n\nextracting all letter between ‘a’ and ‘e’\n\n\nCode\nword %&gt;%mutate(new=value %&gt;% str_extract(\"(a).*?(e)\"))\n\n\n# A tibble: 5 × 2\n  value         new       \n  &lt;chr&gt;         &lt;chr&gt;     \n1 aabbbasdfe. e aabbbasdfe\n2 appl.e e      appl.e    \n3 pet           &lt;NA&gt;      \n4 melon         &lt;NA&gt;      \n5 asdf g 133asd &lt;NA&gt;      \n\n\nextracting all letter between ‘a’ and ‘.’\n\n\nCode\nword %&gt;%mutate(new=value %&gt;% str_extract(\"(a).*?(\\\\.)\"))\n\n\n# A tibble: 5 × 2\n  value         new        \n  &lt;chr&gt;         &lt;chr&gt;      \n1 aabbbasdfe. e aabbbasdfe.\n2 appl.e e      appl.      \n3 pet           &lt;NA&gt;       \n4 melon         &lt;NA&gt;       \n5 asdf g 133asd &lt;NA&gt;       \n\n\nextracting all letter between ‘a’ and space\n\n\nCode\nword %&gt;%mutate(new=value %&gt;% str_extract(\"(a).*?( )\"))\n\n\n# A tibble: 5 × 2\n  value         new           \n  &lt;chr&gt;         &lt;chr&gt;         \n1 aabbbasdfe. e \"aabbbasdfe. \"\n2 appl.e e      \"appl.e \"     \n3 pet            &lt;NA&gt;         \n4 melon          &lt;NA&gt;         \n5 asdf g 133asd \"asdf \"       \n\n\nextracting all letter end with number\n\n\nCode\nword %&gt;%mutate(new=value %&gt;% str_extract(\".*?\\\\d\")\n               , new2=new %&gt;% str_sub(end=-3)\n                                         \n)\n\n\n# A tibble: 5 × 3\n  value         new      new2  \n  &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; \n1 aabbbasdfe. e &lt;NA&gt;     &lt;NA&gt;  \n2 appl.e e      &lt;NA&gt;     &lt;NA&gt;  \n3 pet           &lt;NA&gt;     &lt;NA&gt;  \n4 melon         &lt;NA&gt;     &lt;NA&gt;  \n5 asdf g 133asd asdf g 1 asdf g\n\n\nextracting one number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"\\\\d\")\n\n\n[1] \"1\"\n\n\nextracting more number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"(\\\\d)+\")\n\n\n[1] \"1993\"\n\n\nextracting more non number\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract_all(\"\\\\D+\")\n\n\n[[1]]\n[1] \"abc\"  \" ccc\"\n\n\nextracting all letter from the begining\n\n\nCode\ntrx='abc1993 ccc'\ntrx %&gt;% str_extract(\"[:alpha:]+\")\n\n\n[1] \"abc\"\n\n\nextracting number after points:\n\n\nCode\ntrx=c('abcpoints:100 ccc','asdfasd','points:66','thisis points:6')\ntrx\n\n\n[1] \"abcpoints:100 ccc\" \"asdfasd\"           \"points:66\"        \n[4] \"thisis points:6\"  \n\n\nextracting number after points: and remove non match\n\n\nCode\nt=trx %&gt;% str_extract(\"points:[:digit:]+\") %&gt;% na.omit()%&gt;% str_extract(\"points:[:digit:]+\")\nt\n\n\n[1] \"points:100\" \"points:66\"  \"points:6\"",
     "crumbs": [
       "data manipulation",
       "Data manipulation with tidyverse"
@@ -5742,6 +5742,237 @@
       "Plot",
       "5 Map",
       "US map"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#draw-10-number-from-1-to-10",
+    "href": "intro/2 probability.html#draw-10-number-from-1-to-10",
+    "title": "Probability",
+    "section": "1.1 draw 10 number from 1 to 10",
+    "text": "1.1 draw 10 number from 1 to 10\n\n\nCode\na=sample(1:10,10, replace=T) \na\n\n\n [1] 5 9 9 4 3 9 5 1 1 2\n\n\neach number around 10%\n\n\nCode\nas.data.frame(table(a))\n\n\n  a Freq\n1 1    2\n2 2    1\n3 3    1\n4 4    1\n5 5    2\n6 9    3",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#draw-10000-number-from-1-to-10",
+    "href": "intro/2 probability.html#draw-10000-number-from-1-to-10",
+    "title": "Probability",
+    "section": "1.2 draw 10,000 number from 1 to 10",
+    "text": "1.2 draw 10,000 number from 1 to 10\n\n\nCode\na=sample(1:10,10000, replace=T) \n\n\neach number around 10%\n\n\nCode\nas.data.frame(table(a))\n\n\n    a Freq\n1   1  998\n2   2  945\n3   3 1018\n4   4  980\n5   5 1005\n6   6 1070\n7   7  980\n8   8 1008\n9   9  998\n10 10  998",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#permutationsorder-dose-not-matter-2-number-from-4-number",
+    "href": "intro/2 probability.html#permutationsorder-dose-not-matter-2-number-from-4-number",
+    "title": "Probability",
+    "section": "2.1 Permutations(order dose not matter), 2 number from 4 number",
+    "text": "2.1 Permutations(order dose not matter), 2 number from 4 number\n\n\nCode\nlibrary(gtools)\nall_num=4\nchoose=2\n\nres&lt;- permutations(n= all_num, r = choose, v = c(1:all_num))\nres\n\n\n      [,1] [,2]\n [1,]    1    2\n [2,]    1    3\n [3,]    1    4\n [4,]    2    1\n [5,]    2    3\n [6,]    2    4\n [7,]    3    1\n [8,]    3    2\n [9,]    3    4\n[10,]    4    1\n[11,]    4    2\n[12,]    4    3\n\n\n\n\nCode\nprint (nrow(res))\n\n\n[1] 12\n\n\nall_num!/choose!\n4!/2!\n\n\nCode\n(4*3*2*1)/(2*1)\n\n\n[1] 12\n\n\nor\n\n\nCode\nfactorial(4) / factorial(4-2)\n\n\n[1] 12",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#combinationsorder-matter-2-number-from-4-number",
+    "href": "intro/2 probability.html#combinationsorder-matter-2-number-from-4-number",
+    "title": "Probability",
+    "section": "2.2 Combinations(order matter), 2 number from 4 number",
+    "text": "2.2 Combinations(order matter), 2 number from 4 number\n\n\nCode\nlibrary(gtools)\nall_num=4\nchoose=2\n\nres&lt;- combinations(n= all_num, r = choose, v = c(1:all_num))\nres\n\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    1    3\n[3,]    1    4\n[4,]    2    3\n[5,]    2    4\n[6,]    3    4\n\n\n\n\nCode\nprint (nrow(res))\n\n\n[1] 6\n\n\nall_num!/((all_num-choose)! * choose!\n4!/((4-2)! * 2!)\n\n\nCode\n(4*3*2*1)/((2*1)*(2*1))\n\n\n[1] 6\n\n\nor\n\n\nCode\nfactorial(4) / (factorial(4-2)*factorial(2))\n\n\n[1] 6",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#soluition-1pat-least-onep1-snoringp2-snoringp3-snoringp4-snoring",
+    "href": "intro/2 probability.html#soluition-1pat-least-onep1-snoringp2-snoringp3-snoringp4-snoring",
+    "title": "Probability",
+    "section": "3.1 soluition 1:P(at least one)=P(1 snoring)+P(2 snoring)+P(3 snoring)+P(4 snoring)",
+    "text": "3.1 soluition 1:P(at least one)=P(1 snoring)+P(2 snoring)+P(3 snoring)+P(4 snoring)\n\n3.1.1 0 snoring\n\n\nCode\np0=(0.8*0.8*0.8*0.8)\np0\n\n\n[1] 0.4096\n\n\n\n\n3.1.2 1 snoring\n\n\nCode\np1=(0.2*0.8*0.8*0.8)*4\np1\n\n\n[1] 0.4096\n\n\n\n\n3.1.3 2 snoring\nchoose 2 from 4: factorial(4) / (factorial(4-2)*factorial(2))\ntotal 6 Permutations\n\n\nCode\nfactorial(4) / (factorial(4-2)*factorial(2))\n\n\n[1] 6\n\n\n\n\nCode\np2=(0.2*0.2*0.8*0.8)*6\np2\n\n\n[1] 0.1536\n\n\n\n\n3.1.4 3 snoring\nchoose 3 from 4 Combinations(order matter),factorial(4) / (factorial(4-3)*factorial(3))\n4 Combinations:\n\n\nCode\nfactorial(4) / (factorial(4-3)*factorial(3))\n\n\n[1] 4\n\n\n\n\nCode\np3=(0.2*0.2*0.2*0.8)*4\np3\n\n\n[1] 0.0256\n\n\n\n\n3.1.5 4 snoring\n\n\nCode\np4=(0.2*0.2*0.2*0.2)\np4\n\n\n[1] 0.0016\n\n\n\n\n3.1.6 at least one:\n\n\nCode\nP_at_least_one=p1+p2+p3+p4\nP_at_least_one\n\n\n[1] 0.5904",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#soluition-2pat-least-one1-pno-one-snoring",
+    "href": "intro/2 probability.html#soluition-2pat-least-one1-pno-one-snoring",
+    "title": "Probability",
+    "section": "3.2 soluition 2:P(at least one)=1-P(no one snoring)",
+    "text": "3.2 soluition 2:P(at least one)=1-P(no one snoring)\n\n\nCode\nP_at_least_one2=1-0.8*0.8*0.8*0.8\nP_at_least_one2\n\n\n[1] 0.5904",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#section",
+    "href": "intro/2 probability.html#section",
+    "title": "Probability",
+    "section": "4.1 ",
+    "text": "4.1 \n\n\nCode\nx &lt;- seq(-3, 3, length = 100)\ntrue_density &lt;- dnorm(x, mean = 0, sd = 1)\nplot(x, true_density, ylab = \"f(x)\", main = \"Standard Normal Density\", type = \"l\")",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#binomial-distribution",
+    "href": "intro/2 probability.html#binomial-distribution",
+    "title": "Probability",
+    "section": "5.1 Binomial distribution",
+    "text": "5.1 Binomial distribution\nthe binomial distribution with parameters n and p is the discrete probability distribution of the number of successes in a sequence of n independent experiments, each asking a yes–no question, and each with its own Boolean-valued outcome: success (with probability p) or failure (with probability 1-p)\nfor a single trial, i.e., n = 1, the binomial distribution is a Bernoulli distribution\n\n5.1.1 Probability density funciton (pdf)\n1 people snoring Probability\n\n\nCode\nn = 4 # number of people in a room\np = 0.2 # snoring\n\ndbinom(x=1, size=n, prob=p) # 1 people snoring Probability\n\n\n[1] 0.4096\n\n\n1,2,3,4 people snoring Probability\n\n\nCode\nn = 4 # number of people in a room\np = 0.2 # snoring\n\ndbinom(x=c(0,1,2,3,4), size=n, prob=p) # 1 people snoring Probability\n\n\n[1] 0.4096 0.4096 0.1536 0.0256 0.0016\n\n\nsum of all event Probability is always 1\n\n\nCode\nsum(dbinom(x=c(0,1,2,3,4), size=n, prob=p))\n\n\n[1] 1\n\n\n\n\n5.1.2 Probability funciton\n&lt;=1 people snoring\n\n\nCode\npbinom(q=1, size=n,prob=p, lower.tail=TRUE) \n\n\n[1] 0.8192\n\n\n\n\n5.1.3 generate 10000 number from 0 to 4 with Probability=0.2\n\n\nCode\na=rbinom(1000,size=4,0.2) \n\ntable(a)\n\n\na\n  0   1   2   3   4 \n425 398 148  27   2",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#normal-distribtionalso-called-gaussian-distribution",
+    "href": "intro/2 probability.html#normal-distribtionalso-called-gaussian-distribution",
+    "title": "Probability",
+    "section": "5.2 Normal Distribtion(also called Gaussian distribution)",
+    "text": "5.2 Normal Distribtion(also called Gaussian distribution)\nX is a random variable following a normal distribution with mean μ and variance σ2\n68% within 1 standard deviation\n95% within 2 standard deviation\n99.7% within 3 standard deviation\n\n\n5.2.1 Probability Density Function (pdf)\n\ncomputes the pdf at location 0 of N(0,4),normal distribution with mean 1 and variance 4.\nsd is the standard deviation, which is the square root of the variance.\n\n\nCode\ndnorm(0, mean = 1, sd = 2)\n\n\n[1] 0.1760327\n\n\n\n\n5.2.2 cumulative distribution function(cdf)\n\nProbability of &lt;=70 from Normal Distribtion with mean=75 and sd=5\nsmaller than 1 standard deviation from the mean\n\n\nCode\npnorm(q=70,mean=75,sd=5)\n\n\n[1] 0.1586553\n\n\nProbability of &gt;=80 from Normal Distribtion with mean=75 and sd=5\nlarger than 1 standard deviation from the mean\n\n\nCode\n1-pnorm(q=80,mean=75,sd=5)\n\n\n[1] 0.1586553\n\n\n\n\n5.2.3 quantile function\n\nQ1\n\n\nCode\nqnorm(p=0.25,mean=75,sd=5)\n\n\n[1] 71.62755\n\n\nQ3\n\n\nCode\nqnorm(p=0.75,mean=75,sd=5)\n\n\n[1] 78.37245\n\n\n\n\n5.2.4 random number generator\n\n\n\n5.2.5 generate 1000 number from Normal Distribtion with mean=75 and sd=5\n\n\nCode\nnd=rnorm(n=1000,mean=75,sd=5)\nnd=sort(nd)\n\n\n\n\nCode\nmean(nd)\n\n\n[1] 75.05545\n\n\n\n\nCode\nsd(nd)\n\n\n[1] 4.999038\n\n\n\n\nCode\nhist(nd)\n\n\n\n\n\n\n\n\n\n\n\nCode\ndens=dnorm(nd,mean=mean(nd),sd=sd(nd))\n\n\n\n\nCode\nplot(nd,dens,type='l')\n\n\n\n\n\n\n\n\n\n\n\n5.2.6 check data normally distributed\n\n\nCode\nnd_data=rnorm(n=1000,mean=0,sd=2)\nnd_data=sort(nd_data)\n\n\n\n\nCode\nnon_nd_data=seq(1:1000)\nnon_nd_data=sort(non_nd_data)\n\n\n\n5.2.6.1 method 1 :histogram\n\n\nCode\n#define plotting region\npar(mfrow=c(1,2)) \n\n#create histogram for both datasets\nhist(nd_data, col='steelblue', main='Normal')\nhist(non_nd_data, col='steelblue', main='Non-normal')\n\n\n\n\n\n\n\n\n\n\n\n5.2.6.2 method 2 :Q-Q plot\n\n\nCode\n#define plotting region\npar(mfrow=c(1,2)) \n\n#create Q-Q plot for both datasets\nqqnorm(nd_data, main='Normal')\nqqline(nd_data)\n\nqqnorm(non_nd_data, main='Non-normal')\nqqline(non_nd_data)\n\n\n\n\n\n\n\n\n\n\n\n5.2.6.3 Method 3: Shapiro-Wilk Test\nnull hypothesis (H0):The data is normally distributed.\nif p-value =&gt;0.05 then normally distributed\n\n\nCode\n#perform shapiro-wilk test\nshapiro.test(nd_data)\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  nd_data\nW = 0.99868, p-value = 0.6748\n\n\nif p-value &lt;0.05 then not normally distributed(reject the null hypothesis)\n\n\nCode\n#perform shapiro-wilk test\nshapiro.test(non_nd_data)\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  non_nd_data\nW = 0.95481, p-value &lt; 2.2e-16",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#student-t-distribution",
+    "href": "intro/2 probability.html#student-t-distribution",
+    "title": "Probability",
+    "section": "5.3 student t distribution",
+    "text": "5.3 student t distribution\n\n5.3.1 one sample t test\n\n\n5.3.2 two sample t test\n\n\n5.3.3 Paired t test\n\n\n5.3.4 Pearson correlation coefficient",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#poisson-distribution",
+    "href": "intro/2 probability.html#poisson-distribution",
+    "title": "Probability",
+    "section": "5.6 Poisson Distribution",
+    "text": "5.6 Poisson Distribution",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#f-distribution",
+    "href": "intro/2 probability.html#f-distribution",
+    "title": "Probability",
+    "section": "5.4 F distribution",
+    "text": "5.4 F distribution\n\n5.4.1 ANOVA",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#chi-square",
+    "href": "intro/2 probability.html#chi-square",
+    "title": "Probability",
+    "section": "5.5 Chi-square",
+    "text": "5.5 Chi-square\n\n5.5.1 Chi-square goodness of fit test\n\n\n5.5.2 Chi-square test of independence",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#permutationsorder-dose-matter-2-number-from-4-number",
+    "href": "intro/2 probability.html#permutationsorder-dose-matter-2-number-from-4-number",
+    "title": "Probability",
+    "section": "2.1 Permutations(order dose matter), 2 number from 4 number",
+    "text": "2.1 Permutations(order dose matter), 2 number from 4 number\n\n\nCode\nlibrary(gtools)\nall_num=4\nchoose=2\n\nres&lt;- permutations(n= all_num, r = choose, v = c(1:all_num))\nres\n\n\n      [,1] [,2]\n [1,]    1    2\n [2,]    1    3\n [3,]    1    4\n [4,]    2    1\n [5,]    2    3\n [6,]    2    4\n [7,]    3    1\n [8,]    3    2\n [9,]    3    4\n[10,]    4    1\n[11,]    4    2\n[12,]    4    3\n\n\n\n\nCode\nprint (nrow(res))\n\n\n[1] 12\n\n\nall_num!/choose!\n4!/2!\n\n\nCode\n(4*3*2*1)/(2*1)\n\n\n[1] 12\n\n\nor\n\n\nCode\nfactorial(4) / factorial(2)\n\n\n[1] 12",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#combinationsorder-no-matter-2-number-from-4-number",
+    "href": "intro/2 probability.html#combinationsorder-no-matter-2-number-from-4-number",
+    "title": "Probability",
+    "section": "2.2 Combinations(order no matter), 2 number from 4 number",
+    "text": "2.2 Combinations(order no matter), 2 number from 4 number\n\n\nCode\nlibrary(gtools)\nall_num=4\nchoose=2\n\nres&lt;- combinations(n= all_num, r = choose, v = c(1:all_num))\nres\n\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    1    3\n[3,]    1    4\n[4,]    2    3\n[5,]    2    4\n[6,]    3    4\n\n\n\n\nCode\nprint (nrow(res))\n\n\n[1] 6\n\n\nall_num!/((all_num-choose)! * choose!\n4!/((4-2)! * 2!)\n\n\nCode\n(4*3*2*1)/((2*1)*(2*1))\n\n\n[1] 6\n\n\nor\n\n\nCode\nfactorial(4) / (factorial(4-2)*factorial(2))\n\n\n[1] 6",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#question-1.what-is-probability-of-choose-4-number-from-4-number-and-0-correctall-wrong.",
+    "href": "intro/2 probability.html#question-1.what-is-probability-of-choose-4-number-from-4-number-and-0-correctall-wrong.",
+    "title": "Probability",
+    "section": "4.1 Question 1.what is probability of choose 4 number from 4 number and 0 correct(all wrong).",
+    "text": "4.1 Question 1.what is probability of choose 4 number from 4 number and 0 correct(all wrong).\n\n4.1.1 permutations(order matter)\n4!=432*1=24 combination\n\n\nCode\n4*3*2*1\n\n\n[1] 24\n\n\n\n\n4.1.2 Derangement\n\nor\n\nThere are 9 Derangement(all wrong)\n\n\nCode\ne=2.71828\n#D(4)=(4!+1)/e\n\nD_4=floor((4*3*2*1+1)/e)\nD_4\n\n\n[1] 9\n\n\nSo the all wrong probability of choose 4 number from 4 number is\n\n\nCode\nQ1=(floor((4*3*2*1+1)/e))/(4*3*2*1)\nQ1\n\n\n[1] 0.375",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#question-2.-what-is-probability-of-choose-4-number-from-4-number-and-only-1-correct",
+    "href": "intro/2 probability.html#question-2.-what-is-probability-of-choose-4-number-from-4-number-and-only-1-correct",
+    "title": "Probability",
+    "section": "4.2 Question 2. what is probability of choose 4 number from 4 number and only 1 correct",
+    "text": "4.2 Question 2. what is probability of choose 4 number from 4 number and only 1 correct\n\n4.2.1 permutations(order matter)\n4!=432*1=24 combination\n\n\nCode\n4*3*2*1\n\n\n[1] 24\n\n\n\n\n4.2.2 Derangement\nany of the 4 number can be correct, and remaining 3 number all wrong and it become the D(3) Derangement problem\n\n\nCode\ne=2.71828\n#D(3)=(3!+1)/e\n\nD_3=floor((3*2*1+1)/e)\nD_3\n\n\n[1] 2\n\n\nSo the probability of choose 4 number from 4 number and only 1 correct is\n\n\nCode\nQ2=(4*2)/(4*3*2*1)\nQ2\n\n\n[1] 0.3333333",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#question-3.-what-is-probability-of-choose-4-number-from-4-number-and-only-2-correct",
+    "href": "intro/2 probability.html#question-3.-what-is-probability-of-choose-4-number-from-4-number-and-only-2-correct",
+    "title": "Probability",
+    "section": "4.3 Question 3. what is probability of choose 4 number from 4 number and only 2 correct",
+    "text": "4.3 Question 3. what is probability of choose 4 number from 4 number and only 2 correct\nthe problem is same as choose 2 number from 4 number.total 6 Combinations(order no matter)\n\n\nCode\nfactorial(4) / (factorial(4-2)*factorial(2))\n\n\n[1] 6\n\n\nSo the probability of choose 4 number from 4 number and only 2 correct is\n\n\nCode\nQ3=6/(4*3*2*1)\nQ3\n\n\n[1] 0.25",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#question-4.what-is-probability-of-choose-4-number-from-4-number-and-only-3-correct",
+    "href": "intro/2 probability.html#question-4.what-is-probability-of-choose-4-number-from-4-number-and-only-3-correct",
+    "title": "Probability",
+    "section": "4.4 Question 4.what is probability of choose 4 number from 4 number and only 3 correct",
+    "text": "4.4 Question 4.what is probability of choose 4 number from 4 number and only 3 correct\nIts same as all correct. since 3 correct the last one will be also correct\n\n\nCode\nQ4=1/(4*3*2*1)\nQ4\n\n\n[1] 0.04166667",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#question-5.what-is-probability-of-choose-4-number-from-4-number-and-4-correct",
+    "href": "intro/2 probability.html#question-5.what-is-probability-of-choose-4-number-from-4-number-and-4-correct",
+    "title": "Probability",
+    "section": "4.5 Question 5.what is probability of choose 4 number from 4 number and 4 correct",
+    "text": "4.5 Question 5.what is probability of choose 4 number from 4 number and 4 correct\n\n\nCode\nQ5=1/(4*3*2*1)\nQ5\n\n\n[1] 0.04166667\n\n\nSo all event total probability is 1\n\n\nCode\nQ1+Q2+Q3+Q4\n\n\n[1] 1",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html",
+    "href": "intro/2 probability.html",
+    "title": "Probability",
+    "section": "",
+    "text": "Probability is the branch of mathematics concerning events and numerical descriptions of how likely they are to occur. The probability of an event is a number between 0 and 1; the larger the probability, the more likely an event is to occur.",
+    "crumbs": [
+      "Intro",
+      "Probability"
     ]
   }
 ]

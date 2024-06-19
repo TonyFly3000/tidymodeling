@@ -145,6 +145,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Basic R</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../intro/2 probability.html">
+ <span class="dropdown-text">Probability</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../intro/5 R boook.html">
  <span class="dropdown-text">R book</span></a>
   </li>  
@@ -467,6 +471,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../intro/2 probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../intro/5 R boook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R book</span></a>
   </div>
@@ -547,7 +557,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#covariance-and-correlation" id="toc-covariance-and-correlation" class="nav-link" data-scroll-target="#covariance-and-correlation"><span class="header-section-number">9.3</span> Covariance and Correlation</a></li>
   <li><a href="#correlationpearsons-product-moment-correlation-coefficient" id="toc-correlationpearsons-product-moment-correlation-coefficient" class="nav-link" data-scroll-target="#correlationpearsons-product-moment-correlation-coefficient"><span class="header-section-number">9.4</span> Correlation,Pearson’s product-moment correlation coefficient</a></li>
   </ul></li>
-  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability"><span class="header-section-number">10</span> Probability</a></li>
   </ul>
 </nav>
     </div>
@@ -599,10 +608,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "1 basic R.qmd"                 "1 basic R.rmarkdown"          
-[3] "1-basic-R.rmarkdown"           "5 R boook.qmd"                
-[5] "6 data analytic in R book.qmd" "hotels.csv"                   
-[7] "images"                       </code></pre>
+<pre><code>[1] "1 basic R_files"               "1 basic R.qmd"                
+[3] "1 basic R.rmarkdown"           "1-basic-R.rmarkdown"          
+[5] "2 probability.qmd"             "5 R boook.qmd"                
+[7] "6 data analytic in R book.qmd" "hotels.csv"                   
+[9] "images"                       </code></pre>
 </div>
 </div>
 </section>
@@ -1060,7 +1070,7 @@ NULL</code></pre>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>start_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-05-29 23:57:14 CST"</code></pre>
+<pre><code>[1] "2024-06-17 16:00:55 CST"</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1069,7 +1079,7 @@ NULL</code></pre>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>end_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-05-29 23:57:14 CST"</code></pre>
+<pre><code>[1] "2024-06-17 16:00:56 CST"</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1078,7 +1088,7 @@ NULL</code></pre>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>end_time<span class="sc">-</span>start_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 0.5476091 secs</code></pre>
+<pre><code>Time difference of 0.46963 secs</code></pre>
 </div>
 </div>
 </section>
@@ -1204,7 +1214,7 @@ tibble -&gt; vctrs -&gt; rlang</code></pre>
 ├─lifecycle 1.0.4 ✨ ⬇ (124.48 kB)
 │ ├─cli 3.6.2 ✨ ⬇ (1.39 MB)
 │ ├─glue 1.7.0 ✨ ⬇ (159.26 kB)
-│ └─rlang 1.1.3 ✨ ⬇ (1.89 MB)
+│ └─rlang 1.1.4 ✨ ⬇ (1.89 MB)
 ├─magrittr 2.0.3 ✨ ⬇ (232.43 kB)
 ├─pillar 1.9.0 ✨ ⬇ (648.86 kB)
 │ ├─cli
@@ -1345,10 +1355,6 @@ ash               ash  1.0-15</code></pre>
 <p><img src="images/clipboard-1822919442.png" class="img-fluid"></p>
 <p>Some Correlation Example:</p>
 <p><img src="images/clipboard-775702636.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="probability" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Probability</h1>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1386,6 +1392,7 @@ loaded via a namespace (and not attached):
 
 <!-- -->
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -2279,14 +2286,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb80-542"><a href="#cb80-542" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb80-543"><a href="#cb80-543" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-775702636.png)</span></span>
 <span id="cb80-544"><a href="#cb80-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-545"><a href="#cb80-545" aria-hidden="true" tabindex="-1"></a><span class="fu"># Probability </span></span>
+<span id="cb80-545"><a href="#cb80-545" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb80-546"><a href="#cb80-546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-547"><a href="#cb80-547" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-548"><a href="#cb80-548" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-549"><a href="#cb80-549" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output='.details summary="sessionInfo()"'}</span></span>
-<span id="cb80-550"><a href="#cb80-550" aria-hidden="true" tabindex="-1"></a><span class="in">sessionInfo()</span></span>
-<span id="cb80-551"><a href="#cb80-551" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb80-552"><a href="#cb80-552" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-547"><a href="#cb80-547" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output='.details summary="sessionInfo()"'}</span></span>
+<span id="cb80-548"><a href="#cb80-548" aria-hidden="true" tabindex="-1"></a><span class="in">sessionInfo()</span></span>
+<span id="cb80-549"><a href="#cb80-549" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb80-550"><a href="#cb80-550" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
