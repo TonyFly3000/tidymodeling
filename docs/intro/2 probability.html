@@ -149,6 +149,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Probability</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../intro/3 Statistics.html">
+ <span class="dropdown-text">Statistics</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../intro/5 R boook.html">
  <span class="dropdown-text">R book</span></a>
   </li>  
@@ -477,6 +481,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../intro/3 Statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../intro/5 R boook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R book</span></a>
   </div>
@@ -520,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#snoring-4" id="toc-snoring-4" class="nav-link" data-scroll-target="#snoring-4"><span class="header-section-number">3.1.5</span> 4 snoring</a></li>
   <li><a href="#at-least-one" id="toc-at-least-one" class="nav-link" data-scroll-target="#at-least-one"><span class="header-section-number">3.1.6</span> at least one:</a></li>
   </ul></li>
-  <li><a href="#soluition-2pat-least-one1-pno-one-snoring" id="toc-soluition-2pat-least-one1-pno-one-snoring" class="nav-link" data-scroll-target="#soluition-2pat-least-one1-pno-one-snoring"><span class="header-section-number">3.2</span> soluition 2:P(at least one)=1-P(no one snoring)</a></li>
+  <li><a href="#solution-2pat-least-one1-pno-one-snoring" id="toc-solution-2pat-least-one1-pno-one-snoring" class="nav-link" data-scroll-target="#solution-2pat-least-one1-pno-one-snoring"><span class="header-section-number">3.2</span> solution 2:P(at least one)=1-P(no one snoring)</a></li>
   </ul></li>
   <li><a href="#derangement-problem" id="toc-derangement-problem" class="nav-link" data-scroll-target="#derangement-problem"><span class="header-section-number">4</span> Derangement problem</a>
   <ul class="collapse">
@@ -542,18 +552,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">5.1</span> Binomial distribution</a>
   <ul class="collapse">
-  <li><a href="#probability-density-funciton-pdf" id="toc-probability-density-funciton-pdf" class="nav-link" data-scroll-target="#probability-density-funciton-pdf"><span class="header-section-number">5.1.1</span> Probability density funciton (pdf)</a></li>
-  <li><a href="#probability-funciton" id="toc-probability-funciton" class="nav-link" data-scroll-target="#probability-funciton"><span class="header-section-number">5.1.2</span> Probability funciton</a></li>
+  <li><a href="#probability-density-function-pdf" id="toc-probability-density-function-pdf" class="nav-link" data-scroll-target="#probability-density-function-pdf"><span class="header-section-number">5.1.1</span> Probability density function (pdf)</a></li>
+  <li><a href="#probability-function" id="toc-probability-function" class="nav-link" data-scroll-target="#probability-function"><span class="header-section-number">5.1.2</span> Probability function</a></li>
   <li><a href="#generate-10000-number-from-0-to-4-with-probability0.2" id="toc-generate-10000-number-from-0-to-4-with-probability0.2" class="nav-link" data-scroll-target="#generate-10000-number-from-0-to-4-with-probability0.2"><span class="header-section-number">5.1.3</span> generate 10000 number from 0 to 4 with Probability=0.2</a></li>
   </ul></li>
-  <li><a href="#normal-distribtionalso-called-gaussian-distribution" id="toc-normal-distribtionalso-called-gaussian-distribution" class="nav-link" data-scroll-target="#normal-distribtionalso-called-gaussian-distribution"><span class="header-section-number">5.2</span> Normal Distribtion(also called Gaussian distribution)</a>
+  <li><a href="#normal-distributionalso-called-gaussian-distribution" id="toc-normal-distributionalso-called-gaussian-distribution" class="nav-link" data-scroll-target="#normal-distributionalso-called-gaussian-distribution"><span class="header-section-number">5.2</span> Normal Distribution(also called Gaussian distribution)</a>
   <ul class="collapse">
-  <li><a href="#probability-density-function-pdf" id="toc-probability-density-function-pdf" class="nav-link" data-scroll-target="#probability-density-function-pdf"><span class="header-section-number">5.2.1</span> Probability Density Function (pdf)</a></li>
-  <li><a href="#cumulative-distribution-functioncdf" id="toc-cumulative-distribution-functioncdf" class="nav-link" data-scroll-target="#cumulative-distribution-functioncdf"><span class="header-section-number">5.2.2</span> cumulative distribution function(cdf)</a></li>
-  <li><a href="#quantile-function" id="toc-quantile-function" class="nav-link" data-scroll-target="#quantile-function"><span class="header-section-number">5.2.3</span> quantile function</a></li>
-  <li><a href="#random-number-generator" id="toc-random-number-generator" class="nav-link" data-scroll-target="#random-number-generator"><span class="header-section-number">5.2.4</span> random number generator</a></li>
-  <li><a href="#generate-1000-number-from-normal-distribtion-with-mean75-and-sd5" id="toc-generate-1000-number-from-normal-distribtion-with-mean75-and-sd5" class="nav-link" data-scroll-target="#generate-1000-number-from-normal-distribtion-with-mean75-and-sd5"><span class="header-section-number">5.2.5</span> generate 1000 number from Normal Distribtion with mean=75 and sd=5</a></li>
-  <li><a href="#check-data-normally-distributed" id="toc-check-data-normally-distributed" class="nav-link" data-scroll-target="#check-data-normally-distributed"><span class="header-section-number">5.2.6</span> check data normally distributed</a></li>
+  <li><a href="#z-score-and-standard-normal-distribution" id="toc-z-score-and-standard-normal-distribution" class="nav-link" data-scroll-target="#z-score-and-standard-normal-distribution"><span class="header-section-number">5.2.1</span> Z score and standard Normal Distribution</a></li>
+  <li><a href="#standardization" id="toc-standardization" class="nav-link" data-scroll-target="#standardization"><span class="header-section-number">5.2.2</span> Standardization</a></li>
+  <li><a href="#r-function" id="toc-r-function" class="nav-link" data-scroll-target="#r-function"><span class="header-section-number">5.2.3</span> R function</a></li>
+  <li><a href="#probability-density-function-pdf-1" id="toc-probability-density-function-pdf-1" class="nav-link" data-scroll-target="#probability-density-function-pdf-1"><span class="header-section-number">5.2.4</span> Probability Density Function (pdf)</a></li>
+  <li><a href="#cumulative-distribution-functioncdf" id="toc-cumulative-distribution-functioncdf" class="nav-link" data-scroll-target="#cumulative-distribution-functioncdf"><span class="header-section-number">5.2.5</span> cumulative distribution function(cdf)</a></li>
+  <li><a href="#quantile-function" id="toc-quantile-function" class="nav-link" data-scroll-target="#quantile-function"><span class="header-section-number">5.2.6</span> quantile function</a></li>
+  <li><a href="#random-number-generator" id="toc-random-number-generator" class="nav-link" data-scroll-target="#random-number-generator"><span class="header-section-number">5.2.7</span> random number generator</a></li>
+  <li><a href="#generate-1000-number-from-normal-distribtion-with-mean75-and-sd5" id="toc-generate-1000-number-from-normal-distribtion-with-mean75-and-sd5" class="nav-link" data-scroll-target="#generate-1000-number-from-normal-distribtion-with-mean75-and-sd5"><span class="header-section-number">5.2.8</span> generate 1000 number from Normal Distribtion with mean=75 and sd=5</a></li>
+  <li><a href="#check-data-normally-distributed" id="toc-check-data-normally-distributed" class="nav-link" data-scroll-target="#check-data-normally-distributed"><span class="header-section-number">5.2.9</span> check data normally distributed</a></li>
   </ul></li>
   <li><a href="#student-t-distribution" id="toc-student-t-distribution" class="nav-link" data-scroll-target="#student-t-distribution"><span class="header-section-number">5.3</span> student t distribution</a>
   <ul class="collapse">
@@ -618,7 +631,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 5 9 9 4 3 9 5 1 1 2</code></pre>
+<pre><code> [1]  9  4  1 10  1 10  5  9  3  5</code></pre>
 </div>
 </div>
 <p>each number around 10%</p>
@@ -628,13 +641,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">table</span>(a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  a Freq
-1 1    2
-2 2    1
-3 3    1
-4 4    1
-5 5    2
-6 9    3</code></pre>
+<pre><code>   a Freq
+1  1    2
+2  3    1
+3  4    1
+4  5    2
+5  9    2
+6 10    2</code></pre>
 </div>
 </div>
 </section>
@@ -654,16 +667,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    a Freq
-1   1  998
-2   2  945
-3   3 1018
-4   4  980
-5   5 1005
-6   6 1070
-7   7  980
-8   8 1008
-9   9  998
-10 10  998</code></pre>
+1   1  988
+2   2  991
+3   3 1009
+4   4  989
+5   5  982
+6   6 1035
+7   7 1050
+8   8 1016
+9   9  969
+10 10  971</code></pre>
 </div>
 </div>
 </section>
@@ -898,8 +911,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="soluition-2pat-least-one1-pno-one-snoring" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="soluition-2pat-least-one1-pno-one-snoring"><span class="header-section-number">3.2</span> soluition 2:P(at least one)=1-P(no one snoring)</h2>
+<section id="solution-2pat-least-one1-pno-one-snoring" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="solution-2pat-least-one1-pno-one-snoring"><span class="header-section-number">3.2</span> solution 2:P(at least one)=1-P(no one snoring)</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1073,8 +1086,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5.1" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">5.1</span> Binomial distribution</h2>
 <p>the binomial distribution with parameters n and p is the discrete probability distribution of the number of successes in a sequence of n independent experiments, each asking a yes–no question, and each with its own Boolean-valued outcome: success (with probability p) or failure (with probability 1-p)</p>
 <p>for a single trial, i.e., n = 1, the binomial distribution is a Bernoulli distribution</p>
-<section id="probability-density-funciton-pdf" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="probability-density-funciton-pdf"><span class="header-section-number">5.1.1</span> Probability density funciton (pdf)</h3>
+<section id="probability-density-function-pdf" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="probability-density-function-pdf"><span class="header-section-number">5.1.1</span> Probability density function (pdf)</h3>
 <p>1 people snoring Probability</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -1112,8 +1125,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="probability-funciton" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="probability-funciton"><span class="header-section-number">5.1.2</span> Probability funciton</h3>
+<section id="probability-function" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="probability-function"><span class="header-section-number">5.1.2</span> Probability function</h3>
 <p>&lt;=1 people snoring</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -1137,20 +1150,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>a
   0   1   2   3   4 
-425 398 148  27   2 </code></pre>
+407 394 167  30   2 </code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="normal-distribtionalso-called-gaussian-distribution" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="normal-distribtionalso-called-gaussian-distribution"><span class="header-section-number">5.2</span> Normal Distribtion(also called Gaussian distribution)</h2>
+<section id="normal-distributionalso-called-gaussian-distribution" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="normal-distributionalso-called-gaussian-distribution"><span class="header-section-number">5.2</span> Normal Distribution(also called Gaussian distribution)</h2>
 <p>X is a random variable following a normal distribution with mean μ and variance σ2</p>
 <p>68% within 1 standard deviation</p>
 <p>95% within 2 standard deviation</p>
 <p>99.7% within 3 standard deviation</p>
+<section id="z-score-and-standard-normal-distribution" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="z-score-and-standard-normal-distribution"><span class="header-section-number">5.2.1</span> Z score and standard Normal Distribution</h3>
+<p>standard Normal Distribution is special Normal Distribution with mean=0 and standard deviation =1</p>
+<p><img src="images/clipboard-4010975181.png" class="img-fluid"></p>
+<p>Z table</p>
+<p><img src="images/clipboard-3635575854.png" class="img-fluid"></p>
+</section>
+<section id="standardization" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="standardization"><span class="header-section-number">5.2.2</span> Standardization</h3>
+<p>transfer any normal Distribution into standard Normal Distribution</p>
+<p><img src="images/clipboard-2062792649.png" class="img-fluid"></p>
+<p>formula:</p>
+<p><img src="images/clipboard-625920785.png" class="img-fluid" width="421"></p>
+</section>
+<section id="r-function" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="r-function"><span class="header-section-number">5.2.3</span> R function</h3>
 <p><img src="images/clipboard-1214752693.png" class="img-fluid"></p>
-<section id="probability-density-function-pdf" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="probability-density-function-pdf"><span class="header-section-number">5.2.1</span> Probability Density Function (pdf)</h3>
+</section>
+<section id="probability-density-function-pdf-1" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="probability-density-function-pdf-1"><span class="header-section-number">5.2.4</span> Probability Density Function (pdf)</h3>
 <p><img src="images/clipboard-3193047058.png" class="img-fluid" width="500"></p>
 <p>computes the pdf at location 0 of N(0,4),normal distribution with mean 1 and variance 4.</p>
 <p>sd is the standard deviation, which is the square root of the variance.</p>
@@ -1164,8 +1194,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="cumulative-distribution-functioncdf" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="cumulative-distribution-functioncdf"><span class="header-section-number">5.2.2</span> cumulative distribution function(cdf)</h3>
+<section id="cumulative-distribution-functioncdf" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="cumulative-distribution-functioncdf"><span class="header-section-number">5.2.5</span> cumulative distribution function(cdf)</h3>
 <p><img src="images/clipboard-3037827223.png" class="img-fluid" width="500"></p>
 <p>Probability of &lt;=70 from Normal Distribtion with mean=75 and sd=5</p>
 <p>smaller than 1 standard deviation from the mean</p>
@@ -1190,8 +1220,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="quantile-function" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="quantile-function"><span class="header-section-number">5.2.3</span> quantile function</h3>
+<section id="quantile-function" class="level3" data-number="5.2.6">
+<h3 data-number="5.2.6" class="anchored" data-anchor-id="quantile-function"><span class="header-section-number">5.2.6</span> quantile function</h3>
 <p><img src="images/clipboard-3591572952.png" class="img-fluid" width="500"></p>
 <p>Q1</p>
 <div class="cell">
@@ -1214,12 +1244,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="random-number-generator" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="random-number-generator"><span class="header-section-number">5.2.4</span> random number generator</h3>
+<section id="random-number-generator" class="level3" data-number="5.2.7">
+<h3 data-number="5.2.7" class="anchored" data-anchor-id="random-number-generator"><span class="header-section-number">5.2.7</span> random number generator</h3>
 <p><img src="images/clipboard-3231751048.png" class="img-fluid" width="500"></p>
 </section>
-<section id="generate-1000-number-from-normal-distribtion-with-mean75-and-sd5" class="level3" data-number="5.2.5">
-<h3 data-number="5.2.5" class="anchored" data-anchor-id="generate-1000-number-from-normal-distribtion-with-mean75-and-sd5"><span class="header-section-number">5.2.5</span> generate 1000 number from Normal Distribtion with mean=75 and sd=5</h3>
+<section id="generate-1000-number-from-normal-distribtion-with-mean75-and-sd5" class="level3" data-number="5.2.8">
+<h3 data-number="5.2.8" class="anchored" data-anchor-id="generate-1000-number-from-normal-distribtion-with-mean75-and-sd5"><span class="header-section-number">5.2.8</span> generate 1000 number from Normal Distribtion with mean=75 and sd=5</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1233,7 +1263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 75.05545</code></pre>
+<pre><code>[1] 74.87661</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1242,7 +1272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(nd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.999038</code></pre>
+<pre><code>[1] 4.988259</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1278,8 +1308,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="check-data-normally-distributed" class="level3" data-number="5.2.6">
-<h3 data-number="5.2.6" class="anchored" data-anchor-id="check-data-normally-distributed"><span class="header-section-number">5.2.6</span> check data normally distributed</h3>
+<section id="check-data-normally-distributed" class="level3" data-number="5.2.9">
+<h3 data-number="5.2.9" class="anchored" data-anchor-id="check-data-normally-distributed"><span class="header-section-number">5.2.9</span> check data normally distributed</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1294,8 +1324,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>non_nd_data<span class="ot">=</span><span class="fu">sort</span>(non_nd_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="method-1-histogram" class="level4" data-number="5.2.6.1">
-<h4 data-number="5.2.6.1" class="anchored" data-anchor-id="method-1-histogram"><span class="header-section-number">5.2.6.1</span> method 1 :histogram</h4>
+<section id="method-1-histogram" class="level4" data-number="5.2.9.1">
+<h4 data-number="5.2.9.1" class="anchored" data-anchor-id="method-1-histogram"><span class="header-section-number">5.2.9.1</span> method 1 :histogram</h4>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1315,8 +1345,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="method-2-q-q-plot" class="level4" data-number="5.2.6.2">
-<h4 data-number="5.2.6.2" class="anchored" data-anchor-id="method-2-q-q-plot"><span class="header-section-number">5.2.6.2</span> method 2 :Q-Q plot</h4>
+<section id="method-2-q-q-plot" class="level4" data-number="5.2.9.2">
+<h4 data-number="5.2.9.2" class="anchored" data-anchor-id="method-2-q-q-plot"><span class="header-section-number">5.2.9.2</span> method 2 :Q-Q plot</h4>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1339,8 +1369,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="method-3-shapiro-wilk-test" class="level4" data-number="5.2.6.3">
-<h4 data-number="5.2.6.3" class="anchored" data-anchor-id="method-3-shapiro-wilk-test"><span class="header-section-number">5.2.6.3</span> Method 3: Shapiro-Wilk Test</h4>
+<section id="method-3-shapiro-wilk-test" class="level4" data-number="5.2.9.3">
+<h4 data-number="5.2.9.3" class="anchored" data-anchor-id="method-3-shapiro-wilk-test"><span class="header-section-number">5.2.9.3</span> Method 3: Shapiro-Wilk Test</h4>
 <p>null hypothesis (H0):The data is normally distributed.</p>
 <p>if p-value =&gt;0.05 then normally distributed</p>
 <div class="cell">
@@ -1354,7 +1384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     Shapiro-Wilk normality test
 
 data:  nd_data
-W = 0.99868, p-value = 0.6748</code></pre>
+W = 0.99879, p-value = 0.7491</code></pre>
 </div>
 </div>
 <p>if p-value &lt;0.05 then not normally distributed(reject the null hypothesis)</p>
@@ -1377,6 +1407,7 @@ W = 0.95481, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="student-t-distribution" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="student-t-distribution"><span class="header-section-number">5.3</span> student t distribution</h2>
+<p><img src="images/clipboard-3444893160.png" class="img-fluid"></p>
 <section id="one-sample-t-test" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="one-sample-t-test"><span class="header-section-number">5.3.1</span> one sample t test</h3>
 </section>
@@ -1418,6 +1449,7 @@ W = 0.95481, p-value &lt; 2.2e-16</code></pre>
 <p>https://www.youtube.com/watch?v=RlhnNbPZC0A</p>
 <p>https://www.youtube.com/watch?v=X5NXDK6AVtU</p>
 <p>https://www.scribbr.com/statistics/probability-distributions/#:~:text=A%20probability%20distribution%20is%20a,using%20graphs%20or%20probability%20tables.</p>
+<p>https://www.youtube.com/watch?v=Q_pO9NzWxPY</p>
 <p>https://www.statology.org/test-for-normality-in-r/</p>
 <p>https://en.wikipedia.org/wiki/Derangement</p>
 <div class="cell">
@@ -2082,7 +2114,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb103-222"><a href="#cb103-222" aria-hidden="true" tabindex="-1"></a>P_at_least_one</span>
 <span id="cb103-223"><a href="#cb103-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-224"><a href="#cb103-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-225"><a href="#cb103-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## soluition 2:P(at least one)=1-P(no one snoring)</span></span>
+<span id="cb103-225"><a href="#cb103-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## solution 2:P(at least one)=1-P(no one snoring)</span></span>
 <span id="cb103-226"><a href="#cb103-226" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb103-229"><a href="#cb103-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb103-230"><a href="#cb103-230" aria-hidden="true" tabindex="-1"></a>P_at_least_one2<span class="ot">=</span><span class="dv">1</span><span class="fl">-0.8</span><span class="sc">*</span><span class="fl">0.8</span><span class="sc">*</span><span class="fl">0.8</span><span class="sc">*</span><span class="fl">0.8</span></span>
@@ -2200,7 +2232,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb103-364"><a href="#cb103-364" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb103-365"><a href="#cb103-365" aria-hidden="true" tabindex="-1"></a>for a single trial, i.e., n = 1, the binomial distribution is a Bernoulli distribution</span>
 <span id="cb103-366"><a href="#cb103-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-367"><a href="#cb103-367" aria-hidden="true" tabindex="-1"></a><span class="fu">### Probability density funciton (pdf)</span></span>
+<span id="cb103-367"><a href="#cb103-367" aria-hidden="true" tabindex="-1"></a><span class="fu">### Probability density function (pdf)</span></span>
 <span id="cb103-368"><a href="#cb103-368" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb103-369"><a href="#cb103-369" aria-hidden="true" tabindex="-1"></a>1 people snoring Probability</span>
 <span id="cb103-370"><a href="#cb103-370" aria-hidden="true" tabindex="-1"></a></span>
@@ -2226,7 +2258,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb103-396"><a href="#cb103-396" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">size=</span>n, <span class="at">prob=</span>p))</span>
 <span id="cb103-397"><a href="#cb103-397" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-398"><a href="#cb103-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-399"><a href="#cb103-399" aria-hidden="true" tabindex="-1"></a><span class="fu">### Probability funciton</span></span>
+<span id="cb103-399"><a href="#cb103-399" aria-hidden="true" tabindex="-1"></a><span class="fu">### Probability function</span></span>
 <span id="cb103-400"><a href="#cb103-400" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb103-401"><a href="#cb103-401" aria-hidden="true" tabindex="-1"></a><span class="sc">\&lt;</span>=1 people snoring</span>
 <span id="cb103-402"><a href="#cb103-402" aria-hidden="true" tabindex="-1"></a></span>
@@ -2242,7 +2274,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb103-416"><a href="#cb103-416" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(a)</span>
 <span id="cb103-417"><a href="#cb103-417" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-418"><a href="#cb103-418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-419"><a href="#cb103-419" aria-hidden="true" tabindex="-1"></a><span class="fu">## Normal Distribtion(also called Gaussian distribution)</span></span>
+<span id="cb103-419"><a href="#cb103-419" aria-hidden="true" tabindex="-1"></a><span class="fu">## Normal Distribution(also called Gaussian distribution)</span></span>
 <span id="cb103-420"><a href="#cb103-420" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb103-421"><a href="#cb103-421" aria-hidden="true" tabindex="-1"></a>X is a random variable following a normal distribution with mean μ and variance σ2</span>
 <span id="cb103-422"><a href="#cb103-422" aria-hidden="true" tabindex="-1"></a></span>
@@ -2252,187 +2284,213 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb103-426"><a href="#cb103-426" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb103-427"><a href="#cb103-427" aria-hidden="true" tabindex="-1"></a>99.7% within 3 standard deviation</span>
 <span id="cb103-428"><a href="#cb103-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-429"><a href="#cb103-429" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-1214752693.png)</span></span>
+<span id="cb103-429"><a href="#cb103-429" aria-hidden="true" tabindex="-1"></a><span class="fu">### Z score and standard Normal Distribution</span></span>
 <span id="cb103-430"><a href="#cb103-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-431"><a href="#cb103-431" aria-hidden="true" tabindex="-1"></a><span class="fu">### Probability Density Function (pdf)</span></span>
+<span id="cb103-431"><a href="#cb103-431" aria-hidden="true" tabindex="-1"></a>standard Normal Distribution is special Normal Distribution with mean=0 and standard deviation =1</span>
 <span id="cb103-432"><a href="#cb103-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-433"><a href="#cb103-433" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3193047058.png)</span>{width="500"}</span>
+<span id="cb103-433"><a href="#cb103-433" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-4010975181.png)</span></span>
 <span id="cb103-434"><a href="#cb103-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-435"><a href="#cb103-435" aria-hidden="true" tabindex="-1"></a>computes the pdf at location 0 of N(0,4),normal distribution with mean 1 and variance 4.</span>
+<span id="cb103-435"><a href="#cb103-435" aria-hidden="true" tabindex="-1"></a>Z table</span>
 <span id="cb103-436"><a href="#cb103-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-437"><a href="#cb103-437" aria-hidden="true" tabindex="-1"></a>sd is the standard deviation, which is the square root of the variance.</span>
+<span id="cb103-437"><a href="#cb103-437" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3635575854.png)</span></span>
 <span id="cb103-438"><a href="#cb103-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-441"><a href="#cb103-441" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-442"><a href="#cb103-442" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb103-443"><a href="#cb103-443" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-439"><a href="#cb103-439" aria-hidden="true" tabindex="-1"></a><span class="fu">### Standardization</span></span>
+<span id="cb103-440"><a href="#cb103-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-441"><a href="#cb103-441" aria-hidden="true" tabindex="-1"></a>transfer any normal Distribution into standard Normal Distribution</span>
+<span id="cb103-442"><a href="#cb103-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-443"><a href="#cb103-443" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2062792649.png)</span></span>
 <span id="cb103-444"><a href="#cb103-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-445"><a href="#cb103-445" aria-hidden="true" tabindex="-1"></a><span class="fu">### cumulative distribution function(cdf)</span></span>
+<span id="cb103-445"><a href="#cb103-445" aria-hidden="true" tabindex="-1"></a>formula:</span>
 <span id="cb103-446"><a href="#cb103-446" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-447"><a href="#cb103-447" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3037827223.png)</span>{width="500"}</span>
+<span id="cb103-447"><a href="#cb103-447" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-625920785.png)</span>{width="421"}</span>
 <span id="cb103-448"><a href="#cb103-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-449"><a href="#cb103-449" aria-hidden="true" tabindex="-1"></a>Probability of <span class="sc">\&lt;</span>=70 from Normal Distribtion with mean=75 and sd=5</span>
+<span id="cb103-449"><a href="#cb103-449" aria-hidden="true" tabindex="-1"></a><span class="fu">### R function</span></span>
 <span id="cb103-450"><a href="#cb103-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-451"><a href="#cb103-451" aria-hidden="true" tabindex="-1"></a>smaller than 1 standard deviation from the mean</span>
+<span id="cb103-451"><a href="#cb103-451" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-1214752693.png)</span></span>
 <span id="cb103-452"><a href="#cb103-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-455"><a href="#cb103-455" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-456"><a href="#cb103-456" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">70</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
-<span id="cb103-457"><a href="#cb103-457" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-453"><a href="#cb103-453" aria-hidden="true" tabindex="-1"></a><span class="fu">### Probability Density Function (pdf)</span></span>
+<span id="cb103-454"><a href="#cb103-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-455"><a href="#cb103-455" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3193047058.png)</span>{width="500"}</span>
+<span id="cb103-456"><a href="#cb103-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-457"><a href="#cb103-457" aria-hidden="true" tabindex="-1"></a>computes the pdf at location 0 of N(0,4),normal distribution with mean 1 and variance 4.</span>
 <span id="cb103-458"><a href="#cb103-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-459"><a href="#cb103-459" aria-hidden="true" tabindex="-1"></a>Probability of <span class="sc">\&gt;</span>=80 from Normal Distribtion with mean=75 and sd=5</span>
+<span id="cb103-459"><a href="#cb103-459" aria-hidden="true" tabindex="-1"></a>sd is the standard deviation, which is the square root of the variance.</span>
 <span id="cb103-460"><a href="#cb103-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-461"><a href="#cb103-461" aria-hidden="true" tabindex="-1"></a>larger than 1 standard deviation from the mean</span>
-<span id="cb103-462"><a href="#cb103-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-465"><a href="#cb103-465" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-466"><a href="#cb103-466" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">80</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
-<span id="cb103-467"><a href="#cb103-467" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-463"><a href="#cb103-463" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-464"><a href="#cb103-464" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb103-465"><a href="#cb103-465" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-466"><a href="#cb103-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-467"><a href="#cb103-467" aria-hidden="true" tabindex="-1"></a><span class="fu">### cumulative distribution function(cdf)</span></span>
 <span id="cb103-468"><a href="#cb103-468" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-469"><a href="#cb103-469" aria-hidden="true" tabindex="-1"></a><span class="fu">### quantile function</span></span>
+<span id="cb103-469"><a href="#cb103-469" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3037827223.png)</span>{width="500"}</span>
 <span id="cb103-470"><a href="#cb103-470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-471"><a href="#cb103-471" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3591572952.png)</span>{width="500"}</span>
+<span id="cb103-471"><a href="#cb103-471" aria-hidden="true" tabindex="-1"></a>Probability of <span class="sc">\&lt;</span>=70 from Normal Distribtion with mean=75 and sd=5</span>
 <span id="cb103-472"><a href="#cb103-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-473"><a href="#cb103-473" aria-hidden="true" tabindex="-1"></a>Q1</span>
+<span id="cb103-473"><a href="#cb103-473" aria-hidden="true" tabindex="-1"></a>smaller than 1 standard deviation from the mean</span>
 <span id="cb103-474"><a href="#cb103-474" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb103-477"><a href="#cb103-477" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-478"><a href="#cb103-478" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.25</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
+<span id="cb103-478"><a href="#cb103-478" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">70</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
 <span id="cb103-479"><a href="#cb103-479" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-480"><a href="#cb103-480" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-481"><a href="#cb103-481" aria-hidden="true" tabindex="-1"></a>Q3</span>
+<span id="cb103-481"><a href="#cb103-481" aria-hidden="true" tabindex="-1"></a>Probability of <span class="sc">\&gt;</span>=80 from Normal Distribtion with mean=75 and sd=5</span>
 <span id="cb103-482"><a href="#cb103-482" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-485"><a href="#cb103-485" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-486"><a href="#cb103-486" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.75</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
-<span id="cb103-487"><a href="#cb103-487" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-488"><a href="#cb103-488" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-489"><a href="#cb103-489" aria-hidden="true" tabindex="-1"></a><span class="fu">### random number generator</span></span>
+<span id="cb103-483"><a href="#cb103-483" aria-hidden="true" tabindex="-1"></a>larger than 1 standard deviation from the mean</span>
+<span id="cb103-484"><a href="#cb103-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-487"><a href="#cb103-487" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-488"><a href="#cb103-488" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">80</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
+<span id="cb103-489"><a href="#cb103-489" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-490"><a href="#cb103-490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-491"><a href="#cb103-491" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3231751048.png)</span>{width="500"}</span>
+<span id="cb103-491"><a href="#cb103-491" aria-hidden="true" tabindex="-1"></a><span class="fu">### quantile function</span></span>
 <span id="cb103-492"><a href="#cb103-492" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-493"><a href="#cb103-493" aria-hidden="true" tabindex="-1"></a><span class="fu">### generate 1000 number from Normal Distribtion with mean=75 and sd=5</span></span>
+<span id="cb103-493"><a href="#cb103-493" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3591572952.png)</span>{width="500"}</span>
 <span id="cb103-494"><a href="#cb103-494" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-497"><a href="#cb103-497" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-498"><a href="#cb103-498" aria-hidden="true" tabindex="-1"></a>nd<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
-<span id="cb103-499"><a href="#cb103-499" aria-hidden="true" tabindex="-1"></a>nd<span class="ot">=</span><span class="fu">sort</span>(nd)</span>
-<span id="cb103-500"><a href="#cb103-500" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-501"><a href="#cb103-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-504"><a href="#cb103-504" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-505"><a href="#cb103-505" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nd)</span>
-<span id="cb103-506"><a href="#cb103-506" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-507"><a href="#cb103-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-510"><a href="#cb103-510" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-511"><a href="#cb103-511" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(nd)</span>
-<span id="cb103-512"><a href="#cb103-512" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-513"><a href="#cb103-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-516"><a href="#cb103-516" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-517"><a href="#cb103-517" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nd)</span>
-<span id="cb103-518"><a href="#cb103-518" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-519"><a href="#cb103-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-522"><a href="#cb103-522" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-523"><a href="#cb103-523" aria-hidden="true" tabindex="-1"></a>dens<span class="ot">=</span><span class="fu">dnorm</span>(nd,<span class="at">mean=</span><span class="fu">mean</span>(nd),<span class="at">sd=</span><span class="fu">sd</span>(nd))</span>
-<span id="cb103-524"><a href="#cb103-524" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-525"><a href="#cb103-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-528"><a href="#cb103-528" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-529"><a href="#cb103-529" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nd,dens,<span class="at">type=</span><span class="st">'l'</span>)</span>
-<span id="cb103-530"><a href="#cb103-530" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-531"><a href="#cb103-531" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-532"><a href="#cb103-532" aria-hidden="true" tabindex="-1"></a><span class="fu">### check data normally distributed</span></span>
-<span id="cb103-533"><a href="#cb103-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-536"><a href="#cb103-536" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-537"><a href="#cb103-537" aria-hidden="true" tabindex="-1"></a>nd_data<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">2</span>)</span>
-<span id="cb103-538"><a href="#cb103-538" aria-hidden="true" tabindex="-1"></a>nd_data<span class="ot">=</span><span class="fu">sort</span>(nd_data)</span>
-<span id="cb103-539"><a href="#cb103-539" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-540"><a href="#cb103-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-543"><a href="#cb103-543" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-544"><a href="#cb103-544" aria-hidden="true" tabindex="-1"></a>non_nd_data<span class="ot">=</span><span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
-<span id="cb103-545"><a href="#cb103-545" aria-hidden="true" tabindex="-1"></a>non_nd_data<span class="ot">=</span><span class="fu">sort</span>(non_nd_data)</span>
+<span id="cb103-495"><a href="#cb103-495" aria-hidden="true" tabindex="-1"></a>Q1</span>
+<span id="cb103-496"><a href="#cb103-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-499"><a href="#cb103-499" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-500"><a href="#cb103-500" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.25</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
+<span id="cb103-501"><a href="#cb103-501" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-502"><a href="#cb103-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-503"><a href="#cb103-503" aria-hidden="true" tabindex="-1"></a>Q3</span>
+<span id="cb103-504"><a href="#cb103-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-507"><a href="#cb103-507" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-508"><a href="#cb103-508" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.75</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
+<span id="cb103-509"><a href="#cb103-509" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-510"><a href="#cb103-510" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-511"><a href="#cb103-511" aria-hidden="true" tabindex="-1"></a><span class="fu">### random number generator</span></span>
+<span id="cb103-512"><a href="#cb103-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-513"><a href="#cb103-513" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3231751048.png)</span>{width="500"}</span>
+<span id="cb103-514"><a href="#cb103-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-515"><a href="#cb103-515" aria-hidden="true" tabindex="-1"></a><span class="fu">### generate 1000 number from Normal Distribtion with mean=75 and sd=5</span></span>
+<span id="cb103-516"><a href="#cb103-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-519"><a href="#cb103-519" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-520"><a href="#cb103-520" aria-hidden="true" tabindex="-1"></a>nd<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">75</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
+<span id="cb103-521"><a href="#cb103-521" aria-hidden="true" tabindex="-1"></a>nd<span class="ot">=</span><span class="fu">sort</span>(nd)</span>
+<span id="cb103-522"><a href="#cb103-522" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-523"><a href="#cb103-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-526"><a href="#cb103-526" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-527"><a href="#cb103-527" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nd)</span>
+<span id="cb103-528"><a href="#cb103-528" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-529"><a href="#cb103-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-532"><a href="#cb103-532" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-533"><a href="#cb103-533" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(nd)</span>
+<span id="cb103-534"><a href="#cb103-534" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-535"><a href="#cb103-535" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-538"><a href="#cb103-538" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-539"><a href="#cb103-539" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nd)</span>
+<span id="cb103-540"><a href="#cb103-540" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-541"><a href="#cb103-541" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-544"><a href="#cb103-544" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-545"><a href="#cb103-545" aria-hidden="true" tabindex="-1"></a>dens<span class="ot">=</span><span class="fu">dnorm</span>(nd,<span class="at">mean=</span><span class="fu">mean</span>(nd),<span class="at">sd=</span><span class="fu">sd</span>(nd))</span>
 <span id="cb103-546"><a href="#cb103-546" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-547"><a href="#cb103-547" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-548"><a href="#cb103-548" aria-hidden="true" tabindex="-1"></a><span class="fu">#### method 1 :histogram</span></span>
-<span id="cb103-549"><a href="#cb103-549" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-552"><a href="#cb103-552" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-553"><a href="#cb103-553" aria-hidden="true" tabindex="-1"></a><span class="co">#define plotting region</span></span>
-<span id="cb103-554"><a href="#cb103-554" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
+<span id="cb103-550"><a href="#cb103-550" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-551"><a href="#cb103-551" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nd,dens,<span class="at">type=</span><span class="st">'l'</span>)</span>
+<span id="cb103-552"><a href="#cb103-552" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-553"><a href="#cb103-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-554"><a href="#cb103-554" aria-hidden="true" tabindex="-1"></a><span class="fu">### check data normally distributed</span></span>
 <span id="cb103-555"><a href="#cb103-555" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-556"><a href="#cb103-556" aria-hidden="true" tabindex="-1"></a><span class="co">#create histogram for both datasets</span></span>
-<span id="cb103-557"><a href="#cb103-557" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nd_data, <span class="at">col=</span><span class="st">'steelblue'</span>, <span class="at">main=</span><span class="st">'Normal'</span>)</span>
-<span id="cb103-558"><a href="#cb103-558" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(non_nd_data, <span class="at">col=</span><span class="st">'steelblue'</span>, <span class="at">main=</span><span class="st">'Non-normal'</span>)</span>
-<span id="cb103-559"><a href="#cb103-559" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-560"><a href="#cb103-560" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-561"><a href="#cb103-561" aria-hidden="true" tabindex="-1"></a><span class="fu">#### method 2 :Q-Q plot</span></span>
+<span id="cb103-558"><a href="#cb103-558" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-559"><a href="#cb103-559" aria-hidden="true" tabindex="-1"></a>nd_data<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">2</span>)</span>
+<span id="cb103-560"><a href="#cb103-560" aria-hidden="true" tabindex="-1"></a>nd_data<span class="ot">=</span><span class="fu">sort</span>(nd_data)</span>
+<span id="cb103-561"><a href="#cb103-561" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-562"><a href="#cb103-562" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb103-565"><a href="#cb103-565" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-566"><a href="#cb103-566" aria-hidden="true" tabindex="-1"></a><span class="co">#define plotting region</span></span>
-<span id="cb103-567"><a href="#cb103-567" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
-<span id="cb103-568"><a href="#cb103-568" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-569"><a href="#cb103-569" aria-hidden="true" tabindex="-1"></a><span class="co">#create Q-Q plot for both datasets</span></span>
-<span id="cb103-570"><a href="#cb103-570" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(nd_data, <span class="at">main=</span><span class="st">'Normal'</span>)</span>
-<span id="cb103-571"><a href="#cb103-571" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(nd_data)</span>
-<span id="cb103-572"><a href="#cb103-572" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-573"><a href="#cb103-573" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(non_nd_data, <span class="at">main=</span><span class="st">'Non-normal'</span>)</span>
-<span id="cb103-574"><a href="#cb103-574" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(non_nd_data)</span>
-<span id="cb103-575"><a href="#cb103-575" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-576"><a href="#cb103-576" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-577"><a href="#cb103-577" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Method 3: Shapiro-Wilk Test</span></span>
-<span id="cb103-578"><a href="#cb103-578" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-579"><a href="#cb103-579" aria-hidden="true" tabindex="-1"></a>null hypothesis (H0):The data is normally distributed.</span>
-<span id="cb103-580"><a href="#cb103-580" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-581"><a href="#cb103-581" aria-hidden="true" tabindex="-1"></a>if p-value =<span class="sc">\&gt;</span>0.05 then normally distributed</span>
+<span id="cb103-566"><a href="#cb103-566" aria-hidden="true" tabindex="-1"></a>non_nd_data<span class="ot">=</span><span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
+<span id="cb103-567"><a href="#cb103-567" aria-hidden="true" tabindex="-1"></a>non_nd_data<span class="ot">=</span><span class="fu">sort</span>(non_nd_data)</span>
+<span id="cb103-568"><a href="#cb103-568" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-569"><a href="#cb103-569" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-570"><a href="#cb103-570" aria-hidden="true" tabindex="-1"></a><span class="fu">#### method 1 :histogram</span></span>
+<span id="cb103-571"><a href="#cb103-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-574"><a href="#cb103-574" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-575"><a href="#cb103-575" aria-hidden="true" tabindex="-1"></a><span class="co">#define plotting region</span></span>
+<span id="cb103-576"><a href="#cb103-576" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
+<span id="cb103-577"><a href="#cb103-577" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-578"><a href="#cb103-578" aria-hidden="true" tabindex="-1"></a><span class="co">#create histogram for both datasets</span></span>
+<span id="cb103-579"><a href="#cb103-579" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nd_data, <span class="at">col=</span><span class="st">'steelblue'</span>, <span class="at">main=</span><span class="st">'Normal'</span>)</span>
+<span id="cb103-580"><a href="#cb103-580" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(non_nd_data, <span class="at">col=</span><span class="st">'steelblue'</span>, <span class="at">main=</span><span class="st">'Non-normal'</span>)</span>
+<span id="cb103-581"><a href="#cb103-581" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-582"><a href="#cb103-582" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-585"><a href="#cb103-585" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-586"><a href="#cb103-586" aria-hidden="true" tabindex="-1"></a><span class="co">#perform shapiro-wilk test</span></span>
-<span id="cb103-587"><a href="#cb103-587" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(nd_data)</span>
-<span id="cb103-588"><a href="#cb103-588" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-589"><a href="#cb103-589" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-590"><a href="#cb103-590" aria-hidden="true" tabindex="-1"></a>if p-value <span class="sc">\&lt;</span>0.05 then not normally distributed(reject the null hypothesis)</span>
-<span id="cb103-591"><a href="#cb103-591" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-594"><a href="#cb103-594" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-595"><a href="#cb103-595" aria-hidden="true" tabindex="-1"></a><span class="co">#perform shapiro-wilk test</span></span>
-<span id="cb103-596"><a href="#cb103-596" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(non_nd_data)</span>
+<span id="cb103-583"><a href="#cb103-583" aria-hidden="true" tabindex="-1"></a><span class="fu">#### method 2 :Q-Q plot</span></span>
+<span id="cb103-584"><a href="#cb103-584" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-587"><a href="#cb103-587" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-588"><a href="#cb103-588" aria-hidden="true" tabindex="-1"></a><span class="co">#define plotting region</span></span>
+<span id="cb103-589"><a href="#cb103-589" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
+<span id="cb103-590"><a href="#cb103-590" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-591"><a href="#cb103-591" aria-hidden="true" tabindex="-1"></a><span class="co">#create Q-Q plot for both datasets</span></span>
+<span id="cb103-592"><a href="#cb103-592" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(nd_data, <span class="at">main=</span><span class="st">'Normal'</span>)</span>
+<span id="cb103-593"><a href="#cb103-593" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(nd_data)</span>
+<span id="cb103-594"><a href="#cb103-594" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-595"><a href="#cb103-595" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(non_nd_data, <span class="at">main=</span><span class="st">'Non-normal'</span>)</span>
+<span id="cb103-596"><a href="#cb103-596" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(non_nd_data)</span>
 <span id="cb103-597"><a href="#cb103-597" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-598"><a href="#cb103-598" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-599"><a href="#cb103-599" aria-hidden="true" tabindex="-1"></a><span class="fu">## student t distribution</span></span>
+<span id="cb103-599"><a href="#cb103-599" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Method 3: Shapiro-Wilk Test</span></span>
 <span id="cb103-600"><a href="#cb103-600" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-601"><a href="#cb103-601" aria-hidden="true" tabindex="-1"></a><span class="fu">### one sample t test</span></span>
+<span id="cb103-601"><a href="#cb103-601" aria-hidden="true" tabindex="-1"></a>null hypothesis (H0):The data is normally distributed.</span>
 <span id="cb103-602"><a href="#cb103-602" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-603"><a href="#cb103-603" aria-hidden="true" tabindex="-1"></a><span class="fu">### two sample t test</span></span>
+<span id="cb103-603"><a href="#cb103-603" aria-hidden="true" tabindex="-1"></a>if p-value =<span class="sc">\&gt;</span>0.05 then normally distributed</span>
 <span id="cb103-604"><a href="#cb103-604" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-605"><a href="#cb103-605" aria-hidden="true" tabindex="-1"></a><span class="fu">### Paired t test</span></span>
-<span id="cb103-606"><a href="#cb103-606" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-607"><a href="#cb103-607" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pearson correlation coefficient</span></span>
-<span id="cb103-608"><a href="#cb103-608" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-609"><a href="#cb103-609" aria-hidden="true" tabindex="-1"></a><span class="fu">## F distribution</span></span>
-<span id="cb103-610"><a href="#cb103-610" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-611"><a href="#cb103-611" aria-hidden="true" tabindex="-1"></a><span class="fu">### ANOVA</span></span>
-<span id="cb103-612"><a href="#cb103-612" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-613"><a href="#cb103-613" aria-hidden="true" tabindex="-1"></a><span class="fu">## Chi-square</span></span>
-<span id="cb103-614"><a href="#cb103-614" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-615"><a href="#cb103-615" aria-hidden="true" tabindex="-1"></a><span class="fu">### Chi-square goodness of fit test</span></span>
-<span id="cb103-616"><a href="#cb103-616" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-617"><a href="#cb103-617" aria-hidden="true" tabindex="-1"></a><span class="fu">### Chi-square test of independence</span></span>
-<span id="cb103-618"><a href="#cb103-618" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-619"><a href="#cb103-619" aria-hidden="true" tabindex="-1"></a><span class="fu">## Poisson Distribution</span></span>
+<span id="cb103-607"><a href="#cb103-607" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-608"><a href="#cb103-608" aria-hidden="true" tabindex="-1"></a><span class="co">#perform shapiro-wilk test</span></span>
+<span id="cb103-609"><a href="#cb103-609" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(nd_data)</span>
+<span id="cb103-610"><a href="#cb103-610" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-611"><a href="#cb103-611" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-612"><a href="#cb103-612" aria-hidden="true" tabindex="-1"></a>if p-value <span class="sc">\&lt;</span>0.05 then not normally distributed(reject the null hypothesis)</span>
+<span id="cb103-613"><a href="#cb103-613" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-616"><a href="#cb103-616" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb103-617"><a href="#cb103-617" aria-hidden="true" tabindex="-1"></a><span class="co">#perform shapiro-wilk test</span></span>
+<span id="cb103-618"><a href="#cb103-618" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(non_nd_data)</span>
+<span id="cb103-619"><a href="#cb103-619" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb103-620"><a href="#cb103-620" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-621"><a href="#cb103-621" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference</span></span>
+<span id="cb103-621"><a href="#cb103-621" aria-hidden="true" tabindex="-1"></a><span class="fu">## student t distribution</span></span>
 <span id="cb103-622"><a href="#cb103-622" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-623"><a href="#cb103-623" aria-hidden="true" tabindex="-1"></a>https://www.huber.embl.de/users/kaspar/biostat_2021/2-demo.html</span>
+<span id="cb103-623"><a href="#cb103-623" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3444893160.png)</span></span>
 <span id="cb103-624"><a href="#cb103-624" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-625"><a href="#cb103-625" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=peEsXbdMY_4</span>
+<span id="cb103-625"><a href="#cb103-625" aria-hidden="true" tabindex="-1"></a><span class="fu">### one sample t test</span></span>
 <span id="cb103-626"><a href="#cb103-626" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-627"><a href="#cb103-627" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=ETd-jPhI_tE</span>
+<span id="cb103-627"><a href="#cb103-627" aria-hidden="true" tabindex="-1"></a><span class="fu">### two sample t test</span></span>
 <span id="cb103-628"><a href="#cb103-628" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-629"><a href="#cb103-629" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=kvmSAXhX9Hs</span>
+<span id="cb103-629"><a href="#cb103-629" aria-hidden="true" tabindex="-1"></a><span class="fu">### Paired t test</span></span>
 <span id="cb103-630"><a href="#cb103-630" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-631"><a href="#cb103-631" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=RlhnNbPZC0A</span>
+<span id="cb103-631"><a href="#cb103-631" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pearson correlation coefficient</span></span>
 <span id="cb103-632"><a href="#cb103-632" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-633"><a href="#cb103-633" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=X5NXDK6AVtU</span>
+<span id="cb103-633"><a href="#cb103-633" aria-hidden="true" tabindex="-1"></a><span class="fu">## F distribution</span></span>
 <span id="cb103-634"><a href="#cb103-634" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-635"><a href="#cb103-635" aria-hidden="true" tabindex="-1"></a>https://www.scribbr.com/statistics/probability-distributions/#:\~:text=A%20probability%20distribution%20is%20a,using%20graphs%20or%20probability%20tables.</span>
+<span id="cb103-635"><a href="#cb103-635" aria-hidden="true" tabindex="-1"></a><span class="fu">### ANOVA</span></span>
 <span id="cb103-636"><a href="#cb103-636" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-637"><a href="#cb103-637" aria-hidden="true" tabindex="-1"></a>https://www.statology.org/test-for-normality-in-r/</span>
+<span id="cb103-637"><a href="#cb103-637" aria-hidden="true" tabindex="-1"></a><span class="fu">## Chi-square</span></span>
 <span id="cb103-638"><a href="#cb103-638" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-639"><a href="#cb103-639" aria-hidden="true" tabindex="-1"></a>https://en.wikipedia.org/wiki/Derangement</span>
+<span id="cb103-639"><a href="#cb103-639" aria-hidden="true" tabindex="-1"></a><span class="fu">### Chi-square goodness of fit test</span></span>
 <span id="cb103-640"><a href="#cb103-640" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-641"><a href="#cb103-641" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output='.details summary="sessionInfo()"'}</span></span>
-<span id="cb103-642"><a href="#cb103-642" aria-hidden="true" tabindex="-1"></a><span class="in">sessionInfo()</span></span>
-<span id="cb103-643"><a href="#cb103-643" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb103-641"><a href="#cb103-641" aria-hidden="true" tabindex="-1"></a><span class="fu">### Chi-square test of independence</span></span>
+<span id="cb103-642"><a href="#cb103-642" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-643"><a href="#cb103-643" aria-hidden="true" tabindex="-1"></a><span class="fu">## Poisson Distribution</span></span>
+<span id="cb103-644"><a href="#cb103-644" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-645"><a href="#cb103-645" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference</span></span>
+<span id="cb103-646"><a href="#cb103-646" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-647"><a href="#cb103-647" aria-hidden="true" tabindex="-1"></a>https://www.huber.embl.de/users/kaspar/biostat_2021/2-demo.html</span>
+<span id="cb103-648"><a href="#cb103-648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-649"><a href="#cb103-649" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=peEsXbdMY_4</span>
+<span id="cb103-650"><a href="#cb103-650" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-651"><a href="#cb103-651" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=ETd-jPhI_tE</span>
+<span id="cb103-652"><a href="#cb103-652" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-653"><a href="#cb103-653" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=kvmSAXhX9Hs</span>
+<span id="cb103-654"><a href="#cb103-654" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-655"><a href="#cb103-655" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=RlhnNbPZC0A</span>
+<span id="cb103-656"><a href="#cb103-656" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-657"><a href="#cb103-657" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=X5NXDK6AVtU</span>
+<span id="cb103-658"><a href="#cb103-658" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-659"><a href="#cb103-659" aria-hidden="true" tabindex="-1"></a>https://www.scribbr.com/statistics/probability-distributions/#:\~:text=A%20probability%20distribution%20is%20a,using%20graphs%20or%20probability%20tables.</span>
+<span id="cb103-660"><a href="#cb103-660" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-661"><a href="#cb103-661" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=Q_pO9NzWxPY</span>
+<span id="cb103-662"><a href="#cb103-662" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-663"><a href="#cb103-663" aria-hidden="true" tabindex="-1"></a>https://www.statology.org/test-for-normality-in-r/</span>
+<span id="cb103-664"><a href="#cb103-664" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-665"><a href="#cb103-665" aria-hidden="true" tabindex="-1"></a>https://en.wikipedia.org/wiki/Derangement</span>
+<span id="cb103-666"><a href="#cb103-666" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-667"><a href="#cb103-667" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output='.details summary="sessionInfo()"'}</span></span>
+<span id="cb103-668"><a href="#cb103-668" aria-hidden="true" tabindex="-1"></a><span class="in">sessionInfo()</span></span>
+<span id="cb103-669"><a href="#cb103-669" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

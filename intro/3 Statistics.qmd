@@ -1,0 +1,45 @@
+---
+title: "Statistics"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+# Statistics
+
+![](images/clipboard-3130517444.png)
+
+# Variable
+
+![](images/clipboard-3451992727.png)
+
+# Categorical variable
+
+![](images/clipboard-1604956688.png)
+
+# Quantitative variable
+
+![](images/clipboard-292256406.png)
+
+# Variance vs Standard deviation
+
+![](images/clipboard-4130404561.png)
+
+# Reference
+
+https://www.youtube.com/watch?v=MXaJ7sa7q-8
+
+```{r, attr.output='.details summary="sessionInfo()"'}
+sessionInfo()
+```

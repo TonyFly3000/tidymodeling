@@ -180,7 +180,7 @@ P_at_least_one=p1+p2+p3+p4
 P_at_least_one
 ```
 
-## soluition 2:P(at least one)=1-P(no one snoring)
+## solution 2:P(at least one)=1-P(no one snoring)
 
 ```{r}
 P_at_least_one2=1-0.8*0.8*0.8*0.8
@@ -298,7 +298,7 @@ the binomial distribution with parameters n and p is the discrete probability di
 
 for a single trial, i.e., n = 1, the binomial distribution is a Bernoulli distribution
 
-### Probability density funciton (pdf)
+### Probability density function (pdf)
 
 1 people snoring Probability
 
@@ -324,7 +324,7 @@ sum of all event Probability is always 1
 sum(dbinom(x=c(0,1,2,3,4), size=n, prob=p))
 ```
 
-### Probability funciton
+### Probability function
 
 \<=1 people snoring
 
@@ -340,7 +340,7 @@ a=rbinom(1000,size=4,0.2)
 table(a)
 ```
 
-## Normal Distribtion(also called Gaussian distribution)
+## Normal Distribution(also called Gaussian distribution)
 
 X is a random variable following a normal distribution with mean μ and variance σ2
 
@@ -349,6 +349,28 @@ X is a random variable following a normal distribution with mean μ and variance
 95% within 2 standard deviation
 
 99.7% within 3 standard deviation
+
+### Z score and standard Normal Distribution
+
+standard Normal Distribution is special Normal Distribution with mean=0 and standard deviation =1
+
+![](images/clipboard-4010975181.png)
+
+Z table
+
+![](images/clipboard-3635575854.png)
+
+### Standardization
+
+transfer any normal Distribution into standard Normal Distribution
+
+![](images/clipboard-2062792649.png)
+
+formula:
+
+![](images/clipboard-625920785.png){width="421"}
+
+### R function
 
 ![](images/clipboard-1214752693.png)
 
@@ -488,6 +510,8 @@ shapiro.test(non_nd_data)
 
 ## student t distribution
 
+![](images/clipboard-3444893160.png)
+
 ### one sample t test
 
 ### two sample t test
@@ -523,6 +547,8 @@ https://www.youtube.com/watch?v=RlhnNbPZC0A
 https://www.youtube.com/watch?v=X5NXDK6AVtU
 
 https://www.scribbr.com/statistics/probability-distributions/#:\~:text=A%20probability%20distribution%20is%20a,using%20graphs%20or%20probability%20tables.
+
+https://www.youtube.com/watch?v=Q_pO9NzWxPY
 
 https://www.statology.org/test-for-normality-in-r/
 

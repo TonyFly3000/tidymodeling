@@ -5749,7 +5749,7 @@
     "href": "intro/2 probability.html#draw-10-number-from-1-to-10",
     "title": "Probability",
     "section": "1.1 draw 10 number from 1 to 10",
-    "text": "1.1 draw 10 number from 1 to 10\n\n\nCode\na=sample(1:10,10, replace=T) \na\n\n\n [1] 5 9 9 4 3 9 5 1 1 2\n\n\neach number around 10%\n\n\nCode\nas.data.frame(table(a))\n\n\n  a Freq\n1 1    2\n2 2    1\n3 3    1\n4 4    1\n5 5    2\n6 9    3",
+    "text": "1.1 draw 10 number from 1 to 10\n\n\nCode\na=sample(1:10,10, replace=T) \na\n\n\n [1]  9  4  1 10  1 10  5  9  3  5\n\n\neach number around 10%\n\n\nCode\nas.data.frame(table(a))\n\n\n   a Freq\n1  1    2\n2  3    1\n3  4    1\n4  5    2\n5  9    2\n6 10    2",
     "crumbs": [
       "Intro",
       "Probability"
@@ -5760,7 +5760,7 @@
     "href": "intro/2 probability.html#draw-10000-number-from-1-to-10",
     "title": "Probability",
     "section": "1.2 draw 10,000 number from 1 to 10",
-    "text": "1.2 draw 10,000 number from 1 to 10\n\n\nCode\na=sample(1:10,10000, replace=T) \n\n\neach number around 10%\n\n\nCode\nas.data.frame(table(a))\n\n\n    a Freq\n1   1  998\n2   2  945\n3   3 1018\n4   4  980\n5   5 1005\n6   6 1070\n7   7  980\n8   8 1008\n9   9  998\n10 10  998",
+    "text": "1.2 draw 10,000 number from 1 to 10\n\n\nCode\na=sample(1:10,10000, replace=T) \n\n\neach number around 10%\n\n\nCode\nas.data.frame(table(a))\n\n\n    a Freq\n1   1  988\n2   2  991\n3   3 1009\n4   4  989\n5   5  982\n6   6 1035\n7   7 1050\n8   8 1016\n9   9  969\n10 10  971",
     "crumbs": [
       "Intro",
       "Probability"
@@ -5826,7 +5826,7 @@
     "href": "intro/2 probability.html#binomial-distribution",
     "title": "Probability",
     "section": "5.1 Binomial distribution",
-    "text": "5.1 Binomial distribution\nthe binomial distribution with parameters n and p is the discrete probability distribution of the number of successes in a sequence of n independent experiments, each asking a yes–no question, and each with its own Boolean-valued outcome: success (with probability p) or failure (with probability 1-p)\nfor a single trial, i.e., n = 1, the binomial distribution is a Bernoulli distribution\n\n5.1.1 Probability density funciton (pdf)\n1 people snoring Probability\n\n\nCode\nn = 4 # number of people in a room\np = 0.2 # snoring\n\ndbinom(x=1, size=n, prob=p) # 1 people snoring Probability\n\n\n[1] 0.4096\n\n\n1,2,3,4 people snoring Probability\n\n\nCode\nn = 4 # number of people in a room\np = 0.2 # snoring\n\ndbinom(x=c(0,1,2,3,4), size=n, prob=p) # 1 people snoring Probability\n\n\n[1] 0.4096 0.4096 0.1536 0.0256 0.0016\n\n\nsum of all event Probability is always 1\n\n\nCode\nsum(dbinom(x=c(0,1,2,3,4), size=n, prob=p))\n\n\n[1] 1\n\n\n\n\n5.1.2 Probability funciton\n&lt;=1 people snoring\n\n\nCode\npbinom(q=1, size=n,prob=p, lower.tail=TRUE) \n\n\n[1] 0.8192\n\n\n\n\n5.1.3 generate 10000 number from 0 to 4 with Probability=0.2\n\n\nCode\na=rbinom(1000,size=4,0.2) \n\ntable(a)\n\n\na\n  0   1   2   3   4 \n425 398 148  27   2",
+    "text": "5.1 Binomial distribution\nthe binomial distribution with parameters n and p is the discrete probability distribution of the number of successes in a sequence of n independent experiments, each asking a yes–no question, and each with its own Boolean-valued outcome: success (with probability p) or failure (with probability 1-p)\nfor a single trial, i.e., n = 1, the binomial distribution is a Bernoulli distribution\n\n5.1.1 Probability density function (pdf)\n1 people snoring Probability\n\n\nCode\nn = 4 # number of people in a room\np = 0.2 # snoring\n\ndbinom(x=1, size=n, prob=p) # 1 people snoring Probability\n\n\n[1] 0.4096\n\n\n1,2,3,4 people snoring Probability\n\n\nCode\nn = 4 # number of people in a room\np = 0.2 # snoring\n\ndbinom(x=c(0,1,2,3,4), size=n, prob=p) # 1 people snoring Probability\n\n\n[1] 0.4096 0.4096 0.1536 0.0256 0.0016\n\n\nsum of all event Probability is always 1\n\n\nCode\nsum(dbinom(x=c(0,1,2,3,4), size=n, prob=p))\n\n\n[1] 1\n\n\n\n\n5.1.2 Probability function\n&lt;=1 people snoring\n\n\nCode\npbinom(q=1, size=n,prob=p, lower.tail=TRUE) \n\n\n[1] 0.8192\n\n\n\n\n5.1.3 generate 10000 number from 0 to 4 with Probability=0.2\n\n\nCode\na=rbinom(1000,size=4,0.2) \n\ntable(a)\n\n\na\n  0   1   2   3   4 \n407 394 167  30   2",
     "crumbs": [
       "Intro",
       "Probability"
@@ -5848,7 +5848,7 @@
     "href": "intro/2 probability.html#student-t-distribution",
     "title": "Probability",
     "section": "5.3 student t distribution",
-    "text": "5.3 student t distribution\n\n5.3.1 one sample t test\n\n\n5.3.2 two sample t test\n\n\n5.3.3 Paired t test\n\n\n5.3.4 Pearson correlation coefficient",
+    "text": "5.3 student t distribution\n\n\n5.3.1 one sample t test\n\n\n5.3.2 two sample t test\n\n\n5.3.3 Paired t test\n\n\n5.3.4 Pearson correlation coefficient",
     "crumbs": [
       "Intro",
       "Probability"
@@ -5973,6 +5973,39 @@
     "crumbs": [
       "Intro",
       "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#solution-2pat-least-one1-pno-one-snoring",
+    "href": "intro/2 probability.html#solution-2pat-least-one1-pno-one-snoring",
+    "title": "Probability",
+    "section": "3.2 solution 2:P(at least one)=1-P(no one snoring)",
+    "text": "3.2 solution 2:P(at least one)=1-P(no one snoring)\n\n\nCode\nP_at_least_one2=1-0.8*0.8*0.8*0.8\nP_at_least_one2\n\n\n[1] 0.5904",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/2 probability.html#normal-distributionalso-called-gaussian-distribution",
+    "href": "intro/2 probability.html#normal-distributionalso-called-gaussian-distribution",
+    "title": "Probability",
+    "section": "5.2 Normal Distribution(also called Gaussian distribution)",
+    "text": "5.2 Normal Distribution(also called Gaussian distribution)\nX is a random variable following a normal distribution with mean μ and variance σ2\n68% within 1 standard deviation\n95% within 2 standard deviation\n99.7% within 3 standard deviation\n\n5.2.1 Z score and standard Normal Distribution\nstandard Normal Distribution is special Normal Distribution with mean=0 and standard deviation =1\n\nZ table\n\n\n\n5.2.2 Standardization\ntransfer any normal Distribution into standard Normal Distribution\n\nformula:\n\n\n\n5.2.3 R function\n\n\n\n5.2.4 Probability Density Function (pdf)\n\ncomputes the pdf at location 0 of N(0,4),normal distribution with mean 1 and variance 4.\nsd is the standard deviation, which is the square root of the variance.\n\n\nCode\ndnorm(0, mean = 1, sd = 2)\n\n\n[1] 0.1760327\n\n\n\n\n5.2.5 cumulative distribution function(cdf)\n\nProbability of &lt;=70 from Normal Distribtion with mean=75 and sd=5\nsmaller than 1 standard deviation from the mean\n\n\nCode\npnorm(q=70,mean=75,sd=5)\n\n\n[1] 0.1586553\n\n\nProbability of &gt;=80 from Normal Distribtion with mean=75 and sd=5\nlarger than 1 standard deviation from the mean\n\n\nCode\n1-pnorm(q=80,mean=75,sd=5)\n\n\n[1] 0.1586553\n\n\n\n\n5.2.6 quantile function\n\nQ1\n\n\nCode\nqnorm(p=0.25,mean=75,sd=5)\n\n\n[1] 71.62755\n\n\nQ3\n\n\nCode\nqnorm(p=0.75,mean=75,sd=5)\n\n\n[1] 78.37245\n\n\n\n\n5.2.7 random number generator\n\n\n\n5.2.8 generate 1000 number from Normal Distribtion with mean=75 and sd=5\n\n\nCode\nnd=rnorm(n=1000,mean=75,sd=5)\nnd=sort(nd)\n\n\n\n\nCode\nmean(nd)\n\n\n[1] 74.87661\n\n\n\n\nCode\nsd(nd)\n\n\n[1] 4.988259\n\n\n\n\nCode\nhist(nd)\n\n\n\n\n\n\n\n\n\n\n\nCode\ndens=dnorm(nd,mean=mean(nd),sd=sd(nd))\n\n\n\n\nCode\nplot(nd,dens,type='l')\n\n\n\n\n\n\n\n\n\n\n\n5.2.9 check data normally distributed\n\n\nCode\nnd_data=rnorm(n=1000,mean=0,sd=2)\nnd_data=sort(nd_data)\n\n\n\n\nCode\nnon_nd_data=seq(1:1000)\nnon_nd_data=sort(non_nd_data)\n\n\n\n5.2.9.1 method 1 :histogram\n\n\nCode\n#define plotting region\npar(mfrow=c(1,2)) \n\n#create histogram for both datasets\nhist(nd_data, col='steelblue', main='Normal')\nhist(non_nd_data, col='steelblue', main='Non-normal')\n\n\n\n\n\n\n\n\n\n\n\n5.2.9.2 method 2 :Q-Q plot\n\n\nCode\n#define plotting region\npar(mfrow=c(1,2)) \n\n#create Q-Q plot for both datasets\nqqnorm(nd_data, main='Normal')\nqqline(nd_data)\n\nqqnorm(non_nd_data, main='Non-normal')\nqqline(non_nd_data)\n\n\n\n\n\n\n\n\n\n\n\n5.2.9.3 Method 3: Shapiro-Wilk Test\nnull hypothesis (H0):The data is normally distributed.\nif p-value =&gt;0.05 then normally distributed\n\n\nCode\n#perform shapiro-wilk test\nshapiro.test(nd_data)\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  nd_data\nW = 0.99879, p-value = 0.7491\n\n\nif p-value &lt;0.05 then not normally distributed(reject the null hypothesis)\n\n\nCode\n#perform shapiro-wilk test\nshapiro.test(non_nd_data)\n\n\n\n    Shapiro-Wilk normality test\n\ndata:  non_nd_data\nW = 0.95481, p-value &lt; 2.2e-16",
+    "crumbs": [
+      "Intro",
+      "Probability"
+    ]
+  },
+  {
+    "objectID": "intro/3 Statistics.html",
+    "href": "intro/3 Statistics.html",
+    "title": "Statistics",
+    "section": "",
+    "text": "1 Statistics\n\n\n\n2 Variable\n\n\n\n3 Categorical variable\n\n\n\n4 Quantitative variable\n\n\n\n5 Variance vs Standard deviation\n\n\n\n6 Reference\nhttps://www.youtube.com/watch?v=MXaJ7sa7q-8\n\n\nCode\nsessionInfo()\n\n\nsessionInfo()\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] htmlwidgets_1.6.4 compiler_4.3.1    fastmap_1.1.1     cli_3.6.2        \n [5] tools_4.3.1       htmltools_0.5.8.1 rstudioapi_0.16.0 yaml_2.3.8       \n [9] rmarkdown_2.26    knitr_1.45        jsonlite_1.8.8    xfun_0.43        \n[13] digest_0.6.35     rlang_1.1.3       evaluate_0.23    \n\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Intro",
+      "Statistics"
     ]
   }
 ]
