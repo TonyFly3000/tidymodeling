@@ -1,0 +1,129 @@
+---
+title: "HK whisk bar"
+subtitle: "with leaflet"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+---
+
+# data
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(chromote)
+library(janitor)
+library(tidygeocoder)
+library(leaflet)
+library(sf)
+```
+
+```{r}
+bar_name=c('Maltcask@太子','House Welley@中環','Casky@灣仔')
+bar_address=c('169 Sai Yeung Choi St N, Mong Kok,Hongkong','97 Wellington St, Central,Hongkong','20-24 Lockhart Road, Wan Chai,Hongkong')
+
+bar_logo=c('https://img.shoplineapp.com/media/image_clips/62f16f8d7df01b0025a82bad/original.png','https://static.wixstatic.com/media/2d390e_27d0b3da21a94459bccf741600782591~mv2.jpg/v1/fill/w_160,h_160,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Grey.jpg','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsSelY2PRVxaxyU_Ydf9CHgtUrClzpxpqJ2g&s')
+
+
+data001=tibble(bar_name,bar_address,bar_logo)
+```
+
+
+# search all address to latitude, longitude
+```{r}
+# geocode the addresses
+data002 =data001 %>% geocode(bar_address, method = 'osm',lat = latitude , long = longitude)
+
+glimpse(data002)
+```
+
+
+# map
+
+
+```{r}
+
+# Choose Icon:
+leafIcons <- icons(data002$bar_logo,iconWidth =60, iconHeight = 50)
+
+
+m <- leaflet() %>%
+  
+   # Add default OpenStreetMap map tiles
+  addTiles() %>%  
+  # add markers
+  addMarkers(lng=data002$longitude, lat=data002$latitude,icon = leafIcons)
+ 
+
+m  
+```
+
+
+
+
+```{r}
+
+
+
+m <- leaflet(height=2000, width=2000) %>%
+   # Add default OpenStreetMap map tiles
+  addTiles() %>%  
+  # add markers
+  addPopups( lng=data002$longitude, lat=data002$latitude, data002$bar_name
+             ,options = popupOptions(closeButton = FALSE)
+             
+            )
+ 
+
+m  
+```
+
+
+
+```{r}
+
+
+m <- leaflet(height=2500, width=2000) %>%
+   # Add default OpenStreetMap map tiles
+  addTiles() %>%  
+  # add markers
+ addMarkers(
+    lng=data002$longitude, lat=data002$latitude
+    ,label = data002$bar_name,options = popupOptions(closeButton = FALSE),
+   
+    labelOptions = labelOptions(noHide = TRUE, direction = "bottom",
+      style = list(
+        "color" = "red",
+        "font-family" = "serif",
+        "font-style" = "italic",
+        "box-shadow" = "2px 2px rgba(0,0,0,0.25)",
+        "font-size" = "12px",
+        "border-color" = "rgba(0,0,0,0.5)"
+      ))) 
+  
+
+m  
+```
+
+
+
+
+
+
+# resouce:
+
+https://www.gunviolencearchive.org/reports/mass-shooting?page=8&year=2023
