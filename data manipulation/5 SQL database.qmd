@@ -37,6 +37,7 @@ mtcars=cbind(newColName = rownames(mtcars), mtcars)
 
 
 ```{r}
+
 # Create an ephemeral in-memory RSQLite database
 con <- dbConnect(RSQLite::SQLite(), "my_sql_database")
 
