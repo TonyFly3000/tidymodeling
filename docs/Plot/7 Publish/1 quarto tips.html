@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Tony Duan">
 
-<title>Tidymodel with R - quarto tips</title>
+<title>quarto tips – Tidymodel with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="hscroll.css">
-<meta name="twitter:title" content="Tidymodel with R - quarto tips">
+<meta name="twitter:title" content="quarto tips – Tidymodel with R">
 <meta name="twitter:description" content="with magick">
 <meta name="twitter:card" content="summary">
 </head>
@@ -126,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -136,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-intro" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-intro" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">intro</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-intro">    
@@ -164,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Data</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data">    
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Ploting</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-ploting">    
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-model-type" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-model-type" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Model type</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-model-type">    
@@ -252,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Classification</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-classification">    
@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification-imbanlance" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification-imbanlance" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Classification imbanlance</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-classification-imbanlance">    
@@ -316,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-multiclass-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-multiclass-classification" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Multiclass classification</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-multiclass-classification">    
@@ -340,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regression" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regression" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Regression</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-regression">    
@@ -372,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clustering" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clustering" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Clustering</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-clustering">    
@@ -404,7 +404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Other</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-other">    
@@ -433,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -444,11 +444,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Plot/1 ggplot2.html">Plot</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/1 quarto tips.html">7 Publish</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/1 quarto tips.html">quarto tips</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -461,9 +461,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Plot</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -494,9 +494,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">5 Map</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -529,9 +529,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">6 Shiny</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -558,9 +558,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">7 Publish</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -589,6 +589,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">quarto presentation</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Plot/7 Publish/5 quarto extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">quarto Extensioins</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -603,7 +609,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto-code-chunk-option" id="toc-quarto-code-chunk-option" class="nav-link active" data-scroll-target="#quarto-code-chunk-option">quarto code chunk option</a>
+  <li><a href="#install-quarto" id="toc-install-quarto" class="nav-link active" data-scroll-target="#install-quarto">install quarto</a>
+  <ul class="collapse">
+  <li><a href="#install-quarto-cli" id="toc-install-quarto-cli" class="nav-link" data-scroll-target="#install-quarto-cli">install quarto CLI</a></li>
+  <li><a href="#install-quarto-pacakge" id="toc-install-quarto-pacakge" class="nav-link" data-scroll-target="#install-quarto-pacakge">install quarto pacakge</a></li>
+  </ul></li>
+  <li><a href="#check-quarto-version" id="toc-check-quarto-version" class="nav-link" data-scroll-target="#check-quarto-version">check quarto version</a>
+  <ul class="collapse">
+  <li><a href="#in-terminal" id="toc-in-terminal" class="nav-link" data-scroll-target="#in-terminal">in Terminal</a></li>
+  <li><a href="#in-r" id="toc-in-r" class="nav-link" data-scroll-target="#in-r">in R</a></li>
+  </ul></li>
+  <li><a href="#quarto-code-chunk" id="toc-quarto-code-chunk" class="nav-link" data-scroll-target="#quarto-code-chunk">quarto code chunk</a>
+  <ul class="collapse">
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#bath" id="toc-bath" class="nav-link" data-scroll-target="#bath">Bath</a></li>
+  </ul></li>
+  <li><a href="#quarto-code-chunk-option" id="toc-quarto-code-chunk-option" class="nav-link" data-scroll-target="#quarto-code-chunk-option">quarto code chunk option</a>
   <ul class="collapse">
   <li><a href="#in-yaml-header" id="toc-in-yaml-header" class="nav-link" data-scroll-target="#in-yaml-header">in YAML header</a></li>
   <li><a href="#in-code-chunk" id="toc-in-code-chunk" class="nav-link" data-scroll-target="#in-code-chunk">in code chunk</a></li>
@@ -657,21 +679,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="install-quarto" class="level1">
+<h1>install quarto</h1>
+<section id="install-quarto-cli" class="level2">
+<h2 class="anchored" data-anchor-id="install-quarto-cli">install quarto CLI</h2>
+<p>https://quarto.org/docs/get-started/</p>
+</section>
+<section id="install-quarto-pacakge" class="level2">
+<h2 class="anchored" data-anchor-id="install-quarto-pacakge">install quarto pacakge</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"quarto"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="check-quarto-version" class="level1">
+<h1>check quarto version</h1>
+<section id="in-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="in-terminal">in Terminal</h2>
+<div class="cell">
+<div class="code-with-filename">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<pre class="bach cell-code"><code>quarto check</code></pre>
+</details>
+</div>
+</div>
+<p><img src="images/paste-1.png" class="img-fluid" width="600"></p>
+</section>
+<section id="in-r" class="level2">
+<h2 class="anchored" data-anchor-id="in-r">in R</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quarto)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quarto_version</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] '1.5.57'</code></pre>
+</div>
+</div>
+<p>quarto location</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quarto_path</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Applications/quarto/bin/quarto"</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="quarto-code-chunk" class="level1">
+<h1>quarto code chunk</h1>
+<section id="r" class="level2">
+<h2 class="anchored" data-anchor-id="r">R</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{R}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">version</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="python" class="level2">
+<h2 class="anchored" data-anchor-id="python">Python</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">print(sys.version)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="bath" class="level2">
+<h2 class="anchored" data-anchor-id="bath">Bath</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">echo "foo" </span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
 <section id="quarto-code-chunk-option" class="level1">
 <h1>quarto code chunk option</h1>
 <section id="in-yaml-header" class="level2">
 <h2 class="anchored" data-anchor-id="in-yaml-header">in YAML header</h2>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"My Document"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>execute<span class="sc">:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  echo<span class="sc">:</span> false</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>jupyter<span class="sc">:</span> python3</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">jupyter</span><span class="kw">:</span><span class="at"> python3</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>eval： Evaluate the code chunk (if false, just echos the code into the output).</p></li>
 <li><p>echo： Include the source code in output.</p></li>
@@ -683,7 +779,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="in-code-chunk" class="level2">
 <h2 class="anchored" data-anchor-id="in-code-chunk">in code chunk</h2>
-<p>#| eval: false #| echo: false</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a> <span class="co">#| eval: false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 </section>
 <section id="code-chunk-name" class="level1">
@@ -696,8 +797,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>code chunk name sample</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">1</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">1</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -710,45 +811,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>italics<span class="sc">*</span> and _italics_</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>bold<span class="sc">**</span> and __bold__</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="er">~~</span>strikethrough<span class="sc">~</span><span class="er">~</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>[link](www.rstudio.com)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>italics<span class="sc">*</span> and _italics_</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>bold<span class="sc">**</span> and __bold__</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="er">~~</span>strikethrough<span class="sc">~</span><span class="er">~</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>[link](www.rstudio.com)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>italics<span class="sc">*</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>italics<span class="sc">*</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><em>italics</em></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>bold<span class="sc">**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>bold<span class="sc">**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>bold</strong></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>superscript<sup>2</sup></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">~</span><span class="er">~</span>strikethrough<span class="sc">~</span><span class="er">~</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="sc">~</span><span class="er">~</span>strikethrough<span class="sc">~</span><span class="er">~</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><del>strikethrough</del></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">highlight</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">highlight</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><code>highlight</code></p>
@@ -758,7 +859,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>[link](www.rstudio.com)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>[link](www.rstudio.com)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><a href="www.rstudio.com">link</a></p>
@@ -768,18 +869,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.panel<span class="sc">-</span>tabset}</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Tab 1</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>This is tab <span class="dv">1</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Tab 2</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>This is tab <span class="dv">2</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.panel<span class="sc">-</span>tabset}</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Tab 1</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>This is tab <span class="dv">1</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Tab 2</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>This is tab <span class="dv">2</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -799,16 +900,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> columns</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.column width<span class="ot">=</span><span class="st">"40%"</span>}</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>this column with <span class="dv">40</span>% width</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="er">:::</span> {.column width<span class="ot">=</span><span class="st">"60%"</span>}</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>this column with <span class="dv">60</span>% width</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> </span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="er">:::</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> columns</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.column width<span class="ot">=</span><span class="st">"40%"</span>}</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>this column with <span class="dv">40</span>% width</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="er">:::</span> {.column width<span class="ot">=</span><span class="st">"60%"</span>}</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>this column with <span class="dv">60</span>% width</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="er">:::</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="columns">
@@ -827,10 +928,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>.hscroll {</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  overflow<span class="sc">:</span> auto;</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  white<span class="sc">-</span>space<span class="sc">:</span> nowrap;</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>.hscroll {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  overflow<span class="sc">:</span> auto;</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  white<span class="sc">-</span>space<span class="sc">:</span> nowrap;</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ul>
@@ -839,9 +940,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>css<span class="sc">:</span> hscroll.css</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>css<span class="sc">:</span> hscroll.css</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ul>
@@ -854,10 +955,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="add-a-vertical-scroll-bar" class="level1">
 <h1>Add a vertical scroll bar</h1>
-<p>::: {.scroll-container style=“overflow-x: scroll; height: 600px;”}</p>
+<div class="scroll-container" style="overflow-x: scroll; height: 600px;">
 <p>images1.png</p>
 <p>images2.png</p>
-<p>:::</p>
+</div>
 <div class="scroll-container" style="overflow-x: scroll; height: 600px;">
 <p><img src="images/12.png" class="img-fluid" width="900"></p>
 <p><img src="images/13.png" class="img-fluid" width="900"></p>
@@ -875,21 +976,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>foldableCodeBlcok.lua</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> <span class="fu">CodeBlock</span>(elem)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> elem.classes and elem.classes<span class="sc">:</span><span class="fu">find</span>(<span class="st">"details"</span>) then</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    local summary <span class="ot">=</span> <span class="st">"Code"</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> elem.attributes.summary then</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      summary <span class="ot">=</span> elem.attributes.summary</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    end</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    return{</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pandoc.RawBlock</span>(</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"html"</span>, <span class="st">"&lt;details&gt;&lt;summary&gt;"</span> .. summary .. <span class="st">"&lt;/summary&gt;"</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>      elem,</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pandoc.RawBlock</span>(<span class="st">"html"</span>, <span class="st">"&lt;/details&gt;"</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  end</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> <span class="fu">CodeBlock</span>(elem)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> elem.classes and elem.classes<span class="sc">:</span><span class="fu">find</span>(<span class="st">"details"</span>) then</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    local summary <span class="ot">=</span> <span class="st">"Code"</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> elem.attributes.summary then</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>      summary <span class="ot">=</span> elem.attributes.summary</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    end</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    return{</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pandoc.RawBlock</span>(</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"html"</span>, <span class="st">"&lt;details&gt;&lt;summary&gt;"</span> .. summary .. <span class="st">"&lt;/summary&gt;"</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>      elem,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pandoc.RawBlock</span>(<span class="st">"html"</span>, <span class="st">"&lt;/details&gt;"</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  end</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -904,13 +1005,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>sessionInfo()</summary>
 <pre class="details" data-summary="sessionInfo()"><code>R version 4.3.1 (2023-06-16)
 Platform: aarch64-apple-darwin20 (64-bit)
-Running under: macOS Sonoma 14.1.1
+Running under: macOS Sonoma 14.6.1
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
@@ -925,11 +1026,15 @@ tzcode source: internal
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
+other attached packages:
+[1] quarto_1.4.4
+
 loaded via a namespace (and not attached):
- [1] htmlwidgets_1.6.4 compiler_4.3.1    fastmap_1.1.1     cli_3.6.2        
- [5] tools_4.3.1       htmltools_0.5.8.1 rstudioapi_0.16.0 yaml_2.3.8       
- [9] rmarkdown_2.26    knitr_1.45        jsonlite_1.8.8    xfun_0.43        
-[13] digest_0.6.35     rlang_1.1.3       evaluate_0.23    </code></pre>
+ [1] digest_0.6.37     later_1.3.2       fastmap_1.2.0     xfun_0.43        
+ [5] knitr_1.45        htmltools_0.5.8.1 rmarkdown_2.26    ps_1.8.0         
+ [9] cli_3.6.3         processx_3.8.4    compiler_4.3.1    rstudioapi_0.16.0
+[13] tools_4.3.1       evaluate_0.23     Rcpp_1.0.13       yaml_2.3.10      
+[17] rlang_1.1.4       jsonlite_1.8.8    htmlwidgets_1.6.4</code></pre>
 </details>
 </div>
 </div>
@@ -943,7 +1048,7 @@ loaded via a namespace (and not attached):
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>quarto render <span class="st">"tidymodel in R"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>quarto render <span class="st">"tidymodel in R"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -955,8 +1060,8 @@ loaded via a namespace (and not attached):
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>iframe width<span class="ot">=</span><span class="st">"640"</span> height<span class="ot">=</span><span class="st">"480"</span> src<span class="ot">=</span><span class="st">"https://www.youtube.com/embed/nku5zFMZAdU"</span> frameborder<span class="ot">=</span><span class="st">"0"</span> allow<span class="ot">=</span><span class="st">"autoplay; encrypted-media"</span> allowfullscreen<span class="sc">&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>iframe<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>iframe width<span class="ot">=</span><span class="st">"640"</span> height<span class="ot">=</span><span class="st">"480"</span> src<span class="ot">=</span><span class="st">"https://www.youtube.com/embed/nku5zFMZAdU"</span> frameborder<span class="ot">=</span><span class="st">"0"</span> allow<span class="ot">=</span><span class="st">"autoplay; encrypted-media"</span> allowfullscreen<span class="sc">&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>iframe<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -965,7 +1070,7 @@ loaded via a namespace (and not attached):
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>{{<span class="sc">&lt;</span> video images<span class="sc">/</span>vv.mp4 height<span class="ot">=</span><span class="st">"600"</span> <span class="sc">&gt;</span>}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>{{<span class="sc">&lt;</span> video images<span class="sc">/</span>vv.mp4 height<span class="ot">=</span><span class="st">"600"</span> <span class="sc">&gt;</span>}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -979,26 +1084,23 @@ loaded via a namespace (and not attached):
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>figure<span class="sc">&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>figcaption<span class="sc">&gt;</span>click to play<span class="sc">&lt;</span><span class="er">/</span>figcaption<span class="sc">&gt;</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>audio controls src<span class="ot">=</span><span class="st">"aa.mp3"</span><span class="sc">&gt;</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        Your browser does not support the</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="sc">&lt;</span>code<span class="sc">&gt;</span>audio<span class="sc">&lt;</span><span class="er">/</span>code<span class="sc">&gt;</span> element.</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">/</span>audio<span class="sc">&gt;</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>figure<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>figure<span class="sc">&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>figcaption<span class="sc">&gt;</span>click to play<span class="sc">&lt;</span><span class="er">/</span>figcaption<span class="sc">&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>audio controls src<span class="ot">=</span><span class="st">"aa.mp3"</span><span class="sc">&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        Your browser does not support the</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>        <span class="sc">&lt;</span>code<span class="sc">&gt;</span>audio<span class="sc">&lt;</span><span class="er">/</span>code<span class="sc">&gt;</span> element.</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">/</span>audio<span class="sc">&gt;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>figure<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    resources<span class="sc">:</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> aa.mp3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> aa.mp3</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1048,18 +1150,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1091,7 +1182,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -1143,6 +1256,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1177,7 +1308,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1451,365 +1586,378 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb23" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "quarto tips"</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with magick"</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">  </span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="an">css:</span><span class="co"> hscroll.css</span></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># quarto code chunk option </span></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## in YAML header</span></span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"My Document"</span></span>
-<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>execute<span class="sc">:</span></span>
-<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>  echo<span class="sc">:</span> false</span>
-<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>jupyter<span class="sc">:</span> python3</span>
-<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>eval： Evaluate the code chunk (if false, just echos the code into the output).</span>
-<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>echo： Include the source code in output.</span>
-<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>output：   Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).</span>
-<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>warning：  Include warnings in the output.</span>
-<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>error：    Evaluate the code chunk (if false, just echos the code into the output).</span>
-<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>include：  Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).</span>
-<span id="cb23-53"><a href="#cb23-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-54"><a href="#cb23-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## in code chunk</span></span>
-<span id="cb23-55"><a href="#cb23-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-56"><a href="#cb23-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-57"><a href="#cb23-57" aria-hidden="true" tabindex="-1"></a> #| eval: false</span>
-<span id="cb23-58"><a href="#cb23-58" aria-hidden="true" tabindex="-1"></a> #| echo: false</span>
-<span id="cb23-59"><a href="#cb23-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-60"><a href="#cb23-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-61"><a href="#cb23-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-62"><a href="#cb23-62" aria-hidden="true" tabindex="-1"></a><span class="fu"># code chunk name</span></span>
-<span id="cb23-63"><a href="#cb23-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-64"><a href="#cb23-64" aria-hidden="true" tabindex="-1"></a><span class="in">`{r filename='code chunk name sample'}`</span></span>
-<span id="cb23-65"><a href="#cb23-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-66"><a href="#cb23-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename='code chunk name sample'}</span></span>
-<span id="cb23-67"><a href="#cb23-67" aria-hidden="true" tabindex="-1"></a><span class="in">a=1</span></span>
-<span id="cb23-68"><a href="#cb23-68" aria-hidden="true" tabindex="-1"></a><span class="in">a</span></span>
-<span id="cb23-69"><a href="#cb23-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-70"><a href="#cb23-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-71"><a href="#cb23-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-72"><a href="#cb23-72" aria-hidden="true" tabindex="-1"></a><span class="fu"># Rmarkdown </span></span>
-<span id="cb23-73"><a href="#cb23-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-76"><a href="#cb23-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-77"><a href="#cb23-77" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-78"><a href="#cb23-78" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>italics<span class="sc">*</span> and _italics_</span>
-<span id="cb23-79"><a href="#cb23-79" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>bold<span class="sc">**</span> and __bold__</span>
-<span id="cb23-80"><a href="#cb23-80" aria-hidden="true" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span></span>
-<span id="cb23-81"><a href="#cb23-81" aria-hidden="true" tabindex="-1"></a><span class="er">~~</span>strikethrough<span class="sc">~</span><span class="er">~</span></span>
-<span id="cb23-82"><a href="#cb23-82" aria-hidden="true" tabindex="-1"></a>[link](www.rstudio.com)</span>
-<span id="cb23-83"><a href="#cb23-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-84"><a href="#cb23-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-85"><a href="#cb23-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-86"><a href="#cb23-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-89"><a href="#cb23-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-90"><a href="#cb23-90" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-91"><a href="#cb23-91" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>italics<span class="sc">*</span> </span>
-<span id="cb23-92"><a href="#cb23-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-93"><a href="#cb23-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-94"><a href="#cb23-94" aria-hidden="true" tabindex="-1"></a>*italics*</span>
-<span id="cb23-95"><a href="#cb23-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-96"><a href="#cb23-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-97"><a href="#cb23-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-100"><a href="#cb23-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-101"><a href="#cb23-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-102"><a href="#cb23-102" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>bold<span class="sc">**</span></span>
-<span id="cb23-103"><a href="#cb23-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-104"><a href="#cb23-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-105"><a href="#cb23-105" aria-hidden="true" tabindex="-1"></a>**bold**</span>
-<span id="cb23-106"><a href="#cb23-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-109"><a href="#cb23-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-110"><a href="#cb23-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-111"><a href="#cb23-111" aria-hidden="true" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span></span>
-<span id="cb23-112"><a href="#cb23-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-113"><a href="#cb23-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-114"><a href="#cb23-114" aria-hidden="true" tabindex="-1"></a>superscript^2^</span>
-<span id="cb23-115"><a href="#cb23-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-118"><a href="#cb23-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-119"><a href="#cb23-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-120"><a href="#cb23-120" aria-hidden="true" tabindex="-1"></a><span class="sc">~</span><span class="er">~</span>strikethrough<span class="sc">~</span><span class="er">~</span></span>
-<span id="cb23-121"><a href="#cb23-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-122"><a href="#cb23-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-123"><a href="#cb23-123" aria-hidden="true" tabindex="-1"></a>~~strikethrough~~</span>
-<span id="cb23-124"><a href="#cb23-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-125"><a href="#cb23-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-128"><a href="#cb23-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-129"><a href="#cb23-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-130"><a href="#cb23-130" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">highlight</span><span class="st">`</span></span>
-<span id="cb23-131"><a href="#cb23-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-132"><a href="#cb23-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-133"><a href="#cb23-133" aria-hidden="true" tabindex="-1"></a><span class="in">`highlight`</span></span>
-<span id="cb23-134"><a href="#cb23-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-135"><a href="#cb23-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-136"><a href="#cb23-136" aria-hidden="true" tabindex="-1"></a><span class="fu"># link</span></span>
-<span id="cb23-137"><a href="#cb23-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-140"><a href="#cb23-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-141"><a href="#cb23-141" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-142"><a href="#cb23-142" aria-hidden="true" tabindex="-1"></a>[link](www.rstudio.com)</span>
-<span id="cb23-143"><a href="#cb23-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-144"><a href="#cb23-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-145"><a href="#cb23-145" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">link</span><span class="co">](www.rstudio.com)</span></span>
-<span id="cb23-146"><a href="#cb23-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-147"><a href="#cb23-147" aria-hidden="true" tabindex="-1"></a><span class="fu"># tab</span></span>
-<span id="cb23-148"><a href="#cb23-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-149"><a href="#cb23-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-152"><a href="#cb23-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-153"><a href="#cb23-153" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-154"><a href="#cb23-154" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.panel<span class="sc">-</span>tabset}</span>
-<span id="cb23-155"><a href="#cb23-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-156"><a href="#cb23-156" aria-hidden="true" tabindex="-1"></a><span class="do">## Tab 1</span></span>
-<span id="cb23-157"><a href="#cb23-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-158"><a href="#cb23-158" aria-hidden="true" tabindex="-1"></a>This is tab <span class="dv">1</span></span>
-<span id="cb23-159"><a href="#cb23-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-160"><a href="#cb23-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-161"><a href="#cb23-161" aria-hidden="true" tabindex="-1"></a><span class="do">## Tab 2</span></span>
-<span id="cb23-162"><a href="#cb23-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-163"><a href="#cb23-163" aria-hidden="true" tabindex="-1"></a>This is tab <span class="dv">2</span></span>
-<span id="cb23-164"><a href="#cb23-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-165"><a href="#cb23-165" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span>
-<span id="cb23-166"><a href="#cb23-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-167"><a href="#cb23-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-168"><a href="#cb23-168" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
-<span id="cb23-169"><a href="#cb23-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-170"><a href="#cb23-170" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tab 1</span></span>
-<span id="cb23-171"><a href="#cb23-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-172"><a href="#cb23-172" aria-hidden="true" tabindex="-1"></a>This is tab 1</span>
-<span id="cb23-173"><a href="#cb23-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-174"><a href="#cb23-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-175"><a href="#cb23-175" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tab 2</span></span>
-<span id="cb23-176"><a href="#cb23-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-177"><a href="#cb23-177" aria-hidden="true" tabindex="-1"></a>This is tab 2</span>
-<span id="cb23-178"><a href="#cb23-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-179"><a href="#cb23-179" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb23-180"><a href="#cb23-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-181"><a href="#cb23-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-182"><a href="#cb23-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-183"><a href="#cb23-183" aria-hidden="true" tabindex="-1"></a><span class="fu"># column display</span></span>
-<span id="cb23-184"><a href="#cb23-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-187"><a href="#cb23-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-188"><a href="#cb23-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-189"><a href="#cb23-189" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> columns</span>
-<span id="cb23-190"><a href="#cb23-190" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.column width<span class="ot">=</span><span class="st">"40%"</span>}</span>
-<span id="cb23-191"><a href="#cb23-191" aria-hidden="true" tabindex="-1"></a>this column with <span class="dv">40</span>% width</span>
-<span id="cb23-192"><a href="#cb23-192" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> </span>
-<span id="cb23-193"><a href="#cb23-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-194"><a href="#cb23-194" aria-hidden="true" tabindex="-1"></a><span class="er">:::</span> {.column width<span class="ot">=</span><span class="st">"60%"</span>}</span>
-<span id="cb23-195"><a href="#cb23-195" aria-hidden="true" tabindex="-1"></a>this column with <span class="dv">60</span>% width</span>
-<span id="cb23-196"><a href="#cb23-196" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> </span>
-<span id="cb23-197"><a href="#cb23-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-198"><a href="#cb23-198" aria-hidden="true" tabindex="-1"></a><span class="er">:::</span> </span>
-<span id="cb23-199"><a href="#cb23-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-200"><a href="#cb23-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-201"><a href="#cb23-201" aria-hidden="true" tabindex="-1"></a>::: columns</span>
-<span id="cb23-202"><a href="#cb23-202" aria-hidden="true" tabindex="-1"></a>::: {.column width="40%"}</span>
-<span id="cb23-203"><a href="#cb23-203" aria-hidden="true" tabindex="-1"></a>this column with 40% width</span>
-<span id="cb23-204"><a href="#cb23-204" aria-hidden="true" tabindex="-1"></a>::: </span>
-<span id="cb23-205"><a href="#cb23-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-206"><a href="#cb23-206" aria-hidden="true" tabindex="-1"></a>::: {.column width="60%"}</span>
-<span id="cb23-207"><a href="#cb23-207" aria-hidden="true" tabindex="-1"></a>this column with 60% width</span>
-<span id="cb23-208"><a href="#cb23-208" aria-hidden="true" tabindex="-1"></a>::: </span>
-<span id="cb23-209"><a href="#cb23-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-210"><a href="#cb23-210" aria-hidden="true" tabindex="-1"></a>::: </span>
-<span id="cb23-211"><a href="#cb23-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-212"><a href="#cb23-212" aria-hidden="true" tabindex="-1"></a><span class="fu"># Add a horizontal scroll bar</span></span>
-<span id="cb23-213"><a href="#cb23-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-214"><a href="#cb23-214" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>add hscroll.css file</span>
-<span id="cb23-215"><a href="#cb23-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-218"><a href="#cb23-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-219"><a href="#cb23-219" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-220"><a href="#cb23-220" aria-hidden="true" tabindex="-1"></a>.hscroll {</span>
-<span id="cb23-221"><a href="#cb23-221" aria-hidden="true" tabindex="-1"></a>  overflow<span class="sc">:</span> auto;</span>
-<span id="cb23-222"><a href="#cb23-222" aria-hidden="true" tabindex="-1"></a>  white<span class="sc">-</span>space<span class="sc">:</span> nowrap;</span>
-<span id="cb23-223"><a href="#cb23-223" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-224"><a href="#cb23-224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-225"><a href="#cb23-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-226"><a href="#cb23-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-227"><a href="#cb23-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>add css option in YAML header</span>
-<span id="cb23-228"><a href="#cb23-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-231"><a href="#cb23-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-232"><a href="#cb23-232" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-233"><a href="#cb23-233" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb23-234"><a href="#cb23-234" aria-hidden="true" tabindex="-1"></a>css<span class="sc">:</span> hscroll.css</span>
-<span id="cb23-235"><a href="#cb23-235" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb23-236"><a href="#cb23-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-237"><a href="#cb23-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-238"><a href="#cb23-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-239"><a href="#cb23-239" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>add <span class="in">`{.hscroll .scrollable}`</span> on the section which want to be Slide bar </span>
-<span id="cb23-240"><a href="#cb23-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-241"><a href="#cb23-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-242"><a href="#cb23-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-243"><a href="#cb23-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-244"><a href="#cb23-244" aria-hidden="true" tabindex="-1"></a><span class="fu"># {.hscroll .scrollable}</span></span>
-<span id="cb23-245"><a href="#cb23-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-246"><a href="#cb23-246" aria-hidden="true" tabindex="-1"></a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dolor mauris, mattis non nunc nec, luctus aliquet magna. In tortor ante, aliquam eget felis eu, consectetur congue enim. Pellentesque pellentesque tincidunt lectus quis lacinia. Aliquam dolor sem, aliquet vitae aliquam eget, vehicula ac augue. Pellentesque molestie quam et commodo dignissim. Suspendisse potenti. Sed pellentesque metus non turpis condimentum molestie. Nullam accumsan urna nec luctus rutrum. Nunc dapibus auctor convallis. Praesent ac felis fermentum, venenatis elit vel, venenatis mi. Fusce non tellus risus. Phasellus elementum erat sit amet urna venenatis maximus. Nunc vehicula pretium scelerisque.</span>
-<span id="cb23-247"><a href="#cb23-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-248"><a href="#cb23-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-249"><a href="#cb23-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-250"><a href="#cb23-250" aria-hidden="true" tabindex="-1"></a><span class="fu"># Add a vertical scroll bar</span></span>
-<span id="cb23-251"><a href="#cb23-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-252"><a href="#cb23-252" aria-hidden="true" tabindex="-1"></a> ::: {.scroll-container style="overflow-x: scroll; height: 600px;"}</span>
-<span id="cb23-253"><a href="#cb23-253" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb23-254"><a href="#cb23-254" aria-hidden="true" tabindex="-1"></a> images1.png</span>
-<span id="cb23-255"><a href="#cb23-255" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb23-256"><a href="#cb23-256" aria-hidden="true" tabindex="-1"></a> images2.png</span>
-<span id="cb23-257"><a href="#cb23-257" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb23-258"><a href="#cb23-258" aria-hidden="true" tabindex="-1"></a> :::</span>
-<span id="cb23-259"><a href="#cb23-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-260"><a href="#cb23-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-261"><a href="#cb23-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-262"><a href="#cb23-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-263"><a href="#cb23-263" aria-hidden="true" tabindex="-1"></a>::: {.scroll-container style="overflow-x: scroll; height: 600px;"}</span>
-<span id="cb23-264"><a href="#cb23-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-265"><a href="#cb23-265" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/12.png)</span>{width="900"}</span>
-<span id="cb23-266"><a href="#cb23-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-267"><a href="#cb23-267" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/13.png)</span>{width="900"}</span>
-<span id="cb23-268"><a href="#cb23-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-269"><a href="#cb23-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-270"><a href="#cb23-270" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb23-271"><a href="#cb23-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-272"><a href="#cb23-272" aria-hidden="true" tabindex="-1"></a><span class="fu"># add a output hide bottom at quarto file</span></span>
-<span id="cb23-273"><a href="#cb23-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-274"><a href="#cb23-274" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>add foldableCodeBlcok.lua into blog root folder</span>
-<span id="cb23-275"><a href="#cb23-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-276"><a href="#cb23-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename='foldableCodeBlcok.lua'}</span></span>
-<span id="cb23-277"><a href="#cb23-277" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
-<span id="cb23-278"><a href="#cb23-278" aria-hidden="true" tabindex="-1"></a><span class="in">function CodeBlock(elem)</span></span>
-<span id="cb23-279"><a href="#cb23-279" aria-hidden="true" tabindex="-1"></a><span class="in">  if elem.classes and elem.classes:find("details") then</span></span>
-<span id="cb23-280"><a href="#cb23-280" aria-hidden="true" tabindex="-1"></a><span class="in">    local summary = "Code"</span></span>
-<span id="cb23-281"><a href="#cb23-281" aria-hidden="true" tabindex="-1"></a><span class="in">    if elem.attributes.summary then</span></span>
-<span id="cb23-282"><a href="#cb23-282" aria-hidden="true" tabindex="-1"></a><span class="in">      summary = elem.attributes.summary</span></span>
-<span id="cb23-283"><a href="#cb23-283" aria-hidden="true" tabindex="-1"></a><span class="in">    end</span></span>
-<span id="cb23-284"><a href="#cb23-284" aria-hidden="true" tabindex="-1"></a><span class="in">    return{</span></span>
-<span id="cb23-285"><a href="#cb23-285" aria-hidden="true" tabindex="-1"></a><span class="in">      pandoc.RawBlock(</span></span>
-<span id="cb23-286"><a href="#cb23-286" aria-hidden="true" tabindex="-1"></a><span class="in">        "html", "&lt;details&gt;&lt;summary&gt;" .. summary .. "&lt;/summary&gt;"</span></span>
-<span id="cb23-287"><a href="#cb23-287" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
-<span id="cb23-288"><a href="#cb23-288" aria-hidden="true" tabindex="-1"></a><span class="in">      elem,</span></span>
-<span id="cb23-289"><a href="#cb23-289" aria-hidden="true" tabindex="-1"></a><span class="in">      pandoc.RawBlock("html", "&lt;/details&gt;")</span></span>
-<span id="cb23-290"><a href="#cb23-290" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb23-291"><a href="#cb23-291" aria-hidden="true" tabindex="-1"></a><span class="in">  end</span></span>
-<span id="cb23-292"><a href="#cb23-292" aria-hidden="true" tabindex="-1"></a><span class="in">end</span></span>
-<span id="cb23-293"><a href="#cb23-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-294"><a href="#cb23-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-295"><a href="#cb23-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-296"><a href="#cb23-296" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>add following line in <span class="in">`_quarto.yml`</span></span>
-<span id="cb23-297"><a href="#cb23-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-298"><a href="#cb23-298" aria-hidden="true" tabindex="-1"></a><span class="in">`filters: - fold_results.lua`</span></span>
-<span id="cb23-299"><a href="#cb23-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-300"><a href="#cb23-300" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>put following on code chunk:</span>
-<span id="cb23-301"><a href="#cb23-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-302"><a href="#cb23-302" aria-hidden="true" tabindex="-1"></a><span class="in">`{r, attr.output='.details summary="sessionInfo()"'}`</span></span>
-<span id="cb23-303"><a href="#cb23-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-304"><a href="#cb23-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-305"><a href="#cb23-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-306"><a href="#cb23-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output='.details summary="sessionInfo()"'}</span></span>
-<span id="cb23-307"><a href="#cb23-307" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb23-308"><a href="#cb23-308" aria-hidden="true" tabindex="-1"></a><span class="in">sessionInfo()</span></span>
-<span id="cb23-309"><a href="#cb23-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-310"><a href="#cb23-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-311"><a href="#cb23-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-312"><a href="#cb23-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-313"><a href="#cb23-313" aria-hidden="true" tabindex="-1"></a><span class="fu"># render all quarto website</span></span>
-<span id="cb23-314"><a href="#cb23-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-315"><a href="#cb23-315" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename="Terminal"}</span></span>
-<span id="cb23-316"><a href="#cb23-316" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
-<span id="cb23-317"><a href="#cb23-317" aria-hidden="true" tabindex="-1"></a><span class="in">quarto render "tidymodel in R"</span></span>
-<span id="cb23-318"><a href="#cb23-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-319"><a href="#cb23-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-320"><a href="#cb23-320" aria-hidden="true" tabindex="-1"></a><span class="fu"># embed video</span></span>
-<span id="cb23-321"><a href="#cb23-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-322"><a href="#cb23-322" aria-hidden="true" tabindex="-1"></a><span class="fu">## embed youtube</span></span>
-<span id="cb23-323"><a href="#cb23-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-324"><a href="#cb23-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-327"><a href="#cb23-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-328"><a href="#cb23-328" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-329"><a href="#cb23-329" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>iframe width<span class="ot">=</span><span class="st">"640"</span> height<span class="ot">=</span><span class="st">"480"</span> src<span class="ot">=</span><span class="st">"https://www.youtube.com/embed/nku5zFMZAdU"</span> frameborder<span class="ot">=</span><span class="st">"0"</span> allow<span class="ot">=</span><span class="st">"autoplay; encrypted-media"</span> allowfullscreen<span class="sc">&gt;</span></span>
-<span id="cb23-330"><a href="#cb23-330" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>iframe<span class="sc">&gt;</span></span>
-<span id="cb23-331"><a href="#cb23-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-332"><a href="#cb23-332" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-333"><a href="#cb23-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-334"><a href="#cb23-334" aria-hidden="true" tabindex="-1"></a><span class="fu">## embed local video</span></span>
-<span id="cb23-335"><a href="#cb23-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-338"><a href="#cb23-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-339"><a href="#cb23-339" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-340"><a href="#cb23-340" aria-hidden="true" tabindex="-1"></a>{{<span class="sc">&lt;</span> video images<span class="sc">/</span>vv.mp4 height<span class="ot">=</span><span class="st">"600"</span> <span class="sc">&gt;</span>}}</span>
-<span id="cb23-341"><a href="#cb23-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-342"><a href="#cb23-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-343"><a href="#cb23-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-344"><a href="#cb23-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-345"><a href="#cb23-345" aria-hidden="true" tabindex="-1"></a><span class="fu"># embed audio</span></span>
-<span id="cb23-346"><a href="#cb23-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-347"><a href="#cb23-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-348"><a href="#cb23-348" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
-<span id="cb23-349"><a href="#cb23-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-350"><a href="#cb23-350" aria-hidden="true" tabindex="-1"></a><span class="fu">## in code</span></span>
-<span id="cb23-351"><a href="#cb23-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-354"><a href="#cb23-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-355"><a href="#cb23-355" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-356"><a href="#cb23-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-357"><a href="#cb23-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-358"><a href="#cb23-358" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>figure<span class="sc">&gt;</span></span>
-<span id="cb23-359"><a href="#cb23-359" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>figcaption<span class="sc">&gt;</span>click to play<span class="sc">&lt;</span><span class="er">/</span>figcaption<span class="sc">&gt;</span></span>
-<span id="cb23-360"><a href="#cb23-360" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>audio controls src<span class="ot">=</span><span class="st">"aa.mp3"</span><span class="sc">&gt;</span></span>
-<span id="cb23-361"><a href="#cb23-361" aria-hidden="true" tabindex="-1"></a>        Your browser does not support the</span>
-<span id="cb23-362"><a href="#cb23-362" aria-hidden="true" tabindex="-1"></a>        <span class="sc">&lt;</span>code<span class="sc">&gt;</span>audio<span class="sc">&lt;</span><span class="er">/</span>code<span class="sc">&gt;</span> element.</span>
-<span id="cb23-363"><a href="#cb23-363" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">/</span>audio<span class="sc">&gt;</span></span>
-<span id="cb23-364"><a href="#cb23-364" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>figure<span class="sc">&gt;</span></span>
-<span id="cb23-365"><a href="#cb23-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-366"><a href="#cb23-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-367"><a href="#cb23-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-368"><a href="#cb23-368" aria-hidden="true" tabindex="-1"></a><span class="fu">## in YAML header</span></span>
-<span id="cb23-369"><a href="#cb23-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-372"><a href="#cb23-372" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-373"><a href="#cb23-373" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb23-374"><a href="#cb23-374" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
-<span id="cb23-375"><a href="#cb23-375" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
-<span id="cb23-376"><a href="#cb23-376" aria-hidden="true" tabindex="-1"></a>    resources<span class="sc">:</span></span>
-<span id="cb23-377"><a href="#cb23-377" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> aa.mp3</span>
-<span id="cb23-378"><a href="#cb23-378" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb23-379"><a href="#cb23-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-380"><a href="#cb23-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-381"><a href="#cb23-381" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb23-382"><a href="#cb23-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-383"><a href="#cb23-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-384"><a href="#cb23-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-385"><a href="#cb23-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-386"><a href="#cb23-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-387"><a href="#cb23-387" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference:</span></span>
-<span id="cb23-388"><a href="#cb23-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-389"><a href="#cb23-389" aria-hidden="true" tabindex="-1"></a>https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf</span>
-<span id="cb23-390"><a href="#cb23-390" aria-hidden="true" tabindex="-1"></a></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "quarto tips"</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with magick"</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="an">css:</span><span class="co"> hscroll.css</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># install quarto</span></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## install quarto CLI</span></span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>https://quarto.org/docs/get-started/</span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## install quarto pacakge</span></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"quarto"</span>)</span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a><span class="fu"># check quarto version</span></span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## in Terminal</span></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{bach filename="Terminal"}</span></span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a><span class="in">quarto check</span></span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/paste-1.png)</span>{width="600"}</span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## in R</span></span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quarto)</span>
+<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a><span class="fu">quarto_version</span>()</span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a>quarto location</span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a><span class="fu">quarto_path</span>()</span>
+<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a><span class="fu"># quarto code chunk</span></span>
+<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-70"><a href="#cb33-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-71"><a href="#cb33-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## R</span></span>
+<span id="cb33-72"><a href="#cb33-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-73"><a href="#cb33-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{R}</span></span>
+<span id="cb33-74"><a href="#cb33-74" aria-hidden="true" tabindex="-1"></a><span class="in">version</span></span>
+<span id="cb33-75"><a href="#cb33-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-76"><a href="#cb33-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-77"><a href="#cb33-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## Python</span></span>
+<span id="cb33-78"><a href="#cb33-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-79"><a href="#cb33-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-80"><a href="#cb33-80" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
+<span id="cb33-81"><a href="#cb33-81" aria-hidden="true" tabindex="-1"></a><span class="in">print(sys.version)</span></span>
+<span id="cb33-82"><a href="#cb33-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-83"><a href="#cb33-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-84"><a href="#cb33-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bath</span></span>
+<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-86"><a href="#cb33-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-87"><a href="#cb33-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb33-88"><a href="#cb33-88" aria-hidden="true" tabindex="-1"></a><span class="in">echo "foo" </span></span>
+<span id="cb33-89"><a href="#cb33-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-90"><a href="#cb33-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-91"><a href="#cb33-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-92"><a href="#cb33-92" aria-hidden="true" tabindex="-1"></a><span class="fu"># quarto code chunk option</span></span>
+<span id="cb33-93"><a href="#cb33-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-94"><a href="#cb33-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## in YAML header</span></span>
+<span id="cb33-95"><a href="#cb33-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-96"><a href="#cb33-96" aria-hidden="true" tabindex="-1"></a><span class="in">``` yaml</span></span>
+<span id="cb33-97"><a href="#cb33-97" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb33-98"><a href="#cb33-98" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb33-99"><a href="#cb33-99" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb33-100"><a href="#cb33-100" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb33-101"><a href="#cb33-101" aria-hidden="true" tabindex="-1"></a><span class="fu">jupyter</span><span class="kw">:</span><span class="at"> python3</span></span>
+<span id="cb33-102"><a href="#cb33-102" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb33-103"><a href="#cb33-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-104"><a href="#cb33-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-105"><a href="#cb33-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>eval： Evaluate the code chunk (if false, just echos the code into the output).</span>
+<span id="cb33-106"><a href="#cb33-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-107"><a href="#cb33-107" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>echo： Include the source code in output.</span>
+<span id="cb33-108"><a href="#cb33-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-109"><a href="#cb33-109" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>output： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).</span>
+<span id="cb33-110"><a href="#cb33-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-111"><a href="#cb33-111" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>warning： Include warnings in the output.</span>
+<span id="cb33-112"><a href="#cb33-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-113"><a href="#cb33-113" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>error： Evaluate the code chunk (if false, just echos the code into the output).</span>
+<span id="cb33-114"><a href="#cb33-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-115"><a href="#cb33-115" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>include： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).</span>
+<span id="cb33-116"><a href="#cb33-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-117"><a href="#cb33-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## in code chunk</span></span>
+<span id="cb33-118"><a href="#cb33-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-121"><a href="#cb33-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb33-122"><a href="#cb33-122" aria-hidden="true" tabindex="-1"></a> <span class="co">#| eval: false</span></span>
+<span id="cb33-123"><a href="#cb33-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-124"><a href="#cb33-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-125"><a href="#cb33-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-126"><a href="#cb33-126" aria-hidden="true" tabindex="-1"></a><span class="fu"># code chunk name</span></span>
+<span id="cb33-127"><a href="#cb33-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-128"><a href="#cb33-128" aria-hidden="true" tabindex="-1"></a><span class="in">`{r filename='code chunk name sample'}`</span></span>
+<span id="cb33-129"><a href="#cb33-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-130"><a href="#cb33-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename='code chunk name sample'}</span></span>
+<span id="cb33-131"><a href="#cb33-131" aria-hidden="true" tabindex="-1"></a><span class="in">a=1</span></span>
+<span id="cb33-132"><a href="#cb33-132" aria-hidden="true" tabindex="-1"></a><span class="in">a</span></span>
+<span id="cb33-133"><a href="#cb33-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-134"><a href="#cb33-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-135"><a href="#cb33-135" aria-hidden="true" tabindex="-1"></a><span class="fu"># Rmarkdown</span></span>
+<span id="cb33-136"><a href="#cb33-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-139"><a href="#cb33-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-140"><a href="#cb33-140" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-141"><a href="#cb33-141" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>italics<span class="sc">*</span> and _italics_</span>
+<span id="cb33-142"><a href="#cb33-142" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>bold<span class="sc">**</span> and __bold__</span>
+<span id="cb33-143"><a href="#cb33-143" aria-hidden="true" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span></span>
+<span id="cb33-144"><a href="#cb33-144" aria-hidden="true" tabindex="-1"></a><span class="er">~~</span>strikethrough<span class="sc">~</span><span class="er">~</span></span>
+<span id="cb33-145"><a href="#cb33-145" aria-hidden="true" tabindex="-1"></a>[link](www.rstudio.com)</span>
+<span id="cb33-146"><a href="#cb33-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-147"><a href="#cb33-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-150"><a href="#cb33-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-151"><a href="#cb33-151" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-152"><a href="#cb33-152" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>italics<span class="sc">*</span> </span>
+<span id="cb33-153"><a href="#cb33-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-154"><a href="#cb33-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-155"><a href="#cb33-155" aria-hidden="true" tabindex="-1"></a>*italics*</span>
+<span id="cb33-156"><a href="#cb33-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-159"><a href="#cb33-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-160"><a href="#cb33-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-161"><a href="#cb33-161" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>bold<span class="sc">**</span></span>
+<span id="cb33-162"><a href="#cb33-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-163"><a href="#cb33-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-164"><a href="#cb33-164" aria-hidden="true" tabindex="-1"></a>**bold**</span>
+<span id="cb33-165"><a href="#cb33-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-168"><a href="#cb33-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-169"><a href="#cb33-169" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-170"><a href="#cb33-170" aria-hidden="true" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span></span>
+<span id="cb33-171"><a href="#cb33-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-172"><a href="#cb33-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-173"><a href="#cb33-173" aria-hidden="true" tabindex="-1"></a>superscript^2^</span>
+<span id="cb33-174"><a href="#cb33-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-177"><a href="#cb33-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-178"><a href="#cb33-178" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-179"><a href="#cb33-179" aria-hidden="true" tabindex="-1"></a><span class="sc">~</span><span class="er">~</span>strikethrough<span class="sc">~</span><span class="er">~</span></span>
+<span id="cb33-180"><a href="#cb33-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-181"><a href="#cb33-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-182"><a href="#cb33-182" aria-hidden="true" tabindex="-1"></a>~~strikethrough~~</span>
+<span id="cb33-183"><a href="#cb33-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-186"><a href="#cb33-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-187"><a href="#cb33-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-188"><a href="#cb33-188" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">highlight</span><span class="st">`</span></span>
+<span id="cb33-189"><a href="#cb33-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-190"><a href="#cb33-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-191"><a href="#cb33-191" aria-hidden="true" tabindex="-1"></a><span class="in">`highlight`</span></span>
+<span id="cb33-192"><a href="#cb33-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-193"><a href="#cb33-193" aria-hidden="true" tabindex="-1"></a><span class="fu"># link</span></span>
+<span id="cb33-194"><a href="#cb33-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-197"><a href="#cb33-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-198"><a href="#cb33-198" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-199"><a href="#cb33-199" aria-hidden="true" tabindex="-1"></a>[link](www.rstudio.com)</span>
+<span id="cb33-200"><a href="#cb33-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-201"><a href="#cb33-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-202"><a href="#cb33-202" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">link</span><span class="co">](www.rstudio.com)</span></span>
+<span id="cb33-203"><a href="#cb33-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-204"><a href="#cb33-204" aria-hidden="true" tabindex="-1"></a><span class="fu"># tab</span></span>
+<span id="cb33-205"><a href="#cb33-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-208"><a href="#cb33-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-209"><a href="#cb33-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-210"><a href="#cb33-210" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.panel<span class="sc">-</span>tabset}</span>
+<span id="cb33-211"><a href="#cb33-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-212"><a href="#cb33-212" aria-hidden="true" tabindex="-1"></a><span class="do">## Tab 1</span></span>
+<span id="cb33-213"><a href="#cb33-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-214"><a href="#cb33-214" aria-hidden="true" tabindex="-1"></a>This is tab <span class="dv">1</span></span>
+<span id="cb33-215"><a href="#cb33-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-216"><a href="#cb33-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-217"><a href="#cb33-217" aria-hidden="true" tabindex="-1"></a><span class="do">## Tab 2</span></span>
+<span id="cb33-218"><a href="#cb33-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-219"><a href="#cb33-219" aria-hidden="true" tabindex="-1"></a>This is tab <span class="dv">2</span></span>
+<span id="cb33-220"><a href="#cb33-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-221"><a href="#cb33-221" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span>
+<span id="cb33-222"><a href="#cb33-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-223"><a href="#cb33-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-224"><a href="#cb33-224" aria-hidden="true" tabindex="-1"></a>::: panel-tabset</span>
+<span id="cb33-225"><a href="#cb33-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tab 1</span></span>
+<span id="cb33-226"><a href="#cb33-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-227"><a href="#cb33-227" aria-hidden="true" tabindex="-1"></a>This is tab 1</span>
+<span id="cb33-228"><a href="#cb33-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-229"><a href="#cb33-229" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tab 2</span></span>
+<span id="cb33-230"><a href="#cb33-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-231"><a href="#cb33-231" aria-hidden="true" tabindex="-1"></a>This is tab 2</span>
+<span id="cb33-232"><a href="#cb33-232" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb33-233"><a href="#cb33-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-234"><a href="#cb33-234" aria-hidden="true" tabindex="-1"></a><span class="fu"># column display</span></span>
+<span id="cb33-235"><a href="#cb33-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-238"><a href="#cb33-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-239"><a href="#cb33-239" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-240"><a href="#cb33-240" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> columns</span>
+<span id="cb33-241"><a href="#cb33-241" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.column width<span class="ot">=</span><span class="st">"40%"</span>}</span>
+<span id="cb33-242"><a href="#cb33-242" aria-hidden="true" tabindex="-1"></a>this column with <span class="dv">40</span>% width</span>
+<span id="cb33-243"><a href="#cb33-243" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> </span>
+<span id="cb33-244"><a href="#cb33-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-245"><a href="#cb33-245" aria-hidden="true" tabindex="-1"></a><span class="er">:::</span> {.column width<span class="ot">=</span><span class="st">"60%"</span>}</span>
+<span id="cb33-246"><a href="#cb33-246" aria-hidden="true" tabindex="-1"></a>this column with <span class="dv">60</span>% width</span>
+<span id="cb33-247"><a href="#cb33-247" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> </span>
+<span id="cb33-248"><a href="#cb33-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-249"><a href="#cb33-249" aria-hidden="true" tabindex="-1"></a><span class="er">:::</span> </span>
+<span id="cb33-250"><a href="#cb33-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-251"><a href="#cb33-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-252"><a href="#cb33-252" aria-hidden="true" tabindex="-1"></a>::::: columns</span>
+<span id="cb33-253"><a href="#cb33-253" aria-hidden="true" tabindex="-1"></a>::: {.column width="40%"}</span>
+<span id="cb33-254"><a href="#cb33-254" aria-hidden="true" tabindex="-1"></a>this column with 40% width</span>
+<span id="cb33-255"><a href="#cb33-255" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb33-256"><a href="#cb33-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-257"><a href="#cb33-257" aria-hidden="true" tabindex="-1"></a>::: {.column width="60%"}</span>
+<span id="cb33-258"><a href="#cb33-258" aria-hidden="true" tabindex="-1"></a>this column with 60% width</span>
+<span id="cb33-259"><a href="#cb33-259" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb33-260"><a href="#cb33-260" aria-hidden="true" tabindex="-1"></a>:::::</span>
+<span id="cb33-261"><a href="#cb33-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-262"><a href="#cb33-262" aria-hidden="true" tabindex="-1"></a><span class="fu"># Add a horizontal scroll bar</span></span>
+<span id="cb33-263"><a href="#cb33-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-264"><a href="#cb33-264" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>add hscroll.css file</span>
+<span id="cb33-265"><a href="#cb33-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-268"><a href="#cb33-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-269"><a href="#cb33-269" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-270"><a href="#cb33-270" aria-hidden="true" tabindex="-1"></a>.hscroll {</span>
+<span id="cb33-271"><a href="#cb33-271" aria-hidden="true" tabindex="-1"></a>  overflow<span class="sc">:</span> auto;</span>
+<span id="cb33-272"><a href="#cb33-272" aria-hidden="true" tabindex="-1"></a>  white<span class="sc">-</span>space<span class="sc">:</span> nowrap;</span>
+<span id="cb33-273"><a href="#cb33-273" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-274"><a href="#cb33-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-275"><a href="#cb33-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-276"><a href="#cb33-276" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>add css option in YAML header</span>
+<span id="cb33-277"><a href="#cb33-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-280"><a href="#cb33-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-281"><a href="#cb33-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-282"><a href="#cb33-282" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb33-283"><a href="#cb33-283" aria-hidden="true" tabindex="-1"></a>css<span class="sc">:</span> hscroll.css</span>
+<span id="cb33-284"><a href="#cb33-284" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb33-285"><a href="#cb33-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-286"><a href="#cb33-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-287"><a href="#cb33-287" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>add <span class="in">`{.hscroll .scrollable}`</span> on the section which want to be Slide bar</span>
+<span id="cb33-288"><a href="#cb33-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-289"><a href="#cb33-289" aria-hidden="true" tabindex="-1"></a><span class="fu">#  {.hscroll .scrollable}</span></span>
+<span id="cb33-290"><a href="#cb33-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-291"><a href="#cb33-291" aria-hidden="true" tabindex="-1"></a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dolor mauris, mattis non nunc nec, luctus aliquet magna. In tortor ante, aliquam eget felis eu, consectetur congue enim. Pellentesque pellentesque tincidunt lectus quis lacinia. Aliquam dolor sem, aliquet vitae aliquam eget, vehicula ac augue. Pellentesque molestie quam et commodo dignissim. Suspendisse potenti. Sed pellentesque metus non turpis condimentum molestie. Nullam accumsan urna nec luctus rutrum. Nunc dapibus auctor convallis. Praesent ac felis fermentum, venenatis elit vel, venenatis mi. Fusce non tellus risus. Phasellus elementum erat sit amet urna venenatis maximus. Nunc vehicula pretium scelerisque.</span>
+<span id="cb33-292"><a href="#cb33-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-293"><a href="#cb33-293" aria-hidden="true" tabindex="-1"></a><span class="fu"># Add a vertical scroll bar</span></span>
+<span id="cb33-294"><a href="#cb33-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-295"><a href="#cb33-295" aria-hidden="true" tabindex="-1"></a>::: {.scroll-container style="overflow-x: scroll; height: 600px;"}</span>
+<span id="cb33-296"><a href="#cb33-296" aria-hidden="true" tabindex="-1"></a>images1.png</span>
+<span id="cb33-297"><a href="#cb33-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-298"><a href="#cb33-298" aria-hidden="true" tabindex="-1"></a>images2.png</span>
+<span id="cb33-299"><a href="#cb33-299" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb33-300"><a href="#cb33-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-301"><a href="#cb33-301" aria-hidden="true" tabindex="-1"></a>::: {.scroll-container style="overflow-x: scroll; height: 600px;"}</span>
+<span id="cb33-302"><a href="#cb33-302" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/12.png)</span>{width="900"}</span>
+<span id="cb33-303"><a href="#cb33-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-304"><a href="#cb33-304" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/13.png)</span>{width="900"}</span>
+<span id="cb33-305"><a href="#cb33-305" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb33-306"><a href="#cb33-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-307"><a href="#cb33-307" aria-hidden="true" tabindex="-1"></a><span class="fu"># add a output hide bottom at quarto file</span></span>
+<span id="cb33-308"><a href="#cb33-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-309"><a href="#cb33-309" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>add foldableCodeBlcok.lua into blog root folder</span>
+<span id="cb33-310"><a href="#cb33-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-311"><a href="#cb33-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename='foldableCodeBlcok.lua'}</span></span>
+<span id="cb33-312"><a href="#cb33-312" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb33-313"><a href="#cb33-313" aria-hidden="true" tabindex="-1"></a><span class="in">function CodeBlock(elem)</span></span>
+<span id="cb33-314"><a href="#cb33-314" aria-hidden="true" tabindex="-1"></a><span class="in">  if elem.classes and elem.classes:find("details") then</span></span>
+<span id="cb33-315"><a href="#cb33-315" aria-hidden="true" tabindex="-1"></a><span class="in">    local summary = "Code"</span></span>
+<span id="cb33-316"><a href="#cb33-316" aria-hidden="true" tabindex="-1"></a><span class="in">    if elem.attributes.summary then</span></span>
+<span id="cb33-317"><a href="#cb33-317" aria-hidden="true" tabindex="-1"></a><span class="in">      summary = elem.attributes.summary</span></span>
+<span id="cb33-318"><a href="#cb33-318" aria-hidden="true" tabindex="-1"></a><span class="in">    end</span></span>
+<span id="cb33-319"><a href="#cb33-319" aria-hidden="true" tabindex="-1"></a><span class="in">    return{</span></span>
+<span id="cb33-320"><a href="#cb33-320" aria-hidden="true" tabindex="-1"></a><span class="in">      pandoc.RawBlock(</span></span>
+<span id="cb33-321"><a href="#cb33-321" aria-hidden="true" tabindex="-1"></a><span class="in">        "html", "&lt;details&gt;&lt;summary&gt;" .. summary .. "&lt;/summary&gt;"</span></span>
+<span id="cb33-322"><a href="#cb33-322" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
+<span id="cb33-323"><a href="#cb33-323" aria-hidden="true" tabindex="-1"></a><span class="in">      elem,</span></span>
+<span id="cb33-324"><a href="#cb33-324" aria-hidden="true" tabindex="-1"></a><span class="in">      pandoc.RawBlock("html", "&lt;/details&gt;")</span></span>
+<span id="cb33-325"><a href="#cb33-325" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb33-326"><a href="#cb33-326" aria-hidden="true" tabindex="-1"></a><span class="in">  end</span></span>
+<span id="cb33-327"><a href="#cb33-327" aria-hidden="true" tabindex="-1"></a><span class="in">end</span></span>
+<span id="cb33-328"><a href="#cb33-328" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-329"><a href="#cb33-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-330"><a href="#cb33-330" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>add following line in <span class="in">`_quarto.yml`</span></span>
+<span id="cb33-331"><a href="#cb33-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-332"><a href="#cb33-332" aria-hidden="true" tabindex="-1"></a><span class="in">`filters: - fold_results.lua`</span></span>
+<span id="cb33-333"><a href="#cb33-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-334"><a href="#cb33-334" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>put following on code chunk:</span>
+<span id="cb33-335"><a href="#cb33-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-336"><a href="#cb33-336" aria-hidden="true" tabindex="-1"></a><span class="in">`{r, attr.output='.details summary="sessionInfo()"'}`</span></span>
+<span id="cb33-337"><a href="#cb33-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-338"><a href="#cb33-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output='.details summary="sessionInfo()"'}</span></span>
+<span id="cb33-339"><a href="#cb33-339" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb33-340"><a href="#cb33-340" aria-hidden="true" tabindex="-1"></a><span class="in">sessionInfo()</span></span>
+<span id="cb33-341"><a href="#cb33-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-342"><a href="#cb33-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-343"><a href="#cb33-343" aria-hidden="true" tabindex="-1"></a><span class="fu"># render all quarto website</span></span>
+<span id="cb33-344"><a href="#cb33-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-345"><a href="#cb33-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{r filename="Terminal"}</span></span>
+<span id="cb33-346"><a href="#cb33-346" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb33-347"><a href="#cb33-347" aria-hidden="true" tabindex="-1"></a><span class="in">quarto render "tidymodel in R"</span></span>
+<span id="cb33-348"><a href="#cb33-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-349"><a href="#cb33-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-350"><a href="#cb33-350" aria-hidden="true" tabindex="-1"></a><span class="fu"># embed video</span></span>
+<span id="cb33-351"><a href="#cb33-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-352"><a href="#cb33-352" aria-hidden="true" tabindex="-1"></a><span class="fu">## embed youtube</span></span>
+<span id="cb33-353"><a href="#cb33-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-356"><a href="#cb33-356" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-357"><a href="#cb33-357" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-358"><a href="#cb33-358" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>iframe width<span class="ot">=</span><span class="st">"640"</span> height<span class="ot">=</span><span class="st">"480"</span> src<span class="ot">=</span><span class="st">"https://www.youtube.com/embed/nku5zFMZAdU"</span> frameborder<span class="ot">=</span><span class="st">"0"</span> allow<span class="ot">=</span><span class="st">"autoplay; encrypted-media"</span> allowfullscreen<span class="sc">&gt;</span></span>
+<span id="cb33-359"><a href="#cb33-359" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>iframe<span class="sc">&gt;</span></span>
+<span id="cb33-360"><a href="#cb33-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-361"><a href="#cb33-361" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-362"><a href="#cb33-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-363"><a href="#cb33-363" aria-hidden="true" tabindex="-1"></a><span class="fu">## embed local video</span></span>
+<span id="cb33-364"><a href="#cb33-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-367"><a href="#cb33-367" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-368"><a href="#cb33-368" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-369"><a href="#cb33-369" aria-hidden="true" tabindex="-1"></a>{{<span class="sc">&lt;</span> video images<span class="sc">/</span>vv.mp4 height<span class="ot">=</span><span class="st">"600"</span> <span class="sc">&gt;</span>}}</span>
+<span id="cb33-370"><a href="#cb33-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-371"><a href="#cb33-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-372"><a href="#cb33-372" aria-hidden="true" tabindex="-1"></a><span class="fu"># embed audio</span></span>
+<span id="cb33-373"><a href="#cb33-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-374"><a href="#cb33-374" aria-hidden="true" tabindex="-1"></a>::: panel-tabset</span>
+<span id="cb33-375"><a href="#cb33-375" aria-hidden="true" tabindex="-1"></a><span class="fu">## in code</span></span>
+<span id="cb33-376"><a href="#cb33-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-379"><a href="#cb33-379" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-380"><a href="#cb33-380" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-381"><a href="#cb33-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-382"><a href="#cb33-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-383"><a href="#cb33-383" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>figure<span class="sc">&gt;</span></span>
+<span id="cb33-384"><a href="#cb33-384" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>figcaption<span class="sc">&gt;</span>click to play<span class="sc">&lt;</span><span class="er">/</span>figcaption<span class="sc">&gt;</span></span>
+<span id="cb33-385"><a href="#cb33-385" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>audio controls src<span class="ot">=</span><span class="st">"aa.mp3"</span><span class="sc">&gt;</span></span>
+<span id="cb33-386"><a href="#cb33-386" aria-hidden="true" tabindex="-1"></a>        Your browser does not support the</span>
+<span id="cb33-387"><a href="#cb33-387" aria-hidden="true" tabindex="-1"></a>        <span class="sc">&lt;</span>code<span class="sc">&gt;</span>audio<span class="sc">&lt;</span><span class="er">/</span>code<span class="sc">&gt;</span> element.</span>
+<span id="cb33-388"><a href="#cb33-388" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span><span class="er">/</span>audio<span class="sc">&gt;</span></span>
+<span id="cb33-389"><a href="#cb33-389" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;/</span>figure<span class="sc">&gt;</span></span>
+<span id="cb33-390"><a href="#cb33-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-391"><a href="#cb33-391" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-392"><a href="#cb33-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-393"><a href="#cb33-393" aria-hidden="true" tabindex="-1"></a><span class="fu">## in YAML header</span></span>
+<span id="cb33-394"><a href="#cb33-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-395"><a href="#cb33-395" aria-hidden="true" tabindex="-1"></a><span class="in">``` yaml</span></span>
+<span id="cb33-396"><a href="#cb33-396" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb33-397"><a href="#cb33-397" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb33-398"><a href="#cb33-398" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb33-399"><a href="#cb33-399" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="cb33-400"><a href="#cb33-400" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span>aa.mp3</span>
+<span id="cb33-401"><a href="#cb33-401" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb33-402"><a href="#cb33-402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-403"><a href="#cb33-403" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb33-404"><a href="#cb33-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-405"><a href="#cb33-405" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference:</span></span>
+<span id="cb33-406"><a href="#cb33-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-407"><a href="#cb33-407" aria-hidden="true" tabindex="-1"></a>https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

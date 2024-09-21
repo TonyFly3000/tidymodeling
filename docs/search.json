@@ -1360,7 +1360,7 @@
     "href": "data manipulation/5 SQL database.html#create-database-file-pythonsqlite.db-and-copy-mtcars-data-and-iris-data-into-database",
     "title": "SQL database with R",
     "section": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database",
-    "text": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database\n\n\nCode\nmtcars=cbind(newColName = rownames(mtcars), mtcars)\n\n\n\n\nCode\n# Create an ephemeral in-memory RSQLite database\ncon &lt;- dbConnect(RSQLite::SQLite(), \"my_sql_database\")\n\n#dbListTables(con)\ndbWriteTable(con, \"mtcars\", mtcars,overwrite=TRUE)\ndbWriteTable(con, \"iris\", iris,overwrite=TRUE)",
+    "text": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database\n\n\nCode\nmtcars=cbind(newColName = rownames(mtcars), mtcars)\n\n\n\n\nCode\n# Create an ephemeral in-memory RSQLite database\ncon &lt;- dbConnect(RSQLite::SQLite(), \"my_sql_database\")\n\n# view database on IDE\nconnection_view(con)\n\n\n\n\nCode\ndbWriteTable(con, \"mtcars\", mtcars,overwrite=TRUE)\ndbWriteTable(con, \"iris\", iris,overwrite=TRUE)",
     "crumbs": [
       "data manipulation",
       "SQL database with R"
@@ -1371,7 +1371,7 @@
     "href": "data manipulation/5 SQL database.html#check-all-table-in-database",
     "title": "SQL database with R",
     "section": "1.2 check all table in database",
-    "text": "1.2 check all table in database\n\n\nCode\ncon &lt;- dbConnect(RSQLite::SQLite(), \"my_sql_database\")\ndbListTables(con)\n\n\n[1] \"iris\"   \"mtcars\"",
+    "text": "1.2 check all table in database\n\n\nCode\ndbListTables(con)\n\n\n[1] \"iris\"   \"mtcars\"",
     "crumbs": [
       "data manipulation",
       "SQL database with R"
@@ -5545,7 +5545,7 @@
     "href": "Plot/7 Publish/1 quarto tips.html",
     "title": "quarto tips",
     "section": "",
-    "text": "Code\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\n\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).\n\n\n\n\n#| eval: false #| echo: false",
+    "text": "https://quarto.org/docs/get-started/\n\n\n\n\n\nCode\ninstall.packages(\"quarto\")",
     "crumbs": [
       "Plot",
       "7 Publish",
@@ -5556,8 +5556,8 @@
     "objectID": "Plot/7 Publish/1 quarto tips.html#in-yaml-header",
     "href": "Plot/7 Publish/1 quarto tips.html#in-yaml-header",
     "title": "quarto tips",
-    "section": "",
-    "text": "Code\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\n\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).",
+    "section": "in YAML header",
+    "text": "in YAML header\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).",
     "crumbs": [
       "Plot",
       "7 Publish",
@@ -5568,8 +5568,8 @@
     "objectID": "Plot/7 Publish/1 quarto tips.html#in-code-chunk",
     "href": "Plot/7 Publish/1 quarto tips.html#in-code-chunk",
     "title": "quarto tips",
-    "section": "",
-    "text": "#| eval: false #| echo: false",
+    "section": "in code chunk",
+    "text": "in code chunk\n\n\nCode\n #| eval: false",
     "crumbs": [
       "Plot",
       "7 Publish",
@@ -6078,6 +6078,126 @@
       "Plot",
       "6 Shiny",
       "Shiny in R:weight tracking"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#install-quarto-cli",
+    "href": "Plot/7 Publish/1 quarto tips.html#install-quarto-cli",
+    "title": "quarto tips",
+    "section": "",
+    "text": "https://quarto.org/docs/get-started/",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#install-quarto-pacakge",
+    "href": "Plot/7 Publish/1 quarto tips.html#install-quarto-pacakge",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\ninstall.packages(\"quarto\")",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/5 quarto extensions.html#quarto-extension-lightbox",
+    "href": "Plot/7 Publish/5 quarto extensions.html#quarto-extension-lightbox",
+    "title": "quarto Extensioins",
+    "section": "",
+    "text": "An extension that uses the GLightbox javascript library to add lightbox styling and behavior to images in your HTML documents.\n\n\nquarto install extension quarto-ext/lightbox\n\n\n\nThe Lightbox extension can automatically give images in your web page a lightbox treatment. You can enable this like:\nin header yaml:\n\n\nCode\n---\ntitle: Simple Lightbox Example\nfilters:\n   - lightbox\nlightbox: auto\n---\n\n\nIn addition to simply providing a lightbox treatment for individual images, you can also group images into a ‘gallery’. When the user activates the lightbox, they will be able to page through the images in the gallery without returning to the main document.\nin content:\n\n\nCode\n![](images/image-562149792.png){group=\"my-gallery\"\ndescription=\"its a picture\"}\n\n\n\n\n\ncode:example.qmd\nwebsite:example.qmd.\n\n\n\ngo to folder which have added quarto extension\n\n\nCode\nquarto list extensions\n\n\n\n\n\n\n\n\nCode\nquarto update quarto-ext/fontawesome\n\n\n\n\n\n\n\nCode\nquarto remove quarto-ext/fontawesome\n\n\nIf you run the quarto remove extension command with no extension-id, you will be presented with a list of extensions that are present and you may select which extensions to remove.",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto Extensioins"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/5 quarto extensions.html#reference",
+    "href": "Plot/7 Publish/5 quarto extensions.html#reference",
+    "title": "quarto Extensioins",
+    "section": "",
+    "text": "https://quarto.org/docs/extensions/\nhttps://github.com/quarto-ext/lightbox",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto Extensioins"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#in-terminal",
+    "href": "Plot/7 Publish/1 quarto tips.html#in-terminal",
+    "title": "quarto tips",
+    "section": "in Terminal",
+    "text": "in Terminal\n\n\n\nCode\n\nTerminal\n\nquarto check",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#in-r",
+    "href": "Plot/7 Publish/1 quarto tips.html#in-r",
+    "title": "quarto tips",
+    "section": "in R",
+    "text": "in R\n\n\nCode\nlibrary(quarto)\nquarto_version()\n\n\n[1] '1.5.57'\n\n\nquarto location\n\n\nCode\nquarto_path()\n\n\n[1] \"/Applications/quarto/bin/quarto\"",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/5 quarto extensions.html",
+    "href": "Plot/7 Publish/5 quarto extensions.html",
+    "title": "quarto Extensioins",
+    "section": "",
+    "text": "Extensions are a powerful way to modify and extend the behavior of Quarto. Quarto v1.2 Required for Quarto Extensions.\n\n1 quarto extension： lightbox\nAn extension that uses the GLightbox javascript library to add lightbox styling and behavior to images in your HTML documents.\n\n\n2 Installation:\n\n\n\nCode\n\nTerminal\n\nquarto install extension quarto-ext/lightbox\n\n\n\n\n\n3 Usage:\nThe Lightbox extension can automatically give images in your web page a lightbox treatment. You can enable this like:\nin header yaml:\n\n\nCode\n---\ntitle: Simple Lightbox Example\nfilters:\n   - lightbox\nlightbox: auto\n---\n\n\nIn addition to simply providing a lightbox treatment for individual images, you can also group images into a ‘gallery’. When the user activates the lightbox, they will be able to page through the images in the gallery without returning to the main document.\nin content:\n\n\nCode\n![](images/image-562149792.png){group=\"my-gallery\"\ndescription=\"its a picture\"}\n\n\n\n\n4 quarto extension lightbox example:\ncode:example.qmd\nwebsite:example.qmd.\n\n\n5 list quarto extension\ngo to folder which have added quarto extension\n\n\n\nCode\n\nTerminal\n\n\nquarto list extensions\n\n\n\n\n\n\n6 update quarto extension\n\n\n\nCode\n\nTerminal\n\n\nquarto update quarto-ext/fontawesome\n\n\n\n\n\n7 remove quarto extension\n\n\n\nCode\n\nTerminal\n\n\nquarto remove quarto-ext/fontawesome\n\n\n\nIf you run the quarto remove extension command with no extension-id, you will be presented with a list of extensions that are present and you may select which extensions to remove.\n\n\n8 Reference\nhttps://quarto.org/docs/extensions/\nhttps://github.com/quarto-ext/lightbox\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto Extensioins"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#r",
+    "href": "Plot/7 Publish/1 quarto tips.html#r",
+    "title": "quarto tips",
+    "section": "R",
+    "text": "R\n```{R}\nversion\n```",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#python",
+    "href": "Plot/7 Publish/1 quarto tips.html#python",
+    "title": "quarto tips",
+    "section": "Python",
+    "text": "Python\n```{python}\nimport sys\nprint(sys.version)\n```",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/1 quarto tips.html#bath",
+    "href": "Plot/7 Publish/1 quarto tips.html#bath",
+    "title": "quarto tips",
+    "section": "Bath",
+    "text": "Bath\n```{bash}\necho \"foo\" \n```",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto tips"
     ]
   }
 ]

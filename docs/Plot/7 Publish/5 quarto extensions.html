@@ -8,7 +8,7 @@
 
 <meta name="author" content="Tony Duan">
 
-<title>quarto presentation – Tidymodel with R</title>
+<title>quarto Extensioins – Tidymodel with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="quarto presentation – Tidymodel with R">
+<meta name="twitter:title" content="quarto Extensioins – Tidymodel with R">
 <meta name="twitter:description" content="with Revealjs">
 <meta name="twitter:card" content="summary">
 </head>
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Plot/1 ggplot2.html">Plot</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/1 quarto tips.html">7 Publish</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/4 quarto presentation .html">quarto presentation</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Plot/1 ggplot2.html">Plot</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/1 quarto tips.html">7 Publish</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/5 quarto extensions.html">quarto Extensioins</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -584,14 +584,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../Plot/7 Publish/4 quarto presentation .html" class="sidebar-item-text sidebar-link active">
+  <a href="../../Plot/7 Publish/4 quarto presentation .html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">quarto presentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../Plot/7 Publish/5 quarto extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">quarto presentation</span></a>
+  <a href="../../Plot/7 Publish/5 quarto extensions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">quarto Extensioins</span></a>
   </div>
 </li>
       </ul>
@@ -608,22 +608,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#revealjs-yaml" id="toc-revealjs-yaml" class="nav-link active" data-scroll-target="#revealjs-yaml"><span class="header-section-number">1</span> revealjs YAML</a></li>
-  <li><a href="#pages" id="toc-pages" class="nav-link" data-scroll-target="#pages"><span class="header-section-number">2</span> pages</a></li>
-  <li><a href="#yaml-format-setting" id="toc-yaml-format-setting" class="nav-link" data-scroll-target="#yaml-format-setting"><span class="header-section-number">3</span> YAML format setting</a></li>
-  <li><a href="#main-title-slide-background-yaml-setting" id="toc-main-title-slide-background-yaml-setting" class="nav-link" data-scroll-target="#main-title-slide-background-yaml-setting"><span class="header-section-number">4</span> Main Title Slide Background YAML setting</a></li>
-  <li><a href="#chalkboard-yaml-setting" id="toc-chalkboard-yaml-setting" class="nav-link" data-scroll-target="#chalkboard-yaml-setting"><span class="header-section-number">5</span> Chalkboard YAML setting</a></li>
-  <li><a href="#center-whole-page" id="toc-center-whole-page" class="nav-link" data-scroll-target="#center-whole-page"><span class="header-section-number">6</span> center whole page</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">7</span> reference:</a></li>
+  <li><a href="#quarto-extension-lightbox" id="toc-quarto-extension-lightbox" class="nav-link active" data-scroll-target="#quarto-extension-lightbox"><span class="header-section-number">1</span> quarto extension： lightbox</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">2</span> Installation:</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage"><span class="header-section-number">3</span> Usage:</a></li>
+  <li><a href="#quarto-extension-lightbox-example" id="toc-quarto-extension-lightbox-example" class="nav-link" data-scroll-target="#quarto-extension-lightbox-example"><span class="header-section-number">4</span> quarto extension lightbox example:</a></li>
+  <li><a href="#list-quarto-extension" id="toc-list-quarto-extension" class="nav-link" data-scroll-target="#list-quarto-extension"><span class="header-section-number">5</span> list quarto extension</a></li>
+  <li><a href="#update-quarto-extension" id="toc-update-quarto-extension" class="nav-link" data-scroll-target="#update-quarto-extension"><span class="header-section-number">6</span> update quarto extension</a></li>
+  <li><a href="#remove-quarto-extension" id="toc-remove-quarto-extension" class="nav-link" data-scroll-target="#remove-quarto-extension"><span class="header-section-number">7</span> remove quarto extension</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">8</span> Reference</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Plot/1 ggplot2.html">Plot</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/1 quarto tips.html">7 Publish</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/4 quarto presentation .html">quarto presentation</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Plot/1 ggplot2.html">Plot</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/1 quarto tips.html">7 Publish</a></li><li class="breadcrumb-item"><a href="../../Plot/7 Publish/5 quarto extensions.html">quarto Extensioins</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">quarto presentation</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">quarto Extensioins</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 <p class="subtitle lead">with Revealjs</p>
 </div>
 
@@ -647,104 +648,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="revealjs-yaml" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> revealjs YAML</h1>
+<p><img src="images/image-255427881.png" class="img-fluid" width="650"></p>
+<p>Extensions are a powerful way to modify and extend the behavior of Quarto. Quarto v1.2 Required for Quarto Extensions.</p>
+<section id="quarto-extension-lightbox" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> quarto extension： lightbox</h1>
+<p>An extension that uses the GLightbox javascript library to add lightbox styling and behavior to images in your HTML documents.</p>
+</section>
+<section id="installation" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Installation:</h1>
+<div class="cell">
+<div class="code-with-filename">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<pre class="bach cell-code"><code>quarto install extension quarto-ext/lightbox</code></pre>
+</details>
+</div>
+</div>
+</section>
+<section id="usage" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Usage:</h1>
+<p>The Lightbox extension can automatically give images in your web page a lightbox treatment. You can enable this like:</p>
+<p>in header yaml:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Habits"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"John Doe"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> revealjs</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Simple Lightbox Example</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>filters<span class="sc">:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   <span class="sc">-</span> lightbox</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>lightbox<span class="sc">:</span> auto</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="pages" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> pages</h1>
+<p>In addition to simply providing a lightbox treatment for individual images, you can also group images into a ‘gallery’. When the user activates the lightbox, they will be able to page through the images in the gallery without returning to the main document.</p>
+<p>in content:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pages</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In the morning</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting up</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Turn off alarm</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Get out of bed</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Breakfast</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Eat eggs</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Drink coffee</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>[](images<span class="sc">/</span>image<span class="fl">-562149792.</span>png){group<span class="ot">=</span><span class="st">"my-gallery"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>description<span class="ot">=</span><span class="st">"its a picture"</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="yaml-format-setting" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> YAML format setting</h1>
+<section id="quarto-extension-lightbox-example" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> quarto extension lightbox example:</h1>
+<p>code:<a href="https://github.com/quarto-ext/lightbox/blob/main/example.qmd">example.qmd</a></p>
+<p>website:<a href="https://quarto-ext.github.io/lightbox/">example.qmd</a>.</p>
+</section>
+<section id="list-quarto-extension" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> list quarto extension</h1>
+<p>go to folder which have added quarto extension</p>
 <div class="cell">
+<div class="code-with-filename">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  revealjs<span class="sc">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    controls<span class="sc">:</span> true</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    navigation<span class="sc">-</span>mode<span class="sc">:</span> vertical</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    height<span class="sc">:</span> <span class="dv">800</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    width<span class="sc">:</span> <span class="dv">1000</span>    </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    fontsize<span class="sc">:</span> <span class="dv">20</span>pt</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    page<span class="sc">-</span>layout<span class="sc">:</span> full</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    logo<span class="sc">:</span> images<span class="sc">/</span>logo.jpg</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    footer<span class="sc">:</span> <span class="st">"This is footer(https://google.com/)"</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    slide<span class="sc">-</span>number<span class="sc">:</span> c</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    show<span class="sc">-</span>slide<span class="sc">-</span>number<span class="sc">:</span> all</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    menu<span class="sc">:</span> false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<pre class="bach cell-code"><code>
+quarto list extensions</code></pre>
 </details>
 </div>
+</div>
+<p><img src="images/image-1514124025.png" class="img-fluid"></p>
 </section>
-<section id="main-title-slide-background-yaml-setting" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Main Title Slide Background YAML setting</h1>
+<section id="update-quarto-extension" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> update quarto extension</h1>
 <div class="cell">
+<div class="code-with-filename">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> My Slide Show</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>title<span class="sc">-</span>slide<span class="sc">-</span>attributes<span class="sc">:</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">-</span>background<span class="sc">-</span>image<span class="sc">:</span> <span class="er">/</span>path<span class="sc">/</span>to<span class="sc">/</span>title_image.png</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">-</span>background<span class="sc">-</span>size<span class="sc">:</span> contain</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">-</span>background<span class="sc">-</span>opacity<span class="sc">:</span> <span class="st">"0.5"</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<pre class="bach cell-code"><code>
+quarto update quarto-ext/fontawesome</code></pre>
 </details>
 </div>
+</div>
 </section>
-<section id="chalkboard-yaml-setting" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Chalkboard YAML setting</h1>
+<section id="remove-quarto-extension" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> remove quarto extension</h1>
 <div class="cell">
+<div class="code-with-filename">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Presentation"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  revealjs<span class="sc">:</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    chalkboard<span class="sc">:</span> true</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<pre class="bach cell-code"><code>
+quarto remove quarto-ext/fontawesome</code></pre>
 </details>
 </div>
-</section>
-<section id="center-whole-page" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> center whole page</h1>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This will be centered {.center}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>This text is moved as well</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
+<p>If you run the quarto remove extension command with no extension-id, you will be presented with a list of extensions that are present and you may select which extensions to remove.</p>
 </section>
-<section id="reference" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> reference:</h1>
-<p>https://quarto.org/docs/presentations/revealjs/</p>
+<section id="reference" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Reference</h1>
+<p>https://quarto.org/docs/extensions/</p>
+<p>https://github.com/quarto-ext/lightbox</p>
 
 
 <!-- -->
@@ -1224,7 +1229,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "quarto presentation"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "quarto Extensioins"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "with Revealjs"</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
@@ -1246,92 +1251,87 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="fu"># revealjs YAML</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Habits"</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"John Doe"</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> revealjs</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># pages</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="co"># pages</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/image-255427881.png)</span>{width="650"}</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>Extensions are a powerful way to modify and extend the behavior of Quarto. Quarto v1.2 Required for Quarto Extensions.</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="fu"># quarto extension： lightbox</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>An extension that uses the GLightbox javascript library to add lightbox styling and behavior to images in your HTML documents.</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="fu"># Installation:</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{bach filename="Terminal"}</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="in">quarto install extension quarto-ext/lightbox</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="fu"># Usage:</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>The Lightbox extension can automatically give images in your web page a lightbox treatment. You can enable this like:</span>
 <span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co"># In the morning</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>in header yaml:</span>
 <span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="do">## Getting up</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Turn off alarm</span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Get out of bed</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="do">## Breakfast</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Eat eggs</span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> Drink coffee</span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> Simple Lightbox Example</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>filters<span class="sc">:</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>   <span class="sc">-</span> lightbox</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>lightbox<span class="sc">:</span> auto</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
 <span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="fu"># YAML format setting</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>In addition to simply providing a lightbox treatment for individual images, you can also group images into a 'gallery'. When the user activates the lightbox, they will be able to page through the images in the gallery without returning to the main document.</span>
 <span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>  revealjs<span class="sc">:</span></span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>    controls<span class="sc">:</span> true</span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    navigation<span class="sc">-</span>mode<span class="sc">:</span> vertical</span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>    height<span class="sc">:</span> <span class="dv">800</span></span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>    width<span class="sc">:</span> <span class="dv">1000</span>    </span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>    fontsize<span class="sc">:</span> <span class="dv">20</span>pt</span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>    page<span class="sc">-</span>layout<span class="sc">:</span> full</span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>    logo<span class="sc">:</span> images<span class="sc">/</span>logo.jpg</span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>    footer<span class="sc">:</span> <span class="st">"This is footer(https://google.com/)"</span></span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>    slide<span class="sc">-</span>number<span class="sc">:</span> c</span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>    show<span class="sc">-</span>slide<span class="sc">-</span>number<span class="sc">:</span> all</span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    menu<span class="sc">:</span> false</span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a><span class="fu"># Main Title Slide Background YAML setting</span></span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> My Slide Show</span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>title<span class="sc">-</span>slide<span class="sc">-</span>attributes<span class="sc">:</span></span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">-</span>background<span class="sc">-</span>image<span class="sc">:</span> <span class="er">/</span>path<span class="sc">/</span>to<span class="sc">/</span>title_image.png</span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">-</span>background<span class="sc">-</span>size<span class="sc">:</span> contain</span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">-</span>background<span class="sc">-</span>opacity<span class="sc">:</span> <span class="st">"0.5"</span></span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>in content:</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>[](images<span class="sc">/</span>image<span class="fl">-562149792.</span>png){group<span class="ot">=</span><span class="st">"my-gallery"</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>description<span class="ot">=</span><span class="st">"its a picture"</span>}</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="fu"># quarto extension lightbox example:</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>code:<span class="co">[</span><span class="ot">example.qmd</span><span class="co">](https://github.com/quarto-ext/lightbox/blob/main/example.qmd)</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>website:<span class="co">[</span><span class="ot">example.qmd</span><span class="co">](https://quarto-ext.github.io/lightbox/)</span>.</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a><span class="fu"># list quarto extension</span></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>go to folder which have added quarto extension</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{bach filename="Terminal"}</span></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="in">quarto list extensions</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/image-1514124025.png)</span></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a><span class="fu"># update quarto extension</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{bach filename="Terminal"}</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="in">quarto update quarto-ext/fontawesome</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a><span class="fu"># Chalkboard YAML setting</span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a><span class="fu"># remove quarto extension</span></span>
 <span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Presentation"</span></span>
-<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
-<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>  revealjs<span class="sc">:</span></span>
-<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>    chalkboard<span class="sc">:</span> true</span>
-<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{bach filename="Terminal"}</span></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a><span class="in">quarto remove quarto-ext/fontawesome</span></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>If you run the quarto remove extension command with no extension-id, you will be presented with a list of extensions that are present and you may select which extensions to remove.</span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference</span></span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>https://quarto.org/docs/extensions/</span>
 <span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a><span class="fu"># center whole page</span></span>
-<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a><span class="co"># This will be centered {.center}</span></span>
-<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>This text is moved as well</span>
-<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
-<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>https://quarto.org/docs/presentations/revealjs/</span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>https://github.com/quarto-ext/lightbox</span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a> </span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -20,42 +20,47 @@ format:
 
 # Connection with database
 
-```{R}
+```{r}
 library(DBI)
 library(RSQLite)
+library(connections)
 ```
 
 
 ## create database file pythonsqlite.db and copy mtcars data and iris data into database
 
 
-```{R}
+```{r}
 mtcars=cbind(newColName = rownames(mtcars), mtcars)
 ```
 
 
 
-```{R}
-#| eval: false
+```{r}
 # Create an ephemeral in-memory RSQLite database
 con <- dbConnect(RSQLite::SQLite(), "my_sql_database")
 
-#dbListTables(con)
+# view database on IDE
+connection_view(con)
+```
+
+
+```{r}
+#| eval: false
 dbWriteTable(con, "mtcars", mtcars,overwrite=TRUE)
 dbWriteTable(con, "iris", iris,overwrite=TRUE)
 ```
 
 ## check all table in database
 
-```{R}
-con <- dbConnect(RSQLite::SQLite(), "my_sql_database")
+```{r}
 dbListTables(con)
 ```
 
 # SQL
 
 
-```{R}
+```{r}
 data=dbReadTable(con, "mtcars")
 head(data)
 ```
