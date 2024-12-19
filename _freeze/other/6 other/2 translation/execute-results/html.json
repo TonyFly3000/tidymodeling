@@ -1,0 +1,15 @@
+{
+  "hash": "93eb5ec17c9cc87ca01925321518e1d3",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Translation\"\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    code-copy: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(polyglotr)\n```\n:::\n\n\n\n\n\n# Translation word\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nword_translation <- linguee_word_translation(\"fruit\", source_language = \"en\", target_language = \"zh\")\n\nword_translation\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"水果\" \"果香\" \"果子\" \"果品\" \"实\"   \"檎\"  \n```\n\n\n:::\n:::\n\n\n\n\n\n# translate sentences\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ngoogle_get_supported_languages()\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n# A tibble: 194 × 2\n   Language  `ISO-639 code`\n   <chr>     <chr>         \n 1 Abkhaz    ab            \n 2 Acehnese  ace           \n 3 Acholi    ach           \n 4 Afrikaans af            \n 5 Albanian  sq            \n 6 Alur      alz           \n 7 Amharic   am            \n 8 Arabic    ar            \n 9 Armenian  hy            \n10 Assamese  as            \n# ℹ 184 more rows\n```\n\n\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ntexts <- c(\"Hello, how are you?\", \n           \"I love programming!\", \n           \"This is a test.\")\n\nlanguages <- c(\"es\", \"fr\", \"zh-CN\")\n\n\ncreate_translation_table(texts, languages)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n        original_word                     es                          fr\n1 Hello, how are you?     ¿Hola, cómo estás? Bonjour comment allez-vous?\n2 I love programming! ¡Me encanta programar!  J'adore la programmation !\n3     This is a test.    Esto es una prueba.           Ceci est un test.\n           zh-CN\n1       你好吗？\n2   我喜欢编程！\n3 这是一个测试。\n```\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

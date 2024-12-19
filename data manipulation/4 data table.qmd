@@ -1,0 +1,116 @@
+---
+title: "Data table"
+
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+# Data table with GT package
+
+![](https://gt.rstudio.com/reference/figures/logo.svg){width="200"}
+
+With the gt package, anyone can make wonderful-looking tables using the R programming language. The gt philosophy: we can construct a wide variety of useful tables with a cohesive set of table parts. These include the table header, the stub, the column labels and spanner column labels, the table body, and the table footer.
+
+![](https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg)
+
+![](https://gt.rstudio.com/reference/figures/gt_workflow_diagram.svg)
+
+```{r}
+library(gt)
+```
+
+
+```{r}
+library(gt)
+
+# Define the start and end dates for the data range
+start_date <- "2010-06-07"
+end_date <- "2010-06-14"
+
+# Create a gt table based on preprocessed
+# `sp500` table data
+sp500 |>
+  dplyr::filter(date >= start_date & date <= end_date) |>
+  dplyr::select(-adj_close) |>
+  gt() |>
+  tab_header(
+    # title
+    title = "S&P 500",
+    # subtitle
+    subtitle = glue::glue("{start_date} to {end_date}")
+  ) |>
+  # format currency
+  fmt_currency() |>
+  # format date
+  fmt_date(columns = date, date_style = "wd_m_day_year") |>
+  # format suffixing
+  fmt_number(columns = volume, suffixing = TRUE) %>% 
+ 
+  # foot note
+   tab_source_note(
+    source_note = "Source: SP 500"
+  ) %>% 
+
+  # make images url to images
+  #gt_img_rows(columns = image, img_source = "web", height = 120) %>% 
+  # align columns
+  cols_align(
+  align = c("center"),
+  columns = everything()
+)
+```
+
+
+## Packages that use or extend gt
+
+There are several R packages that either use gt to generate tabular outputs or extend gt in amazing ways. Here is a short list of some of these great packages:
+
+-   **gtsummary** ([GITHUB](https://github.com/ddsjoberg/gtsummary), [WEBSITE](https://www.danieldsjoberg.com/gtsummary/))
+
+-   **gtExtras** ([GITHUB](https://github.com/jthomasmock/gtExtras), [WEBSITE](https://jthomasmock.github.io/gtExtras/))
+
+-   **pointblank** ([GITHUB](https://github.com/rstudio/pointblank), [WEBSITE](https://rstudio.github.io/pointblank/))
+
+-   **tfrmt** ([GITHUB](https://github.com/GSK-Biostatistics/tfrmt), [WEBSITE](https://gsk-biostatistics.github.io/tfrmt/))
+
+-   **gto** ([GITHUB](https://github.com/GSK-Biostatistics/gto))
+
+## reference:
+
+https://gt.rstudio.com/
+
+
+# Data table with kable
+
+```{r}
+library(knitr)
+mtcars %>% head() %>% kable()
+```
+
+## pages data
+
+```{r}
+library(rmarkdown)
+mtcars %>% paged_table()
+```
+
+
+
+## reference:
+
+https://rstudio.github.io/distill/tables.html
+
+
+
+

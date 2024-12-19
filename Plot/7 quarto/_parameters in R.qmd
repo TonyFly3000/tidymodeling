@@ -1,0 +1,23 @@
+---
+title: "parameters in R"
+format: html
+
+params:
+  name: peter
+  key: 100
+
+---
+
+# in R
+
+Name is `{r} params$name` !
+
+
+```{r}
+print(params$name)
+```
+
+
+```{r}
+print(params$key)
+```

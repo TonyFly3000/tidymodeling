@@ -6199,5 +6199,775 @@
       "7 Publish",
       "quarto tips"
     ]
+  },
+  {
+    "objectID": "Plot/7 Publish/6 quarto parameters.html",
+    "href": "Plot/7 Publish/6 quarto parameters.html",
+    "title": "quarto parameters",
+    "section": "",
+    "text": "Code\nlibrary(quarto)\nquarto_render(\"_parameters in R.qmd\"\n,output_file='R.html'\n,execute_params = list(name='new me',key=9999))",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto parameters"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/r quarto parameters.html",
+    "href": "Plot/7 Publish/r quarto parameters.html",
+    "title": "quarto parameters in R",
+    "section": "",
+    "text": "1 name is one``{r}\nparams$value\n\n\n\n\n:::{#quarto-navigation-envelope .hidden}\n[Ploting]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl\"}\n[Tidymodel with R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXItdGl0bGU=\"}\n[quarto parameters]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1wcmV2\"}\n[Plot]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMQ==\"}\n[ggplot2 in R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzEgZ2dwbG90Mi5odG1sZ2dwbG90Mi1pbi1S\"}\n[Plotly in R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzIgcGxvdGx5Lmh0bWxQbG90bHktaW4tUg==\"}\n[image processing]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzMgaW1hZ2UgcHJvY2Vzc2luZy5odG1saW1hZ2UtcHJvY2Vzc2luZw==\"}\n[Financial data]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzQgRmluYW5jaWFsIGRhdGEuaHRtbEZpbmFuY2lhbC1kYXRh\"}\n[5 Map]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMg==\"}\n[map]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzUgTWFwLzEgbGVhZmxldC5odG1sbWFw\"}\n[China accident map]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzUgTWFwLzIgQ2hpbmEgYWNjaWRlbnQgbWFwIHdpdGggbWFwdmlldy5odG1sQ2hpbmEtYWNjaWRlbnQtbWFw\"}\n[US map]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzUgTWFwLzMgbGVhZmxldCBVUy5odG1sVVMtbWFw\"}\n[HK whisk bar]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzUgTWFwLzQgSEsgd2hpc2t5IGJhci5odG1sSEstd2hpc2stYmFy\"}\n[6 Shiny]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMw==\"}\n[Shiny in R:weight tracking]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzYgU2hpbnkvMSBzaGlueSB3ZWlnaHQgdHJhY2tpbmcuaHRtbFNoaW55LWluLVI6d2VpZ2h0LXRyYWNraW5n\"}\n[Shiny in R:photo editor]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzYgU2hpbnkvMiBzaGlueSBwaG90byBlZGl0b3IuaHRtbFNoaW55LWluLVI6cGhvdG8tZWRpdG9y\"}\n[Shiny in R:China accident map]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzYgU2hpbnkvMyBDaGluYSBhY2NpZGVudCBtYXAuaHRtbFNoaW55LWluLVI6Q2hpbmEtYWNjaWRlbnQtbWFw\"}\n[7 Publish]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tNA==\"}\n[quarto tips]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzcgUHVibGlzaC8xIHF1YXJ0byB0aXBzLmh0bWxxdWFydG8tdGlwcw==\"}\n[quarto blog]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzcgUHVibGlzaC8yIHF1YXJ0byBibG9nLmh0bWxxdWFydG8tYmxvZw==\"}\n[quarto website]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzcgUHVibGlzaC8zIHF1YXJ0byB3ZWJzaXRlLmh0bWxxdWFydG8td2Vic2l0ZQ==\"}\n[quarto presentation]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzcgUHVibGlzaC80IHF1YXJ0byBwcmVzZW50YXRpb24gLmh0bWxxdWFydG8tcHJlc2VudGF0aW9u\"}\n[quarto Extensioins]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzcgUHVibGlzaC81IHF1YXJ0byBleHRlbnNpb25zLmh0bWxxdWFydG8tRXh0ZW5zaW9pbnM=\"}\n[quarto parameters]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzcgUHVibGlzaC82IHF1YXJ0byBwYXJhbWV0ZXJzLmh0bWxxdWFydG8tcGFyYW1ldGVycw==\"}\n[quarto parameters in R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1zaWRlYmFyOi9QbG90LzcgUHVibGlzaC9yIHF1YXJ0byBwYXJhbWV0ZXJzLmh0bWxxdWFydG8tcGFyYW1ldGVycy1pbi1S\"}\n[Home]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6SG9tZQ==\"}\n[/index.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2luZGV4Lmh0bWw=\"}\n[intro]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6aW50cm8=\"}\n[Intro]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6SW50cm8=\"}\n[Basic R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6QmFzaWMgUg==\"}\n[/intro/1 basic R.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2ludHJvLzEgYmFzaWMgUi5odG1s\"}\n[Probability]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UHJvYmFiaWxpdHk=\"}\n[/intro/2 probability.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2ludHJvLzIgcHJvYmFiaWxpdHkuaHRtbA==\"}\n[Statistics]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6U3RhdGlzdGljcw==\"}\n[/intro/3 Statistics.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2ludHJvLzMgU3RhdGlzdGljcy5odG1s\"}\n[R book]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UiBib29r\"}\n[/intro/5 R boook.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2ludHJvLzUgUiBib29vay5odG1s\"}\n[Data analytic in R book]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6RGF0YSBhbmFseXRpYyBpbiBSIGJvb2s=\"}\n[/intro/6 data analytic in R book.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2ludHJvLzYgZGF0YSBhbmFseXRpYyBpbiBSIGJvb2suaHRtbA==\"}\n[Data]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6RGF0YQ==\"}\n[data manipulation]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6ZGF0YSBtYW5pcHVsYXRpb24=\"}\n[input & ouput in R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6aW5wdXQgJiBvdXB1dCBpbiBS\"}\n[/data manipulation/1 input ouput.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2RhdGEgbWFuaXB1bGF0aW9uLzEgaW5wdXQgb3VwdXQuaHRtbA==\"}\n[Data structure in R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6RGF0YSBzdHJ1Y3R1cmUgaW4gUg==\"}\n[/data manipulation/2 data structure in R.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2RhdGEgbWFuaXB1bGF0aW9uLzIgZGF0YSBzdHJ1Y3R1cmUgaW4gUi5odG1s\"}\n[Data manipulation with tidyverse]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6RGF0YSBtYW5pcHVsYXRpb24gd2l0aCB0aWR5dmVyc2U=\"}\n[/data manipulation/3 data manipulation with tidyverse.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2RhdGEgbWFuaXB1bGF0aW9uLzMgZGF0YSBtYW5pcHVsYXRpb24gd2l0aCB0aWR5dmVyc2UuaHRtbA==\"}\n[resample]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6cmVzYW1wbGU=\"}\n[/data manipulation/4 resample.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2RhdGEgbWFuaXB1bGF0aW9uLzQgcmVzYW1wbGUuaHRtbA==\"}\n[recipe]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6cmVjaXBl\"}\n[/data manipulation/5 recipe.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2RhdGEgbWFuaXB1bGF0aW9uLzUgcmVjaXBlLmh0bWw=\"}\n[SQL database with R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6U1FMIGRhdGFiYXNlIHdpdGggUg==\"}\n[/data manipulation/5 SQL database.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2RhdGEgbWFuaXB1bGF0aW9uLzUgU1FMIGRhdGFiYXNlLmh0bWw=\"}\n[Ploting]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UGxvdGluZw==\"}\n[Plot]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UGxvdA==\"}\n[ggplot2 in R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Z2dwbG90MiBpbiBS\"}\n[/Plot/1 ggplot2.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L1Bsb3QvMSBnZ3Bsb3QyLmh0bWw=\"}\n[Plotly in R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UGxvdGx5IGluIFI=\"}\n[/Plot/2 plotly.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L1Bsb3QvMiBwbG90bHkuaHRtbA==\"}\n[image processing]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6aW1hZ2UgcHJvY2Vzc2luZw==\"}\n[/Plot/3 image processing.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L1Bsb3QvMyBpbWFnZSBwcm9jZXNzaW5nLmh0bWw=\"}\n[Financial data]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6RmluYW5jaWFsIGRhdGE=\"}\n[/Plot/4 Financial data.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L1Bsb3QvNCBGaW5hbmNpYWwgZGF0YS5odG1s\"}\n[5 Map]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6NSBNYXA=\"}\n[/Plot/5 Map/1 leaflet.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L1Bsb3QvNSBNYXAvMSBsZWFmbGV0Lmh0bWw=\"}\n[6 Shiny]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6NiBTaGlueQ==\"}\n[/Plot/6 Shiny/1 shiny weight tracking.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L1Bsb3QvNiBTaGlueS8xIHNoaW55IHdlaWdodCB0cmFja2luZy5odG1s\"}\n[7 Publish]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6NyBQdWJsaXNo\"}\n[/Plot/7 Publish/1 quarto tips.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L1Bsb3QvNyBQdWJsaXNoLzEgcXVhcnRvIHRpcHMuaHRtbA==\"}\n[Model type]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6TW9kZWwgdHlwZQ==\"}\n[model type]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6bW9kZWwgdHlwZQ==\"}\n[Decision tree]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6RGVjaXNpb24gdHJlZQ==\"}\n[/model type/1 decision tree.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L21vZGVsIHR5cGUvMSBkZWNpc2lvbiB0cmVlLmh0bWw=\"}\n[Random forest]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UmFuZG9tIGZvcmVzdA==\"}\n[/model type/2 random forest.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L21vZGVsIHR5cGUvMiByYW5kb20gZm9yZXN0Lmh0bWw=\"}\n[Gradient boosted trees]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6R3JhZGllbnQgYm9vc3RlZCB0cmVlcw==\"}\n[/model type/3 gradient boosted trees.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L21vZGVsIHR5cGUvMyBncmFkaWVudCBib29zdGVkIHRyZWVzLmh0bWw=\"}\n[Classification]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24=\"}\n[titanic classification model]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6dGl0YW5pYyBjbGFzc2lmaWNhdGlvbiBtb2RlbA==\"}\n[Titanic data]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6VGl0YW5pYyBkYXRh\"}\n[/titanic classification model/0 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L3RpdGFuaWMgY2xhc3NpZmljYXRpb24gbW9kZWwvMCBjbGFzc2lmaWNhdGlvbiBUaWR5IE1vZGVsaW5nLmh0bWw=\"}\n[Classification model]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24gbW9kZWw=\"}\n[/titanic classification model/1 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L3RpdGFuaWMgY2xhc3NpZmljYXRpb24gbW9kZWwvMSBjbGFzc2lmaWNhdGlvbiBUaWR5IE1vZGVsaW5nLmh0bWw=\"}\n[Classification model with Recipe]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24gbW9kZWwgd2l0aCBSZWNpcGU=\"}\n[/titanic classification model/2 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L3RpdGFuaWMgY2xhc3NpZmljYXRpb24gbW9kZWwvMiBjbGFzc2lmaWNhdGlvbiBUaWR5IE1vZGVsaW5nLmh0bWw=\"}\n[Classification model with Recipe,workflow,tunning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24gbW9kZWwgd2l0aCBSZWNpcGUsd29ya2Zsb3csdHVubmluZw==\"}\n[/titanic classification model/3 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L3RpdGFuaWMgY2xhc3NpZmljYXRpb24gbW9kZWwvMyBjbGFzc2lmaWNhdGlvbiBUaWR5IE1vZGVsaW5nLmh0bWw=\"}\n[Classification model with Recipe,workflow,fast tunning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24gbW9kZWwgd2l0aCBSZWNpcGUsd29ya2Zsb3csZmFzdCB0dW5uaW5n\"}\n[/titanic classification model/4 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L3RpdGFuaWMgY2xhc3NpZmljYXRpb24gbW9kZWwvNCBjbGFzc2lmaWNhdGlvbiBUaWR5IE1vZGVsaW5nLmh0bWw=\"}\n[Multiple classification model with Recipe,workflow set,fast tunning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6TXVsdGlwbGUgY2xhc3NpZmljYXRpb24gbW9kZWwgd2l0aCBSZWNpcGUsd29ya2Zsb3cgc2V0LGZhc3QgdHVubmluZw==\"}\n[/titanic classification model/5 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L3RpdGFuaWMgY2xhc3NpZmljYXRpb24gbW9kZWwvNSBjbGFzc2lmaWNhdGlvbiBUaWR5IE1vZGVsaW5nLmh0bWw=\"}\n[Classification imbanlance]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24gaW1iYW5sYW5jZQ==\"}\n[hotel classification model]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6aG90ZWwgY2xhc3NpZmljYXRpb24gbW9kZWw=\"}\n[Hotel booking data]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6SG90ZWwgYm9va2luZyBkYXRh\"}\n[/hotel classification model/0 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdGVsIGNsYXNzaWZpY2F0aW9uIG1vZGVsLzAgY2xhc3NpZmljYXRpb24gVGlkeSBNb2RlbGluZy5odG1s\"}\n[Classification Model]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24gTW9kZWw=\"}\n[/hotel classification model/1 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdGVsIGNsYXNzaWZpY2F0aW9uIG1vZGVsLzEgY2xhc3NpZmljYXRpb24gVGlkeSBNb2RlbGluZy5odG1s\"}\n[Classification Model with recipe]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24gTW9kZWwgd2l0aCByZWNpcGU=\"}\n[/hotel classification model/3 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdGVsIGNsYXNzaWZpY2F0aW9uIG1vZGVsLzMgY2xhc3NpZmljYXRpb24gVGlkeSBNb2RlbGluZy5odG1s\"}\n[Classification Model with recipe,workflow,tuning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24gTW9kZWwgd2l0aCByZWNpcGUsd29ya2Zsb3csdHVuaW5n\"}\n[/hotel classification model/4 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdGVsIGNsYXNzaWZpY2F0aW9uIG1vZGVsLzQgY2xhc3NpZmljYXRpb24gVGlkeSBNb2RlbGluZy5odG1s\"}\n[Classification Model with recipe,workflow,fast tuning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2xhc3NpZmljYXRpb24gTW9kZWwgd2l0aCByZWNpcGUsd29ya2Zsb3csZmFzdCB0dW5pbmc=\"}\n[/hotel classification model/5 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdGVsIGNsYXNzaWZpY2F0aW9uIG1vZGVsLzUgY2xhc3NpZmljYXRpb24gVGlkeSBNb2RlbGluZy5odG1s\"}\n[Multiple Classification Model with recipe,workflow set,fast tuning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6TXVsdGlwbGUgQ2xhc3NpZmljYXRpb24gTW9kZWwgd2l0aCByZWNpcGUsd29ya2Zsb3cgc2V0LGZhc3QgdHVuaW5n\"}\n[/hotel classification model/6 classification Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdGVsIGNsYXNzaWZpY2F0aW9uIG1vZGVsLzYgY2xhc3NpZmljYXRpb24gVGlkeSBNb2RlbGluZy5odG1s\"}\n[Multiclass classification]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6TXVsdGljbGFzcyBjbGFzc2lmaWNhdGlvbg==\"}\n[Customer Segmentation Dataset]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q3VzdG9tZXIgU2VnbWVudGF0aW9uIERhdGFzZXQ=\"}\n[/Multiclass classification/0 multclass classification.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L011bHRpY2xhc3MgY2xhc3NpZmljYXRpb24vMCBtdWx0Y2xhc3MgY2xhc3NpZmljYXRpb24uaHRtbA==\"}\n[/Multiclass classification/1 multclass classification.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L011bHRpY2xhc3MgY2xhc3NpZmljYXRpb24vMSBtdWx0Y2xhc3MgY2xhc3NpZmljYXRpb24uaHRtbA==\"}\n[Multiple Classification Model with recipe,workflow, tuning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6TXVsdGlwbGUgQ2xhc3NpZmljYXRpb24gTW9kZWwgd2l0aCByZWNpcGUsd29ya2Zsb3csIHR1bmluZw==\"}\n[/Multiclass classification/3 multclass classification.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L011bHRpY2xhc3MgY2xhc3NpZmljYXRpb24vMyBtdWx0Y2xhc3MgY2xhc3NpZmljYXRpb24uaHRtbA==\"}\n[/Multiclass classification/6 multclass classification.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L011bHRpY2xhc3MgY2xhc3NpZmljYXRpb24vNiBtdWx0Y2xhc3MgY2xhc3NpZmljYXRpb24uaHRtbA==\"}\n[Regression]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UmVncmVzc2lvbg==\"}\n[house price regression model]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6aG91c2UgcHJpY2UgcmVncmVzc2lvbiBtb2RlbA==\"}\n[House price data]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6SG91c2UgcHJpY2UgZGF0YQ==\"}\n[/house price regression model/0 Regression Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdXNlIHByaWNlIHJlZ3Jlc3Npb24gbW9kZWwvMCBSZWdyZXNzaW9uIFRpZHkgTW9kZWxpbmcuaHRtbA==\"}\n[Regression model]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UmVncmVzc2lvbiBtb2RlbA==\"}\n[/house price regression model/1 Regression Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdXNlIHByaWNlIHJlZ3Jlc3Npb24gbW9kZWwvMSBSZWdyZXNzaW9uIFRpZHkgTW9kZWxpbmcuaHRtbA==\"}\n[Regression model with Recipe]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UmVncmVzc2lvbiBtb2RlbCB3aXRoIFJlY2lwZQ==\"}\n[/house price regression model/3 Regression Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdXNlIHByaWNlIHJlZ3Jlc3Npb24gbW9kZWwvMyBSZWdyZXNzaW9uIFRpZHkgTW9kZWxpbmcuaHRtbA==\"}\n[Regression model with Recipe,workflow,tuning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UmVncmVzc2lvbiBtb2RlbCB3aXRoIFJlY2lwZSx3b3JrZmxvdyx0dW5pbmc=\"}\n[/house price regression model/4 Regression Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdXNlIHByaWNlIHJlZ3Jlc3Npb24gbW9kZWwvNCBSZWdyZXNzaW9uIFRpZHkgTW9kZWxpbmcuaHRtbA==\"}\n[Regression model with Recipe,workflow,fast tuning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UmVncmVzc2lvbiBtb2RlbCB3aXRoIFJlY2lwZSx3b3JrZmxvdyxmYXN0IHR1bmluZw==\"}\n[/house price regression model/5 Regression Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdXNlIHByaWNlIHJlZ3Jlc3Npb24gbW9kZWwvNSBSZWdyZXNzaW9uIFRpZHkgTW9kZWxpbmcuaHRtbA==\"}\n[Multiple Regression model with Recipe,workflow set,fast tuning]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6TXVsdGlwbGUgUmVncmVzc2lvbiBtb2RlbCB3aXRoIFJlY2lwZSx3b3JrZmxvdyBzZXQsZmFzdCB0dW5pbmc=\"}\n[/house price regression model/6 Regression Tidy Modeling.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2hvdXNlIHByaWNlIHJlZ3Jlc3Npb24gbW9kZWwvNiBSZWdyZXNzaW9uIFRpZHkgTW9kZWxpbmcuaHRtbA==\"}\n[Clustering]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6Q2x1c3RlcmluZw==\"}\n[Mall Customers Dataset]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6TWFsbCBDdXN0b21lcnMgRGF0YXNldA==\"}\n[/clustering/0 Mall Customers.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2NsdXN0ZXJpbmcvMCBNYWxsIEN1c3RvbWVycy5odG1s\"}\n[K mean Clustering]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6SyBtZWFuIENsdXN0ZXJpbmc=\"}\n[/clustering/1 k mean Clustering.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2NsdXN0ZXJpbmcvMSBrIG1lYW4gQ2x1c3RlcmluZy5odG1s\"}\n[K mean Clustering with image]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6SyBtZWFuIENsdXN0ZXJpbmcgd2l0aCBpbWFnZQ==\"}\n[/clustering/1.2 k mean Clustering.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2NsdXN0ZXJpbmcvMS4yIGsgbWVhbiBDbHVzdGVyaW5nLmh0bWw=\"}\n[Hierarchical Clustering]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6SGllcmFyY2hpY2FsIENsdXN0ZXJpbmc=\"}\n[/clustering/2 Hierarchical Clustering.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2NsdXN0ZXJpbmcvMiBIaWVyYXJjaGljYWwgQ2x1c3RlcmluZy5odG1s\"}\n[k mode Clustering]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6ayBtb2RlIENsdXN0ZXJpbmc=\"}\n[/clustering/3 k mode Clustering.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2NsdXN0ZXJpbmcvMyBrIG1vZGUgQ2x1c3RlcmluZy5odG1s\"}\n[Principal component analysis]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6UHJpbmNpcGFsIGNvbXBvbmVudCBhbmFseXNpcw==\"}\n[/clustering/4 Principal component analysis .html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L2NsdXN0ZXJpbmcvNCBQcmluY2lwYWwgY29tcG9uZW50IGFuYWx5c2lzIC5odG1s\"}\n[Other]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6T3RoZXI=\"}\n[1 Web scraping on www.whiskynotes.be]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6MSBXZWIgc2NyYXBpbmcgb24gd3d3LndoaXNreW5vdGVzLmJl\"}\n[/other/1 Web scraping on www.whiskynotes.be/1 whiskynote data.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L290aGVyLzEgV2ViIHNjcmFwaW5nIG9uIHd3dy53aGlza3lub3Rlcy5iZS8xIHdoaXNreW5vdGUgZGF0YS5odG1s\"}\n[2 Web scraping on whiskybase.com]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6MiBXZWIgc2NyYXBpbmcgb24gd2hpc2t5YmFzZS5jb20=\"}\n[/other/2 Web scraping on whiskybase.com/1 whiskybase data.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L290aGVyLzIgV2ViIHNjcmFwaW5nIG9uIHdoaXNreWJhc2UuY29tLzEgd2hpc2t5YmFzZSBkYXRhLmh0bWw=\"}\n[3 Web scraping on whiskyfun.com]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6MyBXZWIgc2NyYXBpbmcgb24gd2hpc2t5ZnVuLmNvbQ==\"}\n[/other/3 Web scraping on whiskyfun.com/1 whiskyfun data.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L290aGVyLzMgV2ViIHNjcmFwaW5nIG9uIHdoaXNreWZ1bi5jb20vMSB3aGlza3lmdW4gZGF0YS5odG1s\"}\n[4 web scrap]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6NCB3ZWIgc2NyYXA=\"}\n[/other/4 web scrap/web scrap.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L290aGVyLzQgd2ViIHNjcmFwL3dlYiBzY3JhcC5odG1s\"}\n[5 other]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6NSBvdGhlcg==\"}\n[/other/5 other/1 chromote.html]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWludC1uYXZiYXI6L290aGVyLzUgb3RoZXIvMSBjaHJvbW90ZS5odG1s\"}\n[Plot]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWJyZWFkY3J1bWJzLVBsb3Q=\"}\n[7 Publish]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWJyZWFkY3J1bWJzLTctUHVibGlzaA==\"}\n[quarto parameters in R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLWJyZWFkY3J1bWJzLXF1YXJ0by1wYXJhbWV0ZXJzLWluLVI=\"}\n\n:::{.hidden .quarto-markdown-envelope-contents render-id=\"Zm9vdGVyLXJpZ2h0\"}\nThis website is built with ❤️ and [Quarto](https://quarto.org/).\n:::\n\n:::\n\n\n\n:::{#quarto-meta-markdown .hidden}\n[quarto parameters in R – Tidymodel with R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLW1ldGF0aXRsZQ==\"}\n[quarto parameters in R – Tidymodel with R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=\"}\n[quarto parameters in R – Tidymodel with R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLW9nY2FyZHRpdGxl\"}\n[Tidymodel with R]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLW1ldGFzaXRlbmFtZQ==\"}\n[]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==\"}\n[]{.hidden .quarto-markdown-envelope-contents render-id=\"cXVhcnRvLW9nY2FyZGRkZXNj\"}\n:::\n\n\n\n\n&lt;!-- --&gt;\n\n::: {.quarto-embedded-source-code}\n```````````````````{.markdown shortcodes=\"false\"}\n---\ntitle: \"quarto parameters in R\"\n\n\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n  \nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    code-copy: true\n\nparams:\n  name: one\n  value: 1\n---\n\n\n# name is `{r} params$name\n\nquarto-executable-code-5450563D\n\n```r\nparams$value\n``````````````````` :::\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto parameters in R"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/parameters in R.html",
+    "href": "Plot/7 Publish/parameters in R.html",
+    "title": "parameters in R",
+    "section": "",
+    "text": "in R\nName is peter !\n\nprint(params$name)\n\n[1] \"peter\"\n\n\n\nprint(params$key)\n\n[1] 100\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "parameters in R"
+    ]
+  },
+  {
+    "objectID": "Plot/7 Publish/6 quarto parameters.html#render-qmd-file-with-parameters-input",
+    "href": "Plot/7 Publish/6 quarto parameters.html#render-qmd-file-with-parameters-input",
+    "title": "quarto parameters",
+    "section": "",
+    "text": "Code\nlibrary(quarto)\nquarto_render(\"_parameters in R.qmd\"\n,output_file='R.html'\n,execute_params = list(name='new me',key=9999))",
+    "crumbs": [
+      "Plot",
+      "7 Publish",
+      "quarto parameters"
+    ]
+  },
+  {
+    "objectID": "intro/7 error handling.html",
+    "href": "intro/7 error handling.html",
+    "title": "Error handling",
+    "section": "",
+    "text": "error: can not find Python specified in RETICULATE_PYTHON (/Library/Frameworks/Python.framework/Versions/3.12/bin/python3)\n\n\nwhich -a python python3\n\n\n\ngo to home folder by Command-Shift-H\nRETICULATE_PYTHON=\"/Library/Frameworks/Python.framework/Versions/3.13/bin/python3\"",
+    "crumbs": [
+      "Intro",
+      "Error handling"
+    ]
+  },
+  {
+    "objectID": "intro/7 error handling.html#find-current-python-version",
+    "href": "intro/7 error handling.html#find-current-python-version",
+    "title": "Error handling",
+    "section": "",
+    "text": "which -a python python3",
+    "crumbs": [
+      "Intro",
+      "Error handling"
+    ]
+  },
+  {
+    "objectID": "intro/7 error handling.html#change-python-version-in-.renviron-under-home-folder",
+    "href": "intro/7 error handling.html#change-python-version-in-.renviron-under-home-folder",
+    "title": "Error handling",
+    "section": "",
+    "text": "go to home folder by Command-Shift-H\nRETICULATE_PYTHON=\"/Library/Frameworks/Python.framework/Versions/3.13/bin/python3\"",
+    "crumbs": [
+      "Intro",
+      "Error handling"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html",
+    "href": "Plot/8 dashboard/1 dashboard.html",
+    "title": "Dashboard",
+    "section": "",
+    "text": "quarto dashboard\n\n\n\nCode\n\n_dashboard_r.qmd\n\n---\ntitle: \"First quarto dashboard\"\nformat: dashboard\n---\n\n```{r}\na=1\na\n```\n\n\n\n\n\nReference:\nhttps://www.youtube.com/watch?v=HW7QbqI4fH0\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#install-quarto-cli",
+    "href": "Plot/8 dashboard/1 dashboard.html#install-quarto-cli",
+    "title": "Dashboard",
+    "section": "",
+    "text": "https://quarto.org/docs/get-started/",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#install-quarto-pacakge",
+    "href": "Plot/8 dashboard/1 dashboard.html#install-quarto-pacakge",
+    "title": "Dashboard",
+    "section": "",
+    "text": "Code\ninstall.packages(\"quarto\")",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#in-terminal",
+    "href": "Plot/8 dashboard/1 dashboard.html#in-terminal",
+    "title": "Dashboard",
+    "section": "in Terminal",
+    "text": "in Terminal\n\n\n\nCode\n\nTerminal\n\nquarto check",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#in-r",
+    "href": "Plot/8 dashboard/1 dashboard.html#in-r",
+    "title": "Dashboard",
+    "section": "in R",
+    "text": "in R\n\n\nCode\nlibrary(quarto)\nquarto_version()\n\n\n[1] '1.6.30'\n\n\nquarto location\n\n\nCode\nquarto_path()\n\n\n[1] \"/usr/local/bin/quarto\"",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#r",
+    "href": "Plot/8 dashboard/1 dashboard.html#r",
+    "title": "Dashboard",
+    "section": "R",
+    "text": "R\n```{R}\nversion\n```",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#python",
+    "href": "Plot/8 dashboard/1 dashboard.html#python",
+    "title": "Dashboard",
+    "section": "Python",
+    "text": "Python\n```{python}\nimport sys\nprint(sys.version)\n```",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#bath",
+    "href": "Plot/8 dashboard/1 dashboard.html#bath",
+    "title": "Dashboard",
+    "section": "Bath",
+    "text": "Bath\n```{bash}\necho \"foo\" \n```",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#in-yaml-header",
+    "href": "Plot/8 dashboard/1 dashboard.html#in-yaml-header",
+    "title": "Dashboard",
+    "section": "in YAML header",
+    "text": "in YAML header\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#in-code-chunk",
+    "href": "Plot/8 dashboard/1 dashboard.html#in-code-chunk",
+    "title": "Dashboard",
+    "section": "in code chunk",
+    "text": "in code chunk\n\n\nCode\n #| eval: false",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#embed-youtube",
+    "href": "Plot/8 dashboard/1 dashboard.html#embed-youtube",
+    "title": "Dashboard",
+    "section": "embed youtube",
+    "text": "embed youtube\n\n\nCode\n&lt;iframe width=\"640\" height=\"480\" src=\"https://www.youtube.com/embed/nku5zFMZAdU\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen&gt;\n&lt;/iframe&gt;",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/8 dashboard/1 dashboard.html#embed-local-video",
+    "href": "Plot/8 dashboard/1 dashboard.html#embed-local-video",
+    "title": "Dashboard",
+    "section": "embed local video",
+    "text": "embed local video\n\n\nCode\n{{&lt; video images/vv.mp4 height=\"600\" &gt;}}",
+    "crumbs": [
+      "Plot",
+      "8 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html",
+    "href": "Plot/7 quarto/1 quarto tips.html",
+    "title": "quarto tips",
+    "section": "",
+    "text": "https://quarto.org/docs/get-started/\n\n\n\n\n\nCode\ninstall.packages(\"quarto\")",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#install-quarto-cli",
+    "href": "Plot/7 quarto/1 quarto tips.html#install-quarto-cli",
+    "title": "quarto tips",
+    "section": "",
+    "text": "https://quarto.org/docs/get-started/",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#install-quarto-pacakge",
+    "href": "Plot/7 quarto/1 quarto tips.html#install-quarto-pacakge",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\ninstall.packages(\"quarto\")",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#in-terminal",
+    "href": "Plot/7 quarto/1 quarto tips.html#in-terminal",
+    "title": "quarto tips",
+    "section": "in Terminal",
+    "text": "in Terminal\n\n\n\nCode\n\nTerminal\n\nquarto check",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#in-r",
+    "href": "Plot/7 quarto/1 quarto tips.html#in-r",
+    "title": "quarto tips",
+    "section": "in R",
+    "text": "in R\n\n\nCode\nlibrary(quarto)\nquarto_version()\n\n\n[1] '1.6.30'\n\n\nquarto location\n\n\nCode\nquarto_path()\n\n\n[1] \"/usr/local/bin/quarto\"",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#r",
+    "href": "Plot/7 quarto/1 quarto tips.html#r",
+    "title": "quarto tips",
+    "section": "R",
+    "text": "R\n```{R}\nversion\n```",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#python",
+    "href": "Plot/7 quarto/1 quarto tips.html#python",
+    "title": "quarto tips",
+    "section": "Python",
+    "text": "Python\n```{python}\nimport sys\nprint(sys.version)\n```",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#bath",
+    "href": "Plot/7 quarto/1 quarto tips.html#bath",
+    "title": "quarto tips",
+    "section": "Bath",
+    "text": "Bath\n```{bash}\necho \"foo\" \n```",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#in-yaml-header",
+    "href": "Plot/7 quarto/1 quarto tips.html#in-yaml-header",
+    "title": "quarto tips",
+    "section": "in YAML header",
+    "text": "in YAML header\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#in-code-chunk",
+    "href": "Plot/7 quarto/1 quarto tips.html#in-code-chunk",
+    "title": "quarto tips",
+    "section": "in code chunk",
+    "text": "in code chunk\n\n\nCode\n #| eval: false",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#embed-youtube",
+    "href": "Plot/7 quarto/1 quarto tips.html#embed-youtube",
+    "title": "quarto tips",
+    "section": "embed youtube",
+    "text": "embed youtube\n\n\nCode\n&lt;iframe width=\"640\" height=\"480\" src=\"https://www.youtube.com/embed/nku5zFMZAdU\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen&gt;\n&lt;/iframe&gt;",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/1 quarto tips.html#embed-local-video",
+    "href": "Plot/7 quarto/1 quarto tips.html#embed-local-video",
+    "title": "quarto tips",
+    "section": "embed local video",
+    "text": "embed local video\n\n\nCode\n{{&lt; video images/vv.mp4 height=\"600\" &gt;}}",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/5 quarto extensions.html",
+    "href": "Plot/7 quarto/5 quarto extensions.html",
+    "title": "quarto Extensioins",
+    "section": "",
+    "text": "Extensions are a powerful way to modify and extend the behavior of Quarto. Quarto v1.2 Required for Quarto Extensions.\n\n1 quarto extension： lightbox\nAn extension that uses the GLightbox javascript library to add lightbox styling and behavior to images in your HTML documents.\n\n\n2 Installation:\n\n\n\nCode\n\nTerminal\n\nquarto install extension quarto-ext/lightbox\n\n\n\n\n\n3 Usage:\nThe Lightbox extension can automatically give images in your web page a lightbox treatment. You can enable this like:\nin header yaml:\n\n\nCode\n---\ntitle: Simple Lightbox Example\nfilters:\n   - lightbox\nlightbox: auto\n---\n\n\nIn addition to simply providing a lightbox treatment for individual images, you can also group images into a ‘gallery’. When the user activates the lightbox, they will be able to page through the images in the gallery without returning to the main document.\nin content:\n\n\nCode\n![](images/image-562149792.png){group=\"my-gallery\"\ndescription=\"its a picture\"}\n\n\n\n\n4 quarto extension lightbox example:\ncode:example.qmd\nwebsite:example.qmd.\n\n\n5 list quarto extension\ngo to folder which have added quarto extension\n\n\n\nCode\n\nTerminal\n\n\nquarto list extensions\n\n\n\n\n\n\n6 update quarto extension\n\n\n\nCode\n\nTerminal\n\n\nquarto update quarto-ext/fontawesome\n\n\n\n\n\n7 remove quarto extension\n\n\n\nCode\n\nTerminal\n\n\nquarto remove quarto-ext/fontawesome\n\n\n\nIf you run the quarto remove extension command with no extension-id, you will be presented with a list of extensions that are present and you may select which extensions to remove.\n\n\n8 Reference\nhttps://quarto.org/docs/extensions/\nhttps://github.com/quarto-ext/lightbox\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto Extensioins"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/4 quarto presentation .html",
+    "href": "Plot/7 quarto/4 quarto presentation .html",
+    "title": "quarto presentation",
+    "section": "",
+    "text": "1 revealjs YAML\n\n\nCode\n---\ntitle: \"Habits\"\nauthor: \"John Doe\"\nformat: revealjs\n---\n\n\n\n\n2 pages\n\n\nCode\n# pages\n\n# In the morning\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Breakfast\n\n- Eat eggs\n- Drink coffee\n\n\n\n\n3 YAML format setting\n\n\nCode\nformat:\n  revealjs:\n    controls: true\n    navigation-mode: vertical\n    height: 800\n    width: 1000    \n    fontsize: 20pt\n    page-layout: full\n    logo: images/logo.jpg\n    footer: \"This is footer(https://google.com/)\"\n    slide-number: c\n    show-slide-number: all\n    menu: false\n\n\n\n\n4 Main Title Slide Background YAML setting\n\n\nCode\n---\ntitle: My Slide Show\ntitle-slide-attributes:\n    data-background-image: /path/to/title_image.png\n    data-background-size: contain\n    data-background-opacity: \"0.5\"\n---\n\n\n\n\n5 Chalkboard YAML setting\n\n\nCode\n---\ntitle: \"Presentation\"\nformat:\n  revealjs:\n    chalkboard: true\n---\n\n\n\n\n6 center whole page\n\n\nCode\n# This will be centered {.center}\n\nThis text is moved as well\n\n\n\n\n7 reference:\nhttps://quarto.org/docs/presentations/revealjs/\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto presentation"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/3 quarto website.html",
+    "href": "Plot/7 quarto/3 quarto website.html",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub\n\n\n\n\n\n\n\n\n\n_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "href": "Plot/7 quarto/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/3 quarto website.html#publish-quarto-website-into-github-page",
+    "href": "Plot/7 quarto/3 quarto website.html#publish-quarto-website-into-github-page",
+    "title": "quarto website",
+    "section": "",
+    "text": "_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/2 quarto blog.html",
+    "href": "Plot/7 quarto/2 quarto blog.html",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---\n\n\n\n\n\n\n\nCode\n---\ndraft: true  \n  \n---\n\n\n\n\n\n\n\nCode\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true\n\n\n\n\n\n\n\nCode\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---\n\n\n\n\n\n\n\nCode\ndraft:true",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/2 quarto blog.html#blog-post",
+    "href": "Plot/7 quarto/2 quarto blog.html#blog-post",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/2 quarto blog.html#hide-post-from-main-page",
+    "href": "Plot/7 quarto/2 quarto blog.html#hide-post-from-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ndraft: true  \n  \n---",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/2 quarto blog.html#quarto.yml",
+    "href": "Plot/7 quarto/2 quarto blog.html#quarto.yml",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/2 quarto blog.html#index.qmd",
+    "href": "Plot/7 quarto/2 quarto blog.html#index.qmd",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "href": "Plot/7 quarto/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\ndraft:true",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/6 quarto parameters.html",
+    "href": "Plot/7 quarto/6 quarto parameters.html",
+    "title": "quarto parameters",
+    "section": "",
+    "text": "Code\nlibrary(quarto)\nquarto_render(\"_parameters in R.qmd\"\n,output_file='R.html'\n,execute_params = list(name='new me',key=9999))",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto parameters"
+    ]
+  },
+  {
+    "objectID": "Plot/7 quarto/6 quarto parameters.html#render-qmd-file-with-parameters-input",
+    "href": "Plot/7 quarto/6 quarto parameters.html#render-qmd-file-with-parameters-input",
+    "title": "quarto parameters",
+    "section": "",
+    "text": "Code\nlibrary(quarto)\nquarto_render(\"_parameters in R.qmd\"\n,output_file='R.html'\n,execute_params = list(name='new me',key=9999))",
+    "crumbs": [
+      "Plot",
+      "7 quarto",
+      "quarto parameters"
+    ]
+  },
+  {
+    "objectID": "other/6 google analytics/1 google analytics.html",
+    "href": "other/6 google analytics/1 google analytics.html",
+    "title": "google analytic in R",
+    "section": "",
+    "text": "1 package\n\n\nCode\n# Libraries\nlibrary(googleAnalyticsR)\nlibrary(gargle)\nlibrary(tidyverse)\nlibrary(plotly)\nlibrary(lubridate)\n\n\n\n\n2 API\n\n\nCode\n# Access\nga_auth(email=\"verykoala@gmail.com\")\nga_account_list(\"ga4\")\n\n\n# A tibble: 4 × 4\n  account_name accountId property_name           propertyId\n  &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;     \n1 verykoala    30370450  verykoala - GA4         431072878 \n2 verykoala    30370450  drinking                431975107 \n3 Demo Account 54516992  GA4 - Flood-It!         153293282 \n4 Demo Account 54516992  GA4 - Google Merch Shop 213025502 \n\n\n\n\n3 download data\n\n\nCode\nmy_property_id &lt;- 431975107\nfrom_date &lt;- \"2023-01-01\"\nto_date &lt;- \"2024-12-31\"\n           \noverall &lt;- ga_data(\n  my_property_id,\n  metrics = c(\"activeUsers\", \"newUsers\",\"sessions\", \"screenPageViews\"),\n  date_range = c(from_date, to_date)\n  )\n\n\n\n\nCode\noverall\n\n\n# A tibble: 1 × 4\n  activeUsers newUsers sessions screenPageViews\n        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n1          85       92      401            2193\n\n\n\n\nCode\n# By Country\ncountry &lt;- ga_data(\n  my_property_id,\n  dimensions = c(\"country\"),\n  metrics = c(\"activeUsers\", \"newUsers\",\"sessions\", \"screenPageViews\"),\n  date_range = c(from_date, to_date)\n)\n\ncountry\n\n\n# A tibble: 18 × 5\n   country        activeUsers newUsers sessions screenPageViews\n   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n 1 Hong Kong               32       23      107             452\n 2 China                   27       30      242            1449\n 3 United States           14       11       19              94\n 4 Thailand                 6        2       14              87\n 5 Japan                    5        4        5              13\n 6 Ireland                  4        4        4               4\n 7 Macao                    4        4       20              58\n 8 United Kingdom           3        3        3               3\n 9 Malaysia                 2        2        4               9\n10 Singapore                2        0        4              11\n11 Sweden                   2        2        2               2\n12 (not set)                1        1        1               1\n13 Argentina                1        1        1               1\n14 Australia                1        1        1               1\n15 Canada                   1        1        1               3\n16 Iran                     1        1        1               3\n17 South Korea              1        1        2               1\n18 Taiwan                   1        1        1               1\n\n\n\n\nCode\nfig &lt;- plot_ly(data=country,x = ~sessions,y=~country,text=~sessions, type = \"bar\",orientation = 'h')%&gt;% \n  layout(title = 'Vistors',yaxis = list(title='Regions',categoryorder = \"total ascending\"),\n         images = list(  \n      list(  \n        source = base64enc::dataURI(file = \"images/google_analytics-ar21.webp\")\n        ,xref = \"paper\"\n        ,yref = \"paper\" \n        ,x = 0.9\n        ,y = 0.3\n        ,sizex = 0.3\n        ,sizey = 0.3\n       ,xanchor=\"right\"  \n      )  \n         \n         )\n)\n\nfig\n\n\n\n\n\n\n\n\nCode\nsample &lt;- ga_data(\n  my_property_id,\n  dimensions = c(\"date\",\"dayOfWeek\"),\n  metrics = c(\"activeUsers\", \"newUsers\",\"sessions\", \"screenPageViews\"),\n  date_range = c(from_date, to_date)\n) %&gt;% \narrange(desc(date)) %&gt;% mutate(weekend_date=floor_date(date, \"week\")+7)\n\nsample\n\n\n# A tibble: 100 × 7\n   date       dayOfWeek activeUsers newUsers sessions screenPageViews\n   &lt;date&gt;     &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n 1 2024-12-13 5                   4        2       12              29\n 2 2024-12-12 4                   2        1        2               2\n 3 2024-12-07 6                   2        2        2               2\n 4 2024-12-06 5                   3        1        4              14\n 5 2024-12-05 4                   2        0        3               5\n 6 2024-12-04 3                   2        0        7              27\n 7 2024-12-03 2                   3        1        8              47\n 8 2024-12-02 1                   2        0        4              29\n 9 2024-12-01 0                   3        1        4              26\n10 2024-11-17 0                   2        0        4              16\n# ℹ 90 more rows\n# ℹ 1 more variable: weekend_date &lt;date&gt;\n\n\nCode\nsample002=sample %&gt;% group_by(weekend_date) %&gt;% summarise(activeUsers=sum(activeUsers)\n                                                          ,sessions=sum(sessions))\n\n\n\n\nCode\nfig &lt;- plot_ly(data = sample002, x = ~weekend_date, y = ~sessions,mode = 'lines')%&gt;% layout(title = 'Vistors',images = list(  \n      list(  \n        source = base64enc::dataURI(file = \"images/google_analytics-ar21.webp\")\n        ,xref = \"paper\"\n        ,yref = \"paper\" \n        ,x = 0.4\n        ,y = 0.9\n        ,sizex = 0.3\n        ,sizey = 0.3\n       ,xanchor=\"left\"  \n      )  \n    )\n    ) \nfig\n\n\n\n\n\n\n\n\n4 reference:\nhttps://www.listendata.com/2023/09/how-to-use-google-analytics-in-r.html\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "6 google analytics",
+      "google analytic in R"
+    ]
+  },
+  {
+    "objectID": "other/6 other/1 chromote.html",
+    "href": "other/6 other/1 chromote.html",
+    "title": "chromote",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\nlibrary(chromote)\n\n\n\n\nCode\npackageVersion(\"chromote\")\n\n\n\n1 create view\n\n\nCode\nlibrary(chromote)\n\nb &lt;- ChromoteSession$new()\n\n# In a web browser, open a viewer for the headless browser. Works best with\n# Chromium-based browsers.\nb$view()\n\n\n\n\nCode\nb$Browser$getVersion()\n\n\n\n\n2 go to page\n\n\nCode\nb$Page$navigate(\"https://www.r-project.org/\")\n\n\n\n\n3 take picture\n\n\nCode\n# Saves to screenshot.png\nb$screenshot()\n\n\n\n\nCode\n# Takes a screenshot of elements picked out by CSS selector\nis_interactive &lt;- interactive() # Display screenshot if interactive\nb$screenshot(\"sidebar.png\", selector = \"h1\" ,show = is_interactive)\n\n\n\n\n4 take picture as pdf\n\n\nCode\nb$screenshot_pdf(filename='page.pdf')\n\n\n\n\n5 Reference:\nhttps://rstudio.github.io/chromote/\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "6 other",
+      "chromote"
+    ]
+  },
+  {
+    "objectID": "other/6 other/2 translation.html",
+    "href": "other/6 other/2 translation.html",
+    "title": "Translation",
+    "section": "",
+    "text": "Code\nlibrary(polyglotr)\n\n\n\n1 Translation word\n\n\nCode\nword_translation &lt;- linguee_word_translation(\"fruit\", source_language = \"en\", target_language = \"zh\")\n\nword_translation\n\n\n[1] \"水果\" \"果香\" \"果子\" \"果品\" \"实\"   \"檎\"  \n\n\n\n\n2 translate sentences\n\n\nCode\ngoogle_get_supported_languages()\n\n\n# A tibble: 194 × 2\n   Language  `ISO-639 code`\n   &lt;chr&gt;     &lt;chr&gt;         \n 1 Abkhaz    ab            \n 2 Acehnese  ace           \n 3 Acholi    ach           \n 4 Afrikaans af            \n 5 Albanian  sq            \n 6 Alur      alz           \n 7 Amharic   am            \n 8 Arabic    ar            \n 9 Armenian  hy            \n10 Assamese  as            \n# ℹ 184 more rows\n\n\n\n\nCode\ntexts &lt;- c(\"Hello, how are you?\", \n           \"I love programming!\", \n           \"This is a test.\")\n\nlanguages &lt;- c(\"es\", \"fr\", \"zh-CN\")\n\n\ncreate_translation_table(texts, languages)\n\n\n        original_word                     es                          fr\n1 Hello, how are you?     ¿Hola, cómo estás? Bonjour comment allez-vous?\n2 I love programming! ¡Me encanta programar!  J'adore la programmation !\n3     This is a test.    Esto es una prueba.           Ceci est un test.\n           zh-CN\n1       你好吗？\n2   我喜欢编程！\n3 这是一个测试。\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Other",
+      "6 other",
+      "Translation"
+    ]
+  },
+  {
+    "objectID": "data manipulation/4 data table.html",
+    "href": "data manipulation/4 data table.html",
+    "title": "Data table",
+    "section": "",
+    "text": "With the gt package, anyone can make wonderful-looking tables using the R programming language. The gt philosophy: we can construct a wide variety of useful tables with a cohesive set of table parts. These include the table header, the stub, the column labels and spanner column labels, the table body, and the table footer.\n\n\n\n\nCode\nlibrary(gt)\n\n\n\n\nCode\nlibrary(gt)\n\n# Define the start and end dates for the data range\nstart_date &lt;- \"2010-06-07\"\nend_date &lt;- \"2010-06-14\"\n\n# Create a gt table based on preprocessed\n# `sp500` table data\nsp500 |&gt;\n  dplyr::filter(date &gt;= start_date & date &lt;= end_date) |&gt;\n  dplyr::select(-adj_close) |&gt;\n  gt() |&gt;\n  tab_header(\n    # title\n    title = \"S&P 500\",\n    # subtitle\n    subtitle = glue::glue(\"{start_date} to {end_date}\")\n  ) |&gt;\n  # format currency\n  fmt_currency() |&gt;\n  # format date\n  fmt_date(columns = date, date_style = \"wd_m_day_year\") |&gt;\n  # format suffixing\n  fmt_number(columns = volume, suffixing = TRUE) %&gt;% \n \n  # foot note\n   tab_source_note(\n    source_note = \"Source: SP 500\"\n  ) %&gt;% \n\n  # make images url to images\n  #gt_img_rows(columns = image, img_source = \"web\", height = 120) %&gt;% \n  # align columns\n  cols_align(\n  align = c(\"center\"),\n  columns = everything()\n)\n\n\n\n\n\n\n\n\nS&P 500\n\n\n2010-06-07 to 2010-06-14\n\n\ndate\nopen\nhigh\nlow\nclose\nvolume\n\n\n\n\nMon, Jun 14, 2010\n$1,095.00\n$1,105.91\n$1,089.03\n$1,089.63\n4.43B\n\n\nFri, Jun 11, 2010\n$1,082.65\n$1,092.25\n$1,077.12\n$1,091.60\n4.06B\n\n\nThu, Jun 10, 2010\n$1,058.77\n$1,087.85\n$1,058.77\n$1,086.84\n5.14B\n\n\nWed, Jun 9, 2010\n$1,062.75\n$1,077.74\n$1,052.25\n$1,055.69\n5.98B\n\n\nTue, Jun 8, 2010\n$1,050.81\n$1,063.15\n$1,042.17\n$1,062.00\n6.19B\n\n\nMon, Jun 7, 2010\n$1,065.84\n$1,071.36\n$1,049.86\n$1,050.47\n5.47B\n\n\n\nSource: SP 500\n\n\n\n\n\n\n\n\n\n\nThere are several R packages that either use gt to generate tabular outputs or extend gt in amazing ways. Here is a short list of some of these great packages:\n\ngtsummary (GITHUB, WEBSITE)\ngtExtras (GITHUB, WEBSITE)\npointblank (GITHUB, WEBSITE)\ntfrmt (GITHUB, WEBSITE)\ngto (GITHUB)",
+    "crumbs": [
+      "data manipulation",
+      "Data table"
+    ]
+  },
+  {
+    "objectID": "data manipulation/4 data table.html#packages-that-use-or-extend-gt",
+    "href": "data manipulation/4 data table.html#packages-that-use-or-extend-gt",
+    "title": "Data table",
+    "section": "",
+    "text": "There are several R packages that either use gt to generate tabular outputs or extend gt in amazing ways. Here is a short list of some of these great packages:\n\ngtsummary (GITHUB, WEBSITE)\ngtExtras (GITHUB, WEBSITE)\npointblank (GITHUB, WEBSITE)\ntfrmt (GITHUB, WEBSITE)\ngto (GITHUB)",
+    "crumbs": [
+      "data manipulation",
+      "Data table"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#create-database-file-pythonsqlite.db-and-copy-mtcars-data-and-iris-data-into-database",
+    "href": "data manipulation/6 SQL database.html#create-database-file-pythonsqlite.db-and-copy-mtcars-data-and-iris-data-into-database",
+    "title": "SQL database with R",
+    "section": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database",
+    "text": "1.1 create database file pythonsqlite.db and copy mtcars data and iris data into database\n\n\nCode\nmtcars=cbind(newColName = rownames(mtcars), mtcars)\n\n\n\n\nCode\n# Create an ephemeral in-memory RSQLite database\ncon &lt;- dbConnect(RSQLite::SQLite(), \"my_sql_database\")\n\n# view database on IDE\nconnection_view(con)\n\n\n\n\nCode\ndbWriteTable(con, \"mtcars\", mtcars,overwrite=TRUE)\ndbWriteTable(con, \"iris\", iris,overwrite=TRUE)",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#check-all-table-in-database",
+    "href": "data manipulation/6 SQL database.html#check-all-table-in-database",
+    "title": "SQL database with R",
+    "section": "1.2 check all table in database",
+    "text": "1.2 check all table in database\n\n\nCode\ndbListTables(con)\n\n\n[1] \"iris\"   \"mtcars\"",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#select",
+    "href": "data manipulation/6 SQL database.html#select",
+    "title": "SQL database with R",
+    "section": "2.1 select",
+    "text": "2.1 select\n\n\nCode\nsql =\"SELECT * FROM mtcars LIMIT 3\"\ntable=dbGetQuery(con,sql)\ntable\n\n\n     newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1     Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2 Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3    Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#renaming-column",
+    "href": "data manipulation/6 SQL database.html#renaming-column",
+    "title": "SQL database with R",
+    "section": "2.2 Renaming column",
+    "text": "2.2 Renaming column\n\n\nCode\nsql=\"select mpg as new_mpg from mtcars\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n  new_mpg\n1    21.0\n2    21.0\n3    22.8\n4    21.4\n5    18.7\n6    18.1",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#create-column",
+    "href": "data manipulation/6 SQL database.html#create-column",
+    "title": "SQL database with R",
+    "section": "2.3 create column",
+    "text": "2.3 create column\n\n\nCode\nsql=\"select mpg+1 as new_mpg,mpg from mtcars\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n  new_mpg  mpg\n1    22.0 21.0\n2    22.0 21.0\n3    23.8 22.8\n4    22.4 21.4\n5    19.7 18.7\n6    19.1 18.1",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#filter-rows",
+    "href": "data manipulation/6 SQL database.html#filter-rows",
+    "title": "SQL database with R",
+    "section": "2.4 Filter rows",
+    "text": "2.4 Filter rows\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n         newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n4 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n5           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n6        Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n\n\n\n2.4.1 Filters with AND conditions\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100 and drat&lt;3\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n          newColName  mpg cyl disp  hp drat   wt  qsec vs am gear carb\n1            Valiant 18.1   6  225 105 2.76 3.46 20.22  1  0    3    1\n2 Cadillac Fleetwood 10.4   8  472 205 2.93 5.25 17.98  0  0    3    4\n3   Dodge Challenger 15.5   8  318 150 2.76 3.52 16.87  0  0    3    2\n\n\n\n\n2.4.2 Filters with or conditions\n\n\nCode\nsql=\"select * from mtcars where hp&gt;100 or drat&lt;3\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n         newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n4 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n5           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n6        Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#append",
+    "href": "data manipulation/6 SQL database.html#append",
+    "title": "SQL database with R",
+    "section": "2.5 Append",
+    "text": "2.5 Append\n\n2.5.1 append by row\n\n\nCode\nsql=\"select * from mtcars union all select * from mtcars \"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n         newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\n2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\n3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\n4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\n5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\n6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\n2.5.2 append by column\n\n\n2.5.3 Dropping NA values\n\n\n2.5.4 keep NA values",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#group-by",
+    "href": "data manipulation/6 SQL database.html#group-by",
+    "title": "SQL database with R",
+    "section": "2.6 group by",
+    "text": "2.6 group by\n\n2.6.1 average,min,max,sum\n\n\nCode\nsql=\"select AVG(hp),min(hp),max(hp),sum(hp) from mtcars\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n   AVG(hp) min(hp) max(hp) sum(hp)\n1 146.6875      52     335    4694\n\n\n\n\n2.6.2 count record and count distinct record\n\n\nCode\nsql=\"select vs, count(*),count(distinct cyl) from mtcars group by vs\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n  vs count(*) count(distinct cyl)\n1  0       18                   3\n2  1       14                   2",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#order-rows",
+    "href": "data manipulation/6 SQL database.html#order-rows",
+    "title": "SQL database with R",
+    "section": "2.7 order rows",
+    "text": "2.7 order rows\n\n\nCode\nsql=\"select * from mtcars order by mpg\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n           newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1  Cadillac Fleetwood 10.4   8  472 205 2.93 5.250 17.98  0  0    3    4\n2 Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4\n3          Camaro Z28 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4\n4          Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n5   Chrysler Imperial 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4\n6       Maserati Bora 15.0   8  301 335 3.54 3.570 14.60  0  1    5    8\n\n\n\n2.7.1 Sort in descending order\n\n\nCode\nsql=\"select * from mtcars order by mpg desc\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n      newColName  mpg cyl  disp  hp drat    wt  qsec vs am gear carb\n1 Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1\n2       Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1\n3    Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2\n4   Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2\n5      Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1\n6  Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2\n\n\n\n\n2.7.2 Arrange by multiple variables\n\n\nCode\nsql=\"select * from mtcars order by mpg ,cyl\"\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n           newColName  mpg cyl disp  hp drat    wt  qsec vs am gear carb\n1  Cadillac Fleetwood 10.4   8  472 205 2.93 5.250 17.98  0  0    3    4\n2 Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4\n3          Camaro Z28 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4\n4          Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4\n5   Chrysler Imperial 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4\n6       Maserati Bora 15.0   8  301 335 3.54 3.570 14.60  0  1    5    8",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#join",
+    "href": "data manipulation/6 SQL database.html#join",
+    "title": "SQL database with R",
+    "section": "2.8 join",
+    "text": "2.8 join\n\n2.8.1 inner_join\n\n\nCode\nsql=\"select a.newColName,a.mpg,b.mpg as new_mpg from mtcars a left join mtcars b on a.newColName=b.newColName\"\n\ntable=dbGetQuery(con,sql)\nhead(table)\n\n\n         newColName  mpg new_mpg\n1         Mazda RX4 21.0    21.0\n2     Mazda RX4 Wag 21.0    21.0\n3        Datsun 710 22.8    22.8\n4    Hornet 4 Drive 21.4    21.4\n5 Hornet Sportabout 18.7    18.7\n6           Valiant 18.1    18.1\n\n\n\n\n2.8.2 full join\n\n\n2.8.3 left join\n\n\n2.8.4 anti join",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#reshape-tables",
+    "href": "data manipulation/6 SQL database.html#reshape-tables",
+    "title": "SQL database with R",
+    "section": "2.9 Reshape tables",
+    "text": "2.9 Reshape tables\n\n2.9.1 Gather data long(wide to long)\n\n\n2.9.2 Spread data wide (long to wide)",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#string",
+    "href": "data manipulation/6 SQL database.html#string",
+    "title": "SQL database with R",
+    "section": "2.10 string",
+    "text": "2.10 string\n\n2.10.1 upper case\n\n\n2.10.2 lower case\n\n\n2.10.3 match\n\n\n2.10.4 concatenation\n\n\n2.10.5 replace\n\n\n2.10.6 extract",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#date",
+    "href": "data manipulation/6 SQL database.html#date",
+    "title": "SQL database with R",
+    "section": "2.11 date",
+    "text": "2.11 date",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#create-table-into-database",
+    "href": "data manipulation/6 SQL database.html#create-table-into-database",
+    "title": "SQL database with R",
+    "section": "2.12 create table into database",
+    "text": "2.12 create table into database\n\n\nCode\nsql=\"create table if not exists new_mtcars as select * from mtcars order by mpg ,cyl\"\ndbSendQuery(con,sql)\n\n\n&lt;SQLiteResult&gt;\n  SQL  create table if not exists new_mtcars as select * from mtcars order by mpg ,cyl\n  ROWS Fetched: 0 [complete]\n       Changed: 0\n\n\nCode\ndbListTables(con)\n\n\n[1] \"iris\"       \"mtcars\"     \"new_mtcars\"",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#delete-table-in-database",
+    "href": "data manipulation/6 SQL database.html#delete-table-in-database",
+    "title": "SQL database with R",
+    "section": "2.13 delete table in database",
+    "text": "2.13 delete table in database\n\n\nCode\nsql=\"drop table if  exists  new_mtcars\"\ndbSendQuery(con,sql)\n\n\n&lt;SQLiteResult&gt;\n  SQL  drop table if  exists  new_mtcars\n  ROWS Fetched: 0 [complete]\n       Changed: 0\n\n\nCode\ndbListTables(con)\n\n\n[1] \"iris\"   \"mtcars\"",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/6 SQL database.html#edit-table-in-database",
+    "href": "data manipulation/6 SQL database.html#edit-table-in-database",
+    "title": "SQL database with R",
+    "section": "2.14 edit table in database",
+    "text": "2.14 edit table in database",
+    "crumbs": [
+      "data manipulation",
+      "SQL database with R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/5 resample.html",
+    "href": "data manipulation/5 resample.html",
+    "title": "resample",
+    "section": "",
+    "text": "1 k-Fold Cross-Validation\n\n\n\nCode\nk_flod_resample&lt;- vfold_cv(data, v = 10)\nk_flod_resample\n\n\n\n\n2 MONTE CARLO CROSS-VALIDATION\nfor MCCV, this proportion of the data is randomly selected each time. This results in assessment sets that are not mutually exclusive\n\n\nCode\nmc_resample&lt;- mc_cv(data, prop = 9/10, times = 20)\nmc_resample\n\n\n\n\n3 The Bootstrap\nA bootstrap sample of the training set is a sample that is the same size as the training set but is drawn with replacement\n\n\n\nCode\nbootstraps_resample&lt;- bootstraps(data, times = 1000)\nbootstraps_resample\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "data manipulation",
+      "resample"
+    ]
   }
 ]

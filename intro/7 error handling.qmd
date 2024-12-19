@@ -1,0 +1,38 @@
+---
+title: "Error handling"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+
+# if can not location python version
+
+error: can not find Python specified in RETICULATE_PYTHON (/Library/Frameworks/Python.framework/Versions/3.12/bin/python3)
+
+## find current python version 
+
+```{bash}
+which -a python python3
+```
+
+## change python version in `.Renviron` under home folder
+
+go to home folder by Command-Shift-H
+
+```{bash}
+RETICULATE_PYTHON="/Library/Frameworks/Python.framework/Versions/3.13/bin/python3"
+```
+
+

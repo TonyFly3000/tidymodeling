@@ -1,0 +1,46 @@
+---
+title: "quarto parameters"
+subtitle: "making multiple ouput"
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+
+params:
+  name: one
+  value: 1
+---
+
+# in R
+
+## edit qmd file `_parameters in R.qmd`
+
+![](images/paste-2.png)
+
+## render qmd file with parameters input
+
+```{r}
+#| eval: false
+library(quarto)
+quarto_render("_parameters in R.qmd"
+,output_file='R.html'
+,execute_params = list(name='new me',key=9999))
+```
+
+# Reference
+
+https://quarto.org/docs/computations/parameters.html

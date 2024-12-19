@@ -1,0 +1,49 @@
+---
+title: "Dashboard"
+
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+css: hscroll.css
+---
+
+# quarto dashboard
+
+````{markdown filename="_dashboard_r.qmd"}
+---
+title: "First quarto dashboard"
+format: dashboard
+---
+
+
+```{r}
+a=1
+a
+```
+
+
+````
+
+
+
+
+
+
+# Reference:
+
+https://www.youtube.com/watch?v=HW7QbqI4fH0

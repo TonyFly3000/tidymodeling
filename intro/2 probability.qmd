@@ -277,12 +277,10 @@ Q4=1/(4*3*2*1)
 Q4
 ```
 
-## Question 5.what is probability of choose 4 number from 4 number and 4 correct
+## Question 5.what is probability of choose 4 number from 4 number and 4 correct(all correct)
 
-```{r}
-Q5=1/(4*3*2*1)
-Q5
-```
+Its same as all correct. since 3 correct the last one will be also correct
+
 
 So all event total probability is 1
 
