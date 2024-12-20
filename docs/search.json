@@ -6766,7 +6766,7 @@
     "href": "data manipulation/4 data table.html",
     "title": "Data table",
     "section": "",
-    "text": "With the gt package, anyone can make wonderful-looking tables using the R programming language. The gt philosophy: we can construct a wide variety of useful tables with a cohesive set of table parts. These include the table header, the stub, the column labels and spanner column labels, the table body, and the table footer.\n\n\n\n\nCode\nlibrary(gt)\n\n\n\n\nCode\nlibrary(gt)\n\n# Define the start and end dates for the data range\nstart_date &lt;- \"2010-06-07\"\nend_date &lt;- \"2010-06-14\"\n\n# Create a gt table based on preprocessed\n# `sp500` table data\nsp500 |&gt;\n  dplyr::filter(date &gt;= start_date & date &lt;= end_date) |&gt;\n  dplyr::select(-adj_close) |&gt;\n  gt() |&gt;\n  tab_header(\n    # title\n    title = \"S&P 500\",\n    # subtitle\n    subtitle = glue::glue(\"{start_date} to {end_date}\")\n  ) |&gt;\n  # format currency\n  fmt_currency() |&gt;\n  # format date\n  fmt_date(columns = date, date_style = \"wd_m_day_year\") |&gt;\n  # format suffixing\n  fmt_number(columns = volume, suffixing = TRUE) %&gt;% \n \n  # foot note\n   tab_source_note(\n    source_note = \"Source: SP 500\"\n  ) %&gt;% \n\n  # make images url to images\n  #gt_img_rows(columns = image, img_source = \"web\", height = 120) %&gt;% \n  # align columns\n  cols_align(\n  align = c(\"center\"),\n  columns = everything()\n)\n\n\n\n\n\n\n\n\nS&P 500\n\n\n2010-06-07 to 2010-06-14\n\n\ndate\nopen\nhigh\nlow\nclose\nvolume\n\n\n\n\nMon, Jun 14, 2010\n$1,095.00\n$1,105.91\n$1,089.03\n$1,089.63\n4.43B\n\n\nFri, Jun 11, 2010\n$1,082.65\n$1,092.25\n$1,077.12\n$1,091.60\n4.06B\n\n\nThu, Jun 10, 2010\n$1,058.77\n$1,087.85\n$1,058.77\n$1,086.84\n5.14B\n\n\nWed, Jun 9, 2010\n$1,062.75\n$1,077.74\n$1,052.25\n$1,055.69\n5.98B\n\n\nTue, Jun 8, 2010\n$1,050.81\n$1,063.15\n$1,042.17\n$1,062.00\n6.19B\n\n\nMon, Jun 7, 2010\n$1,065.84\n$1,071.36\n$1,049.86\n$1,050.47\n5.47B\n\n\n\nSource: SP 500\n\n\n\n\n\n\n\n\n\n\nThere are several R packages that either use gt to generate tabular outputs or extend gt in amazing ways. Here is a short list of some of these great packages:\n\ngtsummary (GITHUB, WEBSITE)\ngtExtras (GITHUB, WEBSITE)\npointblank (GITHUB, WEBSITE)\ntfrmt (GITHUB, WEBSITE)\ngto (GITHUB)",
+    "text": "With the gt package, anyone can make wonderful-looking tables using the R programming language. The gt philosophy: we can construct a wide variety of useful tables with a cohesive set of table parts. These include the table header, the stub, the column labels and spanner column labels, the table body, and the table footer.\n\n\n\n\nCode\nlibrary(gt)\n\n\n\n\nCode\nlibrary(gt)\nlibrary(gtExtras)\n\n# Define the start and end dates for the data range\nstart_date &lt;- \"2010-06-07\"\nend_date &lt;- \"2010-06-14\"\n\n# Create a gt table based on preprocessed\n# `sp500` table data\nsp500 |&gt;\n  dplyr::filter(date &gt;= start_date & date &lt;= end_date) |&gt;\n  dplyr::select(-adj_close) |&gt;\n  gt() |&gt;\n  tab_header(\n    # title\n    title = \"S&P 500\",\n    # subtitle\n    subtitle = glue::glue(\"{start_date} to {end_date}\")\n  ) |&gt;\n  # format currency\n  fmt_currency() |&gt;\n  # format date\n  fmt_date(columns = date, date_style = \"wd_m_day_year\") |&gt;\n  # format suffixing\n  fmt_number(columns = volume, suffixing = TRUE) %&gt;% \n \n  # foot note with link\n   tab_source_note(\n    gt_hyperlink('Reference', 'https://gt.rstudio.com/')\n  ) %&gt;% \n\n  # make images url to images\n  #gt_img_rows(columns = image, img_source = \"web\", height = 120) %&gt;% \n  # align columns\n  cols_align(\n  align = c(\"center\"),\n  columns = everything()\n)\n\n\n\n\n\n\n\n\nS&P 500\n\n\n2010-06-07 to 2010-06-14\n\n\ndate\nopen\nhigh\nlow\nclose\nvolume\n\n\n\n\nMon, Jun 14, 2010\n$1,095.00\n$1,105.91\n$1,089.03\n$1,089.63\n4.43B\n\n\nFri, Jun 11, 2010\n$1,082.65\n$1,092.25\n$1,077.12\n$1,091.60\n4.06B\n\n\nThu, Jun 10, 2010\n$1,058.77\n$1,087.85\n$1,058.77\n$1,086.84\n5.14B\n\n\nWed, Jun 9, 2010\n$1,062.75\n$1,077.74\n$1,052.25\n$1,055.69\n5.98B\n\n\nTue, Jun 8, 2010\n$1,050.81\n$1,063.15\n$1,042.17\n$1,062.00\n6.19B\n\n\nMon, Jun 7, 2010\n$1,065.84\n$1,071.36\n$1,049.86\n$1,050.47\n5.47B\n\n\n\nReference\n\n\n\n\n\n\n\n\n\n\nThere are several R packages that either use gt to generate tabular outputs or extend gt in amazing ways. Here is a short list of some of these great packages:\n\ngtsummary (GITHUB, WEBSITE)\ngtExtras (GITHUB, WEBSITE)\npointblank (GITHUB, WEBSITE)\ntfrmt (GITHUB, WEBSITE)\ngto (GITHUB)\n\n\n\n\nhttps://gt.rstudio.com/",
     "crumbs": [
       "data manipulation",
       "Data table"
@@ -6968,6 +6968,39 @@
     "crumbs": [
       "data manipulation",
       "resample"
+    ]
+  },
+  {
+    "objectID": "data manipulation/4 data table.html#reference",
+    "href": "data manipulation/4 data table.html#reference",
+    "title": "Data table",
+    "section": "",
+    "text": "https://gt.rstudio.com/",
+    "crumbs": [
+      "data manipulation",
+      "Data table"
+    ]
+  },
+  {
+    "objectID": "data manipulation/4 data table.html#pages-data",
+    "href": "data manipulation/4 data table.html#pages-data",
+    "title": "Data table",
+    "section": "2.1 pages data",
+    "text": "2.1 pages data\n\n\nCode\nlibrary(rmarkdown)\nmtcars %&gt;% paged_table()",
+    "crumbs": [
+      "data manipulation",
+      "Data table"
+    ]
+  },
+  {
+    "objectID": "data manipulation/4 data table.html#reference-1",
+    "href": "data manipulation/4 data table.html#reference-1",
+    "title": "Data table",
+    "section": "2.2 reference:",
+    "text": "2.2 reference:\nhttps://rstudio.github.io/distill/tables.html",
+    "crumbs": [
+      "data manipulation",
+      "Data table"
     ]
   }
 ]

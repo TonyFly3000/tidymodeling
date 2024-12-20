@@ -33,6 +33,7 @@ library(gt)
 
 ```{r}
 library(gt)
+library(gtExtras)
 
 # Define the start and end dates for the data range
 start_date <- "2010-06-07"
@@ -57,9 +58,9 @@ sp500 |>
   # format suffixing
   fmt_number(columns = volume, suffixing = TRUE) %>% 
  
-  # foot note
+  # foot note with link
    tab_source_note(
-    source_note = "Source: SP 500"
+    gt_hyperlink('Reference', 'https://gt.rstudio.com/')
   ) %>% 
 
   # make images url to images
