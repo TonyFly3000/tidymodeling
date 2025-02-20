@@ -1,0 +1,1526 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Keras regression model\"\n",
+        "subtitle: \"with whiskynote.be data\"\n",
+        "author: \"Tony Duan\"\n",
+        "\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "\n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    toc-location: right\n",
+        "    code-fold: show\n",
+        "    code-tools: true\n",
+        "    number-sections: true\n",
+        "    code-block-bg: true\n",
+        "    code-block-border-left: \"#31BAE9\"\n",
+        "---\n"
+      ],
+      "id": "c74a1a33"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import tensorflow as tf\n",
+        "\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import matplotlib.pylab as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "from siuba.siu import call\n",
+        "from siuba import _, mutate, filter, group_by, summarize,show_query\n",
+        "from siuba import *\n",
+        "\n",
+        "from siuba.data import mtcars,penguins"
+      ],
+      "id": "ebea0ab1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# read in data"
+      ],
+      "id": "b8342c19"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "data=pd.read_excel('./output/all_page_bottle_list_all.xlsx')"
+      ],
+      "id": "4cdbc0f8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "list(data)"
+      ],
+      "id": "3ce6975b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data.info()"
+      ],
+      "id": "e5220e2f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import re\n",
+        "data001=data>> filter(_.all_page_score >=70\n",
+        "                      ,_.all_page_score <100\n",
+        "                      ,_.bottle_review_Nose !='no comment'\n",
+        "                      ,_.bottle_review_Mouth !='no comment'\n",
+        "                      ,_.bottle_review_Finish !='no comment'\n",
+        "                      ) >>mutate(\n",
+        "                      review=_.bottle_name+_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish\n",
+        "                      )>>mutate(review=_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))>>mutate(review_len=_.review.str.count(' ') + 1)\n"
+      ],
+      "id": "17fb2220",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data001['review_flag']= np.where(data001['all_page_score']>=90, 1, 0)"
+      ],
+      "id": "c3852864",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# shuffle data"
+      ],
+      "id": "f0a9ec2d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data002=data001.sample(frac=1)"
+      ],
+      "id": "1540b0ca",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data002.to_excel('data002.xlsx')"
+      ],
+      "id": "61ec870a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data002.info()"
+      ],
+      "id": "7fa5fdfd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review=data002['review'].tolist()"
+      ],
+      "id": "d281aa89",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review[2]"
+      ],
+      "id": "ba3fc441",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_flag=data002[\"review_flag\"].tolist()"
+      ],
+      "id": "8d896ed9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_score=data002[\"all_page_score\"].tolist()"
+      ],
+      "id": "31321d2c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_flag[2]"
+      ],
+      "id": "a109df5a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from collections import Counter\n",
+        "Counter(review_flag)"
+      ],
+      "id": "48bfa278",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(len(review))\n",
+        "\n",
+        "print(len(review_flag))"
+      ],
+      "id": "8caad4d1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# transfer data"
+      ],
+      "id": "ee4fa628"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import tensorflow as tf\n",
+        "import numpy as np \n",
+        "from tensorflow.keras.layers import Embedding, LSTM, Dense, Bidirectional\n",
+        "from tensorflow.keras.models import Sequential\n",
+        "from tensorflow.keras.preprocessing.text import Tokenizer\n",
+        "from tensorflow.keras.preprocessing.sequence import pad_sequences"
+      ],
+      "id": "56fb793c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Initialize the Tokenizer class\n",
+        "tokenizer = Tokenizer()\n",
+        "\n",
+        "# Generate the word index dictionary\n",
+        "tokenizer.fit_on_texts(review)\n",
+        "\n",
+        "# Define the total words. You add 1 for the index `0` which is just the padding token.\n",
+        "total_words = len(tokenizer.word_index) + 1"
+      ],
+      "id": "8ed5c9a3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(f'total words: {total_words}')"
+      ],
+      "id": "fb9bcdfa",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Convert labels lists to numpy array\n",
+        "review_flag_final = np.array(review_flag)\n",
+        "review_score_final = np.array(review_score)"
+      ],
+      "id": "efaac605",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Parameters\n",
+        "vocab_size = 7000\n",
+        "max_length = 300\n",
+        "embedding_dim = 16\n",
+        "#trunc_type='pre'\n",
+        "trunc_type='post'\n",
+        "oov_tok = \"<OOV>\""
+      ],
+      "id": "3592ee0e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from tensorflow.keras.preprocessing.text import Tokenizer\n",
+        "from tensorflow.keras.preprocessing.sequence import pad_sequences\n",
+        "\n",
+        "# Initialize the Tokenizer class\n",
+        "tokenizer = Tokenizer(num_words = vocab_size, oov_token=oov_tok)\n",
+        "\n",
+        "# Generate the word index dictionary for the training sentences\n",
+        "tokenizer.fit_on_texts(review)\n",
+        "word_index = tokenizer.word_index\n",
+        "\n",
+        "# Generate and pad the training sequences\n",
+        "sequences = tokenizer.texts_to_sequences(review)\n",
+        "padded = pad_sequences(sequences,maxlen=max_length, truncating=trunc_type)"
+      ],
+      "id": "8d52291b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(review[4])"
+      ],
+      "id": "7527de51",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(padded[4])"
+      ],
+      "id": "fae558ac",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "reverse_word_index = dict([(value, key) for (key, value) in word_index.items()])            \n",
+        "\n",
+        "def decode_review(text):\n",
+        "    return ' '.join([reverse_word_index.get(i, '?') for i in text])"
+      ],
+      "id": "0e9c34d7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(decode_review(padded[4]))"
+      ],
+      "id": "31aad9fb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "after tokenizer"
+      ],
+      "id": "3dca8996"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(sequences[4])"
+      ],
+      "id": "eb789d6b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_flag[4]"
+      ],
+      "id": "a4bd7665",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# using 4000 to train and 633 to test"
+      ],
+      "id": "82d1da11"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "padded_train=padded[0:4000]\n",
+        "padded_test=padded[4000:]"
+      ],
+      "id": "4641e149",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_flag_final_train=review_flag_final[0:4000]\n",
+        "review_flag_final_test=review_flag_final[4000:]"
+      ],
+      "id": "d961f24c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_socre_final_train=review_score_final[0:4000]\n",
+        "review_socre_final_test=review_score_final[4000:]"
+      ],
+      "id": "cdc20450",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## total"
+      ],
+      "id": "5e29660d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(padded)\n",
+        "len(review_flag_final)"
+      ],
+      "id": "bc163ae4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## train"
+      ],
+      "id": "a9c65884"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(padded_train)\n",
+        "len(review_flag_final_train)"
+      ],
+      "id": "f149db31",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## test"
+      ],
+      "id": "e75ff575"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(padded_test)\n",
+        "len(review_flag_final_test)"
+      ],
+      "id": "8e82ce00",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(review_flag_final_test)"
+      ],
+      "id": "ca1d5450",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## if all guess lower than 90 points then 0.72 accuracy "
+      ],
+      "id": "dbff9fd6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)"
+      ],
+      "id": "3b056103",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# dummy model\n",
+        "\n",
+        "trainning score average is 86.5"
+      ],
+      "id": "25a475bf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(review_socre_final_train)/len(review_socre_final_train)"
+      ],
+      "id": "6767aa5e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "sum(np.absolute(86.5-review_socre_final_test))/len(review_socre_final_test)"
+      ],
+      "id": "5db783ed",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# DNN regression model \n"
+      ],
+      "id": "bef5a859"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Build the model\n",
+        "model_dnn= tf.keras.Sequential([\n",
+        "    tf.keras.layers.Embedding(input_dim=vocab_size,output_dim=32),\n",
+        "    tf.keras.layers.GlobalAveragePooling1D(),\n",
+        "    tf.keras.layers.Dense(32, activation='relu'),\n",
+        "    tf.keras.layers.Dense(24, activation='relu'),\n",
+        "    tf.keras.layers.Dense(24, activation='relu'),\n",
+        "    tf.keras.layers.Dense(1)\n",
+        "])"
+      ],
+      "id": "4ca6ad3a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Initialize the optimizer\n",
+        "optimizer = tf.keras.optimizers.Adam(0.001)\n",
+        "\n",
+        "# Set the training parameters\n",
+        "model_dnn.compile(loss=tf.keras.losses.Huber(), optimizer=optimizer, metrics=[\"mae\"])"
+      ],
+      "id": "25c57966",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "model_dnn.summary()"
+      ],
+      "id": "3b4e94eb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## train model"
+      ],
+      "id": "e26fb4ba"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Train the model\n",
+        "history = model_dnn.fit(x=padded_train, y=review_socre_final_train,validation_data=(padded_test, review_socre_final_test),epochs=200,verbose=0 )\n",
+        "\n",
+        "#history = model_dnn.fit(x=padded_train, y=review_socre_final_train,validation_split=0.2,epochs=20)"
+      ],
+      "id": "5ee12023",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "loss = history.history['loss']\n",
+        "val_loss = history.history['val_loss']\n",
+        "\n",
+        "mae = history.history['mae']\n",
+        "val_mae = history.history['val_mae']\n",
+        "\n",
+        "epochs = range(len(val_loss))"
+      ],
+      "id": "86b33ab8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import matplotlib.image as mpimg\n",
+        "import matplotlib.pyplot as plt\n",
+        "#------------------------------------------------\n",
+        "# Plot training and validation loss per epoch\n",
+        "#------------------------------------------------\n",
+        "\n",
+        "plt.plot(epochs, loss, 'r', label='Training Loss')\n",
+        "plt.plot(epochs, val_loss, 'b', label='Validation Loss')\n",
+        "plt.title('DNN model Training and validation loss')\n",
+        "plt.legend()\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "9788e9da",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# import matplotlib.image as mpimg\n",
+        "# import matplotlib.pyplot as plt\n",
+        "# #------------------------------------------------\n",
+        "# # Plot training and validation loss per epoch\n",
+        "# #------------------------------------------------\n",
+        "# \n",
+        "# plt.plot(epochs, mae, 'r', label='Training mae')\n",
+        "# plt.plot(epochs, val_mae, 'b', label='Validation mae')\n",
+        "# plt.title('DNN model Training and validation mae')\n",
+        "# plt.legend()\n",
+        "# \n",
+        "# plt.show()"
+      ],
+      "id": "ac28049b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Only plot the last 80% of the epochs\n",
+        "zoom_split = int(epochs[-1] * 0.2)\n",
+        "epochs_zoom = epochs[zoom_split:]\n",
+        "val_loss_zoom = val_loss[zoom_split:]\n",
+        "loss_zoom = loss[zoom_split:]\n",
+        "\n",
+        "# Plot zoomed mae and loss\n",
+        "plt.plot(epochs_zoom, loss_zoom, 'r', label='Training Loss')\n",
+        "plt.plot(epochs_zoom, val_loss_zoom, 'b', label='Validation Loss')\n",
+        "plt.title('DNN model Training and validation loss')\n",
+        "plt.legend()\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "fa1aec9a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## predication"
+      ],
+      "id": "105bd0b9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "x = padded_test\n",
+        "y = model_dnn.predict(x)"
+      ],
+      "id": "22826eb2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(padded_test)\n",
+        "len(y)\n",
+        "len(review_socre_final_test)"
+      ],
+      "id": "74a03a3c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_socre_final_test.shape"
+      ],
+      "id": "489b0419",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y.shape"
+      ],
+      "id": "098be799",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y2 = y.flatten()"
+      ],
+      "id": "082208e7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y2.shape"
+      ],
+      "id": "1f1c5366",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "dataset = pd.DataFrame({'real': review_socre_final_test, 'predic': list(y2)}, columns=['real', 'predic'])"
+      ],
+      "id": "c68cdbef",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "dataset['predic']=round(dataset['predic'])\n",
+        "dataset['predic']=round(dataset['predic'])"
+      ],
+      "id": "82d14d37",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "dataset=dataset>> mutate(predic=if_else(_.predic <70, 70, _.predic)\n",
+        "                          ,dummy_pred=86\n",
+        "                         ,diff=_.predic-_.real \n",
+        "                         ,dummy_diff=_.dummy_pred-_.real\n",
+        "                          )>> mutate(predic=if_else(_.predic >100,100, _.predic)\n",
+        "                                     ,predic_class=if_else(_.predic >=90,1, 0)\n",
+        "                                    ,real_class=if_else(_.real>=90,1, 0)\n",
+        "                                    ,dummy_class=0\n",
+        "                          )\n",
+        "                          \n",
+        "dataset002 = pd.concat([data002[4000:].reset_index(drop=True),dataset.reset_index(drop=True)], axis=1)                    "
+      ],
+      "id": "650cd64a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "dataset002.to_excel('pred.xlsx')"
+      ],
+      "id": "d5f44339",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# mean absolute error "
+      ],
+      "id": "7991d302"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(abs(dataset002['diff']))/len(dataset002)"
+      ],
+      "id": "4c4b0a28",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(abs(dataset002['dummy_diff']))/len(dataset002)"
+      ],
+      "id": "96be5856",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(dataset002['predic']>=90)"
+      ],
+      "id": "40bed6fe",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(dataset002['real']>=90)"
+      ],
+      "id": "1abfeb7a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn import metrics\n",
+        "confusion_matrix_dt = metrics.confusion_matrix(dataset002['real_class'],dataset002['predic_class']) \n",
+        "confusion_matrix_dt"
+      ],
+      "id": "a01060f1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn import metrics\n",
+        "accuracy = metrics.accuracy_score(dataset002['real_class'],dataset002['predic_class'])  \n",
+        "accuracy"
+      ],
+      "id": "bca01e1f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn import metrics\n",
+        "accuracy = metrics.accuracy_score(dataset002['real_class'],dataset002['dummy_class'])  \n",
+        "accuracy"
+      ],
+      "id": "4ae88de4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "fig, ax = plt.subplots()\n",
+        "\n",
+        "sns.scatterplot(data=dataset,x='real',y='predic',ax=ax)\n",
+        "sns.regplot(data=dataset, x=\"real\", y=\"predic\", x_jitter=.15,ax=ax)\n",
+        "ax.set(xlim=(65, 100),ylim=(65, 100))"
+      ],
+      "id": "33743455",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# save model"
+      ],
+      "id": "3ff1ee00"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#model_dnn.save('whiskynote_score_dnn.keras')"
+      ],
+      "id": "6513c3e4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## load model"
+      ],
+      "id": "a70b638b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_model = tf.keras.models.load_model('whiskynote_score_dnn.keras')"
+      ],
+      "id": "8ae804ad",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_model.summary()"
+      ],
+      "id": "bf68e661",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# new data"
+      ],
+      "id": "1209657b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import tensorflow as tf\n",
+        "\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import matplotlib.pylab as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "from siuba.siu import call\n",
+        "from siuba import _, mutate, filter, group_by, summarize,show_query\n",
+        "from siuba import *\n",
+        "\n",
+        "from siuba.data import mtcars,penguins"
+      ],
+      "id": "dde5304b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# read in data"
+      ],
+      "id": "8eb86a2c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "new_data=pd.read_excel('./output/all_page_bottle_list_all_new.xlsx')"
+      ],
+      "id": "7676bd75",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import re\n",
+        "new_data001=new_data>> filter(_.all_page_score >=70\n",
+        "                      ,_.all_page_score <100\n",
+        "                      ,_.bottle_review_Nose !='no comment'\n",
+        "                      ,_.bottle_review_Mouth !='no comment'\n",
+        "                      ,_.bottle_review_Finish !='no comment'\n",
+        "                      ) >>mutate(\n",
+        "                      review=_.bottle_name+_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish\n",
+        "                      )>>mutate(review=_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))>>mutate(review_len=_.review.str.count(' ') + 1)\n"
+      ],
+      "id": "63cf4ffe",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_data001['review_flag']= np.where(new_data001['all_page_score']>=90, 1, 0)"
+      ],
+      "id": "efd0bf7a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# shuffle data"
+      ],
+      "id": "49e96c89"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_data001=new_data001.sample(frac=1).head(100)"
+      ],
+      "id": "832b44ba",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_review=new_data001['review'].tolist()"
+      ],
+      "id": "a8487350",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_review[2]"
+      ],
+      "id": "50daf2ce",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_review_flag=new_data001[\"review_flag\"].tolist()"
+      ],
+      "id": "6cced9d3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_review_score=new_data001[\"all_page_score\"].tolist()"
+      ],
+      "id": "5c0acde4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_review_flag[2]"
+      ],
+      "id": "fa3dedcb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from collections import Counter\n",
+        "Counter(new_review_flag)"
+      ],
+      "id": "61f587f0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(len(new_review))\n",
+        "\n",
+        "print(len(new_review_flag))"
+      ],
+      "id": "c7c6058a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# transfer data"
+      ],
+      "id": "aa1a60c8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import tensorflow as tf\n",
+        "import numpy as np \n",
+        "from tensorflow.keras.layers import Embedding, LSTM, Dense, Bidirectional\n",
+        "from tensorflow.keras.models import Sequential\n",
+        "from tensorflow.keras.preprocessing.text import Tokenizer\n",
+        "from tensorflow.keras.preprocessing.sequence import pad_sequences"
+      ],
+      "id": "7bd46e0c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Initialize the Tokenizer class\n",
+        "tokenizer = Tokenizer()\n",
+        "\n",
+        "# Generate the word index dictionary\n",
+        "# ! using model training ord index dictionary\n",
+        "tokenizer.fit_on_texts(review)\n",
+        "\n",
+        "# Define the total words. You add 1 for the index `0` which is just the padding token.\n",
+        "total_words = len(tokenizer.word_index) + 1"
+      ],
+      "id": "ad817acf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(f'total words: {total_words}')"
+      ],
+      "id": "0c63282b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Convert labels lists to numpy array\n",
+        "new_review_flag_final = np.array(new_review_flag)\n",
+        "new_review_score_final = np.array(new_review_score)"
+      ],
+      "id": "9437cb2a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Parameters\n",
+        "vocab_size = 7000\n",
+        "max_length = 300\n",
+        "embedding_dim = 16\n",
+        "#trunc_type='pre'\n",
+        "trunc_type='post'\n",
+        "oov_tok = \"<OOV>\""
+      ],
+      "id": "79ce542a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from tensorflow.keras.preprocessing.text import Tokenizer\n",
+        "from tensorflow.keras.preprocessing.sequence import pad_sequences\n",
+        "\n",
+        "# Initialize the Tokenizer class\n",
+        "tokenizer = Tokenizer(num_words = vocab_size, oov_token=oov_tok)\n",
+        "\n",
+        "# Generate the word index dictionary for the training sentences\n",
+        "# ! using model training ord index dictionary\n",
+        "tokenizer.fit_on_texts(review)\n",
+        "word_index = tokenizer.word_index\n",
+        "\n",
+        "# Generate and pad the training sequences \n",
+        "#! on new data\n",
+        "new_sequences = tokenizer.texts_to_sequences(new_review)\n",
+        "new_padded = pad_sequences(new_sequences,maxlen=max_length, truncating=trunc_type)"
+      ],
+      "id": "60a948b4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(new_review[4])"
+      ],
+      "id": "b8ff53ac",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(new_padded[4])"
+      ],
+      "id": "71dcda49",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "reverse_word_index = dict([(value, key) for (key, value) in word_index.items()])            \n",
+        "\n",
+        "def decode_review(text):\n",
+        "    return ' '.join([reverse_word_index.get(i, '?') for i in text])"
+      ],
+      "id": "dd89b469",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(decode_review(new_padded[4]))"
+      ],
+      "id": "eadb4d1b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "after tokenizer"
+      ],
+      "id": "0d35fb39"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(new_sequences[4])"
+      ],
+      "id": "4d2be4c4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "new_review_flag[4]"
+      ],
+      "id": "d1f9c6d0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# predication"
+      ],
+      "id": "172d0927"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "x = new_padded\n",
+        "y = new_model.predict(x)"
+      ],
+      "id": "592f1fd9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(x)\n",
+        "len(y)"
+      ],
+      "id": "009dfdba",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y2 = y.flatten()"
+      ],
+      "id": "c962df61",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y2.shape"
+      ],
+      "id": "734df9f9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "dataset = pd.DataFrame({'real': new_review_score_final, 'predic': list(y2)}, columns=['real', 'predic'])"
+      ],
+      "id": "15813983",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "dataset['predic']=round(dataset['predic'])\n",
+        "dataset['predic']=round(dataset['predic'])"
+      ],
+      "id": "16da9e86",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "dataset=dataset>> mutate(predic=if_else(_.predic <70, 70, _.predic)\n",
+        "                          ,dummy_pred=86\n",
+        "                         ,diff=_.predic-_.real \n",
+        "                         ,dummy_diff=_.dummy_pred-_.real\n",
+        "                          )>> mutate(predic=if_else(_.predic >100,100, _.predic)\n",
+        "                                     ,predic_class=if_else(_.predic >=90,1, 0)\n",
+        "                                    ,real_class=if_else(_.real>=90,1, 0)\n",
+        "                                    ,dummy_class=0\n",
+        "                          )\n",
+        "                          \n",
+        "dataset002 = pd.concat([data002.head(100).reset_index(drop=True),dataset.reset_index(drop=True)], axis=1)                    "
+      ],
+      "id": "1f753c51",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# mean absolute error "
+      ],
+      "id": "d2071041"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(abs(dataset002['diff']))/len(dataset002)"
+      ],
+      "id": "d0e00c7a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(abs(dataset002['dummy_diff']))/len(dataset002)"
+      ],
+      "id": "c91c6707",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(dataset002['predic']>=90)"
+      ],
+      "id": "48937e65",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(dataset002['real']>=90)"
+      ],
+      "id": "b8ffbb25",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn import metrics\n",
+        "confusion_matrix_dt = metrics.confusion_matrix(dataset002['real_class'],dataset002['predic_class']) \n",
+        "confusion_matrix_dt"
+      ],
+      "id": "b6a740b9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn import metrics\n",
+        "accuracy = metrics.accuracy_score(dataset002['real_class'],dataset002['predic_class'])  \n",
+        "accuracy"
+      ],
+      "id": "e7029a06",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn import metrics\n",
+        "accuracy = metrics.accuracy_score(dataset002['real_class'],dataset002['dummy_class'])  \n",
+        "accuracy"
+      ],
+      "id": "89822162",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "fig, ax = plt.subplots()\n",
+        "\n",
+        "sns.scatterplot(data=dataset,x='real',y='predic',ax=ax)\n",
+        "sns.regplot(data=dataset, x=\"real\", y=\"predic\", x_jitter=.15,ax=ax)\n",
+        "ax.set(xlim=(65, 100),ylim=(65, 100))"
+      ],
+      "id": "81152292",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# resource:\n",
+        "\n",
+        "https://www.tensorflow.org/tutorials/keras/regression\n"
+      ],
+      "id": "d96b22b1"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

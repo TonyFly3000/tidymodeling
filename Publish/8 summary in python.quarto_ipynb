@@ -1,0 +1,631 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Summary in Python\"\n",
+        "subtitle: \"with whiskynote.be data\"\n",
+        "author: \"Tony Duan\"\n",
+        "\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "\n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    toc-location: right\n",
+        "    code-fold: show\n",
+        "    code-tools: true\n",
+        "    number-sections: true\n",
+        "    code-block-bg: true\n",
+        "    code-block-border-left: \"#31BAE9\"\n",
+        "---"
+      ],
+      "id": "8d8e19f2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import tensorflow as tf\n",
+        "\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import matplotlib.pylab as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "from siuba.siu import call\n",
+        "from siuba import _, mutate, filter, group_by, summarize,show_query\n",
+        "from siuba import *\n",
+        "\n",
+        "from siuba.data import mtcars,penguins"
+      ],
+      "id": "f758db02",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# read in data"
+      ],
+      "id": "489c0e43"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "data=pd.read_excel('./output/all_page_bottle_list_all.xlsx')"
+      ],
+      "id": "27ce8bec",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "list(data)"
+      ],
+      "id": "f4f6a8c0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data.info()"
+      ],
+      "id": "d80c8869",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import re\n",
+        "data001=data>> filter(_.all_page_score >0\n",
+        "                      ,_.all_page_score <100\n",
+        "                      ,_.bottle_review_Nose !='no comment'\n",
+        "                      ,_.bottle_review_Mouth !='no comment'\n",
+        "                      ,_.bottle_review_Finish !='no comment'\n",
+        "                      ) >>mutate(\n",
+        "                      review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish\n",
+        "                      )>>mutate(review=_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))>>mutate(review_len=_.review.str.count(' ') + 1)\n"
+      ],
+      "id": "41720556",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data001['review_flag']= np.where(data001['all_page_score']>=90, 1, 0)"
+      ],
+      "id": "24119c55",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# shuffle data"
+      ],
+      "id": "e63d548a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data002=data001.sample(frac=1)"
+      ],
+      "id": "2b25d264",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data002.to_excel('data002.xlsx')"
+      ],
+      "id": "4ea5674c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data002.info()"
+      ],
+      "id": "bf7448c2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Removing stop words with SkLearn"
+      ],
+      "id": "a7a669c4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import nltk\n",
+        "import ssl\n",
+        "\n",
+        "try:\n",
+        "    _create_unverified_https_context = ssl._create_unverified_context\n",
+        "except AttributeError:\n",
+        "    pass\n",
+        "else:\n",
+        "    ssl._create_default_https_context = _create_unverified_https_context\n",
+        "\n",
+        "nltk.download('stopwords')"
+      ],
+      "id": "40aef38c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from stop_words import get_stop_words\n",
+        "from nltk.corpus import stopwords\n",
+        "\n",
+        "stop_words = list(get_stop_words('en'))         #About 900 stopwords\n",
+        "nltk_words = list(stopwords.words('english')) #About 150 stopwords\n",
+        "stop_words.extend(nltk_words)"
+      ],
+      "id": "d73ec852",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from nltk.corpus import stopwords\n",
+        "import string\n",
+        "\n",
+        "review=data002[\"review\"]\n",
+        "#stop_words = set(stopwords.words(\"english\"))\n",
+        "exclude = set(string.punctuation)\n",
+        "\n",
+        "def remove_stopwords(data):\n",
+        "    output_array=[]\n",
+        "    for sentence in data:\n",
+        "        temp_list=[]\n",
+        "        for word in sentence.split():\n",
+        "            if word.lower() not in stop_words and word.lower() not in exclude :\n",
+        "                temp_list.append(word)\n",
+        "        output_array.append(' '.join(temp_list))\n",
+        "    return output_array\n",
+        "\n",
+        "review_remove_stop_word=remove_stopwords(review)"
+      ],
+      "id": "de28bd23",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "temp_list=[]\n",
+        "for sentence in review_remove_stop_word:\n",
+        "        for word in sentence.split():\n",
+        "          temp_list.append(word)"
+      ],
+      "id": "48b9cec6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from collections import Counter\n",
+        "counts = Counter(temp_list)\n",
+        "df = pd.DataFrame(list(counts.items()), columns=['Key', 'Values'])"
+      ],
+      "id": "b76ad8e4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df.to_excel('res.xlsx')"
+      ],
+      "id": "10f48a64",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df002=df>>arrange(-_.Values) >>filter(_.Key!='notes'\n",
+        ",_.Key!='well'\n",
+        ",_.Key!='long'\n",
+        ",_.Key!='quite'\n",
+        ",_.Key!='hints'\n",
+        ",_.Key!='hint'\n",
+        ",_.Key!='light'\n",
+        ",_.Key!='little'\n",
+        ",_.Key!='slightly'\n",
+        ",_.Key!='nice'\n",
+        ",_.Key!='still'\n",
+        ",_.Key!='medium'\n",
+        ",_.Key!='subtle'\n",
+        ",_.Key!='rather'\n",
+        ",_.Key!='note'\n",
+        ",_.Key!='also'\n",
+        ",_.Key!='there’s'\n",
+        ",_.Key!='background'\n",
+        ",_.Key!='end'\n",
+        ",_.Key!='side'\n",
+        ",_.Key!='plenty'\n",
+        ",_.Key!='towards'\n",
+        ",_.Key!='bit'\n",
+        ",_.Key!='dark'\n",
+        ",_.Key!='really'\n",
+        ",_.Key!='even'\n",
+        ",_.Key!='like'\n",
+        ",_.Key!='it’s'\n",
+        ")\n",
+        "\n",
+        "df003=df002[0:30]"
+      ],
+      "id": "99a7315d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Word cloud 1 from data frame english"
+      ],
+      "id": "6cea2059"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "d = {}\n",
+        "for a, x in df003.values:\n",
+        "    d[a] = x\n",
+        "\n",
+        "import matplotlib.pyplot as plt\n",
+        "from wordcloud import WordCloud\n",
+        "\n",
+        "wordcloud = WordCloud(background_color = \"#FFFFFF\", contour_width = 2,\n",
+        "     contour_color = '#FFFFFF')\n",
+        "wordcloud.generate_from_frequencies(frequencies=d)\n",
+        "plt.figure()\n",
+        "plt.imshow(wordcloud, interpolation=\"bilinear\")\n",
+        "plt.axis(\"off\")\n",
+        "plt.show()\n",
+        "\n",
+        "wordcloud.to_file('wordcloud_en.png')"
+      ],
+      "id": "3ef96509",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# translate to chinese"
+      ],
+      "id": "86b4db67"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#from translate import Translator\n",
+        "from deep_translator import GoogleTranslator\n",
+        "\n",
+        "en=df003['Key'].tolist()\n",
+        "\n",
+        "\n",
+        "cn_list=[]\n",
+        "for word in en:\n",
+        "  result = GoogleTranslator(source='auto', target='zh-CN').translate(word) \n",
+        "  cn_list.append(result)\n",
+        "  \n",
+        "cn_list"
+      ],
+      "id": "25f24a87",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df003.to_excel('df003.xlsx',index=False)\n",
+        "df004_cn=df003.copy()\n",
+        "df004_cn['Key']=cn_list\n",
+        "df004_cn.to_excel('df004_cn.xlsx',index=False)"
+      ],
+      "id": "9108c045",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#  word cloud 2 chinese "
+      ],
+      "id": "7e2d0994"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "d = {}\n",
+        "for a, x in df004_cn.values:\n",
+        "    d[a] = x\n",
+        "\n",
+        "import matplotlib.pyplot as plt\n",
+        "from wordcloud import WordCloud\n",
+        "\n",
+        "wordcloud = WordCloud(font_path='simfang.ttf',background_color = \"#FFFFFF\", contour_width = 2,\n",
+        "     contour_color = '#FFFFFF')\n",
+        "wordcloud.generate_from_frequencies(frequencies=d)\n",
+        "plt.figure()\n",
+        "plt.imshow(wordcloud, interpolation=\"bilinear\")\n",
+        "plt.axis(\"off\")\n",
+        "plt.show()\n",
+        "wordcloud.to_file('wordcloud_cn.png')"
+      ],
+      "id": "14b7f4ad",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#  word cloud 3 chinese glass"
+      ],
+      "id": "abf99fae"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import cv2\n",
+        "\n",
+        "from siuba.siu import call\n",
+        "from siuba import _, mutate, filter, group_by, summarize,show_query\n",
+        "from siuba import *\n",
+        "import numpy as np\n",
+        "from sklearn.cluster import KMeans\n",
+        "from skimage.io import imread, imsave\n",
+        "from skimage import util, data, transform\n",
+        "from skimage.transform import rescale, resize, downscale_local_mean\n",
+        "\n",
+        "\n",
+        "sample_img = imread('Glencairn.png')\n",
+        "sample_img_resize=util.img_as_ubyte(transform.rescale(sample_img, 3))\n",
+        "sample_img.shape\n",
+        "\n",
+        "sample_img_resize.shape"
+      ],
+      "id": "3f111deb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#image = Image.open('glass.png')\n",
+        "#new_image = image.resize((3000, 3000))\n",
+        "#meta_mask = np.array(new_image)\n",
+        "\n",
+        "sample_img_resize[sample_img_resize>240] = 255\n",
+        "\n",
+        "\n",
+        "#imsave(\"glass_new.png\", sample_img_resize)"
+      ],
+      "id": "ea2c5cdc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "d = {}\n",
+        "for a, x in df004_cn.values:\n",
+        "    d[a] = x\n",
+        "\n",
+        "import matplotlib.pyplot as plt\n",
+        "from wordcloud import WordCloud\n",
+        "\n",
+        "wordcloud = WordCloud(font_path='simfang.ttf',background_color = \"white\", contour_width = 2,mask = sample_img_resize)\n",
+        "\n",
+        "\n",
+        "\n",
+        "wordcloud.generate_from_frequencies(frequencies=d)\n",
+        "\n",
+        "plt.figure()\n",
+        "plt.imshow(wordcloud, interpolation=\"bilinear\")\n",
+        "plt.axis(\"off\")\n",
+        "plt.show()\n",
+        "\n",
+        "wordcloud.to_file('wordcloud_cn_bottle.png')"
+      ],
+      "id": "fe9614b1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#  word cloud 4 English glass"
+      ],
+      "id": "690d705e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "d = {}\n",
+        "for a, x in df003.values:\n",
+        "    d[a] = x\n",
+        "\n",
+        "import matplotlib.pyplot as plt\n",
+        "from wordcloud import WordCloud\n",
+        "\n",
+        "wordcloud = WordCloud(font_path='simfang.ttf',background_color = \"white\", contour_width = 2,mask = sample_img_resize)\n",
+        "\n",
+        "\n",
+        "\n",
+        "wordcloud.generate_from_frequencies(frequencies=d)\n",
+        "\n",
+        "plt.figure()\n",
+        "plt.imshow(wordcloud, interpolation=\"bilinear\")\n",
+        "plt.axis(\"off\")\n",
+        "plt.show()\n",
+        "\n",
+        "wordcloud.to_file('wordcloud_en_bottle.png')"
+      ],
+      "id": "4c21bc89",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Chart 1 \n",
+        "\n",
+        "\n",
+        "using seaborn"
+      ],
+      "id": "cd4722cf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.figure(figsize=(10, 6))\n",
+        "\n",
+        "plt.rcParams['font.family'] = ['Arial Unicode MS'] #用来正常显示中文标签\n",
+        "plt.rcParams['axes.unicode_minus'] = False #用来正常显示负号\n",
+        " \n",
+        "sns.set_style('whitegrid',{'font.sans-serif':['Arial Unicode MS','Arial']})\n",
+        "\n",
+        "ax=sns.barplot(df004_cn, x=\"Values\", y=\"Key\", legend=False,orient = 'h')\n",
+        "\n",
+        "ax.set_title(\"各风味出现频率\")\n",
+        "ax.set(xlabel='出现次数', ylabel='风味')\n",
+        "for i in ax.containers:\n",
+        "    ax.bar_label(i,)\n",
+        "plt.show()"
+      ],
+      "id": "bfd7e27b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Chart 2 combine image and seaborn\n",
+        "\n",
+        "using plotly"
+      ],
+      "id": "89887ac8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import plotly.express as px\n",
+        "from PIL import Image\n",
+        "pyLogo = Image.open(\"en_glass.png\")\n",
+        "\n",
+        "\n",
+        "fig=px.bar(df004_cn,x=\"Values\", y=\"Key\",orientation='h',text=\"Values\",title=\"各风味出现频率\"\n",
+        ",labels={\"Values\": \"出现次数\",\n",
+        "         \"Key\": \"风味\"\n",
+        "         }\n",
+        ")\n",
+        "\n",
+        "\n",
+        "# Add images\n",
+        "fig.add_layout_image(\n",
+        "        dict(\n",
+        "            source=pyLogo \n",
+        "            ,x=0.6\n",
+        "            ,y=0.8\n",
+        "            ,sizex=1\n",
+        "            ,sizey=0.8\n",
+        "            #,sizing=\"stretch\"\n",
+        "            ,opacity=0.8\n",
+        "            ,layer=\"above\")\n",
+        ")\n",
+        "\n",
+        "# # Set templates\n",
+        "fig.update_layout(template=\"plotly_white\")\n",
+        "fig.update_layout(yaxis=dict(autorange=\"reversed\"),height=600)\n",
+        "\n",
+        "\n",
+        "fig.show()"
+      ],
+      "id": "8fff5543",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# resource:\n",
+        "\n",
+        "https://medium.com/@m3redithw/wordclouds-with-python-c287887acc8b\n",
+        "\n",
+        "https://github.com/nidhaloff/deep-translator\n",
+        "\n",
+        "https://cran.r-project.org/web/packages/polyglotr/vignettes/polyglotr.html"
+      ],
+      "id": "426311f5"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
