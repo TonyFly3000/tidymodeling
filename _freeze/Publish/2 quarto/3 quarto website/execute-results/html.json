@@ -1,0 +1,15 @@
+{
+  "hash": "4adfe062b52cc1e3e15c9708c59fef9e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"quarto website\"\nsubtitle: \"with magick\"\n\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n  \nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    code-copy: true\n---\n\n\n\n\n\n# Publishcation\n\n## Publish quarto website into quarto hub\n\nyou need to have quarto pub account https://quartopub.com/\n\n::: {.cell}\n\n```{.r .cell-code}\nquarto publish quarto-pub\n```\n:::\n\n## Publish quarto website into github page\n\n\n### change \\_quarto.yml\n\n``` {.python filename=\"_quarto.yml\"}\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n```\n\n\n### create github repository\n\n![](images/12.png)\n\n### in github repository setting/Pages change branch to mian /docs\n\n![](images/13.png)\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n### ignore some file to be upload to github\n\nIn mac using {shift+command+.} to show hidden `.gitignore` file\n\nfor example,add \\*.parquet in .gitignore file to ignore all parquet file\n\n``` {.python filename=\".gitignore\"}\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet\n```\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,775 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"XGboost classification model\"\n",
+        "subtitle: \"with whiskynote.be data\"\n",
+        "author: \"Tony Duan\"\n",
+        "\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "\n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    toc-location: right\n",
+        "    code-fold: show\n",
+        "    code-tools: true\n",
+        "    number-sections: true\n",
+        "    code-block-bg: true\n",
+        "    code-block-border-left: \"#31BAE9\"\n",
+        "---\n"
+      ],
+      "id": "92bd2aa7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import tensorflow as tf\n",
+        "\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import matplotlib.pylab as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "from siuba.siu import call\n",
+        "from siuba import _, mutate, filter, group_by, summarize,show_query\n",
+        "from siuba import *\n",
+        "\n",
+        "from siuba.data import mtcars,penguins"
+      ],
+      "id": "eac9d79d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# read in data"
+      ],
+      "id": "2e53f20c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "data=pd.read_excel('./output/all_page_bottle_list_all.xlsx')"
+      ],
+      "id": "83bc2272",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "list(data)"
+      ],
+      "id": "6ea8a6bf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data.info()"
+      ],
+      "id": "0133ed62",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import re\n",
+        "data001=data>> filter(_.all_page_score >=70\n",
+        "                      ,_.all_page_score <100\n",
+        "                      ,_.bottle_review_Nose !='no comment'\n",
+        "                      ,_.bottle_review_Mouth !='no comment'\n",
+        "                      ,_.bottle_review_Finish !='no comment'\n",
+        "                      ) >>mutate(\n",
+        "                        review_flag=if_else(_.all_page_score>=90,1,0)\n",
+        "                      ,review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish\n",
+        "                      )>>mutate(review=_.bottle_name+_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))>>mutate(review_len=_.review.str.count(' ') + 1)\n"
+      ],
+      "id": "8f91bcf7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data001 = data001.dropna(subset=[\"review_flag\", \"review\"])"
+      ],
+      "id": "aa52e866",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data001.review_flag = data001.review_flag.astype(int)"
+      ],
+      "id": "c53d12cc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data001.info()"
+      ],
+      "id": "54da19ff",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# shuffle data"
+      ],
+      "id": "8717faa8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data002=data001.sample(frac=1)"
+      ],
+      "id": "d5c523ba",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data002.to_excel('data002.xlsx')"
+      ],
+      "id": "13ddd53b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data002.info()"
+      ],
+      "id": "2803e0eb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review=data002['review'].tolist()"
+      ],
+      "id": "55fe1f44",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review[2]"
+      ],
+      "id": "fd73781b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_flag=data002[\"review_flag\"].tolist()"
+      ],
+      "id": "d7600b69",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_score=data002[\"all_page_score\"].tolist()"
+      ],
+      "id": "774cf664",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_flag[2]"
+      ],
+      "id": "22bd3b51",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from collections import Counter\n",
+        "Counter(review_flag)"
+      ],
+      "id": "8b4bdd96",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(len(review))\n",
+        "\n",
+        "print(len(review_flag))"
+      ],
+      "id": "99423c5c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# transfer data"
+      ],
+      "id": "0f853365"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import tensorflow as tf\n",
+        "import numpy as np \n",
+        "from tensorflow.keras.layers import Embedding, LSTM, Dense, Bidirectional\n",
+        "from tensorflow.keras.models import Sequential\n",
+        "from tensorflow.keras.preprocessing.text import Tokenizer\n",
+        "from tensorflow.keras.preprocessing.sequence import pad_sequences"
+      ],
+      "id": "40aa51f7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Initialize the Tokenizer class\n",
+        "tokenizer = Tokenizer()\n",
+        "\n",
+        "# Generate the word index dictionary\n",
+        "tokenizer.fit_on_texts(review)\n",
+        "\n",
+        "# Define the total words. You add 1 for the index `0` which is just the padding token.\n",
+        "total_words = len(tokenizer.word_index) + 1"
+      ],
+      "id": "eeafc5d7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(f'total words: {total_words}')"
+      ],
+      "id": "2360c71f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Convert labels lists to numpy array\n",
+        "review_flag_final = np.array(review_flag)\n",
+        "review_score_final = np.array(review_score)"
+      ],
+      "id": "844f9c5e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Parameters\n",
+        "vocab_size = 7000\n",
+        "max_length = 300\n",
+        "embedding_dim = 16\n",
+        "#trunc_type='pre'\n",
+        "trunc_type='post'\n",
+        "oov_tok = \"<OOV>\""
+      ],
+      "id": "79749fdf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from tensorflow.keras.preprocessing.text import Tokenizer\n",
+        "from tensorflow.keras.preprocessing.sequence import pad_sequences\n",
+        "\n",
+        "# Initialize the Tokenizer class\n",
+        "tokenizer = Tokenizer(num_words = vocab_size, oov_token=oov_tok)\n",
+        "\n",
+        "# Generate the word index dictionary for the training sentences\n",
+        "tokenizer.fit_on_texts(review)\n",
+        "word_index = tokenizer.word_index\n",
+        "\n",
+        "# Generate and pad the training sequences\n",
+        "sequences = tokenizer.texts_to_sequences(review)\n",
+        "padded = pad_sequences(sequences,maxlen=max_length, truncating=trunc_type)"
+      ],
+      "id": "785a0db1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(review[4])"
+      ],
+      "id": "3ccb8679",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(padded[4])"
+      ],
+      "id": "442cbb86",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "reverse_word_index = dict([(value, key) for (key, value) in word_index.items()])            \n",
+        "\n",
+        "def decode_review(text):\n",
+        "    return ' '.join([reverse_word_index.get(i, '?') for i in text])"
+      ],
+      "id": "99972d1a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(decode_review(padded[0]))"
+      ],
+      "id": "69360b4c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "after tokenizer"
+      ],
+      "id": "1997d434"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(sequences[0])"
+      ],
+      "id": "02b53117",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_flag[0]"
+      ],
+      "id": "d5a8d852",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# using 4000 to train and 633 to test"
+      ],
+      "id": "cace8bab"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "padded_train=padded[0:4000]\n",
+        "padded_test=padded[4000:]"
+      ],
+      "id": "d472b94e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_flag_final_train=review_flag_final[0:4000]\n",
+        "review_flag_final_test=review_flag_final[4000:]"
+      ],
+      "id": "7ea28b46",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "review_socre_final_train=review_score_final[0:4000]\n",
+        "review_socre_final_test=review_score_final[4000:]"
+      ],
+      "id": "348365e9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## total"
+      ],
+      "id": "89a11292"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(padded)\n",
+        "len(review_flag_final)"
+      ],
+      "id": "e7748317",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## train"
+      ],
+      "id": "c3d47b68"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(padded_train)\n",
+        "len(review_flag_final_train)"
+      ],
+      "id": "6d22e104",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## test"
+      ],
+      "id": "8d05d2de"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "len(padded_test)\n",
+        "len(review_flag_final_test)"
+      ],
+      "id": "51e75d6d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sum(review_flag_final_test)"
+      ],
+      "id": "aafae208",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## if all guess lower than 90 points then 0.75 accuracy "
+      ],
+      "id": "1dc6e745"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "(len(review_flag_final_test)-sum(review_flag_final_test))/len(review_flag_final_test)"
+      ],
+      "id": "a55facdc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# XB bootst model\n"
+      ],
+      "id": "c2b68632"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import os\n",
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "import re\n",
+        "import numpy as np\n",
+        "from sklearn import tree\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "import time\n",
+        "from siuba import *"
+      ],
+      "id": "5f92e663",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn.pipeline import Pipeline\n",
+        "from sklearn.impute import SimpleImputer\n",
+        "from sklearn.preprocessing import StandardScaler"
+      ],
+      "id": "bc18f58e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from xgboost import XGBClassifier\n",
+        "ml_model = XGBClassifier()\n",
+        "ml_model"
+      ],
+      "id": "92375647",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# define pipline"
+      ],
+      "id": "e979af58"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#ml_model.fit(padded_train,review_flag_final_train)"
+      ],
+      "id": "4df25c9b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "pipeline = Pipeline(\n",
+        "  steps=[\n",
+        "      \n",
+        "         ('model', ml_model)\n",
+        "         ]\n",
+        ")\n",
+        "\n",
+        "pipeline"
+      ],
+      "id": "6eec7ef3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from sklearn.model_selection import GridSearchCV\n",
+        "\n",
+        "\n",
+        "parameters = {\n",
+        "        'model__learning_rate': [0.08,0.1],\n",
+        "        'model__max_depth': [9,10,20],\n",
+        "        'model__min_child_weight': [3,5,8],\n",
+        "        'model__subsample': [0.7,0.9],\n",
+        "        \n",
+        "       # 'model__colsample__bytree': [0.5, 0.7],\n",
+        "       \n",
+        "        'model__n_estimators' : [100,200],\n",
+        "        'model__objective': ['reg:squarederror']\n",
+        "    }"
+      ],
+      "id": "5649efa0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import itertools\n",
+        "a = parameters.values()\n",
+        "combinations = list(itertools.product(*a))\n",
+        "len(combinations)"
+      ],
+      "id": "f9f5a61d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "GridCV = GridSearchCV(pipeline\n",
+        "                ,parameters\n",
+        "                ,scoring='accuracy'\n",
+        "                , cv=3, n_jobs=-1)"
+      ],
+      "id": "da43770f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# train model"
+      ],
+      "id": "026fb32b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "start_time = time.time()\n",
+        "\n",
+        "GridCV.fit(padded_train, review_flag_final_train)\n",
+        "\n",
+        "end_time = time.time()\n",
+        "duration = end_time - start_time\n",
+        "duration"
+      ],
+      "id": "70c5fc25",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "model_ml = GridCV.best_estimator_"
+      ],
+      "id": "efe3dea1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#Using predict method to test the model\n",
+        "Y_pred_dt = model_ml.predict(padded_test) #always gets x and retuns y\n",
+        "Y_pred_dt"
+      ],
+      "id": "38ab6cd5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Accuracy = true negatives + true positives / true positives + false positives + true negatives + false negatives\n",
+        "# Here is another way to find the accuracy score\n",
+        "from sklearn import metrics\n",
+        "accuracy = metrics.accuracy_score(review_flag_final_test,Y_pred_dt)  \n",
+        "accuracy"
+      ],
+      "id": "09101a59",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "confusion_matrix_dt = metrics.confusion_matrix(review_flag_final_test,Y_pred_dt)\n",
+        "confusion_matrix_dt"
+      ],
+      "id": "4783ca2b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# resource:\n",
+        "\n",
+        "https://www.tensorflow.org/tutorials/keras/regression\n"
+      ],
+      "id": "b4517a57"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

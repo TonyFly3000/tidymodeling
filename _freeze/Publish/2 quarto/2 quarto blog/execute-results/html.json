@@ -1,0 +1,15 @@
+{
+  "hash": "75d33eba9d0cb65fc720fce3f4c7ac8a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"quarto blog\"\nsubtitle: \"with magick\"\n\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n  \nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    code-copy: true\n---\n\n\n\n# create quarto blog\n\n![](https://tidystep.netlify.app/posts/publish%20quarto%20blog/images/quarto-blog-v2.png)\n\n## blog post\n\n::: {.cell}\n\n```{.r .cell-code}\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---\n```\n:::\n\n## hide post from main page\n\n::: {.cell}\n\n```{.r .cell-code}\n---\ndraft: true  \n  \n---\n```\n:::\n\n## \\_quarto.yml\n\n::: {.cell}\n\n```{.r .cell-code}\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true\n```\n:::\n\n## index.qmd\n\n::: {.cell}\n\n```{.r .cell-code}\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---\n```\n:::\n\n\n## draft post,not include in the main page\n\n::: {.cell}\n\n```{.r .cell-code}\ndraft:true\n```\n:::\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

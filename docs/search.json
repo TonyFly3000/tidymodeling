@@ -2196,7 +2196,7 @@
     "href": "data manipulation/2 data structure in R.html#create-random-vector",
     "title": "Data structure in R",
     "section": "1.3 create random vector",
-    "text": "1.3 create random vector\ncreate 5 random number from 1 to 10 without replacement\n\n\nCode\nsample(1:10,5, replace=F) \n\n\n[1] 4 6 7 9 5\n\n\ncreate 5 random number from 1 to 10 with replacement\n\n\nCode\nsample(1:10,5, replace=T) \n\n\n[1] 4 7 1 4 8\n\n\ncreate 1 random number from 0 to 1 from random uniform distribution\n\n\nCode\nrunif(1, min=0, max=1)\n\n\n[1] 0.4145574\n\n\ngenerate 4 random number that follows the normal distribution with mean being 0 and standard deviation being 1\n\n\nCode\nsn1 &lt;- rnorm(4, mean=0, sd=1) # standard nromal\nsn1\n\n\n[1]  0.02581398  1.12306894 -0.89522470 -0.56427842",
+    "text": "1.3 create random vector\ncreate 5 random number from 1 to 10 without replacement\n\n\nCode\nsample(1:10,5, replace=F) \n\n\n[1]  6  8  9 10  2\n\n\ncreate 5 random number from 1 to 10 with replacement\n\n\nCode\nsample(1:10,5, replace=T) \n\n\n[1] 5 4 8 4 1\n\n\ncreate 1 random number from 0 to 1 from random uniform distribution\n\n\nCode\nrunif(1, min=0, max=1)\n\n\n[1] 0.9448019\n\n\ngenerate 4 random number that follows the normal distribution with mean being 0 and standard deviation being 1\n\n\nCode\nsn1 &lt;- rnorm(4, mean=0, sd=1) # standard nromal\nsn1\n\n\n[1] -0.07484166  1.07761998  1.90462714 -0.59025621",
     "crumbs": [
       "data manipulation",
       "Data structure in R"
@@ -2273,7 +2273,7 @@
     "href": "data manipulation/2 data structure in R.html#select-vector-element",
     "title": "Data structure in R",
     "section": "1.10 select vector element",
-    "text": "1.10 select vector element\n\n\nCode\nx=c(1,2,3,6,9,10)\n\n\n\n1.10.1 select first\n\n\nCode\nx[1]\n\n\n[1] 1\n\n\n\n\n1.10.2 select last\n\n\n1.10.3 select first to 3th\n\n\nCode\nx[1:3]\n\n\n[1] 1 2 3",
+    "text": "1.10 select vector element\n\n\nCode\nx=c(1,2,3,6,9,10)\n\n\n\n1.10.1 select first\n\n\nCode\nx[1]\n\n\n[1] 1\n\n\nor\n\n\nCode\nx %&gt;% nth(1)\n\n\n[1] 1\n\n\n\n\n1.10.2 select last\n\n\nCode\nx %&gt;% last()\n\n\n[1] 10\n\n\nor\n\n\nCode\nx %&gt;% nth(-1)\n\n\n[1] 10\n\n\n\n\n1.10.3 select second last\n\n\nCode\nx %&gt;% nth(-2)\n\n\n[1] 9\n\n\n\n\n1.10.4 select first to 3th\n\n\nCode\nx[1:3]\n\n\n[1] 1 2 3\n\n\n\n\n1.10.5 select last one to last 3th\n\n\nCode\nx[-3:-1]\n\n\n[1]  6  9 10",
     "crumbs": [
       "data manipulation",
       "Data structure in R"
@@ -2922,7 +2922,7 @@
     "href": "intro/1 basic R.html#get-all-file-name-under-current-directory",
     "title": "Basic R",
     "section": "1.2 get all file name under current directory",
-    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n[1] \"1 basic R_files\"               \"1 basic R.qmd\"                \n[3] \"1 basic R.rmarkdown\"           \"1-basic-R.rmarkdown\"          \n[5] \"2 probability.qmd\"             \"5 R boook.qmd\"                \n[7] \"6 data analytic in R book.qmd\" \"hotels.csv\"                   \n[9] \"images\"",
+    "text": "1.2 get all file name under current directory\n\n\nCode\nlist.files()\n\n\n [1] \"1 basic R.qmd\"                 \"1 basic R.rmarkdown\"          \n [3] \"1-basic-R.rmarkdown\"           \"2 probability.qmd\"            \n [5] \"3 Statistics.qmd\"              \"5 R boook.qmd\"                \n [7] \"6 data analytic in R book.qmd\" \"7 error handling.qmd\"         \n [9] \"hotels.csv\"                    \"images\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -2998,8 +2998,8 @@
     "objectID": "intro/1 basic R.html#for-loop",
     "href": "intro/1 basic R.html#for-loop",
     "title": "Basic R",
-    "section": "3.1 for Loop",
-    "text": "3.1 for Loop\n\n\nCode\nfor (x in 1:4) {\n  print(x)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n\n\nwith break statement\n\n\nCode\nfor (x in 1:6) {\n  if (x == 4) {break}\n  print(x)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n\n\nwith next statement\n\n\nCode\nfor (x in 1:6) {\n  if (x == 4) {next}\n  print(x)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 5\n[1] 6",
+    "section": "4.1 for Loop",
+    "text": "4.1 for Loop\n\n\nCode\nfor (x in 1:4) {\n  print(x)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n\n\nwith break statement\n\n\nCode\nfor (x in 1:6) {\n  if (x == 4) {break}\n  print(x)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n\n\nwith next statement\n\n\nCode\nfor (x in 1:6) {\n  if (x == 4) {next}\n  print(x)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 5\n[1] 6",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3009,8 +3009,8 @@
     "objectID": "intro/1 basic R.html#error-handling-on-for-loopprint-out-error",
     "href": "intro/1 basic R.html#error-handling-on-for-loopprint-out-error",
     "title": "Basic R",
-    "section": "3.2 Error handling on for Loop:print out error",
-    "text": "3.2 Error handling on for Loop:print out error\n\n\nCode\nstuff &lt;- list(12, 9, 2, \"cat\", 25, 10, \"bird\")\n#stuff\n\n\n\n\nCode\nloop_num=0\n\nfor (i in 1:6) {\n  loop_num=loop_num+1\n  tryCatch (print(1+i),\n           \n           error = function(e){\n           message(paste(\"An error occurred for loop num\", loop_num,\":\\n\"), e)\n             \n         })\n}\n\n\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7",
+    "section": "4.2 Error handling on for Loop:print out error",
+    "text": "4.2 Error handling on for Loop:print out error\n\n\nCode\nstuff &lt;- list(12, 9, 2, \"cat\", 25, 10, \"bird\")\n#stuff\n\n\n\n\nCode\nloop_num=0\n\nfor (i in 1:6) {\n  loop_num=loop_num+1\n  tryCatch (print(1+i),\n           \n           error = function(e){\n           message(paste(\"An error occurred for loop num\", loop_num,\":\\n\"), e)\n             \n         })\n}\n\n\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3020,8 +3020,8 @@
     "objectID": "intro/1 basic R.html#while-loop",
     "href": "intro/1 basic R.html#while-loop",
     "title": "Basic R",
-    "section": "3.3 while Loop",
-    "text": "3.3 while Loop\n\n\nCode\ni &lt;- 1\nwhile (i &lt; 6) {\n  print(i)\n  i &lt;- i + 1\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\nwith break statement\n\n\nCode\ni &lt;- 1\nwhile (i &lt; 6) {\n  print(i)\n  i &lt;- i + 1\n  if (i == 4) {break}\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n\n\nwith next statement\n\n\nCode\ni =1\n\nwhile (i &lt; 6) {\n  i &lt;- i + 1\n  if (i == 4){next}\n  print(i)\n}\n\n\n[1] 2\n[1] 3\n[1] 5\n[1] 6",
+    "section": "4.3 while Loop",
+    "text": "4.3 while Loop\n\n\nCode\ni &lt;- 1\nwhile (i &lt; 6) {\n  print(i)\n  i &lt;- i + 1\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\nwith break statement\n\n\nCode\ni &lt;- 1\nwhile (i &lt; 6) {\n  print(i)\n  i &lt;- i + 1\n  if (i == 4) {break}\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n\n\nwith next statement\n\n\nCode\ni =1\n\nwhile (i &lt; 6) {\n  i &lt;- i + 1\n  if (i == 4){next}\n  print(i)\n}\n\n\n[1] 2\n[1] 3\n[1] 5\n[1] 6",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3031,8 +3031,8 @@
     "objectID": "intro/1 basic R.html#error-handling-on-whie-loop-try-when-the-error-gone",
     "href": "intro/1 basic R.html#error-handling-on-whie-loop-try-when-the-error-gone",
     "title": "Basic R",
-    "section": "3.4 Error handling on whie Loop: try when the error gone",
-    "text": "3.4 Error handling on whie Loop: try when the error gone\n\n\nCode\ni=0\na=0\nwhile (i &lt; 4) {\n  a=a+1\n  print(i)\n  tryCatch({\n  asdfgaergae5gh5hae5h\n    i=i+1\n  },error = function(msg){print('eeeeeeee')\n    i=i-1\n    print(paste0(\"new i : \",i))\n   \n    })\n   if(a&gt;10){break}\n  }\n\n\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"",
+    "section": "4.4 Error handling on whie Loop: try when the error gone",
+    "text": "4.4 Error handling on whie Loop: try when the error gone\n\n\nCode\ni=0\na=0\nwhile (i &lt; 4) {\n  a=a+1\n  print(i)\n  tryCatch({\n  asdfgaergae5gh5hae5h\n    i=i+1\n  },error = function(msg){print('eeeeeeee')\n    i=i-1\n    print(paste0(\"new i : \",i))\n   \n    })\n   if(a&gt;10){break}\n  }\n\n\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"\n[1] 0\n[1] \"eeeeeeee\"\n[1] \"new i : -1\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3042,8 +3042,8 @@
     "objectID": "intro/1 basic R.html#without-arguments",
     "href": "intro/1 basic R.html#without-arguments",
     "title": "Basic R",
-    "section": "4.1 without Arguments",
-    "text": "4.1 without Arguments\n\n\nCode\nmy_function &lt;- function() { \n  print(\"Hello World!\")\n}\n\nmy_function()\n\n\n[1] \"Hello World!\"",
+    "section": "5.1 without Arguments",
+    "text": "5.1 without Arguments\n\n\nCode\nmy_function &lt;- function() { \n  print(\"Hello World!\")\n}\n\nmy_function()\n\n\n[1] \"Hello World!\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3053,8 +3053,8 @@
     "objectID": "intro/1 basic R.html#with-arguments",
     "href": "intro/1 basic R.html#with-arguments",
     "title": "Basic R",
-    "section": "4.2 with Arguments",
-    "text": "4.2 with Arguments\n\n\nCode\nadding_ten &lt;- function(x) { \n  a=x+10\n  return(a)\n}\n\nadding_ten(5)\n\n\n[1] 15",
+    "section": "5.2 with Arguments",
+    "text": "5.2 with Arguments\n\n\nCode\nadding_ten &lt;- function(x) { \n  a=x+10\n  return(a)\n}\n\nadding_ten(5)\n\n\n[1] 15",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3064,8 +3064,8 @@
     "objectID": "intro/1 basic R.html#with-default-arguments",
     "href": "intro/1 basic R.html#with-default-arguments",
     "title": "Basic R",
-    "section": "4.3 with default Arguments",
-    "text": "4.3 with default Arguments\n\n\nCode\nadding_ten &lt;- function(x=10) { \n  a=x+10\n  return(a)\n}\n\n#if not define x, then x=10\n\nadding_ten()\n\n\n[1] 20",
+    "section": "5.3 with default Arguments",
+    "text": "5.3 with default Arguments\n\n\nCode\nadding_ten &lt;- function(x=10) { \n  a=x+10\n  return(a)\n}\n\n#if not define x, then x=10\n\nadding_ten()\n\n\n[1] 20",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3075,8 +3075,8 @@
     "objectID": "intro/1 basic R.html#check-function-arguments",
     "href": "intro/1 basic R.html#check-function-arguments",
     "title": "Basic R",
-    "section": "4.4 check function Arguments",
-    "text": "4.4 check function Arguments\n\n\nCode\nargs(adding_ten)\n\n\nfunction (x = 10) \nNULL\n\n\nMany functions exhibit variadic behavior. That is, they can accept any num- ber of arguments, and it’s up to the user to decide how many arguments to provide. The functions c, data.frame, and list are all like this. When you call a function like data.frame, you can specify any number of members as arguments.\n\n\nCode\nargs(data.frame)\n\n\nfunction (..., row.names = NULL, check.rows = FALSE, check.names = TRUE, \n    fix.empty.names = TRUE, stringsAsFactors = FALSE) \nNULL",
+    "section": "5.4 check function Arguments",
+    "text": "5.4 check function Arguments\n\n\nCode\nargs(adding_ten)\n\n\nfunction (x = 10) \nNULL\n\n\nMany functions exhibit variadic behavior. That is, they can accept any num- ber of arguments, and it’s up to the user to decide how many arguments to provide. The functions c, data.frame, and list are all like this. When you call a function like data.frame, you can specify any number of members as arguments.\n\n\nCode\nargs(data.frame)\n\n\nfunction (..., row.names = NULL, check.rows = FALSE, check.names = TRUE, \n    fix.empty.names = TRUE, stringsAsFactors = FALSE) \nNULL",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3086,8 +3086,8 @@
     "objectID": "intro/1 basic R.html#warning-in-function",
     "href": "intro/1 basic R.html#warning-in-function",
     "title": "Basic R",
-    "section": "4.5 warning in function",
-    "text": "4.5 warning in function\nprint out warning\n\n\nCode\nadding_ten &lt;- function(x=10) { \n  a=x+10\n  if(a&gt;50){\n    warning('its better than 50')\n  }\n  return(a)\n}\n\n\n\n\nCode\nadding_ten(100)\n\n\n[1] 110",
+    "section": "5.5 warning in function",
+    "text": "5.5 warning in function\nprint out warning\n\n\nCode\nadding_ten &lt;- function(x=10) { \n  a=x+10\n  if(a&gt;50){\n    warning('its better than 50')\n  }\n  return(a)\n}\n\n\n\n\nCode\nadding_ten(100)\n\n\n[1] 110",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3097,8 +3097,8 @@
     "objectID": "intro/1 basic R.html#stop-in-function",
     "href": "intro/1 basic R.html#stop-in-function",
     "title": "Basic R",
-    "section": "4.6 stop in function",
-    "text": "4.6 stop in function\nprint out stop error message\n\n\nCode\nadding_ten &lt;- function(x=10) { \n  a=x+10\n  if(a&gt;50){\n    stop('its better than 50')\n  }\n  return(a)\n}\n\n\n\n\nCode\nadding_ten(100)",
+    "section": "5.6 stop in function",
+    "text": "5.6 stop in function\nprint out stop error message\n\n\nCode\nadding_ten &lt;- function(x=10) { \n  a=x+10\n  if(a&gt;50){\n    stop('its better than 50')\n  }\n  return(a)\n}\n\n\n\n\nCode\nadding_ten(100)",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3108,8 +3108,8 @@
     "objectID": "intro/1 basic R.html#use-try-to-by-pass-error",
     "href": "intro/1 basic R.html#use-try-to-by-pass-error",
     "title": "Basic R",
-    "section": "4.7 use try to by pass error",
-    "text": "4.7 use try to by pass error\n\n\nCode\ntry(adding_ten(100))\n\n\n[1] 110\n\n\nCode\n5+10\n\n\n[1] 15",
+    "section": "5.7 use try to by pass error",
+    "text": "5.7 use try to by pass error\n\n\nCode\ntry(adding_ten(100))\n\n\n[1] 110\n\n\nCode\n5+10\n\n\n[1] 15",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3119,8 +3119,8 @@
     "objectID": "intro/1 basic R.html#check-r-version",
     "href": "intro/1 basic R.html#check-r-version",
     "title": "Basic R",
-    "section": "6.1 check R version",
-    "text": "6.1 check R version\n\n\nCode\nversion\n\n\n               _                           \nplatform       aarch64-apple-darwin20      \narch           aarch64                     \nos             darwin20                    \nsystem         aarch64, darwin20           \nstatus                                     \nmajor          4                           \nminor          3.1                         \nyear           2023                        \nmonth          06                          \nday            16                          \nsvn rev        84548                       \nlanguage       R                           \nversion.string R version 4.3.1 (2023-06-16)\nnickname       Beagle Scouts",
+    "section": "7.1 check R version",
+    "text": "7.1 check R version\n\n\nCode\nversion\n\n\n               _                           \nplatform       aarch64-apple-darwin20      \narch           aarch64                     \nos             darwin20                    \nsystem         aarch64, darwin20           \nstatus                                     \nmajor          4                           \nminor          4.1                         \nyear           2024                        \nmonth          06                          \nday            14                          \nsvn rev        86737                       \nlanguage       R                           \nversion.string R version 4.4.1 (2024-06-14)\nnickname       Race for Your Life",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3130,8 +3130,8 @@
     "objectID": "intro/1 basic R.html#install-r-package",
     "href": "intro/1 basic R.html#install-r-package",
     "title": "Basic R",
-    "section": "6.2 install R package",
-    "text": "6.2 install R package\n\n6.2.1 install from Cran\n99% of the time will install pacakge from The Comprehensive R Archive Network(cran).https://cran.r-project.org/\n\n\n\nCode\ninstall.packages('tidyverse')\n\n\n\n\n6.2.2 install from Github\n\n\nCode\npak::pkg_install(\"tidymodels/learntidymodels\")\n\n\n\n\n6.2.3 install from .tar.gz\n\n\nCode\ninstall.packages(\"https://cran.r-project.org/src/contrib/Archive/maptools/maptools_1.1-8.tar.gz\")\n\n\n\n\n6.2.4 install from Bioconductor\n\n\nCode\npak::pkg_install(\"text2vec\")\n\n\n\n\n6.2.5 install from local\n\n\nCode\npak::local_install(\"cli\")",
+    "section": "7.2 install R package",
+    "text": "7.2 install R package\n\n7.2.1 install from Cran\n99% of the time will install pacakge from The Comprehensive R Archive Network(cran).https://cran.r-project.org/\n\n\n\nCode\ninstall.packages('tidyverse')\n\n\n\n\n7.2.2 install from Github\n\n\nCode\npak::pkg_install(\"tidymodels/learntidymodels\")\n\n\n\n\n7.2.3 install from .tar.gz\n\n\nCode\ninstall.packages(\"https://cran.r-project.org/src/contrib/Archive/maptools/maptools_1.1-8.tar.gz\")\n\n\n\n\n7.2.4 install from Bioconductor\n\n\nCode\npak::pkg_install(\"text2vec\")\n\n\n\n\n7.2.5 install from local\n\n\nCode\npak::local_install(\"cli\")",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3141,8 +3141,8 @@
     "objectID": "intro/1 basic R.html#check-one-package-version",
     "href": "intro/1 basic R.html#check-one-package-version",
     "title": "Basic R",
-    "section": "6.3 check one package version",
-    "text": "6.3 check one package version\n\n\nCode\npackageVersion(\"tidyverse\")\n\n\n[1] '2.0.0'",
+    "section": "7.3 check one package version",
+    "text": "7.3 check one package version\n\n\nCode\npackageVersion(\"tidyverse\")\n\n\n[1] '2.0.0'",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3152,8 +3152,8 @@
     "objectID": "intro/1 basic R.html#check-pacakge-relationship",
     "href": "intro/1 basic R.html#check-pacakge-relationship",
     "title": "Basic R",
-    "section": "6.4 check pacakge relationship",
-    "text": "6.4 check pacakge relationship\n\n\nCode\npak::pkg_deps_explain(\"tibble\", \"rlang\")\n\n\ntibble -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; rlang\ntibble -&gt; rlang\ntibble -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; vctrs -&gt; rlang",
+    "section": "7.4 check pacakge relationship",
+    "text": "7.4 check pacakge relationship\n\n\nCode\npak::pkg_deps_explain(\"tibble\", \"rlang\")\n\n\ntibble -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; pillar -&gt; vctrs -&gt; rlang\ntibble -&gt; rlang\ntibble -&gt; vctrs -&gt; lifecycle -&gt; rlang\ntibble -&gt; vctrs -&gt; rlang",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3163,8 +3163,8 @@
     "objectID": "intro/1 basic R.html#check-pacakge-dependencies",
     "href": "intro/1 basic R.html#check-pacakge-dependencies",
     "title": "Basic R",
-    "section": "6.5 check pacakge dependencies",
-    "text": "6.5 check pacakge dependencies\n\n\nCode\npak::pkg_deps_tree(\"tibble\")\n\n\ntibble 3.2.1 ✨ ⬇ (684.10 kB)\n├─fansi 1.0.6 ✨ ⬇ (381.01 kB)\n├─lifecycle 1.0.4 ✨ ⬇ (124.48 kB)\n│ ├─cli 3.6.2 ✨ ⬇ (1.39 MB)\n│ ├─glue 1.7.0 ✨ ⬇ (159.26 kB)\n│ └─rlang 1.1.4 ✨ ⬇ (1.89 MB)\n├─magrittr 2.0.3 ✨ ⬇ (232.43 kB)\n├─pillar 1.9.0 ✨ ⬇ (648.86 kB)\n│ ├─cli\n│ ├─fansi\n│ ├─glue\n│ ├─lifecycle\n│ ├─rlang\n│ ├─utf8 1.2.4 ✨ ⬇ (206.92 kB)\n│ └─vctrs 0.6.5 ✨ ⬇ (1.88 MB)\n│   ├─cli\n│   ├─glue\n│   ├─lifecycle\n│   └─rlang\n├─pkgconfig 2.0.3 ✨ ⬇ (18.21 kB)\n├─rlang\n└─vctrs\n\nKey:  ✨ new |  ⬇ download",
+    "section": "7.5 check pacakge dependencies",
+    "text": "7.5 check pacakge dependencies\n\n\nCode\npak::pkg_deps_tree(\"tibble\")\n\n\ntibble 3.2.1 ✨ ⬇ (688.89 kB)\n├─fansi 1.0.6 ✨ ⬇ (383.06 kB)\n├─lifecycle 1.0.4 ✨ ⬇ (124.78 kB)\n│ ├─cli 3.6.3 ✨ ⬇ (1.39 MB)\n│ ├─glue 1.8.0 ✨ ⬇ (173.70 kB)\n│ └─rlang 1.1.4 ✨ ⬇ (1.90 MB)\n├─magrittr 2.0.3 ✨ ⬇ (233.52 kB)\n├─pillar 1.10.0 ✨ ⬇ (429.92 kB)\n│ ├─cli\n│ ├─glue\n│ ├─lifecycle\n│ ├─rlang\n│ ├─utf8 1.2.4 ✨ ⬇ (206.91 kB)\n│ └─vctrs 0.6.5 ✨ ⬇ (1.89 MB)\n│   ├─cli\n│   ├─glue\n│   ├─lifecycle\n│   └─rlang\n├─pkgconfig 2.0.3 ✨ ⬇ (18.45 kB)\n├─rlang\n└─vctrs\n\nKey:  ✨ new |  ⬇ download",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3174,8 +3174,8 @@
     "objectID": "intro/1 basic R.html#check-current-loaded-package",
     "href": "intro/1 basic R.html#check-current-loaded-package",
     "title": "Basic R",
-    "section": "6.6 check current loaded package",
-    "text": "6.6 check current loaded package\n\n\nCode\nsessionInfo()\n\n\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.35     R6_2.5.1          fastmap_1.1.1     xfun_0.43        \n [5] knitr_1.45        htmltools_0.5.8.1 rmarkdown_2.26    ps_1.7.6         \n [9] cli_3.6.2         processx_3.8.4    callr_3.7.6       pak_0.7.2        \n[13] compiler_4.3.1    rstudioapi_0.16.0 tools_4.3.1       evaluate_0.23    \n[17] yaml_2.3.8        rlang_1.1.3       jsonlite_1.8.8    htmlwidgets_1.6.4",
+    "section": "7.6 check current loaded package",
+    "text": "7.6 check current loaded package\n\n\nCode\nsessionInfo()\n\n\nR version 4.4.1 (2024-06-14)\nPlatform: aarch64-apple-darwin20\nRunning under: macOS 15.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] janitor_2.2.0   rvest_1.0.4     lubridate_1.9.4 forcats_1.0.0  \n [5] stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2     readr_2.1.5    \n [9] tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1   tidyverse_2.0.0\n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.6      jsonlite_1.8.9    compiler_4.4.1    tidyselect_1.2.1 \n [5] xml2_1.3.6        snakecase_0.11.1  callr_3.7.6       scales_1.3.0     \n [9] yaml_2.3.10       fastmap_1.2.0     R6_2.5.1          pak_0.8.0        \n[13] generics_0.1.3    curl_6.0.0        knitr_1.48        htmlwidgets_1.6.4\n[17] munsell_0.5.1     pillar_1.10.0     tzdb_0.4.0        rlang_1.1.4      \n[21] utf8_1.2.4        stringi_1.8.4     xfun_0.48         timechange_0.3.0 \n[25] cli_3.6.3         withr_3.0.2       magrittr_2.0.3    ps_1.8.1         \n[29] processx_3.8.4    digest_0.6.37     grid_4.4.1        hms_1.1.3        \n[33] lifecycle_1.0.4   vctrs_0.6.5       evaluate_1.0.1    glue_1.8.0       \n[37] colorspace_2.1-1  httr_1.4.7        rmarkdown_2.28    tools_4.4.1      \n[41] pkgconfig_2.0.3   htmltools_0.5.8.1",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3185,8 +3185,8 @@
     "objectID": "intro/1 basic R.html#check-all-package-version",
     "href": "intro/1 basic R.html#check-all-package-version",
     "title": "Basic R",
-    "section": "6.7 check all package version",
-    "text": "6.7 check all package version\n\n\nCode\nip = as.data.frame(installed.packages()[,c(1,3:4)])\nip = ip[is.na(ip$Priority),1:2,drop=FALSE]\nhead(ip)\n\n\n              Package Version\nabind           abind   1.4-5\nanytime       anytime   0.3.9\napplicable applicable   0.1.0\narchive       archive   1.1.7\narrow           arrow  15.0.1\nash               ash  1.0-15",
+    "section": "7.7 check all package version",
+    "text": "7.7 check all package version\n\n\nCode\nip = as.data.frame(installed.packages()[,c(1,3:4)])\nip = ip[is.na(ip$Priority),1:2,drop=FALSE]\nhead(ip)\n\n\n              Package  Version\nabind           abind    1.4-8\nannotater   annotater    0.2.3\nanytime       anytime    0.3.9\narrow           arrow 17.0.0.1\naskpass       askpass    1.2.1\nassertthat assertthat    0.2.1",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3196,8 +3196,8 @@
     "objectID": "intro/1 basic R.html#check-package-install-loaciton",
     "href": "intro/1 basic R.html#check-package-install-loaciton",
     "title": "Basic R",
-    "section": "6.8 check package install loaciton",
-    "text": "6.8 check package install loaciton\n\n\nCode\n.libPaths()\n\n\n[1] \"/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library\"",
+    "section": "7.8 check package install loaciton",
+    "text": "7.8 check package install loaciton\n\n\nCode\n.libPaths()\n\n\n[1] \"/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library\"",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3207,8 +3207,8 @@
     "objectID": "intro/1 basic R.html#uninstall-pacakge",
     "href": "intro/1 basic R.html#uninstall-pacakge",
     "title": "Basic R",
-    "section": "6.9 uninstall pacakge",
-    "text": "6.9 uninstall pacakge\n\n\nCode\nremove.packages('xxxxx')",
+    "section": "7.9 uninstall pacakge",
+    "text": "7.9 uninstall pacakge\n\n\nCode\nremove.packages('xxxxx')",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3218,8 +3218,8 @@
     "objectID": "intro/1 basic R.html#centrality-mean-median-mode",
     "href": "intro/1 basic R.html#centrality-mean-median-mode",
     "title": "Basic R",
-    "section": "9.1 Centrality: Mean, Median, Mode",
-    "text": "9.1 Centrality: Mean, Median, Mode",
+    "section": "10.1 Centrality: Mean, Median, Mode",
+    "text": "10.1 Centrality: Mean, Median, Mode",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3229,8 +3229,8 @@
     "objectID": "intro/1 basic R.html#spread-variance-standard-deviation-and-the-interquartile-range",
     "href": "intro/1 basic R.html#spread-variance-standard-deviation-and-the-interquartile-range",
     "title": "Basic R",
-    "section": "9.2 Spread: Variance, Standard Deviation, and the Interquartile Range",
-    "text": "9.2 Spread: Variance, Standard Deviation, and the Interquartile Range",
+    "section": "10.2 Spread: Variance, Standard Deviation, and the Interquartile Range",
+    "text": "10.2 Spread: Variance, Standard Deviation, and the Interquartile Range",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3240,8 +3240,8 @@
     "objectID": "intro/1 basic R.html#covariance-and-correlation",
     "href": "intro/1 basic R.html#covariance-and-correlation",
     "title": "Basic R",
-    "section": "9.3 Covariance and Correlation",
-    "text": "9.3 Covariance and Correlation\nWhen analyzing data, it’s often useful to be able to investigate the rela- tionship between two numeric variables to assess trends. For example, you might expect height and weight observations to have a noticeable positive relationship—taller people tend to weigh more. Conversely, you might imag- ine that handspan and length of hair would have less of an association. One of the simplest and most common ways such associations are quantified and compared is through the idea of correlation, for which you need the covariance. The covariance expresses how much two numeric variables “change together” and the nature of that relationship,",
+    "section": "10.3 Covariance and Correlation",
+    "text": "10.3 Covariance and Correlation\nWhen analyzing data, it’s often useful to be able to investigate the rela- tionship between two numeric variables to assess trends. For example, you might expect height and weight observations to have a noticeable positive relationship—taller people tend to weigh more. Conversely, you might imag- ine that handspan and length of hair would have less of an association. One of the simplest and most common ways such associations are quantified and compared is through the idea of correlation, for which you need the covariance. The covariance expresses how much two numeric variables “change together” and the nature of that relationship,",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -3251,8 +3251,8 @@
     "objectID": "intro/1 basic R.html#correlationpearsons-product-moment-correlation-coefficient",
     "href": "intro/1 basic R.html#correlationpearsons-product-moment-correlation-coefficient",
     "title": "Basic R",
-    "section": "9.4 Correlation,Pearson’s product-moment correlation coefficient",
-    "text": "9.4 Correlation,Pearson’s product-moment correlation coefficient\nPearson’s sample correlation coef- ficient ρxy is computed by dividing the sample covariance by the product of the standard deviation of each data set\n\nSome Correlation Example:\n\n\n\nCode\nsessionInfo()\n\n\nsessionInfo()\nR version 4.3.1 (2023-06-16)\nPlatform: aarch64-apple-darwin20 (64-bit)\nRunning under: macOS Sonoma 14.1.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] digest_0.6.35     R6_2.5.1          fastmap_1.1.1     xfun_0.43        \n [5] knitr_1.45        htmltools_0.5.8.1 rmarkdown_2.26    ps_1.7.6         \n [9] cli_3.6.2         processx_3.8.4    callr_3.7.6       pak_0.7.2        \n[13] compiler_4.3.1    rstudioapi_0.16.0 tools_4.3.1       evaluate_0.23    \n[17] yaml_2.3.8        rlang_1.1.3       jsonlite_1.8.8    htmlwidgets_1.6.4",
+    "section": "10.4 Correlation,Pearson’s product-moment correlation coefficient",
+    "text": "10.4 Correlation,Pearson’s product-moment correlation coefficient\nPearson’s sample correlation coef- ficient ρxy is computed by dividing the sample covariance by the product of the standard deviation of each data set\n\nSome Correlation Example:\n\n\n\nCode\nsessionInfo()\n\n\nsessionInfo()\nR version 4.4.1 (2024-06-14)\nPlatform: aarch64-apple-darwin20\nRunning under: macOS 15.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] janitor_2.2.0   rvest_1.0.4     lubridate_1.9.4 forcats_1.0.0  \n [5] stringr_1.5.1   dplyr_1.1.4     purrr_1.0.2     readr_2.1.5    \n [9] tidyr_1.3.1     tibble_3.2.1    ggplot2_3.5.1   tidyverse_2.0.0\n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.6      jsonlite_1.8.9    compiler_4.4.1    tidyselect_1.2.1 \n [5] xml2_1.3.6        snakecase_0.11.1  callr_3.7.6       scales_1.3.0     \n [9] yaml_2.3.10       fastmap_1.2.0     R6_2.5.1          pak_0.8.0        \n[13] generics_0.1.3    curl_6.0.0        knitr_1.48        htmlwidgets_1.6.4\n[17] munsell_0.5.1     pillar_1.10.0     tzdb_0.4.0        rlang_1.1.4      \n[21] utf8_1.2.4        stringi_1.8.4     xfun_0.48         timechange_0.3.0 \n[25] cli_3.6.3         withr_3.0.2       magrittr_2.0.3    ps_1.8.1         \n[29] processx_3.8.4    digest_0.6.37     grid_4.4.1        hms_1.1.3        \n[33] lifecycle_1.0.4   vctrs_0.6.5       evaluate_1.0.1    glue_1.8.0       \n[37] colorspace_2.1-1  httr_1.4.7        rmarkdown_2.28    tools_4.4.1      \n[41] pkgconfig_2.0.3   htmltools_0.5.8.1",
     "crumbs": [
       "Intro",
       "Basic R"
@@ -6730,7 +6730,7 @@
     "href": "other/6 google analytics/1 google analytics.html",
     "title": "google analytic in R",
     "section": "",
-    "text": "1 package\n\n\nCode\n# Libraries\nlibrary(googleAnalyticsR)\nlibrary(gargle)\nlibrary(tidyverse)\nlibrary(plotly)\nlibrary(lubridate)\n\n\n\n\n2 API\n\n\nCode\n# Access\nga_auth(email=\"verykoala@gmail.com\")\nga_account_list(\"ga4\")\n\n\n# A tibble: 4 × 4\n  account_name accountId property_name           propertyId\n  &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;     \n1 verykoala    30370450  verykoala - GA4         431072878 \n2 verykoala    30370450  drinking                431975107 \n3 Demo Account 54516992  GA4 - Flood-It!         153293282 \n4 Demo Account 54516992  GA4 - Google Merch Shop 213025502 \n\n\n\n\n3 download data\n\n\nCode\nmy_property_id &lt;- 431975107\nfrom_date &lt;- \"2023-01-01\"\nto_date &lt;- \"2024-12-31\"\n           \noverall &lt;- ga_data(\n  my_property_id,\n  metrics = c(\"activeUsers\", \"newUsers\",\"sessions\", \"screenPageViews\"),\n  date_range = c(from_date, to_date)\n  )\n\n\n\n\nCode\noverall\n\n\n# A tibble: 1 × 4\n  activeUsers newUsers sessions screenPageViews\n        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n1          85       92      401            2193\n\n\n\n\nCode\n# By Country\ncountry &lt;- ga_data(\n  my_property_id,\n  dimensions = c(\"country\"),\n  metrics = c(\"activeUsers\", \"newUsers\",\"sessions\", \"screenPageViews\"),\n  date_range = c(from_date, to_date)\n)\n\ncountry\n\n\n# A tibble: 18 × 5\n   country        activeUsers newUsers sessions screenPageViews\n   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n 1 Hong Kong               32       23      107             452\n 2 China                   27       30      242            1449\n 3 United States           14       11       19              94\n 4 Thailand                 6        2       14              87\n 5 Japan                    5        4        5              13\n 6 Ireland                  4        4        4               4\n 7 Macao                    4        4       20              58\n 8 United Kingdom           3        3        3               3\n 9 Malaysia                 2        2        4               9\n10 Singapore                2        0        4              11\n11 Sweden                   2        2        2               2\n12 (not set)                1        1        1               1\n13 Argentina                1        1        1               1\n14 Australia                1        1        1               1\n15 Canada                   1        1        1               3\n16 Iran                     1        1        1               3\n17 South Korea              1        1        2               1\n18 Taiwan                   1        1        1               1\n\n\n\n\nCode\nfig &lt;- plot_ly(data=country,x = ~sessions,y=~country,text=~sessions, type = \"bar\",orientation = 'h')%&gt;% \n  layout(title = 'Vistors',yaxis = list(title='Regions',categoryorder = \"total ascending\"),\n         images = list(  \n      list(  \n        source = base64enc::dataURI(file = \"images/google_analytics-ar21.webp\")\n        ,xref = \"paper\"\n        ,yref = \"paper\" \n        ,x = 0.9\n        ,y = 0.3\n        ,sizex = 0.3\n        ,sizey = 0.3\n       ,xanchor=\"right\"  \n      )  \n         \n         )\n)\n\nfig\n\n\n\n\n\n\n\n\nCode\nsample &lt;- ga_data(\n  my_property_id,\n  dimensions = c(\"date\",\"dayOfWeek\"),\n  metrics = c(\"activeUsers\", \"newUsers\",\"sessions\", \"screenPageViews\"),\n  date_range = c(from_date, to_date)\n) %&gt;% \narrange(desc(date)) %&gt;% mutate(weekend_date=floor_date(date, \"week\")+7)\n\nsample\n\n\n# A tibble: 100 × 7\n   date       dayOfWeek activeUsers newUsers sessions screenPageViews\n   &lt;date&gt;     &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n 1 2024-12-13 5                   4        2       12              29\n 2 2024-12-12 4                   2        1        2               2\n 3 2024-12-07 6                   2        2        2               2\n 4 2024-12-06 5                   3        1        4              14\n 5 2024-12-05 4                   2        0        3               5\n 6 2024-12-04 3                   2        0        7              27\n 7 2024-12-03 2                   3        1        8              47\n 8 2024-12-02 1                   2        0        4              29\n 9 2024-12-01 0                   3        1        4              26\n10 2024-11-17 0                   2        0        4              16\n# ℹ 90 more rows\n# ℹ 1 more variable: weekend_date &lt;date&gt;\n\n\nCode\nsample002=sample %&gt;% group_by(weekend_date) %&gt;% summarise(activeUsers=sum(activeUsers)\n                                                          ,sessions=sum(sessions))\n\n\n\n\nCode\nfig &lt;- plot_ly(data = sample002, x = ~weekend_date, y = ~sessions,mode = 'lines')%&gt;% layout(title = 'Vistors',images = list(  \n      list(  \n        source = base64enc::dataURI(file = \"images/google_analytics-ar21.webp\")\n        ,xref = \"paper\"\n        ,yref = \"paper\" \n        ,x = 0.4\n        ,y = 0.9\n        ,sizex = 0.3\n        ,sizey = 0.3\n       ,xanchor=\"left\"  \n      )  \n    )\n    ) \nfig\n\n\n\n\n\n\n\n\n4 reference:\nhttps://www.listendata.com/2023/09/how-to-use-google-analytics-in-r.html\n\n\n\n\n\n\n Back to top",
+    "text": "1 package\n\n\nCode\n# Libraries\nlibrary(googleAnalyticsR)\nlibrary(gargle)\nlibrary(tidyverse)\nlibrary(plotly)\nlibrary(lubridate)\n\n\n\n\n2 API\n\n\nCode\n# Access\nga_auth(email=\"verykoala@gmail.com\")\nga_account_list(\"ga4\")\n\n\n# A tibble: 4 × 4\n  account_name accountId property_name           propertyId\n  &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;     \n1 verykoala    30370450  verykoala - GA4         431072878 \n2 verykoala    30370450  drinking                431975107 \n3 Demo Account 54516992  GA4 - Flood-It!         153293282 \n4 Demo Account 54516992  GA4 - Google Merch Shop 213025502 \n\n\n\n\n3 download data\n\n\nCode\nmy_property_id &lt;- 431975107\nfrom_date &lt;- \"2023-01-01\"\nto_date &lt;- \"2024-12-31\"\n           \noverall &lt;- ga_data(\n  my_property_id,\n  metrics = c(\"activeUsers\", \"newUsers\",\"sessions\", \"screenPageViews\"),\n  date_range = c(from_date, to_date)\n  )\n\n\n\n\nCode\noverall\n\n\n# A tibble: 1 × 4\n  activeUsers newUsers sessions screenPageViews\n        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n1          92       99      472            2743\n\n\n\n\n4 image at the back into plotly\n\n\nCode\n# By Country\ncountry &lt;- ga_data(\n  my_property_id,\n  dimensions = c(\"country\"),\n  metrics = c(\"activeUsers\", \"newUsers\",\"sessions\", \"screenPageViews\"),\n  date_range = c(from_date, to_date)\n)\n\ncountry\n\n\n# A tibble: 18 × 5\n   country        activeUsers newUsers sessions screenPageViews\n   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n 1 Hong Kong               32       23      136             631\n 2 China                   28       31      279            1814\n 3 United States           15       12       20              95\n 4 Thailand                 6        2       14              87\n 5 Ireland                  5        5        5               5\n 6 Japan                    5        4        5              13\n 7 Macao                    4        4       20              58\n 8 Sweden                   4        4        4               4\n 9 United Kingdom           3        3        3               3\n10 (not set)                2        2        2               2\n11 Malaysia                 2        2        4               9\n12 Singapore                2        0        4              11\n13 South Korea              2        2        3               2\n14 Argentina                1        1        1               1\n15 Australia                1        1        1               1\n16 Canada                   1        1        1               3\n17 Iran                     1        1        1               3\n18 Taiwan                   1        1        1               1\n\n\n\n\n5 add image at the back into plotly\n\n\nCode\nfig &lt;- plot_ly(data=country,x = ~sessions,y=~country,text=~sessions, type = \"bar\",orientation = 'h')%&gt;% \n  layout(title = 'Vistors',yaxis = list(title='Regions',categoryorder = \"total ascending\"),\n         images = list(  \n      list(  \n        source = base64enc::dataURI(file = \"images/google_analytics-ar21.webp\")\n        ,xref = \"paper\"\n        ,yref = \"paper\" \n        ,x = 0.9\n        ,y = 0.3\n        ,sizex = 0.3\n        ,sizey = 0.3\n       ,xanchor=\"right\"  \n        ,layer = \"below\"\n      )  \n         \n         )\n)\n\nfig\n\n\n\n\n\n\n\n\nCode\nsample &lt;- ga_data(\n  my_property_id,\n  dimensions = c(\"date\",\"dayOfWeek\"),\n  metrics = c(\"activeUsers\", \"newUsers\",\"sessions\", \"screenPageViews\"),\n  date_range = c(from_date, to_date)\n) %&gt;% \narrange(desc(date)) %&gt;% mutate(weekend_date=floor_date(date, \"week\")+7)\n\nsample\n\n\n# A tibble: 100 × 7\n   date       dayOfWeek activeUsers newUsers sessions screenPageViews\n   &lt;date&gt;     &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;\n 1 2024-12-31 2                   2        2        2               2\n 2 2024-12-29 0                   2        0        4              11\n 3 2024-12-27 5                   2        0        5             215\n 4 2024-12-26 4                   2        1        2              23\n 5 2024-12-25 3                   3        1       10              37\n 6 2024-12-22 0                   2        0        3              39\n 7 2024-12-21 6                   2        0        5              20\n 8 2024-12-20 5                   4        2        7              63\n 9 2024-12-19 4                   2        0       11              39\n10 2024-12-18 3                   2        0        7              13\n# ℹ 90 more rows\n# ℹ 1 more variable: weekend_date &lt;date&gt;\n\n\nCode\nsample002=sample %&gt;% group_by(weekend_date) %&gt;% summarise(activeUsers=sum(activeUsers)\n                                                          ,sessions=sum(sessions))\n\n\n\n\nCode\nfig &lt;- plot_ly(data = sample002, x = ~weekend_date, y = ~sessions,mode = 'lines')%&gt;% layout(title = 'Vistors',images = list(  \n      list(  \n        source = base64enc::dataURI(file = \"images/google_analytics-ar21.webp\")\n        ,xref = \"paper\"\n        ,yref = \"paper\" \n        ,x = 0.4\n        ,y = 0.9\n        ,sizex = 0.3\n        ,sizey = 0.3\n       ,xanchor=\"left\"  \n      )  \n    )\n    ) \nfig\n\n\n\n\n\n\n\n\n6 reference:\nhttps://www.listendata.com/2023/09/how-to-use-google-analytics-in-r.html\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Other",
       "6 google analytics",
@@ -6985,8 +6985,8 @@
     "objectID": "data manipulation/4 data table.html#pages-data",
     "href": "data manipulation/4 data table.html#pages-data",
     "title": "Data table",
-    "section": "2.1 pages data",
-    "text": "2.1 pages data\n\n\nCode\nlibrary(rmarkdown)\nmtcars %&gt;% paged_table()",
+    "section": "3.1 pages data",
+    "text": "3.1 pages data\n\n\nCode\nlibrary(rmarkdown)\nmtcars %&gt;% paged_table()",
     "crumbs": [
       "data manipulation",
       "Data table"
@@ -6996,11 +6996,452 @@
     "objectID": "data manipulation/4 data table.html#reference-1",
     "href": "data manipulation/4 data table.html#reference-1",
     "title": "Data table",
-    "section": "2.2 reference:",
-    "text": "2.2 reference:\nhttps://rstudio.github.io/distill/tables.html",
+    "section": "2.1 reference:",
+    "text": "2.1 reference:\nhttps://www.youtube.com/watch?v=E3ubwU5Uyqw",
     "crumbs": [
       "data manipulation",
       "Data table"
+    ]
+  },
+  {
+    "objectID": "data manipulation/2 data structure in R.html",
+    "href": "data manipulation/2 data structure in R.html",
+    "title": "Data structure in R",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)",
+    "crumbs": [
+      "data manipulation",
+      "Data structure in R"
+    ]
+  },
+  {
+    "objectID": "intro/1 basic R.html#download-table-from-internet",
+    "href": "intro/1 basic R.html#download-table-from-internet",
+    "title": "Basic R",
+    "section": "1.9 download table from internet",
+    "text": "1.9 download table from internet\n\n\nCode\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(janitor)\n\nnba_wiki_url='https://en.wikipedia.org/wiki/List_of_NBA_champions'\n  \nnba_wiki_data001=nba_wiki_url %&gt;% read_html() %&gt;% html_table()\n\nnba_wiki_data002=nba_wiki_data001[[2]] %&gt;% clean_names()\n\nnba_wiki_data003=nba_wiki_data002 %&gt;%filter(!row_number() %in% c(1, 5)) %&gt;% mutate(year=str_sub(year, 1, 4))\n\ntail(nba_wiki_data003)\n\n\n# A tibble: 6 × 8\n  year  western_champion      coach result eastern_champion coach_2 finals_mvp_a\n  &lt;chr&gt; &lt;chr&gt;                 &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;            &lt;chr&gt;   &lt;chr&gt;       \n1 2019  Golden State Warrior… Stev… 2–4    Toronto Raptors… Nick N… Kawhi Leona…\n2 2020  Los Angeles Lakers (… Fran… 4–2    Miami Heat (5) … Erik S… LeBron James\n3 2021  Phoenix Suns (2) (3,… Mont… 2–4    Milwaukee Bucks… Mike B… Giannis Ant…\n4 2022  Golden State Warrior… Stev… 4–2    Boston Celtics … Ime Ud… Stephen Cur…\n5 2023  Denver Nuggets (1) (… Mich… 4–1    Miami Heat (8) … Erik S… Nikola Jokić\n6 2024  Dallas Mavericks (5)… Jaso… 1–4    Boston Celtics … Joe Ma… Jaylen Brown\n# ℹ 1 more variable:\n#   mw_parser_output_tooltip_dotted_border_bottom_1px_dotted_cursor_help_ref &lt;chr&gt;",
+    "crumbs": [
+      "Intro",
+      "Basic R"
+    ]
+  },
+  {
+    "objectID": "data manipulation/4 data table.html#reference-2",
+    "href": "data manipulation/4 data table.html#reference-2",
+    "title": "Data table",
+    "section": "3.2 reference:",
+    "text": "3.2 reference:\nhttps://rstudio.github.io/distill/tables.html",
+    "crumbs": [
+      "data manipulation",
+      "Data table"
+    ]
+  },
+  {
+    "objectID": "Publish/4 email/1 email.html",
+    "href": "Publish/4 email/1 email.html",
+    "title": "Email",
+    "section": "",
+    "text": "Code\nlibrary(blastula)\nlibrary(keyring)\n\n\n\n\n\n\n\n\nCode\ncreate_smtp_creds_key(\n  id = \"gmail001_creds\",\n  provider = \"gmail\",\n  user = \"verykoala@gmail.com\",\n  overwrite = TRUE\n  )\n\n\n\n\n\n\n\nCode\n# create_smtp_creds_key(\n#   id = \"outlook001_creds\",\n#   provider = \"outlook\",\n#   user = \"jcpartner@outlook.com\",\n#   overwrite = TRUE\n#   )\n\ncreate_smtp_creds_file(file = \"ggnot_throwaway_creds\",\n                       user = \"jcpartner@outlook.com\",\n                       provider = \"outlook\")\n\n\n\n\nCode\n#delete_credential_key(\"gmail001_creds\")\n\n\n\n\nCode\nview_credential_keys()\n\n\n\n\n\n\n\n\nCode\nlibrary(blastula)\nmsg=compose_email(\n  body = md(\n  \"Hi there 👋,\n  \n  This is an email to let you now thatrunning job **finished**.\n\n  Best,&lt;br&gt;\n  Tony\"\n  )\n)\n\nmsg\n\n\n\n\n\n\n\n\n\nCode\nmsg %&gt;% \n  smtp_send(\n    from = 'verykoala@gmail.com',\n    to = \"jcflyingco@outlook.com\",\n    subject = \"Testing the email function\",\n    credentials = creds_key(id = \"gmail001_creds\")\n  )\n\n\n\n\n\n\n\nCode\nlibrary(Microsoft365R)\noutl &lt;- get_personal_outlook()\n\n\n\n\nCode\n# list the most recent emails in your Inbox\n#outl$list_emails()\n\n\n\n\nCode\nem &lt;- outl$create_email(msg, subject=\"Hello\", to=\"jcflyingco@outlook.com\")\n\n\n\n\nCode\nem$send()\n\n\n\n\n\n\n\n\nCode\nemail_obj=render_email('.quarto_email.Rmd')\n\n\n\n\nCode\nemail_obj\n\n\n\n\n\n\nCode\nemail_obj%&gt;% \n  smtp_send(\n    from = 'verykoala@gmail.com',\n    to = \"jcflyingco@outlook.com\",\n    subject = \"Testing the email function\",\n    credentials = creds_key(id = \"gmail001_creds\")\n  )\n\n\n\n\n\n\n\nCode\nem &lt;- outl$create_email(email_obj, subject=\"Hello\", to=\"jcflyingco@outlook.com\")\nem$send()",
+    "crumbs": [
+      "Publish",
+      "4 email",
+      "Email"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html",
+    "href": "Publish/2 quarto/1 quarto tips.html",
+    "title": "quarto tips",
+    "section": "",
+    "text": "https://quarto.org/docs/get-started/\n\n\n\n\n\nCode\ninstall.packages(\"quarto\")",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#install-quarto-cli",
+    "href": "Publish/2 quarto/1 quarto tips.html#install-quarto-cli",
+    "title": "quarto tips",
+    "section": "",
+    "text": "https://quarto.org/docs/get-started/",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#install-quarto-pacakge",
+    "href": "Publish/2 quarto/1 quarto tips.html#install-quarto-pacakge",
+    "title": "quarto tips",
+    "section": "",
+    "text": "Code\ninstall.packages(\"quarto\")",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#in-terminal",
+    "href": "Publish/2 quarto/1 quarto tips.html#in-terminal",
+    "title": "quarto tips",
+    "section": "in Terminal",
+    "text": "in Terminal\n\n\n\nCode\n\nTerminal\n\nquarto check",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#in-r",
+    "href": "Publish/2 quarto/1 quarto tips.html#in-r",
+    "title": "quarto tips",
+    "section": "in R",
+    "text": "in R\n\n\nCode\nlibrary(quarto)\nquarto_version()\n\n\n[1] '99.9.9'\n\n\nquarto location\n\n\nCode\nquarto_path()\n\n\n[1] \"/usr/local/bin/quarto\"",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#r",
+    "href": "Publish/2 quarto/1 quarto tips.html#r",
+    "title": "quarto tips",
+    "section": "R",
+    "text": "R\n```{R}\nversion\n```",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#python",
+    "href": "Publish/2 quarto/1 quarto tips.html#python",
+    "title": "quarto tips",
+    "section": "Python",
+    "text": "Python\n```{python}\nimport sys\nprint(sys.version)\n```",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#bath",
+    "href": "Publish/2 quarto/1 quarto tips.html#bath",
+    "title": "quarto tips",
+    "section": "Bath",
+    "text": "Bath\n```{bash}\necho \"foo\" \n```",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#in-yaml-header",
+    "href": "Publish/2 quarto/1 quarto tips.html#in-yaml-header",
+    "title": "quarto tips",
+    "section": "in YAML header",
+    "text": "in YAML header\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\n\neval： Evaluate the code chunk (if false, just echos the code into the output).\necho： Include the source code in output.\noutput： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\nwarning： Include warnings in the output.\nerror： Evaluate the code chunk (if false, just echos the code into the output).\ninclude： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#in-code-chunk",
+    "href": "Publish/2 quarto/1 quarto tips.html#in-code-chunk",
+    "title": "quarto tips",
+    "section": "in code chunk",
+    "text": "in code chunk\n\n\nCode\n #| eval: false",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#embed-youtube",
+    "href": "Publish/2 quarto/1 quarto tips.html#embed-youtube",
+    "title": "quarto tips",
+    "section": "embed youtube",
+    "text": "embed youtube\n\n\nCode\n&lt;iframe width=\"640\" height=\"480\" src=\"https://www.youtube.com/embed/nku5zFMZAdU\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen&gt;\n&lt;/iframe&gt;",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/1 quarto tips.html#embed-local-video",
+    "href": "Publish/2 quarto/1 quarto tips.html#embed-local-video",
+    "title": "quarto tips",
+    "section": "embed local video",
+    "text": "embed local video\n\n\nCode\n{{&lt; video images/vv.mp4 height=\"600\" &gt;}}",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto tips"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/5 quarto extensions.html",
+    "href": "Publish/2 quarto/5 quarto extensions.html",
+    "title": "quarto Extensioins",
+    "section": "",
+    "text": "Extensions are a powerful way to modify and extend the behavior of Quarto. Quarto v1.2 Required for Quarto Extensions.\n\n1 quarto extension： lightbox\nAn extension that uses the GLightbox javascript library to add lightbox styling and behavior to images in your HTML documents.\n\n\n2 Installation:\n\n\n\nCode\n\nTerminal\n\nquarto install extension quarto-ext/lightbox\n\n\n\n\n\n3 Usage:\nThe Lightbox extension can automatically give images in your web page a lightbox treatment. You can enable this like:\nin header yaml:\n\n\nCode\n---\ntitle: Simple Lightbox Example\nfilters:\n   - lightbox\nlightbox: auto\n---\n\n\nIn addition to simply providing a lightbox treatment for individual images, you can also group images into a ‘gallery’. When the user activates the lightbox, they will be able to page through the images in the gallery without returning to the main document.\nin content:\n\n\nCode\n![](images/image-562149792.png){group=\"my-gallery\"\ndescription=\"its a picture\"}\n\n\n\n\n4 quarto extension lightbox example:\ncode:example.qmd\nwebsite:example.qmd.\n\n\n5 list quarto extension\ngo to folder which have added quarto extension\n\n\n\nCode\n\nTerminal\n\n\nquarto list extensions\n\n\n\n\n\n\n6 update quarto extension\n\n\n\nCode\n\nTerminal\n\n\nquarto update quarto-ext/fontawesome\n\n\n\n\n\n7 remove quarto extension\n\n\n\nCode\n\nTerminal\n\n\nquarto remove quarto-ext/fontawesome\n\n\n\nIf you run the quarto remove extension command with no extension-id, you will be presented with a list of extensions that are present and you may select which extensions to remove.\n\n\n8 Reference\nhttps://quarto.org/docs/extensions/\nhttps://github.com/quarto-ext/lightbox\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto Extensioins"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/4 quarto presentation .html",
+    "href": "Publish/2 quarto/4 quarto presentation .html",
+    "title": "quarto presentation",
+    "section": "",
+    "text": "1 revealjs YAML\n\n\nCode\n---\ntitle: \"Habits\"\nauthor: \"John Doe\"\nformat: revealjs\n---\n\n\n\n\n2 pages\n\n\nCode\n# pages\n\n# In the morning\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Breakfast\n\n- Eat eggs\n- Drink coffee\n\n\n\n\n3 YAML format setting\n\n\nCode\nformat:\n  revealjs:\n    controls: true\n    navigation-mode: vertical\n    height: 800\n    width: 1000    \n    fontsize: 20pt\n    page-layout: full\n    logo: images/logo.jpg\n    footer: \"This is footer(https://google.com/)\"\n    slide-number: c\n    show-slide-number: all\n    menu: false\n\n\n\n\n4 Main Title Slide Background YAML setting\n\n\nCode\n---\ntitle: My Slide Show\ntitle-slide-attributes:\n    data-background-image: /path/to/title_image.png\n    data-background-size: contain\n    data-background-opacity: \"0.5\"\n---\n\n\n\n\n5 Chalkboard YAML setting\n\n\nCode\n---\ntitle: \"Presentation\"\nformat:\n  revealjs:\n    chalkboard: true\n---\n\n\n\n\n6 center whole page\n\n\nCode\n# This will be centered {.center}\n\nThis text is moved as well\n\n\n\n\n7 reference:\nhttps://quarto.org/docs/presentations/revealjs/\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto presentation"
+    ]
+  },
+  {
+    "objectID": "Publish/1 Shiny/3 China accident map.html",
+    "href": "Publish/1 Shiny/3 China accident map.html",
+    "title": "Shiny in R:China accident map",
+    "section": "",
+    "text": "1 Shiny app:https://tduan.shinyapps.io/China_accident_map/\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Publish",
+      "1 Shiny",
+      "Shiny in R:China accident map"
+    ]
+  },
+  {
+    "objectID": "Publish/1 Shiny/1 shiny weight tracking.html",
+    "href": "Publish/1 Shiny/1 shiny weight tracking.html",
+    "title": "Shiny in R:weight tracking",
+    "section": "",
+    "text": "1 Shiny app:https://tduan.shinyapps.io/weightshiny/\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Publish",
+      "1 Shiny",
+      "Shiny in R:weight tracking"
+    ]
+  },
+  {
+    "objectID": "Publish/3 dashboard/1 dashboard.html",
+    "href": "Publish/3 dashboard/1 dashboard.html",
+    "title": "Dashboard",
+    "section": "",
+    "text": "quarto dashboard\n\n\n\nCode\n\n_dashboard_r.qmd\n\n---\ntitle: \"First quarto dashboard\"\nformat: dashboard\n---\n\n```{r}\na=1\na\n```\n\n\n\n\n\nReference:\nhttps://www.youtube.com/watch?v=HW7QbqI4fH0\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Publish",
+      "3 dashboard",
+      "Dashboard"
+    ]
+  },
+  {
+    "objectID": "Publish/1 Shiny/2 shiny photo editor.html",
+    "href": "Publish/1 Shiny/2 shiny photo editor.html",
+    "title": "Shiny in R:photo editor",
+    "section": "",
+    "text": "1 Shiny app:https://tduan.shinyapps.io/photo_editor/\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Publish",
+      "1 Shiny",
+      "Shiny in R:photo editor"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/3 quarto website.html",
+    "href": "Publish/2 quarto/3 quarto website.html",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub\n\n\n\n\n\n\n\n\n\n_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "href": "Publish/2 quarto/3 quarto website.html#publish-quarto-website-into-quarto-hub",
+    "title": "quarto website",
+    "section": "",
+    "text": "you need to have quarto pub account https://quartopub.com/\n\n\nCode\nquarto publish quarto-pub",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/3 quarto website.html#publish-quarto-website-into-github-page",
+    "href": "Publish/2 quarto/3 quarto website.html#publish-quarto-website-into-github-page",
+    "title": "quarto website",
+    "section": "",
+    "text": "_quarto.yml\n\n#| eval: false\nproject:\n  type: website\n  output-dir: docs\n\n\n\n\n\n\n\n\n\nThe github site is created: https://your_github_name.github.io/repository_name/\n\n\n\nIn mac using {shift+command+.} to show hidden .gitignore file\nfor example,add *.parquet in .gitignore file to ignore all parquet file\n\n\n.gitignore\n\n#| eval: false\n.Rproj.user\n.Rhistory\n.RData\n.Ruserdata\n\n/.quarto/\n\n*.parquet",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto website"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/2 quarto blog.html",
+    "href": "Publish/2 quarto/2 quarto blog.html",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---\n\n\n\n\n\n\n\nCode\n---\ndraft: true  \n  \n---\n\n\n\n\n\n\n\nCode\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true\n\n\n\n\n\n\n\nCode\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---\n\n\n\n\n\n\n\nCode\ndraft:true",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/2 quarto blog.html#blog-post",
+    "href": "Publish/2 quarto/2 quarto blog.html#blog-post",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"title\"\n\nauthor: \"name\"\ndate: \"2024-05-03\"\ncategories: [R,quarto]\nexecute:\n  warning: false\n  error: false\n  eval: false\n\nformat:\n  html:\n    toc: true\n    toc-location: left\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    \n---",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/2 quarto blog.html#hide-post-from-main-page",
+    "href": "Publish/2 quarto/2 quarto blog.html#hide-post-from-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ndraft: true  \n  \n---",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/2 quarto blog.html#quarto.yml",
+    "href": "Publish/2 quarto/2 quarto blog.html#quarto.yml",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\nproject:\n  type: website\n\nwebsite:\n  title: \"tidystep\"\n  site-url: https://tidystep.netlify.app/\n  description: \"A blog for data stuff\"\n  favicon: \"profile3.png\"\n  google-analytics: \"G-2EQK8RFKFX\"\n  navbar:\n    right:\n      - about.qmd\n      - icon: github\n        href: https://github.com/TonyFly3000\n      - icon: twitter\n        href: https://twitter.com/TonyJCD\n      - icon: rss\n        href: index.xml\n\n  page-footer:\n    right: \"This blog is built with ❤️ and [Quarto](https://quarto.org/).\"\n\nformat:\n  html:\n    theme: \n      light: flatly\n      dark: darkly\n    css: styles.css\n    grid:\n      body-width: 1100px\n      margin-width: 300px\n      gutter-width: 1.5rem\n\neditor: visual\nexecute:\n  freeze: true",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/2 quarto blog.html#index.qmd",
+    "href": "Publish/2 quarto/2 quarto blog.html#index.qmd",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\n---\ntitle: \"微步数据\"\nlisting:\n  page-size: 8\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: true\n  filter-ui: false\n  fields: [image, date, title, author,categories]\n  feed: true\npage-layout: full\ntitle-block-banner: true\n---",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "href": "Publish/2 quarto/2 quarto blog.html#draft-postnot-include-in-the-main-page",
+    "title": "quarto blog",
+    "section": "",
+    "text": "Code\ndraft:true",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto blog"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/6 quarto parameters.html",
+    "href": "Publish/2 quarto/6 quarto parameters.html",
+    "title": "quarto parameters",
+    "section": "",
+    "text": "Code\nlibrary(quarto)\nquarto_render(\"_parameters in R.qmd\"\n,output_file='R.html'\n,execute_params = list(name='new me',key=9999))",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto parameters"
+    ]
+  },
+  {
+    "objectID": "Publish/2 quarto/6 quarto parameters.html#render-qmd-file-with-parameters-input",
+    "href": "Publish/2 quarto/6 quarto parameters.html#render-qmd-file-with-parameters-input",
+    "title": "quarto parameters",
+    "section": "",
+    "text": "Code\nlibrary(quarto)\nquarto_render(\"_parameters in R.qmd\"\n,output_file='R.html'\n,execute_params = list(name='new me',key=9999))",
+    "crumbs": [
+      "Publish",
+      "2 quarto",
+      "quarto parameters"
+    ]
+  },
+  {
+    "objectID": "Publish/4 email/1 email.html#create-smtp-credentials",
+    "href": "Publish/4 email/1 email.html#create-smtp-credentials",
+    "title": "Email",
+    "section": "",
+    "text": "Code\ncreate_smtp_creds_key(\n  id = \"gmail001_creds\",\n  provider = \"gmail\",\n  user = \"verykoala@gmail.com\",\n  overwrite = TRUE\n  )\n\n\n\n\n\n\n\nCode\n# create_smtp_creds_key(\n#   id = \"outlook001_creds\",\n#   provider = \"outlook\",\n#   user = \"jcpartner@outlook.com\",\n#   overwrite = TRUE\n#   )\n\ncreate_smtp_creds_file(file = \"ggnot_throwaway_creds\",\n                       user = \"jcpartner@outlook.com\",\n                       provider = \"outlook\")\n\n\n\n\nCode\n#delete_credential_key(\"gmail001_creds\")\n\n\n\n\nCode\nview_credential_keys()",
+    "crumbs": [
+      "Publish",
+      "4 email",
+      "Email"
+    ]
+  },
+  {
+    "objectID": "Publish/4 email/1 email.html#email-content",
+    "href": "Publish/4 email/1 email.html#email-content",
+    "title": "Email",
+    "section": "",
+    "text": "Code\nlibrary(blastula)\nmsg=compose_email(\n  body = md(\n  \"Hi there 👋,\n  \n  This is an email to let you now thatrunning job **finished**.\n\n  Best,&lt;br&gt;\n  Tony\"\n  )\n)\n\nmsg",
+    "crumbs": [
+      "Publish",
+      "4 email",
+      "Email"
+    ]
+  },
+  {
+    "objectID": "Publish/4 email/1 email.html#send-email",
+    "href": "Publish/4 email/1 email.html#send-email",
+    "title": "Email",
+    "section": "",
+    "text": "Code\nmsg %&gt;% \n  smtp_send(\n    from = 'verykoala@gmail.com',\n    to = \"jcflyingco@outlook.com\",\n    subject = \"Testing the email function\",\n    credentials = creds_key(id = \"gmail001_creds\")\n  )\n\n\n\n\n\n\n\nCode\nlibrary(Microsoft365R)\noutl &lt;- get_personal_outlook()\n\n\n\n\nCode\n# list the most recent emails in your Inbox\n#outl$list_emails()\n\n\n\n\nCode\nem &lt;- outl$create_email(msg, subject=\"Hello\", to=\"jcflyingco@outlook.com\")\n\n\n\n\nCode\nem$send()",
+    "crumbs": [
+      "Publish",
+      "4 email",
+      "Email"
+    ]
+  },
+  {
+    "objectID": "Publish/4 email/1 email.html#send-email-with-quarto-content",
+    "href": "Publish/4 email/1 email.html#send-email-with-quarto-content",
+    "title": "Email",
+    "section": "",
+    "text": "Code\nemail_obj=render_email('.quarto_email.Rmd')\n\n\n\n\nCode\nemail_obj\n\n\n\n\n\n\nCode\nemail_obj%&gt;% \n  smtp_send(\n    from = 'verykoala@gmail.com',\n    to = \"jcflyingco@outlook.com\",\n    subject = \"Testing the email function\",\n    credentials = creds_key(id = \"gmail001_creds\")\n  )\n\n\n\n\n\n\n\nCode\nem &lt;- outl$create_email(email_obj, subject=\"Hello\", to=\"jcflyingco@outlook.com\")\nem$send()",
+    "crumbs": [
+      "Publish",
+      "4 email",
+      "Email"
     ]
   }
 ]

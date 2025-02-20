@@ -1,0 +1,15 @@
+{
+  "hash": "25781bd2d1aad919b02138aa25ea5271",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Dashboard\"\n\n\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n\n  \nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    \n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    code-copy: true\ncss: hscroll.css\n---\n\n# quarto dashboard\n\n::: {.cell filename='_dashboard_r.qmd'}\n\n````{.markdown .cell-code}\n---\ntitle: \"First quarto dashboard\"\nformat: dashboard\n---\n\n```{r}\na=1\na\n```\n\n````\n:::\n\n\n\n\n\n\n# Reference:\n\nhttps://www.youtube.com/watch?v=HW7QbqI4fH0",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

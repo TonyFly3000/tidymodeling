@@ -1,0 +1,15 @@
+{
+  "hash": "c31f51e789f6b16c1d2ccaa47f9b3554",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"quarto presentation\"\nsubtitle: \"with Revealjs\"\n\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n  \nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    code-copy: true\n---\n\n# revealjs YAML\n\n::: {.cell}\n\n```{.r .cell-code}\n---\ntitle: \"Habits\"\nauthor: \"John Doe\"\nformat: revealjs\n---\n```\n:::\n\n# pages\n::: {.cell}\n\n```{.r .cell-code}\n# pages\n\n# In the morning\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Breakfast\n\n- Eat eggs\n- Drink coffee\n```\n:::\n\n\n\n# YAML format setting\n\n::: {.cell}\n\n```{.r .cell-code}\nformat:\n  revealjs:\n    controls: true\n    navigation-mode: vertical\n    height: 800\n    width: 1000    \n    fontsize: 20pt\n    page-layout: full\n    logo: images/logo.jpg\n    footer: \"This is footer(https://google.com/)\"\n    slide-number: c\n    show-slide-number: all\n    menu: false\n```\n:::\n\n# Main Title Slide Background YAML setting\n\n::: {.cell}\n\n```{.r .cell-code}\n---\ntitle: My Slide Show\ntitle-slide-attributes:\n    data-background-image: /path/to/title_image.png\n    data-background-size: contain\n    data-background-opacity: \"0.5\"\n---\n```\n:::\n\n\n# Chalkboard YAML setting\n\n::: {.cell}\n\n```{.r .cell-code}\n---\ntitle: \"Presentation\"\nformat:\n  revealjs:\n    chalkboard: true\n---\n```\n:::\n\n\n# center whole page\n\n::: {.cell}\n\n```{.r .cell-code}\n# This will be centered {.center}\n\nThis text is moved as well\n```\n:::\n\n\n\n\n# reference:\nhttps://quarto.org/docs/presentations/revealjs/\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

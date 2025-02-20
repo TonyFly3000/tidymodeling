@@ -1,0 +1,161 @@
+---
+title: "Email"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  eval: false
+  error: false
+
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+css: hscroll.css
+---
+
+
+
+# send email with {blastula}
+
+```{r}
+library(blastula)
+library(keyring)
+```
+
+## create smtp credentials
+
+### gmail
+```{r}
+create_smtp_creds_key(
+  id = "gmail001_creds",
+  provider = "gmail",
+  user = "verykoala@gmail.com",
+  overwrite = TRUE
+  )
+```
+
+### outlook
+```{r}
+# create_smtp_creds_key(
+#   id = "outlook001_creds",
+#   provider = "outlook",
+#   user = "jcpartner@outlook.com",
+#   overwrite = TRUE
+#   )
+
+create_smtp_creds_file(file = "ggnot_throwaway_creds",
+                       user = "jcpartner@outlook.com",
+                       provider = "outlook")
+
+
+```
+
+```{r}
+#delete_credential_key("gmail001_creds")
+```
+
+```{r}
+view_credential_keys()
+```
+
+## email content
+
+```{r}
+library(blastula)
+msg=compose_email(
+  body = md(
+  "Hi there 👋,
+  
+  This is an email to let you now thatrunning job **finished**.
+
+  Best,<br>
+  Tony"
+  )
+)
+
+msg
+```
+
+
+
+
+## send email
+
+### send from gmail
+```{r}
+msg %>% 
+  smtp_send(
+    from = 'verykoala@gmail.com',
+    to = "jcflyingco@outlook.com",
+    subject = "Testing the email function",
+    credentials = creds_key(id = "gmail001_creds")
+  )
+
+
+```
+
+
+### send from outlook
+
+```{r}
+library(Microsoft365R)
+outl <- get_personal_outlook()
+
+```
+```{r}
+# list the most recent emails in your Inbox
+#outl$list_emails()
+```
+
+
+```{r}
+em <- outl$create_email(msg, subject="Hello", to="jcflyingco@outlook.com")
+```
+
+```{r}
+em$send()
+```
+
+
+## send email with quarto content
+
+```{r}
+email_obj=render_email('.quarto_email.Rmd')
+```
+
+```{r}
+email_obj
+```
+
+
+### send from gmail
+
+```{r}
+email_obj%>% 
+  smtp_send(
+    from = 'verykoala@gmail.com',
+    to = "jcflyingco@outlook.com",
+    subject = "Testing the email function",
+    credentials = creds_key(id = "gmail001_creds")
+  )
+
+```
+
+### send from outlook
+
+```{r}
+em <- outl$create_email(email_obj, subject="Hello", to="jcflyingco@outlook.com")
+em$send()
+```
+
+
+# Reference:
+https://www.youtube.com/watch?v=PihKq1GPlcc

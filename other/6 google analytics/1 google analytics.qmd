@@ -57,6 +57,7 @@ overall <- ga_data(
 ```{r}
 overall
 ```
+# image at the back into plotly
 
 ```{r}
 # By Country
@@ -69,7 +70,7 @@ country <- ga_data(
 
 country
 ```
-
+# add image at the back into plotly
 
 ```{r}
 fig <- plot_ly(data=country,x = ~sessions,y=~country,text=~sessions, type = "bar",orientation = 'h')%>% 
@@ -84,6 +85,7 @@ fig <- plot_ly(data=country,x = ~sessions,y=~country,text=~sessions, type = "bar
         ,sizex = 0.3
         ,sizey = 0.3
        ,xanchor="right"  
+        ,layer = "below"
       )  
          
          )

@@ -1,0 +1,15 @@
+{
+  "hash": "fa6d432f01b1a7eab9422768860e754d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"quarto parameters\"\nsubtitle: \"making multiple ouput\"\n\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n  \nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    code-copy: true\n\nparams:\n  name: one\n  value: 1\n---\n\n# in R\n\n## edit qmd file `_parameters in R.qmd`\n\n![](images/paste-2.png)\n\n## render qmd file with parameters input\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(quarto)\nquarto_render(\"_parameters in R.qmd\"\n,output_file='R.html'\n,execute_params = list(name='new me',key=9999))\n```\n:::\n\n# Reference\n\nhttps://quarto.org/docs/computations/parameters.html",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

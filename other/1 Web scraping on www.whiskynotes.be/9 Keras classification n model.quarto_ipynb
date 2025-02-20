@@ -1,0 +1,288 @@
+{
+  "cells": [
+    {
+      "cell_type": "raw",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Keras classification model\"\n",
+        "subtitle: \"with whiskynote.be data\"\n",
+        "author: \"Tony Duan\"\n",
+        "\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "\n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    toc-location: right\n",
+        "    code-fold: show\n",
+        "    code-tools: true\n",
+        "    number-sections: true\n",
+        "    code-block-bg: true\n",
+        "    code-block-border-left: \"#31BAE9\"\n",
+        "---"
+      ],
+      "id": "cd18b3dc"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import tensorflow as tf\n",
+        "\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import matplotlib.pylab as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "from siuba.siu import call\n",
+        "from siuba import _, mutate, filter, group_by, summarize,show_query\n",
+        "from siuba import *\n",
+        "\n",
+        "from siuba.data import mtcars,penguins"
+      ],
+      "id": "10653065",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import tensorflow as tf\n",
+        "tf.__version__"
+      ],
+      "id": "a799109f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "import tensorflow as tf\n",
+        "import tensorflow_hub as hub"
+      ],
+      "id": "fd5969a7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "df_raw=pd.read_excel('./output/all_page_bottle_list_all.xlsx')"
+      ],
+      "id": "527d3b8f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import re\n",
+        "df=df_raw>> filter(_.all_page_score >=70\n",
+        "                      ,_.all_page_score <100\n",
+        "                      ,_.bottle_review_Nose !='no comment'\n",
+        "                      ,_.bottle_review_Mouth !='no comment'\n",
+        "                      ,_.bottle_review_Finish !='no comment'\n",
+        "                      ) >>mutate(\n",
+        "                         label=if_else(_.all_page_score>=90,1,0)\n",
+        "                      ,review=_.bottle_review_Nose+_.bottle_review_Mouth+_.bottle_review_Finish\n",
+        "                      )>>mutate(review=_.bottle_name+_.review.str.lower().str.replace('nose:','').str.replace('mouth:','').str.replace('finish:','').str.replace('.','').str.replace(',','').str.replace('(','').str.replace(')','').str.replace('-','').str.replace('apples','apple').str.replace('oranges','orange').str.replace('sweetness','sweet').str.replace('fruits','fruit'))>>mutate(review_len=_.review.str.count(' ')+1) >>mutate(description=_.review)\n"
+      ],
+      "id": "c52bd6f4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df = df[[\"description\", \"label\"]]"
+      ],
+      "id": "4bcbdf39",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df = df.dropna(subset=[\"description\", \"label\"])"
+      ],
+      "id": "b55977de",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df.label = df.label.astype(int)"
+      ],
+      "id": "519b34db",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df.head()"
+      ],
+      "id": "853da355",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df.info()"
+      ],
+      "id": "8f11e61c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# split data"
+      ],
+      "id": "d9572e38"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "train, val, test = np.split(df.sample(frac=1), [int(0.8*len(df)), int(0.9*len(df))])"
+      ],
+      "id": "caed6aac",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "def df_to_dataset(dataframe, shuffle=True, batch_size=1024):\n",
+        "  df = dataframe.copy()\n",
+        "  labels = df.pop('label')\n",
+        "  df = df[\"description\"]\n",
+        "  ds = tf.data.Dataset.from_tensor_slices((df, labels))\n",
+        "  if shuffle:\n",
+        "    ds = ds.shuffle(buffer_size=len(dataframe))\n",
+        "  ds = ds.batch(batch_size)\n",
+        "  ds = ds.prefetch(tf.data.AUTOTUNE)\n",
+        "  return ds"
+      ],
+      "id": "433a497b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "train_data = df_to_dataset(train)\n",
+        "valid_data = df_to_dataset(val)\n",
+        "test_data = df_to_dataset(test)"
+      ],
+      "id": "d70c34ff",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "embedding = \"https://tfhub.dev/google/nnlm-en-dim50/2\"\n",
+        "hub_layer = hub.KerasLayer(embedding, dtype=tf.string, trainable=True)"
+      ],
+      "id": "a99afe21",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "hub_layer(list(train_data)[0][0])"
+      ],
+      "id": "6b75e772",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from keras import models\n",
+        "\n",
+        "model = models.Sequential()\n",
+        "model.add(hub_layer)\n",
+        "model.add(tf.keras.layers.Dense(16, activation='relu'))\n",
+        "model.add(tf.keras.layers.Dropout(0.4))\n",
+        "model.add(tf.keras.layers.Dense(16, activation='relu'))\n",
+        "model.add(tf.keras.layers.Dropout(0.4))\n",
+        "model.add(tf.keras.layers.Dense(1, activation='sigmoid'))"
+      ],
+      "id": "46b86cbf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),\n",
+        "              loss=tf.keras.losses.BinaryCrossentropy(),\n",
+        "              metrics=['accuracy'])"
+      ],
+      "id": "1e3df3cb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "model.evaluate(train_data)"
+      ],
+      "id": "84b4e105",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# resource:\n",
+        "\n",
+        "https://colab.research.google.com/drive/1yO7EgCYSN3KW8hzDTz809nzNmacjBBXX?usp=sharing#scrollTo=7nYrbpVd96kr\n"
+      ],
+      "id": "b8c9dbfc"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

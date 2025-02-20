@@ -78,16 +78,56 @@ url="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2
 download.file(url = url, destfile = "hotels.csv")
 ```
 
+
+## download table from internet
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(janitor)
+
+nba_wiki_url='https://en.wikipedia.org/wiki/List_of_NBA_champions'
+  
+nba_wiki_data001=nba_wiki_url %>% read_html() %>% html_table()
+
+nba_wiki_data002=nba_wiki_data001[[2]] %>% clean_names()
+
+nba_wiki_data003=nba_wiki_data002 %>%filter(!row_number() %in% c(1, 5)) %>% mutate(year=str_sub(year, 1, 4))
+
+tail(nba_wiki_data003)
+
+```
+
+# handle error
+
+using tryCatch to continues the code chunk.
+
+```{r}
+tryCatch({
+  1+who
+},error=function(e){
+  message(paste0('Here is some error:',e))
+})
+
+print('end of the code chunk')
+```
+
+
+
 # Condition with if/elif/else
 
 ```{r}
 x <- -5
-if(x > 0){
-print("Non-negative number")
+if(x > 10){
+print("Non-negative number and better than 10")
+} else if (x > 0) {
+  print("Non-negative number and better than 0")
 } else {
 print("Negative number")
 }
 ```
+
+
 
 # Loop
 
