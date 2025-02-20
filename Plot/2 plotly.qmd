@@ -328,6 +328,9 @@ fig <- plot_ly(data = data002, x = ~year, y = ~pop,color = ~continent,mode = 'li
         ,sizex = 0.1 
         ,sizey = 0.1
        ,xanchor="left"  
+       # image at the back
+         ,layer = "below"
+       
       )  
     )
     ) 

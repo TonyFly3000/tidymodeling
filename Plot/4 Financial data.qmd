@@ -36,7 +36,7 @@ library(rvest)
 ```{r}
 nifty_50 <- Index$new('^NSEI')
 
-data001=nifty_50$get_history(start = '2023-01-01', interval = '1d') %>% mutate(adj_close=adj_close %>% as.numeric())
+data001=nifty_50$get_history(start = '2023-01-01', interval = '1d') %>% unnest(cols = adj_close)
 
 a=head(data001$adj_close,1)[[1]]
 
@@ -44,6 +44,15 @@ data001b=data001 %>% mutate(adj_close2=adj_close/a)
 
 ```
 
+```{r}
+length(unlist(data001$adj_close))
+length(data001$adj_close)
+```
+
+
+```{r}
+test=data001$adj_close %>% unlist()
+```
 
 ```{r}
 aapl <- Ticker$new('aapl')
@@ -173,11 +182,11 @@ glimpse(data001)
 ```{r}
 data002=data001 %>% mutate(breakdown=breakdown %>% str_remove_all('HTML_TAG_START HTML_TAG_END')
                            ,ttm=round(as.numeric(gsub(",","",ttm)))
-                           ,year_2023=round(as.numeric(gsub(",","",x10_31_2023)))
+                           ,year_2024=round(as.numeric(gsub(",","",x10_31_2024)))
                              ,year_2022=round(as.numeric(gsub(",","",x10_31_2022)))
                              ,year_2021=round(as.numeric(gsub(",","",x10_31_2021)))
-                             ,year_2020=round(as.numeric(gsub(",","",x10_31_2020)))
-                           ) %>% select(-x10_31_2023,-x10_31_2022,-x10_31_2021,-x10_31_2020)
+                             ,year_2023=round(as.numeric(gsub(",","",x10_31_2023)))
+                           ) %>% select(-x10_31_2023,-x10_31_2022,-x10_31_2021,-x10_31_2024)
 ```
 
 

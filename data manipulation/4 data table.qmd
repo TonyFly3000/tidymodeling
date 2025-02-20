@@ -91,6 +91,28 @@ There are several R packages that either use gt to generate tabular outputs or e
 
 https://gt.rstudio.com/
 
+# Data table with reactable
+
+
+```{r}
+library(reactable)
+library(reactablefmtr)
+mtcars %>% reactable()%>% 
+  # Main title
+  reactablefmtr::add_title(
+    title = 'Main title'
+  ) %>% 
+    # sub title
+  reactablefmtr::add_subtitle(
+    subtitle = 'sub title',
+    font_weight = 'normal'
+  )
+```
+
+## reference:
+https://www.youtube.com/watch?v=E3ubwU5Uyqw
+
+
 
 # Data table with kable
 

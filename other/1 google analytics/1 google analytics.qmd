@@ -1,0 +1,134 @@
+---
+title: "google analytic in R"
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+# package
+
+```{r}
+# Libraries
+library(googleAnalyticsR)
+library(gargle)
+library(tidyverse)
+library(plotly)
+library(lubridate)
+```
+
+
+
+
+# API
+
+```{r}
+# Access
+ga_auth(email="verykoala@gmail.com")
+ga_account_list("ga4")
+```
+
+
+# download data
+
+```{r}
+my_property_id <- 431975107
+from_date <- "2023-01-01"
+to_date <- "2024-12-31"
+           
+overall <- ga_data(
+  my_property_id,
+  metrics = c("activeUsers", "newUsers","sessions", "screenPageViews"),
+  date_range = c(from_date, to_date)
+  )
+```
+
+```{r}
+overall
+```
+# image at the back into plotly
+
+```{r}
+# By Country
+country <- ga_data(
+  my_property_id,
+  dimensions = c("country"),
+  metrics = c("activeUsers", "newUsers","sessions", "screenPageViews"),
+  date_range = c(from_date, to_date)
+)
+
+country
+```
+# add image at the back into plotly
+
+```{r}
+fig <- plot_ly(data=country,x = ~sessions,y=~country,text=~sessions, type = "bar",orientation = 'h')%>% 
+  layout(title = 'Vistors',yaxis = list(title='Regions',categoryorder = "total ascending"),
+         images = list(  
+      list(  
+        source = base64enc::dataURI(file = "images/google_analytics-ar21.webp")
+        ,xref = "paper"
+        ,yref = "paper" 
+        ,x = 0.9
+        ,y = 0.3
+        ,sizex = 0.3
+        ,sizey = 0.3
+       ,xanchor="right"  
+        ,layer = "below"
+      )  
+         
+         )
+)
+
+fig
+```
+
+```{r}
+sample <- ga_data(
+  my_property_id,
+  dimensions = c("date","dayOfWeek"),
+  metrics = c("activeUsers", "newUsers","sessions", "screenPageViews"),
+  date_range = c(from_date, to_date)
+) %>% 
+arrange(desc(date)) %>% mutate(weekend_date=floor_date(date, "week")+7)
+
+sample
+sample002=sample %>% group_by(weekend_date) %>% summarise(activeUsers=sum(activeUsers)
+                                                          ,sessions=sum(sessions))
+
+```
+
+
+```{r}
+fig <- plot_ly(data = sample002, x = ~weekend_date, y = ~sessions,mode = 'lines')%>% layout(title = 'Vistors',images = list(  
+      list(  
+        source = base64enc::dataURI(file = "images/google_analytics-ar21.webp")
+        ,xref = "paper"
+        ,yref = "paper" 
+        ,x = 0.4
+        ,y = 0.9
+        ,sizex = 0.3
+        ,sizey = 0.3
+       ,xanchor="left"  
+      )  
+    )
+    ) 
+fig
+```
+
+
+
+# reference:
+
+https://www.listendata.com/2023/09/how-to-use-google-analytics-in-r.html

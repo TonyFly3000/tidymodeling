@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-99.9.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tony Duan">
+
+<title>google analytic in R – Into R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../Rlogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-494121dfa8658343c03537e94414993d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c40501fda89cbc240d84efadedcf7c79.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../../site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="../../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="../../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="google analytic in R – Into R">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../Rlogo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Into R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-intro" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">intro</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-intro">    
+        <li class="dropdown-header">Intro</li>
+        <li>
+    <a class="dropdown-item" href="../../intro/1 basic R.html">
+ <span class="dropdown-text">Basic R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../intro/2 probability.html">
+ <span class="dropdown-text">Probability</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../intro/3 Statistics.html">
+ <span class="dropdown-text">Statistics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../intro/5 R boook.html">
+ <span class="dropdown-text">R book</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../intro/6 data analytic in R book.html">
+ <span class="dropdown-text">Data analytic in R book</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../intro/7 error handling.html">
+ <span class="dropdown-text">Error handling</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data">    
+        <li class="dropdown-header">data manipulation</li>
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/1 input ouput.html">
+ <span class="dropdown-text">input &amp; ouput in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/2 data structure in R.html">
+ <span class="dropdown-text">Data structure in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/3 data manipulation with tidyverse.html">
+ <span class="dropdown-text">Data manipulation with tidyverse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/4 data table.html">
+ <span class="dropdown-text">Data table</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/5 recipe.html">
+ <span class="dropdown-text">recipe</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/5 resample.html">
+ <span class="dropdown-text">resample</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/6 SQL database.html">
+ <span class="dropdown-text">SQL database with R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ploting</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ploting">    
+        <li class="dropdown-header">Plot</li>
+        <li>
+    <a class="dropdown-item" href="../../Plot/1 ggplot2.html">
+ <span class="dropdown-text">ggplot2 in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Plot/2 plotly.html">
+ <span class="dropdown-text">Plotly in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Plot/3 image processing.html">
+ <span class="dropdown-text">image processing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Plot/4 Financial data.html">
+ <span class="dropdown-text">Financial data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Plot/5 Map/1 leaflet.html">
+ <span class="dropdown-text">5 Map</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-publishing" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Publishing</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-publishing">    
+        <li class="dropdown-header">Publish</li>
+        <li>
+    <a class="dropdown-item" href="../../Publish/1 Shiny/1 shiny weight tracking.html">
+ <span class="dropdown-text">1 Shiny</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Publish/2 quarto/1 quarto tips.html">
+ <span class="dropdown-text">2 quarto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Publish/3 dashboard/1 dashboard.html">
+ <span class="dropdown-text">3 dashboard</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Publish/4 email/1 email.html">
+ <span class="dropdown-text">4 email</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Other</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-other">    
+        <li class="dropdown-header">Other</li>
+        <li>
+    <a class="dropdown-item" href="../../other/1 google analytics/1 google analytics.html">
+ <span class="dropdown-text">1 google analytics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../other/2 web scrap/web scrap.html">
+ <span class="dropdown-text">2 web scrap</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../other/6 other/1 chromote.html">
+ <span class="dropdown-text">6 other</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Other</li><li class="breadcrumb-item"><a href="../../other/1 google analytics/1 google analytics.html">1 google analytics</a></li><li class="breadcrumb-item"><a href="../../other/1 google analytics/1 google analytics.html">google analytic in R</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Other</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">1 google analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/1 google analytics/1 google analytics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">google analytic in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">2 web scrap</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/2 web scrap/web scrap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">web scrap</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">6 other</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/6 other/1 chromote.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">chromote</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../other/6 other/2 translation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Translation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#package" id="toc-package" class="nav-link active" data-scroll-target="#package"><span class="header-section-number">1</span> package</a></li>
+  <li><a href="#api" id="toc-api" class="nav-link" data-scroll-target="#api"><span class="header-section-number">2</span> API</a></li>
+  <li><a href="#download-data" id="toc-download-data" class="nav-link" data-scroll-target="#download-data"><span class="header-section-number">3</span> download data</a></li>
+  <li><a href="#image-at-the-back-into-plotly" id="toc-image-at-the-back-into-plotly" class="nav-link" data-scroll-target="#image-at-the-back-into-plotly"><span class="header-section-number">4</span> image at the back into plotly</a></li>
+  <li><a href="#add-image-at-the-back-into-plotly" id="toc-add-image-at-the-back-into-plotly" class="nav-link" data-scroll-target="#add-image-at-the-back-into-plotly"><span class="header-section-number">5</span> add image at the back into plotly</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">6</span> reference:</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Other</li><li class="breadcrumb-item"><a href="../../other/1 google analytics/1 google analytics.html">1 google analytics</a></li><li class="breadcrumb-item"><a href="../../other/1 google analytics/1 google analytics.html">google analytic in R</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">google analytic in R</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tony Duan </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="package" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> package</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googleAnalyticsR)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gargle)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="api" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> API</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ga_auth</span>(<span class="at">email=</span><span class="st">"verykoala@gmail.com"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ga_account_list</span>(<span class="st">"ga4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  account_name accountId property_name           propertyId
+  &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;     
+1 verykoala    30370450  verykoala - GA4         431072878 
+2 verykoala    30370450  drinking                431975107 
+3 Demo Account 54516992  GA4 - Flood-It!         153293282 
+4 Demo Account 54516992  GA4 - Google Merch Shop 213025502 </code></pre>
+</div>
+</div>
+</section>
+<section id="download-data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> download data</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_property_id <span class="ot">&lt;-</span> <span class="dv">431975107</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>from_date <span class="ot">&lt;-</span> <span class="st">"2023-01-01"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>to_date <span class="ot">&lt;-</span> <span class="st">"2024-12-31"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>           </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>overall <span class="ot">&lt;-</span> <span class="fu">ga_data</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  my_property_id,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">"activeUsers"</span>, <span class="st">"newUsers"</span>,<span class="st">"sessions"</span>, <span class="st">"screenPageViews"</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_range =</span> <span class="fu">c</span>(from_date, to_date)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>overall</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  activeUsers newUsers sessions screenPageViews
+        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;
+1          92       99      472            2743</code></pre>
+</div>
+</div>
+</section>
+<section id="image-at-the-back-into-plotly" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> image at the back into plotly</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By Country</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">ga_data</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  my_property_id,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="st">"country"</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">"activeUsers"</span>, <span class="st">"newUsers"</span>,<span class="st">"sessions"</span>, <span class="st">"screenPageViews"</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_range =</span> <span class="fu">c</span>(from_date, to_date)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>country</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 18 × 5
+   country        activeUsers newUsers sessions screenPageViews
+   &lt;chr&gt;                &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;
+ 1 Hong Kong               32       23      136             631
+ 2 China                   28       31      279            1814
+ 3 United States           15       12       20              95
+ 4 Thailand                 6        2       14              87
+ 5 Ireland                  5        5        5               5
+ 6 Japan                    5        4        5              13
+ 7 Macao                    4        4       20              58
+ 8 Sweden                   4        4        4               4
+ 9 United Kingdom           3        3        3               3
+10 (not set)                2        2        2               2
+11 Malaysia                 2        2        4               9
+12 Singapore                2        0        4              11
+13 South Korea              2        2        3               2
+14 Argentina                1        1        1               1
+15 Australia                1        1        1               1
+16 Canada                   1        1        1               3
+17 Iran                     1        1        1               3
+18 Taiwan                   1        1        1               1</code></pre>
+</div>
+</div>
+</section>
+<section id="add-image-at-the-back-into-plotly" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> add image at the back into plotly</h1>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data=</span>country,<span class="at">x =</span> <span class="sc">~</span>sessions,<span class="at">y=</span><span class="sc">~</span>country,<span class="at">text=</span><span class="sc">~</span>sessions, <span class="at">type =</span> <span class="st">"bar"</span>,<span class="at">orientation =</span> <span class="st">'h'</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">'Vistors'</span>,<span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title=</span><span class="st">'Regions'</span>,<span class="at">categoryorder =</span> <span class="st">"total ascending"</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">images =</span> <span class="fu">list</span>(  </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(  </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">source =</span> base64enc<span class="sc">::</span><span class="fu">dataURI</span>(<span class="at">file =</span> <span class="st">"images/google_analytics-ar21.webp"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">xref =</span> <span class="st">"paper"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">yref =</span> <span class="st">"paper"</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">x =</span> <span class="fl">0.9</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">y =</span> <span class="fl">0.3</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">sizex =</span> <span class="fl">0.3</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">sizey =</span> <span class="fl">0.3</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>       ,<span class="at">xanchor=</span><span class="st">"right"</span>  </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">layer =</span> <span class="st">"below"</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>      )  </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>         </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-8466989a662f8af78b5a" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-8466989a662f8af78b5a">{"x":{"visdat":{"1b525b36d313":["function () ","plotlyVisDat"]},"cur_data":"1b525b36d313","attrs":{"1b525b36d313":{"x":{},"y":{},"text":{},"orientation":"h","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Vistors","yaxis":{"domain":[0,1],"automargin":true,"title":"Regions","categoryorder":"total ascending","type":"category","categoryarray":["(not set)","Argentina","Australia","Canada","China","Hong Kong","Iran","Ireland","Japan","Macao","Malaysia","Singapore","South Korea","Sweden","Taiwan","Thailand","United Kingdom","United States"]},"images":[{"source":"data:;base64,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","xref":"paper","yref":"paper","x":0.90000000000000002,"y":0.29999999999999999,"sizex":0.29999999999999999,"sizey":0.29999999999999999,"xanchor":"right","layer":"below"}],"xaxis":{"domain":[0,1],"automargin":true,"title":"sessions"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[136,279,20,14,5,5,20,4,3,2,4,4,3,1,1,1,1,1],"y":["Hong Kong","China","United States","Thailand","Ireland","Japan","Macao","Sweden","United Kingdom","(not set)","Malaysia","Singapore","South Korea","Argentina","Australia","Canada","Iran","Taiwan"],"text":[136,279,20,14,5,5,20,4,3,2,4,4,3,1,1,1,1,1],"orientation":"h","type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">ga_data</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  my_property_id,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="st">"date"</span>,<span class="st">"dayOfWeek"</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">"activeUsers"</span>, <span class="st">"newUsers"</span>,<span class="st">"sessions"</span>, <span class="st">"screenPageViews"</span>),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_range =</span> <span class="fu">c</span>(from_date, to_date)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(<span class="fu">desc</span>(date)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">weekend_date=</span><span class="fu">floor_date</span>(date, <span class="st">"week"</span>)<span class="sc">+</span><span class="dv">7</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 100 × 7
+   date       dayOfWeek activeUsers newUsers sessions screenPageViews
+   &lt;date&gt;     &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;
+ 1 2024-12-31 2                   2        2        2               2
+ 2 2024-12-29 0                   2        0        4              11
+ 3 2024-12-27 5                   2        0        5             215
+ 4 2024-12-26 4                   2        1        2              23
+ 5 2024-12-25 3                   3        1       10              37
+ 6 2024-12-22 0                   2        0        3              39
+ 7 2024-12-21 6                   2        0        5              20
+ 8 2024-12-20 5                   4        2        7              63
+ 9 2024-12-19 4                   2        0       11              39
+10 2024-12-18 3                   2        0        7              13
+# ℹ 90 more rows
+# ℹ 1 more variable: weekend_date &lt;date&gt;</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sample002<span class="ot">=</span>sample <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(weekend_date) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">activeUsers=</span><span class="fu">sum</span>(activeUsers)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                                          ,<span class="at">sessions=</span><span class="fu">sum</span>(sessions))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> sample002, <span class="at">x =</span> <span class="sc">~</span>weekend_date, <span class="at">y =</span> <span class="sc">~</span>sessions,<span class="at">mode =</span> <span class="st">'lines'</span>)<span class="sc">%&gt;%</span> <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">'Vistors'</span>,<span class="at">images =</span> <span class="fu">list</span>(  </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(  </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">source =</span> base64enc<span class="sc">::</span><span class="fu">dataURI</span>(<span class="at">file =</span> <span class="st">"images/google_analytics-ar21.webp"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">xref =</span> <span class="st">"paper"</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">yref =</span> <span class="st">"paper"</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">x =</span> <span class="fl">0.4</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">y =</span> <span class="fl">0.9</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">sizex =</span> <span class="fl">0.3</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">sizey =</span> <span class="fl">0.3</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>       ,<span class="at">xanchor=</span><span class="st">"left"</span>  </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>      )  </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-c06208c6bd06b16dbd67" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c06208c6bd06b16dbd67">{"x":{"visdat":{"1b5225f5528a":["function () ","plotlyVisDat"]},"cur_data":"1b5225f5528a","attrs":{"1b5225f5528a":{"x":{},"y":{},"mode":"lines","alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Vistors","images":[{"source":"data:;base64,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","xref":"paper","yref":"paper","x":0.40000000000000002,"y":0.90000000000000002,"sizex":0.29999999999999999,"sizey":0.29999999999999999,"xanchor":"left"}],"xaxis":{"domain":[0,1],"automargin":true,"title":"weekend_date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"sessions"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2024-03-17","2024-03-24","2024-03-31","2024-04-07","2024-04-14","2024-04-21","2024-04-28","2024-05-05","2024-05-12","2024-05-19","2024-05-26","2024-06-02","2024-06-16","2024-06-23","2024-07-07","2024-07-14","2024-07-21","2024-07-28","2024-08-04","2024-08-18","2024-08-25","2024-09-15","2024-09-22","2024-09-29","2024-10-20","2024-11-03","2024-11-10","2024-11-17","2024-11-24","2024-12-08","2024-12-15","2024-12-22","2024-12-29","2025-01-05"],"y":[4,19,21,9,13,8,24,9,21,8,3,10,2,10,17,11,8,4,2,5,4,10,8,2,4,9,19,7,4,32,14,43,20,6],"mode":"lines","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="reference" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> reference:</h1>
+<p>https://www.listendata.com/2023/09/how-to-use-google-analytics-in-r.html</p>
+
+
+<!-- -->
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "google analytic in R"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony Duan"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># package</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googleAnalyticsR)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gargle)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># API</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Access</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a><span class="fu">ga_auth</span>(<span class="at">email=</span><span class="st">"verykoala@gmail.com"</span>)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="fu">ga_account_list</span>(<span class="st">"ga4"</span>)</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a><span class="fu"># download data</span></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>my_property_id <span class="ot">&lt;-</span> <span class="dv">431975107</span></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>from_date <span class="ot">&lt;-</span> <span class="st">"2023-01-01"</span></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>to_date <span class="ot">&lt;-</span> <span class="st">"2024-12-31"</span></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>           </span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>overall <span class="ot">&lt;-</span> <span class="fu">ga_data</span>(</span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>  my_property_id,</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">"activeUsers"</span>, <span class="st">"newUsers"</span>,<span class="st">"sessions"</span>, <span class="st">"screenPageViews"</span>),</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_range =</span> <span class="fu">c</span>(from_date, to_date)</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>overall</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a><span class="fu"># image at the back into plotly</span></span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a><span class="co"># By Country</span></span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">ga_data</span>(</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>  my_property_id,</span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="st">"country"</span>),</span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">"activeUsers"</span>, <span class="st">"newUsers"</span>,<span class="st">"sessions"</span>, <span class="st">"screenPageViews"</span>),</span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_range =</span> <span class="fu">c</span>(from_date, to_date)</span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>country</span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a><span class="fu"># add image at the back into plotly</span></span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data=</span>country,<span class="at">x =</span> <span class="sc">~</span>sessions,<span class="at">y=</span><span class="sc">~</span>country,<span class="at">text=</span><span class="sc">~</span>sessions, <span class="at">type =</span> <span class="st">"bar"</span>,<span class="at">orientation =</span> <span class="st">'h'</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">'Vistors'</span>,<span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title=</span><span class="st">'Regions'</span>,<span class="at">categoryorder =</span> <span class="st">"total ascending"</span>),</span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>         <span class="at">images =</span> <span class="fu">list</span>(  </span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(  </span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>        <span class="at">source =</span> base64enc<span class="sc">::</span><span class="fu">dataURI</span>(<span class="at">file =</span> <span class="st">"images/google_analytics-ar21.webp"</span>)</span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">xref =</span> <span class="st">"paper"</span></span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">yref =</span> <span class="st">"paper"</span> </span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">x =</span> <span class="fl">0.9</span></span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">y =</span> <span class="fl">0.3</span></span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">sizex =</span> <span class="fl">0.3</span></span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">sizey =</span> <span class="fl">0.3</span></span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a>       ,<span class="at">xanchor=</span><span class="st">"right"</span>  </span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">layer =</span> <span class="st">"below"</span></span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>      )  </span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a>         </span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a>fig</span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">ga_data</span>(</span>
+<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a>  my_property_id,</span>
+<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimensions =</span> <span class="fu">c</span>(<span class="st">"date"</span>,<span class="st">"dayOfWeek"</span>),</span>
+<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">"activeUsers"</span>, <span class="st">"newUsers"</span>,<span class="st">"sessions"</span>, <span class="st">"screenPageViews"</span>),</span>
+<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_range =</span> <span class="fu">c</span>(from_date, to_date)</span>
+<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(<span class="fu">desc</span>(date)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">weekend_date=</span><span class="fu">floor_date</span>(date, <span class="st">"week"</span>)<span class="sc">+</span><span class="dv">7</span>)</span>
+<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a>sample</span>
+<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a>sample002<span class="ot">=</span>sample <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(weekend_date) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">activeUsers=</span><span class="fu">sum</span>(activeUsers)</span>
+<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a>                                                          ,<span class="at">sessions=</span><span class="fu">sum</span>(sessions))</span>
+<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-130"><a href="#cb14-130" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(<span class="at">data =</span> sample002, <span class="at">x =</span> <span class="sc">~</span>weekend_date, <span class="at">y =</span> <span class="sc">~</span>sessions,<span class="at">mode =</span> <span class="st">'lines'</span>)<span class="sc">%&gt;%</span> <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">'Vistors'</span>,<span class="at">images =</span> <span class="fu">list</span>(  </span>
+<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(  </span>
+<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a>        <span class="at">source =</span> base64enc<span class="sc">::</span><span class="fu">dataURI</span>(<span class="at">file =</span> <span class="st">"images/google_analytics-ar21.webp"</span>)</span>
+<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">xref =</span> <span class="st">"paper"</span></span>
+<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">yref =</span> <span class="st">"paper"</span> </span>
+<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">x =</span> <span class="fl">0.4</span></span>
+<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">y =</span> <span class="fl">0.9</span></span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">sizex =</span> <span class="fl">0.3</span></span>
+<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a>        ,<span class="at">sizey =</span> <span class="fl">0.3</span></span>
+<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a>       ,<span class="at">xanchor=</span><span class="st">"left"</span>  </span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a>      )  </span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a>fig</span>
+<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a><span class="fu"># reference:</span></span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a>https://www.listendata.com/2023/09/how-to-use-google-analytics-in-r.html</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This website is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

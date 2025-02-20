@@ -1,0 +1,15 @@
+{
+  "hash": "9be16fdfb84c5e8a2110fadda092b3ba",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"quarto Extensioins\"\nsubtitle: \"with Revealjs\"\n\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n  \nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n    code-copy: true\n---\n\n\n![](images/image-255427881.png){width=\"650\"}\n\nExtensions are a powerful way to modify and extend the behavior of Quarto. Quarto v1.2 Required for Quarto Extensions.\n\n# quarto extension： lightbox\n\nAn extension that uses the GLightbox javascript library to add lightbox styling and behavior to images in your HTML documents.\n\n# Installation:\n::: {.cell filename='Terminal'}\n\n```{.bach .cell-code}\nquarto install extension quarto-ext/lightbox\n```\n:::\n\n# Usage:\n\nThe Lightbox extension can automatically give images in your web page a lightbox treatment. You can enable this like:\n\nin header yaml:\n\n::: {.cell}\n\n```{.r .cell-code}\n---\ntitle: Simple Lightbox Example\nfilters:\n   - lightbox\nlightbox: auto\n---\n```\n:::\n\nIn addition to simply providing a lightbox treatment for individual images, you can also group images into a 'gallery'. When the user activates the lightbox, they will be able to page through the images in the gallery without returning to the main document.\n\nin content:\n\n::: {.cell}\n\n```{.r .cell-code}\n![](images/image-562149792.png){group=\"my-gallery\"\ndescription=\"its a picture\"}\n```\n:::\n\n# quarto extension lightbox example:\n\ncode:[example.qmd](https://github.com/quarto-ext/lightbox/blob/main/example.qmd)\n\nwebsite:[example.qmd](https://quarto-ext.github.io/lightbox/).\n\n# list quarto extension\n\ngo to folder which have added quarto extension\n\n::: {.cell filename='Terminal'}\n\n```{.bach .cell-code}\n\nquarto list extensions\n```\n:::\n\n![](images/image-1514124025.png)\n\n# update quarto extension\n\n::: {.cell filename='Terminal'}\n\n```{.bach .cell-code}\n\nquarto update quarto-ext/fontawesome\n```\n:::\n\n# remove quarto extension\n\n::: {.cell filename='Terminal'}\n\n```{.bach .cell-code}\n\nquarto remove quarto-ext/fontawesome\n```\n:::\n\nIf you run the quarto remove extension command with no extension-id, you will be presented with a list of extensions that are present and you may select which extensions to remove.\n\n# Reference\n\nhttps://quarto.org/docs/extensions/\n\nhttps://github.com/quarto-ext/lightbox\n\n \n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

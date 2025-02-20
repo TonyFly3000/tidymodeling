@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-99.9.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidymodel with R - Data manipulation with tidyverse</title>
+<title>Data manipulation with tidyverse – Into R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,16 +64,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../logo.jpg" rel="icon" type="image/jpeg">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<link href="../Rlogo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-494121dfa8658343c03537e94414993d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c40501fda89cbc240d84efadedcf7c79.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,9 +105,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Tidymodel with R - Data manipulation with tidyverse">
+<meta name="twitter:title" content="Data manipulation with tidyverse – Into R">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="images/ggplot_hive.jpg">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -117,14 +119,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../logo.jpg" alt="" class="navbar-logo">
+    <img src="../Rlogo.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Tidymodel with R</span>
+    <span class="navbar-title">Into R</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -134,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-intro" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-intro" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">intro</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-intro">    
@@ -148,6 +150,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Probability</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../intro/3 Statistics.html">
+ <span class="dropdown-text">Statistics</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../intro/5 R boook.html">
  <span class="dropdown-text">R book</span></a>
   </li>  
@@ -155,10 +161,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../intro/6 data analytic in R book.html">
  <span class="dropdown-text">Data analytic in R book</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../intro/7 error handling.html">
+ <span class="dropdown-text">Error handling</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Data</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data">    
@@ -176,21 +186,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Data manipulation with tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data manipulation/4 resample.html">
- <span class="dropdown-text">resample</span></a>
+    <a class="dropdown-item" href="../data manipulation/4 data table.html">
+ <span class="dropdown-text">Data table</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../data manipulation/5 recipe.html">
  <span class="dropdown-text">recipe</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../data manipulation/5 SQL database.html">
+    <a class="dropdown-item" href="../data manipulation/5 resample.html">
+ <span class="dropdown-text">resample</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../data manipulation/6 SQL database.html">
  <span class="dropdown-text">SQL database with R</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Ploting</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-ploting">    
@@ -212,193 +226,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Financial data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../Plot/5 Map/1 China accident map with mapview.html">
+    <a class="dropdown-item" href="../Plot/5 Map/1 leaflet.html">
  <span class="dropdown-text">5 Map</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../Plot/6 Shiny/1 shiny weight tracking.html">
- <span class="dropdown-text">6 Shiny</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Plot/7 Publish/1 quarto tips.html">
- <span class="dropdown-text">7 Publish</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-model-type" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Model type</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-publishing" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Publishing</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-model-type">    
-        <li class="dropdown-header">model type</li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-publishing">    
+        <li class="dropdown-header">Publish</li>
         <li>
-    <a class="dropdown-item" href="../model type/1 decision tree.html">
- <span class="dropdown-text">Decision tree</span></a>
+    <a class="dropdown-item" href="../Publish/1 Shiny/1 shiny weight tracking.html">
+ <span class="dropdown-text">1 Shiny</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../model type/2 random forest.html">
- <span class="dropdown-text">Random forest</span></a>
+    <a class="dropdown-item" href="../Publish/2 quarto/1 quarto tips.html">
+ <span class="dropdown-text">2 quarto</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../model type/3 gradient boosted trees.html">
- <span class="dropdown-text">Gradient boosted trees</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Classification</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification">    
-        <li class="dropdown-header">titanic classification model</li>
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/0 classification Tidy Modeling.html">
- <span class="dropdown-text">Titanic data</span></a>
+    <a class="dropdown-item" href="../Publish/3 dashboard/1 dashboard.html">
+ <span class="dropdown-text">3 dashboard</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../titanic classification model/1 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/2 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification model with Recipe</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/3 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification model with Recipe,workflow,tunning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/4 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification model with Recipe,workflow,fast tunning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../titanic classification model/5 classification Tidy Modeling.html">
- <span class="dropdown-text">Multiple classification model with Recipe,workflow set,fast tunning</span></a>
+    <a class="dropdown-item" href="../Publish/4 email/1 email.html">
+ <span class="dropdown-text">4 email</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification-imbanlance" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Classification imbanlance</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification-imbanlance">    
-        <li class="dropdown-header">hotel classification model</li>
-        <li>
-    <a class="dropdown-item" href="../hotel classification model/0 classification Tidy Modeling.html">
- <span class="dropdown-text">Hotel booking data</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hotel classification model/1 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification Model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hotel classification model/3 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification Model with recipe</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hotel classification model/4 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification Model with recipe,workflow,tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hotel classification model/5 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification Model with recipe,workflow,fast tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../hotel classification model/6 classification Tidy Modeling.html">
- <span class="dropdown-text">Multiple Classification Model with recipe,workflow set,fast tuning</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-multiclass-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Multiclass classification</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-multiclass-classification">    
-        <li class="dropdown-header">Multiclass classification</li>
-        <li>
-    <a class="dropdown-item" href="../Multiclass classification/0 multclass classification.html">
- <span class="dropdown-text">Customer Segmentation Dataset</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Multiclass classification/1 multclass classification.html">
- <span class="dropdown-text">Classification Model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Multiclass classification/3 multclass classification.html">
- <span class="dropdown-text">Multiple Classification Model with recipe,workflow, tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../Multiclass classification/6 multclass classification.html">
- <span class="dropdown-text">Multiple Classification Model with recipe,workflow set,fast tuning</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regression" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Regression</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-regression">    
-        <li class="dropdown-header">house price regression model</li>
-        <li>
-    <a class="dropdown-item" href="../house price regression model/0 Regression Tidy Modeling.html">
- <span class="dropdown-text">House price data</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../house price regression model/1 Regression Tidy Modeling.html">
- <span class="dropdown-text">Regression model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../house price regression model/3 Regression Tidy Modeling.html">
- <span class="dropdown-text">Regression model with Recipe</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../house price regression model/4 Regression Tidy Modeling.html">
- <span class="dropdown-text">Regression model with Recipe,workflow,tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../house price regression model/5 Regression Tidy Modeling.html">
- <span class="dropdown-text">Regression model with Recipe,workflow,fast tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../house price regression model/6 Regression Tidy Modeling.html">
- <span class="dropdown-text">Multiple Regression model with Recipe,workflow set,fast tuning</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clustering" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Clustering</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-clustering">    
-        <li class="dropdown-header">Clustering</li>
-        <li>
-    <a class="dropdown-item" href="../clustering/0 Mall Customers.html">
- <span class="dropdown-text">Mall Customers Dataset</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../clustering/1 k mean Clustering.html">
- <span class="dropdown-text">K mean Clustering</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../clustering/1.2 k mean Clustering.html">
- <span class="dropdown-text">K mean Clustering with image</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../clustering/2 Hierarchical Clustering.html">
- <span class="dropdown-text">Hierarchical Clustering</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../clustering/3 k mode Clustering.html">
- <span class="dropdown-text">k mode Clustering</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../clustering/4 Principal component analysis .html">
- <span class="dropdown-text">Principal component analysis</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Other</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-other">    
@@ -420,14 +278,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">4 web scrap</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../other/5 other/1 chromote.html">
- <span class="dropdown-text">5 other</span></a>
+    <a class="dropdown-item" href="../other/6 google analytics/1 google analytics.html">
+ <span class="dropdown-text">6 google analytics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../other/6 other/1 chromote.html">
+ <span class="dropdown-text">6 other</span></a>
   </li>  
     </ul>
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -438,11 +300,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data manipulation/1 input ouput.html">data manipulation</a></li><li class="breadcrumb-item"><a href="../data manipulation/3 data manipulation with tidyverse.html">Data manipulation with tidyverse</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -455,9 +317,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">data manipulation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -482,8 +344,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data manipulation/4 resample.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">resample</span></a>
+  <a href="../data manipulation/4 data table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data table</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -494,7 +356,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data manipulation/5 SQL database.html" class="sidebar-item-text sidebar-link">
+  <a href="../data manipulation/5 resample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">resample</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data manipulation/6 SQL database.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SQL database with R</span></a>
   </div>
 </li>
@@ -982,12 +850,12 @@ Volvo 142E            4 21.4 109</code></pre>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>small_mtcars <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>        car_name cyl  mpg  hp
-1     Datsun 710   4 22.8  93
-2        Valiant   6 18.1 105
-3  Mazda RX4 Wag   6 21.0 110
-4 Hornet 4 Drive   6 21.4 110
-5      Mazda RX4   6 21.0 110</code></pre>
+<pre><code>           car_name cyl  mpg  hp
+1    Hornet 4 Drive   6 21.4 110
+2         Mazda RX4   6 21.0 110
+3 Hornet Sportabout   8 18.7 175
+4        Datsun 710   4 22.8  93
+5           Valiant   6 18.1 105</code></pre>
 </div>
 </div>
 </section>
@@ -1606,8 +1474,7 @@ Volvo 142E            4 21.4 109</code></pre>
 5 M6D5 </code></pre>
 </div>
 </div>
-<p>replace D+all number with ’_’</p>
-<div class="cell">
+<p>replace D+all number with ’_’ ::: {.cell}</p>
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>word2 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">new=</span>value <span class="sc">%&gt;%</span> <span class="fu">str_replace_all</span>(<span class="st">'D</span><span class="sc">\\</span><span class="st">d*'</span>,<span class="st">'_'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1622,7 +1489,7 @@ Volvo 142E            4 21.4 109</code></pre>
 4 M6D55 M6_  
 5 M6D5  M6_  </code></pre>
 </div>
-</div>
+<p>:::</p>
 </section>
 </section>
 <section id="split-string" class="level2" data-number="3.7">
@@ -2127,7 +1994,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb185"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-06-18"</code></pre>
+<pre><code>[1] "2025-02-17"</code></pre>
 </div>
 </div>
 <p>get local timezone</p>
@@ -2263,7 +2130,7 @@ Valiant                 ali           Valiant</code></pre>
 <span id="cb204-2"><a href="#cb204-2" aria-hidden="true" tabindex="-1"></a>now_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-06-18 16:48:43 CST"</code></pre>
+<pre><code>[1] "2025-02-17 15:22:32 CST"</code></pre>
 </div>
 </div>
 <section id="get-year" class="level3" data-number="4.4.1">
@@ -2274,7 +2141,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb206"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb206-1"><a href="#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">year</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2024</code></pre>
+<pre><code>[1] 2025</code></pre>
 </div>
 </div>
 </section>
@@ -2286,7 +2153,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb208"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb208-1"><a href="#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">month</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 </section>
@@ -2298,7 +2165,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb210"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb210-1"><a href="#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mday</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 18</code></pre>
+<pre><code>[1] 17</code></pre>
 </div>
 </div>
 </section>
@@ -2310,7 +2177,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb212"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb212-1"><a href="#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">yday</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 170</code></pre>
+<pre><code>[1] 48</code></pre>
 </div>
 </div>
 </section>
@@ -2322,7 +2189,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb214"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb214-1"><a href="#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wday</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 <section id="get-hour" class="level4" data-number="4.4.5.1">
@@ -2333,7 +2200,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb216"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb216-1"><a href="#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hour</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 16</code></pre>
+<pre><code>[1] 15</code></pre>
 </div>
 </div>
 </section>
@@ -2346,7 +2213,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb218"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb218-1"><a href="#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">minute</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 48</code></pre>
+<pre><code>[1] 22</code></pre>
 </div>
 </div>
 </section>
@@ -2358,7 +2225,7 @@ Valiant                 ali           Valiant</code></pre>
 <div class="sourceCode cell-code" id="cb220"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb220-1"><a href="#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">second</span>(now_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 43.39117</code></pre>
+<pre><code>[1] 32.91837</code></pre>
 </div>
 </div>
 </section>
@@ -2498,18 +2365,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2541,7 +2397,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -2593,6 +2469,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -2627,7 +2521,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -2675,7 +2573,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -3780,7 +3677,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb234-1121"><a href="#cb234-1121" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb234-1122"><a href="#cb234-1122" aria-hidden="true" tabindex="-1"></a>https://www.r-bloggers.com/2018/07/r-null-values-null-na-nan-inf</span>
 <span id="cb234-1123"><a href="#cb234-1123" aria-hidden="true" tabindex="-1"></a></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

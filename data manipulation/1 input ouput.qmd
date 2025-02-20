@@ -107,6 +107,46 @@ data002=(data) %>% as.data.frame()
 glimpse(data002)
 ```
 
+## Getting Data from Images
+
+```{r}
+library(tesseract)
+```
+
+
+```{r}
+eng <- tesseract("eng")
+text001 <- tesseract::ocr("640.png", engine = eng)
+```
+
+
+```{r}
+cat(text001)
+```
+
+```{r}
+raw_tibble001 <- text001 %>% 
+  str_split(pattern = "\n") %>% 
+  unlist() %>%
+  tibble(data = .) %>% slice(6:n()) %>% filter(str_length(data) >= 2) %>%  mutate(old=data
+         ,data=data %>%str_replace_all('_','')%>%str_replace_all('—','')%>%str_replace_all("'",'')%>%str_replace_all('"','')
+         ) %>% separate(
+    data, 
+    into = c("one", "price"), 
+    sep = c("¥")
+    ) %>% mutate(
+    id = str_extract(one, "^\\S+ ")
+    ,name=gsub("^\\S+ ", "",one)
+  )
+
+
+glimpse(raw_tibble001)
+```
+
+
+
+
+
 # Output
 
 

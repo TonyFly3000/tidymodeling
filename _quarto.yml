@@ -22,11 +22,11 @@ website:
   reader-mode: true
 
 
-  title: "Tidymodel with R"
-  favicon: "logo.jpg"
+  title: "Into R"
+  favicon: "Rlogo.png"
   twitter-card: true
   navbar:
-    logo: "logo.jpg"
+    logo: "Rlogo.png"
     left:
       
       - text: "Home"
@@ -35,11 +35,6 @@ website:
       - sidebar:bar0
       - sidebar:bar1
       - sidebar:bar2
-      - sidebar:bar3
-      - sidebar:bar4
-      - sidebar:bar4b
-      - sidebar:bar5
-      - sidebar:bar6 
       - sidebar:bar7
   
   sidebar:
@@ -62,50 +57,14 @@ website:
       style: "floating"
       background: light
       collapse-level: 2
-      contents: Plot
+      contents: Plot   
 
     - id: bar2
-      title: "Model type"
+      title: "Publishing"
       style: "floating"
       background: light
       collapse-level: 2
-      contents: model type
-
-
-    - id: bar3
-      title: "Classification"
-      style: "floating"
-      background: light
-      collapse-level: 2
-      contents: titanic classification model
-      
-    - id: bar4
-      title: "Classification imbanlance"
-      style: "floating"
-      background: light
-      collapse-level: 2
-      contents: hotel classification model   
-
-    - id: bar4b
-      title: "Multiclass classification"
-      style: "floating"
-      background: light
-      collapse-level: 2
-      contents: Multiclass classification 
-
-    - id: bar5
-      title: "Regression"
-      style: "floating"
-      background: light
-      collapse-level: 2
-      contents: house price regression model 
-
-    - id: bar6
-      title: "Clustering"
-      style: "floating"
-      background: light
-      collapse-level: 2
-      contents: clustering
+      contents: Publish   
 
     - id: bar7
       title: "Other"

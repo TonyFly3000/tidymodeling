@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-99.9.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Tony Duan">
 
-<title>Tidymodel with R - HK whisk bar</title>
+<title>HK whisk bar – Into R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,16 +65,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../logo.jpg" rel="icon" type="image/jpeg">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<link href="../../Rlogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-494121dfa8658343c03537e94414993d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2cc90ac69e9600f41a4126406a678115.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -115,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Tidymodel with R - HK whisk bar">
+<meta name="twitter:title" content="HK whisk bar – Into R">
 <meta name="twitter:description" content="with leaflet">
 <meta name="twitter:card" content="summary">
 </head>
@@ -128,14 +129,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../logo.jpg" alt="" class="navbar-logo">
+    <img src="../../Rlogo.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Tidymodel with R</span>
+    <span class="navbar-title">Into R</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -145,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-intro" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-intro" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">intro</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-intro">    
@@ -170,10 +171,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../intro/6 data analytic in R book.html">
  <span class="dropdown-text">Data analytic in R book</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../intro/7 error handling.html">
+ <span class="dropdown-text">Error handling</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Data</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data">    
@@ -191,21 +196,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Data manipulation with tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../data manipulation/4 resample.html">
- <span class="dropdown-text">resample</span></a>
+    <a class="dropdown-item" href="../../data manipulation/4 data table.html">
+ <span class="dropdown-text">Data table</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../data manipulation/5 recipe.html">
  <span class="dropdown-text">recipe</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../data manipulation/5 SQL database.html">
+    <a class="dropdown-item" href="../../data manipulation/5 resample.html">
+ <span class="dropdown-text">resample</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../data manipulation/6 SQL database.html">
  <span class="dropdown-text">SQL database with R</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ploting" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Ploting</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-ploting">    
@@ -230,190 +239,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../Plot/5 Map/1 leaflet.html">
  <span class="dropdown-text">5 Map</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../Plot/6 Shiny/1 shiny weight tracking.html">
- <span class="dropdown-text">6 Shiny</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../Plot/7 Publish/1 quarto tips.html">
- <span class="dropdown-text">7 Publish</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-model-type" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Model type</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-publishing" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Publishing</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-model-type">    
-        <li class="dropdown-header">model type</li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-publishing">    
+        <li class="dropdown-header">Publish</li>
         <li>
-    <a class="dropdown-item" href="../../model type/1 decision tree.html">
- <span class="dropdown-text">Decision tree</span></a>
+    <a class="dropdown-item" href="../../Publish/1 Shiny/1 shiny weight tracking.html">
+ <span class="dropdown-text">1 Shiny</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../model type/2 random forest.html">
- <span class="dropdown-text">Random forest</span></a>
+    <a class="dropdown-item" href="../../Publish/2 quarto/1 quarto tips.html">
+ <span class="dropdown-text">2 quarto</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../model type/3 gradient boosted trees.html">
- <span class="dropdown-text">Gradient boosted trees</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Classification</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification">    
-        <li class="dropdown-header">titanic classification model</li>
-        <li>
-    <a class="dropdown-item" href="../../titanic classification model/0 classification Tidy Modeling.html">
- <span class="dropdown-text">Titanic data</span></a>
+    <a class="dropdown-item" href="../../Publish/3 dashboard/1 dashboard.html">
+ <span class="dropdown-text">3 dashboard</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../titanic classification model/1 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../titanic classification model/2 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification model with Recipe</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../titanic classification model/3 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification model with Recipe,workflow,tunning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../titanic classification model/4 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification model with Recipe,workflow,fast tunning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../titanic classification model/5 classification Tidy Modeling.html">
- <span class="dropdown-text">Multiple classification model with Recipe,workflow set,fast tunning</span></a>
+    <a class="dropdown-item" href="../../Publish/4 email/1 email.html">
+ <span class="dropdown-text">4 email</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classification-imbanlance" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Classification imbanlance</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-classification-imbanlance">    
-        <li class="dropdown-header">hotel classification model</li>
-        <li>
-    <a class="dropdown-item" href="../../hotel classification model/0 classification Tidy Modeling.html">
- <span class="dropdown-text">Hotel booking data</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../hotel classification model/1 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification Model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../hotel classification model/3 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification Model with recipe</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../hotel classification model/4 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification Model with recipe,workflow,tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../hotel classification model/5 classification Tidy Modeling.html">
- <span class="dropdown-text">Classification Model with recipe,workflow,fast tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../hotel classification model/6 classification Tidy Modeling.html">
- <span class="dropdown-text">Multiple Classification Model with recipe,workflow set,fast tuning</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-multiclass-classification" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Multiclass classification</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-multiclass-classification">    
-        <li class="dropdown-header">Multiclass classification</li>
-        <li>
-    <a class="dropdown-item" href="../../Multiclass classification/0 multclass classification.html">
- <span class="dropdown-text">Customer Segmentation Dataset</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../Multiclass classification/1 multclass classification.html">
- <span class="dropdown-text">Classification Model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../Multiclass classification/3 multclass classification.html">
- <span class="dropdown-text">Multiple Classification Model with recipe,workflow, tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../Multiclass classification/6 multclass classification.html">
- <span class="dropdown-text">Multiple Classification Model with recipe,workflow set,fast tuning</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-regression" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Regression</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-regression">    
-        <li class="dropdown-header">house price regression model</li>
-        <li>
-    <a class="dropdown-item" href="../../house price regression model/0 Regression Tidy Modeling.html">
- <span class="dropdown-text">House price data</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../house price regression model/1 Regression Tidy Modeling.html">
- <span class="dropdown-text">Regression model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../house price regression model/3 Regression Tidy Modeling.html">
- <span class="dropdown-text">Regression model with Recipe</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../house price regression model/4 Regression Tidy Modeling.html">
- <span class="dropdown-text">Regression model with Recipe,workflow,tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../house price regression model/5 Regression Tidy Modeling.html">
- <span class="dropdown-text">Regression model with Recipe,workflow,fast tuning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../house price regression model/6 Regression Tidy Modeling.html">
- <span class="dropdown-text">Multiple Regression model with Recipe,workflow set,fast tuning</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clustering" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Clustering</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-clustering">    
-        <li class="dropdown-header">Clustering</li>
-        <li>
-    <a class="dropdown-item" href="../../clustering/0 Mall Customers.html">
- <span class="dropdown-text">Mall Customers Dataset</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../clustering/1 k mean Clustering.html">
- <span class="dropdown-text">K mean Clustering</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../clustering/1.2 k mean Clustering.html">
- <span class="dropdown-text">K mean Clustering with image</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../clustering/2 Hierarchical Clustering.html">
- <span class="dropdown-text">Hierarchical Clustering</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../clustering/3 k mode Clustering.html">
- <span class="dropdown-text">k mode Clustering</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../clustering/4 Principal component analysis .html">
- <span class="dropdown-text">Principal component analysis</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-other" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Other</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-other">    
@@ -435,14 +288,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">4 web scrap</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../other/5 other/1 chromote.html">
- <span class="dropdown-text">5 other</span></a>
+    <a class="dropdown-item" href="../../other/6 google analytics/1 google analytics.html">
+ <span class="dropdown-text">6 google analytics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../other/6 other/1 chromote.html">
+ <span class="dropdown-text">6 other</span></a>
   </li>  
     </ul>
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -453,11 +310,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Plot/1 ggplot2.html">Plot</a></li><li class="breadcrumb-item"><a href="../../Plot/5 Map/1 leaflet.html">5 Map</a></li><li class="breadcrumb-item"><a href="../../Plot/5 Map/4 HK whisky bar.html">HK whisk bar</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -470,9 +327,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Plot</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -503,9 +360,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">5 Map</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -532,70 +389,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../Plot/5 Map/4 HK whisky bar.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">HK whisk bar</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">6 Shiny</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../Plot/6 Shiny/1 shiny weight tracking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Shiny in R:weight tracking</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../Plot/6 Shiny/2 shiny photo editor.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Shiny in R:photo editor</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../Plot/6 Shiny/3 China accident map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Shiny in R:China accident map</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">7 Publish</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../Plot/7 Publish/1 quarto tips.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">quarto tips</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../Plot/7 Publish/2 quarto blog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">quarto blog</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../Plot/7 Publish/3 quarto website.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">quarto website</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../Plot/7 Publish/4 quarto presentation .html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">quarto presentation</span></a>
   </div>
 </li>
       </ul>
@@ -691,8 +484,8 @@ Columns: 5
 $ bar_name    &lt;chr&gt; "Maltcask@太子", "House Welley@中環", "Casky@灣仔"
 $ bar_address &lt;chr&gt; "169 Sai Yeung Choi St N, Mong Kok,Hongkong", "97 Wellingt…
 $ bar_logo    &lt;chr&gt; "https://img.shoplineapp.com/media/image_clips/62f16f8d7df…
-$ latitude    &lt;dbl&gt; 22.32539, 22.28360, 22.27858
-$ longitude   &lt;dbl&gt; 114.1688, 114.1543, 114.1770</code></pre>
+$ latitude    &lt;dbl&gt; 22.32588, 22.28360, 22.27833
+$ longitude   &lt;dbl&gt; 114.1687, 114.1543, 114.1696</code></pre>
 </div>
 </div>
 </section>
@@ -716,8 +509,8 @@ $ longitude   &lt;dbl&gt; 114.1688, 114.1543, 114.1770</code></pre>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>m  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-2895ff5932737b351519" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-2895ff5932737b351519">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[22.3253851,22.283601,22.2785759],[114.1687616,114.1542770748945,114.1769892],{"iconUrl":{"data":["https://img.shoplineapp.com/media/image_clips/62f16f8d7df01b0025a82bad/original.png","https://static.wixstatic.com/media/2d390e_27d0b3da21a94459bccf741600782591~mv2.jpg/v1/fill/w_160,h_160,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Grey.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsSelY2PRVxaxyU_Ydf9CHgtUrClzpxpqJ2g&s"],"index":[0,1,2]},"iconWidth":60,"iconHeight":50},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[22.2785759,22.3253851],"lng":[114.1542770748945,114.1769892]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-8b87ba0d6543db2feb34" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-8b87ba0d6543db2feb34">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[22.32588362259036,22.283601,22.27833379814693],[114.1686592812547,114.1542770748945,114.1695877547165],{"iconUrl":{"data":["https://img.shoplineapp.com/media/image_clips/62f16f8d7df01b0025a82bad/original.png","https://static.wixstatic.com/media/2d390e_27d0b3da21a94459bccf741600782591~mv2.jpg/v1/fill/w_160,h_160,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Grey.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsSelY2PRVxaxyU_Ydf9CHgtUrClzpxpqJ2g&s"],"index":[0,1,2]},"iconWidth":60,"iconHeight":50},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[22.27833379814693,22.32588362259036],"lng":[114.1542770748945,114.1695877547165]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
@@ -736,8 +529,8 @@ $ longitude   &lt;dbl&gt; 114.1688, 114.1543, 114.1770</code></pre>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>m  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="htmlwidget-bf79a8d4c7f375758794" style="width:100%;height:650px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bf79a8d4c7f375758794">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addPopups","args":[[22.3253851,22.283601,22.2785759],[114.1687616,114.1542770748945,114.1769892],["Maltcask@太子","House Welley@中環","Casky@灣仔"],null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":false,"className":""}]}],"limits":{"lat":[22.2785759,22.3253851],"lng":[114.1542770748945,114.1769892]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6a2a188b1f82bb87e5b5" style="width:100%;height:650px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6a2a188b1f82bb87e5b5">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addPopups","args":[[22.32588362259036,22.283601,22.27833379814693],[114.1686592812547,114.1542770748945,114.1695877547165],["Maltcask@太子","House Welley@中環","Casky@灣仔"],null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":false,"className":""}]}],"limits":{"lat":[22.27833379814693,22.32588362259036],"lng":[114.1542770748945,114.1695877547165]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
@@ -765,8 +558,8 @@ $ longitude   &lt;dbl&gt; 114.1688, 114.1543, 114.1770</code></pre>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>m  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="htmlwidget-cdcc66adee9126a5252a" style="width:100%;height:812px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cdcc66adee9126a5252a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[22.3253851,22.283601,22.2785759],[114.1687616,114.1542770748945,114.1769892],null,null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":false,"className":""},null,null,null,null,["Maltcask@太子","House Welley@中環","Casky@灣仔"],{"interactive":false,"permanent":true,"direction":"bottom","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"style":{"color":"red","font-family":"serif","font-style":"italic","box-shadow":"2px 2px rgba(0,0,0,0.25)","font-size":"12px","border-color":"rgba(0,0,0,0.5)"},"className":"","sticky":true},null]}],"limits":{"lat":[22.2785759,22.3253851],"lng":[114.1542770748945,114.1769892]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-10a18f7f5681258b8487" style="width:100%;height:812px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-10a18f7f5681258b8487">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[22.32588362259036,22.283601,22.27833379814693],[114.1686592812547,114.1542770748945,114.1695877547165],null,null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":false,"className":""},null,null,null,null,["Maltcask@太子","House Welley@中環","Casky@灣仔"],{"interactive":false,"permanent":true,"direction":"bottom","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"style":{"color":"red","font-family":"serif","font-style":"italic","box-shadow":"2px 2px rgba(0,0,0,0.25)","font-size":"12px","border-color":"rgba(0,0,0,0.5)"},"className":"","sticky":true},null]}],"limits":{"lat":[22.27833379814693,22.32588362259036],"lng":[114.1542770748945,114.1695877547165]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -815,18 +608,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -858,7 +640,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -910,6 +712,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -944,7 +764,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -992,7 +816,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1341,7 +1164,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a><span class="fu"># resouce:</span></span>
 <span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a>https://www.gunviolencearchive.org/reports/mass-shooting?page=8&amp;year=2023</span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

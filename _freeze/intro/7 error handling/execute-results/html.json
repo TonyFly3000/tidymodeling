@@ -2,7 +2,7 @@
   "hash": "972ccd405160bf61fe4529d5444dff27",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: \"Error handling\"\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n---\n\n\n\n\n\n# if can not location python version\n\nerror: can not find Python specified in RETICULATE_PYTHON (/Library/Frameworks/Python.framework/Versions/3.12/bin/python3)\n\n## find current python version \n\n\n\n\n```{bash}\nwhich -a python python3\n```\n\n\n\n\n## change python version in `.Renviron` under home folder\n\ngo to home folder by Command-Shift-H\n\n\n\n\n```{bash}\nRETICULATE_PYTHON=\"/Library/Frameworks/Python.framework/Versions/3.13/bin/python3\"\n```\n\n",
+    "markdown": "---\ntitle: \"Error handling\"\nauthor: \"Tony Duan\"\n\nexecute:\n  warning: false\n  error: false\nformat:\n  html:\n    toc: true\n    toc-location: right\n    code-fold: show\n    code-tools: true\n    number-sections: true\n    code-block-bg: true\n    code-block-border-left: \"#31BAE9\"\n---\n\n\n# if can not location python version\n\nerror: can not find Python specified in RETICULATE_PYTHON (/Library/Frameworks/Python.framework/Versions/3.12/bin/python3)\n\n## find current python version \n\n```{bash}\nwhich -a python python3\n```\n\n## change python version in `.Renviron` under home folder\n\ngo to home folder by Command-Shift-H\n\n```{bash}\nRETICULATE_PYTHON=\"/Library/Frameworks/Python.framework/Versions/3.13/bin/python3\"\n```\n\n",
     "supporting": [
       "7 error handling_files"
     ],

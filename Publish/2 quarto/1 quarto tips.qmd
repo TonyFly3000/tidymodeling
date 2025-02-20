@@ -1,0 +1,387 @@
+---
+title: "quarto introduction"
+
+
+author: "Tony Duan"
+
+execute:
+  warning: false
+  error: false
+
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+css: hscroll.css
+---
+
+# install quarto
+
+## install quarto CLI
+
+https://quarto.org/docs/get-started/
+
+## install quarto pacakge
+
+```{r}
+#| eval: false
+install.packages("quarto")
+```
+
+# check quarto version
+
+## in Terminal
+
+```{bach filename="Terminal"}
+#| eval: false
+quarto check
+```
+
+![](images/paste-1.png){width="600"}
+
+## in R
+
+```{r}
+library(quarto)
+quarto_version()
+```
+
+quarto location
+
+```{r}
+quarto_path()
+```
+
+# quarto code chunk
+
+
+## R
+
+```{{R}}
+version
+```
+
+## Python
+
+```{{python}}
+import sys
+print(sys.version)
+```
+
+## Bath
+
+
+```{{bash}}
+echo "foo" 
+```
+
+
+# quarto code chunk option
+
+## in YAML header
+
+``` yaml
+---
+title: "My Document"
+execute:
+  echo: false
+jupyter: python3
+---
+```
+
+-   eval： Evaluate the code chunk (if false, just echos the code into the output).
+
+-   echo： Include the source code in output.
+
+-   output： Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).
+
+-   warning： Include warnings in the output.
+
+-   error： Evaluate the code chunk (if false, just echos the code into the output).
+
+-   include： Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).
+
+## in code chunk
+
+```{bash}
+ #| eval: false
+```
+
+
+# code chunk name
+
+`{r filename='code chunk name sample'}`
+
+```{r filename='code chunk name sample'}
+a=1
+a
+```
+
+# Rmarkdown
+
+```{r}
+#| eval: false
+*italics* and _italics_
+**bold** and __bold__
+superscript^2^
+~~strikethrough~~
+[link](www.rstudio.com)
+```
+
+```{r}
+#| eval: false
+*italics* 
+```
+
+*italics*
+
+```{r}
+#| eval: false
+**bold**
+```
+
+**bold**
+
+```{r}
+#| eval: false
+superscript^2^
+```
+
+superscript^2^
+
+```{r}
+#| eval: false
+~~strikethrough~~
+```
+
+~~strikethrough~~
+
+```{r}
+#| eval: false
+`highlight`
+```
+
+`highlight`
+
+# link
+
+```{r}
+#| eval: false
+[link](www.rstudio.com)
+```
+
+[link](www.rstudio.com)
+
+# tab
+
+```{r}
+#| eval: false
+::: {.panel-tabset}
+
+## Tab 1
+
+This is tab 1
+
+
+## Tab 2
+
+This is tab 2
+
+:::
+```
+
+::: panel-tabset
+## Tab 1
+
+This is tab 1
+
+## Tab 2
+
+This is tab 2
+:::
+
+# column display
+
+```{r}
+#| eval: false
+::: columns
+::: {.column width="40%"}
+this column with 40% width
+::: 
+
+::: {.column width="60%"}
+this column with 60% width
+::: 
+
+::: 
+```
+
+::::: columns
+::: {.column width="40%"}
+this column with 40% width
+:::
+
+::: {.column width="60%"}
+this column with 60% width
+:::
+:::::
+
+# Add a horizontal scroll bar
+
+-   add hscroll.css file
+
+```{r}
+#| eval: false
+.hscroll {
+  overflow: auto;
+  white-space: nowrap;
+}
+```
+
+-   add css option in YAML header
+
+```{r}
+#| eval: false
+---
+css: hscroll.css
+---
+```
+
+-   add `# {.hscroll .scrollable}` on the section which want to be Slide bar
+
+#  {.hscroll .scrollable}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dolor mauris, mattis non nunc nec, luctus aliquet magna. In tortor ante, aliquam eget felis eu, consectetur congue enim. Pellentesque pellentesque tincidunt lectus quis lacinia. Aliquam dolor sem, aliquet vitae aliquam eget, vehicula ac augue. Pellentesque molestie quam et commodo dignissim. Suspendisse potenti. Sed pellentesque metus non turpis condimentum molestie. Nullam accumsan urna nec luctus rutrum. Nunc dapibus auctor convallis. Praesent ac felis fermentum, venenatis elit vel, venenatis mi. Fusce non tellus risus. Phasellus elementum erat sit amet urna venenatis maximus. Nunc vehicula pretium scelerisque.
+
+# Add a vertical scroll bar
+
+::: {.scroll-container style="overflow-x: scroll; height: 600px;"}
+images1.png
+
+images2.png
+:::
+
+::: {.scroll-container style="overflow-x: scroll; height: 600px;"}
+![](images/12.png){width="900"}
+
+![](images/13.png){width="900"}
+:::
+
+# add a output hide bottom at quarto file
+
+1.  add foldableCodeBlcok.lua into blog root folder
+
+```{r filename='foldableCodeBlcok.lua'}
+#| eval: false
+function CodeBlock(elem)
+  if elem.classes and elem.classes:find("details") then
+    local summary = "Code"
+    if elem.attributes.summary then
+      summary = elem.attributes.summary
+    end
+    return{
+      pandoc.RawBlock(
+        "html", "<details><summary>" .. summary .. "</summary>"
+      ),
+      elem,
+      pandoc.RawBlock("html", "</details>")
+    }
+  end
+end
+```
+
+2.  add following line in `_quarto.yml`
+
+`filters: - fold_results.lua`
+
+3.  put following on code chunk:
+
+`{r, attr.output='.details summary="sessionInfo()"'}`
+
+```{r, attr.output='.details summary="sessionInfo()"'}
+#| eval: true
+sessionInfo()
+```
+
+# render all quarto website
+
+```{r filename="Terminal"}
+#| eval: false
+quarto render "tidymodel in R"
+```
+
+# embed video
+
+## embed youtube
+
+```{r}
+#| eval: false
+<iframe width="640" height="480" src="https://www.youtube.com/embed/nku5zFMZAdU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+
+```
+
+## embed local video
+
+```{r}
+#| eval: false
+{{< video images/vv.mp4 height="600" >}}
+```
+
+# embed audio
+
+::: panel-tabset
+## in code
+
+```{r}
+#| eval: false
+
+
+<figure>
+<figcaption>click to play</figcaption>
+<audio controls src="aa.mp3">
+        Your browser does not support the
+        <code>audio</code> element.
+</audio>
+</figure>
+
+```
+
+## in YAML header
+
+``` yaml
+---
+format:
+  html:
+    resources:
+      - aa.mp3
+---
+```
+:::
+
+
+# Managing Execution
+
+## render a folder or file
+
+
+```{bach filename="Terminal"}
+#| eval: false
+quarto render introduction.qmd
+quarto render subdir/
+```
+
+
+source:https://quarto.org/docs/projects/code-execution.html
+
+
+# Reference:
+
+https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
